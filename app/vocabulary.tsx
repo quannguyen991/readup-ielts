@@ -1,4 +1,5 @@
 import { TileArt } from '@/components/ui/TileArt';
+import { NEON_COLORS, NeonBackdrop, NeonWindow, PixelText } from '@/components/neon/Neon';
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -114,21 +115,33 @@ export default function VocabularyScreen() {
 
   return (
     <Screen>
-      {/* Đầu trang kiểu ứng dụng học: lời chào, ô tìm và bốn thẻ lối vào, cùng một bảng màu pastel. */}
-      <View style={{ gap: 4, marginTop: 4 }}>
-        <Text className="font-heavy text-pageTitle text-ink">{L(`Chào ${name || 'bạn'}!`, `Hi, ${name || 'there'}!`)}</Text>
-        <Text className="font-sans text-body text-muted">{L('Mỗi từ là một lần gặp lại đúng lúc.', 'Each word comes back right on time.')}</Text>
-      </View>
-
-      <View className="mt-4 flex-row items-center gap-3 rounded-pill border border-border bg-surface px-4" style={{ height: 50 }}>
-        <Icon name="search" size={18} color={color.subtle} />
-        <TextInput
-          value={query}
-          onChangeText={setQuery}
-          placeholder={L('Tìm từ hoặc nghĩa', 'Search a word or meaning')}
-          placeholderTextColor={color.subtle}
-          className="flex-1 font-sans text-body text-ink outline-none"
-        />
+      {/* Đầu trang kiểu trang Lộ trình: nền neon tối, chữ pixel, số liệu ngắn và ô tìm. */}
+      <View style={{ borderRadius: 28, overflow: 'hidden', borderWidth: 2, borderColor: 'rgba(160,150,255,0.35)' }}>
+        <NeonBackdrop scene="path" />
+        <View style={{ padding: narrow ? 16 : 26, gap: 14 }}>
+          <PixelText size={narrow ? 52 : 68} glow={NEON_COLORS.pink}>{L('Sổ từ', 'Word book')}</PixelText>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {[
+              L(`${words.length} từ`, `${words.length} words`),
+              L(`${dueCards.length} thẻ đến hạn`, `${dueCards.length} due`),
+              L(`${statusCounts.known} đã thuộc`, `${statusCounts.known} known`),
+            ].map((t) => (
+              <View key={t} style={{ paddingHorizontal: 12, paddingVertical: 5, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.14)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.25)' }}>
+                <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>{t}</Text>
+              </View>
+            ))}
+          </View>
+          <View className="flex-row items-center gap-3 rounded-pill bg-white px-4" style={{ height: 50 }}>
+            <Icon name="search" size={18} color={color.subtle} />
+            <TextInput
+              value={query}
+              onChangeText={setQuery}
+              placeholder={L('Tìm từ hoặc nghĩa', 'Search a word or meaning')}
+              placeholderTextColor={color.subtle}
+              className="flex-1 font-sans text-body text-ink outline-none"
+            />
+          </View>
+        </View>
       </View>
 
       {narrow ? (
@@ -200,7 +213,8 @@ export default function VocabularyScreen() {
       ) : null}
 
       {showCover ? (
-        <View className="mt-5 flex-row flex-wrap justify-between" style={{ rowGap: 12 }}>
+        <NeonWindow title={L('Luyện từ', 'Practice')} icon="rocket" style={{ marginTop: 18 }}>
+        <View className="flex-row flex-wrap justify-between" style={{ rowGap: 12 }}>
           <VocabCategory
             title={L('Ôn ngay', 'Review now')}
             sub={dueCards.length > 0 ? L(`${dueCards.length} thẻ đến hạn`, `${dueCards.length} cards due`) : L('Chưa có thẻ đến hạn', 'Nothing due yet')}
@@ -231,9 +245,11 @@ export default function VocabularyScreen() {
             onPress={() => router.push('/vocabulary/from-tests' as never)}
           />
         </View>
+        </NeonWindow>
       ) : null}
 
-      <View className="mt-4">
+      <NeonWindow title={L('Thống kê', 'Stats')} icon="rocket" style={{ marginTop: 18 }}>
+      <View>
         <Grid columns={4} tabletColumns={2} mobileColumns={2}>
           <StatCard label={L('Tổng số từ', 'Total words')} value={String(words.length)} icon="letters" tone="primary" />
           <StatCard
@@ -266,6 +282,7 @@ export default function VocabularyScreen() {
           <SpacedRepetitionWidget />
         </View>
       </View>
+      </NeonWindow>
         </>
       ) : null}
 

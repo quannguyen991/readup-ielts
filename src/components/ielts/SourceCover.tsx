@@ -3,21 +3,21 @@ import { Image, StyleSheet, Text as RNText, View, type TextProps } from 'react-n
 
 import { color } from '@/theme/tokens';
 
-/** Phông Be Vietnam Pro của Band 9, chọn theo độ đậm của từng chữ. */
+/** Phông Inter của Band 9, chọn theo độ đậm của từng chữ. */
 export function fontFor(weight: unknown): string {
   switch (String(weight)) {
     case '900':
     case '800':
-      return 'BeVietnamPro_800ExtraBold';
+      return 'Nunito_700Bold';
     case '700':
     case 'bold':
-      return 'BeVietnamPro_700Bold';
+      return 'Nunito_700Bold';
     case '600':
-      return 'BeVietnamPro_600SemiBold';
+      return 'Nunito_600SemiBold';
     case '500':
-      return 'BeVietnamPro_500Medium';
+      return 'Nunito_600SemiBold';
     default:
-      return 'BeVietnamPro_400Regular';
+      return 'Nunito_400Regular';
   }
 }
 
@@ -72,7 +72,7 @@ function FlatCoverDrawn({
   const small = Math.max(8, Math.round(width * 0.085));
   return (
     <View style={{ width, height, borderRadius: radius, backgroundColor: bg, padding: pad, justifyContent: 'space-between', overflow: 'hidden' }}>
-      <Text style={{ color: 'rgba(255,255,255,0.82)', fontSize: small, fontWeight: '800', letterSpacing: 1 }}>
+      <Text style={{ color: 'rgba(255,255,255,0.82)', fontSize: small, fontWeight: '400', letterSpacing: 1 }}>
         {kind === 'CAMBRIDGE' ? 'CAMBRIDGE' : 'ACTUAL TESTS'}
       </Text>
       <Text style={{ color: color.surface, fontSize: Math.round(width * 0.4), fontWeight: '900', lineHeight: Math.round(width * 0.44) }}>

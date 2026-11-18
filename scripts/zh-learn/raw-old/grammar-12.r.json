@@ -1,0 +1,604 @@
+[
+ {
+  "id": "zh-g-h2-21",
+  "level": 2,
+  "order": 21,
+  "title": "Cấu trúc Đã… rồi mà vẫn nên…",
+  "titleZh": "都……了还是……吧",
+  "summary": "Bạn sẽ dùng cấu trúc này để nhắc đến tình huống đã rõ rồi đưa ra một lời khuyên nhẹ nhàng.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu tình huống và lời khuyên",
+    "body": "都……了 nhấn mạnh tình huống đã đến mức rõ ràng hoặc đáng chú ý. 还是……吧 đưa ra phương án người nói cho là phù hợp.",
+    "examples": [
+     {
+      "zh": "都十点了，我们还是回家吧。",
+      "py": "dōu shí diǎn le wǒmen háishi huí jiā ba",
+      "vi": "Đã mười giờ rồi, chúng ta về nhà thôi."
+     },
+     {
+      "zh": "外面都下雨了，你还是坐公共汽车回家吧。",
+      "py": "wàimiàn dōu xiàyǔ le nǐ háishi zuò gōnggòng qìchē huí jiā ba",
+      "vi": "Ngoài trời mưa rồi, bạn vẫn nên đi xe buýt về nhà."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Đưa ra lựa chọn nên làm",
+    "body": "Dùng khi tình huống hiện tại khiến một phương án trở nên hợp lý. Câu nói thường mang giọng khuyên nhủ, không phải mệnh lệnh.",
+    "examples": [
+     {
+      "zh": "你都到家了，还是吃饭吧。",
+      "py": "nǐ dōu dào jiā le háishi chī fàn ba",
+      "vi": "Bạn về đến nhà rồi, ăn cơm đi thôi."
+     },
+     {
+      "zh": "我都学了一小时了，还是休息吧。",
+      "py": "wǒ dōu xué le yì xiǎoshí le háishi xiūxi ba",
+      "vi": "Tôi học cả tiếng rồi, nghỉ một chút thôi."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 吧 sau phương án",
+    "body": "都 đứng trước tình huống được nhấn mạnh, còn 还是 đứng trước phương án được đề xuất. 吧 đặt cuối câu để lời khuyên nghe nhẹ nhàng.",
+    "formula": "都 + tình huống + 了，主语 + 还是 + phương án + 吧。",
+    "examples": [
+     {
+      "zh": "弟弟都睡了，我们还是明天再说吧。",
+      "py": "dìdi dōu shuì le wǒmen háishi míngtiān zài shuō ba",
+      "vi": "Em trai ngủ rồi, chúng ta để mai nói tiếp nhé."
+     },
+     {
+      "zh": "现在都很晚了，我们还是明天去吧。",
+      "py": "xiànzài dōu hěn wǎn le wǒmen háishi míngtiān qù ba",
+      "vi": "Bây giờ muộn lắm rồi, chúng ta mai hãy đi nhé."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 吧 đúng vị trí",
+    "body": "Trong lời khuyên theo mẫu này, 吧 đứng sau phương án được đề nghị. Tránh chen 吧 vào giữa chủ ngữ và động từ hoặc dùng 了 thay cho 吧.",
+    "mistakes": [
+     {
+      "wrong": "都十点了，我们还是吧回家。",
+      "right": "都十点了，我们还是回家吧。",
+      "why": "吧 đứng sau phương án 回家, không đứng trước động từ."
+     },
+     {
+      "wrong": "外面下雨了，我们还是坐公共汽车了吧。",
+      "right": "外面下雨了，我们还是坐公共汽车吧。",
+      "why": "Ở đây người nói đang khuyên chọn xe buýt nên dùng 吧, không dùng 了."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Điền từ để nêu phương án nên chọn: 都十点了，我们___回家吧。",
+    "options": [
+     "还是",
+     "已经",
+     "常",
+     "别"
+    ],
+    "answer": 0,
+    "explain": "还是 đứng trước phương án được đề xuất."
+   },
+   {
+    "q": "Chọn tiểu từ đặt cuối lời khuyên: 我们还是明天去___。",
+    "options": [
+     "吗",
+     "吧",
+     "了",
+     "呢"
+    ],
+    "answer": 1,
+    "explain": "吧 đứng cuối câu để lời khuyên nghe nhẹ nhàng."
+   },
+   {
+    "q": "Chọn câu có đủ tình huống đã rõ và lời khuyên về nhà.",
+    "options": [
+     "我们回家了。",
+     "我们还是回家吧。",
+     "都十点了，我们还是回家吧。",
+     "今天我们去学校。"
+    ],
+    "answer": 2,
+    "explain": "Câu này có tình huống 都十点了 và lời khuyên 还是回家吧."
+   },
+   {
+    "q": "Vì sao câu 都十点了，我们还是吧回家 không đúng mẫu?",
+    "options": [
+     "都 phải đứng sau động từ",
+     "了 luôn phải đứng cuối câu",
+     "还是 phải đứng sau 吧",
+     "吧 đặt sau phương án được khuyên"
+    ],
+    "answer": 3,
+    "explain": "Phương án là 回家 nên 吧 đứng sau 回家."
+   },
+   {
+    "q": "Chọn câu khuyên đi xe buýt về khi ngoài trời mưa.",
+    "options": [
+     "外面都下雨了，你还是坐公共汽车回家吧。",
+     "外面下雨了，你还是吧坐公共汽车。",
+     "我们很下雨了。",
+     "你坐公共汽车了吧回家。"
+    ],
+    "answer": 0,
+    "explain": "Câu đầu nêu tình huống mưa rồi đề xuất đi xe buýt về."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h2-22",
+  "level": 2,
+  "order": 22,
+  "title": "Các từ 比, 跟, 给, 往, 从, 因为",
+  "titleZh": "比跟给往从因为",
+  "summary": "Bạn sẽ phân biệt các từ dùng để so sánh, nêu người liên quan, hướng đi, điểm xuất phát và nguyên nhân.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu quan hệ giữa các thành phần",
+    "body": "Những từ này giúp làm rõ ai đi cùng ai, vật được đưa cho ai, hướng đi hoặc nơi bắt đầu. 比 dùng trong so sánh, còn 因为 nêu nguyên nhân.",
+    "examples": [
+     {
+      "zh": "我跟朋友一起去学校。",
+      "py": "wǒ gēn péngyou yìqǐ qù xuéxiào",
+      "vi": "Tôi đi học cùng bạn."
+     },
+     {
+      "zh": "她给妈妈买了一个苹果。",
+      "py": "tā gěi māma mǎi le yí ge píngguǒ",
+      "vi": "Cô ấy mua một quả táo cho mẹ."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn từ theo ý muốn diễn đạt",
+    "body": "比 dùng để so sánh, 跟 nêu người cùng tham gia, 给 nêu người nhận, 往 chỉ hướng, 从 chỉ điểm bắt đầu và 因为 nêu lý do.",
+    "examples": [
+     {
+      "zh": "我早上从家走到学校。",
+      "py": "wǒ zǎoshang cóng jiā zǒu dào xuéxiào",
+      "vi": "Buổi sáng tôi đi bộ từ nhà đến trường."
+     },
+     {
+      "zh": "请你往前走，再往右走。",
+      "py": "qǐng nǐ wǎng qián zǒu zài wǎng yòu zǒu",
+      "vi": "Bạn đi thẳng về phía trước, rồi rẽ phải nhé."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 从 trước điểm xuất phát",
+    "body": "从 đứng trước nơi bắt đầu, rồi đến hành động hoặc hướng di chuyển. Nơi xuất phát có thể là nhà, công ty hoặc trường học.",
+    "formula": "主语 + 从 + nơi xuất phát + động từ hoặc hướng đi。",
+    "examples": [
+     {
+      "zh": "爸爸今天从公司回家了。",
+      "py": "bàba jīntiān cóng gōngsī huí jiā le",
+      "vi": "Hôm nay bố từ công ty về nhà rồi."
+     },
+     {
+      "zh": "我从家走到学校。",
+      "py": "wǒ cóng jiā zǒu dào xuéxiào",
+      "vi": "Tôi đi bộ từ nhà đến trường."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "So sánh bằng 比, nêu lý do bằng 因为",
+    "body": "比 đứng trước đối tượng đem ra so sánh. 因为 thường mở đầu phần nêu nguyên nhân và có thể đi cùng 所以 ở phần kết quả.",
+    "examples": [
+     {
+      "zh": "我比哥哥高一点儿。",
+      "py": "wǒ bǐ gēge gāo yìdiǎnr",
+      "vi": "Tôi cao hơn anh trai một chút."
+     },
+     {
+      "zh": "因为今天很冷，所以我在家看书。",
+      "py": "yīnwèi jīntiān hěn lěng suǒyǐ wǒ zài jiā kàn shū",
+      "vi": "Vì hôm nay trời lạnh nên tôi ở nhà đọc sách."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đảo vị trí giới từ",
+    "body": "Giữ 从 trước nơi xuất phát và 给 trước người nhận. Đặt các từ này sai vị trí có thể làm câu khó hiểu hoặc mất quan hệ cần diễn đạt.",
+    "mistakes": [
+     {
+      "wrong": "我从去学校家。",
+      "right": "我从家去学校。",
+      "why": "从 phải đứng trước nơi xuất phát là 家."
+     },
+     {
+      "wrong": "妈妈从给我买了苹果。",
+      "right": "妈妈给我买了苹果。",
+      "why": "给 đứng trước người nhận 我; không thêm 从 vào cụm này."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu dùng 从 để nói điểm xuất phát.",
+    "options": [
+     "我从家去学校。",
+     "我跟朋友去学校。",
+     "我给妈妈买苹果。",
+     "我比哥哥高。"
+    ],
+    "answer": 0,
+    "explain": "从 đứng trước 家 để nêu nơi bắt đầu."
+   },
+   {
+    "q": "Điền từ: 我___朋友一起去学校。",
+    "options": [
+     "从",
+     "跟",
+     "给",
+     "比"
+    ],
+    "answer": 1,
+    "explain": "跟朋友一起 nghĩa là cùng bạn."
+   },
+   {
+    "q": "Điền giới từ chỉ người nhận: 妈妈___我买了一个苹果。",
+    "options": [
+     "往",
+     "比",
+     "给",
+     "从"
+    ],
+    "answer": 2,
+    "explain": "给 đứng trước người nhận là 我."
+   },
+   {
+    "q": "Hoàn thành câu so sánh: 我___哥哥高一点儿。",
+    "options": [
+     "给",
+     "从",
+     "跟",
+     "比"
+    ],
+    "answer": 3,
+    "explain": "比 đứng trước đối tượng được đem ra so sánh."
+   },
+   {
+    "q": "Chọn câu dùng 往 để chỉ hướng đi.",
+    "options": [
+     "请你往前走。",
+     "请你给前走。",
+     "请你比前走。",
+     "请你从前走。"
+    ],
+    "answer": 0,
+    "explain": "往前走 nghĩa là đi về phía trước."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h2-23",
+  "level": 2,
+  "order": 23,
+  "title": "Các phó từ 已经, 快, 就, 再, 还, 常, 一起, 别",
+  "titleZh": "已经快就再还常一起别",
+  "summary": "Bạn sẽ dùng các phó từ này để nói việc đã xảy ra, sắp xảy ra, đang diễn ra, lặp lại, thường xảy ra, làm cùng nhau hoặc cần tránh.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Bổ sung thời gian và cách diễn ra",
+    "body": "Phó từ đứng trước động từ hoặc cụm động từ để nói thêm về thời gian, tần suất hay thái độ. 已经 cho biết việc đã xảy ra, còn 常 nói việc thường xảy ra.",
+    "examples": [
+     {
+      "zh": "我已经吃饭了，现在想喝水。",
+      "py": "wǒ yǐjīng chī fàn le xiànzài xiǎng hē shuǐ",
+      "vi": "Tôi ăn cơm rồi, giờ muốn uống nước."
+     },
+     {
+      "zh": "姐姐常在家看书。",
+      "py": "jiějie cháng zài jiā kàn shū",
+      "vi": "Chị gái thường đọc sách ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Phân biệt 快, 快要 và 别",
+    "body": "快 có thể thúc giục ai làm nhanh hoặc nói việc sắp xảy ra. 快要 thường đứng trước một việc sắp đến, còn 别 dùng để khuyên ai đừng làm gì.",
+    "examples": [
+     {
+      "zh": "快要下雨了，我们快回家吧。",
+      "py": "kuàiyào xiàyǔ le wǒmen kuài huí jiā ba",
+      "vi": "Sắp mưa rồi, chúng ta mau về nhà thôi."
+     },
+     {
+      "zh": "我快回家了，你在这里等我。",
+      "py": "wǒ kuài huí jiā le nǐ zài zhèlǐ děng wǒ",
+      "vi": "Tôi sắp về nhà rồi, bạn đợi tôi ở đây nhé."
+     },
+     {
+      "zh": "现在上课了，你别说话。",
+      "py": "xiànzài shàngkè le nǐ bié shuō huà",
+      "vi": "Đến giờ vào học rồi, bạn đừng nói chuyện."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Nói việc đã xong, sắp đến hoặc đang diễn ra",
+    "body": "已经 thường đi với 了 để nói việc đã xảy ra. 快要 thường đi với 了 để báo việc sắp đến; 正在 đứng trước hành động đang diễn ra.",
+    "formula": "已经 + 动词 + 了；快要 + 动词 + 了；正在 + 动词。",
+    "examples": [
+     {
+      "zh": "我已经吃饭了，现在想喝水。",
+      "py": "wǒ yǐjīng chī fàn le xiànzài xiǎng hē shuǐ",
+      "vi": "Tôi ăn cơm rồi, giờ muốn uống nước."
+     },
+     {
+      "zh": "快要上课了，弟弟还在家看书。",
+      "py": "kuàiyào shàngkè le dìdi hái zài jiā kàn shū",
+      "vi": "Sắp vào học rồi mà em trai vẫn còn đọc sách ở nhà."
+     },
+     {
+      "zh": "妈妈正在家做饭。",
+      "py": "māma zhèngzài jiā zuò fàn",
+      "vi": "Mẹ đang nấu cơm ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 2",
+    "title": "Dùng 就, 还, 再 và 常",
+    "body": "就 có thể cho biết việc xảy ra ngay sau một việc khác; 还 nói vẫn còn, 再 nói làm thêm hoặc làm lần nữa. 常 nói việc thường xảy ra, 一起 nói làm cùng nhau.",
+    "examples": [
+     {
+      "zh": "妈妈回家就做饭。",
+      "py": "māma huí jiā jiù zuò fàn",
+      "vi": "Mẹ về nhà là nấu cơm ngay."
+     },
+     {
+      "zh": "我还想看书，请你再等我一下。",
+      "py": "wǒ hái xiǎng kàn shū qǐng nǐ zài děng wǒ yíxià",
+      "vi": "Tôi vẫn muốn đọc sách, bạn đợi tôi thêm một lát nhé."
+     },
+     {
+      "zh": "我们常一起去学校。",
+      "py": "wǒmen cháng yìqǐ qù xuéxiào",
+      "vi": "Chúng tôi thường đi học cùng nhau."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không ghép hai dấu hiệu thời gian trái nhau",
+    "body": "快要 thường diễn tả việc sắp xảy ra, còn 正在 diễn tả việc đang xảy ra. Không đặt cả hai trước cùng một động từ trong mẫu cơ bản.",
+    "mistakes": [
+     {
+      "wrong": "我们快要正在上课了。",
+      "right": "我们快要上课了。",
+      "why": "快要 đã báo việc sắp xảy ra nên không ghép thêm 正在."
+     },
+     {
+      "wrong": "你已经再吃饭了。",
+      "right": "你已经吃饭了。",
+      "why": "已经 nói việc đã xảy ra; 再 không dùng ở đây để chỉ việc đã hoàn tất."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Điền từ: 我___吃饭了，现在不饿了。",
+    "options": [
+     "再",
+     "已经",
+     "一起",
+     "别"
+    ],
+    "answer": 1,
+    "explain": "已经 cho biết việc ăn cơm đã xảy ra."
+   },
+   {
+    "q": "快要下雨了 có nghĩa gần nhất là gì?",
+    "options": [
+     "Đang mưa",
+     "Mưa tạnh rồi",
+     "Sắp mưa",
+     "Thường mưa"
+    ],
+    "answer": 2,
+    "explain": "快要 diễn tả một việc sắp xảy ra."
+   },
+   {
+    "q": "正在 thường cho biết hành động nào?",
+    "options": [
+     "Đã hoàn tất",
+     "Thường xảy ra",
+     "Sắp bắt đầu",
+     "Đang diễn ra"
+    ],
+    "answer": 3,
+    "explain": "正在 đứng trước hành động đang diễn ra."
+   },
+   {
+    "q": "Chọn câu có nghĩa “hãy đợi tôi thêm một lát”.",
+    "options": [
+     "请你再等我一下。",
+     "请你别等我了。",
+     "请你已经等我一下。",
+     "请你快要等我一下。"
+    ],
+    "answer": 0,
+    "explain": "再 đứng trước 等 để yêu cầu đợi thêm."
+   },
+   {
+    "q": "Điền từ chỉ lời khuyên đừng làm: 现在上课了，你___说话。",
+    "options": [
+     "常",
+     "别",
+     "再",
+     "一起"
+    ],
+    "answer": 1,
+    "explain": "别 đứng trước động từ để khuyên hoặc yêu cầu đừng làm."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h2-24",
+  "level": 2,
+  "order": 24,
+  "title": "Cặp liên từ 虽然……但是 và 因为……所以",
+  "titleZh": "虽然但是因为所以",
+  "summary": "Bạn sẽ nối hai vế câu để diễn đạt sự tương phản hoặc quan hệ nguyên nhân và kết quả.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nối hai ý trong một câu",
+    "body": "虽然……但是 nối một tình huống với ý tương phản. 因为……所以 nối nguyên nhân với kết quả.",
+    "examples": [
+     {
+      "zh": "虽然今天很冷，但是我还要去学校。",
+      "py": "suīrán jīntiān hěn lěng dànshì wǒ hái yào qù xuéxiào",
+      "vi": "Tuy hôm nay trời lạnh nhưng tôi vẫn sẽ đến trường."
+     },
+     {
+      "zh": "因为外面下雨了，所以我们在家看书。",
+      "py": "yīnwèi wàimiàn xiàyǔ le suǒyǐ wǒmen zài jiā kàn shū",
+      "vi": "Vì ngoài trời mưa nên chúng tôi đọc sách ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn cặp từ theo quan hệ ý",
+    "body": "Chọn 虽然……但是 khi vế sau trái với điều người nghe có thể dự đoán. Chọn 因为……所以 khi vế sau là kết quả của lý do ở vế trước.",
+    "examples": [
+     {
+      "zh": "虽然妈妈很忙，但是她还给我做饭。",
+      "py": "suīrán māma hěn máng dànshì tā hái gěi wǒ zuò fàn",
+      "vi": "Tuy mẹ rất bận nhưng mẹ vẫn nấu cơm cho tôi."
+     },
+     {
+      "zh": "因为我今天很忙，所以不去朋友家。",
+      "py": "yīnwèi wǒ jīntiān hěn máng suǒyǐ bú qù péngyou jiā",
+      "vi": "Vì hôm nay tôi bận nên tôi không đến nhà bạn."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Giữ đúng cặp liên từ",
+    "body": "虽然 mở đầu phần nêu tình huống, còn 但是 mở đầu phần tương phản. 因为 mở đầu nguyên nhân, còn 所以 mở đầu kết quả.",
+    "formula": "虽然 + tình huống，但是 + ý tương phản；因为 + nguyên nhân，所以 + kết quả。",
+    "examples": [
+     {
+      "zh": "虽然下雨了，但是我们还是去学校。",
+      "py": "suīrán xiàyǔ le dànshì wǒmen háishi qù xuéxiào",
+      "vi": "Tuy trời mưa nhưng chúng tôi vẫn đi học."
+     },
+     {
+      "zh": "因为弟弟要吃饭，所以我给他做饭。",
+      "py": "yīnwèi dìdi yào chī fàn suǒyǐ wǒ gěi tā zuò fàn",
+      "vi": "Vì em trai muốn ăn cơm nên tôi nấu cơm cho em."
+     },
+     {
+      "zh": "虽然我很忙，但是我还想看书。",
+      "py": "suīrán wǒ hěn máng dànshì wǒ hái xiǎng kàn shū",
+      "vi": "Tuy tôi rất bận nhưng tôi vẫn muốn đọc sách."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không trộn hai cặp liên từ",
+    "body": "Mỗi quan hệ ý có một cặp phù hợp. Tránh ghép 虽然 với 所以 hoặc 因为 với 但是 trong mẫu cơ bản.",
+    "mistakes": [
+     {
+      "wrong": "虽然今天很冷，所以我不去学校。",
+      "right": "虽然今天很冷，但是我还是去学校。",
+      "why": "Câu tương phản dùng 虽然……但是; 所以 dùng để nêu kết quả của nguyên nhân."
+     },
+     {
+      "wrong": "因为下雨了，但是我们在家看书。",
+      "right": "因为下雨了，所以我们在家看书。",
+      "why": "Câu nêu nguyên nhân dùng 因为……所以."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Điền từ nối ý tương phản: 虽然今天很忙，___我会去学校。",
+    "options": [
+     "因为",
+     "所以",
+     "但是",
+     "虽然"
+    ],
+    "answer": 2,
+    "explain": "但是 mở đầu vế tương phản sau 虽然."
+   },
+   {
+    "q": "Điền từ nối kết quả: 因为下雨了，___我们在家看书。",
+    "options": [
+     "但是",
+     "虽然",
+     "因为",
+     "所以"
+    ],
+    "answer": 3,
+    "explain": "所以 mở đầu kết quả của nguyên nhân 因为下雨了."
+   },
+   {
+    "q": "Chọn câu diễn đạt nguyên nhân và kết quả đúng.",
+    "options": [
+     "因为我今天很忙，所以不去朋友家。",
+     "虽然我今天很忙，所以不去朋友家。",
+     "因为我今天很忙，但是不去朋友家。",
+     "虽然今天很忙，因为我去学校。"
+    ],
+    "answer": 0,
+    "explain": "因为 nêu lý do, còn 所以 nêu kết quả."
+   },
+   {
+    "q": "Chọn câu có nghĩa “tuy trời lạnh nhưng tôi vẫn đi học”.",
+    "options": [
+     "因为今天很冷，所以我在家看书。",
+     "虽然今天很冷，但是我还是去学校。",
+     "虽然今天很冷，所以我不去学校。",
+     "因为今天很冷，但是我不去学校。"
+    ],
+    "answer": 1,
+    "explain": "虽然……但是 diễn tả sự tương phản giữa trời lạnh và việc vẫn đi học."
+   },
+   {
+    "q": "Cặp nào thường dùng để nối một tình huống tương phản với ý sau?",
+    "options": [
+     "虽然……所以……",
+     "因为……但是……",
+     "虽然……但是……",
+     "因为……虽然……"
+    ],
+    "answer": 2,
+    "explain": "虽然……但是 là cặp thường dùng để nêu ý tương phản."
+   }
+  ]
+ }
+]

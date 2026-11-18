@@ -1,0 +1,127 @@
+{
+ "title": "University Lecture Delivery Formats Guide",
+ "topic": "university lecture formats (set 4)",
+ "context": "Narrator: You will hear an academic advisor, Dr. Evelyn Howard, and a student union officer, Martin, discussing various university lecture delivery formats.\nMartin: Good morning, Dr. Howard. Thank you for making time in your busy schedule. As you know, the Student Union is revamping the orientation handbook for postgraduates, and we have noticed incoming students frequently express confusion regarding the university lecture delivery formats.\nDr. Howard: Good morning, Martin. I am glad you are addressing this, because students often arrive expecting standard talks and are surprised by how varied our teaching spaces and instructional methods actually are. Where shall we begin?\nMartin: Let's start with our largest format, the traditional Plenary Lectures.\nDr. Howard: Very well. Plenary Lectures take place in the central auditorium, which has been newly refurbished to seat up to 450 students. In these sessions, the lecturer delivers structured content while students focus on active listening and critical note-taking.\nMartin: And what preparation materials should students access in advance?\nDr. Howard: Academic staff upload skeleton handouts to the learning portal twenty-four hours prior to each lecture so attendees can annotate key diagrams. In terms of tracking attendance, we no longer pass around paper registers; instead, attendance is recorded electronically using digital smart badges swiped at the entrance turnstiles.\nMartin: That certainly streamlines things. Now, what about the Flipped Lectures that several modular courses have adopted recently?\nDr. Howard: That format inverts the usual routine completely. The cohort size is deliberately capped at 35 participants in flexible seminar rooms. Prior to attending class, students are obligated to listen to short micro-podcasts recorded by the module leader and then finish a brief diagnostic quiz before midnight on Sunday.\nMartin: And what happens when they arrive in the classroom?\nDr. Howard: Rather than sitting through a lecture, they engage in problem-solving debates facilitated by the instructor. At the conclusion of the term, their grade is determined not by a written examination, but by an analytical portfolio containing their cumulative project findings.\nMartin: That provides clear guidance. Now, moving on to the more specialized teaching formats, what can you tell me about the colloquia?\nDr. Howard: Certainly. Let's look at the Socratic Colloquium, an instructional model utilized almost exclusively by the Law and Philosophy faculties. Unlike conventional tiered lecture halls, these sessions are held in seminar rooms configured in a distinctive horseshoe arrangement, ensuring participants maintain direct eye contact with one another.\nMartin: How does the instructor conduct the dialogue?\nDr. Howard: The professor facilitates inquiry through constant random questioning, calling upon individuals without prior warning to test their comprehension. This intensive dynamic is deliberately designed to nurture critical argumentation, teaching students to construct robust counter-arguments under strict intellectual scrutiny.\nMartin: It sounds demanding, but very effective for legal advocacy. And what about modern practical environments in STEM disciplines?\nDr. Howard: For engineering and computer science, we utilize the Interactive Simulation Workshop. These are hosted inside our state-of-the-art virtual reality suite, providing fully immersive three-dimensional scenarios.\nMartin: Are students required to operate special apparatus?\nDr. Howard: Yes, every student is issued tactile feedback gloves, enabling them to manipulate virtual prototypes and stress-test physical materials. Throughout the session, their biomechanical adjustments and tactical choices are monitored by proprietary observation software that logs real-time operational data.\nMartin: What kind of coursework do they submit afterwards?\nDr. Howard: Instead of standard lab worksheets, students submit a formal technical reflection report explaining their troubleshooting methodology and performance analytics.\nMartin: Excellent. Finally, how do the medical school and management departments run their problem-solving modules?\nDr. Howard: They rely heavily on Problem-Based Tutorials. Each class is broken down into a dedicated unit of only 8 scholars to guarantee meaningful participation.\nMartin: And how do they launch an investigation?\nDr. Howard: The tutor presents the team with an authentic case file, such as an anonymized clinical chart or a corporate restructuring dilemma. One team member serves as the designated scribe, recording group hypotheses, timelines, and action plans on the shared digital screen.\nMartin: And what marks the completion of the cycle?\nDr. Howard: The module culminates when the team delivers a collaborative policy memo, which is formally evaluated by a visiting industry practitioner.\nMartin: This information will be incredibly helpful for our new cohort. Thank you for your assistance, Dr. Howard.\nDr. Howard: You are very welcome, Martin.",
+ "questions": [
+  {
+   "prompt": "Plenary Lectures | Maximum room capacity: ____",
+   "answer": "450 students | 450",
+   "why": "Dr. Howard cho biết khán phòng trung tâm có thể chứa tối đa '450 students'.",
+   "quote": "newly refurbished to seat up to 450 students."
+  },
+  {
+   "prompt": "Plenary Lectures | Location: the ____",
+   "answer": "central auditorium",
+   "why": "Địa điểm tổ chức các buổi Plenary Lecture là 'central auditorium'.",
+   "quote": "take place in the central auditorium, which has been newly refurbished"
+  },
+  {
+   "prompt": "Plenary Lectures | Advance preparation: download ____ 24 hours prior",
+   "answer": "skeleton handouts",
+   "why": "Giảng viên tải lên tài liệu dàn ý ('skeleton handouts') 24 tiếng trước buổi học để sinh viên ghi chú.",
+   "quote": "Academic staff upload skeleton handouts to the learning portal twenty-four hours prior to each lecture"
+  },
+  {
+   "prompt": "Plenary Lectures | Verification method: scanning ____ at entrance",
+   "answer": "digital smart badges",
+   "why": "Thay vì điểm danh bằng giấy ('paper registers'), trường dùng thẻ điện tử thông minh ('digital smart badges') quét tại cửa xoay.",
+   "quote": "attendance is recorded electronically using digital smart badges swiped at the entrance turnstiles."
+  },
+  {
+   "prompt": "Flipped Lectures | Class capacity limit: ____",
+   "answer": "35 participants | 35",
+   "why": "Quy mô mỗi lớp học đảo ngược (Flipped Lecture) bị giới hạn tối đa ở mức '35 participants'.",
+   "quote": "deliberately capped at 35 participants in flexible seminar rooms."
+  },
+  {
+   "prompt": "Flipped Lectures | Homework: listen to brief ____",
+   "answer": "micro-podcasts",
+   "why": "Trước khi đến lớp, sinh viên phải nghe các tập 'micro-podcasts' ngắn do trưởng học phần thu âm.",
+   "quote": "students are obligated to listen to short micro-podcasts recorded by the module leader"
+  },
+  {
+   "prompt": "Flipped Lectures | Pre-class assessment: complete a weekly ____ online",
+   "answer": "diagnostic quiz",
+   "why": "Sinh viên phải hoàn thành bài kiểm tra chẩn đoán ngắn ('diagnostic quiz') trước nửa đêm Chủ nhật.",
+   "quote": "finish a brief diagnostic quiz before midnight on Sunday."
+  },
+  {
+   "prompt": "Flipped Lectures | Primary end-of-term assessment: an ____",
+   "answer": "analytical portfolio",
+   "why": "Điểm cuối kỳ không dựa trên bài thi viết ('written examination') mà dựa trên 'analytical portfolio'.",
+   "quote": "determined not by a written examination, but by an analytical portfolio containing their cumulative project findings."
+  },
+  {
+   "prompt": "Socratic Colloquia | Primarily organized for: ____ departments",
+   "answer": "Law and Philosophy",
+   "why": "Mô hình này được áp dụng gần như độc quyền bởi các khoa 'Law and Philosophy'.",
+   "quote": "model utilized almost exclusively by the Law and Philosophy faculties."
+  },
+  {
+   "prompt": "Socratic Colloquia | Room layout: arranged in a ____",
+   "answer": "horseshoe arrangement",
+   "why": "Phòng hội thảo được bố trí theo hình móng ngựa ('horseshoe arrangement') để mọi người có thể nhìn thẳng vào nhau.",
+   "quote": "configured in a distinctive horseshoe arrangement, ensuring participants maintain direct eye contact"
+  },
+  {
+   "prompt": "Socratic Colloquia | Tutor's instructional technique: ____ without advance warning",
+   "answer": "random questioning",
+   "why": "Giảng viên khơi gợi tranh luận thông qua việc đặt câu hỏi ngẫu nhiên liên tục ('random questioning') mà không báo trước.",
+   "quote": "facilitates inquiry through constant random questioning, calling upon individuals without prior warning"
+  },
+  {
+   "prompt": "Socratic Colloquia | Primary objective: cultivate ____ under pressure",
+   "answer": "critical argumentation",
+   "why": "Mục tiêu trực tiếp của phương pháp này là rèn luyện kỹ năng lập luận phản biện ('critical argumentation') khi chịu áp lực.",
+   "quote": "deliberately designed to nurture critical argumentation, teaching students to construct robust counter-arguments"
+  },
+  {
+   "prompt": "Interactive Simulation Workshops | Room location: the ____",
+   "answer": "virtual reality suite",
+   "why": "Các buổi hội thảo mô phỏng được tổ chức trong phòng thực tế ảo ('virtual reality suite').",
+   "quote": "state-of-the-art virtual reality suite, providing fully immersive three-dimensional scenarios."
+  },
+  {
+   "prompt": "Interactive Simulation Workshops | Mandatory student gear: ____",
+   "answer": "tactile feedback gloves",
+   "why": "Mỗi sinh viên được cấp găng tay phản hồi xúc giác ('tactile feedback gloves') để tương tác với mô hình 3D.",
+   "quote": "issued tactile feedback gloves, enabling them to manipulate virtual prototypes and stress-test physical materials."
+  },
+  {
+   "prompt": "Interactive Simulation Workshops | Live monitoring: recorded by specialized ____",
+   "answer": "observation software",
+   "why": "Các thao tác và lựa chọn của sinh viên được theo dõi bằng phần mềm quan sát độc quyền ('observation software').",
+   "quote": "monitored by proprietary observation software that logs real-time operational data."
+  },
+  {
+   "prompt": "Interactive Simulation Workshops | Coursework assignment: a formal ____",
+   "answer": "technical reflection report",
+   "why": "Thay vì nộp phiếu thực hành thông thường ('standard lab worksheets'), sinh viên nộp 'technical reflection report'.",
+   "quote": "students submit a formal technical reflection report explaining their troubleshooting methodology and performance analytics."
+  },
+  {
+   "prompt": "Problem-Based Tutorials | Cohort size: a team of ____",
+   "answer": "8 scholars | 8",
+   "why": "Mỗi nhóm học PBL chỉ gồm một nhóm nhỏ gồm '8 scholars'.",
+   "quote": "broken down into a dedicated unit of only 8 scholars to guarantee meaningful participation."
+  },
+  {
+   "prompt": "Problem-Based Tutorials | Starting material: an authentic ____",
+   "answer": "case file",
+   "why": "Buổi học bắt đầu khi giảng viên cung cấp một hồ sơ vụ việc thực tế ('case file').",
+   "quote": "presents the team with an authentic case file, such as an anonymized clinical chart"
+  },
+  {
+   "prompt": "Problem-Based Tutorials | Rotating team assignment: the role of ____",
+   "answer": "designated scribe",
+   "why": "Mỗi tuần một thành viên trong nhóm sẽ luân phiên làm thư ký ghi chép được chỉ định ('designated scribe').",
+   "quote": "member serves as the designated scribe, recording group hypotheses, timelines, and action plans"
+  },
+  {
+   "prompt": "Problem-Based Tutorials | Final group deliverable: a ____",
+   "answer": "collaborative policy memo",
+   "why": "Sản phẩm tổng kết cuối cùng của nhóm là bản ghi nhớ chính sách hợp tác ('collaborative policy memo').",
+   "quote": "team delivers a collaborative policy memo, which is formally evaluated by a visiting industry"
+  }
+ ]
+}

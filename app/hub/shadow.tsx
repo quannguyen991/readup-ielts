@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { HubScreen } from '@/components/hub/HubScreen';
+import { HubHero } from '@/components/hub/HubUi';
 import { GLASS_CARD, COSMIC, BAND_COLOR } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { Icon } from '@/components/ui/Icon';
@@ -95,6 +96,18 @@ export default function ShadowPage() {
 
   return (
     <HubScreen title="Nói đuổi" subtitle="Nói đuổi theo giọng bản ngữ để nhận phản hồi ngay" back>
+      <HubHero
+        eyebrow="IELTS · SHADOWING"
+        title="Nói đuổi theo bản ngữ,"
+        accent="trễ nửa nhịp thôi"
+        stats={[
+          { value: '3', label: 'Bước: nghe · đuổi · chấm' },
+          { value: '130–160', label: 'Từ / phút mục tiêu' },
+          { value: 'Từng câu', label: 'Chấm theo câu' },
+          { value: 'Lặp lại', label: 'Đến khi đạt' },
+        ]}
+      />
+
       {/* Chọn bài */}
       <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
         {PASSAGES.map((p, k) => (
@@ -142,14 +155,14 @@ export default function ShadowPage() {
         <View style={{ flex: 1, gap: 3, paddingRight: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <Text style={{ fontSize: 16 }}>🧬</Text>
-            <Text style={{ color: selfVoiceCloned ? '#C084FC' : COSMIC.ink, fontSize: 14, fontWeight: '800' }}>
+            <Text style={{ color: selfVoiceCloned ? '#C084FC' : COSMIC.ink, fontSize: 14, fontWeight: '400' }}>
               Self-Voice Cloning Shadowing
             </Text>
             <View style={{ backgroundColor: '#4C1D95', paddingHorizontal: 6, paddingVertical: 1, borderRadius: 6 }}>
-              <Text style={{ color: '#C084FC', fontSize: 9, fontWeight: '800' }}>BAND 9</Text>
+              <Text style={{ color: '#C084FC', fontSize: 13, fontWeight: '400' }}>BAND 9</Text>
             </View>
           </View>
-          <Text style={{ color: COSMIC.muted, fontSize: 11, lineHeight: 16 }}>
+          <Text style={{ color: COSMIC.muted, fontSize: 13, lineHeight: 18 }}>
             Chuyển giọng đọc mẫu thành chính màu giọng của bạn nhưng đã được AI chuẩn hóa lên Band 9.0 để dễ nhại theo nối âm và nhịp điệu.
           </Text>
         </View>
@@ -208,13 +221,13 @@ export default function ShadowPage() {
           </Text>
         </View>
 
-        <Text style={{ color: '#FCD34D', fontSize: 12, fontStyle: 'italic' }}>
+        <Text style={{ color: '#FCD34D', fontSize: 13, fontStyle: 'italic' }}>
           💡 {passage.connectedTips}
         </Text>
 
         {/* Thanh chỉnh tốc độ 0.75x, 1.0x, 1.25x */}
         <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
-          <Text style={{ color: COSMIC.muted, fontSize: 12, fontWeight: '700' }}>Tốc độ:</Text>
+          <Text style={{ color: COSMIC.muted, fontSize: 13, fontWeight: '700' }}>Tốc độ:</Text>
           {SPEEDS.map((s) => (
             <Pressable
               key={s}
@@ -231,7 +244,7 @@ export default function ShadowPage() {
                 borderColor: s === speed ? COSMIC.blue : 'rgba(120, 68, 21, 0.1)',
               }}
             >
-              <Text style={{ color: s === speed ? COSMIC.blue : COSMIC.ink, fontWeight: '800', fontSize: 13 }}>
+              <Text style={{ color: s === speed ? COSMIC.blue : COSMIC.ink, fontWeight: '400', fontSize: 13 }}>
                 {s}x
               </Text>
             </Pressable>
@@ -255,7 +268,7 @@ export default function ShadowPage() {
             }}
           >
             <Icon name={playing ? 'close' : 'play'} size={18} color="#090A1A" strokeWidth={2.4} />
-            <Text style={{ color: '#FFFFFF', fontWeight: '800' }}>
+            <Text style={{ color: '#FFFFFF', fontWeight: '400' }}>
               {playing ? 'Dừng đọc' : selfVoiceCloned ? 'Nghe Self-Clone' : 'Nghe câu mẫu'}
             </Text>
           </Pressable>
@@ -289,10 +302,10 @@ export default function ShadowPage() {
       {result ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 10 }]}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '800' }}>
+            <Text style={{ color: COSMIC.ink, fontSize: 16, fontWeight: '400' }}>
               Kết quả Nói đuổi: {result.overall}/100
             </Text>
-            <Text style={{ color: '#10B981', fontSize: 13, fontWeight: '800' }}>
+            <Text style={{ color: '#10B981', fontSize: 13, fontWeight: '400' }}>
               Độ trôi chảy: {result.fluency}%
             </Text>
           </View>
@@ -304,7 +317,7 @@ export default function ShadowPage() {
               </Text>
             ))}
           </Text>
-          <Text style={{ color: COSMIC.muted, fontSize: 11 }}>
+          <Text style={{ color: COSMIC.muted, fontSize: 13 }}>
             Xanh lá: bắt nhịp tốt · Vàng: hơi lệch nhịp · Đỏ: bị bỏ sót.
           </Text>
         </View>

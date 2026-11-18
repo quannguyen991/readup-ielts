@@ -1,0 +1,976 @@
+{
+ "id": "band9-listening-15",
+ "title": "Band 9 Listening Test 15",
+ "source": "Band 9 Original",
+ "level": "medium",
+ "cover": {
+  "topic": "Driving, theatre, engineering and wildlife",
+  "category": "Mixed topics"
+ },
+ "sections": [
+  {
+   "n": 1,
+   "title": "Booking driving lessons",
+   "context": "You will hear a man phoning a driving school in Leicester to arrange a course of lessons.",
+   "audio": "/listening/band9-listening-15/s1.mp3",
+   "durationSec": 235,
+   "transcript": [
+    {
+     "speaker": "Lauren",
+     "text": "Good afternoon, Midland Driving School. Lauren speaking. How can I help?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Hello. I'd like to start learning to drive, and a friend recommended you. Do you have any space for new pupils?"
+    },
+    {
+     "speaker": "Lauren",
+     "text": "We do, at the moment. Let me take a few details and then we can find you an instructor. Could I have your name, please?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "It's Ravi Chakraborty."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "Sorry, would you mind spelling the surname?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Of course. C-H-A-K-R-A-B-O-R-T-Y. Chakraborty."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "C-H-A-K-R-A-B-O-R-T-Y. Lovely, thank you. Now, would you like lessons in a manual or an automatic car?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Manual, I think. My father says it's better to learn on a manual, because then you can drive anything."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "That's true, but many people now prefer automatic, and the test can be a bit easier. It also depends where you live. Do you have many hills near you?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Quite a few, actually. And the traffic in the centre is awful. Perhaps I should reconsider. I think an automatic would be less stressful, so let's go for that."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "A good choice. You can always change later. The price for an automatic lesson is £38 for one hour. But if you book a block of ten, it comes down to £34 per lesson."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "I'll take the block of ten, then. £34 each is much better."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "I'll note that. Now, we need to match you with an instructor. Our automatic instructor is Mrs Okafor. That's O-K-A-F-O-R. She has been teaching for twenty years, and she is very patient with nervous beginners."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "That sounds good. I'm quite nervous, if I'm honest."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "Everyone is, at the beginning. When would you like to start?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "As soon as possible. Maybe next week, on Monday the second of November?"
+    },
+    {
+     "speaker": "Lauren",
+     "text": "Hmm. Let me look at the diary. I'm afraid Mrs Okafor is away that week, on a training course. Her first free day is Monday 9 November."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "That's fine. 9 November is perfect. Can I have it in the late afternoon? I finish college at about three thirty."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "She has a gap at 4:15. Would that be too early?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "No, I could manage that. I only live ten minutes from the college."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "Wonderful. So that's Monday 9 November at 4:15. Where would you like to be picked up?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Could she meet me at college? It's at the end of Welford Road."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "Let me check. Mrs Okafor prefers a quiet place to start, so she doesn't want to collect you from the college gates, which are busy. There's a parking area outside the library, just along the road, and I'd suggest that. It's easy to find."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "The library is perfect. I'll wait for her there."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "How many lessons will I need before I can take the test?"
+    },
+    {
+     "speaker": "Lauren",
+     "text": "It varies. On average, people need about forty-five hours with an instructor, plus some practice with family. But Mrs Okafor will tell you when you're ready, and she won't let you take the test too early."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "And how soon can I book the theory test?"
+    },
+    {
+     "speaker": "Lauren",
+     "text": "You can book it any time. Most of our pupils take it within the first month, so the rules of the road are fresh in their minds. Now I need your home address for our records."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "It's 5 Fenwick Close, Leicester. That's F-E-N-W-I-C-K."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "F-E-N-W-I-C-K, Fenwick Close. And the postcode?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "LE2 3HG. That's L-E-2, then 3-H-G."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "LE2 3HG. Thank you. Have you got your provisional licence yet?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Yes, I've had it for two months. I'll bring it with me to the first lesson."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "That's essential, please don't forget it. Also, wear flat comfortable shoes, not boots, and bring your glasses if you need them."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Understood. Is there anything about payment I should know?"
+    },
+    {
+     "speaker": "Lauren",
+     "text": "You can pay for each lesson in cash, or by card at the end. But I recommend setting up a direct debit. You pay a little each month, and it avoids carrying cash around. Many of our pupils do that."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Then I'll use direct debit."
+    },
+    {
+     "speaker": "Lauren",
+     "text": "That's fine. I'll send you the form by email. It takes about a week to set up, so for your first lesson you can pay by card. Thank you for calling, Mr Chakraborty. We look forward to seeing you."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Thank you very much, Lauren. Goodbye."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 1-10",
+     "instruction": "Complete the form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Midland Driving School: new pupil form",
+      "Surname: {{1}}",
+      "Type of car: {{2}}",
+      "Price per lesson: £{{3}}",
+      "Instructor: Mrs {{4}}",
+      "First lesson date: {{5}}",
+      "First lesson time: {{6}}",
+      "Meeting point: outside the {{7}}",
+      "Home address: {{8}}",
+      "Postcode: {{9}}",
+      "Payment method: {{10}}"
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "answer": "Chakraborty"
+      },
+      {
+       "n": 2,
+       "answer": "automatic"
+      },
+      {
+       "n": 3,
+       "answer": "34"
+      },
+      {
+       "n": 4,
+       "answer": "Okafor"
+      },
+      {
+       "n": 5,
+       "answer": "9 November"
+      },
+      {
+       "n": 6,
+       "answer": "4:15"
+      },
+      {
+       "n": 7,
+       "answer": "library"
+      },
+      {
+       "n": 8,
+       "answer": "5 Fenwick Close"
+      },
+      {
+       "n": 9,
+       "answer": "LE2 3HG"
+      },
+      {
+       "n": 10,
+       "answer": "direct debit"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "A backstage tour at a Glasgow theatre",
+   "context": "You will hear a guide welcoming a group at the start of a backstage tour of a theatre in Glasgow.",
+   "audio": "/listening/band9-listening-15/s2.mp3",
+   "durationSec": 247,
+   "transcript": [
+    {
+     "speaker": "Iain",
+     "text": "Hello, everyone, and welcome to the Alhambra Street Theatre. My name's Iain, and I'll be your guide for the next little while. I've worked here for twenty-two years, first as a stagehand and now as the head of tours, so I know every corner of this building, including some corners the audience never see."
+    },
+    {
+     "speaker": "Iain",
+     "text": "Let's begin with the practical details. The tour normally lasts ninety minutes, but today there's a rehearsal on the main stage, and we can't go on until two o'clock. So we'll be a bit shorter this afternoon, about an hour and a quarter. If you have to leave early, just tell me and one of my colleagues will show you out."
+    },
+    {
+     "speaker": "Iain",
+     "text": "Please don't carry your bags round the building. The corridors are narrow, and there are cables and equipment in many places. You can leave them in the lockers beside the stage door. They take a pound coin, which you get back when you open the locker. The cloakroom in the foyer is only for people attending shows, so it won't be open."
+    },
+    {
+     "speaker": "Iain",
+     "text": "I'm afraid I'll have to ask you not to take photographs inside the auditorium today. Sometimes we allow it, but when a rehearsal is in progress the performers have asked for privacy. You can take as many pictures as you like in the rest of the building, though. Some people think it's about copyright, because the set was designed by a famous artist, but really it's about the rehearsal."
+    },
+    {
+     "speaker": "Iain",
+     "text": "A little about the building. The theatre opened in 1884, which makes it about one hundred and forty years old. It was built for music hall, with a crowd of two thousand packed into a space that now holds fewer than nine hundred. It survived two fires and a bomb in the war, and it has been restored several times. Some of the old ironwork you'll see backstage is original."
+    },
+    {
+     "speaker": "Iain",
+     "text": "There's good news about the future, too. Next year, we'll replace all of the seats in the auditorium. Many of them date from the nineteen seventies and are rather uncomfortable. We did consider building a small studio theatre beside the main one, but there isn't enough money at present. Perhaps in a few years."
+    },
+    {
+     "speaker": "Iain",
+     "text": "Right, let me tell you where we're going. We start at the stage door, the entrance used by actors, musicians and crew. Look at the walls here. They're covered with signed posters from the last fifty years: comedians, dancers, rock bands, and even a famous magician. Everyone who has performed here has been asked to sign, and it's become a tradition. Please feel free to look for your favourites."
+    },
+    {
+     "speaker": "Iain",
+     "text": "From the stage door we walk down the corridor to the wardrobe department. This is a big room with racks and racks of costumes. Some are from productions that are seventy years old. The costume makers still repair them, and they lend them to schools and amateur groups. You'll be able to try on some of the smaller pieces, such as hats and gloves, but I'm afraid not the big ones."
+    },
+    {
+     "speaker": "Iain",
+     "text": "Next we visit the scenery workshop, where the sets are built. It's huge, because it needs to take a whole street or a castle wall. At the moment, the painters are working on a backdrop for the next pantomime, and you're welcome to watch them. The painting is done flat on the floor, then lifted up, so you can see how large it is."
+    },
+    {
+     "speaker": "Iain",
+     "text": "After that, we go up a flight of stairs to the green room. It's called that for reasons nobody really knows, and it isn't green at all. It's a comfortable room with sofas, a kettle and a screen that shows what's happening on stage. This is where performers relax and wait for their turn. You may well meet a few of them, though I can't promise."
+    },
+    {
+     "speaker": "Iain",
+     "text": "Our last stop is the lighting box, at the back of the circle. From here the technicians control all of the lights, and you can see the console. There are four hundred and twenty buttons on it, and each one has a purpose. If you ask nicely, the technician may let you test one or two lights from the desk. It's a popular part of the tour."
+    },
+    {
+     "speaker": "Iain",
+     "text": "I should also mention the old trapdoor in the middle of the stage. It was used for ghosts and villains in Victorian plays. Unfortunately, it's been closed for safety reasons, so I can only show it to you from above."
+    },
+    {
+     "speaker": "Iain",
+     "text": "A few last reminders. Stay with the group, and don't touch any equipment unless I say you can. There are steps in several places, so please watch your feet. If anyone needs a lift, tell me now, and I'll arrange it. And if you have any questions, ask at any time. Right, if everyone has put their bags away, let's go through the stage door."
+    }
+   ],
+   "groups": [
+    {
+     "type": "mcq-one",
+     "title": "Questions 11-15",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 11,
+       "prompt": "How long will today's tour last?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "45 minutes"
+        },
+        {
+         "key": "B",
+         "text": "75 minutes"
+        },
+        {
+         "key": "C",
+         "text": "90 minutes"
+        }
+       ]
+      },
+      {
+       "n": 12,
+       "prompt": "Where should visitors leave their bags?",
+       "answer": "C",
+       "options": [
+        {
+         "key": "A",
+         "text": "in the foyer cloakroom"
+        },
+        {
+         "key": "B",
+         "text": "with the guide"
+        },
+        {
+         "key": "C",
+         "text": "in lockers near the stage door"
+        }
+       ]
+      },
+      {
+       "n": 13,
+       "prompt": "Why are photographs not allowed in the auditorium today?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "A rehearsal is taking place."
+        },
+        {
+         "key": "B",
+         "text": "The set is protected by copyright."
+        },
+        {
+         "key": "C",
+         "text": "The lighting is too dark."
+        }
+       ]
+      },
+      {
+       "n": 14,
+       "prompt": "About how old is the theatre?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "100 years"
+        },
+        {
+         "key": "B",
+         "text": "140 years"
+        },
+        {
+         "key": "C",
+         "text": "180 years"
+        }
+       ]
+      },
+      {
+       "n": 15,
+       "prompt": "What will happen at the theatre next year?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "A studio theatre will open."
+        },
+        {
+         "key": "B",
+         "text": "The seats will be replaced."
+        },
+        {
+         "key": "C",
+         "text": "The foyer will be extended."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 16-20",
+     "instruction": "What can visitors see in each part of the theatre? Choose the correct letter, A-G, next to Questions 16-20.",
+     "options": [
+      {
+       "key": "A",
+       "text": "costumes from past productions"
+      },
+      {
+       "key": "B",
+       "text": "actors waiting before a performance"
+      },
+      {
+       "key": "C",
+       "text": "scenery being painted"
+      },
+      {
+       "key": "D",
+       "text": "lighting controls"
+      },
+      {
+       "key": "E",
+       "text": "props from famous shows"
+      },
+      {
+       "key": "F",
+       "text": "a wall of signed posters"
+      },
+      {
+       "key": "G",
+       "text": "an old trapdoor"
+      }
+     ],
+     "questions": [
+      {
+       "n": 16,
+       "prompt": "the stage door",
+       "answer": "F"
+      },
+      {
+       "n": 17,
+       "prompt": "the wardrobe department",
+       "answer": "A"
+      },
+      {
+       "n": 18,
+       "prompt": "the scenery workshop",
+       "answer": "C"
+      },
+      {
+       "n": 19,
+       "prompt": "the green room",
+       "answer": "B"
+      },
+      {
+       "n": 20,
+       "prompt": "the lighting box",
+       "answer": "D"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Testing a model bridge",
+   "context": "You will hear two engineering students discussing a model bridge they have tested with their tutor.",
+   "audio": "/listening/band9-listening-15/s3.mp3",
+   "durationSec": 280,
+   "transcript": [
+    {
+     "speaker": "Dr Gibson",
+     "text": "Morning, Aisha, morning, Fraser. I heard that your bridge didn't survive the test. Tell me what happened."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "It broke at a lower load than we expected, Dr Gibson. We were hoping for about twenty kilograms, but it failed at twelve."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "Which was a bit of a shock, because the calculations looked fine. We chose a truss design, mainly because it's the simplest to analyse. We could work out the force in every member by hand."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "That's a sensible reason. A truss is a good choice for a first project. An arch might look better, but the mathematics is much more demanding. Where exactly did the bridge fail?"
+    },
+    {
+     "speaker": "Aisha",
+     "text": "At one of the joints in the middle, where two diagonal pieces meet the bottom beam. The glue gave way, and then the whole span collapsed."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "I think that's the whole story. The glue was weak. We used a quick-setting type, and it just wasn't strong enough."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "I'm not convinced, Fraser. I think the real problem was that we cut some of the pieces slightly too short. The gap at the joint was too wide, and the glue had to fill it. A thick layer of glue is always weaker."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Aisha's explanation is more convincing. If a joint is cut accurately, even a mediocre glue is surprisingly strong. A badly fitted joint will fail with any glue. Did you measure the gap?"
+    },
+    {
+     "speaker": "Aisha",
+     "text": "About two millimetres."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "There you are. That's enough to cause the problem. Did you apply the load evenly?"
+    },
+    {
+     "speaker": "Fraser",
+     "text": "Yes, we used a sandbag hung from the centre, and we added sand slowly. We were very careful about that. We weren't in a hurry."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Good. So that's one source of error you can exclude."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "We also checked the weight of the sandbag on the scales, so the readings should be reliable."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Excellent. Did you record the temperature or humidity on the day? Balsa wood absorbs moisture, and damp wood is weaker."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "No, I'm afraid we didn't. The workshop was quite cold, though."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "It was dry, I think. The heating was on."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Then it's probably not an issue, but write it down next time."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "By the way, the materials cost us about eleven pounds."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "That's well within the budget, so don't worry about that. Now, let's think about the second model. Do you have time to build another?"
+    },
+    {
+     "speaker": "Aisha",
+     "text": "Yes, we've got about two weeks. We can strengthen it."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "What are you going to change?"
+    },
+    {
+     "speaker": "Fraser",
+     "text": "First, the diagonals. They were only five millimetres thick, and one of them began to bend before the joint failed. We could make them thicker, maybe eight millimetres."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "And I'd like to add cross-bracing between the two sides. At the moment, the bridge moves sideways when the load is high, and that may have added stress to the joints."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "What about using a different glue? I still think a stronger one would help."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "You can, but I'd advise against changing two things at once. If you change the glue, the diagonals and the bracing, you won't know which one made the difference. Keep the same glue, improve the cutting, and make the other two changes."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "That makes sense. We'll do that."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "Should we reduce the span? We could make it shorter, and then it would be easier to build."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "No. The span is set by the assignment. Shortening it would be cheating."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "Right. I just wondered."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Now, the report. Let me give some advice on each section. Start with the introduction. Keep it short, and say what you were trying to find out. Don't give a history of bridges. Nobody wants that."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "We'll just state the aim and the design brief."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "Should we explain the calculation method in the introduction as well?"
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "No. Put the calculations in an appendix, and refer to them in the text. The reader should reach your results quickly."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Good. For the results section, include a photograph of the failed joint. A picture of the failure tells the reader more than a paragraph of explanation. And include the graph of load against the sagging of the beam."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "We took photos, so that's easy."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "Fraser also took a short video of the collapse on his phone. Can we include a link to it?"
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "A link is fine, but don't rely on it. Choose a few still images from the video and put them in the report."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "The conclusion is where most students go wrong. Don't just repeat the results. Compare what actually happened with what you predicted from the calculations, and explain any difference. That's the point of the whole exercise."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "So we say we predicted twenty kilograms and got twelve, and that the difference was due to the poorly cut joints."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Exactly. And if you aren't sure of the cause, say so honestly. Engineers learn more from failures than successes."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "My father says the same thing. He works on bridges."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Then he'll be pleased that you've chosen this field."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "Thank you. That's helpful."
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "Come and see me when you've tested the second one. I'd like to see how it goes."
+    },
+    {
+     "speaker": "Aisha",
+     "text": "When is the second test?"
+    },
+    {
+     "speaker": "Dr Gibson",
+     "text": "The lab is booked on the twentieth. Make sure you arrive early, because the equipment takes time to set up."
+    },
+    {
+     "speaker": "Fraser",
+     "text": "We'll be there at nine."
+    }
+   ],
+   "groups": [
+    {
+     "type": "mcq-one",
+     "title": "Questions 21-25",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 21,
+       "prompt": "Why did the students choose a truss design?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "It was the cheapest to build."
+        },
+        {
+         "key": "B",
+         "text": "It was the easiest to analyse."
+        },
+        {
+         "key": "C",
+         "text": "It was recommended by the tutor."
+        }
+       ]
+      },
+      {
+       "n": 22,
+       "prompt": "Where did the first bridge fail?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "at the support"
+        },
+        {
+         "key": "B",
+         "text": "at a joint in the middle"
+        },
+        {
+         "key": "C",
+         "text": "at the end of the span"
+        }
+       ]
+      },
+      {
+       "n": 23,
+       "prompt": "What does Dr Gibson think about the cause of the failure?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "The glue was too weak."
+        },
+        {
+         "key": "B",
+         "text": "The pieces were badly fitted."
+        },
+        {
+         "key": "C",
+         "text": "The load was applied too fast."
+        }
+       ]
+      },
+      {
+       "n": 24,
+       "prompt": "What did the students do correctly during the test?",
+       "answer": "C",
+       "options": [
+        {
+         "key": "A",
+         "text": "They measured the gap."
+        },
+        {
+         "key": "B",
+         "text": "They used strong glue."
+        },
+        {
+         "key": "C",
+         "text": "They added the load evenly."
+        }
+       ]
+      },
+      {
+       "n": 25,
+       "prompt": "What does Dr Gibson say about changing the glue for the second bridge?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "It should be changed first."
+        },
+        {
+         "key": "B",
+         "text": "It should stay the same."
+        },
+        {
+         "key": "C",
+         "text": "It should be tested separately."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "mcq-many",
+     "title": "Questions 26-27",
+     "instruction": "Choose TWO letters, A-E. Which TWO improvements will the students make to the second bridge?",
+     "options": [
+      {
+       "key": "A",
+       "text": "thicker diagonal pieces"
+      },
+      {
+       "key": "B",
+       "text": "a stronger glue"
+      },
+      {
+       "key": "C",
+       "text": "cross-bracing between the sides"
+      },
+      {
+       "key": "D",
+       "text": "steel pins in the joints"
+      },
+      {
+       "key": "E",
+       "text": "a shorter span"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "prompt": "Which TWO improvements will the students make?",
+       "answer": [
+        "A",
+        "C"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 28-30",
+     "instruction": "What advice does Dr Gibson give about each part of the report? Choose the correct letter, A-E, next to Questions 28-30.",
+     "options": [
+      {
+       "key": "A",
+       "text": "include a photograph"
+      },
+      {
+       "key": "B",
+       "text": "give a history of bridges"
+      },
+      {
+       "key": "C",
+       "text": "compare the result with the prediction"
+      },
+      {
+       "key": "D",
+       "text": "make it longer"
+      },
+      {
+       "key": "E",
+       "text": "state the aim only"
+      }
+     ],
+     "questions": [
+      {
+       "n": 28,
+       "prompt": "the introduction",
+       "answer": "E"
+      },
+      {
+       "n": 29,
+       "prompt": "the results",
+       "answer": "A"
+      },
+      {
+       "n": 30,
+       "prompt": "the conclusion",
+       "answer": "C"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Bird migration",
+   "context": "You will hear a zoology lecturer talking about why and how birds migrate.",
+   "audio": "/listening/band9-listening-15/s4.mp3",
+   "durationSec": 261,
+   "transcript": [
+    {
+     "speaker": "Lecturer",
+     "text": "Good morning, everyone. Every spring and every autumn, billions of birds set off on journeys that cross whole continents and oceans. Today's lecture is about bird migration: why birds do it, how they find their way, and what dangers they face. I'll try to keep the story simple, because the science is still full of surprises."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Let me start with the question of why. People often assume that birds fly south in winter because it is cold. But most birds can cope with cold. What they cannot cope with is hunger. In northern countries, the insects disappear in winter, and for birds that feed on flies, beetles and caterpillars, there is simply nothing to eat. They have to leave, or die. The same birds return in the spring, because the long days of summer in the north bring an enormous supply of food, and that is a good place to raise chicks."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "The next question is how they find their way. This is a puzzle that scientists have been working on for decades. We now know that birds use several different methods at once. They navigate by the position of the Sun during the day, and by the pattern of the stars at night. But they also seem to sense the Earth's magnetic field, rather like a built-in compass. Experiments show that if you place a small magnet near a bird in a cage, it will confuse its sense of direction."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Some migrations are astonishing. The champion is the Arctic tern, a small sea bird that weighs less than a hundred grams. It breeds in the far north, and spends the northern winter near Antarctica, which is about 70,000 kilometres of flying every year, if you include all the detours it makes. Over its lifetime, which can be thirty years, it travels the equivalent of three round trips to the Moon."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Another record belongs to the bar-tailed godwit, a wading bird. In one famous journey, a godwit flew from Alaska to New Zealand without stopping once. It took 8 days, and it covered more than eleven thousand kilometres. During all that time, it couldn't eat, drink or rest, and it lost almost half of its body weight."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Closer to home, let me say something about the swallow. This is the bird most British people associate with the beginning of summer. Swallows usually arrive in April, and you'll often see them gathering on telephone wires in the autumn, before they leave. They spend the winter in South Africa, thousands of kilometres from their nests, and many of them return to the very same barn every year."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "How do they prepare? Before departure, birds eat much more than usual and store fat. Some species almost double their weight in just a few weeks. Fat is the most efficient fuel, because it contains more energy for its weight than anything else. A bird that doesn't gain weight in time simply won't survive the journey."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "How do we know all this? In the past, scientists relied on rings fixed to the legs of birds, and they could learn only where a bird started and where somebody found it. Today the technology is far better. We can attach tiny devices called geolocators, which weigh less than a gram. They record the light levels during the day, and from this we can work out the bird's position. When the bird returns to its nest, we recover the device and download the entire journey."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "This technology has also shown us where birds are in danger. One serious problem is light. In big cities, bright lights at night confuse birds that navigate by the stars, and they circle the buildings until they are exhausted. Some cities have started to turn off the lights of tall buildings during the main migration weeks, and the results have been encouraging. Another approach is to design windows that birds can see, with a pattern on the glass."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "Probably the greatest long-term threat is the loss of places to rest. Migrating birds need regular stopovers where they can feed, and many of these are wetlands. Over the last century, more than half of the wetlands in many parts of the world have been drained for farming or building. Without those stopovers, a bird that has flown for a thousand kilometres may have nowhere to land."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "The picture isn't entirely gloomy. International agreements now protect some of the key sites, and volunteers help to count birds every year. Your own gardens and local parks can also help, so long as you provide water and leave some wild patches."
+    },
+    {
+     "speaker": "Lecturer",
+     "text": "To sum up, migration is a mixture of instinct, navigation and endurance, and we are only beginning to understand it. For next week, please read the article on the reading list, and think about how climate change might affect the timing of the journeys."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 31-40",
+     "instruction": "Complete the notes. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Why birds migrate",
+      "Food is the problem in winter, especially {{31}}",
+      "## How they navigate",
+      "They sense the Earth's {{32}} field",
+      "## Record journeys",
+      "Arctic tern: {{33}} km per year",
+      "Bar-tailed godwit flew non-stop for {{34}} days",
+      "Swallows arrive in {{35}}",
+      "Swallows spend the winter in {{36}}",
+      "## Preparation and research",
+      "Some birds almost double their {{37}}",
+      "Tiny devices called {{38}} record position",
+      "## Dangers",
+      "Bright {{39}} in cities confuse birds",
+      "Loss of {{40}} used for stopovers"
+     ],
+     "questions": [
+      {
+       "n": 31,
+       "answer": "insects"
+      },
+      {
+       "n": 32,
+       "answer": "magnetic"
+      },
+      {
+       "n": 33,
+       "answer": "70,000",
+       "accept": [
+        "70 000"
+       ]
+      },
+      {
+       "n": 34,
+       "answer": "8"
+      },
+      {
+       "n": 35,
+       "answer": "April"
+      },
+      {
+       "n": 36,
+       "answer": "South Africa"
+      },
+      {
+       "n": 37,
+       "answer": "weight"
+      },
+      {
+       "n": 38,
+       "answer": "geolocators"
+      },
+      {
+       "n": 39,
+       "answer": "lights"
+      },
+      {
+       "n": 40,
+       "answer": "wetlands"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,127 @@
+{
+ "title": "Highfield Cheese Heritage Workshops",
+ "topic": "cheese-making heritage",
+ "context": "Narrator: You will hear a telephone conversation between a visitor and a receptionist at the Highfield Cheese Heritage Centre, followed by a talk from the head artisan cheesemaker.\nMark: Good morning, is this the Highfield Cheese Heritage Centre inquiry desk?\nElena: Good morning! Yes, it is. How can I help you today?\nMark: I am planning a visit next month, and we would love details about your heritage cheese-making sessions. First, where exactly should our group assemble?\nElena: All participants should gather directly outside the historic dairy building on Barrow Lane.\nMark: Barrow Lane, perfect. And what time does the morning introductory session kick off?\nElena: That begins promptly at 9:45 am. We ask visitors to arrive ten minutes early so we can complete registration.\nMark: That sounds sensible. What is the maximum group size permitted for each tour?\nElena: To ensure individual attention and workshop safety, we cap every group at 12 participants.\nMark: Excellent. What about clothing? Do we need to bring our own protective gear?\nElena: No, we supply sanitized cotton coats for everyone upon arrival, but you must wear rubber boots for safety on the damp floors.\nMark: Understood. Is there an early booking code we can apply when reserving spaces online?\nElena: Yes, indeed. You can enter the reference code CHEDDAR88 at the payment screen to receive your ten percent discount.\nMark: That is wonderful. One quick practical question: is parking available on site for visitors?\nElena: Yes, there is free visitor parking directly behind the main barn, and complimentary refreshments are provided before the session starts.\nMark: Brilliant, thank you very much for your help, Elena.\nElena: You are very welcome. We look forward to hosting you!\nNarrator: Now listen to the presentation by Julian, the head cheesemaker, as he outlines the heritage workshops and cheese-making methods.\nJulian: Welcome, everyone, to the Highfield estate. My name is Julian, and I am the head artisan cheesemaker here. Our estate has preserved traditional dairy heritage since 1785, avoiding the shortcuts of modern mass manufacturing. Today, I want to give you an overview of the three distinctive heritage workshops we offer.\nJulian: Let us begin with our entry-level option, the Traditional Curd Workshop. This is a foundational three-hour session designed specifically for novices who want a solid grounding in the craft. Throughout this session, you will learn the classic farmhouse method using fresh unpasteurized milk sourced from our own Shorthorn cows. Rather than utilizing modern stainless steel, we gently warm the liquid inside authentic copper cauldrons, which preserve essential microbial cultures. You will observe how natural rennet triggers coagulation before each student practices the gentle technique known as curd slicing using wire cutters. At the end of the class, you will transfer your finished product into an earthenware drainage basket, which you can carry home.\nJulian: Moving on, our second package is the Hard Pressed Alpine Masterclass. Because this session involves heavy physical lifting and hot liquids, the minimum age required for all participants is 16 years. Here, we investigate how mountain communities preserved milk for harsh winters. Students spend the morning exploring the aging process inside our natural limestone cave, where cool drafts maintain steady temperature throughout the seasons. You will inspect resting wheels undergoing an extensive maturation period of at least 14 months. These large wheels require deliberate turning and brushing. During the sensory tasting panel that follows, our instructors teach you how to evaluate texture and how to recognize the distinctive nutty aroma that indicates a mature crust.\nJulian: Finally, we have our most comprehensive course, the Historic Blue Vein Workshop. In this advanced session, we delve deeply into seventeenth-century dairy microbiology. Instead of utilizing commercial laboratory additives, we inoculate curds with an ancient spore strain that we culture on rye bread. To encourage blue marbling to develop through aeration, participants learn how to pierce the young wheels using vintage brass skewers rather than modern machinery. Temperature and moisture management in the ripening vault are critical, so we maintain the atmosphere at exactly 85 percent humidity. Once the piercing is finished, you will wrap each cheese in breathable linen cloth soaked in brine. Those who complete this intensive course receive an authentic apprentice certificate signed by the British Guild of Cheesemakers.",
+ "questions": [
+  {
+   "prompt": "General Visitor Information | Assembly location: historic dairy building on ____",
+   "answer": "Barrow Lane",
+   "why": "Elena nói rõ địa điểm tập trung của đoàn là tại tòa nhà bơ sữa lịch sử trên đường 'Barrow Lane'.",
+   "quote": "All participants should gather directly outside the historic dairy building on Barrow Lane."
+  },
+  {
+   "prompt": "General Visitor Information | Morning session start time: ____",
+   "answer": "9:45 am | 9:45",
+   "why": "Khóa học buổi sáng bắt đầu chính xác vào lúc '9:45 am'. Chi tiết đến trước 10 phút là thời gian có mặt để làm thủ tục, không phải giờ bắt đầu.",
+   "quote": "That begins promptly at 9:45 am. We ask visitors to arrive ten minutes early so we can complete registration."
+  },
+  {
+   "prompt": "General Visitor Information | Maximum group limit: ____",
+   "answer": "12 participants | 12",
+   "why": "Elena thông báo mỗi nhóm tham quan/học tập bị giới hạn tối đa là '12 participants' để đảm bảo an toàn.",
+   "quote": "To ensure individual attention and workshop safety, we cap every group at 12 participants."
+  },
+  {
+   "prompt": "Visitor Equipment | Provided at venue: sanitized ____",
+   "answer": "cotton coats",
+   "why": "Trung tâm cung cấp áo khoác bằng cotton đã được khử trùng ('cotton coats') cho tất cả khách khi đến nơi.",
+   "quote": "No, we supply sanitized cotton coats for everyone upon arrival, but you must wear rubber boots for safety on the damp floors."
+  },
+  {
+   "prompt": "Visitor Equipment | Required footwear: ____",
+   "answer": "rubber boots",
+   "why": "Elena nhấn mạnh người tham gia bắt buộc phải đi ủng cao su ('rubber boots') vì sàn nhà ẩm ướt.",
+   "quote": "No, we supply sanitized cotton coats for everyone upon arrival, but you must wear rubber boots for safety on the damp floors."
+  },
+  {
+   "prompt": "Booking Details | Ten percent discount reference code: ____",
+   "answer": "CHEDDAR88",
+   "why": "Mã đặt chỗ trực tuyến để nhận ưu đãi giảm giá 10% là 'CHEDDAR88'.",
+   "quote": "You can enter the reference code CHEDDAR88 at the payment screen to receive your ten percent discount."
+  },
+  {
+   "prompt": "Traditional Curd Workshop | Workshop duration: ____",
+   "answer": "three-hour | three hours | 3-hour | 3 hours",
+   "why": "Julian giới thiệu buổi học làm sữa đông cơ bản kéo dài 3 tiếng ('three-hour').",
+   "quote": "This is a foundational three-hour session designed specifically for novices who want a solid grounding in the craft."
+  },
+  {
+   "prompt": "Traditional Curd Workshop | Primary dairy ingredient: fresh ____",
+   "answer": "unpasteurized milk",
+   "why": "Nguyên liệu chính của phương pháp làm phô mai truyền thống là sữa tươi chưa tiệt trùng ('unpasteurized milk') từ giống bò Shorthorn.",
+   "quote": "Throughout this session, you will learn the classic farmhouse method using fresh unpasteurized milk sourced from our own Shorthorn cows."
+  },
+  {
+   "prompt": "Traditional Curd Workshop | Heating vessel: authentic ____",
+   "answer": "copper cauldrons",
+   "why": "Sữa được làm ấm chậm bên trong các vạc đồng truyền thống ('copper cauldrons') thay vì nồi thép không gỉ hiện đại.",
+   "quote": "Rather than utilizing modern stainless steel, we gently warm the liquid inside authentic copper cauldrons, which preserve essential microbial cultures."
+  },
+  {
+   "prompt": "Traditional Curd Workshop | Separation technique: ____",
+   "answer": "curd slicing",
+   "why": "Kỹ thuật nhẹ nhàng để cắt và tách sữa đông được Julian gọi tên là 'curd slicing'.",
+   "quote": "before each student practices the gentle technique known as curd slicing using wire cutters."
+  },
+  {
+   "prompt": "Traditional Curd Workshop | Take-home container: earthenware ____",
+   "answer": "drainage basket",
+   "why": "Học viên được chuyển sản phẩm vào giỏ thoát nước bằng đất nung ('drainage basket') để mang về nhà.",
+   "quote": "At the end of the class, you will transfer your finished product into an earthenware drainage basket, which you can carry home."
+  },
+  {
+   "prompt": "Hard Pressed Alpine Masterclass | Minimum age restriction: ____",
+   "answer": "16 years | 16",
+   "why": "Do yêu cầu khuân vác nặng và tiếp xúc nhiệt độ cao, độ tuổi tối thiểu tham gia khóa học này là '16 years'.",
+   "quote": "Because this session involves heavy physical lifting and hot liquids, the minimum age required for all participants is 16 years."
+  },
+  {
+   "prompt": "Hard Pressed Alpine Masterclass | Ripening environment: natural ____",
+   "answer": "limestone cave",
+   "why": "Quá trình ủ phô mai diễn ra bên trong hang đá vôi tự nhiên ('limestone cave') với nhiệt độ ổn định quanh năm.",
+   "quote": "Students spend the morning exploring the aging process inside our natural limestone cave, where cool drafts maintain steady temperature throughout the seasons."
+  },
+  {
+   "prompt": "Hard Pressed Alpine Masterclass | Maturation duration: at least ____",
+   "answer": "14 months",
+   "why": "Các bánh phô mai Alpine cần trải qua thời gian ủ chín tối thiểu là 14 tháng ('14 months').",
+   "quote": "You will inspect resting wheels undergoing an extensive maturation period of at least 14 months."
+  },
+  {
+   "prompt": "Hard Pressed Alpine Masterclass | Sensory feature of rind: distinctive ____",
+   "answer": "nutty aroma",
+   "why": "Lớp vỏ phô mai trưởng thành đạt chuẩn được nhận biết qua mùi thơm bùi đặc trưng ('nutty aroma').",
+   "quote": "teach you how to evaluate texture and how to recognize the distinctive nutty aroma that indicates a mature crust."
+  },
+  {
+   "prompt": "Historic Blue Vein Workshop | Inoculation agent: ancient ____",
+   "answer": "spore strain",
+   "why": "Khóa học sử dụng chủng bào tử cổ xưa ('spore strain') được nuôi cấy trên bánh mì lúa mạch đen để cấy vi sinh.",
+   "quote": "Instead of utilizing commercial laboratory additives, we inoculate curds with an ancient spore strain that we culture on rye bread."
+  },
+  {
+   "prompt": "Historic Blue Vein Workshop | Aeration tools: vintage ____",
+   "answer": "brass skewers",
+   "why": "Để tạo đường vân xanh nhờ thông khí, học viên dùng những chiếc xiên bằng đồng thau cổ ('brass skewers') để xăm bánh phô mai.",
+   "quote": "participants learn how to pierce the young wheels using vintage brass skewers rather than modern machinery."
+  },
+  {
+   "prompt": "Historic Blue Vein Workshop | Vault humidity target: ____",
+   "answer": "85 percent | 85%",
+   "why": "Độ ẩm không khí trong hầm ủ phô mai xanh được duy trì chuẩn xác ở mức '85 percent'.",
+   "quote": "Temperature and moisture management in the ripening vault are critical, so we maintain the atmosphere at exactly 85 percent humidity."
+  },
+  {
+   "prompt": "Historic Blue Vein Workshop | Wrapping material: breathable ____",
+   "answer": "linen cloth",
+   "why": "Sau khi xăm lỗ, phô mai được bọc trong lớp vải lanh thoáng khí ('linen cloth') đã ngâm nước muối.",
+   "quote": "Once the piercing is finished, you will wrap each cheese in breathable linen cloth soaked in brine."
+  },
+  {
+   "prompt": "Historic Blue Vein Workshop | Qualification awarded: authentic ____",
+   "answer": "apprentice certificate",
+   "why": "Học viên hoàn thành khóa học nâng cao này sẽ được trao chứng chỉ học việc ('apprentice certificate') do Hiệp hội phô mai cấp.",
+   "quote": "Those who complete this intensive course receive an authentic apprentice certificate signed by the British Guild of Cheesemakers."
+  }
+ ]
+}

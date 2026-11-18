@@ -77,7 +77,7 @@ function Backdrop({ onClose }: { onClose: () => void }) {
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <View style={{ gap: 6, marginBottom: 12 }}>
-      <Text style={{ fontSize: 11.5, fontWeight: '800', color: EXAM.muted, letterSpacing: 0.4 }}>{label.toUpperCase()}</Text>
+      <Text style={{ fontSize: 11.5, fontWeight: '400', color: EXAM.muted, letterSpacing: 0.4 }}>{label.toUpperCase()}</Text>
       {children}
     </View>
   );
@@ -169,7 +169,7 @@ export function SettingsPanel({
           <Row label={L('Cỡ chữ', 'Text size')}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Chip label="−" onPress={() => onFontSize(-0.1)} />
-              <Text style={{ minWidth: 44, textAlign: 'center', fontSize: 14, fontWeight: '800', color: EXAM.ink }}>{fontPx}px</Text>
+              <Text style={{ minWidth: 44, textAlign: 'center', fontSize: 14, fontWeight: '400', color: EXAM.ink }}>{fontPx}px</Text>
               <Chip label="+" onPress={() => onFontSize(0.1)} />
             </View>
           </Row>
@@ -241,7 +241,7 @@ export function NotesPanel({
             accessibilityLabel={L('Thêm ghi chú', 'Add note')}
             style={{ height: 44, paddingHorizontal: 16, borderRadius: 10, backgroundColor: EXAM.accent, justifyContent: 'center' }}
           >
-            <Text style={{ fontSize: 13.5, fontWeight: '800', color: '#FFFFFF' }}>{L('Thêm', 'Add')}</Text>
+            <Text style={{ fontSize: 13.5, fontWeight: '400', color: '#FFFFFF' }}>{L('Thêm', 'Add')}</Text>
           </Pressable>
         </View>
         <ScrollView style={{ marginTop: 10 }} showsVerticalScrollIndicator={false}>

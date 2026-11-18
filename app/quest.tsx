@@ -120,7 +120,7 @@ export default function QuestHome() {
               </Panel>
               <Panel style={wide ? { flex: 1 } : undefined}>
                 <Eyebrow text={L('SỐ LIỆU HÔM NAY', 'TODAY’S STATS')} tone={HUB.sky} />
-                <Text className="font-sans" style={{ marginTop: 6, marginBottom: GAP.sm, fontSize: 12, color: HUB.muted }}>
+                <Text className="font-sans" style={{ marginTop: 6, marginBottom: GAP.sm, fontSize: 13, color: HUB.muted }}>
                   {L('Đếm mọi câu trả lời trong ngày, ở mọi bài.', 'Counts every answer today, across all lessons.')}
                 </Text>
                 <TodayStats />
@@ -184,7 +184,7 @@ function Rule({ glyph, text, tone }: { glyph: string; text: string; tone: string
       <View aria-hidden style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: `${tone}26` }}>
         <Text style={{ fontSize: 19 }}>{glyph}</Text>
       </View>
-      <Text className="font-sans" style={{ fontSize: 13, lineHeight: 19, color: 'rgba(240, 235, 226,0.9)' }}>
+      <Text className="font-sans" style={{ fontSize: 14, lineHeight: 20, color: HUB.ink }}>
         {text}
       </Text>
     </View>

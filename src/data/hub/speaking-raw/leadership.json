@@ -1,0 +1,117 @@
+{
+ "id": "leadership",
+ "title": "Leadership",
+ "titleVi": "Lãnh đạo",
+ "tipVi": "Khi nói về lãnh đạo, hãy tránh liệt kê các tính từ chung chung như 'good' hay 'smart'; thay vào đó, hãy dùng ngôn ngữ quản trị Band 7+ như 'lead by example', 'delegate tasks' và kể một tình huống xử lý áp lực cụ thể.",
+ "part1": [
+  "Have you ever been the leader of a team or a project?",
+  "Do you prefer working independently or leading a group?",
+  "What kind of qualities do you think make a good school monitor or team captain?"
+ ],
+ "part2": {
+  "prompt": "Describe an effective leader you have worked with or know about",
+  "bullets": [
+   "who this person is",
+   "when and where you met or saw them lead",
+   "what they did to manage the situation",
+   "and explain why you think their leadership was effective"
+  ]
+ },
+ "part3": [
+  "Do you think great leaders are born with their abilities, or can leadership be taught?",
+  "How has the definition of a good leader changed compared to past generations?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "lead by example",
+    "vi": "nêu gương đi đầu",
+    "ex": "A truly inspiring manager does not just issue orders; they lead by example."
+   },
+   {
+    "en": "foster team spirit",
+    "vi": "nuôi dưỡng tinh thần đồng đội",
+    "ex": "Organizing casual debrief sessions helped foster team spirit during the stressful campaign."
+   },
+   {
+    "en": "decisive action",
+    "vi": "hành động quyết đoán",
+    "ex": "When sales plummeted, the director took decisive action to restructure the marketing department."
+   },
+   {
+    "en": "rally the troops",
+    "vi": "tập hợp và khích lệ mọi người",
+    "ex": "Our supervisor managed to rally the troops right before the strict deadline arrived."
+   },
+   {
+    "en": "conflict resolution",
+    "vi": "kỹ năng giải quyết xung đột",
+    "ex": "Effective leaders rely on calm conflict resolution to prevent minor friction from escalating."
+   },
+   {
+    "en": "delegate tasks",
+    "vi": "phân chia, ủy thác công việc",
+    "ex": "A competent project lead knows how to delegate tasks instead of micromanaging."
+   },
+   {
+    "en": "command respect",
+    "vi": "nhận được sự nể trọng tự nhiên",
+    "ex": "Her deep subject knowledge and fairness command respect across the entire office."
+   },
+   {
+    "en": "steer the ship",
+    "vi": "chèo lái con thuyền (lãnh đạo vượt khó)",
+    "ex": "During turbulent economic times, a seasoned executive is vital to steer the ship."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người bạn muốn kể (ví dụ: cựu nhóm trưởng Minh trong chiến dịch gây quỹ năm cuối đại học).",
+   "Ý 1 (Bối cảnh): Nêu thời gian và áp lực cực lớn khi nhóm chỉ có ba tuần để tổ chức sự kiện và gặp sự cố mất địa điểm.",
+   "Ý 2 (Hành động): Kể cách người đó giữ bình tĩnh, phân chia việc theo thế mạnh từng người, cùng thức đêm làm banner và giải quyết xung đột.",
+   "Kết: Nhấn mạnh lý do lãnh đạo hiệu quả là vì họ biết truyền cảm hứng, lắng nghe và trao quyền thay vì áp đặt quyền lực."
+  ],
+  "sample": "I would like to talk about Minh, who was my team leader during our final-year university charity campaign. We were tasked with organizing an art auction within just three weeks, and the emotional pressure on our squad was immense.\n\nMinh stood out immediately due to his calm demeanor. Instead of panicking or micromanaging, he gathered everyone to brainstorm, carefully assessed each member's strengths, and delegated tasks accordingly. When our reserved venue backed out at the last minute, causing widespread panic, he took decisive action. He remained composed, rallied the troops, and negotiated an alternative sponsorship deal within twenty-four hours.\n\nWhat made his leadership truly exceptional was his ability to lead by example. He did not simply sit back and issue instructions; he stayed up late alongside us assembling promotional materials. Furthermore, his conflict resolution skills kept the group unified despite severe exhaustion.\n\nUltimately, the exhibition raised substantial funds for local orphanages. I deeply admire Minh because he proved that authentic leadership is not about exerting dominance, but about empowering others and staying grounded under immense strain.",
+  "p1": [
+   {
+    "q": "Have you ever been the leader of a team or a project?",
+    "a": "Yes, I led a student committee back at university. We organized cultural workshops and charity drives. Although managing logistical headaches was challenging, it taught me how to coordinate people and make quick decisions under pressure."
+   },
+   {
+    "q": "Do you prefer working independently or leading a group?",
+    "a": "To be honest, it depends on the task. For deep analytical assignments, I prefer working solo to concentrate fully, whereas for creative campaigns, leading a group is far more rewarding because collective brainstorming yields better results."
+   },
+   {
+    "q": "What kind of qualities do you think make a good school monitor or team captain?",
+    "a": "I believe empathy and active listening are paramount. A decent captain needs to treat everyone equitably and communicate transparently, ensuring that every teammate feels valued and genuinely motivated to pull their weight together."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think great leaders are born with their abilities, or can leadership be taught?",
+    "a": "In my view, while some individuals naturally possess charismatic personalities, leadership is largely a skill refined through experience. People can learn communication strategies, emotional resilience, and conflict management through deliberate mentorship and practical exposure. Many introverted professionals evolve into remarkable executives after formal managerial training, demonstrating that nurture plays a far more decisive role than innate talent."
+   },
+   {
+    "q": "How has the definition of a good leader changed compared to past generations?",
+    "a": "Historically, leadership was equated with autocratic authority, where strict hierarchy and unquestioned obedience prevailed. Nowadays, contemporary workplaces prioritize empathetic leadership, emotional intelligence, and shared governance. Modern leaders act primarily as facilitators who foster psychological safety and invite input, contrasting sharply with the traditional command-and-control paradigm of previous eras."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'leader' và 'lead' lặp lại quá nhiều lần thay vì biến hóa bằng các cụm như 'take the helm', 'head up a team', hay 'provide guidance'.",
+   "Dùng sai giới từ hoặc cấu trúc, ví dụ dịch máy 'lead someone to do something' trong ngữ cảnh quản lý nhóm thay vì dùng 'guide the team' hoặc 'oversee members'.",
+   "Trả lời Part 3 quá thiên về cảm tính cá nhân (chỉ khen ngợi tính tốt bụng, hiền lành) mà quên bàn luận về khía cạnh quản trị, trách nhiệm giải trình và văn hóa tổ chức."
+  ],
+  "p1More": [
+   "Did you ever want to be a class monitor when you were younger?",
+   "What do you think is the most stressful part of managing other people?",
+   "Can quiet or introverted individuals make successful leaders?",
+   "Do you think leadership skills should be taught in primary school?",
+   "How do you usually handle disagreements when working in a group project?"
+  ],
+  "p3More": [
+   "Why do some individuals become corrupt or abusive once they gain substantial leadership power?",
+   "Should political leaders rely more on expert consensus or on everyday public opinion?",
+   "What systemic obstacles do women still encounter when trying to secure top executive positions?",
+   "How might artificial intelligence alter the responsibilities of organizational leaders in the coming decades?"
+  ]
+ }
+}

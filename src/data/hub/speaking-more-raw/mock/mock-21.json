@@ -1,0 +1,62 @@
+{
+ "id": "mock-21",
+ "title": "IELTS Speaking Mock Test 21",
+ "titleVi": "Đề thi thử số 21",
+ "focusVi": "Luyện tập kỹ năng đánh giá tác động của công nghệ và phân tích các khía cạnh đạo đức trong kỷ nguyên số.",
+ "part1": [
+  {
+   "topic": "Volunteering",
+   "qs": [
+    "Have you ever participated in any volunteer work?",
+    "Why do you think some people enjoy volunteering?",
+    "Do you think schools should encourage students to do community service?",
+    "What kind of volunteer work would you like to do in the future?"
+   ]
+  },
+  {
+   "topic": "Childhood",
+   "qs": [
+    "Did you have a lot of friends when you were a child?",
+    "What was your favourite outdoor activity during your childhood?",
+    "Do you think children today have better childhoods than children in the past?",
+    "What is your happiest memory from your childhood years?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a useful website or mobile application that helps you organise your daily life.",
+  "bullets": [
+   "what the website or app is",
+   "how you learned about it",
+   "what features it provides",
+   "and explain why it is useful for organising your daily life"
+  ]
+ },
+ "part3": [
+  "How have mobile applications changed the way people manage their personal time?",
+  "Do you think excessive reliance on productivity apps can reduce a person's cognitive abilities?",
+  "What ethical concerns arise when apps collect personal data to offer customized services?",
+  "In what ways might artificial intelligence alter productivity tools in the next decade?",
+  "Why do older adults often struggle more than younger generations to adopt new digital tools?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, I have. During high school, I joined a local charity drive that distributed food packages to disadvantaged families in my hometown, which was a genuinely rewarding experience for me.",
+   "I believe people volunteer primarily to give back to society. Engaging in selfless work gives them a sense of purpose and helps them connect deeply with others in their local community.",
+   "Definitely, because it fosters empathy and civic responsibility early on. For example, my university required volunteer credits, which encouraged many students like me to care more about underprivileged groups.",
+   "In the future, I would love to teach basic English to children in remote mountainous regions, because quality education can open up transformative life opportunities for those underprivileged kids.",
+   "Yes, I had quite a large social circle back then. We lived in a close-knit neighbourhood, so I spent almost every afternoon playing tag and hide-and-seek with dozens of peers.",
+   "My favourite outdoor pastime was definitely riding bicycles around the village lake. My cousins and I would race until sunset, which was both exhilarating and great for our physical fitness.",
+   "Not necessarily. While modern kids have access to amazing digital entertainment, older generations enjoyed much more outdoor freedom and genuine face-to-face socialisation without screen addiction.",
+   "My happiest memory was going on summer road trips to the beach with my extended family. We would camp on the sand and cook fresh seafood together under the starry sky."
+  ],
+  "sample": "I would like to talk about Notion, an all-in-one productivity application that has completely transformed how I manage my everyday routine. I first discovered it about two years ago through a university classmate who was using it to take structured lecture notes and track group assignments. Essentially, Notion acts as a digital workspace where users can build customized databases, calendars, to-do lists, and personal planners. It offers versatile features like recurring reminders, kanban boards, and cloud synchronisation across my phone and laptop, allowing me to update my schedule seamlessly on the go. The primary reason this app is indispensable for organising my daily life is its extreme flexibility. Prior to using Notion, I constantly juggled sticky notes and multiple reminder apps, which often resulted in missed deadlines and clutter. Now, I have consolidated everything into one centralized dashboard, from my weekly grocery lists and study timetables to long-term financial budgets. Whenever a new task arises, I immediately log it into my schedule. This system keeps me focused, reduces mental fatigue, and ensures I never overlook critical responsibilities.",
+  "p3": [
+   "Mobile applications have made time management far more streamlined and quantifiable than ever before. People can now schedule appointments, set automated reminders, and track their productivity metrics instantly. In contrast to paper planners, digital calendars alert users proactively about upcoming deadlines. While this creates unprecedented efficiency, it can also lead to hyper-scheduled lifestyles, which means people must actively balance digital convenience with spontaneous downtime.",
+   "Yes, over-reliance on digital tools can diminish certain cognitive faculties, particularly prospective memory and mental calculation. When individuals outsource routine mental tasks like remembering appointments or memorising phone numbers to software, their brain's natural recall abilities weaken. For example, many adults now struggle to recall simple schedules without checking their phones. Therefore, maintaining some mental effort without digital assistance is vital for long-term brain health.",
+   "The primary ethical issue is the invasion of personal privacy without explicit and informed consent. Many apps gather extensive personal routines, location logs, and financial records under the guise of customisation. While this enables tailored user experiences, these sensitive profiles are often monetised or vulnerable to data breaches. Consequently, governments must enforce stringent digital privacy laws to safeguard individual autonomy and protect consumer rights against corporate exploitation.",
+   "Artificial intelligence will likely transition productivity software from passive task trackers into proactive personal assistants. Instead of requiring users to input data manually, future tools will autonomously predict schedules, draft emails, and allocate resources based on past behavioural patterns. While this shift will drastically minimise human administrative burden, it might reduce human agency, making it essential that individuals maintain ultimate oversight over automated workflows.",
+   "Elderly citizens frequently struggle because they grew up in an analogue era without intuitive familiarity with touchscreen interfaces and digital conventions. Moreover, many modern apps feature complex navigation and small font sizes, creating physical barriers for seniors. In contrast, younger digital natives learn these systems organically from childhood. Thus, tech developers should prioritize accessible design and inclusive tutorials to prevent the digital marginalisation of older demographics."
+  ]
+ }
+}

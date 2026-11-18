@@ -277,7 +277,7 @@ export default function SpeakingResult() {
           <View className="flex-row items-center gap-2">
             <SealIcon name="gauge" color={SPK.blue} size={30} />
             <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">{L('Chỉ số đo tại máy', 'On-device metrics')}</Text>
-            <Label text={L('Không cần AI', 'No AI needed')} color={SPK.greenSoft} ink="#166534" size={12} tilt={3} />
+            <Label text={L('Không cần AI', 'No AI needed')} color={SPK.greenSoft} ink="#166534" size={13} tilt={3} />
           </View>
           <View className="mt-4 flex-row flex-wrap gap-2.5">
             <MetricTile

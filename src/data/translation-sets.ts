@@ -1,4 +1,7 @@
-import SEED_SETS from './seed/translation-sets/index.json';
+import SEED_BASE from './seed/translation-sets/index.json';
+import SEED_EXTRA from './seed/translation-sets/extra.json';
+import SEED_EXTRA2 from './seed/translation-sets/extra2.json';
+import SEED_EXTRA3 from './seed/translation-sets/extra3.json';
 import {
   SENTENCE_TOPIC_LABEL,
   TRANSLATION_SENTENCES,
@@ -130,7 +133,7 @@ type SeedSet = {
 };
 
 function seeded(): TranslationSet[] {
-  return (SEED_SETS as SeedSet[]).map((s) => {
+  return ([...(SEED_BASE as SeedSet[]), ...(SEED_EXTRA as SeedSet[]), ...(SEED_EXTRA2 as SeedSet[]), ...(SEED_EXTRA3 as SeedSet[])]).map((s) => {
     const topic = SEED_TOPIC[s.slug] ?? 'society';
     return {
       id: `tset-${s.slug}`,

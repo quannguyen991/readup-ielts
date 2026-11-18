@@ -1,225 +1,248 @@
-import { HeroShell } from '@/components/layout/HeroShell';
-import { themedHex } from '@/theme/palette-state';
 import React from 'react';
-import { Linking, Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { Image } from 'expo-image';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Linking, Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
-import { Button, Icon, type IconName } from '@/components/ui';
-import { HSA_DISCLAIMER, HSA_EXTENDED_KIND_ORDER, HSA_KIND_LABEL, HSA_OFFICIAL_KIND_ORDER, HSA_TOPICS } from '@/data/hsa';
+import { useHydrated } from '@/components/layout/useHydrated';
+import { CRITERION_COLOR, INK, MUTED, useWide } from '@/components/hsa/stage';
+import { CatSticker } from '@/components/mascot/CatSticker';
+import { Icon, type IconName } from '@/components/ui/Icon';
+import { HSA_DISCLAIMER, HSA_EXTENDED_KIND_ORDER, HSA_KIND_LABEL, HSA_OFFICIAL_KIND_ORDER, HSA_TOPICS, type HsaQuestionKind } from '@/data/hsa';
 import { HSA_QUESTION_BANK } from '@/data/hsa-bank';
 import { bi, useL } from '@/i18n/useL';
+import { CRITERIA, KIND_CRITERION } from '@/services/hsa/criteria';
+import { currentStreak, monthPoints } from '@/services/gamification/points';
+import { todayKey } from '@/store/persist';
+import { placementAttempts, useHsaStore } from '@/store/useHsaStore';
 import { isKnown, useIntlStore } from '@/store/useIntlStore';
+import { useRewardStore } from '@/store/useRewardStore';
+import { useStudyStore } from '@/store/useStudyStore';
 
-const PALETTES = ['#E2C88F', '#F1DDAA', '#F5F2FF', '#D9CCFF'] as const;
+const SPEC_URL = 'https://idt.vnu.edu.vn/api/media/file/%C4%90%E1%BB%81%20c%C6%B0%C6%A1ng%20d%E1%BA%A1ng%20th%E1%BB%A9c%20c%E1%BB%A7a%20b%C3%A0i%20thi%20HSA%202026.pdf';
+const SAMPLE_URL = 'https://resource.hsa.edu.vn/files/upload/2024-08-09%20De%20thi%20tham%20khao%20HSA%20nam%202025.pdf';
 
+const TINT = { sky: '#D5ECFF', pink: '#FFDCE6', butter: '#FFEFB5', mint: '#D9F3E3', lilac: '#E9DEFB', peach: '#FFE0CC' } as const;
+
+/**
+ * TỔNG QUAN HSA — cửa vào của luồng: Khảo sát (About you) → Bài test đầu vào → Lộ trình mỗi ngày, rồi
+ * Đua Top, đề mô phỏng, luyện theo dạng câu. Nút chính ở đầu trang đổi theo việc bạn đang ở bước nào.
+ */
 export default function HsaHomeScreen() {
-  const { L, locale } = useL();
-  const wide = useWindowDimensions().width >= 960;
+  const { L, en, locale } = useL();
+  const wide = useWide();
+  const hydrated = useHydrated();
+  const today = todayKey();
+
+  const profile = useHsaStore((s) => s.profile);
+  const attempts = useHsaStore((s) => s.attempts);
+  // Điểm và chuỗi ngày là số CHUNG của cả app (cùng nguồn với trang Xếp hạng), không có điểm riêng của HSA.
+  const daily = useStudyStore((s) => s.daily);
+  const frozenDays = useRewardStore((s) => s.frozenDays);
+  const plan = useHsaStore((s) => s.plans[today]);
+  const done = useHsaStore((s) => s.done);
   const known = useIntlStore((s) => s.known);
-  const sessions = useIntlStore((s) => s.sessions).filter((session) => session.exam === 'hsa');
-  const knownCount = HSA_TOPICS.flatMap((topic) => topic.vocabulary).filter((item) => isKnown(known, 'hsa', item.word)).length;
-  const vocabCount = HSA_TOPICS.reduce((sum, topic) => sum + topic.vocabulary.length, 0);
-  const recent = sessions[0];
+  const sessions = useIntlStore((s) => s.sessions).filter((x) => x.exam === 'hsa');
+
+  const placed = placementAttempts(attempts);
+  const placedCount = CRITERIA.filter((c) => placed[c.id]).length;
+  const knownCount = HSA_TOPICS.flatMap((t) => t.vocabulary).filter((v) => isKnown(known, 'hsa', v.word)).length;
+  const vocabCount = HSA_TOPICS.reduce((n, t) => n + t.vocabulary.length, 0);
+  const planDone = plan ? plan.tasks.filter((t) => done[`${today}|${t.id}`]).length : 0;
+
+  // Nút chính: bước kế tiếp của luồng.
+  const cta = !hydrated
+    ? { label: L('Lập lộ trình của bạn', 'Build your plan'), line: '', href: '/hsa/setup' }
+    : !profile
+      ? { label: L('Lập lộ trình của bạn', 'Build your plan'), line: L('Sáu câu hỏi, rồi bài test đầu vào năm phần, rồi kế hoạch cho từng ngày.', 'Six questions, a five-part entry test, then a plan for every day.'), href: '/hsa/setup' }
+      : placedCount < CRITERIA.length
+        ? { label: L(`Tiếp tục bài test đầu vào (${placedCount}/5)`, `Continue the entry test (${placedCount}/5)`), line: L('Làm xong 5 phần để kế hoạch bám đúng điểm yếu của bạn.', 'Finish all 5 parts so the plan aims at your weak spots.'), href: '/hsa/placement' }
+        : { label: L('Xem kế hoạch hôm nay', 'See today’s plan'), line: plan ? L(`Hôm nay ${planDone}/${plan.tasks.length} bài đã xong.`, `${planDone}/${plan.tasks.length} tasks done today.`) : L('AI lập kế hoạch mới cho mỗi ngày.', 'A new AI-built plan every day.'), href: '/hsa/plan' };
+
+  const tiles: { icon: IconName; title: string; note: string; tint: string; href: string; hide?: boolean }[] = [
+    { icon: 'calendar', title: L('Kế hoạch hôm nay', 'Today’s plan'), note: L('Bài theo điểm yếu của bạn', 'Tasks aimed at your weak spots'), tint: TINT.lilac, href: '/hsa/plan', hide: !profile },
+    { icon: 'trophy', title: L('Xếp hạng', 'Leaderboard'), note: L('Điểm chung của cả app, theo tháng', 'App-wide points, by month'), tint: TINT.butter, href: '/leaderboard' },
+    { icon: 'clipboard', title: L('20 đề mô phỏng', '20 practice papers'), note: L('50 câu · 60 phút', '50 questions · 60 minutes'), tint: TINT.sky, href: '/hsa/exams' },
+    { icon: 'gauge', title: L('Chẩn đoán nhanh', 'Quick diagnostic'), note: L('20 câu · 24 phút', '20 questions · 24 minutes'), tint: TINT.mint, href: '/hsa/diagnostic' },
+    { icon: 'sparkle', title: L('Thử thách suy luận', 'Reasoning challenge'), note: L('10 câu khó', '10 hard questions'), tint: TINT.pink, href: '/hsa/advanced' },
+    { icon: 'book', title: L('10 chủ điểm ôn tập', '10 review topics'), note: L('Từ vựng · trọng tâm · câu hỏi', 'Vocabulary · focus · questions'), tint: TINT.peach, href: '/hsa/topics' },
+    { icon: 'letters', title: L('Sổ từ vựng HSA', 'HSA vocabulary'), note: L(`${vocabCount} từ học thuật`, `${vocabCount} academic words`), tint: TINT.lilac, href: '/hsa/vocab' },
+    { icon: 'refresh', title: L('Chữa câu đã sai', 'Fix missed questions'), note: L('Làm lại những câu đang sai', 'Redo what you currently miss'), tint: TINT.pink, href: '/hsa/review', hide: attempts.length === 0 },
+  ];
+
+  const stats = [
+    { v: hydrated ? `${knownCount}/${vocabCount}` : '—', l: L('từ đã thuộc', 'words known') },
+    { v: hydrated ? String(sessions.length) : '—', l: L('lượt luyện', 'practice runs') },
+    { v: hydrated ? monthPoints(daily, new Date(), frozenDays).toLocaleString('vi-VN') : '—', l: L('điểm tháng này', 'points this month') },
+    { v: hydrated ? String(currentStreak(daily, new Date(), frozenDays)) : '—', l: L('ngày liên tiếp', 'day streak') },
+  ];
 
   return (
-    <Screen cat="sit">
-      <View style={{ gap: 20 }}>
-        <HeroShell radius={28} style={{ minHeight: wide ? 230 : 252, padding: wide ? 28 : 20, justifyContent: 'center' }}>
-          <View pointerEvents="none" style={{ position: 'absolute', right: -12, top: -20, width: 200, height: 200, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.24)' }} />
-          <View pointerEvents="none" style={{ position: 'absolute', right: 132, bottom: -72, width: 180, height: 180, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.19)' }} />
-          <View style={{ maxWidth: wide ? '68%' : '78%', gap: 10 }}>
-            <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 7, paddingHorizontal: 11, paddingVertical: 7, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.62)' }}>
-              <Icon name="sparkle" size={15} color="#6A4BD9" />
-              <Text style={{ color: '#6B552F', fontSize: 12, fontWeight: '900', letterSpacing: 1.1 }}>HSA STUDY DESKTOP · 2026</Text>
+    <Screen>
+      <View className="w-full self-center" style={{ maxWidth: 1080, gap: 18 }}>
+        {/* ---------------------------------------------- khung đầu trang */}
+        <View style={{ borderRadius: 28, backgroundColor: '#6A4BD9', overflow: 'hidden', padding: wide ? 32 : 18 }}>
+          <View pointerEvents="none" style={{ position: 'absolute', right: -70, top: -90, width: 300, height: 300, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.13)' }} />
+          <View pointerEvents="none" style={{ position: 'absolute', left: '40%', bottom: -120, width: 220, height: 220, borderRadius: 999, backgroundColor: 'rgba(255,255,255,0.1)' }} />
+          <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text className="font-nun-heavy" style={{ fontSize: 13, letterSpacing: 1.2, color: 'rgba(255,255,255,0.88)' }}>
+                {L('HSA · ĐHQGHN 2026', 'HSA · VNU 2026')}
+              </Text>
+              <Text className="font-nun-heavy" style={{ fontSize: wide ? 48 : 32, lineHeight: wide ? 54 : 38, color: '#FFFFFF', marginTop: 4 }}>
+                {L('HSA · Tiếng Anh', 'HSA · English')}
+              </Text>
+              <Text className="font-nun-strong" style={{ fontSize: 15, lineHeight: 22, color: 'rgba(255,255,255,0.92)', marginTop: 6, maxWidth: 560 }}>
+                {L('50 câu, 60 phút: văn bản học thuật và suy luận. Học theo lộ trình riêng, chấm đủ 5 tiêu chí, có đáp án chi tiết.', '50 questions, 60 minutes: academic texts and reasoning. A personal plan, scored on 5 criteria, with detailed answers.')}
+              </Text>
             </View>
-            <Text className="font-heavy" style={{ color: '#0F1D33', fontSize: wide ? 38 : 31, lineHeight: wide ? 45 : 38 }}>
-              HSA · Tiếng Anh
-            </Text>
-            <Text className="font-sans" style={{ color: '#5C6477', fontSize: 15, lineHeight: 22 }}>
-              {L('Một góc học tập nhỏ xinh để luyện đọc, suy luận và chinh phục từng đề.', 'A little study corner for reading, reasoning and working through each paper.')}
-            </Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginTop: 3 }}>
-              <View style={{ backgroundColor: 'rgba(255,255,255,0.82)', borderRadius: 999, paddingHorizontal: 11, paddingVertical: 7 }}>
-                <Text style={{ color: '#6B552F', fontWeight: '800', fontSize: 13 }}>{L('50 câu · 60 phút', '50 questions · 60 minutes')}</Text>
-              </View>
-              <View style={{ backgroundColor: 'rgba(255,255,255,0.54)', borderRadius: 999, paddingHorizontal: 11, paddingVertical: 7 }}>
-                <Text style={{ color: '#6B552F', fontWeight: '700', fontSize: 13 }}>{L('Văn bản học thuật · suy luận', 'Academic texts · reasoning')}</Text>
-              </View>
-            </View>
+            <CatSticker pose="read" size={wide ? 96 : 66} />
           </View>
-          <View pointerEvents="none" style={{ position: 'absolute', right: wide ? 218 : 140, top: 34, transform: [{ rotate: '12deg' }] }}>
-            <Text style={{ fontSize: 27 }}>✦</Text>
+          <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, marginTop: 20 }}>
+            <Pressable accessibilityRole="button" onPress={() => router.push(cta.href as never)} style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, paddingLeft: 22, paddingRight: 6, minHeight: 54, borderRadius: 27, alignSelf: wide ? 'flex-start' : 'stretch', backgroundColor: hovered ? '#F1EDFF' : '#FFFFFF' })}>
+              <Text className="font-nun-heavy" style={{ flexShrink: 1, fontSize: 16, lineHeight: 21, color: INK, paddingVertical: 6 }}>
+                {cta.label}
+              </Text>
+              <View style={{ width: 42, height: 42, borderRadius: 21, backgroundColor: INK, alignItems: 'center', justifyContent: 'center' }}>
+                <Icon name="arrow-right" size={18} color="#FFFFFF" strokeWidth={2.6} />
+              </View>
+            </Pressable>
+            {cta.line ? (
+              <Text className="font-nun-strong" style={{ flex: 1, fontSize: 14, lineHeight: 20, color: 'rgba(255,255,255,0.9)' }}>
+                {cta.line}
+              </Text>
+            ) : null}
           </View>
-        </HeroShell>
-
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
-          <WindowPanel
-            title={L('Góc tiến độ', 'Progress desk')}
-            icon="trending"
-            wide={wide}
-            subtitle={L('Một chút mỗi ngày là tiến bộ rồi đó!', 'A little practice each day adds up!')}
-          >
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-              <MiniStat value={`${knownCount}/${vocabCount}`} label={L('từ đã thuộc', 'words known')} />
-              <MiniStat value={String(sessions.length)} label={L('lượt luyện', 'practice runs')} />
-              <MiniStat value={recent ? `${recent.correct}/${recent.total}` : '♡'} label={L('lần gần nhất', 'last result')} />
+          {hydrated && !profile ? (
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 16 }}>
+              {[L('1 · About you', '1 · About you'), L('2 · Làm test', '2 · Entry test'), L('3 · Lộ trình mỗi ngày', '3 · Daily plan')].map((t) => (
+                <View key={t} style={{ backgroundColor: 'rgba(255,255,255,0.16)', borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6 }}>
+                  <Text className="font-nun-heavy" style={{ fontSize: 13, color: '#FFFFFF' }}>
+                    {t}
+                  </Text>
+                </View>
+              ))}
             </View>
-            <View style={{ marginTop: 13, height: 10, backgroundColor: '#F3F0FB', borderRadius: 999, overflow: 'hidden' }}>
-              <View style={{ width: `${vocabCount ? Math.min(100, (knownCount / vocabCount) * 100) : 0}%`, height: '100%', borderRadius: 999, backgroundColor: themedHex('#8B6CF0') }} />
-            </View>
-          </WindowPanel>
-
-          <WindowPanel
-            title={L('Bản đồ đề tham khảo', 'Practice map')}
-            icon="compass"
-            wide={wide}
-            subtitle={L('50 câu · chia thành 3 chặng học', '50 questions · split into 3 study stages')}
-          >
-            <View style={{ gap: 9 }}>
-              <BlueprintRow label={L('Ngôn ngữ', 'Language')} count="30" />
-              <BlueprintRow label={L('Đọc hiểu · 3 chùm', 'Reading · 3 sets')} count="15" />
-              <BlueprintRow label={L('Suy luận', 'Reasoning')} count="5" />
-            </View>
-            <Text className="font-sans text-label text-muted" style={{ marginTop: 12 }}>
-              {L('Độ khó tham khảo: A2 25% · B1 35% · B2 35% · C1 5%', 'Reference mix: A2 25% · B1 35% · B2 35% · C1 5%')}
-            </Text>
-          </WindowPanel>
+          ) : null}
         </View>
 
-        <WindowPanel title={L('Bắt đầu học', 'Choose your next step')} icon="book" subtitle={L('Chọn một chiếc hộp để bắt đầu nha', 'Pick a little window to get started')} wide={false}>
-          <LinearGradient colors={[themedHex('#8B6CF0'), '#6A4BD9']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 20, padding: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, overflow: 'hidden' }}>
-            <View style={{ flex: 1, gap: 7 }}>
-              <Text style={{ color: '#F3F0FB', fontSize: 12, fontWeight: '900', letterSpacing: 1 }}>{L('ĐỀ MÔ PHỎNG HÔM NAY', 'TODAY’S PRACTICE PAPER')}</Text>
-              <Text style={{ color: '#FFFFFF', fontSize: 21, fontWeight: '900' }}>{L('Đề số 01 · 50 câu', 'Paper 01 · 50 questions')}</Text>
-              <Text style={{ color: '#F3F0FB', fontSize: 13 }}>{L('Bấm giờ như một buổi thi thật', 'A timed, full-length practice run')}</Text>
-              <Button className="mt-1" variant="onDarkSolid" label={L('Vào phòng thi', 'Start the paper')} iconRight="arrow-right" onPress={() => router.push('/hsa/exam' as never)} />
+        {/* ---------------------------------------------- số liệu */}
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+          {stats.map((s) => (
+            <View key={s.l} style={{ flexGrow: 1, flexBasis: wide ? 0 : '45%', backgroundColor: '#FFFFFF', borderRadius: 18, paddingHorizontal: 16, paddingVertical: 12, borderWidth: 1, borderColor: '#EDE7FA' }}>
+              <Text className="font-nun-heavy" style={{ fontSize: 24, lineHeight: 30, color: INK }}>
+                {s.v}
+              </Text>
+              <Text className="font-nun-strong" style={{ fontSize: 13, color: MUTED }}>
+                {s.l}
+              </Text>
             </View>
-            <Image source={require('../../assets/illustrations/cute-home/mascot-peace.png')} contentFit="contain" style={{ width: 92, height: 92 }} />
-          </LinearGradient>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 12 }}>
-            <ActionTile icon="grid" title={L('20 đề mô phỏng', '20 practice papers')} note={L('Chọn đề muốn luyện', 'Choose a paper')} color={PALETTES[1]} onPress={() => router.push('/hsa/exams' as never)} />
-            <ActionTile icon="gauge" title={L('Chẩn đoán nhanh', 'Quick diagnostic')} note={L('20 câu · xem điểm xuất phát', '20 items · find your starting point')} color={PALETTES[2]} onPress={() => router.push('/hsa/diagnostic' as never)} />
-            <ActionTile icon="sparkle" title={L('Thử thách nâng cao', 'Advanced challenge')} note={L('10 câu suy luận khó', '10 challenging reasoning items')} color={PALETTES[3]} onPress={() => router.push('/hsa/advanced' as never)} />
-          </View>
-        </WindowPanel>
-
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
-          <WindowPanel title={L('Bộ công cụ luyện đề', 'Question-type toolbox')} icon="list" subtitle={L(`${HSA_QUESTION_BANK.length} câu hỏi trong ngân hàng luyện tập`, `${HSA_QUESTION_BANK.length} items in the practice bank`)} wide={wide}>
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9 }}>
-              {HSA_OFFICIAL_KIND_ORDER.map((kind, index) => {
-                const count = HSA_QUESTION_BANK.filter((question) => question.kind === kind).length;
-                return (
-                  <ActionTile
-                    key={kind}
-                    compact
-                    icon={index % 2 === 0 ? 'letters' : 'pencil'}
-                    title={bi(HSA_KIND_LABEL[kind], locale)}
-                    note={`${count} ${L('câu', 'items')}`}
-                    color={PALETTES[index % PALETTES.length]!}
-                    onPress={() => router.push(`/hsa/practice/${kind}` as never)}
-                  />
-                );
-              })}
-            </View>
-          </WindowPanel>
-
-          <WindowPanel title={L('Hộp bài tập mở rộng', 'Extra practice formats')} icon="sparkle" subtitle={L('Các dạng bổ trợ ngoài ma trận 50 câu', 'Extra drills beyond the 50-question blueprint')} wide={wide}>
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9 }}>
-              {HSA_EXTENDED_KIND_ORDER.map((kind, index) => {
-                const count = HSA_QUESTION_BANK.filter((question) => question.kind === kind).length;
-                return (
-                  <ActionTile
-                    key={kind}
-                    compact
-                    icon={index % 2 === 0 ? 'target' : 'book'}
-                    title={bi(HSA_KIND_LABEL[kind], locale)}
-                    note={`${count} ${L('câu', 'items')}`}
-                    color={PALETTES[(index + 1) % PALETTES.length]!}
-                    onPress={() => router.push(`/hsa/practice/${kind}` as never)}
-                  />
-                );
-              })}
-            </View>
-          </WindowPanel>
+          ))}
         </View>
 
-        <WindowPanel title={L('Góc ôn tập', 'Review nook')} icon="heart" subtitle={L('Nhặt lại kiến thức theo từng chủ điểm', 'Revisit vocabulary and skills by topic')} wide={false}>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            <ActionTile icon="book" title={L('10 chủ điểm ôn tập', '10 review topics')} note={L('Từ vựng · trọng tâm · câu hỏi', 'Vocabulary · focus points · questions')} color={PALETTES[1]} onPress={() => router.push('/hsa/topics' as never)} />
-            <ActionTile icon="letters" title={L('Sổ từ vựng HSA', 'HSA vocabulary notebook')} note={L(`${vocabCount} từ học thuật`, `${vocabCount} academic words`)} color={PALETTES[2]} onPress={() => router.push('/hsa/vocab' as never)} />
+        {/* ---------------------------------------------- lối vào nhanh */}
+        <View>
+          <Text className="font-nun-heavy" style={{ fontSize: 20, color: INK, marginBottom: 10 }}>
+            {L('Chọn việc muốn làm', 'Pick what to do')}
+          </Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+            {tiles
+              .filter((t) => !t.hide)
+              .map((t) => (
+                <Pressable
+                  key={t.href}
+                  accessibilityRole="button"
+                  onPress={() => router.push(t.href as never)}
+                  style={({ pressed }) => ({ flexGrow: 1, flexBasis: wide ? 240 : '100%', minHeight: wide ? 104 : 80, flexDirection: 'row', alignItems: 'center', gap: 14, padding: wide ? 16 : 12, borderRadius: 24, backgroundColor: t.tint, borderWidth: 1, borderColor: 'rgba(255,255,255,0.95)', transform: [{ scale: pressed ? 0.98 : 1 }], boxShadow: '0 8px 20px rgba(120,80,130,0.12)' } as never)}
+                >
+                  <View style={{ width: 46, height: 46, borderRadius: 23, backgroundColor: 'rgba(255,255,255,0.92)', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon name={t.icon} size={21} color="#4B3A4F" strokeWidth={2} />
+                  </View>
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <Text className="font-nun-heavy" style={{ fontSize: 17, lineHeight: 22, color: '#4B3A4F' }}>
+                      {t.title}
+                    </Text>
+                    <Text className="font-nun-strong" style={{ fontSize: 13, lineHeight: 18, color: '#7D6B80', marginTop: 2 }}>
+                      {t.note}
+                    </Text>
+                  </View>
+                  <Icon name="chevron-right" size={16} color="#7D6B80" strokeWidth={2.2} />
+                </Pressable>
+              ))}
           </View>
-        </WindowPanel>
+        </View>
 
-        <WindowPanel title={L('Tài liệu trên bàn học', 'On the study desk')} icon="external" subtitle={L('Nguồn tham khảo để xem cấu trúc và đề mẫu', 'Official format notes and sample papers')} wide={false}>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            <ActionTile icon="clipboard" title={L('Đề cương HSA 2026 · ĐHQGHN', 'HSA 2026 test specification · VNU')} note={L('Mở tài liệu chính thức', 'Open official specification')} color={PALETTES[3]} onPress={() => Linking.openURL('https://idt.vnu.edu.vn/api/media/file/%C4%90%E1%BB%81%20c%C6%B0%C6%A1ng%20d%E1%BA%A1ng%20th%E1%BB%A9c%20c%E1%BB%A7a%20b%C3%A0i%20thi%20HSA%202026.pdf')} />
-            <ActionTile icon="note" title={L('Đề tham khảo HSA 2025', 'HSA 2025 sample paper')} note={L('Mở đề tham khảo', 'Open sample paper')} color={PALETTES[0]} onPress={() => Linking.openURL('https://resource.hsa.edu.vn/files/upload/2024-08-09%20De%20thi%20tham%20khao%20HSA%20nam%202025.pdf')} />
+        {/* ---------------------------------------------- luyện theo dạng câu */}
+        <View style={{ backgroundColor: '#FFFFFF', borderRadius: 24, padding: wide ? 24 : 16, borderWidth: 1, borderColor: '#EDE7FA', gap: 14 }}>
+          <View>
+            <Text className="font-nun-heavy" style={{ fontSize: 20, color: INK }}>
+              {L('Luyện theo dạng câu', 'Practise by question type')}
+            </Text>
+            <Text className="font-nun-strong" style={{ fontSize: 13, color: MUTED, marginTop: 2 }}>
+              {L(`${HSA_QUESTION_BANK.length} câu trong ngân hàng. Màu chấm là tiêu chí chấm của dạng đó.`, `${HSA_QUESTION_BANK.length} questions in the bank. The dot colour is the criterion it counts toward.`)}
+            </Text>
           </View>
-          <Text className="font-sans text-label text-muted" style={{ lineHeight: 20, marginTop: 14 }}>{bi(HSA_DISCLAIMER, locale)}</Text>
-        </WindowPanel>
+          <KindGroup title={L('THEO ĐỀ CƯƠNG 50 CÂU', 'IN THE 50-QUESTION PAPER')} kinds={HSA_OFFICIAL_KIND_ORDER} locale={locale} L={L} />
+          <KindGroup title={L('BÀI BỔ TRỢ NGOÀI ĐỀ CƯƠNG', 'EXTRA DRILLS')} kinds={HSA_EXTENDED_KIND_ORDER} locale={locale} L={L} />
+        </View>
+
+        {/* ---------------------------------------------- tài liệu chính thức */}
+        <View style={{ backgroundColor: '#FFFFFF', borderRadius: 24, padding: wide ? 24 : 16, borderWidth: 1, borderColor: '#EDE7FA', gap: 4 }}>
+          <DocRow title={L('Đề cương HSA 2026 · ĐHQGHN', 'HSA 2026 test specification · VNU')} note={L('Mở tài liệu chính thức', 'Open the official specification')} onPress={() => Linking.openURL(SPEC_URL)} />
+          <View style={{ height: 1, backgroundColor: '#EDE7FA' }} />
+          <DocRow title={L('Đề tham khảo HSA 2025', 'HSA 2025 sample paper')} note={L('Mở đề tham khảo', 'Open the sample paper')} onPress={() => Linking.openURL(SAMPLE_URL)} />
+          <Text className="font-nun-strong" style={{ fontSize: 12.5, lineHeight: 19, color: MUTED, marginTop: 10 }}>
+            {en ? HSA_DISCLAIMER.en : HSA_DISCLAIMER.vi}
+          </Text>
+        </View>
       </View>
     </Screen>
   );
 }
 
-function WindowPanel({ title, subtitle, icon, wide, children }: { title: string; subtitle: string; icon: IconName; wide: boolean; children: React.ReactNode }) {
+function KindGroup({ title, kinds, locale, L }: { title: string; kinds: readonly HsaQuestionKind[]; locale: 'vi' | 'en'; L: (vi: string, en: string) => string }) {
   return (
-    <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: wide ? 410 : '100%', minWidth: 0, borderRadius: 19, borderWidth: 1, borderColor: '#E8DCC0', backgroundColor: 'rgba(255,255,255,0.94)', overflow: 'hidden', shadowColor: '#6A4BD9', shadowOpacity: 0.08, shadowRadius: 16, shadowOffset: { width: 0, height: 7 } }}>
-      <View style={{ minHeight: 43, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#F3F0FB', borderBottomWidth: 1, borderBottomColor: '#E8DCC0' }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <View style={{ flexDirection: 'row', gap: 4 }}>
-            {[themedHex('#8B6CF0'), '#D5B377', '#E2C88F'].map((dot) => <View key={dot} style={{ width: 7, height: 7, borderRadius: 999, backgroundColor: dot }} />)}
-          </View>
-          <Icon name={icon} size={15} color="#6A4BD9" />
-          <Text numberOfLines={1} style={{ color: '#0F1D33', fontWeight: '800', fontSize: 13 }}>{title}</Text>
-        </View>
-        <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>✦</Text>
-      </View>
-      <View style={{ padding: 16 }}>
-        <Text className="font-sans text-label text-muted" style={{ marginBottom: 12 }}>{subtitle}</Text>
-        {children}
+    <View>
+      <Text className="font-nun-heavy" style={{ fontSize: 12, letterSpacing: 1.4, color: MUTED, marginBottom: 8 }}>
+        {title}
+      </Text>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        {kinds.map((kind) => {
+          const count = HSA_QUESTION_BANK.filter((q) => q.kind === kind).length;
+          return (
+            <Pressable
+              key={kind}
+              accessibilityRole="button"
+              onPress={() => router.push(`/hsa/practice/${kind}` as never)}
+              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 14, paddingVertical: 9, borderRadius: 999, borderWidth: 2, borderBottomWidth: 4, borderColor: '#E6E1F5', backgroundColor: hovered ? '#F8F6FF' : '#FFFFFF' })}
+            >
+              <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: CRITERION_COLOR[KIND_CRITERION[kind]] }} />
+              <Text className="font-nun-heavy" style={{ fontSize: 14, color: INK }}>
+                {bi(HSA_KIND_LABEL[kind], locale)}
+              </Text>
+              <Text className="font-nun-heavy" style={{ fontSize: 12, color: MUTED }}>
+                {count} {L('câu', 'q')}
+              </Text>
+            </Pressable>
+          );
+        })}
       </View>
     </View>
   );
 }
 
-function MiniStat({ value, label }: { value: string; label: string }) {
+function DocRow({ title, note, onPress }: { title: string; note: string; onPress: () => void }) {
   return (
-    <View style={{ flexGrow: 1, flexBasis: 100, minWidth: 90, backgroundColor: '#F5F2FF', borderRadius: 14, padding: 11, borderWidth: 1, borderColor: '#E8DCC0' }}>
-      <Text style={{ fontSize: 21, fontWeight: '900', color: '#6A4BD9' }}>{value}</Text>
-      <Text style={{ fontSize: 12, fontWeight: '700', color: '#6B6250', marginTop: 2 }}>{label}</Text>
-    </View>
-  );
-}
-
-function BlueprintRow({ label, count }: { label: string; count: string }) {
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#F5F2FF', borderRadius: 12, paddingHorizontal: 12, paddingVertical: 8 }}>
-      <Text style={{ color: '#0F1D33', fontWeight: '700', fontSize: 14 }}>{label}</Text>
-      <Text style={{ color: '#6A4BD9', fontWeight: '900', fontSize: 14 }}>{count}</Text>
-    </View>
-  );
-}
-
-function ActionTile({ icon, title, note, color: tint, onPress, compact = false }: { icon: IconName; title: string; note: string; color: string; onPress: () => void; compact?: boolean }) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      onPress={onPress}
-      className="rounded-panel"
-      style={({ pressed }) => ({ flexGrow: 1, flexShrink: 1, flexBasis: compact ? 188 : 245, minWidth: compact ? 160 : 210, minHeight: compact ? 76 : 92, flexDirection: 'row', alignItems: 'center', gap: 11, padding: 12, backgroundColor: pressed ? '#F3F0FB' : '#F3F0FB', borderWidth: 1, borderColor: '#E8DCC0', opacity: pressed ? 0.88 : 1 })}
-    >
-      <View style={{ width: compact ? 38 : 46, height: compact ? 38 : 46, borderRadius: compact ? 13 : 16, alignItems: 'center', justifyContent: 'center', backgroundColor: tint }}>
-        <Icon name={icon} size={compact ? 18 : 21} color="#6A4BD9" />
-      </View>
+    <Pressable accessibilityRole="link" onPress={onPress} style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, opacity: hovered ? 0.8 : 1 })}>
+      <Icon name="external" size={18} color="#6A4BD9" strokeWidth={2.2} />
       <View style={{ flex: 1, minWidth: 0 }}>
-        <Text numberOfLines={2} style={{ color: '#0F1D33', fontSize: compact ? 13 : 15, lineHeight: compact ? 18 : 20, fontWeight: '800' }}>{title}</Text>
-        <Text numberOfLines={2} style={{ color: '#6B6250', fontSize: 12, marginTop: 3 }}>{note}</Text>
+        <Text className="font-nun-heavy" style={{ fontSize: 15, lineHeight: 21, color: INK }}>
+          {title}
+        </Text>
+        <Text className="font-nun-strong" style={{ fontSize: 13, lineHeight: 18, color: MUTED }}>
+          {note}
+        </Text>
       </View>
-      {!compact ? <Icon name="chevron-right" size={15} color="#6A4BD9" /> : null}
+      <Icon name="arrow-right" size={16} color="#6A4BD9" strokeWidth={2.4} />
     </Pressable>
   );
 }

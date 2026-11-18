@@ -518,7 +518,7 @@ function PhoneHeroPanel({
       <View style={{ borderRadius: 26, overflow: 'hidden', backgroundColor: '#0B0520' }}>
         <HeroBackdrop />
         <View style={{ padding: 20 }}>
-      <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(27,17,64,0.7)' }}>
+      <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 1.6, color: 'rgba(27,17,64,0.7)' }}>
         {eyebrow}
       </Text>
       <Text className="font-heavy" style={{ marginTop: 4, fontSize: 30, lineHeight: 36, color: '#1B1140' }}>
@@ -537,7 +537,7 @@ function PhoneHeroPanel({
             <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 24, color: '#1B1140' }}>
               {s.value}
             </Text>
-            <Text className="font-sans" style={{ fontSize: 11, lineHeight: 15, color: 'rgba(27,17,64,0.75)' }}>
+            <Text className="font-sans" style={{ fontSize: 13, lineHeight: 18, color: 'rgba(27,17,64,0.75)' }}>
               {s.label}
             </Text>
           </View>

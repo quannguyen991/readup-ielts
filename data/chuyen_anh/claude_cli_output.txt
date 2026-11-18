@@ -1,0 +1,27 @@
+Tôi đã đọc phần đầu của cả hai file và kiểm tra toàn bộ bằng script. Nhìn chung cấu trúc hợp lệ và hai file khớp nhau, nhưng có vài vấn đề cần sửa.
+
+**Tổng quan**
+- `catalog.json` là JSON hợp lệ, có 120 mục. Không có tiêu đề hay URL tài liệu trùng lặp ở cấp mục.
+- `CHUYEN_ANH_RESOURCES.md` có 120 tài liệu, tổng số trong 12 nhóm cũng là 120, và mọi link trong markdown đều có trong catalog (ở `downloads` hoặc `drive_links`).
+
+**Vấn đề cần sửa**
+
+1. **Mô tả bị cắt cụt.** 108/120 mục có mô tả kết thúc giữa câu, và 14 mục dài đúng 400 ký tự. Ví dụ: `"...môn Tiếng Anh chuyên có thời gian làm bài 1"`. Lỗi này xuất hiện cả trong JSON lẫn markdown, nên có khả năng đã bị cắt khi tạo dữ liệu chứ không phải do nguồn.
+
+2. **Hai schema phân loại không thống nhất.** 18 mục đầu (dòng 3–~235 của catalog) dùng trường `category` với giá trị `chuyen-anh`, `vao-10-thpt`, `hsg-anh-9`. 102 mục còn lại dùng `category_id` và `category_name`. Markdown đưa đúng 18 mục đó vào nhóm "Khác (18 tài liệu)", có vẻ vì nhóm được gom theo `category_id`. Tôi suy ra điều này từ cách nhóm trong markdown, chưa kiểm chứng trong code tạo file. Hệ quả là các đề Chuyên Anh, vào 10, HSG 9 của nhóm đầu bị xếp sai chỗ.
+
+3. **Nhãn link không mô tả.** Trong mục bộ đề tổng hợp (mục đầu tiên), hầu hết link chỉ có nhãn "Tải xuống", nên người đọc không biết link nào là tỉnh nào. Markdown cũng kế thừa nhãn này.
+
+**Vấn đề nhỏ hơn**
+
+4. **24 URL tải có ký tự en dash (`–`) thay vì dấu gạch ASCII.** Ví dụ `2026–2027`. Trình duyệt thường xử lý được, nhưng một số client HTTP có thể lỗi. Tôi chưa kiểm tra link nào còn sống.
+
+5. **21 URL tải được dùng lại ở nhiều mục.** Mỗi URL xuất hiện tối đa 2 lần. Ví dụ file Vĩnh Long vừa nằm trong mục tổng hợp vừa nằm trong mục riêng. Có thể là chủ ý, nhưng nên xác nhận.
+
+6. **8 download có `is_zip: false`.** Tôi chưa mở các link này để xem định dạng thực tế.
+
+**Chưa làm**
+- Tôi chưa kiểm tra link tải nào còn hoạt động, vì cần truy cập mạng tới site bên ngoài.
+- Tôi chưa đọc hết từng dòng của hai file bằng mắt. Phần còn lại được kiểm tra bằng script.
+
+Bạn muốn tôi sửa gì? Tôi đề xuất: (1) khôi phục mô tả đầy đủ hoặc ít nhất thêm dấu "…" khi bị cắt, (2) chuẩn hoá `category` về `category_id`/`category_name` rồi tạo lại markdown, (3) đổi nhãn "Tải xuống" thành tên tỉnh và loại dấu en dash khỏi URL. Tôi chưa chỉnh file nào.

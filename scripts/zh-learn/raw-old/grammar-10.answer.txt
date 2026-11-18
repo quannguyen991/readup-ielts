@@ -1,0 +1,440 @@
+[
+  {
+    "id": "zh-g-h2-13",
+    "level": 2,
+    "order": 13,
+    "title": "Câu cầu khiến với 别",
+    "titleZh": "别祈使句",
+    "summary": "Bạn có thể dùng 别 để nhắc hoặc yêu cầu ai đó đừng làm một việc.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Dùng 别 để ngăn cấm",
+        "body": "别 đứng trước động từ để yêu cầu ai đó đừng làm việc ấy. Giọng điệu có thể nhẹ nhàng hoặc dứt khoát tùy ngữ cảnh.",
+        "examples": [
+          {
+            "zh": "今天外面下雨，你别出门了。",
+            "py": "Jīntiān wàimiàn xiàyǔ nǐ bié chūmén le",
+            "vi": "Hôm nay bên ngoài đang mưa, bạn đừng ra khỏi nhà."
+          },
+          {
+            "zh": "弟弟在睡觉，你别开电视。",
+            "py": "Dìdi zài shuìjiào nǐ bié kāi diànshì",
+            "vi": "Em trai đang ngủ, bạn đừng bật ti vi."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nhắc ai đó đừng làm gì",
+        "body": "Dùng 别 khi muốn ngăn một hành động có thể xảy ra hoặc muốn người nghe dừng hành động đang làm. Có thể thêm lí do để lời nhắc tự nhiên hơn.",
+        "examples": [
+          {
+            "zh": "妈妈还在休息，你别打电话给她。",
+            "py": "Māma hái zài xiūxi nǐ bié dǎdiànhuà gěi tā",
+            "vi": "Mẹ vẫn đang nghỉ, bạn đừng gọi điện cho mẹ."
+          },
+          {
+            "zh": "爸爸在开车，你别给他打电话。",
+            "py": "Bàba zài kāichē nǐ bié gěi tā dǎdiànhuà",
+            "vi": "Bố đang lái xe, bạn đừng gọi điện cho bố."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "别 đứng trước động từ",
+        "body": "Cấu trúc thường gặp là chủ ngữ + 别 + động từ. Thêm 了 sau cụm động từ có thể nhấn mạnh ý dừng lại hoặc đừng tiếp tục.",
+        "formula": "Chủ ngữ + 别 + động từ (+ 了)",
+        "examples": [
+          {
+            "zh": "你别在这儿等我，我很快回来。",
+            "py": "Nǐ bié zài zhèr děng wǒ wǒ hěn kuài huílái",
+            "vi": "Bạn đừng đợi tôi ở đây, tôi sẽ về ngay."
+          },
+          {
+            "zh": "上课的时候，大家别说话。",
+            "py": "Shàngkè de shíhou dàjiā bié shuōhuà",
+            "vi": "Trong giờ học, mọi người đừng nói chuyện."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không dùng 不 để ra lệnh cấm",
+        "body": "Lỗi thường gặp là dùng 不 để ngăn ai đó làm việc gì. 不 thường phủ định sự việc, còn 别 dùng để đưa ra lời nhắc hoặc yêu cầu đừng làm.",
+        "mistakes": [
+          {
+            "wrong": "你不在这里说话！",
+            "right": "你别在这里说话！",
+            "why": "Muốn bảo ai đó đừng nói ở đây thì dùng 别 trước động từ 说话."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Điền từ thích hợp để nói “Hôm nay trời mưa, bạn đừng ra ngoài”: 今天下雨，你___出门。",
+        "options": ["别", "还是", "着", "过"],
+        "answer": 0,
+        "explain": "别 đứng trước động từ 出门 để tạo lời ngăn cấm."
+      },
+      {
+        "q": "Câu nào nói “Đừng nói chuyện trong giờ học” tự nhiên nhất?",
+        "options": ["上课的时候，不说话。", "上课的时候，大家别说话。", "上课的时候，大家还是说话。"],
+        "answer": 1,
+        "explain": "别说话 là lời nhắc mọi người đừng nói chuyện."
+      },
+      {
+        "q": "Chọn câu nói “Bạn đừng gọi điện cho cô ấy”.",
+        "options": ["你不在这里说话！", "你给她别打电话。", "你别给她打电话。"],
+        "answer": 2,
+        "explain": "别 đứng trước cụm động từ 给她打电话."
+      },
+      {
+        "q": "Điền từ ngăn cấm vào câu: 你___在这里说话！",
+        "options": ["在", "吗", "过", "别"],
+        "answer": 3,
+        "explain": "别 đứng ngay trước động từ 在这里说话."
+      },
+      {
+        "q": "Câu nào nhắc em trai đừng bật ti vi?",
+        "options": ["弟弟在睡觉，你别开电视。", "弟弟在睡觉，你开别电视。", "弟弟在睡觉，你不电视开。"],
+        "answer": 0,
+        "explain": "Cụm 别开电视 đặt 别 trước động từ 开."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h2-14",
+    "level": 2,
+    "order": 14,
+    "title": "Câu hỏi lựa chọn với 还是",
+    "titleZh": "还是选择问句",
+    "summary": "Bạn có thể dùng 还是 để hỏi người nghe chọn giữa hai phương án.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Hỏi người nghe chọn một phương án",
+        "body": "还是 nối hai lựa chọn trong câu hỏi. Người nghe thường chọn một trong các phương án được nêu.",
+        "examples": [
+          {
+            "zh": "你今天喝茶还是喝咖啡？",
+            "py": "Nǐ jīntiān hē chá háishi hē kāfēi",
+            "vi": "Hôm nay bạn uống trà hay cà phê?"
+          },
+          {
+            "zh": "我们坐公交车还是坐地铁去学校？",
+            "py": "Wǒmen zuò gōngjiāochē háishi zuò dìtiě qù xuéxiào",
+            "vi": "Chúng ta đi xe buýt hay đi tàu điện ngầm đến trường?"
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Đưa ra các phương án cụ thể",
+        "body": "Dùng 还是 khi muốn hỏi người nghe chọn giữa các món ăn, cách đi lại hoặc kế hoạch khác. Các lựa chọn cần rõ ràng theo ngữ cảnh.",
+        "examples": [
+          {
+            "zh": "你想在家吃饭还是去饭馆？",
+            "py": "Nǐ xiǎng zài jiā chīfàn háishi qù fànguǎn",
+            "vi": "Bạn muốn ăn ở nhà hay đến quán ăn?"
+          },
+          {
+            "zh": "我们坐飞机还是坐火车去中国？",
+            "py": "Wǒmen zuò fēijī háishi zuò huǒchē qù Zhōngguó",
+            "vi": "Chúng ta đi máy bay hay đi tàu hỏa đến Trung Quốc?"
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "还是 nối hai vế lựa chọn",
+        "body": "Đặt 还是 giữa hai phương án được hỏi. Câu hỏi lựa chọn trực tiếp thường kết thúc bằng ngữ điệu hỏi, không cần thêm 吗.",
+        "formula": "Chủ ngữ + phương án A + 还是 + phương án B？",
+        "examples": [
+          {
+            "zh": "妹妹想喝红茶还是喝奶茶？",
+            "py": "Mèimei xiǎng hē hóngchá háishi hē nǎichá",
+            "vi": "Em gái muốn uống trà đen hay trà sữa?"
+          },
+          {
+            "zh": "今天我们去学校还是去公司？",
+            "py": "Jīntiān wǒmen qù xuéxiào háishi qù gōngsī",
+            "vi": "Hôm nay chúng ta đến trường hay đến công ty?"
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Phân biệt 还是 với 和",
+        "body": "和 thường nối những thứ được kể cùng nhau, còn 还是 dùng để hỏi chọn giữa các phương án. Trong câu hỏi lựa chọn trực tiếp, thường không thêm 吗 ở cuối.",
+        "mistakes": [
+          {
+            "wrong": "你今天要喝茶和咖啡吗？",
+            "right": "你今天要喝茶还是喝咖啡？",
+            "why": "和 mang nghĩa “và”, nên câu sai thành hỏi uống cả hai chứ không hỏi chọn một."
+          },
+          {
+            "wrong": "你想喝茶还是喝咖啡吗？",
+            "right": "你想喝茶还是喝咖啡？",
+            "why": "还是 đã tạo câu hỏi lựa chọn nên thường không cần thêm 吗."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Muốn hỏi “Bạn uống trà hay cà phê?”, câu nào đúng?",
+        "options": ["你喝茶和喝咖啡？", "你喝茶还是喝咖啡？", "你喝茶或者喝咖啡吗？"],
+        "answer": 1,
+        "explain": "Câu hỏi chọn trực tiếp dùng 还是 để nối hai đồ uống."
+      },
+      {
+        "q": "Điền từ thích hợp: 你坐公交车___坐地铁去学校？",
+        "options": ["或者", "和", "还是"],
+        "answer": 2,
+        "explain": "还是 nối hai cách đi lại để người nghe lựa chọn."
+      },
+      {
+        "q": "Trong câu hỏi lựa chọn, 还是 thường nối những gì?",
+        "options": ["hai chủ ngữ", "nguyên nhân và kết quả", "thời gian và địa điểm", "hai phương án"],
+        "answer": 3,
+        "explain": "还是 đứng giữa hai phương án mà người nghe cần chọn."
+      },
+      {
+        "q": "Câu nào hỏi chọn giữa trà đen và trà sữa?",
+        "options": ["妹妹想喝红茶还是喝奶茶？", "妹妹想喝红茶和喝奶茶。", "妹妹想喝红茶吗奶茶？"],
+        "answer": 0,
+        "explain": "Câu đầu dùng 还是 để nối hai lựa chọn đồ uống."
+      },
+      {
+        "q": "Câu hỏi đã dùng 还是 thường xử lý 吗 ở cuối câu thế nào?",
+        "options": ["Luôn thêm 吗", "Thường không cần thêm 吗", "Đổi 还是 thành 和"],
+        "answer": 1,
+        "explain": "还是 đã đánh dấu câu hỏi chọn lựa trực tiếp."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h2-15",
+    "level": 2,
+    "order": 15,
+    "title": "着 diễn tả trạng thái kéo dài",
+    "titleZh": "着的状态用法",
+    "summary": "Bạn có thể dùng 着 sau động từ để miêu tả một trạng thái vẫn đang được duy trì.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Trạng thái vẫn còn tiếp diễn",
+        "body": "着 đọc nhẹ là zhe và đứng sau động từ để nhấn mạnh trạng thái còn duy trì. Cách dùng này thường tả cửa đang mở, người đang mặc đồ hoặc một vật đang được cầm.",
+        "examples": [
+          {
+            "zh": "门开着，妈妈在房间里看书。",
+            "py": "Mén kāizhe māma zài fángjiān lǐ kàn shū",
+            "vi": "Cửa đang mở, mẹ đọc sách trong phòng."
+          },
+          {
+            "zh": "姐姐穿着白色衣服，在家做饭。",
+            "py": "Jiějie chuānzhe báisè yīfu zài jiā zuòfàn",
+            "vi": "Chị gái mặc quần áo màu trắng và nấu ăn ở nhà."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Miêu tả tư thế hoặc trạng thái",
+        "body": "Dùng 着 khi muốn kể một người đang giữ tư thế nào đó hoặc một vật đang ở trạng thái nhất định trong lúc việc khác diễn ra. Câu tập trung vào trạng thái, không chỉ kể một hành động đã xong.",
+        "examples": [
+          {
+            "zh": "奶奶坐着喝茶，妈妈在做饭。",
+            "py": "Nǎinai zuòzhe hē chá māma zài zuòfàn",
+            "vi": "Bà ngồi uống trà, mẹ đang nấu ăn."
+          },
+          {
+            "zh": "爸爸手里拿着一杯茶，在家看电视。",
+            "py": "Bàba shǒu lǐ názhe yì bēi chá zài jiā kàn diànshì",
+            "vi": "Bố cầm một cốc trà trong tay và xem ti vi ở nhà."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt 着 ngay sau động từ",
+        "body": "Mẫu cơ bản là chủ ngữ + động từ + 着 + thành phần khác. 着 có thể đi cùng tân ngữ hoặc phần miêu tả hoạt động đồng thời.",
+        "formula": "Chủ ngữ + động từ + 着 + thành phần khác",
+        "examples": [
+          {
+            "zh": "我手里拿着一本书，弟弟在写字。",
+            "py": "Wǒ shǒu lǐ názhe yì běn shū dìdi zài xiězì",
+            "vi": "Tôi cầm một quyển sách trong tay, em trai đang viết chữ."
+          },
+          {
+            "zh": "哥哥穿着黑色衣服去上班。",
+            "py": "Gēge chuānzhe hēisè yīfu qù shàngbān",
+            "vi": "Anh trai mặc quần áo màu đen đi làm."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không đặt 着 trước động từ",
+        "body": "着 đứng sau động từ mà nó bổ nghĩa. Cũng không nên dùng 着 như dấu hiệu hoàn thành một hành động trong quá khứ.",
+        "mistakes": [
+          {
+            "wrong": "门着开，妈妈在房间里。",
+            "right": "门开着，妈妈在房间里。",
+            "why": "着 đứng sau động từ 开, tạo thành 开着."
+          },
+          {
+            "wrong": "我昨天吃着早饭了。",
+            "right": "我昨天吃了早饭。",
+            "why": "Muốn kể việc ăn sáng đã hoàn thành thì dùng 了; 着 nhấn mạnh trạng thái hoặc hành động đang duy trì."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn câu miêu tả cánh cửa đang ở trạng thái mở.",
+        "options": ["房间的门开了。", "房间的门要开。", "房间的门开着。"],
+        "answer": 2,
+        "explain": "开着 diễn tả trạng thái cửa vẫn đang mở."
+      },
+      {
+        "q": "着 trong mẫu này thường đứng ở vị trí nào?",
+        "options": ["Trước động từ", "Sau tân ngữ", "Trước chủ ngữ", "Ngay sau động từ"],
+        "answer": 3,
+        "explain": "Trong mẫu miêu tả trạng thái, 着 theo ngay sau động từ."
+      },
+      {
+        "q": "Điền vào chỗ trống: 我手里拿___一本书。",
+        "options": ["着", "过", "吗", "了"],
+        "answer": 0,
+        "explain": "拿着 diễn tả trạng thái đang cầm sách."
+      },
+      {
+        "q": "着 trong bài này chủ yếu biểu thị điều gì?",
+        "options": ["Một hành động tương lai", "Một trạng thái đang được duy trì", "Một kinh nghiệm đã qua"],
+        "answer": 1,
+        "explain": "着 nhấn mạnh trạng thái vẫn còn tiếp diễn."
+      },
+      {
+        "q": "Chọn câu nói “Bố đang cầm một quyển sách trong tay”.",
+        "options": ["爸爸手里拿一本书。", "爸爸手里拿过一本书。", "爸爸手里拿着一本书。", "爸爸手里拿了书。"],
+        "answer": 2,
+        "explain": "拿着一本书 diễn tả trạng thái đang cầm sách."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h2-16",
+    "level": 2,
+    "order": 16,
+    "title": "过 diễn tả kinh nghiệm đã từng",
+    "titleZh": "过的经验用法",
+    "summary": "Bạn có thể dùng 过 sau động từ để kể một việc đã từng trải qua.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Kể việc đã từng làm",
+        "body": "过 đứng sau động từ để nói rằng một việc đã từng xảy ra ít nhất một lần. Ở cách dùng này, 过 đọc nhẹ là guo.",
+        "examples": [
+          {
+            "zh": "我去过中国，也学过中文。",
+            "py": "Wǒ qùguo Zhōngguó yě xuéguo Zhōngwén",
+            "vi": "Tôi từng đến Trung Quốc và cũng từng học tiếng Trung."
+          },
+          {
+            "zh": "妈妈看过那本书，觉得很好看。",
+            "py": "Māma kànguo nà běn shū juéde hěn hǎokàn",
+            "vi": "Mẹ từng đọc quyển sách đó và thấy nó rất hay."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Hỏi hoặc kể về trải nghiệm",
+        "body": "Dùng 过 khi hỏi ai đó đã từng đi đâu, ăn món gì hoặc làm việc gì chưa. Có thể hỏi bằng cách thêm 吗 ở cuối câu.",
+        "examples": [
+          {
+            "zh": "你去过中国吗？",
+            "py": "Nǐ qùguo Zhōngguó ma",
+            "vi": "Bạn đã từng đến Trung Quốc chưa?"
+          },
+          {
+            "zh": "爸爸吃过饺子，说很好吃。",
+            "py": "Bàba chīguo jiǎozi shuō hěn hǎochī",
+            "vi": "Bố từng ăn sủi cảo và nói rằng món này rất ngon."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "过 theo sau động từ",
+        "body": "Trong câu khẳng định, đặt 过 ngay sau động từ và trước tân ngữ. Câu phủ định thường dùng 没 hoặc 没有 trước động từ.",
+        "formula": "Chủ ngữ + động từ + 过 + tân ngữ; phủ định: Chủ ngữ + 没（有）+ động từ + 过 + tân ngữ",
+        "examples": [
+          {
+            "zh": "姐姐没有去过中国，所以很想去。",
+            "py": "Jiějie méiyǒu qùguo Zhōngguó suǒyǐ hěn xiǎng qù",
+            "vi": "Chị gái chưa từng đến Trung Quốc nên rất muốn đi."
+          },
+          {
+            "zh": "弟弟没看过这本书，现在想看。",
+            "py": "Dìdi méi kànguo zhè běn shū xiànzài xiǎng kàn",
+            "vi": "Em trai chưa từng đọc quyển sách này và bây giờ muốn đọc."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đặt 过 sau động từ",
+        "body": "Người học đôi khi đặt 过 sau tân ngữ theo trật tự tiếng Việt. Trong mẫu diễn tả kinh nghiệm, 过 phải theo sau động từ và đứng trước tân ngữ.",
+        "mistakes": [
+          {
+            "wrong": "我去中国过。",
+            "right": "我去过中国。",
+            "why": "过 đứng ngay sau động từ 去, trước tân ngữ 中国."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn câu thể hiện “Tôi đã từng đến Trung Quốc”.",
+        "options": ["我去了中国。", "我去中国了。", "我在中国。", "我去过中国。"],
+        "answer": 3,
+        "explain": "去过中国 nói về trải nghiệm đã từng đến Trung Quốc."
+      },
+      {
+        "q": "Câu nào có trật tự đúng để nói về kinh nghiệm?",
+        "options": ["我去过中国。", "我过中国去。", "我去中国过了。"],
+        "answer": 0,
+        "explain": "过 đứng sau động từ 去 và trước tân ngữ 中国."
+      },
+      {
+        "q": "Chọn câu phủ định “Tôi chưa từng đến Trung Quốc”.",
+        "options": ["我没有去中国了。", "我没有去过中国。", "我没过中国去。", "我去没过中国。"],
+        "answer": 1,
+        "explain": "Câu phủ định kinh nghiệm dùng 没有 + động từ + 过."
+      },
+      {
+        "q": "Điền vào chỗ trống: 爸爸___饺子，说很好吃。",
+        "options": ["吃着", "过吃", "吃过", "吃了过"],
+        "answer": 2,
+        "explain": "吃过饺子 nghĩa là đã từng ăn sủi cảo."
+      },
+      {
+        "q": "Để nói về kinh nghiệm, 过 thường đứng ở đâu?",
+        "options": ["Trước chủ ngữ", "Sau tân ngữ", "Cuối câu", "Sau động từ, trước tân ngữ"],
+        "answer": 3,
+        "explain": "Mẫu cơ bản đặt 过 sau động từ và trước tân ngữ."
+      }
+    ]
+  }
+]

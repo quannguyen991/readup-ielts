@@ -1,0 +1,62 @@
+{
+ "id": "mock-32",
+ "title": "IELTS Speaking Mock Test 32",
+ "titleVi": "Đề thi thử số 32",
+ "focusVi": "Phát triển khả năng mở rộng câu trả lời bằng cách so sánh quá khứ với hiện tại và phân tích các góc nhìn đa chiều về gìn giữ văn hóa truyền thống.",
+ "part1": [
+  {
+   "topic": "Happiness",
+   "qs": [
+    "What kinds of things generally make you feel happy?",
+    "Do you think people in your country are generally happier now than in the past?",
+    "What do you do when you are in a bad mood to cheer yourself up?",
+    "Can money buy happiness in your opinion?"
+   ]
+  },
+  {
+   "topic": "Stress and Relaxation",
+   "qs": [
+    "What causes you the most stress in your daily life?",
+    "How do you prefer to relax after a demanding day?",
+    "Do you think modern life is more stressful than life decades ago?",
+    "Do people in your country have enough time for leisure activities?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an important cultural tradition in your country.",
+  "bullets": [
+   "what the tradition is",
+   "when and where it takes place",
+   "what people typically do during this tradition",
+   "and explain why this tradition is significant to your culture"
+  ]
+ },
+ "part3": [
+  "Why do some young people show less interest in traditional customs today?",
+  "To what extent should traditions evolve to suit modern lifestyles?",
+  "How can governments effectively protect intangible cultural heritage from vanishing?",
+  "Do you think international tourism helps or harms local cultural traditions?",
+  "Will globalization eventually lead to the loss of unique national identities?"
+ ],
+ "answers": {
+  "p1": [
+   "Simple pleasures make me happiest, like sipping hot coffee on a quiet morning or sharing home-cooked meals with family. These small moments always lift my spirits after busy workdays.",
+   "Not necessarily. Although our living standards have improved dramatically, people today face fierce workplace competition and social media pressures, which often detract from genuine emotional well-being compared to simpler times.",
+   "I usually go for a brisk walk around a nearby lake listening to upbeat podcasts. Getting fresh air and stepping away from screens immediately helps clear my head and reset my emotions.",
+   "Up to a certain point, yes, because financial stability eliminates severe anxieties about housing and healthcare. However, authentic joy stems from meaningful relationships and inner peace, which money simply cannot purchase.",
+   "Strict professional deadlines create the most tension for me. When multiple assignments pile up simultaneously, juggling priorities while trying to maintain top quality can feel quite overwhelming, especially late in the week.",
+   "I unwind by cooking a wholesome dinner while listening to acoustic music. Preparing fresh ingredients forces me to focus on the present, effectively washing away the day's mental exhaustion.",
+   "Absolutely, because modern workers are perpetually plugged in via smartphones and emails. In the past, people disconnected completely after five o'clock, whereas today work boundaries have largely blurred into personal time.",
+   "Unfortunately, many young professionals don't because overtime work and lengthy commutes consume most daylight hours. Most citizens only manage to properly unwind during major national holidays like the Lunar New Year."
+  ],
+  "sample": "I would like to talk about the custom of making Banh Chung, or square sticky rice cakes, during the Lunar New Year festival in Vietnam. This centuries-old tradition occurs annually in late winter, roughly a week before the New Year kicks off, primarily bringing extended families together in rural and urban households alike. The preparation involves several generations working harmoniously. Grandparents wash aromatic dong leaves, adults marinate seasoned pork belly and mung beans, while children eagerly watch the assembly process. The cakes are tightly wrapped with bamboo strings and simmered in a huge pot over an open wood fire for over ten hours. We often stay up all night around the glowing hearth, sharing folk tales and reminiscing about the departing year. This tradition holds immense cultural weight because Banh Chung represents the earth and embodies deep filial gratitude toward our ancestors. More importantly, in an era where everyone is glued to digital devices, this ritual provides an irreplaceable communal anchor, strengthening familial bonds and preserving intangible cultural values for future generations.",
+  "p3": [
+   "In my view, the rapid rise of digital entertainment and consumerist culture is primarily responsible. Many young people find lengthy customs tedious compared to the immediate gratification offered by social media and global media. For instance, few teenagers now bother learning intricate ceremonial greetings or holiday cooking techniques. Unless traditions are modernized and made engaging, younger generations will continue prioritizing global pop trends over local heritage.",
+   "I believe traditions must adapt moderately to survive without losing their core essence. If customs remain overly rigid or demand excessive time, practical citizens will gradually abandon them altogether. For example, pre-ordering ceremonial foods instead of spending days preparing them allows families to honor ancestors while respecting hectic work schedules. Ultimately, sensible compromises preserve the underlying meaning of customs in our fast-paced society.",
+   "Governments should take a proactive stance by integrating indigenous folklore and traditional arts into school curricula. Furthermore, offering financial subsidies to master craftspeople and folk performers ensures that endangered skills can be passed down economically. Japan's Living National Treasure system is an excellent illustration of this principle in action. Without institutional support and early education, fragile living heritage risks fading away irrevocably.",
+   "Tourism is genuinely a double-edged sword in this regard. On one hand, tourist interest injects vital revenue into regional craft villages and traditional dance troupes, incentivizing preservation. However, heavy commercialization frequently degrades authentic ceremonies into shallow, staged spectacles for holidaymakers. Therefore, sustainable tourism management is essential so that financial gains do not come at the expense of genuine cultural integrity.",
+   "I am cautiously optimistic that national identities will persist despite growing homogenization. While Western attire and fast food have spread worldwide, this phenomenon often prompts a strong counter-cultural resurgence as communities strive to assert their distinctiveness. In many Asian nations, traditional garments and local delicacies are experiencing a vibrant renaissance among youths. Hence, globalization encourages cultural hybridity rather than total cultural erasure."
+  ]
+ }
+}

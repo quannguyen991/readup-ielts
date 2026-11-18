@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-y-kien-1",
+  "level": "EASY",
+  "title": "Choosing a Team Lunch Spot",
+  "titleVi": "Chọn địa điểm ăn trưa cùng đồng nghiệp",
+  "situationVi": "Đồng nghiệp rủ cả nhóm đi ăn lẩu cay vào một ngày hè oi bức. Bạn muốn nêu ý kiến và gợi ý một món ăn thanh đạm, gần công ty hơn.",
+  "task": "You are talking to your colleague about lunch plans. State your opinion politely on their idea, explain why it might not be ideal today, and suggest an alternative nearby.",
+  "mustVi": [
+   "Nêu ý kiến cá nhân và phản đối một cách lịch sự về món lẩu cay hôm nay.",
+   "Giải thích lý do (thời tiết quá nóng, quán xa, thời gian nghỉ trưa ngắn).",
+   "Đề xuất một địa điểm hoặc món ăn khác thanh đạm và thuận tiện hơn."
+  ],
+  "phrases": [
+   {
+    "en": "In my opinion,...",
+    "vi": "Theo ý kiến của tôi,...",
+    "ex": "In my opinion, it's too hot for soup today."
+   },
+   {
+    "en": "I see your point, but...",
+    "vi": "Tôi hiểu ý bạn, nhưng...",
+    "ex": "I see your point, but that restaurant is quite far."
+   },
+   {
+    "en": "I'd prefer to...",
+    "vi": "Tôi thích / muốn... hơn",
+    "ex": "I'd prefer to eat something lighter today."
+   },
+   {
+    "en": "How about... instead?",
+    "vi": "Hay là chúng ta... thay vào đó?",
+    "ex": "How about trying the new salad bar instead?"
+   },
+   {
+    "en": "It might be better if...",
+    "vi": "Có lẽ sẽ tốt hơn nếu...",
+    "ex": "It might be better if we stay close to the office."
+   },
+   {
+    "en": "What do you think about...?",
+    "vi": "Bạn nghĩ sao về...?",
+    "ex": "What do you think about that noodle shop across the street?"
+   }
+  ],
+  "sample": "Hotpot sounds delicious, and I see your point, but honestly, it is over 35 degrees outside today. Sitting next to a boiling stove might be uncomfortable, and that restaurant is a fifteen-minute walk from here. Our lunch break is only one hour, so we might feel rushed. In my opinion, we should eat something lighter and closer. How about going to the air-conditioned Vietnamese cafe around the corner instead? They serve great fresh rolls and rice plates. What do you think about that?",
+  "tipVi": "Hãy khen ngợi hoặc ghi nhận gợi ý của đối phương trước khi đưa ra lý do từ chối để giữ không khí trò chuyện thân thiện."
+ },
+ {
+  "id": "gt-y-kien-2",
+  "level": "EASY",
+  "title": "Discussing Friday Remote Work",
+  "titleVi": "Thảo luận về việc làm việc tại nhà ngày thứ Sáu",
+  "situationVi": "Đồng nghiệp cùng nhóm muốn cả đội cùng lên văn phòng làm việc cả ngày thứ Sáu. Bạn đồng ý họp mặt trực tiếp buổi sáng nhưng muốn làm việc từ xa buổi chiều.",
+  "task": "Your teammate suggests that the whole team work at the office all day this Friday. Share your view, agree with the morning meeting part, and propose a flexible option for the afternoon.",
+  "mustVi": [
+   "Bày tỏ sự đồng ý với việc gặp mặt trực tiếp để họp vào buổi sáng.",
+   "Nêu lý do muốn làm việc tại nhà vào buổi chiều (tránh kẹt xe cuối tuần, cần không gian yên tĩnh viết báo cáo).",
+   "Đưa ra giải pháp thỏa hiệp hài hòa cho cả nhóm."
+  ],
+  "phrases": [
+   {
+    "en": "I completely agree that...",
+    "vi": "Tôi hoàn toàn đồng ý rằng...",
+    "ex": "I completely agree that we need to meet in person."
+   },
+   {
+    "en": "That makes sense, but...",
+    "vi": "Điều đó cũng hợp lý, nhưng...",
+    "ex": "That makes sense, but Friday afternoon traffic is terrible."
+   },
+   {
+    "en": "From my perspective,...",
+    "vi": "Theo góc nhìn của tôi,...",
+    "ex": "From my perspective, working from home helps me focus."
+   },
+   {
+    "en": "Why don't we...?",
+    "vi": "Tại sao chúng ta không...?",
+    "ex": "Why don't we split the day?"
+   },
+   {
+    "en": "Could we meet in the middle?",
+    "vi": "Chúng ta có thể thỏa hiệp được không?",
+    "ex": "Could we meet in the middle and do a half day?"
+   },
+   {
+    "en": "I'm with you on that.",
+    "vi": "Tôi đồng tình với bạn về điểm đó.",
+    "ex": "I'm with you on that; face-to-face discussions are much faster."
+   }
+  ],
+  "sample": "I completely agree that we should meet in person for the weekly review. Doing that face-to-face is much faster and clearer. However, from my perspective, staying in the office all Friday afternoon isn't necessary. The traffic on Friday evenings is always terrible, and we all have weekly reports to finish silently. Why don't we meet in the middle? We can work at the office in the morning, finish our meeting by noon, and then work from home after lunch. That way, we get both teamwork and focus time.",
+  "tipVi": "Áp dụng kỹ thuật đồng ý từng phần ('I agree with X, but for Y...') để thể hiện tinh thần hợp tác và xây dựng."
+ },
+ {
+  "id": "gt-y-kien-3",
+  "level": "MEDIUM",
+  "title": "Pushing Back on an Early Deadline",
+  "titleVi": "Phản đối lịch ra mắt sản phẩm bị đẩy sớm",
+  "situationVi": "Trưởng dự án đề xuất đẩy sớm ngày ra mắt sản phẩm trước hai tuần để làm hài lòng khách hàng. Bạn cần phát biểu trong cuộc họp để phản biện đề xuất này.",
+  "task": "You are in a project meeting where your team leader wants to move the launch date up by two weeks. Express your disagreement professionally, outline the risks of rushing, and suggest a phased rollout instead.",
+  "mustVi": [
+   "Lịch sự bày tỏ sự lo ngại và phản đối việc đẩy sớm thời hạn bàn giao.",
+   "Phân tích hai rủi ro cụ thể (lỗi kỹ thuật chưa kiểm thử kỹ và nguy cơ kiệt sức của nhân sự).",
+   "Đề xuất giải pháp phát hành theo từng giai đoạn (phased rollout) để đảm bảo an toàn."
+  ],
+  "phrases": [
+   {
+    "en": "I'm afraid I have some reservations about...",
+    "vi": "Tôi e là tôi có chút băn khoăn về...",
+    "ex": "I'm afraid I have some reservations about moving the date up."
+   },
+   {
+    "en": "While I understand the urgency,...",
+    "vi": "Dù tôi hiểu tính cấp bách,...",
+    "ex": "While I understand the urgency, quality comes first."
+   },
+   {
+    "en": "If we rush this, we risk...",
+    "vi": "Nếu chúng ta vội vàng, chúng ta có nguy cơ...",
+    "ex": "If we rush this, we risk releasing buggy software."
+   },
+   {
+    "en": "To put it another way,...",
+    "vi": "Nói cách khác,...",
+    "ex": "To put it another way, cutting testing time is dangerous."
+   },
+   {
+    "en": "An alternative approach would be to...",
+    "vi": "Một cách tiếp cận thay thế sẽ là...",
+    "ex": "An alternative approach would be to release a beta version first."
+   },
+   {
+    "en": "Would it be feasible to...?",
+    "vi": "Liệu có khả thi không nếu chúng ta...?",
+    "ex": "Would it be feasible to do a phased rollout?"
+   }
+  ],
+  "sample": "While I understand the urgency to impress our client, I'm afraid I have serious reservations about moving the launch date up by two weeks. If we rush this, we risk two major issues. First, our QA team won't have enough time to test core features, which could lead to critical bugs in production. Second, our developers are already working late, and this extra pressure will cause burnout. An alternative approach would be a phased rollout. Would it be feasible to launch the basic features on the earlier date, and deliver the full package two weeks later as planned?",
+  "tipVi": "Dùng các cụm từ giảm nhẹ như 'I have some reservations' thay vì nói thẳng 'I disagree' nhằm giữ sự tôn trọng với cấp trên."
+ },
+ {
+  "id": "gt-y-kien-4",
+  "level": "MEDIUM",
+  "title": "Selecting a Marketing Strategy",
+  "titleVi": "Lựa chọn chiến lược tiếp thị sản phẩm",
+  "situationVi": "Trưởng nhóm tiếp thị muốn dồn 80% ngân sách quý này để thuê một người nổi tiếng lớn. Bạn muốn phản biện và thuyết phục dùng ngân sách cho micro-influencer kết hợp quảng cáo số.",
+  "task": "You are discussing the quarterly marketing plan with your marketing manager. Politely challenge their plan to hire one major celebrity, present your reasons, and persuade them to allocate budget to micro-influencers and targeted digital ads.",
+  "mustVi": [
+   "Ghi nhận lợi ích của việc thuê người nổi tiếng nhưng chỉ ra hạn chế về chi phí và tỷ lệ chuyển đổi.",
+   "Đưa ra lập luận bảo vệ giải pháp micro-influencer kết hợp quảng cáo nhắm mục tiêu (ROI cao hơn, tiếp cận đúng khách hàng).",
+   "Thuyết phục người nghe chạy thử nghiệm (pilot test) trước khi đưa ra quyết định cuối cùng."
+  ],
+  "phrases": [
+   {
+    "en": "I hear what you're saying, however...",
+    "vi": "Tôi hiểu điều bạn đang nói, tuy nhiên...",
+    "ex": "I hear what you're saying, however, celebrity fees are huge."
+   },
+   {
+    "en": "The main drawback is that...",
+    "vi": "Nhược điểm chính là...",
+    "ex": "The main drawback is that high reach doesn't guarantee high conversions."
+   },
+   {
+    "en": "The data shows that...",
+    "vi": "Số liệu cho thấy rằng...",
+    "ex": "The data shows that micro-influencers generate higher engagement."
+   },
+   {
+    "en": "A more cost-effective option is...",
+    "vi": "Một lựa chọn tiết kiệm chi phí hơn là...",
+    "ex": "A more cost-effective option is running targeted social ads."
+   },
+   {
+    "en": "I strongly believe that...",
+    "vi": "Tôi tin tưởng mạnh mẽ rằng...",
+    "ex": "I strongly believe that diversifying our budget is safer."
+   },
+   {
+    "en": "Could we consider running a pilot test with...?",
+    "vi": "Liệu chúng ta có thể cân nhắc chạy thử nghiệm với...?",
+    "ex": "Could we consider running a pilot test with five micro-influencers first?"
+   }
+  ],
+  "sample": "I hear what you're saying about brand awareness; hiring a famous celebrity creates instant buzz. However, the main drawback is that spending eighty percent of our quarterly budget on one person carries enormous risk. High reach doesn't guarantee actual conversions. The data shows that micro-influencers have much higher engagement rates within our niche audience. A more cost-effective option is partnering with ten micro-creators while investing the remaining funds in targeted digital ads. I strongly believe this strategy gives us better ROI. Could we consider running a two-week pilot test to compare results before making a final commitment?",
+  "tipVi": "Tựa vào số liệu thị trường và đề xuất bước thử nghiệm quy mô nhỏ để biến lời phản biện thành giải pháp ít rủi ro."
+ },
+ {
+  "id": "gt-y-kien-5",
+  "level": "HARD",
+  "title": "Opposing a Mandatory Camera Policy",
+  "titleVi": "Phản biện quy định bắt buộc bật camera khi họp trực tuyến",
+  "situationVi": "Ban Giám đốc muốn ban hành quy định bắt buộc nhân viên luôn bật webcam 100% trong mọi cuộc họp từ xa. Đại diện cho nhân viên, bạn phát biểu trong cuộc họp lãnh đạo để phản biện quy định này.",
+  "task": "You are addressing senior directors in an executive meeting regarding a proposed policy that mandates cameras always be turned on during virtual meetings. Diplomatically express your opposition, explain the negative impacts on morale and productivity, and propose a flexible, trust-based guideline.",
+  "mustVi": [
+   "Khéo léo nêu quan điểm bất đồng với chính sách áp đặt đồng loạt trên tinh thần xây dựng.",
+   "Phân tích tác động tiêu cực đến nhân viên (mệt mỏi do họp video liên tục, cảm giác bị kiểm soát thiếu tin tưởng, xâm phạm không gian riêng).",
+   "Đề xuất khung nguyên tắc linh hoạt dựa trên tính chất từng cuộc họp và sự tôn trọng lẫn nhau."
+  ],
+  "phrases": [
+   {
+    "en": "With all due respect, I view this somewhat differently.",
+    "vi": "Với tất cả sự tôn trọng, tôi nhìn nhận vấn đề này hơi khác một chút.",
+    "ex": "With all due respect, I view this somewhat differently from the executive committee."
+   },
+   {
+    "en": "While I appreciate the intention behind..., I'm concerned that...",
+    "vi": "Dù tôi đánh giá cao mục đích đằng sau..., tôi e ngại rằng...",
+    "ex": "While I appreciate the intention behind engagement, I'm concerned that it may backfire."
+   },
+   {
+    "en": "Research indicates that...",
+    "vi": "Nghiên cứu chỉ ra rằng...",
+    "ex": "Research indicates that constant video monitoring triggers meeting fatigue."
+   },
+   {
+    "en": "It may inadvertently signal a lack of trust.",
+    "vi": "Điều đó có thể vô tình thể hiện sự thiếu tin tưởng.",
+    "ex": "Strict surveillance policies may inadvertently signal a lack of trust in our staff."
+   },
+   {
+    "en": "Rather than a blanket mandate, I recommend...",
+    "vi": "Thay vì một quy định áp đặt cứng nhắc, tôi kiến nghị...",
+    "ex": "Rather than a blanket mandate, I recommend setting contextual guidelines."
+   },
+   {
+    "en": "This strikes the right balance between...",
+    "vi": "Điều này tạo ra sự cân bằng hài hòa giữa...",
+    "ex": "This strikes the right balance between accountability and employee well-being."
+   }
+  ],
+  "sample": "With all due respect, I view this proposal somewhat differently. While I appreciate the intention behind boosting team engagement, I'm concerned that a blanket mandate will backfire. Research consistently indicates that constant camera usage causes severe virtual fatigue and makes employees feel micromanaged, which inadvertently signals a lack of trust. It also disregards legitimate privacy concerns for those working in shared home spaces. Rather than enforcing one rigid rule, I recommend a contextual, trust-based guideline. Cameras can be encouraged for collaborative brainstorming or one-on-ones, but optional for large informational updates. This strikes the right balance between active engagement and psychological comfort.",
+  "tipVi": "Trong giao tiếp cấp quản lý, hãy mở đầu bằng việc công nhận mục tiêu tích cực của ban lãnh đạo trước khi dùng dẫn chứng khách quan để chỉ ra mặt trái của chính sách."
+ }
+]

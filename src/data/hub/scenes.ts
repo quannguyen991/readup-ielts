@@ -34,3 +34,6 @@ export const SCENE_CREDITS: { key: SceneKey; file: string; author: string; licen
   license: 'Ảnh AI do Band 9 tạo',
   source: 'https://chatgpt.com/',
 }));
+
+/** Bản nhỏ (640 px, WebP) của ảnh bối cảnh — dùng cho thẻ danh sách; ảnh đầy đủ chỉ nạp ở màn chi tiết. */
+export const SCENE_THUMB: Record<SceneKey, string> = Object.fromEntries(SCENE_KEYS.map((k) => [k, `/hub/scenes/thumb/${k}.webp`])) as Record<SceneKey, string>;

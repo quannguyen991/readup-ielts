@@ -1,0 +1,121 @@
+{
+ "title": "Cooling the Urban Canopy",
+ "topic": "Street trees and city temperature",
+ "context": "A. In July 2019, the municipal climate office of Bellhaven, a fictional coastal city of 640,000 residents, began measuring how street trees influenced summer heat. The study covered 36 road corridors in three districts and used sensors fixed 2 metres above pavement. Researchers compared shaded streets with nearby roads of similar width and traffic. At midday, the average air temperature on tree-lined corridors was 1.8°C lower. The difference was not constant: during a cloudy morning it was only 0.4°C, while on a clear afternoon it reached 2.6°C. The project’s lead scientist, Dr Lena Ortiz, cautioned that these were local measurements, not evidence that trees reduced the temperature of the whole city equally.\n\nB. The team selected tree species according to crown size, drought tolerance and the space available for roots. In narrow streets, small-leaved field maples were planted beneath overhead cables; wider avenues received plane trees with broad crowns. Bellhaven’s planting register recorded 1,240 new trees in the first year, including 410 plane trees. Each planting pit measured at least 1.2 metres across, and porous paving allowed rainwater to reach the soil. The city arborist, Marcus Bell, explained that a large canopy could shade more pavement, but a species that failed in dry conditions would provide little long-term cooling. Consequently, the register listed survival rates as well as the number of trees planted.\n\nC. To estimate the contribution of shade, researchers placed paired temperature loggers on the same block: one beneath a tree crown and another in an exposed position. Across 18 monitored blocks, shaded pavement averaged 11°C cooler than unshaded pavement at 14:00 on hot days. The air above it cooled by less, because wind mixed warm and cool air. Ortiz’s group also measured surface temperature with an infrared camera, which recorded the heat emitted by paving rather than the air temperature experienced by pedestrians. The distinction mattered: a report that quoted a pavement reading as an air-temperature reduction would exaggerate the effect. Measurements were repeated every ten minutes for six weeks.\n\nD. Trees can also influence temperature through evapotranspiration, the process by which water moves from soil through a tree and evaporates from its leaves. In Bellhaven, researchers measured this effect in a small demonstration plot beside the public library. On 12 August 2020, during a dry spell, a mature lime tree released an estimated 72 litres of water. The process used heat from the surrounding air, although its cooling benefit declined when soil moisture became scarce. To test this limitation, the city installed soil-moisture probes at 15 centimetres depth around 60 young trees. The probes triggered irrigation when readings fell below 18 per cent, preventing routine watering from wasting water when the root zone was already damp.\n\nE. A separate analysis examined whether street-tree benefits reached residents with the greatest exposure to heat. The planning department mapped canopy cover in 2021 and found that the East Ward had 9 per cent coverage, compared with 27 per cent in the central parks district. East Ward also recorded the highest proportion of homes without air conditioning. After public meetings, the city prioritised 14 bus stops and six school routes for planting. Local residents requested that new trees not obstruct shop signs or wheelchair access. The resulting plan included maintenance funds for five years, since young trees require regular watering and damaged guards can expose trunks to bicycles and delivery vehicles.\n\nF. Bellhaven’s final evaluation, published in March 2023, found that 78 per cent of the trees planted in 2019 were still alive. Survival was higher on streets with larger planting pits and scheduled watering. The report recommended measuring canopy growth, not simply counting planting events, and keeping temperature sensors in place for at least five summers. It also warned that trees cannot replace other heat measures: reflective roofs, drinking-water points and shaded public buildings remain necessary during heatwaves. The city council adopted a target of 30 per cent canopy cover on selected priority streets by 2035. Ortiz described the target as a practical milestone, adding that sustained maintenance would determine whether the promised shade actually developed.",
+ "questions": [
+  {
+   "prompt": "Which city began the study in July 2019?",
+   "answer": "Bellhaven",
+   "why": "Đoạn A nêu rõ văn phòng khí hậu của Bellhaven bắt đầu đo ảnh hưởng của cây đường phố vào tháng 7 năm 2019.",
+   "quote": "the municipal climate office of Bellhaven, a fictional coastal city of 640,000 residents, began measuring"
+  },
+  {
+   "prompt": "How many road corridors did the study cover?",
+   "answer": "36",
+   "why": "Phạm vi nghiên cứu gồm 36 hành lang đường phố; con số này không phải số quận hay số cư dân.",
+   "quote": "The study covered 36 road corridors in three districts"
+  },
+  {
+   "prompt": "How high above pavement were the sensors fixed?",
+   "answer": "2 metres",
+   "why": "Cảm biến được gắn ở độ cao 2 mét so với mặt đường.",
+   "quote": "used sensors fixed 2 metres above pavement"
+  },
+  {
+   "prompt": "Who was the project’s lead scientist?",
+   "answer": "Dr Lena Ortiz",
+   "why": "Đoạn A gọi Dr Lena Ortiz là nhà khoa học trưởng dự án.",
+   "quote": "The project’s lead scientist, Dr Lena Ortiz, cautioned"
+  },
+  {
+   "prompt": "How much lower was the average midday air temperature on tree-lined corridors?",
+   "answer": "1.8°C",
+   "why": "Mức chênh lệch trung bình lúc giữa trưa được nêu là 1.8°C, không phải mức tối đa vào buổi chiều nắng.",
+   "quote": "At midday, the average air temperature on tree-lined corridors was 1.8°C lower."
+  },
+  {
+   "prompt": "Which species was planted beneath overhead cables?",
+   "answer": "field maples",
+   "why": "Đoạn B cho biết cây phong đồng được trồng ở những con phố hẹp có dây cáp phía trên.",
+   "quote": "In narrow streets, small-leaved field maples were planted beneath overhead cables"
+  },
+  {
+   "prompt": "How many new trees were recorded in the first year?",
+   "answer": "1,240",
+   "why": "Sổ đăng ký ghi nhận tổng cộng 1.240 cây mới trong năm đầu tiên.",
+   "quote": "Bellhaven’s planting register recorded 1,240 new trees in the first year"
+  },
+  {
+   "prompt": "Who was the city arborist?",
+   "answer": "Marcus Bell",
+   "why": "Marcus Bell được xác định là chuyên gia phụ trách cây xanh đô thị của thành phố.",
+   "quote": "The city arborist, Marcus Bell, explained that a large canopy"
+  },
+  {
+   "prompt": "How many blocks were monitored for the shade estimate?",
+   "answer": "18",
+   "why": "Các nhà nghiên cứu theo dõi 18 dãy phố để ước tính tác động của bóng râm.",
+   "quote": "Across 18 monitored blocks, shaded pavement averaged 11°C cooler"
+  },
+  {
+   "prompt": "What time was the pavement temperature comparison made on hot days?",
+   "answer": "14:00",
+   "why": "Đoạn C xác định phép so sánh mặt đường được ghi nhận lúc 14:00 vào những ngày nóng.",
+   "quote": "at 14:00 on hot days"
+  },
+  {
+   "prompt": "Which instrument recorded the heat emitted by paving?",
+   "answer": "an infrared camera",
+   "why": "Máy ảnh hồng ngoại ghi nhiệt phát ra từ mặt đường, thay vì đo nhiệt độ không khí.",
+   "quote": "with an infrared camera, which recorded the heat emitted by paving"
+  },
+  {
+   "prompt": "What was the name of the process by which water evaporates from leaves?",
+   "answer": "evapotranspiration",
+   "why": "Đoạn D định nghĩa quá trình nước di chuyển qua cây và bay hơi từ lá là evapotranspiration.",
+   "quote": "evapotranspiration, the process by which water moves from soil through a tree and evaporates from its leaves"
+  },
+  {
+   "prompt": "How many litres of water did the mature lime tree release?",
+   "answer": "72",
+   "why": "Cây đoạn đo được lượng nước ước tính là 72 lít trong ngày 12 tháng 8 năm 2020.",
+   "quote": "a mature lime tree released an estimated 72 litres of water"
+  },
+  {
+   "prompt": "At what depth were the soil-moisture probes installed?",
+   "answer": "15 centimetres",
+   "why": "Đầu dò độ ẩm đất được đặt ở độ sâu 15 centimetres; 18 per cent là ngưỡng kích hoạt tưới.",
+   "quote": "soil-moisture probes at 15 centimetres depth around 60 young trees"
+  },
+  {
+   "prompt": "Which ward had 9 per cent canopy coverage?",
+   "answer": "East Ward",
+   "why": "Bản đồ năm 2021 cho thấy East Ward có độ che phủ tán cây 9 phần trăm.",
+   "quote": "the East Ward had 9 per cent coverage"
+  },
+  {
+   "prompt": "How many bus stops were prioritised for planting?",
+   "answer": "14",
+   "why": "Kế hoạch ưu tiên trồng cây tại 14 điểm dừng xe buýt và sáu tuyến đường trường học.",
+   "quote": "the city prioritised 14 bus stops and six school routes for planting"
+  },
+  {
+   "prompt": "When was the final evaluation published?",
+   "answer": "March 2023",
+   "why": "Đánh giá cuối cùng được công bố vào tháng 3 năm 2023.",
+   "quote": "Bellhaven’s final evaluation, published in March 2023, found"
+  },
+  {
+   "prompt": "What percentage of the trees planted in 2019 were still alive?",
+   "answer": "78 per cent",
+   "why": "Báo cáo cho biết 78 phần trăm số cây trồng năm 2019 vẫn còn sống.",
+   "quote": "found that 78 per cent of the trees planted in 2019 were still alive"
+  },
+  {
+   "prompt": "By what year did the council target 30 per cent canopy cover on selected priority streets?",
+   "answer": "2035",
+   "why": "Mục tiêu của hội đồng là đạt độ che phủ tán cây 30 phần trăm trên các tuyến ưu tiên được chọn vào năm 2035.",
+   "quote": "adopted a target of 30 per cent canopy cover on selected priority streets by 2035"
+  }
+ ]
+}

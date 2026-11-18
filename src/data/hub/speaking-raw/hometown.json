@@ -1,0 +1,96 @@
+{
+ "id": "hometown",
+ "extra": {
+  "vocab": [
+   {
+    "en": "hustle and bustle",
+    "vi": "sự hối hả và nhộn nhịp",
+    "ex": "I often head to the lake in the evening to escape the hustle and bustle of city life."
+   },
+   {
+    "en": "within walking distance",
+    "vi": "ở rất gần, trong tầm đi bộ",
+    "ex": "A bustling night market with plenty of local street food is within walking distance of my home."
+   },
+   {
+    "en": "recharge one's batteries",
+    "vi": "nạp lại năng lượng",
+    "ex": "Spending an afternoon in the municipal park helps me recharge my batteries after an exhausting workweek."
+   },
+   {
+    "en": "rapid urbanisation",
+    "vi": "sự đô thị hóa nhanh chóng",
+    "ex": "Due to rapid urbanisation, several green fields in my hometown have been converted into commercial centers."
+   },
+   {
+    "en": "close-knit community",
+    "vi": "cộng đồng dân cư gắn kết chặt chẽ",
+    "ex": "What I appreciate most is living in a close-knit community where neighbors always look out for one another."
+   },
+   {
+    "en": "peace of mind",
+    "vi": "sự an yên trong tâm hồn",
+    "ex": "Watching the sun rise over the river gives me a wonderful sense of peace of mind."
+   },
+   {
+    "en": "urban sprawl",
+    "vi": "sự mở rộng đô thị tràn lan",
+    "ex": "The town is expanding through rapid urban sprawl, gradually encroaching on adjacent agricultural lands."
+   },
+   {
+    "en": "steeped in history",
+    "vi": "giàu truyền thống lịch sử",
+    "ex": "The old quarter of my hometown is steeped in history, featuring several centuries-old pagodas and temples."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu địa điểm yêu thích (Hồ Tây hoặc công viên ven hồ tại quê nhà) và vị trí địa lý của nó.",
+   "Ý 1: Mô tả các hoạt động cụ thể thường làm ở đó (đạp xe hóng gió, uống cà phê vỉa hè ngắm hoàng hôn, trò chuyện với bạn bè).",
+   "Ý 2: Nêu thời điểm thường xuyên ghé thăm (chiều muộn cuối tuần để ngắm hoàng hôn hoặc các buổi tối cần thư giãn sau giờ làm việc).",
+   "Kết: Giải thích lý do yêu thích nơi này (tách biệt khỏi sự ồn ào khói bụi, mang lại cảm giác bình yên và gợi nhớ nhiều kỷ niệm đẹp)."
+  ],
+  "sample": "A place in my hometown that I absolutely love visiting is West Lake, which is situated just a short ride north of Hanoi's bustling city center. It is an expansive freshwater lake surrounded by scenic tree-lined paths and lively open-air cafes.\n\nWhenever I go there, there are plenty of enjoyable things to do. I usually like renting a bicycle to ride along the shoreline and feel the refreshing breeze, or simply grabbing an iced coffee with close friends at a lakeside cafe while watching the sunset paint the sky.\n\nI tend to visit on weekend late afternoons, especially around dusk, because that is when the intense daytime heat subsides and the atmosphere turns genuinely tranquil. Occasionally, on exhausting weekdays, I also take a solitary stroll there in the evening to clear my head.\n\nI truly cherish this spot because it provides a peaceful sanctuary away from the relentless traffic and chaos of the capital. The open water creates a rare sense of spaciousness, which helps me recharge my batteries and reflect on life.",
+  "p1": [
+   {
+    "q": "Where is your hometown?",
+    "a": "I was born and raised in Da Nang, a coastal city situated in central Vietnam. It is widely renowned for its scenic beaches like My Khe and iconic bridges stretching across the Han River."
+   },
+   {
+    "q": "What do you like most about it?",
+    "a": "What I love most is the laid-back lifestyle alongside the welcoming locals. Despite its rapid modernisation, the local community remains exceptionally warm and always ready to lend a helping hand to newcomers."
+   },
+   {
+    "q": "Has your hometown changed much in recent years?",
+    "a": "Yes, tremendously. In recent years, high-rise hotels and modern infrastructure have sprung up everywhere. While this economic boom has opened up countless career paths, it has also led to heavier traffic congestion during peak hours."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think young people want to stay in their hometowns?",
+    "a": "In my view, most ambitious youngsters nowadays prefer relocating to major metropolitan hubs rather than staying put. The primary catalyst is the vast array of lucrative employment options and modern educational facilities found in big cities. In contrast, smaller hometowns often lack specialised industries, leaving university graduates with fewer professional prospects. Nonetheless, some do eventually move back after gaining experience, seeking a calmer and more affordable lifestyle."
+   },
+   {
+    "q": "How might tourism change a small town?",
+    "a": "Tourism brings a mixture of remarkable benefits and pronounced challenges to regional towns. On the positive side, it stimulates the local economy by creating jobs in hospitality and retail, often prompting local authorities to upgrade transport infrastructure. However, uncontrolled influxes of visitors frequently result in environmental degradation, inflated living costs, and the commercialisation of indigenous culture, which can gradually erode the town's unique local character."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'peaceful' hoặc 'beautiful': Người học thường liên tục lặp lại các tính từ đơn giản này mà không sử dụng các từ vựng Band 7+ phong phú hơn như 'tranquil', 'serene', hay 'picturesque'.",
+   "Dùng sai thì khi mô tả sự biến đổi: Khi trả lời câu hỏi về sự thay đổi của quê hương, thí sinh hay dùng thì Quá khứ đơn thay vì thì Hiện tại hoàn thành (Present Perfect) để mô tả quá trình chuyển đổi kéo dài từ quá khứ đến nay.",
+   "Nhầm lẫn giữa 'hometown' và 'country': Nhiều bạn nhầm lẫn khi miêu tả quê hương bằng các dữ kiện của cả quốc gia (như diện tích Việt Nam, 54 dân tộc), trong khi 'hometown' chỉ giới hạn ở một thành phố, thị xã hoặc làng quê cụ thể."
+  ],
+  "p1More": [
+   "Do you often visit your hometown nowadays?",
+   "Is your hometown a good place for children to grow up?",
+   "What kind of jobs do most people in your hometown do?",
+   "Would you consider settling down in your hometown in the future?",
+   "How is the public transportation network in your hometown?"
+  ],
+  "p3More": [
+   "What measures can local authorities implement to curb brain drain in regional towns?",
+   "How does rapid urbanization affect the sense of community in traditional settlements?",
+   "To what extent should historical buildings in towns be preserved rather than modernized?",
+   "Why are some people deeply attached to their birthplace while others feel completely indifferent?"
+  ]
+ }
+}

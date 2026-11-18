@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<title>Cam vocab cover generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: transparent; }
+  #cover { width: 250px; height: 340px; }
+  #cover svg { display: block; width: 250px; height: 340px; }
+  text { font-family: 'Inter', 'Segoe UI', sans-serif; }
+  .num { font-family: 'Chakra Petch', 'Inter', sans-serif; }
+</style></head>
+<body><div id="cover"></div>
+<script>
+/* Sinh bìa các bộ sách. Chạy: node scripts/vocab/book-covers/render.mjs */
+const BOOKS = [{"id": "vfi", "kicker": "CAMBRIDGE", "sub": "20 UNITS", "mark": "IELTS", "title": "VOCABULARY", "spine": "VOCABULARY FOR IELTS", "value": 1660}, {"id": "vfia", "kicker": "CAMBRIDGE", "sub": "ADVANCED", "mark": "IELTS", "title": "VOCABULARY", "spine": "VOCABULARY FOR IELTS · ADVANCED", "value": 863}, {"id": "gs10", "kicker": "GLOBAL SUCCESS", "sub": "GRADE", "mark": "10", "title": "VOCABULARY", "spine": "GLOBAL SUCCESS 10", "value": 522}, {"id": "gs11", "kicker": "GLOBAL SUCCESS", "sub": "GRADE", "mark": "11", "title": "VOCABULARY", "spine": "GLOBAL SUCCESS 11", "value": 584}, {"id": "gs12", "kicker": "GLOBAL SUCCESS", "sub": "GRADE", "mark": "12", "title": "VOCABULARY", "spine": "GLOBAL SUCCESS 12", "value": 547}, {"id": "listening", "kicker": "IELTS", "sub": "4 SECTIONS", "mark": "4", "title": "LISTENING", "spine": "IELTS · LISTENING", "value": 840}, {"id": "ielts-topics", "kicker": "IELTS", "sub": "TOPICS", "mark": "50", "title": "VOCABULARY", "spine": "IELTS · 50 TOPICS", "value": 8500}, {"id": "oxford", "kicker": "OXFORD", "sub": "CEFR A1–C1", "mark": "3000", "title": "TOPICS", "spine": "OXFORD 3000 · TOPICS", "value": 18, "unit": "CHỦ ĐỀ"}, {"id": "daily", "kicker": "EVERYDAY", "sub": "TALK", "mark": "20", "title": "VOCABULARY", "spine": "EVERYDAY TALK", "value": 824}, {"id": "dest-b1", "kicker": "DESTINATION", "sub": "LEVEL", "mark": "B1", "title": "VOCABULARY", "spine": "DESTINATION B1", "value": 418}, {"id": "dest-b2", "kicker": "DESTINATION", "sub": "LEVEL", "mark": "B2", "title": "VOCABULARY", "spine": "DESTINATION B2", "value": 409}, {"id": "dest-c1c2", "kicker": "DESTINATION", "sub": "LEVEL", "mark": "C1·C2", "title": "VOCABULARY", "spine": "DESTINATION C1 · C2", "value": 1475}, {"id": "sat-math", "kicker": "SAT", "sub": "MATH", "mark": "SAT", "title": "VOCABULARY", "spine": "SAT · MATH VOCABULARY", "value": 193}, {"id": "sat-verbal", "kicker": "SAT", "sub": "VERBAL", "mark": "SAT", "title": "VOCABULARY", "spine": "SAT · VERBAL VOCABULARY", "value": 2340}, {"id": "toeic", "kicker": "TOEIC", "sub": "20 UNITS", "mark": "TOEIC", "title": "VOCABULARY", "spine": "TOEIC · 20 UNITS", "value": 200}, {"id": "toefl", "kicker": "TOEFL", "sub": "20 UNITS", "mark": "TOEFL", "title": "VOCABULARY", "spine": "TOEFL · 20 UNITS", "value": 200}, {"id": "study4-common-ielts-listening", "kicker": "IELTS", "sub": "LISTENING", "mark": "IELTS", "title": "COMMON WORDS", "spine": "MOST COMMON IELTS LISTENING WORDS", "value": 1124}, {"id": "study4-barrons-essentials-ielts", "kicker": "IELTS", "sub": "BARRON'S", "mark": "IELTS", "title": "ESSENTIAL WORDS", "spine": "BARRON'S ESSENTIAL WORDS FOR IELTS", "value": 750}, {"id": "study4-toeic-word-list", "kicker": "TOEIC", "sub": "WORD LIST", "mark": "TOEIC", "title": "WORD LIST", "spine": "TOEIC WORD LIST", "value": 1194}, {"id": "study4-600-toeic-words", "kicker": "TOEIC", "sub": "ESSENTIAL", "mark": "600", "title": "TOEIC WORDS", "spine": "600 TOEIC WORDS", "value": 620}, {"id": "study4-barrons-sat-words", "kicker": "SAT", "sub": "BARRON'S", "mark": "SAT", "title": "SAT WORDS", "spine": "BARRON'S SAT WORDS", "value": 1467}, {"id": "study4-college-panda-400-sat", "kicker": "SAT", "sub": "COLLEGE PANDA", "mark": "400", "title": "SAT WORDS", "spine": "THE COLLEGE PANDA 400 SAT WORDS", "value": 400}, {"id": "study4-new-academic-word-list", "kicker": "VOCABULARY", "sub": "ACADEMIC", "mark": "NAWL", "title": "ACADEMIC WORDS", "spine": "NEW ACADEMIC WORD LIST", "value": 924}, {"id": "study4-business-word-list", "kicker": "VOCABULARY", "sub": "BUSINESS", "mark": "BIZ", "title": "WORD LIST", "spine": "BUSINESS WORD LIST", "value": 1665}, {"id": "study4-toefl-word-list", "kicker": "TOEFL", "sub": "WORD LIST", "mark": "TOEFL", "title": "WORD LIST", "spine": "TOEFL WORD LIST", "value": 3193}, {"id": "study4-powerscore-gre-repeat-offenders", "kicker": "GRE", "sub": "POWERSCORE", "mark": "GRE", "title": "REPEAT OFFENDERS", "spine": "POWERSCORE GRE 700 REPEAT OFFENDERS", "value": 699}, {"id": "study4-essential-english-idioms", "kicker": "VOCABULARY", "sub": "ESSENTIAL", "mark": "IDIOM", "title": "ENGLISH IDIOMS", "spine": "ESSENTIAL ENGLISH IDIOMS", "value": 468}];
+function hex2hsl(h) { const r = parseInt(h.slice(1, 3), 16) / 255, g = parseInt(h.slice(3, 5), 16) / 255, b = parseInt(h.slice(5, 7), 16) / 255;
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn; let hh = 0, s = 0;
+  if (d) { s = d / (1 - Math.abs(2 * l - 1)); hh = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; hh *= 60; if (hh < 0) hh += 360; }
+  return [hh, s, l]; }
+function hsl2hex(h, s, l) { const c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2;
+  const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
+  return '#' + [r, g, b].map(v => Math.round((v + m) * 255).toString(16).padStart(2, '0')).join(''); }
+function palette(spec, idx) {
+  // Mỗi bộ một màu: góc vàng giữ các bộ cạnh nhau cách xa nhau trên vòng màu.
+  const h = (idx * 137.508 + 252) % 360, s = .84;
+  const c = hsl2hex(h, s, .66);
+  return { ...spec, n: idx + 1, c, light: hsl2hex(h, .92, .78), mid: hsl2hex(h, s * .6, .38), dark: hsl2hex(h, s * .58, .19), deep: hsl2hex(h, s * .6, .095) };
+}
+const W = 250, H = 340;
+const CREAM = '#F4ECDD';
+
+function rng(seed) {
+  return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+const f = (v) => +v.toFixed(2);
+const rgb = (hex) => [1, 3, 5].map(i => f(parseInt(hex.slice(i, i + 2), 16) / 255)).join(' ');
+const star4 = (x, y, r, k = .28) =>
+  `M${f(x)} ${f(y - r)}L${f(x + r * k)} ${f(y - r * k)}L${f(x + r)} ${f(y)}L${f(x + r * k)} ${f(y + r * k)}L${f(x)} ${f(y + r)}L${f(x - r * k)} ${f(y + r * k)}L${f(x - r)} ${f(y)}L${f(x - r * k)} ${f(y - r * k)}Z`;
+
+function spine(d, tone) {
+  return `
+    <rect x="0" y="0" width="17" height="${H}" fill="rgba(0,0,0,.4)"/>
+    <rect x="0" y="0" width="17" height="${H}" fill="url(#spg)"/>
+    <rect x="17" y="0" width="1.2" height="${H}" fill="rgba(255,255,255,.22)"/>
+    <rect x="15.6" y="0" width=".8" height="${H}" fill="rgba(0,0,0,.35)"/>
+    <text transform="translate(5 24) rotate(90)" font-size="${d.spine.length > 24 ? 5.2 : 6.5}" font-weight="700" letter-spacing="${d.spine.length > 24 ? 1.4 : 2}" fill="${tone}" opacity=".85">${d.spine}</text>
+    <circle cx="8.5" cy="40" r="1.6" fill="${tone}" opacity=".5"/><circle cx="8.5" cy="300" r="1.6" fill="${tone}" opacity=".5"/>`;
+}
+const SPG = `<linearGradient id="spg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>`;
+
+function svg(inner, defs = '') {
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="r"><rect width="${W}" height="${H}" rx="12"/></clipPath>${SPG}${defs}</defs><g clip-path="url(#r)">${inner}</g></svg>`;
+}
+
+/* ---------- B · Chòm sao ---------- */
+function cluster(x, y, seed, d) {
+  const R = rng(seed), pts = [];
+  for (let i = 0; i < 5; i++) pts.push([x + i * 7 + R() * 5, y + (R() - .5) * 26 + (i % 2 ? 6 : -4)]);
+  const path = pts.map((p, i) => (i ? 'L' : 'M') + f(p[0]) + ' ' + f(p[1])).join('');
+  return `<path d="${path}" fill="none" stroke="${d.light}" stroke-width=".6" opacity=".4"/>` +
+    pts.map((p, i) => `<circle cx="${f(p[0])}" cy="${f(p[1])}" r="${i % 2 ? 1.5 : 1}" fill="#fff" opacity=".85"/>`).join('');
+}
+
+function coverB(d) {
+  const CX = 137, CY = 158;
+  // Số đề được dựng thành lưới điểm lấy mẫu từ chữ thật.
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const cx = cv.getContext('2d');
+  cx.font = "800 150px 'Inter', 'Segoe UI', sans-serif";
+  const m150 = cx.measureText(d.mark).width;
+  const msize = Math.min(150, Math.floor(150 * 196 / m150));
+  cx.font = `800 ${msize}px 'Inter', 'Segoe UI', sans-serif`;
+  const k = Math.max(.74, Math.min(1, msize / 150));
+  cx.textAlign = 'center'; cx.textBaseline = 'middle'; cx.fillStyle = '#000';
+  cx.fillText(d.mark, CX, CY);
+  const step = +(6.5 * k).toFixed(2), img = cx.getImageData(0, 0, W, H).data;
+  const on = (x, y) => x > 0 && y > 0 && x < W && y < H && img[((y | 0) * W + (x | 0)) * 4 + 3] > 140;
+  const pts = new Map();
+  for (let y = 70; y < 250; y += step) for (let x = 24; x < W - 6; x += step) if (on(x, y)) pts.set(f(x) + ',' + f(y), [x, y]);
+  const R = rng(d.n * 97);
+  let lines = '', diag = '', dots = '', edge = '', flare = '';
+  const get = (x, y) => pts.get(f(x) + ',' + f(y));
+  for (const [x, y] of pts.values()) {
+    const r = get(x + step, y), b = get(x, y + step), br = get(x + step, y + step), bl = get(x - step, y + step);
+    if (r) lines += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(r[0])}" y2="${f(r[1])}"/>`;
+    if (b) lines += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(b[0])}" y2="${f(b[1])}"/>`;
+    if (br && R() > .35) diag += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(br[0])}" y2="${f(br[1])}"/>`;
+    if (bl && R() > .6) diag += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(bl[0])}" y2="${f(bl[1])}"/>`;
+    const isEdge = !(get(x + step, y) && get(x - step, y) && get(x, y + step) && get(x, y - step));
+    if (isEdge) {
+      edge += `<circle cx="${f(x)}" cy="${f(y)}" r="${f((1.9 + R() * 0.9) * k)}"/>`;
+      if (R() > .94) flare += `<path d="${star4(x, y, (6 + R() * 3) * k)}"/>`;
+    } else dots += `<circle cx="${f(x)}" cy="${f(y)}" r="${f((0.9 + R() * 0.9) * k)}"/>`;
+  }
+  let sky = '', tint = '';
+  const S = rng(d.n * 13 + 5);
+  for (let i = 0; i < 120; i++) {
+    const x = 22 + S() * 226, y = S() * 336, r = 0.3 + S() * 0.8;
+    sky += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" opacity="${f(0.25 + S() * 0.6)}"/>`;
+  }
+  for (let i = 0; i < 14; i++) tint += `<circle cx="${f(22 + S() * 226)}" cy="${f(S() * 290)}" r="${f(1 + S() * 0.8)}" fill="${S() > .5 ? d.light : '#fff'}"/>`;
+  let bigStars = '';
+  for (let i = 0; i < 6; i++) bigStars += `<path d="${star4(24 + S() * 220, 70 + S() * 210, 3.5 + S() * 3.5)}" opacity="${f(.6 + S() * .35)}"/>`;
+
+  // Vòng thiên cầu: 72 vạch, 12 vạch lớn (mỗi bài đọc một vạch).
+  let ticks = '', majors = '';
+  for (let i = 0; i < 72; i++) {
+    const a = i * Math.PI / 36, big = i % 6 === 0, r1 = 96, r2 = big ? 105 : 100;
+    ticks += `<line x1="${f(CX + Math.cos(a) * r1)}" y1="${f(CY + Math.sin(a) * r1)}" x2="${f(CX + Math.cos(a) * r2)}" y2="${f(CY + Math.sin(a) * r2)}" stroke-width="${big ? .9 : .5}"/>`;
+    if (big) majors += `<circle cx="${f(CX + Math.cos(a) * 109)}" cy="${f(CY + Math.sin(a) * 109)}" r="1.9"/>`;
+  }
+
+  // Đường chân trời: 12 ngôi sao nối nhau.
+  let star12 = '', path = '';
+  for (let i = 0; i < 12; i++) {
+    const x = 36 + i * 17.4, y = 266 - Math.sin(i / 11 * Math.PI) * 13 + (i % 2 ? 4 : -2);
+    path += (i ? 'L' : 'M') + f(x) + ' ' + f(y);
+    star12 += `<path d="${star4(x, y, i % 3 === 0 ? 6 : 4.4)}"/><circle cx="${f(x)}" cy="${f(y)}" r="1.1" fill="${d.c}"/>`;
+  }
+
+  const defs = `
+    <linearGradient id="bg${d.n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070918"/><stop offset=".55" stop-color="#12162F"/><stop offset="1" stop-color="${d.dark}"/></linearGradient>
+    <radialGradient id="gl${d.n}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${d.c}" stop-opacity=".42"/><stop offset=".6" stop-color="${d.mid}" stop-opacity=".16"/><stop offset="1" stop-color="${d.c}" stop-opacity="0"/></radialGradient>
+    <radialGradient id="n2${d.n}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${d.mid}" stop-opacity=".5"/><stop offset="1" stop-color="${d.mid}" stop-opacity="0"/></radialGradient>
+    <linearGradient id="rg${d.n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${d.dark}"/><stop offset="1" stop-color="${d.deep}"/></linearGradient>
+    <linearGradient id="pl${d.n}" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="${d.mid}"/><stop offset="1" stop-color="${d.deep}"/></linearGradient>
+    <filter id="mw${d.n}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="3" seed="${d.n}"/><feColorMatrix values="0 0 0 0 ${rgb(d.c)}  0 0 0 0 ${rgb(d.c)}  0 0 0 0 ${rgb(d.c)}  1.9 0 0 0 -0.82"/></filter>
+    <filter id="g${d.n}" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="gg${d.n}" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+
+  const inner = `
+    <rect width="${W}" height="${H}" fill="url(#bg${d.n})"/>
+    <rect width="${W}" height="${H}" filter="url(#mw${d.n})" opacity=".4"/>
+    <ellipse cx="${CX}" cy="${CY}" rx="125" ry="115" fill="url(#gl${d.n})"/>
+    <ellipse cx="40" cy="290" rx="90" ry="60" fill="url(#n2${d.n})"/>
+    <g fill="#fff">${sky}</g><g>${tint}</g>
+    <g fill="#fff" filter="url(#g${d.n})">${bigStars}</g>
+    ${cluster(24, 100, d.n * 3, d)}${cluster(204, 232, d.n * 7, d)}
+    <g transform="rotate(-8 ${CX} ${CY})" stroke="${d.light}" fill="none">
+      <circle cx="${CX}" cy="${CY}" r="96" stroke-width=".7" opacity=".55"/>
+      <circle cx="${CX}" cy="${CY}" r="88" stroke-width=".5" stroke-dasharray="1.5 3.5" opacity=".5"/>
+      <circle cx="${CX}" cy="${CY}" r="108" stroke-width=".4" opacity=".28"/>
+      <g opacity=".65">${ticks}</g>
+      <g fill="${d.light}" stroke="none" filter="url(#g${d.n})">${majors}</g>
+    </g>
+    <g stroke="${d.c}" stroke-width=".5" opacity=".28">${diag}</g>
+    <g stroke="${d.c}" stroke-width=".75" opacity=".5">${lines}</g>
+    <g fill="${d.light}" opacity=".9">${dots}</g>
+    <g fill="#fff" filter="url(#gg${d.n})">${edge}</g>
+    <g fill="#fff" opacity=".9">${flare}</g>
+    <rect x="25" y="10" width="217" height="320" rx="6" fill="none" stroke="${d.light}" stroke-width=".6" opacity=".3"/>
+    <g fill="${d.light}" opacity=".75"><path d="${star4(25, 10, 5)}"/><path d="${star4(242, 10, 5)}"/><path d="${star4(25, 330, 5)}"/><path d="${star4(242, 330, 5)}"/></g>
+    <text x="36" y="38" font-size="${d.kicker.length > 14 ? 9.6 : 11}" font-weight="800" letter-spacing="${d.kicker.length > 14 ? 1.8 : 2.4}" fill="#fff">${d.kicker}</text>
+    <text x="36" y="53" font-size="9" font-weight="800" letter-spacing="3" fill="${d.light}">${d.sub}</text>
+    <g transform="translate(205 47)">
+      <ellipse rx="35" ry="9" transform="rotate(-18)" fill="none" stroke="${d.light}" stroke-width="1" opacity=".7"/>
+      <circle r="23" fill="url(#pl${d.n})" stroke="${d.c}" stroke-width="1.4"/>
+      <path d="M-14 -16 A20 20 0 0 0 -17 12 A25 25 0 0 1 -14 -16Z" fill="${d.light}" opacity=".35"/>
+      <circle cx="9" cy="-12" r="2.2" fill="${d.c}" opacity=".35"/><circle cx="14" cy="-5" r="1.3" fill="${d.c}" opacity=".35"/>
+      <path d="M-35 0 A35 9 0 0 0 35 0" transform="rotate(-18)" fill="none" stroke="${d.light}" stroke-width="1.2"/>
+      <text class="num" y="3" font-size="${String(d.value).length > 3 ? 13.2 : 16}" font-weight="700" letter-spacing=".4" text-anchor="middle" fill="#fff" stroke="${d.deep}" stroke-width="2.4" paint-order="stroke">${d.value}</text>
+      <text class="num" y="13.2" font-size="${(d.unit || "TỪ").length > 2 ? 5.6 : 7.4}" font-weight="700" letter-spacing="${(d.unit || "TỪ").length > 2 ? .8 : 2.6}" text-anchor="middle" fill="${d.light}" stroke="${d.deep}" stroke-width="2" paint-order="stroke">${d.unit || "TỪ"}</text>
+    </g>
+    <path d="M0 296 L20 288 L38 296 L64 276 L92 294 L118 282 L146 298 L176 278 L206 296 L232 284 L250 292 V340 H0Z" fill="${d.mid}" opacity=".4"/>
+    <path d="M0 308 L26 300 L50 310 L82 296 L112 310 L150 298 L186 312 L220 300 L250 308 V340 H0Z" fill="url(#rg${d.n})"/>
+    <path d="${path}" fill="none" stroke="${d.light}" stroke-width=".9" opacity=".75"/>
+    <g fill="#fff" filter="url(#gg${d.n})">${star12}</g>
+    <text x="36" y="326" font-size="${f(Math.min(16.5, 16.5 * 11 / d.title.length))}" font-weight="800" letter-spacing=".8" fill="#fff">${d.title}</text>
+    ${spine(d, '#fff')}`;
+  return svg(inner, defs);
+}
+
+(async () => {
+  const id = new URLSearchParams(location.search).get('id') || BOOKS[0].id;
+  const idx = Math.max(0, BOOKS.findIndex((b) => b.id === id));
+  try { await document.fonts.load("700 16px 'Chakra Petch'"); await document.fonts.load("800 150px 'Inter'"); await document.fonts.ready; } catch (e) {}
+  document.getElementById('cover').innerHTML = coverB(palette(BOOKS[idx], idx));
+  window.__ready = true;
+})();
+</script></body></html>

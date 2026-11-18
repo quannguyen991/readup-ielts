@@ -25,7 +25,7 @@ export default function LivePicker() {
       >
         <LionMascot pose="wave" size={88} />
         <View style={{ flex: 1, minWidth: 0, gap: 6 }}>
-          <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Leo sẽ hỏi bạn như giám khảo thật</Text>
+          <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '400' }}>Leo sẽ hỏi bạn như giám khảo thật</Text>
           <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>
             Sáu câu theo đúng thứ tự thi. Mỗi câu trả lời được đo tốc độ, từ đệm và ngập ngừng; cuối buổi có bản phân tích chi tiết.
           </Text>
@@ -45,8 +45,8 @@ export default function LivePicker() {
               <CoinIcon name={done[t.id] ? 'achievements' : 'friends'} size={44} />
               <Icon name="chevron-right" size={16} color={HUB.muted} />
             </View>
-            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>{t.titleVi}</Text>
-            <Text style={{ color: HUB.muted, fontSize: 12 }}>{t.title}</Text>
+            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>{t.titleVi}</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>{t.title}</Text>
           </Pressable>
         ))}
       </View>

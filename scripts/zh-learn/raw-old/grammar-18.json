@@ -1,0 +1,563 @@
+[
+ {
+  "id": "zh-g-h3-16",
+  "level": 3,
+  "order": 16,
+  "title": "Động tác đi kèm với 着",
+  "titleZh": "伴随动作",
+  "summary": "Học xong, bạn có thể dùng 着 nối một động tác đang diễn ra với hành động đi kèm.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "着 nối hai động tác",
+    "body": "着 đứng sau động từ thứ nhất để cho biết động tác hoặc tư thế ấy đi kèm với hành động chính. Hành động sau 着 thường là trọng tâm của câu.",
+    "formula": "Chủ ngữ + V1 + 着 + V2 + thành phần khác",
+    "examples": [
+     {
+      "zh": "他拿着书走进教室。",
+      "py": "tā ná zhe shū zǒu jìn jiàoshì",
+      "vi": "Anh ấy cầm sách đi vào lớp học.",
+      "mark": "拿着书走进教室"
+     },
+     {
+      "zh": "她笑着跟朋友说话。",
+      "py": "tā xiào zhe gēn péngyou shuōhuà",
+      "vi": "Cô ấy vừa cười vừa nói chuyện với bạn."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói hành động diễn ra cùng lúc",
+    "body": "Dùng mẫu này khi một người làm hành động chính trong lúc vẫn giữ một tư thế hoặc tiếp tục một động tác khác. Động tác trước 着 thường kéo dài trong khi hành động sau diễn ra.",
+    "examples": [
+     {
+      "zh": "爸爸听着音乐做饭。",
+      "py": "bàba tīng zhe yīnyuè zuòfàn",
+      "vi": "Bố vừa nghe nhạc vừa nấu ăn.",
+      "mark": "听着音乐做饭"
+     },
+     {
+      "zh": "他站着等朋友下课。",
+      "py": "tā zhàn zhe děng péngyou xiàkè",
+      "vi": "Anh ấy đứng đợi bạn tan học."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 着 sau động từ đầu",
+    "body": "Động từ thứ nhất đứng ngay trước 着; động từ thứ hai theo sau để nêu hành động chính. Không đặt 着 trước động từ mà nó bổ nghĩa.",
+    "formula": "S + V1 + 着 + V2 + O",
+    "examples": [
+     {
+      "zh": "妹妹拿着杯子喝水。",
+      "py": "mèimei ná zhe bēizi hē shuǐ",
+      "vi": "Em gái cầm cốc uống nước."
+     },
+     {
+      "zh": "我们唱着歌回家了。",
+      "py": "wǒmen chàng zhe gē huí jiā le",
+      "vi": "Chúng tôi vừa hát vừa về nhà."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 着 sai vị trí",
+    "body": "着 phải theo ngay sau động từ thứ nhất. Đặt 着 trước động từ hoặc sau tân ngữ của động từ ấy sẽ làm câu sai trật tự.",
+    "mistakes": [
+     {
+      "wrong": "他着拿书走进教室。",
+      "right": "他拿着书走进教室。",
+      "why": "着 đứng sau động từ 拿, không đứng trước động từ."
+     },
+     {
+      "wrong": "我拿书着走回家。",
+      "right": "我拿着书走回家。",
+      "why": "着 cần theo ngay sau 拿, trước tân ngữ 书."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Cấu trúc nào diễn tả một động tác đi kèm với hành động chính?",
+    "options": [
+     "V1 + 着 + V2",
+     "V1 + 了 + V2",
+     "V1 + 过 + V2",
+     "V1 + 得 + V2"
+    ],
+    "answer": 0,
+    "explain": "着 đứng sau động từ thứ nhất để nối động tác đi kèm với hành động chính."
+   },
+   {
+    "q": "Chọn trật tự đúng để nói “vừa cười vừa nói chuyện với tôi”.",
+    "options": [
+     "跟我笑着说话",
+     "笑着跟我说话",
+     "着笑跟我说话",
+     "笑跟我着说话"
+    ],
+    "answer": 1,
+    "explain": "笑着 là động tác đi kèm, còn 跟我说话 là hành động chính."
+   },
+   {
+    "q": "Điền vào chỗ trống: 妹妹___杯子喝水。",
+    "options": [
+     "着拿",
+     "拿了着",
+     "拿着",
+     "着拿了"
+    ],
+    "answer": 2,
+    "explain": "着 theo sau động từ 拿 và đứng trước tân ngữ 杯子."
+   },
+   {
+    "q": "Chọn cấu trúc đúng để nối động tác đầu với hành động chính.",
+    "options": [
+     "着 + V1 + V2",
+     "V1 + V2 + 着",
+     "着 + V2 + V1",
+     "V1 + 着 + V2"
+    ],
+    "answer": 3,
+    "explain": "Mẫu đúng là động từ thứ nhất, 着, rồi đến động từ chính."
+   },
+   {
+    "q": "Mẫu nào phù hợp để diễn tả cầm sách trong lúc đi vào lớp?",
+    "options": [
+     "拿着书走进教室",
+     "拿书着走进教室",
+     "着拿书走进教室",
+     "拿了着书走进教室"
+    ],
+    "answer": 0,
+    "explain": "拿着书 nêu động tác cầm sách đi kèm với hành động đi vào lớp."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-17",
+  "level": 3,
+  "order": 17,
+  "title": "Câu hỏi nhấn mạnh với 不是……吗",
+  "titleZh": "反问强调",
+  "summary": "Học xong, bạn có thể dùng 不是……吗 để nhắc lại điều đã biết hoặc nhấn mạnh điều mình cho là đúng.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Hỏi để nhấn mạnh",
+    "body": "不是……吗？ thường là câu hỏi tu từ, dùng khi người nói nghĩ rằng thông tin trong câu đã đúng hoặc đã được nhắc đến. Người nói thường mong người nghe xác nhận hoặc nhớ lại điều đó.",
+    "formula": "不是 + mệnh đề khẳng định + 吗？",
+    "examples": [
+     {
+      "zh": "你不是已经到家了吗？",
+      "py": "nǐ bú shì yǐjīng dào jiā le ma",
+      "vi": "Chẳng phải bạn đã về đến nhà rồi sao?",
+      "mark": "不是已经到家了吗"
+     },
+     {
+      "zh": "她不是想喝水吗？",
+      "py": "tā bú shì xiǎng hē shuǐ ma",
+      "vi": "Chẳng phải cô ấy muốn uống nước sao?"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nhắc lại điều đã biết",
+    "body": "Dùng mẫu này khi nhắc lại kế hoạch, lời nói hoặc thông tin mà hai người đã biết. Ngữ điệu thường thể hiện sự ngạc nhiên nhẹ hoặc mong người nghe xác nhận.",
+    "examples": [
+     {
+      "zh": "你不是说今天来吗？",
+      "py": "nǐ bú shì shuō jīntiān lái ma",
+      "vi": "Chẳng phải bạn nói hôm nay sẽ đến sao?",
+      "mark": "不是说今天来吗"
+     },
+     {
+      "zh": "我们不是明天见面吗？",
+      "py": "wǒmen bú shì míngtiān jiànmiàn ma",
+      "vi": "Chẳng phải chúng ta gặp nhau vào ngày mai sao?"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Để 吗 ở cuối câu",
+    "body": "Đặt 不是 trước mệnh đề muốn nhấn mạnh và đặt 吗 ở cuối câu. Mệnh đề ở giữa vẫn giữ trật tự câu kể bình thường.",
+    "formula": "不是 + chủ ngữ + vị ngữ + 吗？",
+    "examples": [
+     {
+      "zh": "这不是你的书吗？",
+      "py": "zhè bú shì nǐ de shū ma",
+      "vi": "Đây chẳng phải là sách của bạn sao?"
+     },
+     {
+      "zh": "他不是在学校吗？",
+      "py": "tā bú shì zài xuéxiào ma",
+      "vi": "Chẳng phải anh ấy đang ở trường sao?"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không thêm một 吗 nữa",
+    "body": "Không ghép mẫu 是不是 với 吗 trong cùng một câu hỏi. Cũng không đặt 吗 giữa câu; với mẫu này, 吗 nằm ở cuối câu.",
+    "mistakes": [
+     {
+      "wrong": "你是不是明天来吗？",
+      "right": "你不是明天来吗？",
+      "why": "是不是 đã tạo câu hỏi lựa chọn, nên không thêm 吗 ở cuối khi muốn dùng mẫu phản vấn."
+     },
+     {
+      "wrong": "你吗不是今天来？",
+      "right": "你不是今天来吗？",
+      "why": "Trong mẫu này, 吗 đứng cuối câu chứ không đứng sau chủ ngữ."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Mẫu nào thường dùng để nhắc lại thông tin và nhấn mạnh điều người nói cho là đúng?",
+    "options": [
+     "不是 + mệnh đề + 吗？",
+     "是不是 + 吗 + mệnh đề？",
+     "吗 + 不是 + mệnh đề？",
+     "不是 + 吗 + mệnh đề？"
+    ],
+    "answer": 0,
+    "explain": "不是……吗？ nhắc lại một thông tin mà người nói cho là đã đúng hoặc đã được biết."
+   },
+   {
+    "q": "Chọn câu nhấn mạnh ý “Chẳng phải bạn ngày mai sẽ đến sao?”.",
+    "options": [
+     "你明天不是吗来？",
+     "你不是明天来吗？",
+     "你是不是明天来吗？",
+     "吗你不是明天来？"
+    ],
+    "answer": 1,
+    "explain": "Mệnh đề 你明天来 giữ trật tự câu kể và 吗 đứng cuối."
+   },
+   {
+    "q": "Trong mẫu 不是……吗？, 吗 thường đứng ở đâu?",
+    "options": [
+     "Trước chủ ngữ",
+     "Ngay sau 不是",
+     "Ở cuối câu",
+     "Ngay trước vị ngữ"
+    ],
+    "answer": 2,
+    "explain": "吗 là trợ từ cuối câu trong mẫu hỏi nhấn mạnh này."
+   },
+   {
+    "q": "Chọn câu có trật tự đúng.",
+    "options": [
+     "不是吗他在学校？",
+     "他吗不是在学校？",
+     "他在吗不是学校？",
+     "他不是在学校吗？"
+    ],
+    "answer": 3,
+    "explain": "Mệnh đề 在学校 đứng sau 不是, còn 吗 đứng ở cuối."
+   },
+   {
+    "q": "Từ nào thường khép lại mẫu câu hỏi 不是……吗？",
+    "options": [
+     "吗",
+     "呢",
+     "吧",
+     "了"
+    ],
+    "answer": 0,
+    "explain": "Mẫu này thường kết thúc bằng trợ từ nghi vấn 吗."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-18",
+  "level": 3,
+  "order": 18,
+  "title": "Diễn tả sự thay đổi với 越来越 và 越……越……",
+  "titleZh": "逐渐变化",
+  "summary": "Học xong, bạn có thể phân biệt một sự thay đổi tăng dần với mối quan hệ càng…càng…",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói mức độ tăng dần",
+    "body": "越来越 diễn tả mức độ thay đổi dần theo thời gian. 越……越…… nối hai vế để nói rằng mức độ ở vế sau thay đổi cùng với điều kiện hoặc hành động ở vế trước.",
+    "examples": [
+     {
+      "zh": "天气越来越热了，我们常在家喝水。",
+      "py": "tiānqì yuèláiyuè rè le wǒmen cháng zài jiā hē shuǐ",
+      "vi": "Thời tiết ngày càng nóng, chúng tôi thường uống nước ở nhà.",
+      "mark": "越来越热了"
+     },
+     {
+      "zh": "我觉得汉语越来越容易了。",
+      "py": "wǒ juéde hànyǔ yuèláiyuè róngyì le",
+      "vi": "Tôi thấy tiếng Trung ngày càng dễ."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn mẫu theo ý muốn nói",
+    "body": "Dùng 越来越 khi chỉ muốn nói một trạng thái tăng dần. Dùng 越……越…… khi muốn nối hai sự việc hoặc hai mức độ có quan hệ với nhau.",
+    "examples": [
+     {
+      "zh": "我越听他说话，越明白他的意思。",
+      "py": "wǒ yuè tīng tā shuōhuà yuè míngbai tā de yìsi",
+      "vi": "Tôi càng nghe anh ấy nói càng hiểu ý anh ấy.",
+      "mark": "越听他说话，越明白"
+     },
+     {
+      "zh": "孩子越大，越喜欢自己走路。",
+      "py": "háizi yuè dà yuè xǐhuan zìjǐ zǒulù",
+      "vi": "Đứa trẻ càng lớn càng thích tự đi bộ."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 越 trước phần thay đổi",
+    "body": "越来越 thường đứng ngay trước tính từ hoặc động từ chỉ cảm nhận. Với 越……越……, mỗi 越 đứng trước một phần tương ứng ở hai vế.",
+    "formula": "越来越 + tính từ/động từ; 越 + vế 1，越 + vế 2",
+    "examples": [
+     {
+      "zh": "这本书我越看越喜欢。",
+      "py": "zhè běn shū wǒ yuè kàn yuè xǐhuan",
+      "vi": "Tôi càng đọc cuốn sách này càng thích.",
+      "mark": "越看越喜欢"
+     },
+     {
+      "zh": "她越练习，汉字写得越好。",
+      "py": "tā yuè liànxí hànzì xiě de yuè hǎo",
+      "vi": "Cô ấy càng luyện tập thì viết chữ Hán càng tốt."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không trộn hai mẫu",
+    "body": "Không chèn 很 vào giữa 越来越 và phần miêu tả. Cũng không ghép lẫn hai mẫu thành một cấu trúc như 越来越…越… khi câu chỉ cần một mẫu.",
+    "mistakes": [
+     {
+      "wrong": "我很越来越喜欢汉语。",
+      "right": "我越来越喜欢汉语。",
+      "why": "越来越 đứng ngay trước phần miêu tả; không chen 很 vào giữa."
+     },
+     {
+      "wrong": "他越跑来越快。",
+      "right": "他越跑越快。",
+      "why": "Câu này dùng mẫu 越……越……, không ghép thêm 来 từ mẫu 越来越."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Mẫu nào diễn tả một trạng thái tăng dần theo thời gian?",
+    "options": [
+     "越来越 + tính từ/động từ",
+     "越 + danh từ + 来 + tính từ",
+     "很 + 越来越 + tính từ",
+     "越 + tính từ + 越来越"
+    ],
+    "answer": 0,
+    "explain": "越来越 đứng trước phần miêu tả để diễn tả sự thay đổi dần."
+   },
+   {
+    "q": "Chọn cấu trúc đúng để nói “càng học càng thích”.",
+    "options": [
+     "越来越学，越来越喜欢",
+     "越学越喜欢",
+     "越喜欢学来",
+     "很越学很喜欢"
+    ],
+    "answer": 1,
+    "explain": "Hai 越 đứng trước hai phần tương ứng để tạo mẫu 越……越……."
+   },
+   {
+    "q": "Điền vào chỗ trống: 天气___冷了。",
+    "options": [
+     "越冷来",
+     "很越来越",
+     "越来越",
+     "来越越"
+    ],
+    "answer": 2,
+    "explain": "越来越 đứng trước tính từ 冷 để diễn tả thời tiết ngày càng lạnh."
+   },
+   {
+    "q": "Chọn câu đúng theo mẫu “càng nghe càng hiểu”.",
+    "options": [
+     "我越越听明白。",
+     "我越来越听，越来越明白。",
+     "我听越越明白。",
+     "我越听越明白。"
+    ],
+    "answer": 3,
+    "explain": "越 đứng trước động tác 听 và trước kết quả 明白."
+   },
+   {
+    "q": "Câu nào dùng 越来越 đúng vị trí?",
+    "options": [
+     "汉语越来越容易了",
+     "汉语很越来越容易了",
+     "汉语容易越来越了",
+     "汉语越来很容易了"
+    ],
+    "answer": 0,
+    "explain": "越来越 đứng ngay trước tính từ 容易."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-19",
+  "level": 3,
+  "order": 19,
+  "title": "Bổ sung hoặc loại trừ với 除了……以外",
+  "titleZh": "补充与排除",
+  "summary": "Học xong, bạn có thể dùng 除了……以外 kết hợp với 还、也 hoặc 都 để bổ sung hay nêu phần còn lại.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu phần ngoài điều đã kể",
+    "body": "除了……以外 dùng để nêu một người hoặc sự việc làm mốc. Vế sau dùng 还 hoặc 也 để bổ sung, hoặc dùng 都 để nói về tất cả những phần còn lại.",
+    "formula": "除了 + A +（以外），mệnh đề có 还/也/都",
+    "examples": [
+     {
+      "zh": "除了汉语以外，我还学习英语。",
+      "py": "chúle hànyǔ yǐwài wǒ hái xuéxí yīngyǔ",
+      "vi": "Ngoài tiếng Trung ra, tôi còn học tiếng Anh.",
+      "mark": "除了汉语以外，我还"
+     },
+     {
+      "zh": "除了他以外，我们都认识这个人。",
+      "py": "chúle tā yǐwài wǒmen dōu rènshi zhège rén",
+      "vi": "Ngoài anh ấy ra, chúng tôi đều biết người này."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Thêm ý hoặc nói phần còn lại",
+    "body": "Dùng 还 hoặc 也 khi muốn thêm một việc hay một đặc điểm. Dùng 都 khi muốn nói rằng tất cả những người hoặc sự việc còn lại đều như vậy.",
+    "examples": [
+     {
+      "zh": "除了看书以外，弟弟也喜欢听音乐。",
+      "py": "chúle kàn shū yǐwài dìdi yě xǐhuan tīng yīnyuè",
+      "vi": "Ngoài đọc sách ra, em trai cũng thích nghe nhạc.",
+      "mark": "除了看书以外，弟弟也"
+     },
+     {
+      "zh": "除了老师以外，大家都到了。",
+      "py": "chúle lǎoshī yǐwài dàjiā dōu dào le",
+      "vi": "Ngoài thầy cô ra, mọi người đều đã đến."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt đúng vị trí của từ bổ sung",
+    "body": "A đứng ngay sau 除了; 以外 có thể được lược bỏ. Trong vế sau, 还 hoặc 也 thường đứng trước động từ, còn 都 đứng trước phần vị ngữ chỉ tất cả.",
+    "formula": "除了 + A +（以外），S + 还/也/都 + vị ngữ",
+    "examples": [
+     {
+      "zh": "除了水以外，我还想喝茶。",
+      "py": "chúle shuǐ yǐwài wǒ hái xiǎng hē chá",
+      "vi": "Ngoài nước ra, tôi còn muốn uống trà.",
+      "mark": "我还想喝茶"
+     },
+     {
+      "zh": "除了妈妈以外，我们都知道。",
+      "py": "chúle māma yǐwài wǒmen dōu zhīdào",
+      "vi": "Ngoài mẹ ra, chúng tôi đều biết."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Giữ đúng trật tự cụm",
+    "body": "Đặt đối tượng A ngay sau 除了, rồi mới đến 以外. 还 và 也 đứng sau chủ ngữ của vế sau, trước động từ hoặc cụm vị ngữ.",
+    "mistakes": [
+     {
+      "wrong": "除了以外汉语，我还学英语。",
+      "right": "除了汉语以外，我还学英语。",
+      "why": "Đối tượng 汉语 phải đứng ngay sau 除了."
+     },
+     {
+      "wrong": "除了汉语以外，还我学英语。",
+      "right": "除了汉语以外，我还学英语。",
+      "why": "还 đứng sau chủ ngữ 我, trước động từ 学."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Từ nào thường mở đầu cụm nêu phần được đem ra làm mốc?",
+    "options": [
+     "除了",
+     "因为",
+     "如果",
+     "虽然"
+    ],
+    "answer": 0,
+    "explain": "除了 đứng trước đối tượng làm mốc trong cấu trúc này."
+   },
+   {
+    "q": "Chọn thứ tự đúng để nói “ngoài tiếng Trung ra, tôi còn học tiếng Anh”.",
+    "options": [
+     "除了以外汉语，我还学习英语",
+     "除了汉语以外，我还学习英语",
+     "除了汉语，我学习还以外英语",
+     "以外除了汉语，我还学习英语"
+    ],
+    "answer": 1,
+    "explain": "汉语 theo sau 除了, còn 还 đứng trước động từ 学习."
+   },
+   {
+    "q": "Từ nào phù hợp khi muốn nói tất cả những người còn lại đều biết?",
+    "options": [
+     "也",
+     "还",
+     "都",
+     "很"
+    ],
+    "answer": 2,
+    "explain": "都 diễn tả rằng toàn bộ phần còn lại đều có đặc điểm hoặc hành động ấy."
+   },
+   {
+    "q": "Chọn câu đúng với nghĩa “Ngoài mẹ ra, chúng tôi đều biết”.",
+    "options": [
+     "除了妈妈以外，都我们知道。",
+     "以外除了妈妈，我们都知道。",
+     "除了以外妈妈，我们都知道。",
+     "除了妈妈以外，我们都知道。"
+    ],
+    "answer": 3,
+    "explain": "Cụm 除了妈妈以外 đứng đầu, còn 都 đứng trước động từ 知道."
+   },
+   {
+    "q": "Chọn từ phù hợp để bổ sung một việc khác: 除了看书以外，我___喜欢听音乐。",
+    "options": [
+     "也",
+     "都",
+     "很",
+     "才"
+    ],
+    "answer": 0,
+    "explain": "也 đứng trước 喜欢 để bổ sung thêm một sở thích."
+   }
+  ]
+ }
+]

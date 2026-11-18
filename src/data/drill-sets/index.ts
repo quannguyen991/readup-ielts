@@ -3,6 +3,7 @@
  * Nguồn: raw/<dạng>/NN.json (viết tay hoặc sinh bằng luật), gộp bằng
  * `node scripts/ielts/build-drill-sets.mjs`. Test khoá số lượng ở index.test.ts.
  */
+import type { ExplainEntry } from './explain';
 import tfng from './generated/reading-tfng.json';
 import headings from './generated/reading-matching-headings.json';
 import summary from './generated/reading-summary-completion.json';
@@ -11,6 +12,16 @@ import mcq from './generated/reading-multiple-choice.json';
 import form from './generated/listening-form-completion.json';
 import maps from './generated/listening-map-labelling.json';
 import lmatch from './generated/listening-matching.json';
+import readingYnng from './generated/reading-ynng.json';
+import readingMatchingFeatures from './generated/reading-matching-features.json';
+import readingMatchingEndings from './generated/reading-matching-endings.json';
+import readingSentenceCompletion from './generated/reading-sentence-completion.json';
+import readingTableFlowCompletion from './generated/reading-table-flow-completion.json';
+import readingShortAnswer from './generated/reading-short-answer.json';
+import listeningMcq from './generated/listening-mcq.json';
+import listeningSentenceCompletion from './generated/listening-sentence-completion.json';
+import listeningTableCompletion from './generated/listening-table-completion.json';
+import listeningShortAnswer from './generated/listening-short-answer.json';
 
 export type DrillSetQuestion = {
   prompt: string;
@@ -22,6 +33,16 @@ export type DrillSetQuestion = {
   quote?: string;
   /** Chỉ Map labelling: câu này dùng bản đồ thứ mấy trong set. */
   mapIndex?: number;
+  /** Bài tổng hợp: dạng của câu này (set tổng hợp gồm nhiều dạng). */
+  typeId?: string;
+  /** Bài tổng hợp Reading: bài đọc riêng của câu (hiện trong khung cuộn như bài đọc của set). */
+  passage?: string;
+  /** Bài tổng hợp Listening: kịch bản riêng của câu. */
+  script?: string;
+  /** Tên phần trong bài tổng hợp, ví dụ "Part 2 · Matching Headings". */
+  part?: string;
+  /** Lời giải 3 bước (nếu đã có), gắn khi dựng bài. */
+  ex?: ExplainEntry | null;
 };
 
 export type DrillMap = { title: string; entrance: string; cells: string[] };
@@ -38,6 +59,7 @@ export type DrillSet = {
 };
 
 export const TFNG_OPTIONS = ['TRUE', 'FALSE', 'NOT GIVEN'];
+export const YNNG_OPTIONS = ['YES', 'NO', 'NOT GIVEN'];
 
 const BY_TYPE: Record<string, DrillSet[]> = {
   'reading-tfng': tfng as DrillSet[],
@@ -48,6 +70,16 @@ const BY_TYPE: Record<string, DrillSet[]> = {
   'listening-form-completion': form as DrillSet[],
   'listening-map-labelling': maps as DrillSet[],
   'listening-matching': lmatch as DrillSet[],
+  'reading-ynng': readingYnng as DrillSet[],
+  'reading-matching-features': readingMatchingFeatures as DrillSet[],
+  'reading-matching-endings': readingMatchingEndings as DrillSet[],
+  'reading-sentence-completion': readingSentenceCompletion as DrillSet[],
+  'reading-table-flow-completion': readingTableFlowCompletion as DrillSet[],
+  'reading-short-answer': readingShortAnswer as DrillSet[],
+  'listening-mcq': listeningMcq as DrillSet[],
+  'listening-sentence-completion': listeningSentenceCompletion as DrillSet[],
+  'listening-table-completion': listeningTableCompletion as DrillSet[],
+  'listening-short-answer': listeningShortAnswer as DrillSet[],
 };
 
 export function getDrillSets(typeId: string): DrillSet[] {
@@ -65,6 +97,7 @@ export function hasDrillSets(typeId: string): boolean {
 /** Phương án của một câu: ghi đè theo câu > của set > bộ cố định của TFNG. */
 export function optionsOf(typeId: string, set: DrillSet, q: DrillSetQuestion): string[] | undefined {
   if (typeId === 'reading-tfng') return TFNG_OPTIONS;
+  if (typeId === 'reading-ynng') return YNNG_OPTIONS;
   return q.options ?? set.options;
 }
 

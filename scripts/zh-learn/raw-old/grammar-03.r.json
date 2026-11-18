@@ -1,0 +1,598 @@
+[
+ {
+  "id": "zh-g-h1-13",
+  "level": 1,
+  "order": 13,
+  "title": "了1: hành động đã hoàn thành",
+  "titleZh": "完成了",
+  "summary": "Bạn sẽ dùng 了1 để kể một hành động đã hoàn tất và đặt câu phủ định với 没.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "了1 đánh dấu hành động hoàn tất",
+    "body": "了1 đứng sau động từ để cho biết hành động đã được thực hiện xong. Thời điểm thường được nêu rõ bằng từ chỉ thời gian.",
+    "examples": [
+     {
+      "zh": "我昨天在家看了书。",
+      "py": "Wǒ zuótiān zài jiā kàn le shū",
+      "vi": "Hôm qua tôi đã đọc sách ở nhà."
+     },
+     {
+      "zh": "妈妈中午吃了米饭。",
+      "py": "Māma zhōngwǔ chī le mǐfàn",
+      "vi": "Buổi trưa mẹ đã ăn cơm."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Kể việc đã làm xong",
+    "body": "Dùng 了1 khi muốn kể một việc đã hoàn thành trong một hoàn cảnh hoặc khoảng thời gian cụ thể.",
+    "examples": [
+     {
+      "zh": "今天我在学校喝了水。",
+      "py": "Jīntiān wǒ zài xuéxiào hē le shuǐ",
+      "vi": "Hôm nay tôi đã uống nước ở trường."
+     },
+     {
+      "zh": "爸爸昨天买了书。",
+      "py": "Bàba zuótiān mǎi le shū",
+      "vi": "Hôm qua bố đã mua sách."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 了 sau động từ",
+    "body": "Trong mẫu câu cơ bản, 了1 theo sau động từ và đứng trước tân ngữ. Từ chỉ thời gian thường đứng trước động từ.",
+    "formula": "S + (thời gian) + V + 了 + O",
+    "examples": [
+     {
+      "zh": "我们晚上看了电视。",
+      "py": "Wǒmen wǎnshang kàn le diànshì",
+      "vi": "Buổi tối chúng tôi đã xem tivi."
+     },
+     {
+      "zh": "姐姐今天在学校学了中文。",
+      "py": "Jiějie jīntiān zài xuéxiào xué le zhōngwén",
+      "vi": "Hôm nay chị đã học tiếng Trung ở trường."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Phủ định dùng 没",
+    "body": "Khi phủ định hành động chưa xảy ra hoặc chưa hoàn tất, dùng 没 hoặc 没有 trước động từ và bỏ 了1.",
+    "examples": [
+     {
+      "zh": "妈妈没喝茶，喝了水。",
+      "py": "Māma méi hē chá, hē le shuǐ",
+      "vi": "Mẹ không uống trà mà đã uống nước."
+     },
+     {
+      "zh": "我没有看电视，我看了书。",
+      "py": "Wǒ méiyǒu kàn diànshì, wǒ kàn le shū",
+      "vi": "Tôi không xem tivi mà đã đọc sách."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không ghép 没 với 了1",
+    "body": "Khi câu dùng 没 để phủ định hành động đã xảy ra, không đặt thêm 了1 sau động từ.",
+    "mistakes": [
+     {
+      "wrong": "我昨天没看了书。",
+      "right": "我昨天没看书。",
+      "why": "没 đã phủ định việc xảy ra nên không dùng thêm 了1."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào kể việc đọc sách đã hoàn thành hôm qua?",
+    "options": [
+     "我昨天在家看了书。",
+     "我每天在家看书。",
+     "我昨天不看书。",
+     "我明天在家看书。"
+    ],
+    "answer": 0,
+    "explain": "了1 đứng sau 看 để đánh dấu việc đọc sách đã hoàn tất."
+   },
+   {
+    "q": "Muốn nói “Hôm qua tôi không đọc sách”, chọn câu đúng.",
+    "options": [
+     "我昨天没看了书。",
+     "我昨天没看书。",
+     "我昨天不看了书。",
+     "我昨天看没书。"
+    ],
+    "answer": 1,
+    "explain": "Câu phủ định hành động đã xảy ra dùng 没 + động từ, không thêm 了1."
+   },
+   {
+    "q": "Chọn câu có trật tự đúng để nói “Hôm qua tôi đã đọc sách”.",
+    "options": [
+     "我昨天了看书。",
+     "我看了昨天书。",
+     "我昨天看了书。",
+     "我看书了昨天。"
+    ],
+    "answer": 2,
+    "explain": "Thời gian đứng trước động từ, còn 了1 đứng sau động từ."
+   },
+   {
+    "q": "Câu nào dùng 了1 để kể một hành động đã hoàn tất?",
+    "options": [
+     "妈妈现在不忙了。",
+     "天冷了，我们回家吧。",
+     "我不喝茶了，我喝水。",
+     "我昨天喝了水。"
+    ],
+    "answer": 3,
+    "explain": "我昨天喝了水 kể việc uống nước đã hoàn thành trong quá khứ."
+   },
+   {
+    "q": "Câu nào nói “Tôi đã không xem tivi” đúng cách?",
+    "options": [
+     "我没有看电视。",
+     "我没有看了电视。",
+     "我不看了电视。",
+     "我没了看电视。"
+    ],
+    "answer": 0,
+    "explain": "没有 đứng trước động từ và không đi kèm 了1 trong mẫu phủ định này."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-14",
+  "level": 1,
+  "order": 14,
+  "title": "了2: trạng thái thay đổi",
+  "titleZh": "变化了",
+  "summary": "Bạn sẽ dùng 了2 ở cuối câu để báo một trạng thái hoặc tình hình đã thay đổi.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "了2 báo điều mới xảy ra",
+    "body": "了2 thường đứng cuối câu để cho biết tình hình hiện tại đã khác trước. Nó nhấn mạnh sự thay đổi, không chỉ kể một hành động hoàn tất.",
+    "examples": [
+     {
+      "zh": "我今天不忙了，可以看书了。",
+      "py": "Wǒ jīntiān bù máng le kěyǐ kàn shū le",
+      "vi": "Hôm nay tôi không bận nữa, có thể đọc sách rồi."
+     },
+     {
+      "zh": "天冷了，妈妈现在在家。",
+      "py": "Tiān lěng le, māma xiànzài zài jiā",
+      "vi": "Trời lạnh rồi, bây giờ mẹ ở nhà."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Báo trạng thái mới",
+    "body": "Dùng 了2 khi thời tiết, kế hoạch, mong muốn hoặc tình trạng của ai đó vừa thay đổi.",
+    "examples": [
+     {
+      "zh": "今天不下雨了，我们去学校吧。",
+      "py": "Jīntiān bú xiàyǔ le wǒmen qù xuéxiào ba",
+      "vi": "Hôm nay trời không mưa nữa, chúng ta đi học nhé."
+     },
+     {
+      "zh": "我不想喝茶了，我想喝水。",
+      "py": "Wǒ bù xiǎng hē chá le wǒ xiǎng hē shuǐ",
+      "vi": "Tôi không muốn uống trà nữa, tôi muốn uống nước."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 了 ở cuối câu",
+    "body": "Với 了2, đặt 了 sau vị ngữ hoặc ở cuối mệnh đề để nhấn mạnh trạng thái mới.",
+    "formula": "S + (thời gian) + vị ngữ + 了",
+    "examples": [
+     {
+      "zh": "妈妈现在不忙了，她可以做饭了。",
+      "py": "Māma xiànzài bù máng le tā kěyǐ zuò fàn le",
+      "vi": "Bây giờ mẹ không bận nữa, mẹ có thể nấu cơm rồi."
+     },
+     {
+      "zh": "我现在不是学生了，我是老师。",
+      "py": "Wǒ xiànzài bú shì xuésheng le wǒ shì lǎoshī",
+      "vi": "Bây giờ tôi không còn là học sinh nữa, tôi là giáo viên."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "了2 thường đứng cuối mệnh đề",
+    "body": "Khi muốn nói một việc không còn tiếp diễn hoặc tình hình đã đổi, đặt 了 sau phần vị ngữ thay vì chen vào giữa động từ và tân ngữ.",
+    "examples": [
+     {
+      "zh": "姐姐不看电视了，她看书。",
+      "py": "Jiějie bú kàn diànshì le tā kàn shū",
+      "vi": "Chị không xem tivi nữa, chị đọc sách."
+     },
+     {
+      "zh": "天气好了，我们回家吧。",
+      "py": "Tiānqì hǎo le wǒmen huí jiā ba",
+      "vi": "Thời tiết tốt lên rồi, chúng ta về nhà nhé."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đặt 了 giữa động từ và tân ngữ",
+    "body": "Nếu 了 báo việc không còn tiếp diễn, hãy đặt nó sau cụm động từ và tân ngữ.",
+    "mistakes": [
+     {
+      "wrong": "我不看了书。",
+      "right": "我不看书了。",
+      "why": "了2 đứng cuối câu để báo rằng hiện tại tôi không đọc sách nữa."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào cho biết tình trạng bận rộn đã thay đổi?",
+    "options": [
+     "我现在不忙了。",
+     "我现在不忙。",
+     "我现在很忙。",
+     "我今天很忙。"
+    ],
+    "answer": 0,
+    "explain": "了 ở cuối câu cho biết bây giờ người nói không còn bận như trước."
+   },
+   {
+    "q": "Chọn câu báo trời bắt đầu mưa rồi mọi người đọc sách ở nhà.",
+    "options": [
+     "今天下雨，我们在家。",
+     "今天我们在家看书。",
+     "下雨了，我们在家看书。",
+     "我们今天看书了。"
+    ],
+    "answer": 2,
+    "explain": "下雨了 dùng 了2 để báo thời tiết đã chuyển sang mưa."
+   },
+   {
+    "q": "Câu nào nói “Tôi không uống trà nữa” với 了2 đúng chỗ?",
+    "options": [
+     "我不喝了茶。",
+     "我了不喝茶。",
+     "我不喝了茶水。",
+     "我不喝茶了。"
+    ],
+    "answer": 3,
+    "explain": "了2 đứng cuối câu sau cụm 喝茶."
+   },
+   {
+    "q": "Câu nào thể hiện kế hoạch đã đổi, hôm nay không đi học nữa?",
+    "options": [
+     "我今天不去学校了。",
+     "我今天不去学校。",
+     "我今天去学校。",
+     "我在学校看书。"
+    ],
+    "answer": 0,
+    "explain": "了 ở cuối câu báo kế hoạch hiện tại đã thay đổi."
+   },
+   {
+    "q": "Trong câu 我不看书了, 了 diễn tả điều gì?",
+    "options": [
+     "Hành động đọc đã hoàn tất, 了 đứng sau 看.",
+     "Tình hình đổi: bây giờ không đọc nữa.",
+     "Chủ ngữ của câu.",
+     "Thời gian trong quá khứ."
+    ],
+    "answer": 1,
+    "explain": "了 đứng cuối câu cho biết người nói không còn đọc sách nữa."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-15",
+  "level": 1,
+  "order": 15,
+  "title": "在/正在: hành động đang diễn ra",
+  "titleZh": "正在进行",
+  "summary": "Bạn sẽ dùng 在 hoặc 正在 trước động từ để nói hành động đang diễn ra, có thể thêm 呢 ở cuối câu.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "在 và 正在 đánh dấu việc đang làm",
+    "body": "在 hoặc 正在 đứng trước động từ để báo hành động đang diễn ra tại thời điểm nói. 呢 ở cuối câu có thể nhấn mạnh trạng thái đang tiếp diễn.",
+    "examples": [
+     {
+      "zh": "我现在正在看书呢。",
+      "py": "Wǒ xiànzài zhèngzài kàn shū ne",
+      "vi": "Bây giờ tôi đang đọc sách."
+     },
+     {
+      "zh": "老师在说中文呢，大家在听。",
+      "py": "Lǎoshī zài shuō zhōngwén ne dàjiā zài tīng",
+      "vi": "Thầy cô đang nói tiếng Trung, mọi người đang nghe."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói việc đang diễn ra ngay lúc đó",
+    "body": "Dùng mẫu này khi muốn trả lời người khác đang làm gì hoặc miêu tả những việc đang xảy ra cùng lúc.",
+    "examples": [
+     {
+      "zh": "妈妈在做饭呢，爸爸在看电视。",
+      "py": "Māma zài zuò fàn ne bàba zài kàn diànshì",
+      "vi": "Mẹ đang nấu cơm, bố đang xem tivi."
+     },
+     {
+      "zh": "弟弟现在正在睡觉呢。",
+      "py": "Dìdi xiànzài zhèngzài shuìjiào ne",
+      "vi": "Bây giờ em trai đang ngủ."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 在/正在 trước động từ",
+    "body": "Đặt 在 hoặc 正在 sau chủ ngữ và trước động từ. 呢 thường đặt ở cuối câu, nhưng có thể lược bỏ.",
+    "formula": "S + 在/正在 + V + O + (呢)",
+    "examples": [
+     {
+      "zh": "姐姐在写字呢，妹妹在看书。",
+      "py": "Jiějie zài xiě zì ne mèimei zài kàn shū",
+      "vi": "Chị đang viết chữ, em gái đang đọc sách."
+     },
+     {
+      "zh": "我正在喝水呢，哥哥正在喝茶。",
+      "py": "Wǒ zhèngzài hē shuǐ ne gēge zhèngzài hē chá",
+      "vi": "Tôi đang uống nước, anh trai đang uống trà."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Phân biệt 在 chỉ nơi chốn và hành động",
+    "body": "在 đứng trước địa điểm cho biết ai ở đâu; 在 đứng trước động từ đánh dấu hành động đang diễn ra.",
+    "examples": [
+     {
+      "zh": "我在家呢，妈妈在学校。",
+      "py": "Wǒ zài jiā ne māma zài xuéxiào",
+      "vi": "Tôi ở nhà, mẹ ở trường."
+     },
+     {
+      "zh": "我在看书呢，妹妹在写字。",
+      "py": "Wǒ zài kàn shū ne mèimei zài xiě zì",
+      "vi": "Tôi đang đọc sách, em gái đang viết chữ."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 呢 ở cuối câu",
+    "body": "呢 thường đứng sau phần hành động đang diễn ra, không chen giữa cụm chỉ nơi chốn và động từ.",
+    "mistakes": [
+     {
+      "wrong": "我在家了看书呢。",
+      "right": "我在家看书呢。",
+      "why": "在家 chỉ nơi chốn; 呢 đặt cuối câu để nhấn mạnh việc đọc sách đang diễn ra."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào nói rõ hành động đang diễn ra ngay bây giờ?",
+    "options": [
+     "我现在在学校。",
+     "我昨天在家看书。",
+     "我现在正在看书呢。",
+     "我明天看书。"
+    ],
+    "answer": 2,
+    "explain": "正在 đứng trước động từ 看 để cho biết việc đọc sách đang diễn ra."
+   },
+   {
+    "q": "Chọn câu đúng để nói em trai đang ngủ ở nhà.",
+    "options": [
+     "弟弟睡觉呢正在家里。",
+     "弟弟在家呢睡觉。",
+     "弟弟在家睡觉正在呢。",
+     "弟弟正在家里睡觉呢。"
+    ],
+    "answer": 3,
+    "explain": "正在 đứng trước cụm hành động 睡觉 và 呢 đứng cuối câu."
+   },
+   {
+    "q": "Câu nào có trật tự đúng để nói “Tôi đang đọc sách ở nhà”?",
+    "options": [
+     "我现在在家看书呢。",
+     "我现在呢在家看书。",
+     "我在家了看书呢。",
+     "我看呢书在家。"
+    ],
+    "answer": 0,
+    "explain": "Cụm nơi chốn 在家 đứng trước hành động 看书, còn 呢 đứng cuối câu."
+   },
+   {
+    "q": "Câu nào có 在 đứng ngay trước động từ để đánh dấu hành động đang diễn ra?",
+    "options": [
+     "我在学校看书呢。",
+     "我现在在看书呢。",
+     "我在家里看书呢。",
+     "我现在在学校。"
+    ],
+    "answer": 1,
+    "explain": "Trong 我现在在看书呢, 在 đứng trực tiếp trước động từ 看."
+   },
+   {
+    "q": "Câu nào vừa dùng 正在 đúng vừa không có 呢 ở cuối?",
+    "options": [
+     "我正在家里看书呢。",
+     "我昨天在家看书。",
+     "我今天正在喝水。",
+     "我明天回家吃饭。"
+    ],
+    "answer": 2,
+    "explain": "正在喝水 diễn tả hành động hiện đang diễn ra; 呢 có thể lược bỏ."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-16",
+  "level": 1,
+  "order": 16,
+  "title": "Động từ năng nguyện 会、能、想、要、可以",
+  "titleZh": "能愿动词",
+  "summary": "Bạn sẽ chọn 会、能、想、要 hoặc 可以 để diễn đạt năng lực, điều kiện, mong muốn, dự định và sự cho phép.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu khả năng bằng 会 và 能",
+    "body": "Động từ năng nguyện đứng trước động từ chính. 会 thường nói kỹ năng đã học; 能 thường nói có khả năng hoặc điều kiện thực hiện.",
+    "examples": [
+     {
+      "zh": "我会说一点儿中文。",
+      "py": "Wǒ huì shuō yìdiǎnr zhōngwén",
+      "vi": "Tôi biết nói một chút tiếng Trung."
+     },
+     {
+      "zh": "姐姐会写中文吗？",
+      "py": "Jiějie huì xiě zhōngwén ma",
+      "vi": "Chị có biết viết tiếng Trung không?"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói mong muốn và dự định",
+    "body": "想 diễn đạt mong muốn hoặc dự định nhẹ nhàng; 要 thường diễn đạt ý định rõ hơn hoặc điều cần làm.",
+    "examples": [
+     {
+      "zh": "妈妈想喝水，不想喝茶。",
+      "py": "Māma xiǎng hē shuǐ bù xiǎng hē chá",
+      "vi": "Mẹ muốn uống nước, không muốn uống trà."
+     },
+     {
+      "zh": "哥哥要回家吃饭。",
+      "py": "Gēge yào huí jiā chī fàn",
+      "vi": "Anh trai định về nhà ăn cơm."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt động từ năng nguyện trước động từ chính",
+    "body": "Sau chủ ngữ, đặt một động từ năng nguyện rồi đến động từ chính. 可以 thường dùng để hỏi hoặc cho phép làm một việc.",
+    "formula": "S + 会/能/想/要/可以 + V",
+    "examples": [
+     {
+      "zh": "你可以在这里看书吗？",
+      "py": "Nǐ kěyǐ zài zhèlǐ kàn shū ma",
+      "vi": "Bạn có thể đọc sách ở đây không?"
+     },
+     {
+      "zh": "老师说今天我们可以回家。",
+      "py": "Lǎoshī shuō jīntiān wǒmen kěyǐ huí jiā",
+      "vi": "Thầy cô nói hôm nay chúng tôi có thể về nhà."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Chọn từ theo ý nghĩa muốn nói",
+    "body": "会 nói về kỹ năng; 能 nói về khả năng hoặc điều kiện hiện tại; 可以 thường xin phép hoặc cho phép. Phủ định đặt 不 trước động từ năng nguyện.",
+    "examples": [
+     {
+      "zh": "姐姐会说中文，今天能来学校。",
+      "py": "Jiějie huì shuō zhōngwén jīntiān néng lái xuéxiào",
+      "vi": "Chị biết nói tiếng Trung, hôm nay có thể đến trường."
+     },
+     {
+      "zh": "我今天很忙，不能看电视。",
+      "py": "Wǒ jīntiān hěn máng bù néng kàn diànshì",
+      "vi": "Hôm nay tôi rất bận, không thể xem tivi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không xếp chồng hai từ năng nguyện",
+    "body": "Trong mẫu cơ bản, chỉ dùng một động từ năng nguyện trước động từ chính.",
+    "mistakes": [
+     {
+      "wrong": "我可以会说中文。",
+      "right": "我会说一点儿中文。",
+      "why": "可以 và 会 đều là động từ năng nguyện, không đặt liền nhau trước một động từ chính trong mẫu này."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu diễn đạt kỹ năng đã học là biết nói tiếng Trung.",
+    "options": [
+     "我想说一点儿中文。",
+     "我要说一点儿中文。",
+     "我可以在这里说中文吗？",
+     "我会说一点儿中文。"
+    ],
+    "answer": 3,
+    "explain": "会 nói về kỹ năng người nói đã học được."
+   },
+   {
+    "q": "Chọn câu nói hôm nay có điều kiện để đi học.",
+    "options": [
+     "今天我能去学校。",
+     "今天我想去学校。",
+     "今天我会去学校。",
+     "今天我要去学校。"
+    ],
+    "answer": 0,
+    "explain": "能 diễn đạt khả năng hoặc điều kiện thực hiện trong tình hình hiện tại."
+   },
+   {
+    "q": "Chọn câu hỏi xin phép đọc sách ở đây.",
+    "options": [
+     "你想在这里看书吗？",
+     "你可以在这里看书吗？",
+     "你会在这里看书吗？",
+     "你要在这里看书吗？"
+    ],
+    "answer": 1,
+    "explain": "可以 dùng để hỏi xem việc đọc sách ở đây có được phép không."
+   },
+   {
+    "q": "Câu nào nói “Mẹ muốn uống nước”?",
+    "options": [
+     "妈妈能喝水。",
+     "妈妈会喝水。",
+     "妈妈想喝水。",
+     "妈妈可以喝水。"
+    ],
+    "answer": 2,
+    "explain": "想 diễn đạt mong muốn uống nước."
+   },
+   {
+    "q": "Chọn câu đúng với cấu trúc động từ năng nguyện đứng trước động từ chính.",
+    "options": [
+     "姐姐写会中文。",
+     "会姐姐写中文。",
+     "姐姐中文会写。",
+     "姐姐会写中文。"
+    ],
+    "answer": 3,
+    "explain": "会 đứng sau chủ ngữ 姐姐 và trước động từ chính 写."
+   }
+  ]
+ }
+]

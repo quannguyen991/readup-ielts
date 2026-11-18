@@ -32,10 +32,10 @@ export default function CreateTutor() {
   return (
     <HubScreen title="Tạo của riêng tôi" subtitle="Đặt nhân vật và tình huống, rồi nói chuyện như thật" back>
       <View style={[GLASS_CARD, { padding: 16, gap: 12 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Nhân vật</Text>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Nhân vật</Text>
         <TextInput value={role} onChangeText={setRole} placeholder="ví dụ: chủ quán cà phê ở Sydney" placeholderTextColor={HUB.muted} maxLength={160} style={{ height: 44, borderRadius: 10, paddingHorizontal: 12, color: HUB.ink, backgroundColor: HUB.glassStrong }} />
 
-        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Giọng điệu</Text>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Giọng điệu</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           {TONES.map((t) => {
             const on = t === tone;
@@ -47,15 +47,15 @@ export default function CreateTutor() {
           })}
         </View>
 
-        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Tình huống</Text>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Tình huống</Text>
         <TextInput value={situation} onChangeText={setSituation} placeholder="ví dụ: khách hỏi vì sao đơn hàng bị chậm" placeholderTextColor={HUB.muted} maxLength={160} multiline style={{ minHeight: 60, borderRadius: 10, padding: 12, color: HUB.ink, backgroundColor: HUB.glassStrong, textAlignVertical: 'top' }} />
 
-        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Mục tiêu của bạn (tuỳ chọn)</Text>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '400' }}>Mục tiêu của bạn (tuỳ chọn)</Text>
         <TextInput value={goal} onChangeText={setGoal} placeholder="ví dụ: xin lỗi và đề xuất giải pháp" placeholderTextColor={HUB.muted} maxLength={160} style={{ height: 44, borderRadius: 10, paddingHorizontal: 12, color: HUB.ink, backgroundColor: HUB.glassStrong }} />
 
         {error ? <Text style={{ color: HUB.red, fontSize: 13 }}>{error}</Text> : null}
         <Pressable accessibilityRole="button" onPress={start} style={{ height: 48, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-          <Text style={{ color: '#fff', fontWeight: '800' }}>Bắt đầu hội thoại</Text>
+          <Text style={{ color: '#fff', fontWeight: '400' }}>Bắt đầu hội thoại</Text>
         </Pressable>
       </View>
     </HubScreen>

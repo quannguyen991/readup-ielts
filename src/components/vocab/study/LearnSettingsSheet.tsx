@@ -9,6 +9,7 @@ import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { STUDY_THEMES, THEME_ORDER } from './study-theme';
+import { MeaningLangControl } from './MeaningLangControl';
 import { ArtGallery } from '@/components/art/ArtBackdrop';
 import { useBackdropStore } from '@/store/useBackdropStore';
 
@@ -28,6 +29,7 @@ export function LearnSettingsSheet({
   starredCount,
   unmasteredCount,
   matchCount,
+  sourceLanguage,
   onApply,
   onReset,
   onClose,
@@ -38,6 +40,7 @@ export function LearnSettingsSheet({
   unmasteredCount: number;
   /** Số từ còn lại sau bộ lọc, tính theo bản nháp. */
   matchCount: (draft: LearnSettings) => number;
+  sourceLanguage?: 'en' | 'ja' | 'zh';
   onApply: (s: LearnSettings) => void;
   onReset: () => void;
   onClose: () => void;
@@ -47,6 +50,7 @@ export function LearnSettingsSheet({
   const [confirmReset, setConfirmReset] = useState(false);
   const [openedWith, setOpenedWith] = useState<LearnSettings | null>(null);
   const micOk = canRecognize();
+  const meaningLang = useTopicStudyStore((s) => s.meaningLang);
 
   // Mỗi lần mở lại bảng, bản nháp lấy từ cài đặt đang dùng (điều chỉnh state
   // trong lúc render theo prop — cách React khuyên, không cần effect).
@@ -63,11 +67,15 @@ export function LearnSettingsSheet({
   const noDir = draft.directions.length === 0;
   const matches = matchCount(draft);
   const blocked = noKind || noDir || matches === 0;
+  const sourceName = sourceLanguage === 'ja' ? L('từ tiếng Nhật', 'Japanese word') : sourceLanguage === 'zh' ? L('từ tiếng Trung', 'Chinese word') : L('từ tiếng Anh', 'English word');
+  // Nghĩa hiển thị theo cài đặt "Nghĩa hiển thị": tiếng Việt (mặc định) hoặc tiếng Anh.
+  const glossName = meaningLang === 'en' ? L('nghĩa tiếng Anh', 'English meaning') : L('nghĩa tiếng Việt', 'Vietnamese meaning');
 
   const DIRS: { key: Direction; label: React.ReactNode }[] = [
-    { key: 'enToVi', label: en ? <>See the <B>English word</B>, pick the Vietnamese meaning</> : <>Thấy <B>từ tiếng Anh</B>, chọn nghĩa tiếng Việt</> },
-    { key: 'enToEn', label: en ? <>See the <B>English word</B>, pick its <B>English definition</B></> : <>Thấy <B>từ tiếng Anh</B>, chọn <B>định nghĩa tiếng Anh</B></> },
-    { key: 'viToEn', label: en ? <>See the <B>Vietnamese meaning</B>, find the English word</> : <>Thấy <B>nghĩa tiếng Việt</B>, tìm từ tiếng Anh</> },
+    { key: 'enToVi', label: en ? <>See the <B>{sourceName}</B>, pick the {glossName}</> : <>Thấy <B>{sourceName}</B>, chọn {glossName}</> },
+    // Khi đã học bằng nghĩa tiếng Anh thì chiều này trùng với chiều đầu: ẩn đi cho khỏi lặp.
+    ...(meaningLang === 'en' ? [] : [{ key: 'enToEn' as Direction, label: en ? <>See the <B>{sourceName}</B>, pick its <B>English definition</B></> : <>Thấy <B>{sourceName}</B>, chọn <B>định nghĩa tiếng Anh</B></> }]),
+    { key: 'viToEn', label: en ? <>See the <B>{glossName}</B>, find the {sourceName}</> : <>Thấy <B>{glossName}</B>, tìm {sourceName}</> },
     { key: 'listen', label: en ? <>Just <B>listen to the audio</B>, recognise the word</> : <>Chỉ <B>nghe giọng đọc</B>, nhận ra từ</> },
   ];
   const KINDS: { key: StageKind; label: string; icon: IconName }[] = [
@@ -113,13 +121,16 @@ export function LearnSettingsSheet({
                   <B>{L('Học xen kẽ', 'Interleaved')}</B> <Text className="text-muted">{L('· trộn dạng câu, gặp lại cả từ đã đúng', '· mixes question types and revisits words you got right')}</Text>
                 </Text>
               </Row>
-              {/* Bật = xáo trộn (cờ lưu là `ordered`, nên đảo lại khi hiển thị). */}
-              <Row on={!draft.ordered} onPress={() => flip('ordered')}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Xáo trộn thứ tự từ mới trong vòng', 'Shuffle the order of new words in a round')}</Text>
+              <Row on={draft.ordered} onPress={() => flip('ordered')}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Học theo thứ tự trong bộ (không xáo trộn)', 'Study in deck order (no shuffle)')}</Text>
               </Row>
               <Row on={draft.autoAdvance} onPress={() => flip('autoAdvance')}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Tự sang câu tiếp khi trả lời đúng', 'Auto-advance after a correct answer')}</Text>
               </Row>
+            </Section>
+
+            <Section title={L('Nghĩa hiển thị', 'Meaning shown')}>
+              <MeaningLangControl />
             </Section>
 
             <Section title={L('Chiều hỏi', 'Question direction')} warn={noDir ? L('Phải chọn ít nhất một chiều hỏi.', 'Pick at least one direction.') : undefined}>
@@ -161,6 +172,9 @@ export function LearnSettingsSheet({
               </Row>
               <Row on={draft.clipVoice === 'sarah'} onPress={() => setDraft({ ...draft, clipVoice: 'sarah' })}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Sarah (Kokoro, nữ)', 'Sarah voice (Kokoro, female)')}</Text>
+              </Row>
+              <Row on={draft.clipVoice === 'emma'} onPress={() => setDraft({ ...draft, clipVoice: 'emma' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Emma (Kokoro, nữ Anh–Anh)', 'Emma voice (Kokoro, British female)')}</Text>
               </Row>
               <Row on={draft.clipVoice === 'kore'} onPress={() => setDraft({ ...draft, clipVoice: 'kore' })}>
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng Kore (Gemini · từ đơn)', 'Kore voice (Gemini · single words)')}</Text>

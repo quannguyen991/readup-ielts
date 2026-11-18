@@ -96,3 +96,11 @@ test('mọi bộ: câu dựng được, đáp án đúng thì chấm đúng', ()
     }
   }
 });
+
+test('chữ Hán / kana: chỉ dạng chọn từ, hỏi lại cũng vẫn là chọn từ', () => {
+  const words = Array.from({ length: 6 }, (_, i) => ({ word: `字${i}`, example: `这是字${i}吧`, meaningVi: 'x' })) as never[];
+  const plan = planClozeRound(words, () => 0.3, 10, ['pick']);
+  assert.ok(plan.length > 0 && plan.every((q) => q.kind === 'pick'));
+  const next = advanceCloze(plan, false, ['pick']);
+  assert.ok(next.every((q) => q.kind === 'pick'));
+});

@@ -128,7 +128,7 @@ export default function SatMathVocabScreen() {
           <View className="flex-row flex-wrap items-center justify-between gap-4">
             <View className="flex-1" style={{ minWidth: 240 }}>
               <View aria-hidden className="mb-2">
-                <Label text={L('Thuật ngữ đề thi 📐', 'Exam terms 📐')} color="#F2B632" tilt={-4} size={12} />
+                <Label text={L('Thuật ngữ đề thi 📐', 'Exam terms 📐')} color="#F2B632" tilt={-4} size={13} />
               </View>
               <Text className="font-heavy text-hero text-white">{L('Từ vựng SAT Math', 'SAT Math vocabulary')}</Text>
               <Text className="mt-1.5 font-sans text-bodyLg text-white/90">

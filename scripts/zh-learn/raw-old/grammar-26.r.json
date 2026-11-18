@@ -1,0 +1,565 @@
+[
+ {
+  "id": "zh-g-h4-18",
+  "level": 4,
+  "order": 18,
+  "title": "Nói khả năng làm được",
+  "titleZh": "可能补语",
+  "summary": "Bạn sẽ nói được mình có thể hoặc không thể làm một việc.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Làm được hay không",
+    "body": "Động từ + 得了 diễn tả có thể làm hoặc chịu được việc gì. Động từ + 不了 diễn tả không thể làm hoặc không chịu nổi.",
+    "examples": [
+     {
+      "zh": "我今天有点儿累，走不了这么远。",
+      "py": "Wǒ jīntiān yǒudiǎnr lèi zǒu bu liǎo zhème yuǎn",
+      "vi": "Hôm nay tôi hơi mệt, không đi xa đến thế được."
+     },
+     {
+      "zh": "这些菜不太多，我一个人吃得了。",
+      "py": "Zhèxiē cài bú tài duō wǒ yí ge rén chī de liǎo",
+      "vi": "Những món này không nhiều lắm, một mình tôi ăn hết được."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói về khả năng",
+    "body": "Dùng mẫu này khi muốn nói một người có đủ sức, khả năng hoặc điều kiện để làm việc gì. Ngữ cảnh thường giúp người nghe biết bạn đang nói về sức lực hay khả năng.",
+    "examples": [
+     {
+      "zh": "外面下雪了，爸爸开不了车。",
+      "py": "Wàimiàn xiàxuě le bàba kāi bu liǎo chē",
+      "vi": "Ngoài trời tuyết rơi rồi, bố không lái xe được."
+     },
+     {
+      "zh": "这杯茶不烫，孩子喝得了。",
+      "py": "Zhè bēi chá bú tàng háizi hē de liǎo",
+      "vi": "Cốc trà này không nóng, đứa bé uống được."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 得 hoặc 不 sau động từ",
+    "body": "Đặt 得 hoặc 不 ngay sau động từ, rồi dùng 了. Nếu có tân ngữ, tân ngữ thường đứng sau 了.",
+    "formula": "Động từ + 得/不 + 了 (+ tân ngữ)",
+    "examples": [
+     {
+      "zh": "这个箱子不重，我自己拿得了。",
+      "py": "Zhège xiāngzi bú zhòng wǒ zìjǐ ná de liǎo",
+      "vi": "Cái hộp này không nặng, tôi tự xách được."
+     },
+     {
+      "zh": "时间不多了，我们做不了这么多工作。",
+      "py": "Shíjiān bù duō le wǒmen zuò bu liǎo zhème duō gōngzuò",
+      "vi": "Không còn nhiều thời gian, chúng ta không làm được nhiều việc thế này."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 不 đúng vị trí",
+    "body": "Không đặt 不 trước động từ để tạo nghĩa “không làm nổi”. 不 phải đứng giữa động từ và 了.",
+    "mistakes": [
+     {
+      "wrong": "我吃不这么多东西。",
+      "right": "我吃不了这么多东西。",
+      "why": "Trong mẫu chỉ khả năng, 不 đứng sau động từ 吃 và trước 了."
+     },
+     {
+      "wrong": "我得不了这么多东西。",
+      "right": "我拿不了这么多东西。",
+      "why": "得 không đứng trước động từ; hãy chọn đúng động từ rồi đặt 不 ngay sau nó."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào nói “Tôi không xách nổi cái hộp này”?",
+    "options": [
+     "我拿不这个箱子。",
+     "我拿不了这个箱子。",
+     "我不拿得了这个箱子。",
+     "我拿得不这个箱子。"
+    ],
+    "answer": 1,
+    "explain": "Mẫu phủ định là động từ + 不了."
+   },
+   {
+    "q": "Chọn câu nói “Cốc trà này không nóng, em bé uống được”.",
+    "options": [
+     "这杯茶不烫，孩子不喝了。",
+     "这杯茶不烫，孩子喝不了。",
+     "这杯茶不烫，孩子得喝了。",
+     "这杯茶不烫，孩子喝得了。"
+    ],
+    "answer": 3,
+    "explain": "喝得了 diễn tả em bé có thể uống được."
+   },
+   {
+    "q": "Điền vào chỗ trống: 我一个人___这么多菜。 (Một mình tôi không ăn hết nhiều món thế này.)",
+    "options": [
+     "吃不了",
+     "不吃得了",
+     "得不吃",
+     "吃不"
+    ],
+    "answer": 0,
+    "explain": "吃不了 là dạng phủ định khả năng đúng."
+   },
+   {
+    "q": "Câu nào dùng cấu trúc khả năng đúng?",
+    "options": [
+     "我们不做了这么多工作。",
+     "我们得不了这么多工作。",
+     "我们做不了这么多工作。",
+     "我们不了做这么多工作。"
+    ],
+    "answer": 2,
+    "explain": "不 đặt giữa động từ 做 và 了."
+   },
+   {
+    "q": "Câu 我今天做不了这么多工作 nghĩa là gì?",
+    "options": [
+     "Hôm nay tôi không muốn làm nhiều việc thế này.",
+     "Hôm nay tôi không thể làm nhiều việc thế này.",
+     "Hôm nay tôi đã làm nhiều việc thế này.",
+     "Hôm nay tôi muốn làm nhiều việc thế này."
+    ],
+    "answer": 1,
+    "explain": "做不了 nói người nói không thể hoàn thành lượng công việc đó."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-19",
+  "level": 4,
+  "order": 19,
+  "title": "Nói kịp hay không kịp",
+  "titleZh": "来得及",
+  "summary": "Bạn sẽ dùng 来得及 và 来不及 để nói một việc còn kịp thời gian hay không.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Còn kịp thời gian",
+    "body": "来得及 nghĩa là còn đủ thời gian để làm việc gì. 来不及 nghĩa là không còn đủ thời gian.",
+    "examples": [
+     {
+      "zh": "现在出门还来得及，我们别着急。",
+      "py": "Xiànzài chūmén hái lái de jí wǒmen bié zháojí",
+      "vi": "Bây giờ ra khỏi nhà vẫn còn kịp, chúng ta đừng vội."
+     },
+     {
+      "zh": "他起晚了，来不及吃早饭就出门了。",
+      "py": "Tā qǐ wǎn le lái bu jí chī zǎofàn jiù chūmén le",
+      "vi": "Anh ấy dậy muộn, không kịp ăn sáng đã ra khỏi nhà."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói về thời gian còn lại",
+    "body": "Dùng mẫu này khi một việc cần được làm trước một mốc thời gian, chẳng hạn trước giờ tàu chạy hoặc giờ vào lớp. Sau 来得及 hoặc 来不及 có thể nêu việc cần làm.",
+    "examples": [
+     {
+      "zh": "离开会还有时间，我们来得及吃饭。",
+      "py": "Lí kāihuì hái yǒu shíjiān wǒmen lái de jí chīfàn",
+      "vi": "Còn thời gian trước cuộc họp, chúng ta kịp ăn cơm."
+     },
+     {
+      "zh": "火车快开了，我来不及买水。",
+      "py": "Huǒchē kuài kāi le wǒ lái bu jí mǎi shuǐ",
+      "vi": "Tàu sắp chạy rồi, tôi không kịp mua nước."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt việc cần làm phía sau",
+    "body": "Dùng 来得及 hoặc 来不及 trước động từ chỉ việc cần làm. Có thể thêm chủ ngữ và nguyên nhân theo ngữ cảnh.",
+    "formula": "来得及/来不及 + động từ (+ tân ngữ)",
+    "examples": [
+     {
+      "zh": "你现在走，还来得及赶上公共汽车。",
+      "py": "Nǐ xiànzài zǒu hái lái de jí gǎnshàng gōnggòng qìchē",
+      "vi": "Bây giờ bạn đi thì vẫn kịp chuyến xe buýt."
+     },
+     {
+      "zh": "她没看时间，来不及坐车去上班了。",
+      "py": "Tā méi kàn shíjiān lái bu jí zuòchē qù shàngbān le",
+      "vi": "Cô ấy không xem giờ nên không kịp đi xe đến chỗ làm."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Giữ đúng thứ tự từ",
+    "body": "来得及 và 来不及 là hai dạng cố định. Đặt việc cần làm sau cụm này, không bỏ 来 hoặc chuyển 不 ra cuối.",
+    "mistakes": [
+     {
+      "wrong": "我还得及去商店。",
+      "right": "我还来得及去商店。",
+      "why": "Cụm chỉ “vẫn còn kịp” là 还来得及, không phải 还得及."
+     },
+     {
+      "wrong": "他来及不吃饭。",
+      "right": "他来不及吃饭了。",
+      "why": "Dạng phủ định là 来不及 và đứng trước việc không kịp làm."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "来得及 có nghĩa là gì?",
+    "options": [
+     "Không muốn làm",
+     "Đã làm xong",
+     "Còn kịp thời gian",
+     "Làm rất nhanh"
+    ],
+    "answer": 2,
+    "explain": "来得及 cho biết còn đủ thời gian để làm một việc."
+   },
+   {
+    "q": "Chọn câu đúng để nói “Tôi không kịp mua nước”.",
+    "options": [
+     "我来不及买水。",
+     "我不来得及买水。",
+     "我来及不买水。",
+     "我买水来不及。"
+    ],
+    "answer": 0,
+    "explain": "来不及 đứng trước việc không kịp làm là 买水."
+   },
+   {
+    "q": "Điền vào chỗ trống: 从我家到车站只要五分钟，火车半小时后才开，现在出门，还___赶上火车。",
+    "options": [
+     "来不及",
+     "得来及",
+     "及来得",
+     "来得及"
+    ],
+    "answer": 3,
+    "explain": "来得及 diễn tả vẫn còn đủ thời gian để kịp chuyến tàu."
+   },
+   {
+    "q": "他起晚了，来不及吃早饭就出门了 nghĩa là gì?",
+    "options": [
+     "Anh ấy dậy sớm và ăn sáng ở nhà.",
+     "Anh ấy dậy muộn, không kịp ăn sáng đã ra khỏi nhà.",
+     "Anh ấy không muốn ăn sáng nên ở nhà.",
+     "Anh ấy ăn sáng xong rồi mới ra khỏi nhà."
+    ],
+    "answer": 1,
+    "explain": "来不及吃早饭 nghĩa là không kịp ăn sáng."
+   },
+   {
+    "q": "Câu nào đặt việc cần làm đúng sau 来不及?",
+    "options": [
+     "我吃饭来不及了。",
+     "我不及来吃饭了。",
+     "我来不及吃饭了。",
+     "我来吃饭不及了。"
+    ],
+    "answer": 2,
+    "explain": "Việc không kịp làm 吃饭 đứng sau 来不及."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-20",
+  "level": 4,
+  "order": 20,
+  "title": "Dùng ba từ nối",
+  "titleZh": "连接词",
+  "summary": "Bạn sẽ phân biệt được cách dùng 甚至, 于是 và 然而 trong câu.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Ba từ nối, ba quan hệ",
+    "body": "甚至 đưa ra điều vượt ngoài dự đoán. 于是 nối một sự việc với kết quả tiếp theo, còn 然而 báo hiệu ý trái ngược.",
+    "examples": [
+     {
+      "zh": "他每天很忙，甚至晚上也要工作。",
+      "py": "Tā měitiān hěn máng shènzhì wǎnshang yě yào gōngzuò",
+      "vi": "Ngày nào anh ấy cũng bận, thậm chí buổi tối còn phải làm việc."
+     },
+     {
+      "zh": "外面下大雨，于是我们没去学校。",
+      "py": "Wàimiàn xià dàyǔ yúshì wǒmen méi qù xuéxiào",
+      "vi": "Ngoài trời mưa lớn nên chúng tôi không đến trường."
+     },
+     {
+      "zh": "她准备得很认真，然而考试没考好。",
+      "py": "Tā zhǔnbèi de hěn rènzhēn rán'ér kǎoshì méi kǎo hǎo",
+      "vi": "Cô ấy chuẩn bị rất nghiêm túc, thế nhưng thi không tốt."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn theo quan hệ ý",
+    "body": "Dùng 甚至 để nhấn mạnh mức độ hoặc thông tin đặc biệt. Dùng 于是 cho kết quả hợp với sự việc trước, và 然而 khi ý sau đối lập với điều người nghe có thể mong đợi.",
+    "examples": [
+     {
+      "zh": "他很喜欢中文，甚至每天都看中文书。",
+      "py": "Tā hěn xǐhuan Zhōngwén shènzhì měitiān dōu kàn Zhōngwén shū",
+      "vi": "Anh ấy rất thích tiếng Trung, thậm chí ngày nào cũng đọc sách tiếng Trung."
+     },
+     {
+      "zh": "外面下雨了，于是我们坐车回家。",
+      "py": "Wàimiàn xiàyǔ le yúshì wǒmen zuòchē huí jiā",
+      "vi": "Ngoài trời mưa rồi nên chúng tôi đi xe về nhà."
+     },
+     {
+      "zh": "我很想去看他，然而今天没有时间。",
+      "py": "Wǒ hěn xiǎng qù kàn tā rán'ér jīntiān méiyǒu shíjiān",
+      "vi": "Tôi rất muốn đến thăm anh ấy, nhưng hôm nay không có thời gian."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt từ nối vào đúng chỗ",
+    "body": "甚至 thường đứng trước phần được nhấn mạnh. 于是 và 然而 thường đứng đầu vế nêu kết quả hoặc ý đối lập.",
+    "formula": "Mệnh đề + 于是/然而 + mệnh đề; 甚至 + phần được nhấn mạnh",
+    "examples": [
+     {
+      "zh": "他会说中文，甚至会写中文信。",
+      "py": "Tā huì shuō Zhōngwén shènzhì huì xiě Zhōngwén xìn",
+      "vi": "Anh ấy biết nói tiếng Trung, thậm chí còn biết viết thư tiếng Trung."
+     },
+     {
+      "zh": "我找了很久，然而没有找到那本书。",
+      "py": "Wǒ zhǎo le hěn jiǔ rán'ér méiyǒu zhǎodào nà běn shū",
+      "vi": "Tôi tìm rất lâu nhưng vẫn không tìm thấy quyển sách đó."
+     },
+     {
+      "zh": "妹妹生病了，于是妈妈带她去医院。",
+      "py": "Mèimei shēngbìng le yúshì māma dài tā qù yīyuàn",
+      "vi": "Em gái bị ốm nên mẹ đưa em đến bệnh viện."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đổi lẫn quan hệ ý",
+    "body": "Đừng dùng 然而 cho một kết quả xảy ra tự nhiên từ sự việc trước. Cũng đừng dùng 于是 để nối ý tương phản.",
+    "mistakes": [
+     {
+      "wrong": "我发烧了，然而我没去上课。",
+      "right": "我发烧了，于是我没去上课。",
+      "why": "Không đi học là kết quả của việc bị sốt, nên dùng 于是."
+     },
+     {
+      "wrong": "他很累，于是还去工作。",
+      "right": "他很累，然而还去工作。",
+      "why": "Mệt nhưng vẫn đi làm là ý trái với điều thường được mong đợi, nên dùng 然而."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Từ nối nào thường nêu một kết quả tiếp theo?",
+    "options": [
+     "于是",
+     "甚至",
+     "然而",
+     "如果"
+    ],
+    "answer": 0,
+    "explain": "于是 thường nối sự việc trước với kết quả tiếp theo."
+   },
+   {
+    "q": "Câu nào dùng 然而 để nối hai ý trái ngược?",
+    "options": [
+     "下雨了，于是我带了伞。",
+     "他很忙，然而还是来看我。",
+     "她甚至每天都看书。",
+     "我起晚了，于是没吃早饭。"
+    ],
+    "answer": 1,
+    "explain": "Bận nhưng vẫn đến thăm là hai ý tương phản."
+   },
+   {
+    "q": "Chọn cách điền phù hợp: 妹妹生病了，___妈妈带她去医院。",
+    "options": [
+     "然而",
+     "甚至",
+     "于是",
+     "虽然"
+    ],
+    "answer": 2,
+    "explain": "Mẹ đưa em đi bệnh viện là kết quả của việc em bị ốm."
+   },
+   {
+    "q": "甚至 thường dùng để làm gì?",
+    "options": [
+     "Nêu nguyên nhân",
+     "Hỏi về thời gian",
+     "Nối hai việc xảy ra cùng lúc",
+     "Nhấn mạnh điều vượt ngoài dự đoán"
+    ],
+    "answer": 3,
+    "explain": "甚至 nhấn mạnh thông tin hoặc mức độ đặc biệt."
+   },
+   {
+    "q": "Câu nào dùng 甚至 tự nhiên?",
+    "options": [
+     "他会说中文，甚至会写中文信。",
+     "他会说中文，于是会写中文信。",
+     "他会说中文，然而会写中文信。",
+     "他会说中文，所以然而写中文信。"
+    ],
+    "answer": 0,
+    "explain": "Biết nói tiếng Trung và còn biết viết thư tiếng Trung là thông tin được nhấn mạnh bằng 甚至."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h5-01",
+  "level": 5,
+  "order": 1,
+  "title": "Xét từ góc độ",
+  "titleZh": "从……来看",
+  "summary": "Bạn sẽ nêu căn cứ hoặc góc nhìn trước khi đưa ra nhận xét.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu căn cứ để nhận xét",
+    "body": "从……来看 có nghĩa là “xét từ…” hoặc “theo… mà nói”. Cụm này giới thiệu góc nhìn hay căn cứ cho nhận xét phía sau.",
+    "examples": [
+     {
+      "zh": "从老师的意见来看，这个办法很好。",
+      "py": "Cóng lǎoshī de yìjiàn lái kàn zhège bànfǎ hěn hǎo",
+      "vi": "Xét theo ý kiến của giáo viên, cách này rất tốt."
+     },
+     {
+      "zh": "从现在的情况来看，我们应该早点儿走。",
+      "py": "Cóng xiànzài de qíngkuàng lái kàn wǒmen yīnggāi zǎodiǎnr zǒu",
+      "vi": "Xét tình hình hiện tại, chúng ta nên đi sớm một chút."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Giới thiệu góc nhìn",
+    "body": "Dùng mẫu này khi muốn cho biết nhận xét của mình dựa trên ý kiến, lời nói hoặc tình hình nào. Phần sau thường nêu kết luận, đánh giá hoặc đề xuất.",
+    "examples": [
+     {
+      "zh": "从她说的话来看，她已经知道了。",
+      "py": "Cóng tā shuō de huà lái kàn tā yǐjīng zhīdào le",
+      "vi": "Xét theo lời cô ấy nói, cô ấy đã biết rồi."
+     },
+     {
+      "zh": "从他的意见来看，我们可以明天出发。",
+      "py": "Cóng tā de yìjiàn lái kàn wǒmen kěyǐ míngtiān chūfā",
+      "vi": "Theo ý kiến của anh ấy, chúng ta có thể khởi hành vào ngày mai."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt căn cứ trước 来看",
+    "body": "Đặt người, ý kiến hoặc tình hình làm căn cứ sau 从. Sau 来看 là nhận xét được rút ra từ căn cứ đó.",
+    "formula": "从 + căn cứ/góc nhìn + 来看，+ nhận xét",
+    "examples": [
+     {
+      "zh": "从最近的情况来看，我们应该早点儿回家。",
+      "py": "Cóng zuìjìn de qíngkuàng lái kàn wǒmen yīnggāi zǎodiǎnr huí jiā",
+      "vi": "Xét tình hình gần đây, chúng ta nên về nhà sớm một chút."
+     },
+     {
+      "zh": "从大家的意见来看，这个办法不错。",
+      "py": "Cóng dàjiā de yìjiàn lái kàn zhège bànfǎ búcuò",
+      "vi": "Theo ý kiến của mọi người, cách này khá tốt."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Nêu rõ căn cứ",
+    "body": "Sau 从 cần có căn cứ cụ thể trước 来看. Khi muốn nói góc nhìn của một người, hãy nêu ý kiến hoặc lời nói của người đó.",
+    "mistakes": [
+     {
+      "wrong": "从来看，这个办法很好。",
+      "right": "从老师的意见来看，这个办法很好。",
+      "why": "Câu sai thiếu căn cứ sau 从; cần nêu rõ ý kiến, tình hình hoặc góc nhìn."
+     },
+     {
+      "wrong": "从大家来看，我们应该早点儿走。",
+      "right": "从大家的意见来看，我们应该早点儿走。",
+      "why": "Khi nêu góc nhìn của mọi người, dùng cụm rõ nghĩa như 大家的意见."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "从……来看 thường có nghĩa là gì?",
+    "options": [
+     "Mặc dù… nhưng…",
+     "Vừa… vừa…",
+     "Trước khi…",
+     "Xét từ… mà nói"
+    ],
+    "answer": 3,
+    "explain": "Cụm này nêu căn cứ hoặc góc nhìn cho nhận xét."
+   },
+   {
+    "q": "Chọn câu có cấu trúc đúng.",
+    "options": [
+     "从来看老师的意见，这个办法很好。",
+     "从老师的意见来看，这个办法很好。",
+     "从老师来看意见，这个办法很好。",
+     "老师从的意见来看，这个办法很好。"
+    ],
+    "answer": 1,
+    "explain": "Căn cứ 老师的意见 đứng sau 从 và trước 来看."
+   },
+   {
+    "q": "Điền vào chỗ trống: ___，我们应该早点儿回家。",
+    "options": [
+     "从来看最近的情况",
+     "从最近来看情况的",
+     "从最近的情况来看",
+     "最近从情况来看的"
+    ],
+    "answer": 2,
+    "explain": "从最近的情况来看 là cụm nêu căn cứ hoàn chỉnh."
+   },
+   {
+    "q": "Câu 从她说的话来看，她已经知道了 diễn tả điều gì?",
+    "options": [
+     "Dựa vào lời cô ấy nói, cô ấy đã biết rồi.",
+     "Cô ấy muốn nói chuyện nhưng chưa biết.",
+     "Cô ấy đã nói xong rồi mới biết.",
+     "Cô ấy không muốn ai nói với mình."
+    ],
+    "answer": 0,
+    "explain": "Lời cô ấy nói là căn cứ để người nói đưa ra nhận xét."
+   },
+   {
+    "q": "Chọn câu phù hợp để nói “Xét theo ý kiến của mọi người, cách này khá tốt”.",
+    "options": [
+     "从来看大家的意见，这个办法不错。",
+     "从大家来看意见，这个办法不错。",
+     "大家从的意见来看，这个办法不错。",
+     "从大家的意见来看，这个办法不错。"
+    ],
+    "answer": 3,
+    "explain": "大家的意见 là căn cứ, được đặt sau 从 và trước 来看."
+   }
+  ]
+ }
+]

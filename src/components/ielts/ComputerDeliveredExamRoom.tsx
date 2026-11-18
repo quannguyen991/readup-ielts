@@ -269,7 +269,7 @@ export function ComputerDeliveredExamRoom({
                 backgroundColor: '#6A4BD9',
               }}
             >
-              <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 13 }}>← Quay lại kho đề</Text>
+              <Text style={{ color: '#FFFFFF', fontWeight: '400', fontSize: 13 }}>← Quay lại kho đề</Text>
             </Pressable>
           </View>
 
@@ -288,19 +288,19 @@ export function ComputerDeliveredExamRoom({
             }}
           >
             <View style={{ gap: 6 }}>
-              <Text style={{ fontSize: 12, fontWeight: '800', color: '#16A34A', textTransform: 'uppercase', letterSpacing: 1 }}>
+              <Text style={{ fontSize: 12, fontWeight: '400', color: '#16A34A', textTransform: 'uppercase', letterSpacing: 1 }}>
                 ★ KỲ THI HOÀN TẤT
               </Text>
               <Text style={{ fontSize: 24, fontWeight: '900', color: '#166534' }}>
                 {testTitle}
               </Text>
               <Text style={{ fontSize: 14, color: '#374151' }}>
-                Bạn đã làm đúng <Text style={{ fontWeight: '800' }}>{grade.score}</Text> trên tổng số <Text style={{ fontWeight: '800' }}>{grade.total}</Text> câu hỏi
+                Bạn đã làm đúng <Text style={{ fontWeight: '400' }}>{grade.score}</Text> trên tổng số <Text style={{ fontWeight: '400' }}>{grade.total}</Text> câu hỏi
               </Text>
             </View>
 
             <View style={{ alignItems: 'center', paddingHorizontal: 28, paddingVertical: 14, borderRadius: 16, backgroundColor: '#DCFCE7', borderWidth: 2, borderColor: '#16A34A' }}>
-              <Text style={{ fontSize: 11, fontWeight: '800', color: '#166534', textTransform: 'uppercase' }}>IELTS ESTIMATE</Text>
+              <Text style={{ fontSize: 11, fontWeight: '400', color: '#166534', textTransform: 'uppercase' }}>IELTS ESTIMATE</Text>
               <Text style={{ fontSize: 36, fontWeight: '900', color: '#15803D' }}>
                 Band {grade.bandEstimate ?? '7.5'}
               </Text>
@@ -311,7 +311,7 @@ export function ComputerDeliveredExamRoom({
           {/* Detailed Question Review List */}
           <ScrollView style={{ maxHeight: 650 }}>
             <View style={{ gap: 10 }}>
-              <Text style={{ fontSize: 16, fontWeight: '800', color: '#2B2350' }}>
+              <Text style={{ fontSize: 16, fontWeight: '400', color: '#2B2350' }}>
                 Đối chiếu chi tiết 40 câu hỏi & Giải thích:
               </Text>
               {grade.results.map((r) => (
@@ -327,14 +327,14 @@ export function ComputerDeliveredExamRoom({
                   }}
                 >
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text style={{ fontSize: 14, fontWeight: '800', color: r.correct ? '#166534' : '#991B1B' }}>
+                    <Text style={{ fontSize: 14, fontWeight: '400', color: r.correct ? '#166534' : '#991B1B' }}>
                       Câu {r.number}: {r.correct ? '✓ ĐÚNG' : '✗ SAI'}
                     </Text>
                     <View style={{ flexDirection: 'row', gap: 12 }}>
                       <Text style={{ fontSize: 13, color: '#4B5563' }}>
-                        Bạn điền: <Text style={{ fontWeight: '800', color: r.correct ? '#166534' : '#DC2626' }}>{r.answer || '(Bỏ trống)'}</Text>
+                        Bạn điền: <Text style={{ fontWeight: '400', color: r.correct ? '#166534' : '#DC2626' }}>{r.answer || '(Bỏ trống)'}</Text>
                       </Text>
-                      <Text style={{ fontSize: 13, color: '#166534', fontWeight: '800' }}>
+                      <Text style={{ fontSize: 13, color: '#166534', fontWeight: '400' }}>
                         Đáp án chuẩn: {r.expected}
                       </Text>
                     </View>
@@ -404,7 +404,7 @@ export function ComputerDeliveredExamRoom({
             accessibilityLabel={isTimerHidden ? 'Hiện đồng hồ' : 'Ẩn đồng hồ'}
             style={{ height: 26, paddingHorizontal: 8, borderRadius: 999, backgroundColor: EXAM_INK, justifyContent: 'center' }}
           >
-            <Text style={{ fontSize: 10, fontWeight: '800', color: '#FFFFFF' }}>{isTimerHidden ? 'SHOW' : 'HIDE'}</Text>
+            <Text style={{ fontSize: 10, fontWeight: '400', color: '#FFFFFF' }}>{isTimerHidden ? 'SHOW' : 'HIDE'}</Text>
           </Pressable>
         </View>
       }
@@ -446,7 +446,7 @@ export function ComputerDeliveredExamRoom({
           gap: 6,
         }}
       >
-        <Text style={{ fontSize: 11, fontWeight: '800', letterSpacing: 1, color: theme.muted }}>
+        <Text style={{ fontSize: 11, fontWeight: '400', letterSpacing: 1, color: theme.muted }}>
           READING PASSAGE {activePart} · {activePart === 1 ? 'QUESTIONS 1–13' : activePart === 2 ? 'QUESTIONS 14–26' : 'QUESTIONS 27–40'}
         </Text>
         <Text style={{ fontSize: 11, color: theme.muted }}>~20 mins</Text>
@@ -503,7 +503,7 @@ export function ComputerDeliveredExamRoom({
                 backgroundColor: reviewedQuestions.has(activeQuestion) ? '#F59E0B' : '#FFFFFF',
               }}
             >
-              <Text style={{ fontSize: 11, fontWeight: '800', color: reviewedQuestions.has(activeQuestion) ? '#FFFFFF' : EXAM_INK }}>
+              <Text style={{ fontSize: 11, fontWeight: '400', color: reviewedQuestions.has(activeQuestion) ? '#FFFFFF' : EXAM_INK }}>
                 {reviewedQuestions.has(activeQuestion) ? '★ Reviewed' : '☆ Review'}
               </Text>
             </Pressable>
@@ -576,7 +576,7 @@ export function ComputerDeliveredExamRoom({
                       backgroundColor: picked(opt) ? theme.border : 'transparent',
                     }}
                   >
-                    <Text style={{ fontSize: 11, fontWeight: '800', color: picked(opt) ? theme.cardBg : theme.text }}>{opt}</Text>
+                    <Text style={{ fontSize: 11, fontWeight: '400', color: picked(opt) ? theme.cardBg : theme.text }}>{opt}</Text>
                   </Pressable>
                 ))}
                 {['A', 'B', 'C', 'D'].map((letter) => (
@@ -596,12 +596,12 @@ export function ComputerDeliveredExamRoom({
                       backgroundColor: picked(letter) ? theme.border : 'transparent',
                     }}
                   >
-                    <Text style={{ fontSize: 12, fontWeight: '800', color: picked(letter) ? theme.cardBg : theme.text }}>{letter}</Text>
+                    <Text style={{ fontSize: 12, fontWeight: '400', color: picked(letter) ? theme.cardBg : theme.text }}>{letter}</Text>
                   </Pressable>
                 ))}
                 {isFlagged ? (
                   <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, backgroundColor: '#F3F0FB' }}>
-                    <Text style={{ fontSize: 10, fontWeight: '800', color: '#6A4BD9' }}>FLAGGED</Text>
+                    <Text style={{ fontSize: 10, fontWeight: '400', color: '#6A4BD9' }}>FLAGGED</Text>
                   </View>
                 ) : null}
               </View>
@@ -683,7 +683,7 @@ export function ComputerDeliveredExamRoom({
             </View>
 
             <View style={{ gap: 8 }}>
-              <Text style={{ fontSize: 13, fontWeight: '800', color: '#374151' }}>Text Size:</Text>
+              <Text style={{ fontSize: 13, fontWeight: '400', color: '#374151' }}>Text Size:</Text>
               <View style={{ flexDirection: 'row', gap: 8 }}>
                 {[
                   { id: 'normal', label: 'Standard (16px)' },
@@ -701,7 +701,7 @@ export function ComputerDeliveredExamRoom({
                       alignItems: 'center',
                     }}
                   >
-                    <Text style={{ color: fontSizeMode === s.id ? '#FFFFFF' : '#374151', fontSize: 11, fontWeight: '800' }}>
+                    <Text style={{ color: fontSizeMode === s.id ? '#FFFFFF' : '#374151', fontSize: 11, fontWeight: '400' }}>
                       {s.label}
                     </Text>
                   </Pressable>
@@ -710,7 +710,7 @@ export function ComputerDeliveredExamRoom({
             </View>
 
             <View style={{ gap: 8 }}>
-              <Text style={{ fontSize: 13, fontWeight: '800', color: '#374151' }}>Contrast Colors:</Text>
+              <Text style={{ fontSize: 13, fontWeight: '400', color: '#374151' }}>Contrast Colors:</Text>
               <View style={{ flexDirection: 'row', gap: 8 }}>
                 {[
                   { id: 'default', label: 'Standard' },
@@ -728,7 +728,7 @@ export function ComputerDeliveredExamRoom({
                       alignItems: 'center',
                     }}
                   >
-                    <Text style={{ color: contrastMode === c.id ? '#FFFFFF' : '#374151', fontSize: 11, fontWeight: '800' }}>
+                    <Text style={{ color: contrastMode === c.id ? '#FFFFFF' : '#374151', fontSize: 11, fontWeight: '400' }}>
                       {c.label}
                     </Text>
                   </Pressable>
@@ -740,7 +740,7 @@ export function ComputerDeliveredExamRoom({
               onPress={() => setShowSettings(false)}
               style={{ height: 40, borderRadius: 8, backgroundColor: '#0284C7', alignItems: 'center', justifyContent: 'center' }}
             >
-              <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 13 }}>OK, Apply Settings</Text>
+              <Text style={{ color: '#FFFFFF', fontWeight: '400', fontSize: 13 }}>OK, Apply Settings</Text>
             </Pressable>
           </View>
         </View>
@@ -767,7 +767,7 @@ export function ComputerDeliveredExamRoom({
               onPress={() => setShowHelp(false)}
               style={{ height: 40, borderRadius: 8, backgroundColor: '#0284C7', alignItems: 'center', justifyContent: 'center' }}
             >
-              <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 13 }}>Close Help</Text>
+              <Text style={{ color: '#FFFFFF', fontWeight: '400', fontSize: 13 }}>Close Help</Text>
             </Pressable>
           </View>
         </View>
@@ -781,7 +781,7 @@ export function ComputerDeliveredExamRoom({
               Finish Reading Test?
             </Text>
             <Text style={{ fontSize: 14, color: '#4B5563', lineHeight: 22 }}>
-              You have answered <Text style={{ fontWeight: '800', color: '#0284C7' }}>{answeredCount}</Text> of <Text style={{ fontWeight: '800' }}>{questionCount}</Text> questions.{'\n'}
+              You have answered <Text style={{ fontWeight: '400', color: '#0284C7' }}>{answeredCount}</Text> of <Text style={{ fontWeight: '400' }}>{questionCount}</Text> questions.{'\n'}
               {questionCount - answeredCount > 0 ? (
                 <Text style={{ color: '#DC2626', fontWeight: '700' }}>
                   ⚠️ You still have {questionCount - answeredCount} unanswered questions!

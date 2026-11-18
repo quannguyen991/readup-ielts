@@ -1,0 +1,450 @@
+[
+  {
+    "id": "zh-g-h5-06",
+    "level": 5,
+    "order": 1,
+    "title": "Dù... cũng...",
+    "titleZh": "哪怕也",
+    "summary": "Bạn có thể dùng 哪怕……也…… để nói rằng kết quả vẫn giữ nguyên dù điều kiện không thuận lợi.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu điều kiện không cản trở kết quả",
+        "body": "哪怕……也…… diễn tả một việc vẫn xảy ra dù điều kiện được nêu ra có thể gây khó khăn. Vế sau thường nêu điều người nói vẫn quyết định làm.",
+        "examples": [
+          {
+            "zh": "哪怕外面下雨，我也要去上课。",
+            "py": "nǎpà wàimiàn xiàyǔ wǒ yě yào qù shàngkè",
+            "vi": "Dù bên ngoài mưa, tôi vẫn phải đi học."
+          },
+          {
+            "zh": "哪怕我很累，也要先回家休息。",
+            "py": "nǎpà wǒ hěn lèi yě yào xiān huíjiā xiūxi",
+            "vi": "Dù tôi rất mệt, tôi vẫn phải về nhà nghỉ ngơi trước."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nhấn mạnh quyết định không đổi",
+        "body": "Dùng mẫu này khi muốn nhấn mạnh rằng một việc vẫn tiếp tục hoặc vẫn xảy ra bất kể hoàn cảnh. Điều kiện ở vế 哪怕 thường là điều có thể khiến người ta đổi ý.",
+        "examples": [
+          {
+            "zh": "哪怕今天很忙，她也会给我打电话。",
+            "py": "nǎpà jīntiān hěn máng tā yě huì gěi wǒ dǎ diànhuà",
+            "vi": "Dù hôm nay rất bận, cô ấy vẫn sẽ gọi điện cho tôi."
+          },
+          {
+            "zh": "哪怕路很远，哥哥也常常来看我。",
+            "py": "nǎpà lù hěn yuǎn gēge yě chángcháng lái kàn wǒ",
+            "vi": "Dù đường rất xa, anh trai vẫn thường đến thăm tôi."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt 也 ở vế nêu kết quả",
+        "body": "哪怕 đứng trước điều kiện; 也 đứng trong vế kết quả, thường sau chủ ngữ và trước động từ hoặc tính từ. Nếu hai vế cùng chủ ngữ, có thể lược chủ ngữ ở vế sau.",
+        "formula": "哪怕 + điều kiện，chủ ngữ + 也 + kết quả",
+        "examples": [
+          {
+            "zh": "哪怕大家都反对，我也想试一试。",
+            "py": "nǎpà dàjiā dōu fǎnduì wǒ yě xiǎng shì yí shì",
+            "vi": "Dù mọi người đều phản đối, tôi vẫn muốn thử xem."
+          },
+          {
+            "zh": "哪怕我今天没空，也会回你的消息。",
+            "py": "nǎpà wǒ jīntiān méi kòng yě huì huí nǐ de xiāoxi",
+            "vi": "Dù hôm nay tôi không rảnh, tôi vẫn sẽ trả lời tin nhắn của bạn."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đặt 也 đúng vị trí",
+        "body": "Người học dễ đặt 也 trước chủ ngữ của vế kết quả hoặc để 也 ở cuối câu. Hãy đặt 也 sau chủ ngữ và trước phần nêu hành động.",
+        "mistakes": [
+          {
+            "wrong": "哪怕外面下雨，我去学校也。",
+            "right": "哪怕外面下雨，我也去学校。",
+            "why": "也 thường đứng trước động từ 去, không đặt ở cuối vế."
+          },
+          {
+            "wrong": "哪怕我很累，也我先回家。",
+            "right": "哪怕我很累，我也先回家。",
+            "why": "Khi có chủ ngữ ở vế sau, 也 thường đứng sau chủ ngữ 我."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn từ thích hợp: ____外面下雨，我也去上课。",
+        "options": ["哪怕", "因为", "如果", "虽然"],
+        "answer": 0,
+        "explain": "哪怕 nêu điều kiện không thuận lợi mà kết quả vẫn xảy ra."
+      },
+      {
+        "q": "Chọn phần điền đúng: 哪怕我今天很忙，____会回家吃饭。",
+        "options": ["但是我", "我也", "也我", "我还"],
+        "answer": 1,
+        "explain": "Chủ ngữ 我 đứng trước 也 trong vế kết quả."
+      },
+      {
+        "q": "Chọn phần điền đúng: 哪怕他很累，____先把工作做完。",
+        "options": ["他还", "所以他", "他也", "也他"],
+        "answer": 2,
+        "explain": "Cấu trúc cần có 他也 trước hành động 先把工作做完."
+      },
+      {
+        "q": "Cặp liên từ nào phù hợp để nhấn mạnh kết quả vẫn xảy ra?",
+        "options": ["哪怕……但是……", "哪怕……就……", "虽然……也……", "哪怕……也……"],
+        "answer": 3,
+        "explain": "哪怕……也…… nối điều kiện với kết quả không đổi."
+      },
+      {
+        "q": "Trong vế kết quả, 也 thường đứng ở đâu?",
+        "options": ["Sau chủ ngữ, trước động từ hoặc tính từ", "Trước 哪怕", "Cuối câu", "Sau dấu câu"],
+        "answer": 0,
+        "explain": "Vị trí thường gặp của 也 là sau chủ ngữ và trước phần nêu kết quả."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h5-07",
+    "level": 5,
+    "order": 2,
+    "title": "Không những không... mà trái lại...",
+    "titleZh": "不但不反而",
+    "summary": "Bạn có thể dùng 不但不……反而…… để nêu một điều không xảy ra rồi nhấn mạnh kết quả trái với dự đoán.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu kết quả trái với dự đoán",
+        "body": "不但不……反而…… diễn tả việc một điều tưởng có thể xảy ra lại không xảy ra, trong khi kết quả ngược lại xuất hiện. 反而 giới thiệu phần trái với mong đợi hoặc dự đoán.",
+        "examples": [
+          {
+            "zh": "他不但不怕狗，反而喜欢跟狗玩。",
+            "py": "tā bùdàn bù pà gǒu fǎn'ér xǐhuan gēn gǒu wán",
+            "vi": "Anh ấy không những không sợ chó mà trái lại còn thích chơi với chó."
+          },
+          {
+            "zh": "我不但不生气，反而觉得很高兴。",
+            "py": "wǒ bùdàn bù shēngqì fǎn'ér juéde hěn gāoxìng",
+            "vi": "Tôi không những không tức giận mà trái lại còn thấy rất vui."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Diễn tả phản ứng bất ngờ",
+        "body": "Dùng mẫu này khi muốn làm rõ rằng phản ứng thật khác với điều người nghe có thể nghĩ trước đó. Vế đầu thường mang ý phủ định, còn vế sau nêu hành động hoặc cảm xúc bất ngờ.",
+        "examples": [
+          {
+            "zh": "她不但不怪我，反而帮我找书。",
+            "py": "tā bùdàn bù guài wǒ fǎn'ér bāng wǒ zhǎo shū",
+            "vi": "Cô ấy không những không trách tôi mà trái lại còn giúp tôi tìm sách."
+          },
+          {
+            "zh": "小王不但不怕冷，反而喜欢冬天。",
+            "py": "Xiǎo Wáng bùdàn bù pà lěng fǎn'ér xǐhuan dōngtiān",
+            "vi": "Tiểu Vương không những không sợ lạnh mà trái lại còn thích mùa đông."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Ghép phần phủ định với kết quả trái chiều",
+        "body": "不但不 đứng trước hành động hoặc trạng thái bị phủ định. 反而 đứng đầu phần nêu kết quả trái chiều.",
+        "formula": "chủ ngữ + 不但不 + hành động/trạng thái，反而 + kết quả trái chiều",
+        "examples": [
+          {
+            "zh": "孩子不但不哭，反而笑着跟我说话。",
+            "py": "háizi bùdàn bù kū fǎn'ér xiào zhe gēn wǒ shuōhuà",
+            "vi": "Đứa trẻ không những không khóc mà trái lại còn vừa cười vừa nói chuyện với tôi."
+          },
+          {
+            "zh": "他不但不怪同学，反而主动帮忙。",
+            "py": "tā bùdàn bù guài tóngxué fǎn'ér zhǔdòng bāngmáng",
+            "vi": "Cậu ấy không những không trách bạn học mà trái lại còn chủ động giúp đỡ."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Giữ đúng thứ tự hai phần",
+        "body": "Một lỗi thường gặp là đưa 反而 vào trước 不但不 hoặc đặt 反而 chen sai chỗ trong vế sau. Hãy để 不但不 mở đầu phần phủ định và 反而 mở đầu kết quả trái chiều.",
+        "mistakes": [
+          {
+            "wrong": "他不但不怕狗，喜欢反而跟狗玩。",
+            "right": "他不但不怕狗，反而喜欢跟狗玩。",
+            "why": "反而 cần đứng trước cụm nêu kết quả trái chiều, ở đây là 喜欢跟狗玩."
+          },
+          {
+            "wrong": "我不但反而不生气，觉得很高兴。",
+            "right": "我不但不生气，反而觉得很高兴。",
+            "why": "不但不 đi cùng nhau trước trạng thái bị phủ định; 反而 mở đầu kết quả phía sau."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn phần điền đúng: 他____怕狗，反而喜欢跟狗玩。",
+        "options": ["虽然不", "不但不", "因为不", "就不"],
+        "answer": 1,
+        "explain": "不但不 tạo phần phủ định được nối với kết quả trái chiều bằng 反而."
+      },
+      {
+        "q": "Chọn từ thích hợp: 我不但不觉得累，____觉得轻松。",
+        "options": ["但是", "也", "反而", "所以"],
+        "answer": 2,
+        "explain": "反而 nêu kết quả bất ngờ là cảm thấy nhẹ nhõm."
+      },
+      {
+        "q": "Chọn câu diễn tả ý “Cậu ấy không trách bạn học mà trái lại chủ động giúp đỡ”.",
+        "options": ["他反而不怪同学，不但主动帮忙。", "他不但反而不怪同学，主动帮忙。", "他不怪同学，反而不但主动帮忙。", "他不但不怪同学，反而主动帮忙。"],
+        "answer": 3,
+        "explain": "Câu đúng đặt 不但不 trước 怪同学 và 反而 trước 主动帮忙."
+      },
+      {
+        "q": "Chọn câu có trật tự đúng.",
+        "options": ["她不但不怕冷，反而喜欢冬天。", "她反而不但不怕冷，喜欢冬天。", "她不怕冷反而不但，喜欢冬天。"],
+        "answer": 0,
+        "explain": "Câu đúng dùng 不但不……反而…… theo đúng thứ tự."
+      },
+      {
+        "q": "Mẫu 不但不……反而…… thường dùng để làm gì?",
+        "options": ["Chỉ liệt kê hai hành động", "Nêu phần phủ định rồi đưa ra kết quả trái với dự đoán", "Nói nguyên nhân và kết quả", "Nêu một điều kiện giả định"],
+        "answer": 1,
+        "explain": "Vế sau có 反而 để nhấn mạnh kết quả trái với điều người nghe có thể dự đoán."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h5-08",
+    "level": 5,
+    "order": 3,
+    "title": "Làm việc gì đó là để...",
+    "titleZh": "为的是",
+    "summary": "Bạn có thể dùng 为的是 để nêu mục đích của hành động vừa được nói đến.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu mục đích của hành động",
+        "body": "为的是 có nghĩa là “là để” hoặc “nhằm mục đích”. Cụm này giới thiệu lý do người nói thực hiện hành động ở vế trước.",
+        "examples": [
+          {
+            "zh": "我每天早起，为的是早点到学校。",
+            "py": "wǒ měitiān zǎoqǐ wèideshì zǎodiǎn dào xuéxiào",
+            "vi": "Ngày nào tôi cũng dậy sớm là để đến trường sớm hơn."
+          },
+          {
+            "zh": "她认真复习，为的是考试时能考好。",
+            "py": "tā rènzhēn fùxí wèideshì kǎoshì shí néng kǎo hǎo",
+            "vi": "Cô ấy ôn tập chăm chỉ là để có thể làm bài tốt khi thi."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Giải thích lý do mình làm một việc",
+        "body": "Dùng 为的是 khi muốn nói rõ mục tiêu đằng sau một hành động. Mục đích thường cụ thể, chẳng hạn đến đúng giờ, giúp ai đó hoặc hoàn thành việc cần làm.",
+        "examples": [
+          {
+            "zh": "爸爸关好门，为的是让孩子安心睡觉。",
+            "py": "bàba guān hǎo mén wèideshì ràng háizi ānxīn shuìjiào",
+            "vi": "Bố đóng cửa cẩn thận là để con ngủ yên."
+          },
+          {
+            "zh": "我记下地址，为的是回家时能找到路。",
+            "py": "wǒ jìxià dìzhǐ wèideshì huíjiā shí néng zhǎodào lù",
+            "vi": "Tôi ghi lại địa chỉ là để có thể tìm được đường khi về nhà."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Nêu hành động trước, mục đích sau",
+        "body": "Vế đầu cho biết hành động, còn phần sau 为的是 giải thích mục đích của hành động đó. Sau 为的是 có thể là cụm động từ hoặc một mệnh đề ngắn.",
+        "formula": "hành động， 为的是 + mục đích",
+        "examples": [
+          {
+            "zh": "他存下钱，为的是以后买一辆车。",
+            "py": "tā cúnxià qián wèideshì yǐhòu mǎi yí liàng chē",
+            "vi": "Anh ấy để dành tiền là để sau này mua một chiếc xe."
+          },
+          {
+            "zh": "我们早点出门，为的是路上不着急。",
+            "py": "wǒmen zǎodiǎn chūmén wèideshì lùshang bù zháojí",
+            "vi": "Chúng tôi ra khỏi nhà sớm là để không phải vội trên đường."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không trộn 为的是 với 为了",
+        "body": "Không thêm 了 vào giữa 为的是 vì như vậy sẽ ghép lẫn hai cách nói khác nhau. Cũng cần đặt phần nêu mục đích sau 为的是.",
+        "mistakes": [
+          {
+            "wrong": "我每天早起，为了的是早点到学校。",
+            "right": "我每天早起，为的是早点到学校。",
+            "why": "为的是 đã là một cụm hoàn chỉnh; không thêm 了 vào giữa cụm."
+          },
+          {
+            "wrong": "她认真复习，为的是考好能考试。",
+            "right": "她认真复习，为的是考试时能考好。",
+            "why": "Sau 为的是 cần nêu mục đích tự nhiên và sắp xếp đúng phần thời gian với kết quả."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn phần điền đúng: 我早起，____早点到学校。",
+        "options": ["所以", "为了", "为的是", "但是"],
+        "answer": 2,
+        "explain": "为的是 giới thiệu mục đích của việc dậy sớm."
+      },
+      {
+        "q": "Chọn từ thích hợp: 他每天读书，____学到更多东西。",
+        "options": ["虽然", "因为", "但是", "为的是"],
+        "answer": 3,
+        "explain": "为的是 nối hành động đọc sách với mục tiêu học thêm nhiều điều."
+      },
+      {
+        "q": "Chọn câu dùng 为的是 tự nhiên.",
+        "options": ["她认真复习，为的是考试时能考好。", "她为的是认真复习，考试时能考好。", "为的是她认真复习考试时。"],
+        "answer": 0,
+        "explain": "Câu đúng nêu hành động trước rồi dùng 为的是 để giải thích mục đích."
+      },
+      {
+        "q": "为的是 giới thiệu phần nào trong câu?",
+        "options": ["Hành động đã hoàn thành", "Mục đích của hành động", "Thời gian diễn ra hành động", "Địa điểm diễn ra hành động"],
+        "answer": 1,
+        "explain": "Phần sau 为的是 giải thích hành động ở vế trước nhằm mục đích gì."
+      },
+      {
+        "q": "Chọn câu đúng để nói “Tôi ghi lại địa chỉ là để tìm được đường về nhà”.",
+        "options": ["我记下地址，为了的是回家时能找到路。", "我为的是记下地址，回家时能找到路。", "我记下地址，为的是回家时能找到路。"],
+        "answer": 2,
+        "explain": "为的是 đứng sau hành động 记下地址 và trước mục đích."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h5-09",
+    "level": 5,
+    "order": 4,
+    "title": "Không có... thì không có...",
+    "titleZh": "没有就没有",
+    "summary": "Bạn có thể dùng 没有……就没有…… để nhấn mạnh rằng kết quả không thể có nếu thiếu điều kiện hoặc nền tảng cần thiết.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nêu điều kiện cần thiết cho kết quả",
+        "body": "没有……就没有…… diễn tả mối liên hệ cần thiết giữa một điều kiện hoặc nền tảng với kết quả. Cấu trúc có nghĩa là nếu thiếu điều được nêu trước thì kết quả phía sau cũng không thể có.",
+        "examples": [
+          {
+            "zh": "没有老师的帮助，就没有我的进步。",
+            "py": "méiyǒu lǎoshī de bāngzhù jiù méiyǒu wǒ de jìnbù",
+            "vi": "Không có sự giúp đỡ của thầy cô thì tôi đã không tiến bộ."
+          },
+          {
+            "zh": "没有大家的努力，就没有今天的成功。",
+            "py": "méiyǒu dàjiā de nǔlì jiù méiyǒu jīntiān de chénggōng",
+            "vi": "Không có nỗ lực của mọi người thì đã không có thành công hôm nay."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nhấn mạnh vai trò của một nền tảng",
+        "body": "Dùng mẫu này khi muốn nhấn mạnh rằng sự hỗ trợ, nỗ lực hoặc điều kiện nào đó là cần thiết để có kết quả. Câu thường mang sắc thái ghi nhận hoặc kết luận.",
+        "examples": [
+          {
+            "zh": "没有家人的支持，就没有他的勇气。",
+            "py": "méiyǒu jiārén de zhīchí jiù méiyǒu tā de yǒngqì",
+            "vi": "Không có sự ủng hộ của gia đình thì anh ấy đã không có lòng can đảm."
+          },
+          {
+            "zh": "没有朋友的陪伴，她就没有快乐的童年。",
+            "py": "méiyǒu péngyou de péibàn tā jiù méiyǒu kuàilè de tóngnián",
+            "vi": "Không có bạn bè ở bên thì cô ấy đã không có tuổi thơ vui vẻ."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Lặp 没有 ở hai vế",
+        "body": "Sau 没有 thứ nhất là điều kiện hoặc nền tảng bị thiếu; sau 就没有 là kết quả không thể có. Có thể thêm chủ ngữ ở vế sau để làm rõ ai có kết quả đó.",
+        "formula": "没有 + điều kiện/ nền tảng，就没有 + kết quả",
+        "examples": [
+          {
+            "zh": "我没有每天练习，就没有这么好的成绩。",
+            "py": "wǒ méiyǒu měitiān liànxí jiù méiyǒu zhème hǎo de chéngjì",
+            "vi": "Nếu tôi không luyện tập mỗi ngày thì đã không có thành tích tốt như vậy."
+          },
+          {
+            "zh": "没有大家的帮助，我们就没有今天。",
+            "py": "méiyǒu dàjiā de bāngzhù wǒmen jiù méiyǒu jīntiān",
+            "vi": "Không có sự giúp đỡ của mọi người thì chúng tôi đã không có ngày hôm nay."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Giữ đúng mẫu phủ định 没有",
+        "body": "Người học đôi khi dùng 不有 hoặc đặt kết quả lên trước làm câu sai trật tự. Hãy dùng 没有 ở cả hai phần và để kết quả sau 就.",
+        "mistakes": [
+          {
+            "wrong": "没有老师的帮助，我的进步就没有。",
+            "right": "没有老师的帮助，就没有我的进步。",
+            "why": "Kết quả 我的进步 cần đi sau cụm 就没有, không đặt ở cuối câu."
+          },
+          {
+            "wrong": "没有同学的帮助，我就不有好成绩。",
+            "right": "没有同学的帮助，我就没有好成绩。",
+            "why": "Phủ định sự tồn tại của kết quả dùng 没有, không dùng 不有."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn phần điền đúng: ____老师的帮助，就没有我的进步。",
+        "options": ["不但有", "因为有", "如果有", "没有"],
+        "answer": 3,
+        "explain": "没有 nêu điều kiện bị thiếu để nối với kết quả phía sau."
+      },
+      {
+        "q": "Chọn câu có trật tự đúng.",
+        "options": ["没有大家的努力，就没有今天的成功。", "没有大家的努力，也今天成功。", "没有大家的努力，就不有今天的成功。"],
+        "answer": 0,
+        "explain": "Câu đúng lặp 没有 và đặt kết quả sau 就."
+      },
+      {
+        "q": "Chọn câu diễn tả ý “Không có bạn bè ở bên thì cô ấy đã không có tuổi thơ vui vẻ”.",
+        "options": ["没有朋友的陪伴，她没有就快乐的童年。", "没有朋友的陪伴，她就没有快乐的童年。", "没有朋友的陪伴，她就不有快乐的童年。", "没有朋友的陪伴，就她没有快乐的童年。"],
+        "answer": 1,
+        "explain": "Mẫu đúng là 没有 điều kiện rồi đến chủ ngữ và 就没有 kết quả."
+      },
+      {
+        "q": "Mối liên hệ nào phù hợp với 没有……就没有……?",
+        "options": ["Hai hành động xảy ra cùng lúc", "Một điều kiện trái với dự đoán", "Thiếu điều kiện thì không có kết quả", "Một hành động nhằm đạt mục đích"],
+        "answer": 2,
+        "explain": "Cấu trúc nhấn mạnh rằng kết quả phụ thuộc vào điều kiện hoặc nền tảng được nêu trước."
+      },
+      {
+        "q": "Chọn phần điền đúng: 没有同学的帮助，我就____。",
+        "options": ["没有帮助", "没有了进步", "不有好成绩", "没有好成绩"],
+        "answer": 3,
+        "explain": "没有好成绩 là phần kết quả phủ định phù hợp với cấu trúc."
+      }
+    ]
+  }
+]

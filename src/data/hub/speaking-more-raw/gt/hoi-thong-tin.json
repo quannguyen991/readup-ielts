@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-hoi-thong-tin-1",
+  "level": "EASY",
+  "title": "Asking Directions to Central Station",
+  "titleVi": "Hỏi đường đến ga trung tâm",
+  "situationVi": "Bạn đang đi du lịch tự túc tại Singapore và bị lạc đường gần khu mua sắm. Bạn muốn hỏi người đi đường cách đi bộ đến ga tàu điện ngầm gần nhất.",
+  "task": "You are lost in an unfamiliar city and need to catch a train. Ask a friendly passerby for directions to the nearest MRT station, how long it takes to walk there, and any recognizable landmarks on the way.",
+  "mustVi": [
+   "Chào hỏi lịch sự và hỏi đường đến ga tàu điện ngầm gần nhất.",
+   "Hỏi mất bao lâu để đi bộ đến đó hoặc có phương tiện nào nhanh hơn không.",
+   "Hỏi về các biển hiệu hoặc mốc nhận biết nổi bật trên đường đi."
+  ],
+  "phrases": [
+   {
+    "en": "Excuse me, could you tell me how to get to...?",
+    "vi": "Xin lỗi, bạn có thể chỉ cho tôi đường đến...?",
+    "ex": "Excuse me, could you tell me how to get to the nearest station?"
+   },
+   {
+    "en": "Is it within walking distance?",
+    "vi": "Nơi đó có gần để đi bộ được không?",
+    "ex": "Is it within walking distance from here?"
+   },
+   {
+    "en": "How long does it take to get there on foot?",
+    "vi": "Mất bao lâu để đi bộ đến đó?",
+    "ex": "How long does it take to get there on foot?"
+   },
+   {
+    "en": "Are there any landmarks I should look out for?",
+    "vi": "Có điểm mốc nào tôi nên để ý không?",
+    "ex": "Are there any landmarks I should look out for along the street?"
+   },
+   {
+    "en": "Go straight until you see...",
+    "vi": "Đi thẳng cho đến khi bạn thấy...",
+    "ex": "Go straight until you see a large red bank on the corner."
+   },
+   {
+    "en": "Thank you so much for your help.",
+    "vi": "Cảm ơn bạn rất nhiều vì đã giúp đỡ.",
+    "ex": "Thank you so much for your help, have a great day!"
+   }
+  ],
+  "sample": "Excuse me! Could you please help me? I'm trying to find the nearest MRT station, but I think I took a wrong turn. Could you tell me the best way to get there from here? Is it within walking distance, or would it be better to take a taxi? Also, how long does it usually take on foot? Are there any recognizable landmarks or big buildings I should look out for so I know I'm heading in the right direction? I really appreciate your time and help. Thank you so much!",
+  "tipVi": "Hãy luôn mở đầu bằng lời xin lỗi nhã nhặn như 'Excuse me' và dùng câu hỏi gián tiếp bắt đầu bằng 'Could you tell me...' để tạo thiện cảm."
+ },
+ {
+  "id": "gt-hoi-thong-tin-2",
+  "level": "EASY",
+  "title": "Inquiring About Express Bus Tickets",
+  "titleVi": "Hỏi mua vé xe khách đường dài",
+  "situationVi": "Bạn đang đứng tại quầy vé bến xe khách liên tỉnh để mua vé đi Đà Lạt vào cuối tuần. Bạn cần trao đổi với nhân viên bán vé.",
+  "task": "You are at an intercity bus terminal purchasing tickets for an upcoming trip. Inquire with the ticket agent about departure times, ticket prices for different seat types, and the baggage allowance.",
+  "mustVi": [
+   "Hỏi lịch trình các chuyến xe khởi hành trong ngày mai.",
+   "Hỏi giá vé giữa ghế ngồi thường và giường nằm khoang VIP.",
+   "Hỏi về quy định hành lý xách tay và gửi kèm theo vé."
+  ],
+  "phrases": [
+   {
+    "en": "What times do the buses depart tomorrow?",
+    "vi": "Ngày mai xe khởi hành vào những khung giờ nào?",
+    "ex": "What times do the buses depart tomorrow morning?"
+   },
+   {
+    "en": "How much is a ticket for...?",
+    "vi": "Giá vé cho... là bao nhiêu?",
+    "ex": "How much is a ticket for a sleeper bed?"
+   },
+   {
+    "en": "What is the price difference between...?",
+    "vi": "Mức chênh lệch giá giữa... là bao nhiêu?",
+    "ex": "What is the price difference between standard seats and VIP cabins?"
+   },
+   {
+    "en": "Is luggage included in the ticket price?",
+    "vi": "Hành lý có được bao gồm trong giá vé không?",
+    "ex": "Is heavy luggage included in the ticket price?"
+   },
+   {
+    "en": "What is the maximum weight allowed?",
+    "vi": "Trọng lượng tối đa được phép là bao nhiêu?",
+    "ex": "What is the maximum weight allowed per passenger?"
+   },
+   {
+    "en": "Do I need to book in advance?",
+    "vi": "Tôi có cần đặt trước không?",
+    "ex": "Do I need to book return tickets in advance?"
+   }
+  ],
+  "sample": "Good morning! I would like to inquire about bus tickets to Da Lat for tomorrow. Could you tell me what times the buses depart throughout the morning and afternoon? Also, how much does a standard ticket cost compared to a VIP sleeper cabin? I want to see if the upgrade is worth it. Finally, could you clarify the baggage policy? Is there a weight limit for checked suitcases, or do I need to pay extra fees for oversized bags? Thank you very much for checking that for me.",
+  "tipVi": "Sử dụng các cấu trúc so sánh giá như 'compared to' hoặc 'the difference between' để hỏi thông tin một cách ngắn gọn, súc tích."
+ },
+ {
+  "id": "gt-hoi-thong-tin-3",
+  "level": "MEDIUM",
+  "title": "Booking a Hotel Room by Phone",
+  "titleVi": "Gọi điện đặt phòng khách sạn",
+  "situationVi": "Bạn đang gọi điện trực tiếp tới một khách sạn ven biển ở Đà Nẵng để kiểm tra tình trạng phòng trống cho chuyến nghỉ dưỡng của gia đình vào dịp lễ.",
+  "task": "You are calling a boutique beach hotel to check room availability and rates for a weekend trip. Inquire about specific room types, complimentary amenities, and ask for clarification on their cancellation and deposit policies.",
+  "mustVi": [
+   "Hỏi tình trạng phòng trống cho ngày cụ thể và các hạng phòng nhìn ra biển.",
+   "Hỏi về các dịch vụ đi kèm miễn phí như bữa sáng, đưa đón sân bay và hồ bơi.",
+   "Yêu cầu giải thích rõ chính sách đặt cọc và điều kiện hoàn hoặc hủy phòng."
+  ],
+  "phrases": [
+   {
+    "en": "I'm calling to check room availability for...",
+    "vi": "Tôi gọi điện để kiểm tra tình trạng phòng cho...",
+    "ex": "I'm calling to check room availability for next weekend."
+   },
+   {
+    "en": "Do you have any ocean-view rooms left?",
+    "vi": "Bên mình còn phòng hướng biển nào không?",
+    "ex": "Do you have any ocean-view rooms left for three nights?"
+   },
+   {
+    "en": "Does the rate include breakfast and airport transfer?",
+    "vi": "Giá phòng đã bao gồm bữa sáng và đưa đón sân bay chưa?",
+    "ex": "Does the rate include breakfast and airport transfer for two adults?"
+   },
+   {
+    "en": "Could you clarify your cancellation policy?",
+    "vi": "Bạn có thể giải thích rõ chính sách hủy phòng không?",
+    "ex": "Could you clarify your cancellation policy if our plans change?"
+   },
+   {
+    "en": "Is the deposit refundable?",
+    "vi": "Tiền đặt cọc có được hoàn lại không?",
+    "ex": "Is the deposit fully refundable if we cancel early?"
+   },
+   {
+    "en": "Could you send the booking confirmation via email?",
+    "vi": "Bạn có thể gửi xác nhận đặt phòng qua email giúp tôi không?",
+    "ex": "Could you send the booking confirmation via email once it's done?"
+   }
+  ],
+  "sample": "Hello, good afternoon! I'm calling to check room availability for next weekend, from Friday the twelfth to Sunday the fourteenth. Do you currently have any deluxe ocean-view rooms available for two adults and one child? In addition, could you please confirm what amenities are included in the nightly rate? Specifically, are buffet breakfast and airport shuttle service complimentary? Lastly, could you clarify your cancellation policy? If our flight gets delayed or we need to reschedule, is the advance deposit fully refundable? Thank you, and I look forward to hearing your options.",
+  "tipVi": "Khi giao tiếp qua điện thoại, hãy nói rõ ràng các con số và ngày tháng, đồng thời dùng từ nối như 'specifically' hoặc 'in addition' để hệ thống câu hỏi."
+ },
+ {
+  "id": "gt-hoi-thong-tin-4",
+  "level": "MEDIUM",
+  "title": "Clarifying Tech Specs and Warranty",
+  "titleVi": "Hỏi thông số kỹ thuật và bảo hành",
+  "situationVi": "Bạn đang ở một siêu thị điện máy nước ngoài để mua máy tính xách tay phục vụ công việc. Bạn đang phân vân giữa hai dòng máy và cần nhân viên tư vấn giải thích chi tiết.",
+  "task": "You are shopping for a new laptop at an electronics store. Ask a sales assistant to explain the differences between two models, ask them to repeat any complex technical terms, and inquire about international warranty coverage.",
+  "mustVi": [
+   "Nhờ nhân viên so sánh thời lượng pin và hiệu năng giữa hai mẫu máy cụ thể.",
+   "Lịch sự nhờ nhân viên nhắc lại hoặc giải thích đơn giản hơn khi gặp thuật ngữ khó.",
+   "Hỏi về chính sách bảo hành toàn cầu và chi phí đổi trả trong 30 ngày đầu."
+  ],
+  "phrases": [
+   {
+    "en": "Could you walk me through the key differences between...?",
+    "vi": "Bạn có thể giải thích cho tôi những điểm khác biệt chính giữa...?",
+    "ex": "Could you walk me through the key differences between these two laptops?"
+   },
+   {
+    "en": "Sorry, could you explain that in simpler terms?",
+    "vi": "Xin lỗi, bạn có thể giải thích điều đó bằng từ ngữ đơn giản hơn được không?",
+    "ex": "Sorry, could you explain that technical term in simpler terms?"
+   },
+   {
+    "en": "Would you mind repeating that last part slowly?",
+    "vi": "Bạn có phiền nhắc lại phần cuối đó chậm hơn một chút không?",
+    "ex": "Would you mind repeating that last part about the processor slowly?"
+   },
+   {
+    "en": "How does the battery life hold up under heavy use?",
+    "vi": "Thời lượng pin duy trì như thế nào khi sử dụng nhiều?",
+    "ex": "How does the battery life hold up under heavy video editing?"
+   },
+   {
+    "en": "Does this product come with an international warranty?",
+    "vi": "Sản phẩm này có đi kèm bảo hành quốc tế không?",
+    "ex": "Does this product come with an international warranty valid in Vietnam?"
+   },
+   {
+    "en": "What is your return policy if I find a defect?",
+    "vi": "Chính sách đổi trả của cửa hàng như thế nào nếu tôi phát hiện lỗi?",
+    "ex": "What is your return policy if I find a defect within thirty days?"
+   }
+  ],
+  "sample": "Excuse me, could you help me for a moment? I'm torn between these two ultrabooks for remote work. Could you walk me through the key differences regarding battery life and processing power? Sorry, would you mind repeating that specification slowly? I'm not very familiar with technical jargon, so could you explain what that chip upgrade actually means for daily multitasking? Also, does this laptop come with an international warranty that covers repairs in Vietnam? Finally, if I encounter any hardware defect during the first month, what is your exchange policy? Thank you for your patience!",
+  "tipVi": "Đừng ngần ngại yêu cầu người đối thoại nói chậm lại hoặc dùng từ ngữ đơn giản; câu hỏi làm rõ (clarification request) thể hiện sự chủ động và tự tin khi giao tiếp."
+ },
+ {
+  "id": "gt-hoi-thong-tin-5",
+  "level": "HARD",
+  "title": "Handling a Missed Connecting Flight",
+  "titleVi": "Xử lý sự cố nhỡ chuyến bay nối chuyến",
+  "situationVi": "Chuyến bay đầu tiên của bạn bị hoãn khiến bạn lỡ chuyến bay nối chuyến quốc tế tại sân bay trung chuyển. Bạn đến quầy dịch vụ khách hàng để tìm giải pháp xử lý gấp.",
+  "task": "You missed your connecting flight due to an airline delay. Speak to the customer service agent to inquire about rebooking on the next available flight, find out what will happen to your checked baggage, request hotel or meal vouchers, and ask for clear directions to the transfer desk or designated hotel lounge.",
+  "mustVi": [
+   "Giải thích tình huống bị lỡ chuyến do chuyến bay trước trễ và hỏi về chuyến bay kế tiếp sớm nhất.",
+   "Hỏi rõ về tình trạng hành lý ký gửi (sẽ tự động chuyển tiếp hay phải lấy lại).",
+   "Yêu cầu bồi hoàn phiếu ăn hoặc khách sạn và xin hướng dẫn chi tiết từng bước đường đi tới khu vực hỗ trợ."
+  ],
+  "phrases": [
+   {
+    "en": "Due to the inbound delay, I have missed my connecting flight to...",
+    "vi": "Do chuyến bay đến bị trễ, tôi đã bị lỡ chuyến bay nối chuyến tới...",
+    "ex": "Due to the inbound delay, I have missed my connecting flight to London."
+   },
+   {
+    "en": "What is the earliest available flight you can rebook me on?",
+    "vi": "Chuyến bay sớm nhất mà bạn có thể đổi vé cho tôi là khi nào?",
+    "ex": "What is the earliest available flight you can rebook me on tonight?"
+   },
+   {
+    "en": "Will my checked baggage be automatically transferred?",
+    "vi": "Hành lý ký gửi của tôi có được tự động chuyển tiếp không?",
+    "ex": "Will my checked baggage be automatically transferred to the next flight?"
+   },
+   {
+    "en": "Am I entitled to meal vouchers or overnight hotel accommodation?",
+    "vi": "Tôi có được hưởng phiếu ăn hoặc khách sạn qua đêm không?",
+    "ex": "Since the layover is eight hours, am I entitled to hotel accommodation?"
+   },
+   {
+    "en": "Just to make sure I understand correctly, could you recap the steps?",
+    "vi": "Để đảm bảo tôi hiểu đúng, bạn có thể tóm tắt lại các bước được không?",
+    "ex": "Just to make sure I understand correctly, could you recap the steps to the transfer hotel?"
+   },
+   {
+    "en": "Could you point me toward the right concourse for...",
+    "vi": "Bạn có thể chỉ hướng cho tôi đến khu sảnh chờ của...",
+    "ex": "Could you point me toward the right concourse for the transit desk?"
+   }
+  ],
+  "sample": "Good evening. Due to the two-hour delay on flight QR971, I missed my connecting flight to London. Could you please check the earliest available flight you can rebook me on? Since the next flight isn't until tomorrow morning, am I entitled to complimentary hotel accommodation and meal vouchers? Also, will my checked baggage be transferred automatically to the new flight, or do I need to collect it at baggage claim first? Just to make sure I don't get lost, could you recap the exact steps and point me toward the right transit counter to collect my boarding pass? Thank you.",
+  "tipVi": "Trong các sự cố phát sinh tại sân bay, hãy giữ thái độ bình tĩnh nhưng kiên quyết (assertive), và luôn dùng kỹ thuật tóm tắt lại ('Just to make sure...') để xác nhận chính xác các chỉ dẫn."
+ }
+]

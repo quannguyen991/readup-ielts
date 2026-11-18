@@ -1,0 +1,62 @@
+{
+ "id": "mock-28",
+ "title": "IELTS Speaking Mock Test 28",
+ "titleVi": "Đề thi thử số 28",
+ "focusVi": "Luyện tập kỹ năng miêu tả không gian công cộng và phát triển lập luận đa chiều về vai trò của quy hoạch đô thị đối với đời sống cộng đồng.",
+ "part1": [
+  {
+   "topic": "Films and Cinema",
+   "qs": [
+    "How often do you watch movies at a cinema?",
+    "What genres of films do you enjoy the most?",
+    "Did you go to the cinema often when you were a child?",
+    "Do you prefer watching movies alone or with friends?"
+   ]
+  },
+  {
+   "topic": "The Internet",
+   "qs": [
+    "How many hours a day do you spend on the internet?",
+    "What do you usually use the internet for?",
+    "How has the internet changed the way you study or work?",
+    "Can you imagine your daily life without the internet?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a public place you like to visit in your free time",
+  "bullets": [
+   "where this public place is located",
+   "what you usually do there",
+   "who you usually go there with",
+   "and explain why you enjoy visiting this public place"
+  ]
+ },
+ "part3": [
+  "Why are public parks and squares important for city residents?",
+  "How have public spaces changed in your country compared to the past?",
+  "Do you think governments should invest more money in outdoor spaces or indoor facilities like libraries?",
+  "What problems can occur if a city lacks adequate public spaces?",
+  "Will digital technology decrease people's need to visit public places in the future?"
+ ],
+ "answers": {
+  "p1": [
+   "I go to the cinema roughly once a month, mainly when an exciting blockbuster comes out. Last week, for instance, I watched the latest superhero movie with my brother on a giant IMAX screen.",
+   "I am particularly fond of psychological thrillers because they keep me on the edge of my seat. Films like 'Inception' really challenge my thinking and make the cinematic experience truly memorable.",
+   "Not really, because movie tickets were quite pricey for my family back then. Instead, we mostly rented video compact discs on weekends to watch classic animated films like 'The Lion King' at home.",
+   "I definitely prefer watching films with close companions because we can share popcorn and discuss the plot twists afterwards. Going alone feels a bit dull, especially during hilarious comedies or tense horror movies.",
+   "I typically spend around five to six hours online every day, mostly for university coursework and remote communication. On weekends, this figure might rise if I stream series on Netflix or browse social media.",
+   "I primarily rely on the internet for academic research, catching up on international news, and staying in touch with friends. For example, I use cloud tools like Google Docs daily for group assignments.",
+   "It has made learning far more efficient since I can access academic journals and video lectures instantly. In the past, students spent hours in libraries searching through physical encyclopedias for basic reference materials.",
+   "Honestly, that would be virtually impossible for me because modern living relies heavily on online platforms. Simple routines like banking, booking ride-hailing cabs, and submitting university papers would grind to an abrupt halt."
+  ],
+  "sample": "One public place I frequently visit whenever I need to unwind is the West Lake promenade, situated right in the heart of Hanoi. It is an expansive waterfront area surrounded by shady trees, bustling open-air cafes, and serene walking tracks. Whenever I drop by, I usually take a leisurely stroll along the pedestrian walkway, grab an iced Vietnamese coffee, and watch the sunset reflect over the water. Occasionally, I rent a bicycle to pedal around the shore or simply sit on a bench with a good book. Most of the time, I go there with a couple of close university friends on weekend afternoons to catch up and decompress after a hectic week. Sometimes, though, I visit on my own early in the morning when the atmosphere is much quieter. I absolutely love spending time there because it serves as an urban sanctuary away from the chaotic traffic and relentless noise of the city center. Breathing in the fresh breeze while gazing at the open horizon revitalizes my mental well-being and gives me a much-needed breath of fresh air amidst busy metropolitan life.",
+  "p3": [
+   "In my view, public parks and squares are essential because they offer communal green spaces where citizens can exercise and socialize outdoors. In densely populated metropolises, high-rise buildings and concrete roads often dominate the landscape, causing sensory overload and stress. Having accessible public parks allows residents to reconnect with nature and recharge their batteries, which is undeniably crucial for both physical and mental public health.",
+   "Historically, public spaces in Vietnam were mostly traditional open-air markets or village communal houses centered on straightforward trade and cultural festivals. Nowadays, however, modern public venues feature integrated leisure complexes, pedestrian-only walking streets, and landscaped waterfront plazas with public Wi-Fi. While these modern facilities provide enhanced safety and contemporary amenities, some argue that they sometimes lack the authentic cultural charm found in vintage community squares.",
+   "I believe municipal authorities should strike a balance rather than favoring one over the other. Outdoor green areas foster physical fitness, community sports, and environmental sustainability, whereas indoor venues like municipal libraries and cultural centers nurture intellectual development and lifelong learning. In rainy seasons, indoor facilities become indispensable, while outdoor parks shine during sunny weekends. Therefore, balanced budgetary allocation is fundamental for a healthy, well-rounded community.",
+   "A shortage of public spaces can lead to severe sociological and physiological repercussions. Without affordable recreational areas, people frequently become sedentary, staying indoors glued to screens, which accelerates lifestyle diseases like obesity. Furthermore, social cohesion deteriorates because neighbors have fewer neutral meeting grounds to interact and build mutual trust. Consequently, urban environments risk degenerating into isolated, stress-inducing concrete jungles where community spirit is virtually nonexistent.",
+   "Although virtual reality and online networking allow people to socialize remotely, I doubt they will ever replace real-world public venues. Humans have an innate biological craving for genuine tactile experiences, fresh air, and face-to-face interaction that digital avatars simply cannot replicate. While remote work might keep people home during office hours, it will likely increase their desire to seek solace and authentic companionship in public spaces afterward."
+  ]
+ }
+}

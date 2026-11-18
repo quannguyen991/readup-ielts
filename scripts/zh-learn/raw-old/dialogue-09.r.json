@@ -1,0 +1,495 @@
+[
+ {
+  "id": "zh-d-h3-04",
+  "level": 3,
+  "order": 4,
+  "title": "Tìm chìa khóa thất lạc",
+  "titleZh": "钥匙去哪儿了",
+  "topic": "Đồ vật thất lạc, tìm kiếm",
+  "scene": "小林找不到钥匙，小雨陪他在家里一起找。",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小林",
+    "zh": "我的钥匙不见了，你看见了吗？",
+    "py": "wǒ de yàoshi bú jiàn le nǐ kànjiàn le ma",
+    "vi": "Chìa khóa của tôi biến đâu mất rồi, bạn có thấy không?"
+   },
+   {
+    "who": "小雨",
+    "zh": "别着急，我们先看看桌子，再找找外套。",
+    "py": "bié zháojí wǒmen xiān kànkan zhuōzi zài zhǎozhao wàitào",
+    "vi": "Đừng lo, chúng ta xem bàn trước rồi tìm áo khoác sau."
+   },
+   {
+    "who": "小林",
+    "zh": "我昨天回家后，把钥匙放在桌子上了。",
+    "py": "wǒ zuótiān huí jiā hòu bǎ yàoshi fàng zài zhuōzi shàng le",
+    "vi": "Hôm qua sau khi về nhà, tôi đã để chìa khóa trên bàn."
+   },
+   {
+    "who": "小雨",
+    "zh": "桌子上没有，可能在你的书下面。",
+    "py": "zhuōzi shàng méiyǒu kěnéng zài nǐ de shū xiàmiàn",
+    "vi": "Trên bàn không có, có thể nó ở dưới sách của bạn."
+   },
+   {
+    "who": "小林",
+    "zh": "我把桌上的书拿开，还是没找到。",
+    "py": "wǒ bǎ zhuō shàng de shū ná kāi háishi méi zhǎodào",
+    "vi": "Tôi lấy sách trên bàn ra rồi mà vẫn chưa tìm thấy."
+   },
+   {
+    "who": "小雨",
+    "zh": "你看看外套吧，我记得你把钥匙放进外套里了。",
+    "py": "nǐ kànkan wàitào ba wǒ jìde nǐ bǎ yàoshi fàng jìn wàitào lǐ le",
+    "vi": "Bạn xem áo khoác thử đi, tôi nhớ là bạn đã bỏ chìa khóa vào trong đó."
+   },
+   {
+    "who": "小林",
+    "zh": "找到了，钥匙在外套里。",
+    "py": "zhǎodào le yàoshi zài wàitào lǐ",
+    "vi": "Tìm thấy rồi, chìa khóa ở trong áo khoác."
+   },
+   {
+    "who": "小雨",
+    "zh": "你刚才找了半天，怎么没看外套？",
+    "py": "nǐ gāngcái zhǎo le bàntiān zěnme méi kàn wàitào",
+    "vi": "Nãy giờ bạn tìm mãi, sao không xem áo khoác?"
+   },
+   {
+    "who": "小林",
+    "zh": "我没想到它会在外套里，太好了。",
+    "py": "wǒ méi xiǎngdào tā huì zài wàitào lǐ tài hǎo le",
+    "vi": "Tôi không ngờ nó lại ở trong áo khoác, may quá."
+   },
+   {
+    "who": "小雨",
+    "zh": "下次你把钥匙放在门边的小盒子里吧。",
+    "py": "xià cì nǐ bǎ yàoshi fàng zài ménbiān de xiǎo hézi lǐ ba",
+    "vi": "Lần sau bạn để chìa khóa vào chiếc hộp nhỏ cạnh cửa nhé."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "钥匙",
+    "py": "yàoshi",
+    "vi": "chìa khóa"
+   },
+   {
+    "zh": "着急",
+    "py": "zháojí",
+    "vi": "lo lắng"
+   },
+   {
+    "zh": "桌子",
+    "py": "zhuōzi",
+    "vi": "cái bàn"
+   },
+   {
+    "zh": "外套",
+    "py": "wàitào",
+    "vi": "áo khoác"
+   },
+   {
+    "zh": "找到",
+    "py": "zhǎodào",
+    "vi": "tìm thấy"
+   },
+   {
+    "zh": "盒子",
+    "py": "hézi",
+    "vi": "cái hộp"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h3-01",
+   "zh-g-h3-06",
+   "zh-g-h3-22"
+  ],
+  "quiz": [
+   {
+    "q": "小林发现什么不见了？",
+    "options": [
+     "他的钥匙",
+     "他的书",
+     "他的外套"
+    ],
+    "answer": 0,
+    "explain": "小林一开始说自己的钥匙不见了。"
+   },
+   {
+    "q": "小林昨天把钥匙放在哪里了？",
+    "options": [
+     "门边的小盒子里",
+     "书下面",
+     "桌子上"
+    ],
+    "answer": 2,
+    "explain": "小林说他昨天把钥匙放在桌子上了。"
+   },
+   {
+    "q": "小雨建议先看哪里，再找什么？",
+    "options": [
+     "先找外套，再看桌子",
+     "先看桌子，再找外套",
+     "先看书，再找盒子"
+    ],
+    "answer": 1,
+    "explain": "小雨建议他们先看看桌子，再找找外套。"
+   },
+   {
+    "q": "钥匙最后在哪里找到？",
+    "options": [
+     "在外套里",
+     "在书下面",
+     "在桌子上"
+    ],
+    "answer": 0,
+    "explain": "小林后来发现钥匙在外套里。"
+   },
+   {
+    "q": "小雨建议小林下次把钥匙放在哪里？",
+    "options": [
+     "桌子上",
+     "门边的小盒子里",
+     "书下面"
+    ],
+    "answer": 1,
+    "explain": "小雨建议他把钥匙放在门边的小盒子里。"
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h4-01",
+  "level": 4,
+  "order": 1,
+  "title": "Điện thoại không vào mạng",
+  "titleZh": "手机没有信号",
+  "topic": "Công nghệ",
+  "scene": "周明的手机连不上网，王丽帮他试着找到信号。",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "周明",
+    "zh": "我的手机今天上不了网了。",
+    "py": "wǒ de shǒujī jīntiān shàng bù liǎo wǎng le",
+    "vi": "Hôm nay điện thoại của tôi không vào mạng được."
+   },
+   {
+    "who": "王丽",
+    "zh": "你先看看，是不是网络密码错了？",
+    "py": "nǐ xiān kànkan shì bú shì wǎngluò mìmǎ cuò le",
+    "vi": "Bạn kiểm tra thử xem có phải mật khẩu mạng bị sai không."
+   },
+   {
+    "who": "周明",
+    "zh": "密码没错，可是手机信号很差。",
+    "py": "mìmǎ méi cuò kěshì shǒujī xìnhào hěn chà",
+    "vi": "Mật khẩu không sai, nhưng tín hiệu điện thoại rất kém."
+   },
+   {
+    "who": "王丽",
+    "zh": "你把手机关了再开，也许就好了。",
+    "py": "nǐ bǎ shǒujī guān le zài kāi yěxǔ jiù hǎo le",
+    "vi": "Bạn thử tắt điện thoại rồi bật lại, có lẽ sẽ ổn."
+   },
+   {
+    "who": "周明",
+    "zh": "我试过了，还是不能发照片。",
+    "py": "wǒ shì guo le háishi bù néng fā zhàopiàn",
+    "vi": "Tôi thử rồi mà vẫn không gửi ảnh được."
+   },
+   {
+    "who": "王丽",
+    "zh": "要是网络好一点，你就能发照片了。",
+    "py": "yàoshi wǎngluò hǎo yìdiǎn nǐ jiù néng fā zhàopiàn le",
+    "vi": "Nếu mạng tốt hơn một chút thì bạn sẽ gửi ảnh được."
+   },
+   {
+    "who": "周明",
+    "zh": "我刚走到窗边，还是没有信号。",
+    "py": "wǒ gāng zǒu dào chuāngbiān háishi méiyǒu xìnhào",
+    "vi": "Tôi vừa đi đến bên cửa sổ mà vẫn không có tín hiệu."
+   },
+   {
+    "who": "王丽",
+    "zh": "你把手机拿到门口试试。",
+    "py": "nǐ bǎ shǒujī ná dào ménkǒu shìshi",
+    "vi": "Bạn cầm điện thoại ra cửa thử xem."
+   },
+   {
+    "who": "周明",
+    "zh": "我走到门口，手机现在有信号了。",
+    "py": "wǒ zǒu dào ménkǒu shǒujī xiànzài yǒu xìnhào le",
+    "vi": "Tôi ra đến cửa rồi, điện thoại có tín hiệu rồi."
+   },
+   {
+    "who": "王丽",
+    "zh": "太好了，你现在可以发照片了。",
+    "py": "tài hǎo le nǐ xiànzài kěyǐ fā zhàopiàn le",
+    "vi": "Tốt quá, bây giờ bạn gửi ảnh được rồi."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "手机",
+    "py": "shǒujī",
+    "vi": "điện thoại"
+   },
+   {
+    "zh": "上网",
+    "py": "shàngwǎng",
+    "vi": "truy cập mạng"
+   },
+   {
+    "zh": "网络",
+    "py": "wǎngluò",
+    "vi": "mạng"
+   },
+   {
+    "zh": "密码",
+    "py": "mìmǎ",
+    "vi": "mật khẩu"
+   },
+   {
+    "zh": "信号",
+    "py": "xìnhào",
+    "vi": "tín hiệu"
+   },
+   {
+    "zh": "照片",
+    "py": "zhàopiàn",
+    "vi": "ảnh"
+   },
+   {
+    "zh": "门口",
+    "py": "ménkǒu",
+    "vi": "cửa ra vào"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h4-01",
+   "zh-g-h4-14",
+   "zh-g-h4-18"
+  ],
+  "quiz": [
+   {
+    "q": "王丽让周明先检查什么？",
+    "options": [
+     "网络密码",
+     "手机里的照片",
+     "门口有没有人"
+    ],
+    "answer": 0,
+    "explain": "王丽先让周明看看网络密码是不是错了。"
+   },
+   {
+    "q": "周明说密码怎么样？",
+    "options": [
+     "他忘了密码",
+     "密码没错",
+     "密码太长了"
+    ],
+    "answer": 1,
+    "explain": "周明说密码没错，问题是手机信号很差。"
+   },
+   {
+    "q": "王丽建议周明怎么重新试手机？",
+    "options": [
+     "把手机放进包里",
+     "把手机拿给老师",
+     "把手机关了再开"
+    ],
+    "answer": 2,
+    "explain": "王丽建议他把手机关了再开。"
+   },
+   {
+    "q": "周明先走到了哪里？",
+    "options": [
+     "门口",
+     "窗边",
+     "学校"
+    ],
+    "answer": 1,
+    "explain": "周明说他刚走到窗边，但还是没有信号。"
+   },
+   {
+    "q": "周明后来在哪里有信号？",
+    "options": [
+     "门口",
+     "窗边",
+     "家里"
+    ],
+    "answer": 0,
+    "explain": "周明走到门口后，手机有信号了。"
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h3-05",
+  "level": 3,
+  "order": 5,
+  "title": "Cuối tuần gặp bạn",
+  "titleZh": "周末见朋友",
+  "topic": "Bạn bè, quan hệ",
+  "scene": "小明和小安聊起好久没见的小雨，打算周末约她吃饭。",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小安",
+    "zh": "你今天怎么一个人来？",
+    "py": "nǐ jīntiān zěnme yí ge rén lái",
+    "vi": "Sao hôm nay bạn đến một mình vậy?"
+   },
+   {
+    "who": "小明",
+    "zh": "小雨最近工作很忙，我们一个月没见了。",
+    "py": "xiǎoyǔ zuìjìn gōngzuò hěn máng wǒmen yí ge yuè méi jiàn le",
+    "vi": "Dạo này Tiểu Vũ bận công việc, chúng tôi đã một tháng không gặp nhau."
+   },
+   {
+    "who": "小安",
+    "zh": "你们以前不是常常一起吃饭吗？",
+    "py": "nǐmen yǐqián bú shì chángcháng yìqǐ chīfàn ma",
+    "vi": "Trước đây hai bạn chẳng phải thường ăn cùng nhau sao?"
+   },
+   {
+    "who": "小明",
+    "zh": "是啊，她不但常听我说话，而且常帮我。",
+    "py": "shì a tā búdàn cháng tīng wǒ shuōhuà érqiě cháng bāng wǒ",
+    "vi": "Đúng vậy, bạn ấy không những thường nghe tôi tâm sự mà còn hay giúp tôi."
+   },
+   {
+    "who": "小安",
+    "zh": "那你昨天给她打电话了吗？",
+    "py": "nà nǐ zuótiān gěi tā dǎ diànhuà le ma",
+    "vi": "Vậy hôm qua bạn đã gọi điện cho bạn ấy chưa?"
+   },
+   {
+    "who": "小明",
+    "zh": "打了，她说周末有时间。",
+    "py": "dǎ le tā shuō zhōumò yǒu shíjiān",
+    "vi": "Gọi rồi, bạn ấy nói cuối tuần có thời gian."
+   },
+   {
+    "who": "小安",
+    "zh": "如果她周末有空，你们就一起吃饭吧。",
+    "py": "rúguǒ tā zhōumò yǒu kòng nǐmen jiù yìqǐ chīfàn ba",
+    "vi": "Nếu cuối tuần bạn ấy rảnh thì hai bạn đi ăn cùng nhau nhé."
+   },
+   {
+    "who": "小明",
+    "zh": "好啊，我也想听听她最近的事。",
+    "py": "hǎo a wǒ yě xiǎng tīngting tā zuìjìn de shì",
+    "vi": "Được đấy, tôi cũng muốn nghe chuyện gần đây của bạn ấy."
+   },
+   {
+    "who": "小安",
+    "zh": "见面时，你们可以多聊一会儿。",
+    "py": "jiànmiàn shí nǐmen kěyǐ duō liáo yíhuìr",
+    "vi": "Khi gặp nhau, hai bạn có thể trò chuyện thêm một lúc."
+   },
+   {
+    "who": "小明",
+    "zh": "我会听她说，也告诉她我的事。",
+    "py": "wǒ huì tīng tā shuō yě gàosu tā wǒ de shì",
+    "vi": "Tôi sẽ nghe bạn ấy kể và cũng kể cho bạn ấy chuyện của tôi."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "最近",
+    "py": "zuìjìn",
+    "vi": "gần đây"
+   },
+   {
+    "zh": "工作",
+    "py": "gōngzuò",
+    "vi": "công việc"
+   },
+   {
+    "zh": "常常",
+    "py": "chángcháng",
+    "vi": "thường xuyên"
+   },
+   {
+    "zh": "帮",
+    "py": "bāng",
+    "vi": "giúp"
+   },
+   {
+    "zh": "打电话",
+    "py": "dǎ diànhuà",
+    "vi": "gọi điện thoại"
+   },
+   {
+    "zh": "周末",
+    "py": "zhōumò",
+    "vi": "cuối tuần"
+   },
+   {
+    "zh": "见面",
+    "py": "jiànmiàn",
+    "vi": "gặp mặt"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h3-17",
+   "zh-g-h3-23",
+   "zh-g-h3-25"
+  ],
+  "quiz": [
+   {
+    "q": "小明为什么最近没和小雨见面？",
+    "options": [
+     "小雨工作很忙",
+     "小明去了别的城市",
+     "他们不想一起吃饭"
+    ],
+    "answer": 0,
+    "explain": "小明说小雨最近工作很忙，所以他们一个月没见了。"
+   },
+   {
+    "q": "小明和小雨多久没见了？",
+    "options": [
+     "一个星期",
+     "两个月",
+     "一个月"
+    ],
+    "answer": 2,
+    "explain": "小明说他们已经一个月没见了。"
+   },
+   {
+    "q": "小雨说自己什么时候有时间？",
+    "options": [
+     "今天",
+     "周末",
+     "下个月"
+    ],
+    "answer": 1,
+    "explain": "小明说小雨告诉他周末有时间。"
+   },
+   {
+    "q": "小安建议他们周末做什么？",
+    "options": [
+     "一起去上班",
+     "一起看书",
+     "一起吃饭"
+    ],
+    "answer": 2,
+    "explain": "小安建议如果小雨有空，他们就一起吃饭。"
+   },
+   {
+    "q": "见面以后，小明打算做什么？",
+    "options": [
+     "听小雨说，也告诉她自己的事",
+     "请小雨帮他工作",
+     "和小雨一起去学校"
+    ],
+    "answer": 0,
+    "explain": "小明说他会听小雨说，也告诉她自己的事。"
+   }
+  ]
+ }
+]

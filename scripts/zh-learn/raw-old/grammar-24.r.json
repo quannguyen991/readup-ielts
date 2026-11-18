@@ -1,0 +1,554 @@
+[
+ {
+  "id": "zh-g-h4-10",
+  "level": 4,
+  "order": 10,
+  "title": "Không chỉ… mà còn…",
+  "titleZh": "不仅……还……",
+  "summary": "Bạn có thể nối hai ý cùng đúng và nhấn mạnh ý thứ hai.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Thêm một ý nữa",
+    "body": "Mẫu này có nghĩa là “không chỉ A mà còn B”. Ý thứ hai bổ sung thêm thông tin cho ý thứ nhất.",
+    "examples": [
+     {
+      "zh": "他不仅会做饭，还会开车。",
+      "py": "tā bùjǐn huì zuòfàn hái huì kāichē",
+      "vi": "Anh ấy không chỉ biết nấu ăn mà còn biết lái xe.",
+      "mark": "不仅会做饭，还会开车"
+     },
+     {
+      "zh": "我不仅认识他，还认识他的哥哥。",
+      "py": "wǒ bùjǐn rènshi tā hái rènshi tā de gēge",
+      "vi": "Tôi không chỉ quen anh ấy mà còn quen anh trai anh ấy.",
+      "mark": "不仅认识他，还认识他的哥哥"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nhấn mạnh hai điều",
+    "body": "Dùng khi muốn nói cả hai đặc điểm hoặc hành động đều đúng. Có thể dùng 还 hoặc 而且 để dẫn ý bổ sung.",
+    "examples": [
+     {
+      "zh": "今天不仅下雨，而且风很大。",
+      "py": "jīntiān bùjǐn xiàyǔ érqiě fēng hěn dà",
+      "vi": "Hôm nay không chỉ mưa mà gió cũng rất lớn.",
+      "mark": "不仅下雨，而且风很大"
+     },
+     {
+      "zh": "她不仅会唱歌，还会跳舞。",
+      "py": "tā bùjǐn huì chànggē hái huì tiàowǔ",
+      "vi": "Cô ấy không chỉ biết hát mà còn biết nhảy.",
+      "mark": "不仅会唱歌，还会跳舞"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Nối hai vế tương ứng",
+    "body": "Đặt 不仅 trước ý thứ nhất, rồi dùng 还 hoặc 而且 trước ý bổ sung. Hai vế thường có cấu trúc tương tự để câu cân đối.",
+    "formula": "S + 不仅 + A，(还/而且) + B",
+    "examples": [
+     {
+      "zh": "爸爸不仅会开车，还会做饭。",
+      "py": "bàba bùjǐn huì kāichē hái huì zuòfàn",
+      "vi": "Bố không chỉ biết lái xe mà còn biết nấu ăn.",
+      "mark": "不仅会开车，还会做饭"
+     },
+     {
+      "zh": "我们不仅要学习，还要休息。",
+      "py": "wǒmen bùjǐn yào xuéxí hái yào xiūxi",
+      "vi": "Chúng tôi không chỉ cần học mà còn cần nghỉ ngơi.",
+      "mark": "不仅要学习，还要休息"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không chồng từ nối",
+    "body": "Mỗi vế chỉ cần một từ nối phù hợp. Tránh đặt 也 và 而且 liền nhau trong cùng một vị trí.",
+    "mistakes": [
+     {
+      "wrong": "他不仅会唱歌，也而且会跳舞。",
+      "right": "他不仅会唱歌，而且会跳舞。",
+      "why": "Không dùng 也 và 而且 chồng lên nhau ở cùng một vị trí; hãy chọn một từ để nối ý bổ sung."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Mẫu này diễn đạt quan hệ nào giữa hai ý?",
+    "options": [
+     "Ý thứ hai bổ sung cho ý thứ nhất",
+     "Hai ý trái ngược nhau",
+     "Chỉ có một trong hai lựa chọn",
+     "Ý thứ hai là kết quả của ý thứ nhất"
+    ],
+    "answer": 0,
+    "explain": "不仅……还/而且…… nối hai ý cùng đúng, trong đó vế sau bổ sung thêm."
+   },
+   {
+    "q": "Cặp từ nào phù hợp với nghĩa “không chỉ… mà còn…”?",
+    "options": [
+     "尽管……但是……",
+     "连……也……",
+     "不仅……而且……",
+     "不是……就是……"
+    ],
+    "answer": 2,
+    "explain": "不仅……而且…… là một cặp thường dùng để thêm ý."
+   },
+   {
+    "q": "Câu nào diễn đạt rằng một người biết hát và cũng biết nhảy?",
+    "options": [
+     "她会唱歌，但是不会跳舞。",
+     "她不是唱歌，就是跳舞。",
+     "她连歌都不会唱。",
+     "她不仅会唱歌，还会跳舞。"
+    ],
+    "answer": 3,
+    "explain": "Cả hai khả năng đều đúng, nên dùng mẫu thêm ý 不仅……还……."
+   },
+   {
+    "q": "Khi nào nên dùng mẫu này?",
+    "options": [
+     "Khi chỉ muốn hỏi một câu",
+     "Khi cả hai đặc điểm hoặc hành động đều đúng",
+     "Khi muốn nói hai việc loại trừ nhau",
+     "Khi muốn kể một việc xảy ra trước việc kia"
+    ],
+    "answer": 1,
+    "explain": "Mẫu này thích hợp khi muốn trình bày hai ý cùng đúng."
+   },
+   {
+    "q": "Trong vế thứ hai, những từ nào có thể dùng để thêm ý?",
+    "options": [
+     "所以",
+     "但是",
+     "还 hoặc 而且",
+     "因为"
+    ],
+    "answer": 2,
+    "explain": "还 và 而且 đều có thể dẫn ý bổ sung sau 不仅."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-11",
+  "level": 4,
+  "order": 11,
+  "title": "Đến cả… cũng/đều…",
+  "titleZh": "连……也/都……",
+  "summary": "Bạn có thể dùng 连……也/都…… để nhấn mạnh một điều bất ngờ hoặc vượt dự đoán.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nhấn mạnh điều bất ngờ",
+    "body": "连……也/都…… thường có nghĩa là “đến cả… cũng/đều…”. 连 đưa đối tượng được nhấn mạnh lên trước, còn 也 hoặc 都 đứng trước vị ngữ.",
+    "examples": [
+     {
+      "zh": "今天太忙了，我连午饭也没吃。",
+      "py": "jīntiān tài máng le wǒ lián wǔfàn yě méi chī",
+      "vi": "Hôm nay bận quá, đến cả bữa trưa tôi cũng chưa ăn.",
+      "mark": "连午饭也没吃"
+     },
+     {
+      "zh": "我很累，连电视也不想看。",
+      "py": "wǒ hěn lèi lián diànshì yě bù xiǎng kàn",
+      "vi": "Tôi mệt lắm, đến cả ti vi cũng chẳng muốn xem.",
+      "mark": "连电视也不想看"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu điều khó ngờ",
+    "body": "Dùng mẫu này khi muốn nói một người hoặc vật cũng nằm trong phạm vi của sự việc, dù người nghe có thể không ngờ đến. Ngữ cảnh trước đó thường giúp làm rõ điều gì khiến ta ngạc nhiên.",
+    "examples": [
+     {
+      "zh": "这个问题很简单，连孩子都会回答。",
+      "py": "zhège wèntí hěn jiǎndān lián háizi dōu huì huídá",
+      "vi": "Câu hỏi này rất đơn giản, đến trẻ con cũng trả lời được.",
+      "mark": "连孩子都会回答"
+     },
+     {
+      "zh": "昨天太冷了，连我也不想出门。",
+      "py": "zuótiān tài lěng le lián wǒ yě bù xiǎng chūmén",
+      "vi": "Hôm qua lạnh quá, đến tôi cũng chẳng muốn ra ngoài.",
+      "mark": "连我也不想出门"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 连 trước đối tượng",
+    "body": "Đưa người hoặc vật muốn nhấn mạnh ra sau 连. Sau đối tượng đó, dùng 也 hoặc 都 trước động từ hay tính từ.",
+    "formula": "S + 连 + đối tượng được nhấn mạnh + 也/都 + vị ngữ",
+    "examples": [
+     {
+      "zh": "这本书很有意思，连我弟弟都喜欢。",
+      "py": "zhè běn shū hěn yǒu yìsi lián wǒ dìdi dōu xǐhuan",
+      "vi": "Quyển sách này rất thú vị, đến em trai tôi cũng thích.",
+      "mark": "连我弟弟都喜欢"
+     },
+     {
+      "zh": "他汉语说得很好，连老师都表扬他。",
+      "py": "tā Hànyǔ shuō de hěn hǎo lián lǎoshī dōu biǎoyáng tā",
+      "vi": "Anh ấy nói tiếng Trung rất tốt, đến giáo viên cũng khen anh ấy.",
+      "mark": "连老师都表扬他"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt đúng vị trí của 连",
+    "body": "连 đứng ngay trước đối tượng được nhấn mạnh, không đứng ngay trước 也 hoặc 都. 也/都 đặt sau đối tượng và trước vị ngữ.",
+    "mistakes": [
+     {
+      "wrong": "我连也没吃午饭。",
+      "right": "我连午饭也没吃。",
+      "why": "Đưa đối tượng 午饭 ra sau 连, rồi đặt 也 trước vị ngữ 没吃."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Mẫu 连……也/都…… thường dùng để làm gì?",
+    "options": [
+     "Nhấn mạnh một điều bất ngờ hoặc vượt dự đoán",
+     "Nêu hai lựa chọn ngang nhau",
+     "Bổ sung lý do cho hành động",
+     "Diễn tả hai việc trái ngược"
+    ],
+    "answer": 0,
+    "explain": "连 đưa đối tượng bất ngờ lên trước để nhấn mạnh phạm vi của sự việc."
+   },
+   {
+    "q": "连 thường đứng ở đâu trong mẫu này?",
+    "options": [
+     "Sau vị ngữ",
+     "Ngay trước đối tượng được nhấn mạnh",
+     "Sau 也 hoặc 都",
+     "Cuối câu"
+    ],
+    "answer": 1,
+    "explain": "Đối tượng cần nhấn mạnh đi ngay sau 连."
+   },
+   {
+    "q": "Sau đối tượng được 连 nhấn mạnh, thành phần nào thường đứng trước vị ngữ?",
+    "options": [
+     "但是",
+     "因为",
+     "也 hoặc 都",
+     "就是"
+    ],
+    "answer": 2,
+    "explain": "Sau đối tượng là 也 hoặc 都, rồi đến vị ngữ."
+   },
+   {
+    "q": "Trong câu “这个问题很简单，连孩子都会回答”, đối tượng nào được nhấn mạnh?",
+    "options": [
+     "这个问题",
+     "孩子",
+     "回答",
+     "很简单"
+    ],
+    "answer": 1,
+    "explain": "孩子 đứng ngay sau 连 nên là đối tượng được nhấn mạnh."
+   },
+   {
+    "q": "Chọn thứ tự đúng cho mẫu này.",
+    "options": [
+     "Đối tượng + 连 + vị ngữ + 也",
+     "连 + đối tượng + 也/都 + vị ngữ",
+     "也/都 + 连 + vị ngữ + đối tượng",
+     "Vị ngữ + 连 + 也/都 + đối tượng"
+    ],
+    "answer": 1,
+    "explain": "Cấu trúc đúng là 连 đứng trước đối tượng, còn 也/都 đứng trước vị ngữ."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-12",
+  "level": 4,
+  "order": 12,
+  "title": "Không phải… thì là…",
+  "titleZh": "不是……就是……",
+  "summary": "Bạn có thể dùng 不是……就是…… để nêu hai khả năng thay thế nhau.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu một trong hai khả năng",
+    "body": "不是……就是…… thường có nghĩa là “không phải A thì là B”. Mẫu này nêu hai lựa chọn, hoặc hai việc thường xuyên thay phiên nhau.",
+    "examples": [
+     {
+      "zh": "他不是在家看书，就是在外面运动。",
+      "py": "tā bú shì zài jiā kàn shū jiù shì zài wàimiàn yùndòng",
+      "vi": "Anh ấy hoặc đọc sách ở nhà, hoặc tập thể thao bên ngoài.",
+      "mark": "不是在家看书，就是在外面运动"
+     },
+     {
+      "zh": "我每天不是坐公交车，就是坐地铁。",
+      "py": "wǒ měitiān bú shì zuò gōngjiāochē jiù shì zuò dìtiě",
+      "vi": "Mỗi ngày tôi hoặc đi xe buýt, hoặc đi tàu điện ngầm.",
+      "mark": "不是坐公交车，就是坐地铁"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Đưa ra hai lựa chọn",
+    "body": "Dùng khi chỉ ra hai cách hoặc hai việc có thể xảy ra trong cùng một tình huống. Với thói quen, mẫu này cũng có thể cho biết người đó thường làm việc này hoặc việc kia.",
+    "examples": [
+     {
+      "zh": "妈妈早上不是喝茶，就是喝咖啡。",
+      "py": "māma zǎoshang bú shì hē chá jiù shì hē kāfēi",
+      "vi": "Buổi sáng mẹ hoặc uống trà, hoặc uống cà phê.",
+      "mark": "不是喝茶，就是喝咖啡"
+     },
+     {
+      "zh": "下午我们不是打球，就是跑步。",
+      "py": "xiàwǔ wǒmen bú shì dǎ qiú jiù shì pǎo bù",
+      "vi": "Buổi chiều chúng tôi hoặc chơi bóng, hoặc chạy bộ.",
+      "mark": "不是打球，就是跑步"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Ghép hai phương án",
+    "body": "Đặt lựa chọn thứ nhất sau 不是, rồi mở lựa chọn thứ hai bằng 就是. Hai vế nên cùng trả lời cho một câu hỏi, chẳng hạn đi đâu hoặc đi bằng cách nào.",
+    "formula": "S + 不是 + A，就是 + B",
+    "examples": [
+     {
+      "zh": "晚上我不是在家，就是去朋友家。",
+      "py": "wǎnshang wǒ bú shì zài jiā jiù shì qù péngyou jiā",
+      "vi": "Buổi tối tôi hoặc ở nhà, hoặc đến nhà bạn.",
+      "mark": "不是在家，就是去朋友家"
+     },
+     {
+      "zh": "他去北京不是坐火车，就是坐飞机。",
+      "py": "tā qù Běijīng bú shì zuò huǒchē jiù shì zuò fēijī",
+      "vi": "Anh ấy đến Bắc Kinh hoặc đi tàu hỏa, hoặc đi máy bay.",
+      "mark": "不是坐火车，就是坐飞机"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Dùng đúng cặp từ nối",
+    "body": "Khi muốn nói hai khả năng thay thế nhau, hãy ghép 不是 với 就是. 还 có nghĩa bổ sung, nên không thay cho 就是 trong mẫu này.",
+    "mistakes": [
+     {
+      "wrong": "我不是在家休息，还去公园散步。",
+      "right": "我不是在家休息，就是去公园散步。",
+      "why": "Nếu muốn nêu hai phương án thay thế nhau, vế sau cần dùng 就是 thay vì 还."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "不是……就是…… thường diễn đạt ý nào?",
+    "options": [
+     "Hai việc xảy ra cùng lúc",
+     "Ý thứ hai bổ sung cho ý thứ nhất",
+     "Một trong hai khả năng",
+     "Một việc xảy ra dù có trở ngại"
+    ],
+    "answer": 2,
+    "explain": "Mẫu này nêu hai lựa chọn hoặc hai khả năng thay thế nhau."
+   },
+   {
+    "q": "Từ nào mở đầu lựa chọn thứ hai trong mẫu này?",
+    "options": [
+     "就是",
+     "但是",
+     "而且",
+     "因为"
+    ],
+    "answer": 0,
+    "explain": "Lựa chọn thứ hai được mở bằng 就是."
+   },
+   {
+    "q": "Mẫu này phù hợp nhất khi nào?",
+    "options": [
+     "Muốn nêu nguyên nhân",
+     "Muốn nhấn mạnh một điều bất ngờ",
+     "Muốn nói hai ý trái ngược",
+     "Muốn đưa ra hai cách hoặc khả năng"
+    ],
+    "answer": 3,
+    "explain": "Hai vế đưa ra hai khả năng cho cùng một tình huống."
+   },
+   {
+    "q": "“妈妈早上不是喝茶，就是喝咖啡。” diễn tả thói quen nào?",
+    "options": [
+     "Buổi sáng luôn uống cả trà lẫn cà phê",
+     "Buổi sáng thường chọn trà hoặc cà phê",
+     "Buổi sáng không uống gì cả",
+     "Buổi sáng uống trà vì trời lạnh"
+    ],
+    "answer": 1,
+    "explain": "Mẫu có thể diễn tả một thói quen thường là việc này hoặc việc kia."
+   },
+   {
+    "q": "Cặp từ nào hoàn chỉnh cấu trúc lựa chọn?",
+    "options": [
+     "尽管……但是……",
+     "不仅……而且……",
+     "不是……就是……",
+     "连……也……"
+    ],
+    "answer": 2,
+    "explain": "不是……就是…… là cặp dùng để nêu hai phương án."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-13",
+  "level": 4,
+  "order": 13,
+  "title": "Mặc dù… nhưng…",
+  "titleZh": "尽管……但是……",
+  "summary": "Bạn có thể dùng 尽管……但是/可是…… để nêu một trở ngại rồi nói điều vẫn xảy ra.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu điều trái dự đoán",
+    "body": "尽管……但是/可是…… có nghĩa là “mặc dù… nhưng…”. Vế sau nêu sự việc vẫn xảy ra hoặc một ý trái với điều người nghe có thể dự đoán từ vế đầu.",
+    "examples": [
+     {
+      "zh": "尽管今天下雨，但是我们还是去上课。",
+      "py": "jǐnguǎn jīntiān xiàyǔ dànshì wǒmen háishi qù shàngkè",
+      "vi": "Mặc dù hôm nay trời mưa nhưng chúng tôi vẫn đi học.",
+      "mark": "尽管今天下雨，但是我们还是去上课"
+     },
+     {
+      "zh": "尽管他很累，可是他还在工作。",
+      "py": "jǐnguǎn tā hěn lèi kěshì tā hái zài gōngzuò",
+      "vi": "Mặc dù anh ấy rất mệt nhưng anh ấy vẫn đang làm việc.",
+      "mark": "尽管他很累，可是他还在工作"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói về trở ngại",
+    "body": "Dùng khi muốn thừa nhận một khó khăn hoặc đặc điểm, rồi nêu điều vẫn đúng bất chấp điều đó. 还 hoặc 还是 trong vế sau thường làm rõ ý “vẫn”.",
+    "examples": [
+     {
+      "zh": "尽管这件衣服有点贵，但是我很喜欢。",
+      "py": "jǐnguǎn zhè jiàn yīfu yǒudiǎn guì dànshì wǒ hěn xǐhuan",
+      "vi": "Mặc dù bộ quần áo này hơi đắt nhưng tôi rất thích.",
+      "mark": "尽管这件衣服有点贵，但是我很喜欢"
+     },
+     {
+      "zh": "尽管他不认识我，但是他帮助了我。",
+      "py": "jǐnguǎn tā bú rènshi wǒ dànshì tā bāngzhù le wǒ",
+      "vi": "Mặc dù anh ấy không quen tôi nhưng anh ấy đã giúp tôi.",
+      "mark": "尽管他不认识我，但是他帮助了我"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Ghép vế nhượng bộ",
+    "body": "Đặt 尽管 trước điều được thừa nhận, rồi dùng 但是 hoặc 可是 để dẫn sang kết quả trái dự đoán. Có thể dùng 但是 hoặc 可是, không cần dùng cả hai.",
+    "formula": "尽管 + A，但是/可是 + B",
+    "examples": [
+     {
+      "zh": "尽管她很忙，但是她每天都学习。",
+      "py": "jǐnguǎn tā hěn máng dànshì tā měitiān dōu xuéxí",
+      "vi": "Mặc dù cô ấy rất bận nhưng ngày nào cô ấy cũng học.",
+      "mark": "尽管她很忙，但是她每天都学习"
+     },
+     {
+      "zh": "尽管今天休息，可是妈妈还要上班。",
+      "py": "jǐnguǎn jīntiān xiūxi kěshì māma hái yào shàngbān",
+      "vi": "Mặc dù hôm nay được nghỉ nhưng mẹ vẫn phải đi làm.",
+      "mark": "尽管今天休息，可是妈妈还要上班"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Tránh nối ý bằng 所以",
+    "body": "Vế sau cần thể hiện sự nhượng bộ hoặc trái dự đoán. 所以 thường dẫn kết quả theo quan hệ nguyên nhân, nên không thay cho 但是 hoặc 可是 trong mẫu này.",
+    "mistakes": [
+     {
+      "wrong": "尽管他很累，所以他还在工作。",
+      "right": "尽管他很累，但是他还在工作。",
+      "why": "尽管 mở đầu một vế nhượng bộ; vế sau dùng 但是 hoặc 可是 để nêu điều vẫn xảy ra."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "尽管……但是/可是…… thường diễn đạt ý nào?",
+    "options": [
+     "Hai lựa chọn loại trừ nhau",
+     "Ý thứ hai bổ sung cho ý thứ nhất",
+     "Một điều xảy ra vì có nguyên nhân",
+     "Một điều vẫn xảy ra dù có trở ngại"
+    ],
+    "answer": 3,
+    "explain": "Vế sau nêu điều vẫn đúng bất chấp tình huống ở vế đầu."
+   },
+   {
+    "q": "Từ nào có thể mở đầu vế nhượng bộ?",
+    "options": [
+     "所以",
+     "尽管",
+     "就是",
+     "而且"
+    ],
+    "answer": 1,
+    "explain": "尽管 dẫn vào điều được thừa nhận trước khi nêu ý trái dự đoán."
+   },
+   {
+    "q": "Từ nào có thể mở đầu vế sau của mẫu?",
+    "options": [
+     "因为",
+     "连",
+     "但是 hoặc 可是",
+     "不是"
+    ],
+    "answer": 2,
+    "explain": "但是 và 可是 đều có thể dẫn vào ý nhượng bộ ở vế sau."
+   },
+   {
+    "q": "Vế sau nên thể hiện mối quan hệ nào với vế đầu?",
+    "options": [
+     "Điều vẫn xảy ra hoặc trái dự đoán",
+     "Nguyên nhân trực tiếp",
+     "Một trong hai lựa chọn",
+     "Một ý được liệt kê thêm"
+    ],
+    "answer": 0,
+    "explain": "Hai vế có quan hệ nhượng bộ, thường làm rõ rằng sự việc vẫn xảy ra."
+   },
+   {
+    "q": "Vì sao 所以 không phù hợp làm từ nối vế sau trong mẫu này?",
+    "options": [
+     "Vì 所以 chỉ dùng trong câu hỏi",
+     "Vì 所以 đứng trước 尽管",
+     "Vì 所以 mang nghĩa lựa chọn",
+     "Vì 所以 thường nối nguyên nhân với kết quả"
+    ],
+    "answer": 3,
+    "explain": "Mẫu này cần ý nhượng bộ, còn 所以 thường biểu thị kết quả theo nguyên nhân."
+   }
+  ]
+ }
+]

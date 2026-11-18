@@ -1,0 +1,127 @@
+{
+ "title": "History of the Postal Service Project Discussion",
+ "topic": "the history of the postal service",
+ "context": "Narrator: You will hear two university students, Mark and Chloe, discussing their history presentation with their tutor, Dr Watson.\nDr Watson: Good morning, Mark, Chloe. Come on in. You're here to review the outline for your history presentation, aren't you?\nChloe: Yes, Dr Watson. We've decided to call our presentation Messages and Milestones, tracing how communication networks developed across different eras.\nDr Watson: That's a captivating title. And remember, while your preliminary outline is due today, your completed final draft must be submitted by twenty-eighth November.\nMark: Noted. We've divided the timeline into specific eras, starting with ancient courier systems.\nDr Watson: Excellent. How are you approaching the ancient world?\nMark: Well, Chloe researched the Persian Empire, where King Cyrus the Great established the Chapar Khaneh relay system along the Royal Road.\nChloe: To keep messages moving day and night, fresh horses were stationed at regular intervals, allowing couriers to cover incredible distances quickly.\nDr Watson: A foundational example. And what followed in the classical Mediterranean?\nMark: The Romans built the Cursus Publicus. Officials travelled across paved roads, and each courier carried an imperial diploma to demand lodging and fresh relays at state waystations.\nDr Watson: Good attention to administrative detail. Did you examine the medieval era?\nChloe: We did. After the Western Roman network crumbled, communication fragmented. Interestingly, wealthy monasteries maintained their own extensive messenger services across Europe to share religious manuscripts and administrative decrees.\nDr Watson: That often gets overlooked. Now, let's move into early modern Britain.\nMark: In sixteen thirty-five, Charles the First opened the royal postal service to the general public, though it remained quite inefficient.\nChloe: Right, because historically the recipient had to pay the postage fee on delivery. If someone couldn't afford it, the letter was simply returned, causing huge losses.\nDr Watson: Exactly. Now, let's focus on the nineteenth-century revolution, which forms the core of your talk.\nMark: Yes. In eighteen thirty-seven, Rowland Hill published a famous pamphlet titled Post Office Reform, which advocated for prepayment.\nChloe: He proposed a uniform rate of one penny for any domestic letter weighing under half an ounce, regardless of the distance.\nDr Watson: And that led to the world's first adhesive stamp, correct?\nMark: Yes, the Penny Black, which officially entered circulation in May eighteen forty.\nChloe: It featured an iconic profile of Queen Victoria, which established the visual convention for postage stamps globally.\nDr Watson: Don't forget transportation advances prior to railways.\nMark: We made sure to include John Palmer, who revolutionized transit in seventeen eighty-four by introducing armed mail coaches.\nChloe: Guards on those coaches blew a brass horn as they approached turnpikes so the gates would open without slowing the horses down.\nDr Watson: Splendid. What about everyday access for citizens?\nMark: That brings us to roadside post boxes. The novelist Anthony Trollope, who worked for the British Post Office, proposed installing cast-iron pillar boxes on the mainland after seeing them in the Channel Islands.\nChloe: It's surprising that they weren't originally red. Between eighteen fifty-nine and eighteen seventy-four, all standard pillar boxes were painted sage green to blend in with natural surroundings.\nDr Watson: But that caused a practical issue, didn't it?\nMark: People kept bumping into them or missing them, so the authorities repainted them bright red in eighteen seventy-four to ensure greater visibility for pedestrians.\nChloe: In urban centres, Victorian engineers even pioneered underground networks using compressed air to shoot message capsules through iron pipes at high speeds.\nDr Watson: A fascinating precursor to modern telecommunications. And where does your historical timeline conclude?\nMark: We finish with early aviation. The world's first scheduled airmail flight occurred in India in nineteen eleven, flying across the Yamuna River between Allahabad and Naini.\nDr Watson: That rounds off the historical trajectory neatly. For our follow-up meeting this Thursday, what materials will you prepare?\nChloe: Mark will refine the presentation slides, while I will complete and bring the annotated bibliography.\nDr Watson: Perfect. See you both on Thursday morning.",
+ "questions": [
+  {
+   "prompt": "What title did Mark and Chloe choose for their history presentation?",
+   "answer": "Messages and Milestones",
+   "why": "Chloe giải thích rằng nhóm đã chọn tựa đề bài thuyết trình là 'Messages and Milestones'.",
+   "quote": "We've decided to call our presentation Messages and Milestones, tracing how communication networks developed across different eras."
+  },
+  {
+   "prompt": "By what date must the final draft of the presentation be submitted?",
+   "answer": "twenty-eighth November | 28th November",
+   "why": "Dr Watson nhắc nhở rằng dù dàn ý sơ bộ nộp hôm nay, bản thảo hoàn chỉnh (final draft) phải được nộp trước ngày 28 tháng 11.",
+   "quote": "And remember, while your preliminary outline is due today, your completed final draft must be submitted by twenty-eighth November."
+  },
+  {
+   "prompt": "Which ancient empire established the Chapar Khaneh relay system?",
+   "answer": "Persian Empire | the Persian Empire",
+   "why": "Mark nêu rõ rằng Chloe đã nghiên cứu về Đế quốc Ba Tư (Persian Empire), nơi vua Cyrus Đại đế lập ra hệ thống này.",
+   "quote": "Well, Chloe researched the Persian Empire, where King Cyrus the Great established the Chapar Khaneh relay system along the Royal Road."
+  },
+  {
+   "prompt": "What was stationed along the Royal Road to ensure messages moved day and night?",
+   "answer": "fresh horses",
+   "why": "Chloe cho biết những con ngựa sung sức ('fresh horses') được bố trí dọc tuyến đường để việc chuyển thư không bị gián đoạn.",
+   "quote": "To keep messages moving day and night, fresh horses were stationed at regular intervals, allowing couriers to cover incredible distances quickly."
+  },
+  {
+   "prompt": "What document did Roman imperial couriers carry to obtain lodging and relays?",
+   "answer": "diploma | an imperial diploma",
+   "why": "Mark chỉ ra rằng các sứ giả La Mã mang theo một văn bằng/chứng chỉ hoàng gia ('an imperial diploma') để yêu cầu nơi ăn chốn ở và đổi ngựa.",
+   "quote": "Officials travelled across paved roads, and each courier carried an imperial diploma to demand lodging and fresh relays at state waystations."
+  },
+  {
+   "prompt": "What institutions ran their own extensive messenger services across medieval Europe?",
+   "answer": "monasteries | wealthy monasteries",
+   "why": "Chloe cho biết các tu viện giàu có ('wealthy monasteries') đã duy trì hệ thống đưa thư riêng trên khắp châu Âu thời trung cổ.",
+   "quote": "Interestingly, wealthy monasteries maintained their own extensive messenger services across Europe to share religious manuscripts and administrative decrees."
+  },
+  {
+   "prompt": "Which monarch opened Britain's royal postal network to the general public in 1635?",
+   "answer": "Charles the First",
+   "why": "Mark nêu đích danh vua Charles I ('Charles the First') là người mở cửa bưu chính hoàng gia cho người dân vào năm 1635.",
+   "quote": "In sixteen thirty-five, Charles the First opened the royal postal service to the general public, though it remained quite inefficient."
+  },
+  {
+   "prompt": "Who had to pay the postage fee before Rowland Hill's postal reforms?",
+   "answer": "recipient | the recipient",
+   "why": "Chloe giải thích rằng trước đây người nhận ('the recipient') phải trả cước bưu chính khi bưu phẩm được giao tới.",
+   "quote": "Right, because historically the recipient had to pay the postage fee on delivery."
+  },
+  {
+   "prompt": "What was the title of the 1837 pamphlet written by Rowland Hill?",
+   "answer": "Post Office Reform",
+   "why": "Mark nói rằng vào năm 1837, Rowland Hill đã xuất bản cuốn sách mỏng mang tựa đề 'Post Office Reform'.",
+   "quote": "In eighteen thirty-seven, Rowland Hill published a famous pamphlet titled Post Office Reform, which advocated for prepayment."
+  },
+  {
+   "prompt": "What uniform fee did Rowland Hill propose for domestic letters under half an ounce?",
+   "answer": "one penny | a penny",
+   "why": "Chloe giải thích rằng Rowland Hill đã đề xuất mức cước phí đồng nhất là một xu ('one penny') cho thư dưới nửa ounce.",
+   "quote": "He proposed a uniform rate of one penny for any domestic letter weighing under half an ounce, regardless of the distance."
+  },
+  {
+   "prompt": "What was the name of the first adhesive postage stamp issued in May 1840?",
+   "answer": "Penny Black | the Penny Black",
+   "why": "Mark xác nhận con tem dán đầu tiên trên thế giới phát hành năm 1840 có tên gọi là 'Penny Black'.",
+   "quote": "Yes, the Penny Black, which officially entered circulation in May eighteen forty."
+  },
+  {
+   "prompt": "Whose profile was featured on the first adhesive postage stamp?",
+   "answer": "Queen Victoria",
+   "why": "Chloe chỉ rõ con tem khắc họa chân dung nhìn nghiêng của Nữ hoàng Victoria ('Queen Victoria').",
+   "quote": "It featured an iconic profile of Queen Victoria, which established the visual convention for postage stamps globally."
+  },
+  {
+   "prompt": "Who introduced armed mail coaches to British postal transport in 1784?",
+   "answer": "John Palmer",
+   "why": "Mark nhắc tới John Palmer là người tạo ra cuộc cách mạng vận chuyển thư tín vào năm 1784 bằng xe ngựa có vũ trang.",
+   "quote": "We made sure to include John Palmer, who revolutionized transit in seventeen eighty-four by introducing armed mail coaches."
+  },
+  {
+   "prompt": "What instrument did coach guards blow to alert tollgate keepers?",
+   "answer": "brass horn | a brass horn",
+   "why": "Chloe giải thích rằng các nhân viên bảo vệ trên xe ngựa thổi một chiếc kèn đồng ('brass horn') để trạm thu phí mở cổng từ xa.",
+   "quote": "Guards on those coaches blew a brass horn as they approached turnpikes so the gates would open without slowing the horses down."
+  },
+  {
+   "prompt": "Which famous author suggested introducing cast-iron pillar boxes to mainland Britain?",
+   "answer": "Anthony Trollope",
+   "why": "Mark nêu tên tiểu thuyết gia Anthony Trollope là người đề xuất lắp đặt các hòm thư hình trụ bằng gang trên đất liền nước Anh.",
+   "quote": "The novelist Anthony Trollope, who worked for the British Post Office, proposed installing cast-iron pillar boxes on the mainland after seeing them in the Channel Islands."
+  },
+  {
+   "prompt": "What color were British roadside pillar boxes painted between 1859 and 1874?",
+   "answer": "sage green | green",
+   "why": "Chloe lưu ý rằng từ 1859 đến 1874, các hộp thư bưu điện ở Anh được sơn màu xanh xám lá xô thơm ('sage green').",
+   "quote": "Between eighteen fifty-nine and eighteen seventy-four, all standard pillar boxes were painted sage green to blend in with natural surroundings."
+  },
+  {
+   "prompt": "Why were British pillar boxes repainted red starting in 1874?",
+   "answer": "greater visibility | visibility",
+   "why": "Mark nêu lý do nhà chức trách sơn lại hòm thư sang màu đỏ tươi là để người đi bộ dễ nhìn thấy hơn ('greater visibility').",
+   "quote": "People kept bumping into them or missing them, so the authorities repainted them bright red in eighteen seventy-four to ensure greater visibility for pedestrians."
+  },
+  {
+   "prompt": "What technology was used to propel message capsules through underground iron pipes in London?",
+   "answer": "compressed air",
+   "why": "Chloe miêu tả hệ thống bưu chính ngầm sử dụng khí nén ('compressed air') để phóng các ống chứa thông điệp qua đường ống dẫn.",
+   "quote": "In urban centres, Victorian engineers even pioneered underground networks using compressed air to shoot message capsules through iron pipes at high speeds."
+  },
+  {
+   "prompt": "Between which two cities did the world's first scheduled airmail flight take place in 1911?",
+   "answer": "Allahabad and Naini",
+   "why": "Mark nêu rõ chuyến bay chở thư đầu tiên diễn ra tại Ấn Độ vào năm 1911 giữa hai thành phố Allahabad và Naini.",
+   "quote": "The world's first scheduled airmail flight occurred in India in nineteen eleven, flying across the Yamuna River between Allahabad and Naini."
+  },
+  {
+   "prompt": "What document will Chloe bring to the follow-up meeting on Thursday?",
+   "answer": "annotated bibliography | the annotated bibliography",
+   "why": "Chloe phân công công việc: Mark hoàn thiện các slide, còn cô ấy sẽ mang đến bản thư mục có chú thích ('annotated bibliography').",
+   "quote": "Mark will refine the presentation slides, while I will complete and bring the annotated bibliography."
+  }
+ ]
+}

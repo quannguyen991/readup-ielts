@@ -1,0 +1,950 @@
+{
+ "id": "band9-listening-17",
+ "title": "Band 9 Listening Test 17",
+ "source": "Band 9 Original",
+ "level": "medium",
+ "cover": {
+  "topic": "Campervans, winter festivals, gold rush history and urban heat",
+  "category": "Australia, New Zealand and Canada"
+ },
+ "sections": [
+  {
+   "n": 1,
+   "title": "Hiring a campervan in Christchurch",
+   "context": "You will hear a man phoning a campervan company in Christchurch to book a hire.",
+   "audio": "/listening/band9-listening-17/s1.mp3",
+   "durationSec": 231,
+   "transcript": [
+    {
+     "speaker": "Priya",
+     "text": "Southern Trails Campervans, Priya speaking."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Oh, hello. I'd like to hire a campervan for a trip around the South Island, please. I'm flying into Christchurch from Calgary next month."
+    },
+    {
+     "speaker": "Priya",
+     "text": "Lovely, you'll have a great time. Let me bring up the booking form. Could I take your surname first?"
+    },
+    {
+     "speaker": "Callum",
+     "text": "It's Mackenzie."
+    },
+    {
+     "speaker": "Priya",
+     "text": "Is that M-A-C, then K?"
+    },
+    {
+     "speaker": "Callum",
+     "text": "Almost. It's M-A-C-K-E-N-Z-I-E."
+    },
+    {
+     "speaker": "Priya",
+     "text": "Thank you. And a contact number? A New Zealand mobile if you have one, otherwise whatever's easiest."
+    },
+    {
+     "speaker": "Callum",
+     "text": "I'll buy a local SIM card when I land, but my sister lives in Dunedin and she'll be coming with us for the first part. Her number's 021 884 5576."
+    },
+    {
+     "speaker": "Priya",
+     "text": "021 884 5576. Great. So when would you like to pick the van up?"
+    },
+    {
+     "speaker": "Callum",
+     "text": "My flight lands on Saturday 4 October, so I was hoping to collect it that afternoon."
+    },
+    {
+     "speaker": "Priya",
+     "text": "Ah, I'm afraid our depot closes at noon on Saturdays, and it's closed all day Sunday. So the earliest option would be Monday morning."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Hmm. That means two nights in a hotel. Well, I suppose it gives me time to recover from the flight. Okay, Monday it is."
+    },
+    {
+     "speaker": "Priya",
+     "text": "So that's Monday 6 October, I'll put that in. And for how long did you want the van?"
+    },
+    {
+     "speaker": "Callum",
+     "text": "I was thinking eight days, but I need to be back in Christchurch for a flight on the Wednesday, so I'd better say 9 days."
+    },
+    {
+     "speaker": "Priya",
+     "text": "Nine days, returning on the fourteenth. That works. How many people will be travelling?"
+    },
+    {
+     "speaker": "Callum",
+     "text": "Three. My sister, my daughter and me."
+    },
+    {
+     "speaker": "Priya",
+     "text": "Then I wouldn't take the two-berth. It's cheaper, but it's really only suitable for couples. I'd suggest the four-berth, which has a proper table and a small kitchen."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Yes, the four-berth sounds better. What does that cost?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "In summer it's 160 dollars a day, but you're travelling in October, which is the shoulder season, so the rate drops to 145 dollars a day."
+    },
+    {
+     "speaker": "Callum",
+     "text": "That's good news. Is the 145 a day the final price, or are there extra charges?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "That covers the van, unlimited kilometres and bedding. Extras are optional. Some people take camping chairs or a portable heater, and families often want a child seat."
+    },
+    {
+     "speaker": "Callum",
+     "text": "We've got our own chairs in the boot of my sister's car, but my daughter's only six, so I'll need a child seat, please."
+    },
+    {
+     "speaker": "Priya",
+     "text": "No problem, I'll add a child seat. It's free of charge, but I do need to know the age, which you've just told me."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Great. Is there a deposit?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "We take a bond on your credit card, which is released when you bring the van back in good condition. It's 500 dollars."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Sorry, did you say 5000?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "No, five hundred. Just 500."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Phew, that's a lot more reasonable. And where exactly is your depot? I'll be taking a taxi from the hotel."
+    },
+    {
+     "speaker": "Priya",
+     "text": "We're at 41 Sandown Road, in Sockburn. That's number four-one."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Sorry, is that 14?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "No, it's 41. Four and then one. You'll see a big blue sign on the fence."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Got it. And the postcode, so I can put it into the taxi app?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "It's 8042."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Perfect. Is there anything I should bring on Monday?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "Your driver's licence and your passport. Since your licence is in English, you don't need an international permit. And please remember that in New Zealand we drive on the left."
+    },
+    {
+     "speaker": "Callum",
+     "text": "I've done it before, but I'm sure I'll make a few mistakes at roundabouts. Any advice for the roads on the way to the lakes?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "Take your time. Many of the roads are narrow and winding, and distances look short on the map but take longer than you think. I'd allow at least two hours for every hundred kilometres."
+    },
+    {
+     "speaker": "Callum",
+     "text": "That's very useful. And can I change the booking if my plans shift?"
+    },
+    {
+     "speaker": "Priya",
+     "text": "Yes, as long as you let us know a week before you collect the van. After that, there's a small fee."
+    },
+    {
+     "speaker": "Callum",
+     "text": "Okay. Thank you very much for your help, Priya."
+    },
+    {
+     "speaker": "Priya",
+     "text": "You're welcome. I'll send the confirmation email within the hour. Safe travels, Callum."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 1-10",
+     "instruction": "Complete the booking form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Southern Trails Campervans: Booking Form",
+      "Customer surname: {{1}}",
+      "Contact number: {{2}}",
+      "Date of collection: {{3}}",
+      "Length of hire: {{4}} days",
+      "Type of vehicle: {{5}}",
+      "Daily rate: ${{6}}",
+      "Extra equipment: {{7}}",
+      "Bond: ${{8}}",
+      "Depot address: {{9}}",
+      "Postcode: {{10}}"
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "answer": "Mackenzie"
+      },
+      {
+       "n": 2,
+       "answer": "021 884 5576",
+       "accept": [
+        "0218845576"
+       ]
+      },
+      {
+       "n": 3,
+       "answer": "6 October"
+      },
+      {
+       "n": 4,
+       "answer": "9",
+       "accept": [
+        "nine"
+       ]
+      },
+      {
+       "n": 5,
+       "answer": "four-berth",
+       "accept": [
+        "four berth"
+       ]
+      },
+      {
+       "n": 6,
+       "answer": "145"
+      },
+      {
+       "n": 7,
+       "answer": "child seat"
+      },
+      {
+       "n": 8,
+       "answer": "500"
+      },
+      {
+       "n": 9,
+       "answer": "41 Sandown Road"
+      },
+      {
+       "n": 10,
+       "answer": "8042"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Canal Frost Weekend",
+   "context": "You will hear an organiser welcoming visitors to a winter festival held on a frozen canal in Ottawa.",
+   "audio": "/listening/band9-listening-17/s2.mp3",
+   "durationSec": 244,
+   "transcript": [
+    {
+     "speaker": "Nadia",
+     "text": "Good evening, everyone, and welcome to Canal Frost Weekend. My name's Nadia, and I'm one of the organisers. We're delighted that so many of you have braved the cold, and I'd like to take a few minutes to tell you what's on, and to give you some practical information, so you can make the most of the next two days."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "The festival is spread along about two kilometres of the canal, and it's divided into five areas. Let me start at the western end, where you'll find the skating loop. The ice is smooth and well maintained, and every hour, on the hour, our instructors run a lesson for beginners. It's free, and you don't need to book. If you've never been on skates before, this is the place to start, and you'll be amazed how quickly you pick it up. Skates can be hired from the hut by the entrance, although I should say that the queue is usually long on Saturday afternoons."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "Next to the skating loop is the market tent. Here you can buy food from local producers, such as maple syrup, smoked fish and pastries, as well as crafts made by artists from the region. Many of the stalls accept cards, but a few only take cash, so it's worth carrying some."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "Moving east, we come to the sculpture park, which is for many people the highlight of the festival. Teams of carvers from across Canada have spent the past week turning huge blocks of ice into sculptures, and over the weekend you can watch some of them finishing their work. They'll be giving carving demonstrations every afternoon, and you can ask them questions. Please don't touch the sculptures, though. Fingers and gloves damage the surface."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "At the centre of the festival is the main stage, where there's live music from local bands all weekend. The line-up on the printed programme has changed slightly, so do check the screen beside the stage, because a couple of the Sunday acts have swapped times."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "And finally, along the eastern bank you'll find the warming huts. These are small wooden shelters, each designed by a different architecture student, and inside you can warm up beside a heater and have a free hot drink, thanks to our sponsors. They're very popular with families, so be prepared to wait a few minutes at busy times."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "Now, some practical points. How do you get here? I'd strongly advise leaving your car at home. The streets beside the canal are closed to traffic for the whole weekend, and the nearest car parks fill up by ten o'clock. The best way to arrive is on one of our free shuttle buses, which leave from the central station every fifteen minutes. Some people prefer to walk from the city centre, but it's about forty minutes, and it can be very cold, so most visitors choose the bus."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "As for tickets, I'm happy to say that entry to the festival is completely free. However, some of the activities have a small charge, such as skate hire and the guided night tour, and the food and drink in the market tent are of course not free either."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "Next, what should you wear? Everyone knows that you need warm clothes, and I hope you're all wearing several layers. But my most important advice is about footwear. The paths between the areas are covered in packed snow and ice, and they get very slippery by the end of the day. Please wear proper boots with a good grip, rather than trainers or smart shoes. We've seen a few sprained ankles in previous years, and we'd like to avoid that this time."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "Tomorrow evening, there's the fireworks display, which has always been the most popular event of the weekend. It was originally planned for eight o'clock, but we've moved it to nine o'clock, so that it doesn't clash with the children's lantern parade, which will finish at about half past eight. The best place to watch is on the bridge, but it gets crowded, so the banks on either side are also excellent."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "Finally, something new this year. We've developed a festival app, which you can download for free before you arrive. It has a map of the site, but the main feature is that it shows the waiting times for the most popular activities, so you can see at a glance whether it's worth joining the queue for the skating lessons or whether you'd be better off visiting the market first. If you have any trouble with it, there's a help desk next to the main stage."
+    },
+    {
+     "speaker": "Nadia",
+     "text": "That's all from me. If you have any questions, ask any of our volunteers in the orange jackets. Please enjoy the festival, stay warm, and thank you for coming."
+    }
+   ],
+   "groups": [
+    {
+     "type": "matching",
+     "title": "Questions 11-15",
+     "instruction": "What activity is available in each area of the festival? Choose FIVE answers from the box and write the correct letter, A-G, next to Questions 11-15.",
+     "options": [
+      {
+       "key": "A",
+       "text": "free hot drinks"
+      },
+      {
+       "key": "B",
+       "text": "lessons for beginners"
+      },
+      {
+       "key": "C",
+       "text": "local food and crafts for sale"
+      },
+      {
+       "key": "D",
+       "text": "live music by local bands"
+      },
+      {
+       "key": "E",
+       "text": "carving demonstrations"
+      },
+      {
+       "key": "F",
+       "text": "a treasure hunt for children"
+      },
+      {
+       "key": "G",
+       "text": "skates to borrow"
+      }
+     ],
+     "questions": [
+      {
+       "n": 11,
+       "prompt": "Skating loop",
+       "answer": "B"
+      },
+      {
+       "n": 12,
+       "prompt": "Market tent",
+       "answer": "C"
+      },
+      {
+       "n": 13,
+       "prompt": "Sculpture park",
+       "answer": "E"
+      },
+      {
+       "n": 14,
+       "prompt": "Main stage",
+       "answer": "D"
+      },
+      {
+       "n": 15,
+       "prompt": "Warming huts",
+       "answer": "A"
+      }
+     ]
+    },
+    {
+     "type": "mcq-one",
+     "title": "Questions 16-20",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 16,
+       "prompt": "What does Nadia recommend as the best way to arrive?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "by car"
+        },
+        {
+         "key": "B",
+         "text": "by shuttle bus"
+        },
+        {
+         "key": "C",
+         "text": "on foot"
+        }
+       ]
+      },
+      {
+       "n": 17,
+       "prompt": "What does she say about the cost of entry?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is free, but some activities cost extra."
+        },
+        {
+         "key": "B",
+         "text": "It is charged at the gate."
+        },
+        {
+         "key": "C",
+         "text": "It is included in the price of the programme."
+        }
+       ]
+      },
+      {
+       "n": 18,
+       "prompt": "What is her most important advice about clothing?",
+       "answer": "C",
+       "options": [
+        {
+         "key": "A",
+         "text": "to wear several thin layers"
+        },
+        {
+         "key": "B",
+         "text": "to bring a spare pair of gloves"
+        },
+        {
+         "key": "C",
+         "text": "to wear boots with a good grip"
+        }
+       ]
+      },
+      {
+       "n": 19,
+       "prompt": "What time will the fireworks display now start?",
+       "answer": "C",
+       "options": [
+        {
+         "key": "A",
+         "text": "eight o'clock"
+        },
+        {
+         "key": "B",
+         "text": "half past eight"
+        },
+        {
+         "key": "C",
+         "text": "nine o'clock"
+        }
+       ]
+      },
+      {
+       "n": 20,
+       "prompt": "What is new at this year's festival?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "an app showing waiting times"
+        },
+        {
+         "key": "B",
+         "text": "a larger skating area"
+        },
+        {
+         "key": "C",
+         "text": "an extra day of events"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "A history project on the Victorian goldfields",
+   "context": "You will hear two history students, Leila and Ravi, discussing their project with their tutor, Professor Wallace.",
+   "audio": "/listening/band9-listening-17/s3.mp3",
+   "durationSec": 279,
+   "transcript": [
+    {
+     "speaker": "Professor Wallace",
+     "text": "Hello, Leila, hello, Ravi. Come in and sit down. I've read your outline for the history project, so let's talk through it. You're focusing on Chinese miners on the Victorian goldfields, is that right?"
+    },
+    {
+     "speaker": "Leila",
+     "text": "That's right. We wanted to look at their daily lives in the eighteen fifties and sixties, rather than just the big events."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "It's a good topic. What made you choose it?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Well, honestly, we first thought about the Eureka uprising, because it's the famous one. But Leila found that the local museum has a collection of objects from the Chinese camps, and almost nobody has written about it."
+    },
+    {
+     "speaker": "Leila",
+     "text": "Yes, I went to look at it last month. The curator told me that hardly any students ever ask about it. So we thought we could actually add something new."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "That's the best reason to choose a topic. Now, what about your sources? Where will the information come from?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Mostly from the state archive, which holds the court records and the newspapers. The problem is that the archive has quite limited opening hours, and it's an hour's drive from here."
+    },
+    {
+     "speaker": "Leila",
+     "text": "And the other difficulty is that a lot of the documents are in Chinese. We can't read them, and we don't have a translator."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "You're right to worry about that. I'd suggest you contact the Asian languages department. Some of their postgraduates are looking for projects like this one, and they might be happy to help with a few key documents. As for the opening hours, I wouldn't worry, because you can book a reading room and the staff will bring the files to you."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Oh, that's useful. I thought we had to turn up and wait."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "Not at all. Now, for the section on daily life, which sources will you use?"
+    },
+    {
+     "speaker": "Leila",
+     "text": "We were planning to use the newspaper advertisements, because they show what miners were buying and selling. And possibly letters, because some of the families kept them."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "But the letters are in private collections, aren't they? We'd have to contact the families, and that could take months."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "Exactly. I'd skip the letters. The court records are a much better source, because they list the names, the jobs and the addresses of the people involved. And the photographs held at the museum are excellent, so I'd definitely include those. The newspaper advertisements are interesting, but you'll find they mostly describe the European customers, so they won't help much with the Chinese miners."
+    },
+    {
+     "speaker": "Leila",
+     "text": "All right. Court records and photographs, then."
+    },
+    {
+     "speaker": "Leila",
+     "text": "One more worry. Some of the court records mention people only by English nicknames, and the spelling changes from one document to the next."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "That's a classic problem. Keep a spreadsheet with every spelling you find, and note the date and the page. Over time patterns emerge, and you can often match one person across several documents."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "We could divide the work. I'll take the court records from the eighteen fifties, and Leila can take the following decade."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "A sensible plan, although I'd suggest you both read a few records from each decade first, so that your methods are consistent. Otherwise, your two halves may read like two different essays."
+    },
+    {
+     "speaker": "Leila",
+     "text": "Good point. We'll meet every Thursday to compare notes."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "Excellent. That kind of routine saves a lot of trouble near the deadline."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "Good. Now, how are you going to present the work in class?"
+    },
+    {
+     "speaker": "Ravi",
+     "text": "I'd like to do a short film, with photographs and a voiceover. It would look much more interesting than slides."
+    },
+    {
+     "speaker": "Leila",
+     "text": "I'm not so sure. A film takes ages to make, and we have to submit the essay as well. I'd prefer a poster, and then we could each talk for five minutes."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "I think the poster is the more realistic choice, but Ravi, you can still use a few of your best images on it. Make sure it isn't crowded with text."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Fair enough. A poster it is."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "One more thing, about the essay itself. The limit is three thousand words, and students nearly always try to cover too much. Choose three or four strong examples and treat them in depth, rather than trying to mention everything."
+    },
+    {
+     "speaker": "Leila",
+     "text": "That makes sense. Could you suggest some books to start with? We found a lot, but we aren't sure which are reliable."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "Certainly. Let's go through your list. The first one, the general history of the goldfields, is well written, but it's very broad, and it only has a few pages about the Chinese miners. It's fine for background, but you won't find much detail."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "And the second one, the book by the local historian?"
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "That one is the opposite. It's rather old, from the nineteen sixties, and some of its conclusions have been challenged, so I'd use it carefully. But the third one is very good, because it includes tables of statistics from the census, showing how many miners came from each region. You'll definitely want that."
+    },
+    {
+     "speaker": "Leila",
+     "text": "Great, we'll start with the third one, then."
+    },
+    {
+     "speaker": "Professor Wallace",
+     "text": "Excellent. Send me a draft of the first section in two weeks, and I'll give you feedback. And please let me know if the archive staff cause you any trouble."
+    },
+    {
+     "speaker": "Ravi",
+     "text": "Thank you, Professor Wallace."
+    }
+   ],
+   "groups": [
+    {
+     "type": "mcq-one",
+     "title": "Questions 21-25",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 21,
+       "prompt": "Why did the students decide to study Chinese miners?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "Their tutor suggested it."
+        },
+        {
+         "key": "B",
+         "text": "The local museum holds an unstudied collection."
+        },
+        {
+         "key": "C",
+         "text": "They found the Eureka uprising too complicated."
+        }
+       ]
+      },
+      {
+       "n": 22,
+       "prompt": "What is the main problem with the archive documents?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "Many are written in Chinese."
+        },
+        {
+         "key": "B",
+         "text": "Many are damaged."
+        },
+        {
+         "key": "C",
+         "text": "Many are not open to students."
+        }
+       ]
+      },
+      {
+       "n": 23,
+       "prompt": "What does the professor say about the archive opening hours?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "They are a serious difficulty."
+        },
+        {
+         "key": "B",
+         "text": "Students can book a reading room in advance."
+        },
+        {
+         "key": "C",
+         "text": "The staff can send copies by post."
+        }
+       ]
+      },
+      {
+       "n": 24,
+       "prompt": "How will the students present their work in class?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "with a short film"
+        },
+        {
+         "key": "B",
+         "text": "with a poster and short talks"
+        },
+        {
+         "key": "C",
+         "text": "with a set of slides"
+        }
+       ]
+      },
+      {
+       "n": 25,
+       "prompt": "What advice does the professor give about the essay?",
+       "answer": "C",
+       "options": [
+        {
+         "key": "A",
+         "text": "to include as many examples as possible"
+        },
+        {
+         "key": "B",
+         "text": "to use only primary sources"
+        },
+        {
+         "key": "C",
+         "text": "to examine a few examples in depth"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "mcq-many",
+     "title": "Questions 26-27",
+     "instruction": "Choose TWO letters, A-E. Which TWO sources will the students use for the section on daily life?",
+     "options": [
+      {
+       "key": "A",
+       "text": "newspaper advertisements"
+      },
+      {
+       "key": "B",
+       "text": "court records"
+      },
+      {
+       "key": "C",
+       "text": "private letters"
+      },
+      {
+       "key": "D",
+       "text": "museum photographs"
+      },
+      {
+       "key": "E",
+       "text": "maps of the goldfields"
+      }
+     ],
+     "questions": [
+      {
+       "n": 26,
+       "answer": [
+        "B",
+        "D"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 28-30",
+     "instruction": "What does the professor say about each of the following books? Choose THREE answers from the box and write the correct letter, A-E, next to Questions 28-30.",
+     "options": [
+      {
+       "key": "A",
+       "text": "It is too old to be useful."
+      },
+      {
+       "key": "B",
+       "text": "It includes reliable statistics."
+      },
+      {
+       "key": "C",
+       "text": "It contains few details about Chinese miners."
+      },
+      {
+       "key": "D",
+       "text": "It is written for a general audience."
+      },
+      {
+       "key": "E",
+       "text": "It has a good section on maps."
+      }
+     ],
+     "questions": [
+      {
+       "n": 28,
+       "prompt": "The general history of the goldfields",
+       "answer": "C"
+      },
+      {
+       "n": 29,
+       "prompt": "The book by the local historian",
+       "answer": "A"
+      },
+      {
+       "n": 30,
+       "prompt": "The third book on the list",
+       "answer": "B"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Urban heat islands",
+   "context": "You will hear a lecturer in environmental planning talking about urban heat islands.",
+   "audio": "/listening/band9-listening-17/s4.mp3",
+   "durationSec": 275,
+   "transcript": [
+    {
+     "speaker": "Doctor Tran",
+     "text": "Good morning, everyone. Today's lecture is about urban heat islands, a phenomenon that affects almost every large city, and which will matter more and more as the climate warms. A heat island is simply an urban area that is noticeably warmer than the rural land around it. The difference is largest at night. On a calm, clear night, the centre of a big city can be up to 7 degrees Celsius warmer than the countryside nearby. During the day the gap is smaller, usually two or three degrees, but it still has a real effect on how people feel and how much energy they use."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "So why does this happen? There are several causes, and it's important to understand each of them, because the solutions depend on them. The first is the materials we build with. Roads, car parks and roofs are mostly made of dark materials such as asphalt and concrete. These absorb a lot of the sun's energy during the day, and then release it slowly after sunset, which is why the nights stay warm. A grass field, by contrast, reflects more light and stores much less heat."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "The second cause is the loss of vegetation. Plants cool the air in two ways. They provide shade, and they release water vapour through their leaves, which is rather like sweating. When a city replaces a park with a paved car park, it loses both. Studies in Sydney and Vancouver have found that suburbs with plenty of trees can be several degrees cooler than similar suburbs without them."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "The third cause is waste heat. Every air conditioner moves heat from inside a building to the outside, and the engines of vehicles produce a lot of heat as well. In a busy city centre in summer, this adds up to a significant amount, and it creates a vicious circle: the hotter it gets, the more people use air conditioning, which makes the streets hotter still."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "The fourth cause is the shape of the city itself. Tall buildings built close together form what we call street canyons. In a canyon, heat that is released from the walls and the road gets trapped between the buildings, and there's very little wind to carry it away. At night, the buildings also block the view of the sky, so the heat can't radiate away into space as easily."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "Now, why does it matter? It isn't only about comfort. Heat waves are one of the leading causes of weather-related deaths in Australia, and elderly people and young children are most at risk. Hot nights are especially dangerous, because the body doesn't get a chance to recover. There are also economic effects, because electricity demand rises sharply in hot weather, and power networks can fail."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "Let's turn to solutions. The simplest is to change the colour of surfaces. A cool roof is one that reflects most of the sunlight instead of absorbing it, and the cheapest way to make one is to paint a normal roof white. In trials, white roofs have lowered indoor temperatures by several degrees, and the cost is very small compared with air conditioning."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "A second solution is the green roof, which is a roof covered with soil and plants. On a hot day, the surface of a green roof can be up to 30 degrees cooler than a conventional dark roof. Green roofs also absorb rainwater, which reduces flooding, and they provide a habitat for insects and birds. They're heavier and more expensive to build, however, so many cities use rules and incentives to encourage them. In Toronto, for example, a by-law requires a green roof on every new building with a floor area of more than 2000 square metres. It was the first rule of its kind in North America."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "A third solution is simply to plant more trees. Melbourne has an urban forest strategy, which aims to increase the tree canopy to 40 percent of the city by 2040. That's an ambitious target, because many of the city's older trees are dying in the drought, and planting trees in the middle of a busy street is surprisingly difficult. The roots need space, water and protection from traffic."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "Finally, a word about how researchers measure all this. In the past, scientists relied on thermometers at a small number of weather stations, which gave a very limited picture. Today, they use thermal images taken by satellites and aircraft, which show the temperature of every street and every roof. Planners can use these maps to identify the hottest neighbourhoods, which are very often the poorest, and to decide where new trees and cool roofs will have the greatest effect."
+    },
+    {
+     "speaker": "Doctor Tran",
+     "text": "For next week, please read the two case studies on the course page, and consider this question. If a city has a limited budget, should it invest in trees, in cool roofs, or in helping people buy air conditioners? There's no single right answer, and I'd like you to be ready to defend your choice."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 31-35",
+     "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Urban heat islands",
+      "## What is a heat island?",
+      "At night, a city centre can be up to {{31}} degrees Celsius warmer than the countryside",
+      "## Causes",
+      "Dark surface materials, such as asphalt and {{32}}",
+      "Loss of vegetation, which releases {{33}} to cool the air",
+      "Waste heat from air conditioners and {{34}}",
+      "Tall buildings close together form {{35}} that trap heat"
+     ],
+     "questions": [
+      {
+       "n": 31,
+       "answer": "7",
+       "accept": [
+        "seven"
+       ]
+      },
+      {
+       "n": 32,
+       "answer": "concrete"
+      },
+      {
+       "n": 33,
+       "answer": "water vapour",
+       "accept": [
+        "water vapor"
+       ]
+      },
+      {
+       "n": 34,
+       "answer": "vehicles"
+      },
+      {
+       "n": 35,
+       "answer": "street canyons",
+       "accept": [
+        "canyons"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "gap",
+     "title": "Questions 36-40",
+     "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+     "wordLimit": "ONE WORD AND/OR A NUMBER",
+     "lines": [
+      "## Solutions",
+      "Cool roofs: ordinary roofs painted {{36}}",
+      "Green roofs: surface up to {{37}} degrees cooler than a dark roof",
+      "Toronto: green roofs required on new buildings larger than {{38}} square metres",
+      "Melbourne: tree canopy to reach 40 percent by {{39}}",
+      "Planners use {{40}} images from satellites to find the hottest areas"
+     ],
+     "questions": [
+      {
+       "n": 36,
+       "answer": "white"
+      },
+      {
+       "n": 37,
+       "answer": "30",
+       "accept": [
+        "thirty"
+       ]
+      },
+      {
+       "n": 38,
+       "answer": "2000"
+      },
+      {
+       "n": 39,
+       "answer": "2040"
+      },
+      {
+       "n": 40,
+       "answer": "thermal"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1836 @@
+{
+"zh": [
+{
+"l": "HSK 1",
+"t": "我家有四口人。",
+"vi": "Nhà tôi có bốn người.",
+"py": "wǒ jiā yǒu sì kǒu rén"
+},
+{
+"l": "HSK 1",
+"t": "这是我的新手机。",
+"vi": "Đây là điện thoại mới của tôi.",
+"py": "zhè shì wǒ de xīn shǒu jī"
+},
+{
+"l": "HSK 1",
+"t": "你想喝茶还是咖啡？",
+"vi": "Bạn muốn uống trà hay cà phê?",
+"py": "nǐ xiǎng hē chá hái shì kā fēi"
+},
+{
+"l": "HSK 1",
+"t": "明天我们去看电影。",
+"vi": "Ngày mai chúng ta đi xem phim.",
+"py": "míng tiān wǒ men qù kàn diàn yǐng"
+},
+{
+"l": "HSK 1",
+"t": "他是我的好朋友。",
+"vi": "Anh ấy là bạn tốt của tôi.",
+"py": "tā shì wǒ de hǎo péng yǒu"
+},
+{
+"l": "HSK 1",
+"t": "今天天气很好。",
+"vi": "Hôm nay thời tiết rất đẹp.",
+"py": "jīn tiān tiān qì hěn hǎo"
+},
+{
+"l": "HSK 1",
+"t": "我每天早上七点起床。",
+"vi": "Mỗi sáng tôi dậy lúc bảy giờ.",
+"py": "wǒ měi tiān zǎo shàng qī diǎn qǐ chuáng"
+},
+{
+"l": "HSK 1",
+"t": "请问，洗手间在哪儿？",
+"vi": "Xin hỏi, nhà vệ sinh ở đâu?",
+"py": "qǐng wèn xǐ shǒu jiān zài nǎ ér"
+},
+{
+"l": "HSK 1",
+"t": "这个苹果多少钱？",
+"vi": "Quả táo này bao nhiêu tiền?",
+"py": "zhè ge píng guǒ duō shǎo qián"
+},
+{
+"l": "HSK 1",
+"t": "我不会说汉语。",
+"vi": "Tôi không biết nói tiếng Trung.",
+"py": "wǒ bú huì shuō hàn yǔ"
+},
+{
+"l": "HSK 1",
+"t": "他在学校学习英语。",
+"vi": "Anh ấy học tiếng Anh ở trường.",
+"py": "tā zài xué xiào xué xí yīng yǔ"
+},
+{
+"l": "HSK 1",
+"t": "你叫什么名字？",
+"vi": "Bạn tên là gì?",
+"py": "nǐ jiào shén me míng zì"
+},
+{
+"l": "HSK 1",
+"t": "我想买一本书。",
+"vi": "Tôi muốn mua một quyển sách.",
+"py": "wǒ xiǎng mǎi yī běn shū"
+},
+{
+"l": "HSK 1",
+"t": "医院在学校后面。",
+"vi": "Bệnh viện ở phía sau trường học.",
+"py": "yī yuàn zài xué xiào hòu miàn"
+},
+{
+"l": "HSK 1",
+"t": "我们八点开始上课。",
+"vi": "Chúng tôi bắt đầu học lúc tám giờ.",
+"py": "wǒ men bā diǎn kāi shǐ shàng kè"
+},
+{
+"l": "HSK 1",
+"t": "她妈妈是老师。",
+"vi": "Mẹ cô ấy là giáo viên.",
+"py": "tā mā mā shì lǎo shī"
+},
+{
+"l": "HSK 1",
+"t": "我喜欢吃米饭和鱼。",
+"vi": "Tôi thích ăn cơm và cá.",
+"py": "wǒ xǐ huān chī mǐ fàn hé yú"
+},
+{
+"l": "HSK 1",
+"t": "现在几点了？",
+"vi": "Bây giờ là mấy giờ rồi?",
+"py": "xiàn zài jǐ diǎn le"
+},
+{
+"l": "HSK 1",
+"t": "这个杯子很漂亮。",
+"vi": "Cái cốc này rất đẹp.",
+"py": "zhè ge bēi zi hěn piào liàng"
+},
+{
+"l": "HSK 1",
+"t": "我昨天没有去工作。",
+"vi": "Hôm qua tôi không đi làm.",
+"py": "wǒ zuó tiān méi yǒu qù gōng zuò"
+},
+{
+"l": "HSK 1",
+"t": "你家离这儿远吗？",
+"vi": "Nhà bạn cách đây xa không?",
+"py": "nǐ jiā lí zhè ér yuǎn ma"
+},
+{
+"l": "HSK 1",
+"t": "他有两个哥哥。",
+"vi": "Anh ấy có hai người anh trai.",
+"py": "tā yǒu liǎng gè gē gē"
+},
+{
+"l": "HSK 1",
+"t": "我们一起去商店吧。",
+"vi": "Chúng ta cùng đi cửa hàng nhé.",
+"py": "wǒ men yì qǐ qù shāng diàn ba"
+},
+{
+"l": "HSK 1",
+"t": "下雨了，请带伞。",
+"vi": "Trời mưa rồi, hãy mang theo ô.",
+"py": "xià yǔ le qǐng dài sǎn"
+},
+{
+"l": "HSK 1",
+"t": "我的猫在桌子下面。",
+"vi": "Con mèo của tôi ở dưới bàn.",
+"py": "wǒ de māo zài zhuō zi xià miàn"
+},
+{
+"l": "HSK 1",
+"t": "谢谢你的帮助。",
+"vi": "Cảm ơn sự giúp đỡ của bạn.",
+"py": "xiè xiè nǐ de bāng zhù"
+},
+{
+"l": "HSK 1",
+"t": "对不起，我来晚了。",
+"vi": "Xin lỗi, tôi đến muộn.",
+"py": "duì bù qǐ wǒ lái wǎn le"
+},
+{
+"l": "HSK 1",
+"t": "他今年二十岁。",
+"vi": "Năm nay anh ấy hai mươi tuổi.",
+"py": "tā jīn nián èr shí suì"
+},
+{
+"l": "HSK 1",
+"t": "我在北京住了三年。",
+"vi": "Tôi đã sống ở Bắc Kinh ba năm.",
+"py": "wǒ zài běi jīng zhù le sān nián"
+},
+{
+"l": "HSK 1",
+"t": "她会开车，也会游泳。",
+"vi": "Cô ấy biết lái xe, cũng biết bơi.",
+"py": "tā huì kāi chē yě huì yóu yǒng"
+},
+{
+"l": "HSK 2",
+"t": "我已经吃过早饭了。",
+"vi": "Tôi đã ăn sáng rồi.",
+"py": "wǒ yǐ jīng chī guò zǎo fàn le"
+},
+{
+"l": "HSK 2",
+"t": "他比我高一点儿。",
+"vi": "Anh ấy cao hơn tôi một chút.",
+"py": "tā bǐ wǒ gāo yì diǎn ér"
+},
+{
+"l": "HSK 2",
+"t": "请你把窗户打开。",
+"vi": "Làm ơn mở cửa sổ ra.",
+"py": "qǐng nǐ bǎ chuāng hù dǎ kāi"
+},
+{
+"l": "HSK 2",
+"t": "我觉得这件衣服太贵了。",
+"vi": "Tôi thấy chiếc áo này đắt quá.",
+"py": "wǒ jué de zhè jiàn yī fú tài guì le"
+},
+{
+"l": "HSK 2",
+"t": "他正在房间里看书。",
+"vi": "Anh ấy đang đọc sách trong phòng.",
+"py": "tā zhèng zài fáng jiān lǐ kàn shū"
+},
+{
+"l": "HSK 2",
+"t": "我们坐出租车去机场。",
+"vi": "Chúng tôi đi taxi ra sân bay.",
+"py": "wǒ men zuò chū zū chē qù jī chǎng"
+},
+{
+"l": "HSK 2",
+"t": "你应该多喝水。",
+"vi": "Bạn nên uống nhiều nước.",
+"py": "nǐ yīng gāi duō hē shuǐ"
+},
+{
+"l": "HSK 2",
+"t": "我每个星期游两次泳。",
+"vi": "Mỗi tuần tôi bơi hai lần.",
+"py": "wǒ měi gè xīng qī yóu liǎng cì yǒng"
+},
+{
+"l": "HSK 2",
+"t": "她唱歌唱得很好。",
+"vi": "Cô ấy hát rất hay.",
+"py": "tā chàng gē chàng de hěn hǎo"
+},
+{
+"l": "HSK 2",
+"t": "别忘了带你的护照。",
+"vi": "Đừng quên mang hộ chiếu của bạn.",
+"py": "bié wàng le dài nǐ de hù zhào"
+},
+{
+"l": "HSK 2",
+"t": "这个问题我不知道怎么回答。",
+"vi": "Câu hỏi này tôi không biết trả lời thế nào.",
+"py": "zhè ge wèn tí wǒ bù zhī dào zěn me huí dá"
+},
+{
+"l": "HSK 2",
+"t": "他每天骑自行车上班。",
+"vi": "Mỗi ngày anh ấy đạp xe đi làm.",
+"py": "tā měi tiān qí zì xíng chē shàng bān"
+},
+{
+"l": "HSK 2",
+"t": "我想先洗澡，然后睡觉。",
+"vi": "Tôi muốn tắm trước rồi đi ngủ.",
+"py": "wǒ xiǎng xiān xǐ zǎo rán hòu shuì jiào"
+},
+{
+"l": "HSK 2",
+"t": "旁边的饭馆又便宜又好吃。",
+"vi": "Quán cơm bên cạnh vừa rẻ vừa ngon.",
+"py": "páng biān de fàn guǎn yòu pián yi yòu hǎo chī"
+},
+{
+"l": "HSK 2",
+"t": "因为下雨，所以比赛取消了。",
+"vi": "Vì trời mưa nên trận đấu bị hủy.",
+"py": "yīn wèi xià yǔ suǒ yǐ bǐ sài qǔ xiāo le"
+},
+{
+"l": "HSK 2",
+"t": "我对中国文化很感兴趣。",
+"vi": "Tôi rất hứng thú với văn hóa Trung Quốc.",
+"py": "wǒ duì zhōng guó wén huà hěn gǎn xìng qù"
+},
+{
+"l": "HSK 2",
+"t": "老师让我们回答问题。",
+"vi": "Cô giáo bảo chúng tôi trả lời câu hỏi.",
+"py": "lǎo shī ràng wǒ men huí dá wèn tí"
+},
+{
+"l": "HSK 2",
+"t": "他跑得比我快。",
+"vi": "Anh ấy chạy nhanh hơn tôi.",
+"py": "tā pǎo de bǐ wǒ kuài"
+},
+{
+"l": "HSK 2",
+"t": "你知道她为什么没来吗？",
+"vi": "Bạn có biết vì sao cô ấy không đến không?",
+"py": "nǐ zhī dào tā wèi shén me méi lái ma"
+},
+{
+"l": "HSK 2",
+"t": "火车站离这里不太远。",
+"vi": "Ga tàu cách đây không xa lắm.",
+"py": "huǒ chē zhàn lí zhè lǐ bù tài yuǎn"
+},
+{
+"l": "HSK 2",
+"t": "我给妈妈打了一个电话。",
+"vi": "Tôi đã gọi điện cho mẹ.",
+"py": "wǒ gěi mā mā dǎ le yí gè diàn huà"
+},
+{
+"l": "HSK 2",
+"t": "这条路左边是医院，右边是银行。",
+"vi": "Đường này bên trái là bệnh viện, bên phải là ngân hàng.",
+"py": "zhè tiáo lù zuǒ biān shì yī yuàn yòu biān shì yín háng"
+},
+{
+"l": "HSK 2",
+"t": "他的生日是下个月八号。",
+"vi": "Sinh nhật anh ấy là ngày mùng tám tháng sau.",
+"py": "tā de shēng rì shì xià gè yuè bā hào"
+},
+{
+"l": "HSK 2",
+"t": "我每天晚上都要写作业。",
+"vi": "Tối nào tôi cũng phải làm bài tập.",
+"py": "wǒ měi tiān wǎn shàng dōu yào xiě zuò yè"
+},
+{
+"l": "HSK 2",
+"t": "请再说一遍，好吗？",
+"vi": "Làm ơn nói lại một lần nữa, được không?",
+"py": "qǐng zài shuō yī biàn hǎo ma"
+},
+{
+"l": "HSK 2",
+"t": "孩子们在公园里玩儿。",
+"vi": "Bọn trẻ đang chơi trong công viên.",
+"py": "hái zi men zài gōng yuán lǐ wán ér"
+},
+{
+"l": "HSK 2",
+"t": "这个菜有点儿咸。",
+"vi": "Món này hơi mặn.",
+"py": "zhè ge cài yǒu diǎn ér xián"
+},
+{
+"l": "HSK 2",
+"t": "我们公司在三楼。",
+"vi": "Công ty chúng tôi ở tầng ba.",
+"py": "wǒ men gōng sī zài sān lóu"
+},
+{
+"l": "HSK 2",
+"t": "他一边走路一边听音乐。",
+"vi": "Anh ấy vừa đi bộ vừa nghe nhạc.",
+"py": "tā yī biān zǒu lù yī biān tīng yīn yuè"
+},
+{
+"l": "HSK 2",
+"t": "你最喜欢什么运动？",
+"vi": "Bạn thích môn thể thao nào nhất?",
+"py": "nǐ zuì xǐ huān shén me yùn dòng"
+},
+{
+"l": "HSK 3",
+"t": "虽然很累，但是我很高兴。",
+"vi": "Tuy rất mệt nhưng tôi rất vui.",
+"py": "suī rán hěn lèi dàn shì wǒ hěn gāo xìng"
+},
+{
+"l": "HSK 3",
+"t": "我把作业放在你的桌子上了。",
+"vi": "Tôi đã để bài tập trên bàn của bạn.",
+"py": "wǒ bǎ zuò yè fàng zài nǐ de zhuō zi shàng le"
+},
+{
+"l": "HSK 3",
+"t": "他被老板批评了一顿。",
+"vi": "Anh ấy bị sếp phê bình một trận.",
+"py": "tā bèi lǎo bǎn pī píng le yī dùn"
+},
+{
+"l": "HSK 3",
+"t": "如果明天不下雨，我们就去爬山。",
+"vi": "Nếu ngày mai không mưa thì chúng ta đi leo núi.",
+"py": "rú guǒ míng tiān bù xià yǔ wǒ men jiù qù pá shān"
+},
+{
+"l": "HSK 3",
+"t": "这本书我看了三遍。",
+"vi": "Quyển sách này tôi đã đọc ba lần.",
+"py": "zhè běn shū wǒ kàn le sān biàn"
+},
+{
+"l": "HSK 3",
+"t": "你是怎么学会做中国菜的？",
+"vi": "Bạn học nấu món Trung Quốc như thế nào vậy?",
+"py": "nǐ shì zěn me xué huì zuò zhōng guó cài de"
+},
+{
+"l": "HSK 3",
+"t": "我一边工作，一边学习汉语。",
+"vi": "Tôi vừa đi làm vừa học tiếng Trung.",
+"py": "wǒ yī biān gōng zuò yī biān xué xí hàn yǔ"
+},
+{
+"l": "HSK 3",
+"t": "他的汉语说得越来越流利。",
+"vi": "Tiếng Trung của anh ấy ngày càng trôi chảy.",
+"py": "tā de hàn yǔ shuō de yuè lái yuè liú lì"
+},
+{
+"l": "HSK 3",
+"t": "请把手机关上，会议马上开始。",
+"vi": "Làm ơn tắt điện thoại, cuộc họp sắp bắt đầu.",
+"py": "qǐng bǎ shǒu jī guān shàng huì yì mǎ shàng kāi shǐ"
+},
+{
+"l": "HSK 3",
+"t": "我希望你能经常给我写信。",
+"vi": "Tôi hy vọng bạn thường xuyên viết thư cho tôi.",
+"py": "wǒ xī wàng nǐ néng jīng cháng gěi wǒ xiě xìn"
+},
+{
+"l": "HSK 3",
+"t": "这家饭馆的菜比那家好吃得多。",
+"vi": "Món ăn quán này ngon hơn quán kia nhiều.",
+"py": "zhè jiā fàn guǎn de cài bǐ nà jiā hǎo chī de duō"
+},
+{
+"l": "HSK 3",
+"t": "为了健康，他每天坚持跑步。",
+"vi": "Vì sức khỏe, mỗi ngày anh ấy kiên trì chạy bộ.",
+"py": "wèi le jiàn kāng tā měi tiān jiān chí pǎo bù"
+},
+{
+"l": "HSK 3",
+"t": "我没想到会在这儿遇见你。",
+"vi": "Tôi không ngờ lại gặp bạn ở đây.",
+"py": "wǒ méi xiǎng dào huì zài zhè ér yù jiàn nǐ"
+},
+{
+"l": "HSK 3",
+"t": "只要努力，就一定能成功。",
+"vi": "Chỉ cần cố gắng thì nhất định sẽ thành công.",
+"py": "zhǐ yào nǔ lì jiù yí dìng néng chéng gōng"
+},
+{
+"l": "HSK 3",
+"t": "他从小就喜欢画画儿。",
+"vi": "Từ nhỏ anh ấy đã thích vẽ tranh.",
+"py": "tā cóng xiǎo jiù xǐ huān huà huà ér"
+},
+{
+"l": "HSK 3",
+"t": "我听说你下个月要搬家。",
+"vi": "Tôi nghe nói tháng sau bạn sẽ chuyển nhà.",
+"py": "wǒ tīng shuō nǐ xià gè yuè yào bān jiā"
+},
+{
+"l": "HSK 3",
+"t": "这件事你不用担心。",
+"vi": "Chuyện này bạn không cần lo lắng.",
+"py": "zhè jiàn shì nǐ bù yòng dān xīn"
+},
+{
+"l": "HSK 3",
+"t": "老师请大家安静一下。",
+"vi": "Cô giáo mời cả lớp giữ yên lặng một chút.",
+"py": "lǎo shī qǐng dà jiā ān jìng yī xià"
+},
+{
+"l": "HSK 3",
+"t": "他的房间总是收拾得很干净。",
+"vi": "Phòng của anh ấy lúc nào cũng dọn dẹp rất sạch.",
+"py": "tā de fáng jiān zǒng shì shōu shí de hěn gān jìng"
+},
+{
+"l": "HSK 3",
+"t": "你可以用手机付钱。",
+"vi": "Bạn có thể trả tiền bằng điện thoại.",
+"py": "nǐ kě yǐ yòng shǒu jī fù qián"
+},
+{
+"l": "HSK 3",
+"t": "我忘了关灯就出门了。",
+"vi": "Tôi quên tắt đèn đã ra khỏi nhà.",
+"py": "wǒ wàng le guān dēng jiù chū mén le"
+},
+{
+"l": "HSK 3",
+"t": "除了数学，我还喜欢历史。",
+"vi": "Ngoài toán ra, tôi còn thích lịch sử.",
+"py": "chú le shù xué wǒ hái xǐ huān lì shǐ"
+},
+{
+"l": "HSK 3",
+"t": "她突然发现钱包不见了。",
+"vi": "Cô ấy chợt phát hiện ví không còn nữa.",
+"py": "tā tū rán fā xiàn qián bāo bú jiàn le"
+},
+{
+"l": "HSK 3",
+"t": "这个故事让我想起了小时候。",
+"vi": "Câu chuyện này làm tôi nhớ lại thuở nhỏ.",
+"py": "zhè ge gù shì ràng wǒ xiǎng qǐ le xiǎo shí hòu"
+},
+{
+"l": "HSK 3",
+"t": "他们终于找到了回家的路。",
+"vi": "Cuối cùng họ cũng tìm được đường về nhà.",
+"py": "tā men zhōng yú zhǎo dào le huí jiā de lù"
+},
+{
+"l": "HSK 3",
+"t": "你先别着急，慢慢说。",
+"vi": "Bạn đừng vội, cứ nói từ từ.",
+"py": "nǐ xiān bié zháo jí màn màn shuō"
+},
+{
+"l": "HSK 3",
+"t": "周末我打算在家休息。",
+"vi": "Cuối tuần tôi định nghỉ ngơi ở nhà.",
+"py": "zhōu mò wǒ dǎ suàn zài jiā xiū xī"
+},
+{
+"l": "HSK 3",
+"t": "这次考试比上次容易。",
+"vi": "Kỳ thi lần này dễ hơn lần trước.",
+"py": "zhè cì kǎo shì bǐ shàng cì róng yì"
+},
+{
+"l": "HSK 3",
+"t": "他一直在等你的回答。",
+"vi": "Anh ấy vẫn luôn chờ câu trả lời của bạn.",
+"py": "tā yì zhí zài děng nǐ de huí dá"
+},
+{
+"l": "HSK 3",
+"t": "请你帮我拿一下行李。",
+"vi": "Làm ơn giúp tôi xách hành lý một chút.",
+"py": "qǐng nǐ bāng wǒ ná yī xià xíng lǐ"
+},
+{
+"l": "HSK 4",
+"t": "随着经济的发展，人们的生活水平提高了。",
+"vi": "Cùng với sự phát triển kinh tế, mức sống của mọi người đã nâng cao.",
+"py": "suí zhe jīng jì de fā zhǎn rén men de shēng huó shuǐ píng tí gāo le"
+},
+{
+"l": "HSK 4",
+"t": "他不仅聪明，而且非常努力。",
+"vi": "Anh ấy không chỉ thông minh mà còn rất chăm chỉ.",
+"py": "tā bù jǐn cōng míng ér qiě fēi cháng nǔ lì"
+},
+{
+"l": "HSK 4",
+"t": "无论遇到什么困难，我们都不能放弃。",
+"vi": "Dù gặp khó khăn gì, chúng ta cũng không thể bỏ cuộc.",
+"py": "wú lùn yù dào shén me kùn nán wǒ men dōu bù néng fàng qì"
+},
+{
+"l": "HSK 4",
+"t": "这个计划需要大家共同讨论。",
+"vi": "Kế hoạch này cần mọi người cùng thảo luận.",
+"py": "zhè ge jì huà xū yào dà jiā gòng tóng tǎo lùn"
+},
+{
+"l": "HSK 4",
+"t": "我对这份工作的要求并不高。",
+"vi": "Yêu cầu của tôi đối với công việc này không cao.",
+"py": "wǒ duì zhè fèn gōng zuò de yāo qiú bìng bù gāo"
+},
+{
+"l": "HSK 4",
+"t": "由于交通堵塞，会议推迟了半小时。",
+"vi": "Do tắc đường nên cuộc họp bị hoãn nửa tiếng.",
+"py": "yóu yú jiāo tōng dǔ sè huì yì tuī chí le bàn xiǎo shí"
+},
+{
+"l": "HSK 4",
+"t": "他把这件事处理得很合适。",
+"vi": "Anh ấy xử lý chuyện này rất thích hợp.",
+"py": "tā bǎ zhè jiàn shì chǔ lǐ de hěn hé shì"
+},
+{
+"l": "HSK 4",
+"t": "只有多练习，才能提高口语水平。",
+"vi": "Chỉ có luyện tập nhiều mới nâng cao được trình độ nói.",
+"py": "zhǐ yǒu duō liàn xí cái néng tí gāo kǒu yǔ shuǐ píng"
+},
+{
+"l": "HSK 4",
+"t": "我们应该保护环境，节约能源。",
+"vi": "Chúng ta nên bảo vệ môi trường, tiết kiệm năng lượng.",
+"py": "wǒ men yīng gāi bǎo hù huán jìng jié yuē néng yuán"
+},
+{
+"l": "HSK 4",
+"t": "他的建议对我帮助很大。",
+"vi": "Lời khuyên của anh ấy giúp ích cho tôi rất nhiều.",
+"py": "tā de jiàn yì duì wǒ bāng zhù hěn dà"
+},
+{
+"l": "HSK 4",
+"t": "即使天气不好，比赛也会按时举行。",
+"vi": "Dù thời tiết xấu, trận đấu vẫn diễn ra đúng giờ.",
+"py": "jí shǐ tiān qì bù hǎo bǐ sài yě huì àn shí jǔ xíng"
+},
+{
+"l": "HSK 4",
+"t": "她的表演给观众留下了深刻的印象。",
+"vi": "Màn biểu diễn của cô ấy để lại ấn tượng sâu sắc cho khán giả.",
+"py": "tā de biǎo yǎn gěi guān zhòng liú xià le shēn kè de yìn xiàng"
+},
+{
+"l": "HSK 4",
+"t": "请把材料整理好，明天交给经理。",
+"vi": "Hãy sắp xếp xong tài liệu, mai nộp cho giám đốc.",
+"py": "qǐng bǎ cái liào zhěng lǐ hǎo míng tiān jiāo gěi jīng lǐ"
+},
+{
+"l": "HSK 4",
+"t": "这个城市的变化让我感到吃惊。",
+"vi": "Sự thay đổi của thành phố này khiến tôi ngạc nhiên.",
+"py": "zhè ge chéng shì de biàn huà ràng wǒ gǎn dào chī jīng"
+},
+{
+"l": "HSK 4",
+"t": "我正在考虑要不要换工作。",
+"vi": "Tôi đang cân nhắc có nên đổi việc hay không.",
+"py": "wǒ zhèng zài kǎo lǜ yào bù yào huàn gōng zuò"
+},
+{
+"l": "HSK 4",
+"t": "他们为了这次比赛准备了很长时间。",
+"vi": "Họ đã chuẩn bị rất lâu cho trận đấu này.",
+"py": "tā men wèi le zhè cì bǐ sài zhǔn bèi le hěn cháng shí jiān"
+},
+{
+"l": "HSK 4",
+"t": "遇到问题的时候，要学会冷静。",
+"vi": "Khi gặp vấn đề phải học cách bình tĩnh.",
+"py": "yù dào wèn tí de shí hòu yào xué huì lěng jìng"
+},
+{
+"l": "HSK 4",
+"t": "这家公司以质量好而出名。",
+"vi": "Công ty này nổi tiếng vì chất lượng tốt.",
+"py": "zhè jiā gōng sī yǐ zhì liàng hǎo ér chū míng"
+},
+{
+"l": "HSK 4",
+"t": "他一边解释，一边给大家看照片。",
+"vi": "Anh ấy vừa giải thích vừa cho mọi người xem ảnh.",
+"py": "tā yī biān jiě shì yī biān gěi dà jiā kàn zhào piān"
+},
+{
+"l": "HSK 4",
+"t": "我们要尊重不同的意见。",
+"vi": "Chúng ta phải tôn trọng những ý kiến khác nhau.",
+"py": "wǒ men yào zūn zhòng bù tóng de yì jiàn"
+},
+{
+"l": "HSK 4",
+"t": "她的梦想是成为一名医生。",
+"vi": "Ước mơ của cô ấy là trở thành bác sĩ.",
+"py": "tā de mèng xiǎng shì chéng wéi yī míng yī shēng"
+},
+{
+"l": "HSK 4",
+"t": "这次旅行让我学到了很多东西。",
+"vi": "Chuyến đi này làm tôi học được rất nhiều điều.",
+"py": "zhè cì lǚ xíng ràng wǒ xué dào le hěn duō dōng xī"
+},
+{
+"l": "HSK 4",
+"t": "虽然价格有点儿高，但是质量确实不错。",
+"vi": "Tuy giá hơi cao nhưng chất lượng quả thật không tệ.",
+"py": "suī rán jià gé yǒu diǎn ér gāo dàn shì zhì liàng què shí bù cuò"
+},
+{
+"l": "HSK 4",
+"t": "网络给我们的生活带来了很多方便。",
+"vi": "Mạng internet mang lại nhiều tiện lợi cho cuộc sống của chúng ta.",
+"py": "wǎng luò gěi wǒ men de shēng huó dài lái le hěn duō fāng biàn"
+},
+{
+"l": "HSK 4",
+"t": "他的普通话比去年标准多了。",
+"vi": "Tiếng phổ thông của anh ấy chuẩn hơn năm ngoái nhiều.",
+"py": "tā de pǔ tōng huà bǐ qù nián biāo zhǔn duō le"
+},
+{
+"l": "HSK 4",
+"t": "请大家遵守交通规则。",
+"vi": "Mong mọi người tuân thủ luật giao thông.",
+"py": "qǐng dà jiā zūn shǒu jiāo tōng guī zé"
+},
+{
+"l": "HSK 4",
+"t": "这个问题看起来简单，其实很复杂。",
+"vi": "Vấn đề này nhìn thì đơn giản nhưng thật ra rất phức tạp.",
+"py": "zhè ge wèn tí kàn qǐ lái jiǎn dān qí shí hěn fù zá"
+},
+{
+"l": "HSK 4",
+"t": "如果你有时间，不妨去看看。",
+"vi": "Nếu bạn có thời gian thì cứ đi xem thử.",
+"py": "rú guǒ nǐ yǒu shí jiān bù fáng qù kàn kàn"
+},
+{
+"l": "HSK 4",
+"t": "他坚持锻炼，身体越来越好。",
+"vi": "Anh ấy kiên trì tập luyện, sức khỏe ngày càng tốt.",
+"py": "tā jiān chí duàn liàn shēn tǐ yuè lái yuè hǎo"
+},
+{
+"l": "HSK 4",
+"t": "我们的服务让顾客非常满意。",
+"vi": "Dịch vụ của chúng tôi khiến khách hàng rất hài lòng.",
+"py": "wǒ men de fú wù ràng gù kè fēi cháng mǎn yì"
+},
+{
+"l": "HSK 5",
+"t": "这项政策的实施对社会产生了深远的影响。",
+"vi": "Việc thực thi chính sách này đã tạo ảnh hưởng sâu rộng đến xã hội.",
+"py": "zhè xiàng zhèng cè de shí shī duì shè huì chǎn shēng le shēn yuǎn de yǐng xiǎng"
+},
+{
+"l": "HSK 5",
+"t": "面对激烈的竞争，企业必须不断创新。",
+"vi": "Đối mặt với cạnh tranh gay gắt, doanh nghiệp phải không ngừng đổi mới.",
+"py": "miàn duì jī liè de jìng zhēng qǐ yè bì xū bù duàn chuàng xīn"
+},
+{
+"l": "HSK 5",
+"t": "他的观点虽然新颖，却缺乏足够的证据。",
+"vi": "Quan điểm của anh ấy tuy mới mẻ nhưng thiếu bằng chứng đầy đủ.",
+"py": "tā de guān diǎn suī rán xīn yǐng què quē fá zú gòu de zhèng jù"
+},
+{
+"l": "HSK 5",
+"t": "科学技术的进步改变了人们的生活方式。",
+"vi": "Tiến bộ khoa học kỹ thuật đã thay đổi lối sống của con người.",
+"py": "kē xué jì shù de jìn bù gǎi biàn le rén men de shēng huó fāng shì"
+},
+{
+"l": "HSK 5",
+"t": "我们应当从失败中吸取教训。",
+"vi": "Chúng ta nên rút ra bài học từ thất bại.",
+"py": "wǒ men yīng dāng cóng shī bài zhōng xī qǔ jiào xùn"
+},
+{
+"l": "HSK 5",
+"t": "这位作家的作品以幽默的语言著称。",
+"vi": "Tác phẩm của nhà văn này nổi tiếng với ngôn ngữ hài hước.",
+"py": "zhè wèi zuò jiā de zuò pǐn yǐ yōu mò de yǔ yán zhù chēng"
+},
+{
+"l": "HSK 5",
+"t": "由于缺乏经验，他在谈判中处于不利地位。",
+"vi": "Do thiếu kinh nghiệm, anh ấy ở thế bất lợi trong đàm phán.",
+"py": "yóu yú quē fá jīng yàn tā zài tán pàn zhōng chǔ yú bù lì dì wèi"
+},
+{
+"l": "HSK 5",
+"t": "环境污染已经成为一个不容忽视的问题。",
+"vi": "Ô nhiễm môi trường đã trở thành vấn đề không thể xem nhẹ.",
+"py": "huán jìng wū rǎn yǐ jīng chéng wéi yí gè bù róng hū shì de wèn tí"
+},
+{
+"l": "HSK 5",
+"t": "她以优异的成绩通过了所有考试。",
+"vi": "Cô ấy đã vượt qua mọi kỳ thi với thành tích xuất sắc.",
+"py": "tā yǐ yōu yì de chéng jì tōng guò le suǒ yǒu kǎo shì"
+},
+{
+"l": "HSK 5",
+"t": "这个项目的预算远远超出了我们的预期。",
+"vi": "Ngân sách của dự án này vượt xa dự kiến của chúng tôi.",
+"py": "zhè ge xiàng mù dì yù suàn yuǎn yuǎn chāo chū le wǒ men de yù qī"
+},
+{
+"l": "HSK 5",
+"t": "尽管工作很忙，他仍然坚持每天读书。",
+"vi": "Dù công việc bận rộn, anh ấy vẫn kiên trì đọc sách mỗi ngày.",
+"py": "jǐn guǎn gōng zuò hěn máng tā réng rán jiān chí měi tiān dú shū"
+},
+{
+"l": "HSK 5",
+"t": "教育的目的不只是传授知识，更是培养能力。",
+"vi": "Mục đích của giáo dục không chỉ là truyền thụ kiến thức mà còn là bồi dưỡng năng lực.",
+"py": "jiào yù de mù dì bù zhǐ shì chuán shòu zhī shí gèng shì péi yǎng néng lì"
+},
+{
+"l": "HSK 5",
+"t": "这场讨论为我们提供了新的思路。",
+"vi": "Cuộc thảo luận này đã cho chúng tôi hướng suy nghĩ mới.",
+"py": "zhè chǎng tǎo lùn wèi wǒ men tí gōng le xīn de sī lù"
+},
+{
+"l": "HSK 5",
+"t": "他对自己的职业规划有着清晰的认识。",
+"vi": "Anh ấy có nhận thức rõ ràng về kế hoạch nghề nghiệp của mình.",
+"py": "tā duì zì jǐ de zhí yè guī huà yǒu zhe qīng xī de rèn shí"
+},
+{
+"l": "HSK 5",
+"t": "随着人口老龄化，养老问题日益突出。",
+"vi": "Cùng với già hóa dân số, vấn đề dưỡng lão ngày càng nổi cộm.",
+"py": "suí zhe rén kǒu lǎo líng huà yǎng lǎo wèn tí rì yì tū chū"
+},
+{
+"l": "HSK 5",
+"t": "这家博物馆收藏了大量珍贵的文物。",
+"vi": "Bảo tàng này lưu giữ rất nhiều cổ vật quý giá.",
+"py": "zhè jiā bó wù guǎn shōu cáng le dà liàng zhēn guì de wén wù"
+},
+{
+"l": "HSK 5",
+"t": "我们必须在保证质量的前提下降低成本。",
+"vi": "Chúng ta phải giảm chi phí trên tiền đề đảm bảo chất lượng.",
+"py": "wǒ men bì xū zài bǎo zhèng zhì liàng de qián tí xià jiàng dī chéng běn"
+},
+{
+"l": "HSK 5",
+"t": "她的演讲充满了感染力，赢得了热烈的掌声。",
+"vi": "Bài diễn thuyết của cô ấy tràn đầy sức truyền cảm, giành được tràng pháo tay nhiệt liệt.",
+"py": "tā de yǎn jiǎng chōng mǎn le gǎn rǎn lì yíng dé le rè liè de zhǎng shēng"
+},
+{
+"l": "HSK 5",
+"t": "这些数据充分说明了问题的严重性。",
+"vi": "Những số liệu này đã nói rõ mức độ nghiêm trọng của vấn đề.",
+"py": "zhè xiē shù jù chōng fèn shuō míng le wèn tí de yán zhòng xìng"
+},
+{
+"l": "HSK 5",
+"t": "他善于倾听别人的意见，因此深受同事尊重。",
+"vi": "Anh ấy giỏi lắng nghe ý kiến người khác nên được đồng nghiệp rất tôn trọng.",
+"py": "tā shàn yú qīng tīng bié rén de yì jiàn yīn cǐ shēn shòu tóng shì zūn zhòng"
+},
+{
+"l": "HSK 5",
+"t": "传统文化需要在继承的基础上发展。",
+"vi": "Văn hóa truyền thống cần phát triển trên cơ sở kế thừa.",
+"py": "chuán tǒng wén huà xū yào zài jì chéng de jī chǔ shàng fā zhǎn"
+},
+{
+"l": "HSK 5",
+"t": "这次事故的原因目前还在调查之中。",
+"vi": "Nguyên nhân của vụ tai nạn này hiện vẫn đang được điều tra.",
+"py": "zhè cì shì gù de yuán yīn mù qián hái zài diào chá zhī zhōng"
+},
+{
+"l": "HSK 5",
+"t": "他在困难面前表现出了惊人的毅力。",
+"vi": "Anh ấy thể hiện nghị lực đáng kinh ngạc trước khó khăn.",
+"py": "tā zài kùn nán miàn qián biǎo xiàn chū le jīng rén de yì lì"
+},
+{
+"l": "HSK 5",
+"t": "为了适应市场的变化，公司调整了经营策略。",
+"vi": "Để thích ứng với biến động thị trường, công ty đã điều chỉnh chiến lược kinh doanh.",
+"py": "wèi le shì yìng shì chǎng de biàn huà gōng sī tiáo zhěng le jīng yíng cè lüè"
+},
+{
+"l": "HSK 5",
+"t": "旅游业的发展带动了当地经济的增长。",
+"vi": "Sự phát triển của ngành du lịch đã thúc đẩy kinh tế địa phương tăng trưởng.",
+"py": "lǚ yóu yè de fā zhǎn dài dòng le dāng dì jīng jì de zēng zhǎng"
+},
+{
+"l": "HSK 5",
+"t": "合同一旦签订，双方就必须严格履行。",
+"vi": "Hợp đồng một khi đã ký, hai bên phải nghiêm túc thực hiện.",
+"py": "hé tóng yí dàn qiān dìng shuāng fāng jiù bì xū yán gé lǚ xíng"
+},
+{
+"l": "HSK 5",
+"t": "她放弃了高薪工作，选择回乡创业。",
+"vi": "Cô ấy bỏ công việc lương cao, chọn về quê khởi nghiệp.",
+"py": "tā fàng qì le gāo xīn gōng zuò xuǎn zé huí xiāng chuàng yè"
+},
+{
+"l": "HSK 5",
+"t": "这部电影真实地反映了普通人的生活。",
+"vi": "Bộ phim này phản ánh chân thực cuộc sống của người bình thường.",
+"py": "zhè bù diàn yǐng zhēn shí dì fǎn yìng le pǔ tōng rén de shēng huó"
+},
+{
+"l": "HSK 5",
+"t": "他的成功离不开家人的支持和鼓励。",
+"vi": "Thành công của anh ấy không thể tách rời sự ủng hộ và động viên của gia đình.",
+"py": "tā de chéng gōng lí bù kāi jiā rén de zhī chí hé gǔ lì"
+},
+{
+"l": "HSK 5",
+"t": "我们要培养孩子独立思考的习惯。",
+"vi": "Chúng ta cần bồi dưỡng thói quen suy nghĩ độc lập cho trẻ.",
+"py": "wǒ men yào péi yǎng hái zi dú lì sī kǎo de xí guàn"
+},
+{
+"l": "HSK 6",
+"t": "这一现象折射出当代社会价值观的多元化趋势。",
+"vi": "Hiện tượng này phản chiếu xu hướng đa dạng hóa giá trị quan của xã hội đương đại.",
+"py": "zhè yī xiàn xiàng zhé shè chū dāng dài shè huì jià zhí guān de duō yuán huà qū shì"
+},
+{
+"l": "HSK 6",
+"t": "面对突如其来的变故，他表现得异常镇定。",
+"vi": "Đối mặt với biến cố đột ngột, anh ấy tỏ ra bình tĩnh khác thường.",
+"py": "miàn duì tū rú qí lái de biàn gù tā biǎo xiàn de yì cháng zhèn dìng"
+},
+{
+"l": "HSK 6",
+"t": "这项研究成果有望为治疗该疾病开辟新的途径。",
+"vi": "Thành quả nghiên cứu này hứa hẹn mở ra con đường mới để điều trị căn bệnh đó.",
+"py": "zhè xiàng yán jiū chéng guǒ yǒu wàng wèi zhì liáo gāi jí bìng kāi pì xīn de tú jìng"
+},
+{
+"l": "HSK 6",
+"t": "他言辞犀利，一针见血地指出了问题的症结。",
+"vi": "Lời lẽ anh ấy sắc bén, chỉ thẳng vào mấu chốt của vấn đề.",
+"py": "tā yán cí xī lì yī zhēn jiàn xiě dì zhǐ chū le wèn tí de zhēng jié"
+},
+{
+"l": "HSK 6",
+"t": "在全球化的背景下，文化交流日益频繁。",
+"vi": "Trong bối cảnh toàn cầu hóa, giao lưu văn hóa ngày càng thường xuyên.",
+"py": "zài quán qiú huà de bèi jǐng xià wén huà jiāo liú rì yì pín fán"
+},
+{
+"l": "HSK 6",
+"t": "企业若不顾环境保护，终将受到法律的制裁。",
+"vi": "Doanh nghiệp nếu bất chấp bảo vệ môi trường, rốt cuộc sẽ bị pháp luật trừng phạt.",
+"py": "qǐ yè ruò bù gù huán jìng bǎo hù zhōng jiāng shòu dào fǎ lǜ de zhì cái"
+},
+{
+"l": "HSK 6",
+"t": "这位学者的见解独到，引起了学术界的广泛关注。",
+"vi": "Kiến giải của học giả này độc đáo, thu hút sự quan tâm rộng rãi của giới học thuật.",
+"py": "zhè wèi xué zhě de jiàn jiě dú dào yǐn qǐ le xué shù jiè de guǎng fàn guān zhù"
+},
+{
+"l": "HSK 6",
+"t": "为了避免矛盾激化，双方都做出了让步。",
+"vi": "Để tránh mâu thuẫn leo thang, cả hai bên đều nhượng bộ.",
+"py": "wèi le bì miǎn máo dùn jī huà shuāng fāng dōu zuò chū le ràng bù"
+},
+{
+"l": "HSK 6",
+"t": "他凭借出色的才华，在业界崭露头角。",
+"vi": "Anh ấy nhờ tài năng xuất chúng mà nổi bật trong giới.",
+"py": "tā píng jiè chū sè de cái huá zài yè jiè zhǎn lù tóu jiǎo"
+},
+{
+"l": "HSK 6",
+"t": "这个方案看似可行，实则漏洞百出。",
+"vi": "Phương án này trông có vẻ khả thi nhưng thực ra đầy sơ hở.",
+"py": "zhè ge fāng àn kàn shì kě xíng shí zé lòu dòng bǎi chū"
+},
+{
+"l": "HSK 6",
+"t": "许多传统手艺正面临失传的危险。",
+"vi": "Nhiều nghề thủ công truyền thống đang đối mặt nguy cơ thất truyền.",
+"py": "xǔ duō chuán tǒng shǒu yì zhèng miàn lín shī chuán de wēi xiǎn"
+},
+{
+"l": "HSK 6",
+"t": "他对待工作一丝不苟，从不敷衍了事。",
+"vi": "Anh ấy làm việc tỉ mỉ, không bao giờ qua loa đại khái.",
+"py": "tā duì dài gōng zuò yī sī bù gǒu cóng bù fū yǎn liǎo shì"
+},
+{
+"l": "HSK 6",
+"t": "政府出台了一系列措施来缓解就业压力。",
+"vi": "Chính phủ đã ban hành một loạt biện pháp để giảm bớt áp lực việc làm.",
+"py": "zhèng fǔ chū tái le yī xì liè cuò shī lái huǎn jiě jiù yè yā lì"
+},
+{
+"l": "HSK 6",
+"t": "这件事牵涉到多方利益，处理起来十分棘手。",
+"vi": "Việc này liên quan đến lợi ích nhiều bên nên xử lý rất nan giải.",
+"py": "zhè jiàn shì qiān shè dào duō fāng lì yì chǔ lǐ qǐ lái shí fēn jí shǒu"
+},
+{
+"l": "HSK 6",
+"t": "她的话语中透露出一丝难以掩饰的失落。",
+"vi": "Trong lời nói của cô ấy lộ ra một chút thất vọng khó che giấu.",
+"py": "tā de huà yǔ zhōng tòu lù chū yī sī nán yǐ yǎn shì de shī luò"
+},
+{
+"l": "HSK 6",
+"t": "科研人员经过反复试验，终于攻克了这一难题。",
+"vi": "Các nhà nghiên cứu sau nhiều lần thử nghiệm cuối cùng đã chinh phục được khó khăn này.",
+"py": "kē yán rén yuán jīng guò fǎn fù shì yàn zhōng yú gōng kè le zhè yī nán tí"
+},
+{
+"l": "HSK 6",
+"t": "这座古城完好地保留了明清时期的建筑风貌。",
+"vi": "Cố thành này giữ nguyên vẹn diện mạo kiến trúc thời Minh Thanh.",
+"py": "zhè zuò gǔ chéng wán hǎo dì bǎo liú le míng qīng shí qī de jiàn zhù fēng mào"
+},
+{
+"l": "HSK 6",
+"t": "他的发言有理有据，令在场的人心悦诚服。",
+"vi": "Phát biểu của anh ấy có lý có cứ, khiến những người có mặt tâm phục khẩu phục.",
+"py": "tā de fā yán yǒu lǐ yǒu jù lìng zài chǎng de rén xīn yuè chéng fú"
+},
+{
+"l": "HSK 6",
+"t": "市场经济的活力在于公平竞争。",
+"vi": "Sức sống của kinh tế thị trường nằm ở cạnh tranh công bằng.",
+"py": "shì chǎng jīng jì de huó lì zài yú gōng píng jìng zhēng"
+},
+{
+"l": "HSK 6",
+"t": "这场灾难唤起了全社会对安全问题的重视。",
+"vi": "Thảm họa này đã đánh thức sự coi trọng vấn đề an toàn của toàn xã hội.",
+"py": "zhè chǎng zāi nàn huàn qǐ le quán shè huì duì ān quán wèn tí de zhòng shì"
+},
+{
+"l": "HSK 6",
+"t": "他既要照顾年迈的父母，又要抚养年幼的孩子，压力不言而喻。",
+"vi": "Anh ấy vừa phải chăm sóc cha mẹ già vừa phải nuôi con nhỏ, áp lực là điều không cần nói.",
+"py": "tā jì yào zhào gù nián mài de fù mǔ yòu yào fǔ yǎng nián yòu de hái zi yā lì bù yán ér yù"
+},
+{
+"l": "HSK 6",
+"t": "文学作品往往折射出作者所处时代的精神面貌。",
+"vi": "Tác phẩm văn học thường phản chiếu diện mạo tinh thần của thời đại tác giả.",
+"py": "wén xué zuò pǐn wǎng wǎng zhé shè chū zuò zhě suǒ chǔ shí dài de jīng shén miàn mào"
+},
+{
+"l": "HSK 6",
+"t": "这家老字号凭借诚信经营赢得了几代人的信赖。",
+"vi": "Cửa hiệu lâu đời này nhờ kinh doanh uy tín mà giành được lòng tin của nhiều thế hệ.",
+"py": "zhè jiā lǎo zì hào píng jiè chéng xìn jīng yíng yíng dé le jǐ dài rén de xìn lài"
+},
+{
+"l": "HSK 6",
+"t": "他的突然离去使整个团队陷入了困境。",
+"vi": "Sự ra đi đột ngột của anh ấy khiến cả nhóm rơi vào cảnh khó khăn.",
+"py": "tā de tū rán lí qù shǐ zhěng gè tuán duì xiàn rù le kùn jìng"
+},
+{
+"l": "HSK 6",
+"t": "面对质疑，她既不辩解，也不退缩。",
+"vi": "Trước những nghi vấn, cô ấy không biện bạch cũng không lùi bước.",
+"py": "miàn duì zhì yí tā jì bù biàn jiě yě bù tuì suō"
+},
+{
+"l": "HSK 6",
+"t": "数字技术正在深刻地重塑传统行业的运作模式。",
+"vi": "Công nghệ số đang định hình lại sâu sắc mô hình vận hành của các ngành truyền thống.",
+"py": "shù zì jì shù zhèng zài shēn kè dì chóng sù chuán tǒng háng yè de yùn zuò mó shì"
+},
+{
+"l": "HSK 6",
+"t": "这个决定虽然艰难，但从长远来看是明智的。",
+"vi": "Quyết định này tuy khó khăn nhưng xét về lâu dài là sáng suốt.",
+"py": "zhè ge jué dìng suī rán jiān nán dàn cóng cháng yuǎn lái kàn shì míng zhì de"
+},
+{
+"l": "HSK 6",
+"t": "他们在谈判桌上寸步不让，僵局持续了数周。",
+"vi": "Họ không nhường một bước trên bàn đàm phán, bế tắc kéo dài mấy tuần.",
+"py": "tā men zài tán pàn zhuō shàng cùn bù bù ràng jiāng jú chí xù le shù zhōu"
+},
+{
+"l": "HSK 6",
+"t": "她把毕生的精力都倾注在了教育事业上。",
+"vi": "Bà dồn cả tâm sức cả đời vào sự nghiệp giáo dục.",
+"py": "tā bǎ bì shēng de jīng lì dōu qīng zhù zài le jiào yù shì yè shàng"
+},
+{
+"l": "HSK 6",
+"t": "他对这份工作的热情始终没有减退。",
+"vi": "Nhiệt huyết của anh ấy với công việc này chưa bao giờ giảm sút.",
+"py": "tā duì zhè fèn gōng zuò de rè qíng shǐ zhōng méi yǒu jiǎn tuì"
+}
+],
+"ja": [
+{
+"l": "JLPT N5",
+"t": "私は毎朝コーヒーを飲みます。",
+"vi": "Mỗi sáng tôi uống cà phê."
+},
+{
+"l": "JLPT N5",
+"t": "この本はとても面白いです。",
+"vi": "Cuốn sách này rất thú vị."
+},
+{
+"l": "JLPT N5",
+"t": "駅はどこですか。",
+"vi": "Ga tàu ở đâu vậy?"
+},
+{
+"l": "JLPT N5",
+"t": "昨日は友達と映画を見ました。",
+"vi": "Hôm qua tôi đã xem phim với bạn."
+},
+{
+"l": "JLPT N5",
+"t": "田中さんは先生ではありません。",
+"vi": "Anh Tanaka không phải là giáo viên."
+},
+{
+"l": "JLPT N5",
+"t": "今日はとても暑いですね。",
+"vi": "Hôm nay nóng quá nhỉ."
+},
+{
+"l": "JLPT N5",
+"t": "私は日本語を勉強しています。",
+"vi": "Tôi đang học tiếng Nhật."
+},
+{
+"l": "JLPT N5",
+"t": "あの赤い車は誰のですか。",
+"vi": "Chiếc xe màu đỏ kia là của ai vậy?"
+},
+{
+"l": "JLPT N5",
+"t": "毎日七時に起きます。",
+"vi": "Mỗi ngày tôi dậy lúc bảy giờ."
+},
+{
+"l": "JLPT N5",
+"t": "このりんごはいくらですか。",
+"vi": "Quả táo này bao nhiêu tiền?"
+},
+{
+"l": "JLPT N5",
+"t": "来週、京都へ行きます。",
+"vi": "Tuần sau tôi sẽ đi Kyoto."
+},
+{
+"l": "JLPT N5",
+"t": "母は料理が上手です。",
+"vi": "Mẹ tôi nấu ăn giỏi."
+},
+{
+"l": "JLPT N5",
+"t": "トイレは二階にあります。",
+"vi": "Nhà vệ sinh ở tầng hai."
+},
+{
+"l": "JLPT N5",
+"t": "私の家は駅から近いです。",
+"vi": "Nhà tôi gần ga."
+},
+{
+"l": "JLPT N5",
+"t": "朝ごはんにパンを食べました。",
+"vi": "Tôi đã ăn bánh mì cho bữa sáng."
+},
+{
+"l": "JLPT N5",
+"t": "日曜日は何をしますか。",
+"vi": "Chủ nhật bạn làm gì?"
+},
+{
+"l": "JLPT N5",
+"t": "兄は大学で英語を教えています。",
+"vi": "Anh trai tôi dạy tiếng Anh ở trường đại học."
+},
+{
+"l": "JLPT N5",
+"t": "そのかばんは高かったです。",
+"vi": "Chiếc cặp đó đã đắt."
+},
+{
+"l": "JLPT N5",
+"t": "電車で会社へ行きます。",
+"vi": "Tôi đi đến công ty bằng tàu điện."
+},
+{
+"l": "JLPT N5",
+"t": "ここで写真を撮ってもいいですか。",
+"vi": "Tôi chụp ảnh ở đây được không?"
+},
+{
+"l": "JLPT N5",
+"t": "雨が降っていますから、傘を持っていきます。",
+"vi": "Vì trời đang mưa nên tôi mang ô đi."
+},
+{
+"l": "JLPT N5",
+"t": "わたしは猫が好きです。",
+"vi": "Tôi thích mèo."
+},
+{
+"l": "JLPT N5",
+"t": "学校の前に大きい木があります。",
+"vi": "Trước trường có một cái cây lớn."
+},
+{
+"l": "JLPT N5",
+"t": "お名前は何ですか。",
+"vi": "Tên bạn là gì?"
+},
+{
+"l": "JLPT N5",
+"t": "友達に手紙を書きました。",
+"vi": "Tôi đã viết thư cho bạn."
+},
+{
+"l": "JLPT N5",
+"t": "今、何時ですか。",
+"vi": "Bây giờ là mấy giờ?"
+},
+{
+"l": "JLPT N5",
+"t": "彼女は歌が上手です。",
+"vi": "Cô ấy hát hay."
+},
+{
+"l": "JLPT N5",
+"t": "夜、テレビを見ます。",
+"vi": "Buổi tối tôi xem tivi."
+},
+{
+"l": "JLPT N5",
+"t": "この道をまっすぐ行ってください。",
+"vi": "Hãy đi thẳng con đường này."
+},
+{
+"l": "JLPT N5",
+"t": "水をください。",
+"vi": "Cho tôi xin nước."
+},
+{
+"l": "JLPT N4",
+"t": "駅まで歩いて十分ぐらいかかります。",
+"vi": "Đi bộ đến ga mất khoảng mười phút."
+},
+{
+"l": "JLPT N4",
+"t": "明日は雨が降るかもしれません。",
+"vi": "Ngày mai có thể sẽ mưa."
+},
+{
+"l": "JLPT N4",
+"t": "疲れたので、早く寝ることにしました。",
+"vi": "Vì mệt nên tôi quyết định đi ngủ sớm."
+},
+{
+"l": "JLPT N4",
+"t": "彼は日本語を話すことができます。",
+"vi": "Anh ấy có thể nói tiếng Nhật."
+},
+{
+"l": "JLPT N4",
+"t": "先生に宿題を出すように言われました。",
+"vi": "Tôi được giáo viên bảo là phải nộp bài tập."
+},
+{
+"l": "JLPT N4",
+"t": "窓を開けたまま寝てしまいました。",
+"vi": "Tôi đã ngủ quên mà để nguyên cửa sổ mở."
+},
+{
+"l": "JLPT N4",
+"t": "もし時間があれば、手伝ってください。",
+"vi": "Nếu có thời gian thì hãy giúp tôi."
+},
+{
+"l": "JLPT N4",
+"t": "この薬を飲めば、すぐ良くなりますよ。",
+"vi": "Nếu uống thuốc này thì sẽ khỏi ngay đấy."
+},
+{
+"l": "JLPT N4",
+"t": "彼女は料理が上手なだけでなく、掃除も好きです。",
+"vi": "Cô ấy không chỉ nấu ăn giỏi mà còn thích dọn dẹp."
+},
+{
+"l": "JLPT N4",
+"t": "電車の中で財布を落としてしまいました。",
+"vi": "Tôi đã làm rơi ví trong tàu điện."
+},
+{
+"l": "JLPT N4",
+"t": "日本へ行く前に、日本語を勉強しておきます。",
+"vi": "Trước khi đi Nhật, tôi sẽ học sẵn tiếng Nhật."
+},
+{
+"l": "JLPT N4",
+"t": "母に買い物を頼まれました。",
+"vi": "Tôi được mẹ nhờ đi mua đồ."
+},
+{
+"l": "JLPT N4",
+"t": "彼が来るまで、ここで待っています。",
+"vi": "Tôi sẽ đợi ở đây đến khi anh ấy tới."
+},
+{
+"l": "JLPT N4",
+"t": "この問題は難しすぎて、わかりません。",
+"vi": "Bài này khó quá nên tôi không hiểu."
+},
+{
+"l": "JLPT N4",
+"t": "子どもの時、よくこの公園で遊びました。",
+"vi": "Hồi nhỏ tôi thường chơi ở công viên này."
+},
+{
+"l": "JLPT N4",
+"t": "会議は三時に始まる予定です。",
+"vi": "Cuộc họp dự định bắt đầu lúc ba giờ."
+},
+{
+"l": "JLPT N4",
+"t": "そのニュースを聞いて、びっくりしました。",
+"vi": "Nghe tin đó tôi đã rất ngạc nhiên."
+},
+{
+"l": "JLPT N4",
+"t": "熱があるので、今日は休みます。",
+"vi": "Vì bị sốt nên hôm nay tôi nghỉ."
+},
+{
+"l": "JLPT N4",
+"t": "友達に誘われて、旅行に行くことにしました。",
+"vi": "Được bạn rủ nên tôi quyết định đi du lịch."
+},
+{
+"l": "JLPT N4",
+"t": "彼は忙しそうですね。",
+"vi": "Trông anh ấy có vẻ bận nhỉ."
+},
+{
+"l": "JLPT N4",
+"t": "日本の夏は暑くて、むし暑いです。",
+"vi": "Mùa hè Nhật Bản vừa nóng vừa oi."
+},
+{
+"l": "JLPT N4",
+"t": "もう少しゆっくり話してください。",
+"vi": "Xin hãy nói chậm hơn một chút."
+},
+{
+"l": "JLPT N4",
+"t": "この部屋は静かで、勉強しやすいです。",
+"vi": "Phòng này yên tĩnh, dễ học."
+},
+{
+"l": "JLPT N4",
+"t": "私は毎朝走ることにしています。",
+"vi": "Tôi có thói quen chạy bộ mỗi sáng."
+},
+{
+"l": "JLPT N4",
+"t": "彼は怒って、部屋を出ていきました。",
+"vi": "Anh ấy tức giận rồi bỏ ra khỏi phòng."
+},
+{
+"l": "JLPT N4",
+"t": "写真を見せてもらえませんか。",
+"vi": "Cho tôi xem ảnh được không?"
+},
+{
+"l": "JLPT N4",
+"t": "試験に合格したので、とても嬉しいです。",
+"vi": "Vì đỗ kỳ thi nên tôi rất vui."
+},
+{
+"l": "JLPT N4",
+"t": "バスが遅れたので、会議に間に合いませんでした。",
+"vi": "Vì xe buýt đến muộn nên tôi không kịp cuộc họp."
+},
+{
+"l": "JLPT N4",
+"t": "父は新聞を読みながら朝ご飯を食べます。",
+"vi": "Bố tôi vừa đọc báo vừa ăn sáng."
+},
+{
+"l": "JLPT N4",
+"t": "もっと野菜を食べたほうがいいですよ。",
+"vi": "Bạn nên ăn nhiều rau hơn."
+},
+{
+"l": "JLPT N3",
+"t": "彼は忙しいにもかかわらず、手伝ってくれました。",
+"vi": "Dù bận nhưng anh ấy vẫn giúp tôi."
+},
+{
+"l": "JLPT N3",
+"t": "この仕事は経験がなくても始められます。",
+"vi": "Công việc này không có kinh nghiệm cũng có thể bắt đầu."
+},
+{
+"l": "JLPT N3",
+"t": "約束を忘れるなんて、信じられません。",
+"vi": "Quên cả cuộc hẹn, thật không thể tin được."
+},
+{
+"l": "JLPT N3",
+"t": "天気予報によると、明日は台風が来るそうです。",
+"vi": "Theo dự báo thời tiết, ngày mai bão sẽ đến."
+},
+{
+"l": "JLPT N3",
+"t": "彼女は将来、医者になるつもりだそうです。",
+"vi": "Nghe nói cô ấy định sau này làm bác sĩ."
+},
+{
+"l": "JLPT N3",
+"t": "試験が近づくにつれて、緊張してきました。",
+"vi": "Càng gần kỳ thi, tôi càng thấy căng thẳng."
+},
+{
+"l": "JLPT N3",
+"t": "留学したことで、視野が広がりました。",
+"vi": "Nhờ đi du học mà tầm nhìn của tôi đã mở rộng."
+},
+{
+"l": "JLPT N3",
+"t": "駅に着いたとたん、雨が降り出しました。",
+"vi": "Vừa đến ga thì trời bắt đầu mưa."
+},
+{
+"l": "JLPT N3",
+"t": "この料理は見た目のわりに、味が薄いです。",
+"vi": "Món này so với vẻ ngoài thì vị khá nhạt."
+},
+{
+"l": "JLPT N3",
+"t": "彼の話を聞いているうちに、眠くなってしまいました。",
+"vi": "Nghe anh ấy nói một lúc thì tôi buồn ngủ."
+},
+{
+"l": "JLPT N3",
+"t": "田中さんは会議に出席しないはずです。",
+"vi": "Chắc chắn anh Tanaka sẽ không dự họp."
+},
+{
+"l": "JLPT N3",
+"t": "新しい制度について、意見を聞かせてください。",
+"vi": "Xin hãy cho tôi biết ý kiến về chế độ mới."
+},
+{
+"l": "JLPT N3",
+"t": "子どもたちは、親に注意されても聞きませんでした。",
+"vi": "Bọn trẻ dù bị cha mẹ nhắc vẫn không nghe."
+},
+{
+"l": "JLPT N3",
+"t": "その件については、後ほどご連絡いたします。",
+"vi": "Về việc đó, lát nữa tôi sẽ liên lạc với bạn."
+},
+{
+"l": "JLPT N3",
+"t": "彼は努力したおかげで、試験に合格できました。",
+"vi": "Nhờ nỗ lực mà anh ấy đã đỗ kỳ thi."
+},
+{
+"l": "JLPT N3",
+"t": "日本語の勉強は、毎日続けることが大切です。",
+"vi": "Việc học tiếng Nhật quan trọng là kiên trì mỗi ngày."
+},
+{
+"l": "JLPT N3",
+"t": "彼女は泣きそうな顔で、何も言いませんでした。",
+"vi": "Cô ấy với vẻ mặt như sắp khóc, không nói gì cả."
+},
+{
+"l": "JLPT N3",
+"t": "会社の近くに引っ越すことになりました。",
+"vi": "Tôi đã được quyết định chuyển đến gần công ty."
+},
+{
+"l": "JLPT N3",
+"t": "この荷物は重くて、一人では運べません。",
+"vi": "Hành lý này nặng, một mình không thể mang nổi."
+},
+{
+"l": "JLPT N3",
+"t": "彼が帰ってくるかどうか、まだわかりません。",
+"vi": "Tôi vẫn chưa biết anh ấy có về hay không."
+},
+{
+"l": "JLPT N3",
+"t": "地図を見ながら歩いたのに、道に迷ってしまいました。",
+"vi": "Dù vừa đi vừa xem bản đồ mà tôi vẫn bị lạc đường."
+},
+{
+"l": "JLPT N3",
+"t": "彼の説明は、わかりやすいというより、簡単すぎます。",
+"vi": "Lời giải thích của anh ấy không phải dễ hiểu mà là quá đơn giản."
+},
+{
+"l": "JLPT N3",
+"t": "今日中にこの書類を仕上げなければなりません。",
+"vi": "Tôi phải hoàn thành tài liệu này trong hôm nay."
+},
+{
+"l": "JLPT N3",
+"t": "彼女は笑いながら、昔の話をしてくれました。",
+"vi": "Cô ấy vừa cười vừa kể cho tôi chuyện ngày xưa."
+},
+{
+"l": "JLPT N3",
+"t": "大事な会議があるので、遅れないようにしてください。",
+"vi": "Vì có cuộc họp quan trọng nên xin đừng đến muộn."
+},
+{
+"l": "JLPT N3",
+"t": "この町は、観光客が増えて以来、にぎやかになりました。",
+"vi": "Thị trấn này kể từ khi khách du lịch tăng thì trở nên nhộn nhịp."
+},
+{
+"l": "JLPT N3",
+"t": "彼は何度失敗しても、あきらめませんでした。",
+"vi": "Anh ấy dù thất bại bao nhiêu lần cũng không bỏ cuộc."
+},
+{
+"l": "JLPT N3",
+"t": "コンビニで買ったお弁当を、公園で食べました。",
+"vi": "Tôi đã ăn cơm hộp mua ở cửa hàng tiện lợi trong công viên."
+},
+{
+"l": "JLPT N3",
+"t": "彼女の意見には、賛成せざるを得ません。",
+"vi": "Tôi không thể không tán thành ý kiến của cô ấy."
+},
+{
+"l": "JLPT N3",
+"t": "雨が降っていたので、出かけるのをやめました。",
+"vi": "Vì trời đang mưa nên tôi đã thôi không ra ngoài."
+},
+{
+"l": "JLPT N2",
+"t": "交渉は難航したものの、最終的に合意に至りました。",
+"vi": "Dù đàm phán gặp khó khăn, cuối cùng vẫn đạt được thỏa thuận."
+},
+{
+"l": "JLPT N2",
+"t": "彼女は忙しいにもかかわらず、ボランティア活動に参加している。",
+"vi": "Dù bận rộn, cô ấy vẫn tham gia hoạt động tình nguyện."
+},
+{
+"l": "JLPT N2",
+"t": "このプロジェクトは、予算の都合上、延期せざるを得ない。",
+"vi": "Dự án này do vấn đề ngân sách nên đành phải hoãn."
+},
+{
+"l": "JLPT N2",
+"t": "彼の成功は、努力のたまものだと言っても過言ではない。",
+"vi": "Nói thành công của anh ấy là kết quả của nỗ lực cũng không ngoa."
+},
+{
+"l": "JLPT N2",
+"t": "環境問題に対する関心は、年々高まりつつある。",
+"vi": "Sự quan tâm đến vấn đề môi trường đang ngày càng tăng qua từng năm."
+},
+{
+"l": "JLPT N2",
+"t": "上司の指示に従って、資料を作成しました。",
+"vi": "Tôi đã soạn tài liệu theo chỉ thị của cấp trên."
+},
+{
+"l": "JLPT N2",
+"t": "彼は話し上手なばかりか、聞き上手でもある。",
+"vi": "Anh ấy không chỉ nói chuyện giỏi mà còn biết lắng nghe."
+},
+{
+"l": "JLPT N2",
+"t": "この商品は、品質に関しては問題ありません。",
+"vi": "Về chất lượng thì sản phẩm này không có vấn đề."
+},
+{
+"l": "JLPT N2",
+"t": "どんなに努力しても、結果が出るとは限らない。",
+"vi": "Dù nỗ lực thế nào cũng chưa chắc có kết quả."
+},
+{
+"l": "JLPT N2",
+"t": "彼女は試験に落ちて、すっかり自信をなくしてしまった。",
+"vi": "Cô ấy trượt kỳ thi nên hoàn toàn mất tự tin."
+},
+{
+"l": "JLPT N2",
+"t": "景気が回復するにつれて、失業率も下がってきた。",
+"vi": "Khi kinh tế phục hồi, tỷ lệ thất nghiệp cũng giảm dần."
+},
+{
+"l": "JLPT N2",
+"t": "彼の発言は、誤解を招きかねない。",
+"vi": "Phát ngôn của anh ấy có nguy cơ gây hiểu lầm."
+},
+{
+"l": "JLPT N2",
+"t": "先生のご協力なくしては、この研究は完成しなかった。",
+"vi": "Nếu không có sự giúp đỡ của thầy, nghiên cứu này đã không hoàn thành."
+},
+{
+"l": "JLPT N2",
+"t": "忙しくて、食事をする暇さえない。",
+"vi": "Bận đến mức không có cả thời gian ăn cơm."
+},
+{
+"l": "JLPT N2",
+"t": "この地域は、観光業を中心に発展してきた。",
+"vi": "Khu vực này đã phát triển lấy ngành du lịch làm trung tâm."
+},
+{
+"l": "JLPT N2",
+"t": "彼はいつも冗談ばかり言っていて、真剣さに欠ける。",
+"vi": "Anh ấy lúc nào cũng chỉ nói đùa, thiếu nghiêm túc."
+},
+{
+"l": "JLPT N2",
+"t": "子どもの成長を見守るのが、親の務めである。",
+"vi": "Dõi theo sự trưởng thành của con là bổn phận của cha mẹ."
+},
+{
+"l": "JLPT N2",
+"t": "会議の結果を踏まえて、計画を見直すことにした。",
+"vi": "Dựa trên kết quả cuộc họp, chúng tôi quyết định xem xét lại kế hoạch."
+},
+{
+"l": "JLPT N2",
+"t": "彼女の笑顔を見るたびに、元気が出てくる。",
+"vi": "Mỗi lần nhìn nụ cười của cô ấy, tôi lại thêm tinh thần."
+},
+{
+"l": "JLPT N2",
+"t": "この問題は、一朝一夕には解決できない。",
+"vi": "Vấn đề này không thể giải quyết trong một sớm một chiều."
+},
+{
+"l": "JLPT N2",
+"t": "彼はまじめな反面、融通がきかないところがある。",
+"vi": "Anh ấy nghiêm túc nhưng mặt khác lại thiếu linh hoạt."
+},
+{
+"l": "JLPT N2",
+"t": "締め切りが迫っているため、残業せざるを得ない。",
+"vi": "Vì hạn chót đang đến gần nên đành phải làm thêm giờ."
+},
+{
+"l": "JLPT N2",
+"t": "今回の失敗を教訓として、次に生かしたい。",
+"vi": "Tôi muốn lấy thất bại lần này làm bài học để vận dụng lần sau."
+},
+{
+"l": "JLPT N2",
+"t": "彼女は医者として、また母親として、毎日忙しく働いている。",
+"vi": "Cô ấy vừa là bác sĩ vừa là mẹ, ngày nào cũng làm việc bận rộn."
+},
+{
+"l": "JLPT N2",
+"t": "新製品の発売に先立ち、記者会見が開かれた。",
+"vi": "Trước khi phát hành sản phẩm mới, đã có buổi họp báo."
+},
+{
+"l": "JLPT N2",
+"t": "彼の意見は一理あるが、全面的には賛成できない。",
+"vi": "Ý kiến của anh ấy có lý nhưng tôi không thể hoàn toàn tán thành."
+},
+{
+"l": "JLPT N2",
+"t": "天候の悪化により、電車の運行が見合わされた。",
+"vi": "Do thời tiết xấu đi nên việc chạy tàu bị hoãn."
+},
+{
+"l": "JLPT N2",
+"t": "そんなことをしたら、周りに迷惑がかかるに違いない。",
+"vi": "Làm thế thì chắc chắn sẽ gây phiền cho người xung quanh."
+},
+{
+"l": "JLPT N2",
+"t": "長年の研究の末、ついに新しい薬が完成した。",
+"vi": "Sau nhiều năm nghiên cứu, cuối cùng thuốc mới đã hoàn thành."
+},
+{
+"l": "JLPT N2",
+"t": "彼女は何事にも前向きに取り組む人だ。",
+"vi": "Cô ấy là người tiếp cận mọi việc một cách tích cực."
+},
+{
+"l": "JLPT N1",
+"t": "彼の功績は、歴史に名を残すに値するものだ。",
+"vi": "Công lao của ông xứng đáng để lại tên trong lịch sử."
+},
+{
+"l": "JLPT N1",
+"t": "いかなる困難に直面しようとも、決して諦めてはならない。",
+"vi": "Dù đối mặt với bất kỳ khó khăn nào cũng tuyệt đối không được bỏ cuộc."
+},
+{
+"l": "JLPT N1",
+"t": "事態が悪化するに及んで、ようやく政府は対策に乗り出した。",
+"vi": "Đến khi tình hình xấu đi, chính phủ mới bắt tay vào đối sách."
+},
+{
+"l": "JLPT N1",
+"t": "彼の態度は、傲慢というよりむしろ無神経と言うべきだ。",
+"vi": "Thái độ của anh ta nên gọi là vô tâm hơn là kiêu ngạo."
+},
+{
+"l": "JLPT N1",
+"t": "この契約を破棄するとなれば、相応の責任を負うことになる。",
+"vi": "Nếu hủy hợp đồng này thì sẽ phải gánh trách nhiệm tương ứng."
+},
+{
+"l": "JLPT N1",
+"t": "彼女は多忙を極めながらも、研究を怠ることはなかった。",
+"vi": "Dù bận rộn tột độ, cô ấy vẫn không bỏ bê nghiên cứu."
+},
+{
+"l": "JLPT N1",
+"t": "技術の進歩は、利便性をもたらす反面、新たな問題も引き起こしている。",
+"vi": "Tiến bộ kỹ thuật mang lại tiện lợi nhưng mặt khác cũng gây ra vấn đề mới."
+},
+{
+"l": "JLPT N1",
+"t": "彼の発言は、世論の反発を招かずにはおかないだろう。",
+"vi": "Phát ngôn của ông ta chắc chắn sẽ gây phản ứng từ dư luận."
+},
+{
+"l": "JLPT N1",
+"t": "経験の有無を問わず、意欲のある方を歓迎いたします。",
+"vi": "Dù có kinh nghiệm hay không, chúng tôi hoan nghênh người có nhiệt huyết."
+},
+{
+"l": "JLPT N1",
+"t": "その計画は、資金不足のため頓挫を余儀なくされた。",
+"vi": "Kế hoạch đó buộc phải đình trệ vì thiếu vốn."
+},
+{
+"l": "JLPT N1",
+"t": "彼は恩師の期待に応えるべく、日夜研究に励んでいる。",
+"vi": "Anh ấy ngày đêm miệt mài nghiên cứu để đáp lại kỳ vọng của thầy."
+},
+{
+"l": "JLPT N1",
+"t": "合意に至るまでには、幾多の曲折を経なければならなかった。",
+"vi": "Để đi đến thỏa thuận, đã phải trải qua nhiều khúc quanh."
+},
+{
+"l": "JLPT N1",
+"t": "この問題を看過するわけにはいかない。",
+"vi": "Không thể bỏ qua vấn đề này."
+},
+{
+"l": "JLPT N1",
+"t": "彼女の演技は、見る者の心を揺さぶってやまない。",
+"vi": "Diễn xuất của cô ấy khiến lòng người xem không ngừng rung động."
+},
+{
+"l": "JLPT N1",
+"t": "国際情勢が緊迫の度を増しつつある。",
+"vi": "Tình hình quốc tế đang ngày càng căng thẳng."
+},
+{
+"l": "JLPT N1",
+"t": "彼は自らの過ちを認めたがらない節がある。",
+"vi": "Anh ta có vẻ không muốn thừa nhận lỗi của mình."
+},
+{
+"l": "JLPT N1",
+"t": "たとえ反対されようとも、私は自分の信念を貫く所存だ。",
+"vi": "Dù có bị phản đối, tôi vẫn quyết tâm giữ vững niềm tin của mình."
+},
+{
+"l": "JLPT N1",
+"t": "この小説は、人間の孤独を鮮やかに描き出している。",
+"vi": "Tiểu thuyết này khắc họa sống động nỗi cô đơn của con người."
+},
+{
+"l": "JLPT N1",
+"t": "彼の無責任な言動は、批判を免れまい。",
+"vi": "Lời nói và hành động vô trách nhiệm của ông ta khó tránh khỏi bị chỉ trích."
+},
+{
+"l": "JLPT N1",
+"t": "知識を得るだけでなく、それを実践に移してこそ意味がある。",
+"vi": "Không chỉ tiếp thu kiến thức mà đem ra thực hành mới có ý nghĩa."
+},
+{
+"l": "JLPT N1",
+"t": "彼女は病弱ながらも、持ち前の明るさで周囲を励まし続けた。",
+"vi": "Dù ốm yếu, cô ấy vẫn luôn động viên mọi người bằng sự lạc quan vốn có."
+},
+{
+"l": "JLPT N1",
+"t": "その会社は、経営破綻の危機に瀕している。",
+"vi": "Công ty đó đang đứng trước nguy cơ phá sản."
+},
+{
+"l": "JLPT N1",
+"t": "彼の提案は、一見すると斬新だが、現実性に乏しい。",
+"vi": "Đề xuất của anh ấy thoạt nhìn có vẻ mới lạ nhưng thiếu tính thực tế."
+},
+{
+"l": "JLPT N1",
+"t": "状況いかんによっては、計画を変更することもありうる。",
+"vi": "Tùy tình hình, cũng có thể thay đổi kế hoạch."
+},
+{
+"l": "JLPT N1",
+"t": "長い沈黙の後、彼はようやく重い口を開いた。",
+"vi": "Sau một hồi im lặng dài, cuối cùng anh ấy cũng mở lời nặng nề."
+},
+{
+"l": "JLPT N1",
+"t": "伝統を守りつつも、時代に合わせて変えていく必要がある。",
+"vi": "Vừa giữ gìn truyền thống vừa cần thay đổi cho phù hợp thời đại."
+},
+{
+"l": "JLPT N1",
+"t": "彼は寝食を忘れて、研究に没頭していた。",
+"vi": "Anh ấy quên ăn quên ngủ, say mê nghiên cứu."
+},
+{
+"l": "JLPT N1",
+"t": "少子化に歯止めをかけることは、喫緊の課題である。",
+"vi": "Ngăn chặn tình trạng giảm sinh là nhiệm vụ cấp bách."
+},
+{
+"l": "JLPT N1",
+"t": "彼女の言葉には、含みがあるように思えてならない。",
+"vi": "Tôi không thể không nghĩ lời cô ấy có ẩn ý."
+},
+{
+"l": "JLPT N1",
+"t": "非常事態とあって、市民は冷静な対応を求められた。",
+"vi": "Vì là tình huống khẩn cấp nên người dân được yêu cầu ứng phó bình tĩnh."
+}
+]
+}

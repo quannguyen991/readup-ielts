@@ -1,0 +1,127 @@
+{
+ "title": "Bamboo Architecture Tour",
+ "topic": "bamboo as a building material",
+ "context": "Narrator: You will hear a project coordinator leading a tour of a sustainable construction facility, discussing the use of bamboo in modern architecture.\nElena: Good morning, everyone, and welcome to the Sustainable Structures Research Centre. Before we enter the demonstration hall, please ensure you have secured your safety helmets properly. Today, our focus is the Canopy Hub, which is our flagship experimental building. We constructed this facility using Guadua bamboo imported from South America, alongside locally sourced timber. It has been standing for four years now, demonstrating remarkable durability in our damp climate. This morning's tour focuses on structural resilience, specifically how we engineer bamboo to withstand mechanical stress and environmental decay.\nMark: Excuse me, Elena, is all bamboo suitable for heavy load-bearing frames?\nElena: Not at all, Mark. Out of over a thousand species, only a handful possess adequate structural capacity. We exclusively harvest poles that are five years old. If cut too young, the fibres lack density, whereas older culms become excessively brittle.\nMark: And what about the timing of the harvest?\nElena: That is critical. Farmers cut the culms before sunrise because the sap content inside the stems is at its absolute lowest level then. High starch and sugar concentrations attract powder-post beetles, which can hollow out a pole within months. Once harvested, the culms are immediately submerged in a borax solution. This non-toxic mineral salt penetrates the vascular bundles, immunising the plant tissue against insect attack and fungal spores.\nLiam: Did ancient builders use chemical solutions as well?\nElena: No, historically, builders relied on river soaking for four weeks to leach out sugars, followed by vertical curing in well-ventilated sheds. Modern engineering, however, demands certified preservation standards. Now, let us look at the mechanical characteristics displayed on this chart. Bamboo's tensile strength actually surpasses that of mild steel when calculated on a strength-to-weight ratio. Simultaneously, its compressive resistance rivals reinforced concrete, making it an extraordinary substitute for industrial columns.\nMark: But doesn't external exposure degrade the material rapidly?\nElena: Indeed. Unprotected culms deteriorate when subjected to ultraviolet light, which breaks down the outer lignin layer. To prevent moisture ingress and sun damage, our pavilion features an extended roof overhang measuring 1.5 metres across the entire perimeter.\nLiam: How do you join the hollow culms together without causing longitudinal splits?\nElena: That was our biggest hurdle. Driving standard nails directly into the culm causes instant cracking. Instead, our carpenters carve a precise fish mouth profile at each intersecting node. We then insert threaded steel rods and inject cement mortar into the hollow internodes surrounding the joint. This creates a solid anchor point without compromising the natural flexibility of the culm.\nMark: What about ground contact? Won't moisture seep up from the soil?\nElena: Absolutely. Bamboo must never touch wet earth directly. We elevate all structural posts onto steel shoes anchored atop a gravel bed, which facilitates rapid surface drainage.\nLiam: Environmentally, how does this compare to conventional timber forestry?\nElena: It is significantly superior. A managed bamboo plantation can sequester forty tonnes of carbon dioxide per hectare annually, four times more than typical pine woods. Furthermore, to address building code fire standards, we treat the outer skin with a specialised silicate coating, raising its flame-retardant rating. Overall, our contractors achieved a cost reduction of 35 percent compared to standard steel and timber fabrication. Now, follow me into the testing bay to observe our seismic vibration simulator.",
+ "questions": [
+  {
+   "prompt": "Visitors are required to put on their ____ before going inside the demonstration hall.",
+   "answer": "safety helmets",
+   "why": "Elena nhắc nhở khách tham quan phải đội và cài chặt 'safety helmets' trước khi bước vào phòng trưng bày.",
+   "quote": "Before we enter the demonstration hall, please ensure you have secured your safety helmets properly."
+  },
+  {
+   "prompt": "The flagship experimental building at the facility is called the ____.",
+   "answer": "Canopy Hub",
+   "why": "Elena giới thiệu tòa nhà thử nghiệm tiêu biểu của trung tâm có tên là 'Canopy Hub'.",
+   "quote": "Today, our focus is the Canopy Hub, which is our flagship experimental building."
+  },
+  {
+   "prompt": "The main bamboo variety used in constructing the hub is ____ from South America.",
+   "answer": "Guadua | Guadua bamboo",
+   "why": "Loài tre được nhập khẩu từ Nam Mỹ để xây dựng tòa nhà này là 'Guadua' (hoặc 'Guadua bamboo').",
+   "quote": "We constructed this facility using Guadua bamboo imported from South America, alongside locally sourced timber."
+  },
+  {
+   "prompt": "The experimental pavilion has been in place for ____ in the local damp climate.",
+   "answer": "4 years | four years",
+   "why": "Elena cho biết công trình đã tồn tại được 'four years' trong điều kiện khí hậu ẩm ướt.",
+   "quote": "It has been standing for four years now, demonstrating remarkable durability in our damp climate."
+  },
+  {
+   "prompt": "The primary theme of the morning tour is ____ in bamboo construction.",
+   "answer": "structural resilience",
+   "why": "Elena khẳng định trọng tâm chuyến tham quan sáng nay là 'structural resilience' (khả năng chống chịu của kết cấu).",
+   "quote": "This morning's tour focuses on structural resilience, specifically how we engineer bamboo to withstand mechanical stress and environmental decay."
+  },
+  {
+   "prompt": "Poles selected for load-bearing structures must reach an age of ____ before harvesting.",
+   "answer": "5 years | five years",
+   "why": "Elena nêu rõ họ chỉ chọn thu hoạch những thân tre đạt đúng 'five years' tuổi để làm khung chịu lực.",
+   "quote": "We exclusively harvest poles that are five years old."
+  },
+  {
+   "prompt": "Bamboo culms are harvested ____ to ensure the lowest sap levels.",
+   "answer": "before sunrise",
+   "why": "Thời điểm thu hoạch được thực hiện là 'before sunrise' (trước khi mặt trời mọc) vì lượng nhựa cây lúc này ở mức thấp nhất.",
+   "quote": "Farmers cut the culms before sunrise because the sap content inside the stems is at its absolute lowest level then."
+  },
+  {
+   "prompt": "Stems containing high levels of starch and sugar are likely to attract ____.",
+   "answer": "powder-post beetles",
+   "why": "Hàm lượng đường và tinh bột cao trong thân tre sẽ thu hút loài bọ 'powder-post beetles' đục rỗng thân.",
+   "quote": "High starch and sugar concentrations attract powder-post beetles, which can hollow out a pole within months."
+  },
+  {
+   "prompt": "After harvesting, poles are submerged in a ____ to prevent pest attacks and rot.",
+   "answer": "borax solution",
+   "why": "Tre sau khi đốn hạ được ngâm ngay vào 'borax solution' để chống côn trùng và nấm mốc.",
+   "quote": "Once harvested, the culms are immediately submerged in a borax solution."
+  },
+  {
+   "prompt": "In traditional building methods, culms were soaked in river water for ____.",
+   "answer": "4 weeks | four weeks",
+   "why": "Phương pháp truyền thống ngâm thân tre dưới nước sông trong thời gian 'four weeks' nhằm loại bỏ bớt đường.",
+   "quote": "No, historically, builders relied on river soaking for four weeks to leach out sugars, followed by vertical curing in well-ventilated sheds."
+  },
+  {
+   "prompt": "On a strength-to-weight basis, bamboo has a tensile strength greater than that of ____.",
+   "answer": "mild steel",
+   "why": "Xét trên tỉ lệ độ bền trên trọng lượng, độ bền kéo của tre vượt qua cả 'mild steel' (thép mềm).",
+   "quote": "Bamboo's tensile strength actually surpasses that of mild steel when calculated on a strength-to-weight ratio."
+  },
+  {
+   "prompt": "Bamboo's ability to resist compression is comparable to that of ____.",
+   "answer": "reinforced concrete",
+   "why": "Elena cho biết khả năng chịu nén (compressive resistance) của tre tương đương với 'reinforced concrete' (bê tông cốt thép).",
+   "quote": "Simultaneously, its compressive resistance rivals reinforced concrete, making it an extraordinary substitute for industrial columns."
+  },
+  {
+   "prompt": "Bamboo culms deteriorate outdoors when exposed to ____, which damages lignin.",
+   "answer": "ultraviolet light",
+   "why": "Tre chưa xử lý bảo vệ ngoài trời sẽ bị phân hủy bởi 'ultraviolet light' (tia cực tím), làm hỏng lớp lignin ngoài cùng.",
+   "quote": "Unprotected culms deteriorate when subjected to ultraviolet light, which breaks down the outer lignin layer."
+  },
+  {
+   "prompt": "The building is sheltered from sun and rain by a roof overhang of ____.",
+   "answer": "1.5 metres | 1.5 meters",
+   "why": "Mái hiên đua ra để che chắn mưa nắng cho công trình có chiều rộng '1.5 metres'.",
+   "quote": "our pavilion features an extended roof overhang measuring 1.5 metres across the entire perimeter."
+  },
+  {
+   "prompt": "Carpenters shape the joints using a ____ cut to avoid splitting the poles.",
+   "answer": "fish mouth",
+   "why": "Thợ mộc đẽo gọt các mối nối theo biên dạng 'fish mouth' (miệng cá) để không làm nứt dọc thân tre.",
+   "quote": "Instead, our carpenters carve a precise fish mouth profile at each intersecting node."
+  },
+  {
+   "prompt": "To strengthen the connection points, workers inject ____ into the hollow spaces.",
+   "answer": "cement mortar",
+   "why": "Vữa xi măng ('cement mortar') được bơm vào các lóng rỗng xung quanh khớp nối để tạo điểm neo chắc chắn.",
+   "quote": "We then insert threaded steel rods and inject cement mortar into the hollow internodes surrounding the joint."
+  },
+  {
+   "prompt": "Bamboo posts are supported by steel fixtures sitting on a ____ to promote drainage.",
+   "answer": "gravel bed",
+   "why": "Các cột tre được đặt trên đế thép bên trên một 'gravel bed' (lớp rải sỏi) để thoát nước nhanh chóng.",
+   "quote": "We elevate all structural posts onto steel shoes anchored atop a gravel bed, which facilitates rapid surface drainage."
+  },
+  {
+   "prompt": "Each hectare of a bamboo plantation can absorb up to ____ of carbon dioxide each year.",
+   "answer": "40 tonnes | forty tonnes",
+   "why": "Mỗi héc-ta đồn điền tre có thể hấp thụ 'forty tonnes' khí CO2 mỗi năm.",
+   "quote": "A managed bamboo plantation can sequester forty tonnes of carbon dioxide per hectare annually, four times more than typical pine woods."
+  },
+  {
+   "prompt": "Fire safety is enhanced by applying a specialised ____ over the bamboo's surface.",
+   "answer": "silicate coating",
+   "why": "Để tăng khả năng chống cháy, lớp vỏ ngoài của tre được quét một lớp phủ 'silicate coating'.",
+   "quote": "we treat the outer skin with a specialised silicate coating, raising its flame-retardant rating."
+  },
+  {
+   "prompt": "Using bamboo helped contractors achieve a ____ reduction in total fabrication expenses.",
+   "answer": "35 percent | 35%",
+   "why": "Việc sử dụng tre giúp các nhà thầu giảm được '35 percent' chi phí gia công so với vật liệu thông thường.",
+   "quote": "Overall, our contractors achieved a cost reduction of 35 percent compared to standard steel and timber fabrication."
+  }
+ ]
+}

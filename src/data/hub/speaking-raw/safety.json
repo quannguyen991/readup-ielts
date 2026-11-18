@@ -1,0 +1,117 @@
+{
+ "id": "safety",
+ "title": "Safety and Crime",
+ "titleVi": "An toàn và tội phạm",
+ "tipVi": "Khi thảo luận về an toàn và tội phạm, hãy cân bằng giữa góc nhìn cá nhân và xã hội, đồng thời sử dụng các thuật ngữ tư pháp và phòng ngừa chính xác thay vì những từ ngữ tiêu cực chung chung.",
+ "part1": [
+  "Do you feel safe walking alone in your neighborhood at night?",
+  "What do you usually do to keep your personal belongings safe when traveling?",
+  "Have you ever witnessed or reported a minor crime?"
+ ],
+ "part2": {
+  "prompt": "Describe a situation when you felt unsafe or worried about your personal security",
+  "bullets": [
+   "when and where it happened",
+   "what caused you to feel unsafe",
+   "what actions you took to protect yourself",
+   "and explain how you felt after the incident was over"
+  ]
+ },
+ "part3": [
+  "Do you think installing more surveillance cameras in public places effectively deters criminal activities?",
+  "How might advancements in digital technology change the types of crimes committed in the future?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "deterrent to crime",
+    "vi": "biện pháp răn đe tội phạm",
+    "ex": "Upgraded street lighting and visible police patrols act as an effective deterrent to crime."
+   },
+   {
+    "en": "petty crime",
+    "vi": "tội phạm vặt (trộm cắp nhỏ, móc túi)",
+    "ex": "Tourists strolling through crowded marketplaces often fall prey to petty crime."
+   },
+   {
+    "en": "keep an eye out for",
+    "vi": "cảnh giác, để mắt đề phòng",
+    "ex": "Whenever you take public transit late at night, you should always keep an eye out for suspicious behavior."
+   },
+   {
+    "en": "precautionary measure",
+    "vi": "biện pháp phòng ngừa",
+    "ex": "Locking your front door and securing your windows are standard precautionary measures."
+   },
+   {
+    "en": "cyber fraud",
+    "vi": "lừa đảo trên không gian mạng",
+    "ex": "Older citizens are particularly vulnerable to sophisticated cyber fraud involving bank transfers."
+   },
+   {
+    "en": "rehabilitate offenders",
+    "vi": "cải tạo người phạm tội",
+    "ex": "A modern correctional facility should aim to rehabilitate offenders rather than merely punish them."
+   },
+   {
+    "en": "vulnerable target",
+    "vi": "mục tiêu dễ bị tấn công",
+    "ex": "Walking through deserted alleys alone at midnight makes anyone a vulnerable target for muggers."
+   },
+   {
+    "en": "on high alert",
+    "vi": "trong trạng thái cảnh giác cao độ",
+    "ex": "Residents remained on high alert following a series of residential burglaries in the district."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn thời gian và địa điểm của sự cố (đi bộ về nhà một mình lúc đêm khuya sau ca làm thêm).",
+   "Ý 1 (Nguyên nhân): Mô tả con hẻm vắng vẻ, ánh sáng yếu ớt và nhận thấy một người đàn ông lạ mặt theo sát phía sau.",
+   "Ý 2 (Xử lý): Giữ bình tĩnh, giả vờ gọi điện thoại thông báo vị trí lớn tiếng và rẽ ngay vào một cửa hàng tiện lợi mở cửa 24/7.",
+   "Kết (Cảm xúc & Bài học): Cảm giác thở phào nhẹ nhõm khi thoát nạn và nhận thức sâu sắc hơn về việc không bao giờ chủ quan với an toàn bản thân."
+  ],
+  "sample": "I would like to talk about an incident from about two years ago when I genuinely feared for my personal safety. It occurred late one evening while I was walking back to my apartment after finishing an overtime shift. The bus dropped me off on the main boulevard, but reaching my flat required navigating a poorly lit residential alleyway. As I entered the alley, I noticed heavy footsteps tailing me. When I accelerated my pace, the silhouette behind me matched my speed. Realizing I was a vulnerable target in such a deserted area, my heart raced and I was immediately on high alert. Instead of freezing up, I took immediate precautionary measures. I grabbed my phone, pretended to be on an urgent call with my brother, and announced my exact location loudly. Spotting a 24-hour convenience store just ahead, I swiftly darted inside and stood beside the cashier counter. After waiting there for fifteen minutes, I saw the person pass by and disappear. A tremendous sense of relief washed over me, and that close call taught me never to take personal safety for granted.",
+  "p1": [
+   {
+    "q": "Do you feel safe walking alone in your neighborhood at night?",
+    "a": "Yes, I do, because my area has bright streetlights and active neighborhood patrols. However, I still avoid isolated backstreets late at night just to err on the side of caution."
+   },
+   {
+    "q": "What do you usually do to keep your personal belongings safe when traveling?",
+    "a": "I always keep my passport and wallet in a concealed crossbody pouch worn in front of me. This simple habit keeps opportunistic pickpockets at bay, especially in crowded railway stations."
+   },
+   {
+    "q": "Have you ever witnessed or reported a minor crime?",
+    "a": "Yes, once at a night market, I saw a thief attempt to snatch a backpack. I immediately alerted the nearby security guards, who responded swiftly and apprehended the suspect."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think installing more surveillance cameras in public places effectively deters criminal activities?",
+    "a": "In my view, widespread CCTV networks serve as an invaluable deterrent to street crime. When individuals realize their identities and actions are recorded in real time, they are far less inclined to commit illicit acts like vandalism or robbery. However, cameras cannot stop every crime, so regular foot patrols by police officers remain equally vital."
+   },
+   {
+    "q": "How might advancements in digital technology change the types of crimes committed in the future?",
+    "a": "Technology is steadily shifting offenses from physical streets to the digital realm. Traditional burglaries are being overshadowed by high-tech cyber fraud, ransomware attacks, and deepfake impersonation scams. While automation brings convenience, it also exposes individuals to anonymous threats, requiring law enforcement agencies to radically upgrade their digital investigative capabilities."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai động từ đi kèm với 'crime' (chẳng hạn nói 'make a crime' hoặc 'do a crime' thay vì collocation chuẩn xác 'commit a crime').",
+   "Nhầm lẫn giữa hai động từ 'rob' và 'steal' (cần nhớ: 'rob someone/a place of sth' nhưng 'steal sth from someone/a place').",
+   "Dùng từ ngữ thiếu tính học thuật để mô tả giải pháp (ví dụ nói vòng vo 'teach bad people to be good' thay vì dùng cụm từ chính xác 'rehabilitate offenders')."
+  ],
+  "p1More": [
+   "Are people in your hometown generally trusting of strangers?",
+   "Do you think modern residential buildings are safer than older houses?",
+   "How do you protect your personal data and online accounts?",
+   "Did your school ever teach you self-defense or emergency response skills?",
+   "What is the most important safety rule children should be taught?"
+  ],
+  "p3More": [
+   "Should the justice system prioritize punitive prison sentences or the rehabilitation of offenders?",
+   "To what extent does socioeconomic inequality drive crime rates in metropolitan areas?",
+   "Does sensationalized news reporting on crime create irrational panic among the general public?",
+   "What responsibilities should local residents bear in preventing crime alongside the police force?"
+  ]
+ }
+}

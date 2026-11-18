@@ -34,9 +34,9 @@ export const HUB = COSMIC;
 /** Thẻ trắng bo góc 18, viền be, bóng nâu rất nhẹ. Dùng dạng mảng: `[GLASS_CARD, { padding: 16 }]`. */
 export const GLASS_CARD = {
   backgroundColor: '#FFFFFF',
-  borderRadius: 18,
-  borderWidth: 1,
-  borderColor: '#F3F0FB',
+  borderRadius: 20,
+  borderWidth: 1.5,
+  borderColor: '#E6E1F3',
   shadowColor: '#2B2350',
   shadowOpacity: 0.07,
   shadowRadius: 14,

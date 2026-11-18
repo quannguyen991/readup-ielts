@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bìa bộ từ Cambridge — Chòm sao 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 24px 56px; min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', sans-serif; color: #1c1b22;
+    background: linear-gradient(180deg, #cdb7dc 0%, #e6c3d3 45%, #f6d9c9 100%);
+  }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { font-size: 14px; margin: 0 0 20px; opacity: .75; }
+  .shelf { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .stage { position: relative; width: 380px; height: 480px; perspective: 1500px; display: flex; align-items: center; justify-content: center; }
+  .floor { position: absolute; left: 50%; bottom: 20px; width: 300px; height: 46px; margin-left: -135px;
+    background: radial-gradient(closest-side, rgba(35,12,55,.55), rgba(35,12,55,0)); filter: blur(7px); transform: skewX(-18deg); }
+  .box { position: relative; width: 300px; height: 408px; transform-style: preserve-3d;
+    transform: rotateX(-9deg) rotateY(33deg); transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+  .stage:hover .box { transform: rotateX(-4deg) rotateY(10deg); }
+  .face { position: absolute; backface-visibility: hidden; }
+  .front { inset: 0; transform: translateZ(22px); }
+  .front svg, .spine svg { display: block; width: 100%; height: 100%; }
+  .back { inset: 0; transform: translateZ(-22px) rotateY(180deg); background: var(--deep); border-radius: 14px 3px 3px 14px; }
+  .spine { left: -22px; top: 0; width: 44px; height: 100%; transform: rotateY(-90deg); border-radius: 3px 0 0 3px; overflow: hidden; }
+  .pages { right: -22px; top: 0; width: 44px; height: 100%; transform: rotateY(90deg);
+    background:
+      linear-gradient(to right, var(--dark) 0 3px, transparent 3px calc(100% - 3px), var(--dark) calc(100% - 3px)),
+      linear-gradient(to left, rgba(0,0,0,.25), rgba(0,0,0,0) 40%),
+      repeating-linear-gradient(to right, #f3ead8 0 1.2px, #d9cfba 1.2px 2.2px); }
+  .top { left: 0; top: -22px; width: 100%; height: 44px; transform: rotateX(90deg);
+    background:
+      linear-gradient(to bottom, var(--dark) 0 3px, transparent 3px calc(100% - 3px), var(--dark) calc(100% - 3px)),
+      linear-gradient(to right, rgba(0,0,0,.35), rgba(0,0,0,0) 12%),
+      repeating-linear-gradient(to bottom, #f8f1e2 0 1.2px, #ddd3bf 1.2px 2.2px); }
+  .bottom { left: 0; bottom: -22px; width: 100%; height: 44px; transform: rotateX(-90deg); background: var(--deep); }
+  .shine { position: absolute; inset: 0; pointer-events: none; border-radius: 3px 14px 14px 3px;
+    background: linear-gradient(115deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 32%, rgba(0,0,0,0) 70%, rgba(0,0,0,.22) 100%); }
+  text { font-family: 'Inter', 'Segoe UI', sans-serif; }
+  .num { font-family: 'Oxanium', 'Inter', sans-serif; }
+</style>
+</head>
+<body>
+<h1>Bìa bộ từ Cambridge — Reading 10 · 11 · 12</h1>
+<p class="sub">Hướng B: sách dựng khối 3D. Rê chuột lên một cuốn để xoay lại gần mặt trước.</p>
+<div class="shelf" id="shelf"></div>
+
+<script>
+const VOLS = [
+  { n: 10, words: 494, c: '#8E7BFF', light: '#B9AEFF', mid: '#5442B8', dark: '#241C4F', deep: '#120D2E' },
+  { n: 11, words: 761, c: '#2FD0B8', light: '#86EAD9', mid: '#12887A', dark: '#0A3836', deep: '#04201F' },
+  { n: 12, words: 448, c: '#FF7A6B', light: '#FFB4A8', mid: '#C74A3D', dark: '#4A1814', deep: '#2A0C09' },
+];
+const W = 250, H = 340;
+
+function rng(seed) {
+  return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+const f = (v) => +v.toFixed(2);
+const rgb = (hex) => [1, 3, 5].map(i => f(parseInt(hex.slice(i, i + 2), 16) / 255)).join(' ');
+const star4 = (x, y, r, k = .28) =>
+  `M${f(x)} ${f(y - r)}L${f(x + r * k)} ${f(y - r * k)}L${f(x + r)} ${f(y)}L${f(x + r * k)} ${f(y + r * k)}L${f(x)} ${f(y + r)}L${f(x - r * k)} ${f(y + r * k)}L${f(x - r)} ${f(y)}L${f(x - r * k)} ${f(y - r * k)}Z`;
+
+function cluster(x, y, seed, d) {
+  const R = rng(seed), pts = [];
+  for (let i = 0; i < 5; i++) pts.push([x + i * 7 + R() * 5, y + (R() - .5) * 26 + (i % 2 ? 6 : -4)]);
+  const path = pts.map((p, i) => (i ? 'L' : 'M') + f(p[0]) + ' ' + f(p[1])).join('');
+  return `<path d="${path}" fill="none" stroke="${d.light}" stroke-width=".6" opacity=".4"/>` +
+    pts.map((p, i) => `<circle cx="${f(p[0])}" cy="${f(p[1])}" r="${i % 2 ? 1.5 : 1}" fill="#fff" opacity=".85"/>`).join('');
+}
+
+/* Mặt trước. Góc trái vuông hơn vì gáy sách nối vào đó. */
+function front(d) {
+  const CX = 137, CY = 158;
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const cx = cv.getContext('2d');
+  cx.font = "800 150px 'Inter', 'Segoe UI', sans-serif";
+  cx.textAlign = 'center'; cx.textBaseline = 'middle'; cx.fillStyle = '#000';
+  cx.fillText(String(d.n), CX, CY);
+  const step = 6.5, img = cx.getImageData(0, 0, W, H).data;
+  const on = (x, y) => x > 0 && y > 0 && x < W && y < H && img[((y | 0) * W + (x | 0)) * 4 + 3] > 140;
+  const pts = new Map();
+  for (let y = 70; y < 250; y += step) for (let x = 24; x < W - 6; x += step) if (on(x, y)) pts.set(f(x) + ',' + f(y), [x, y]);
+  const R = rng(d.n * 97);
+  let lines = '', diag = '', dots = '', edge = '', flare = '';
+  const get = (x, y) => pts.get(f(x) + ',' + f(y));
+  for (const [x, y] of pts.values()) {
+    const r = get(x + step, y), b = get(x, y + step), br = get(x + step, y + step), bl = get(x - step, y + step);
+    if (r) lines += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(r[0])}" y2="${f(r[1])}"/>`;
+    if (b) lines += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(b[0])}" y2="${f(b[1])}"/>`;
+    if (br && R() > .35) diag += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(br[0])}" y2="${f(br[1])}"/>`;
+    if (bl && R() > .6) diag += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(bl[0])}" y2="${f(bl[1])}"/>`;
+    const isEdge = !(get(x + step, y) && get(x - step, y) && get(x, y + step) && get(x, y - step));
+    if (isEdge) {
+      edge += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(1.9 + R() * 0.9)}"/>`;
+      if (R() > .94) flare += `<path d="${star4(x, y, 6 + R() * 3)}"/>`;
+    } else dots += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(0.9 + R() * 0.9)}"/>`;
+  }
+  let sky = '', tint = '', bigStars = '';
+  const S = rng(d.n * 13 + 5);
+  for (let i = 0; i < 120; i++) sky += `<circle cx="${f(22 + S() * 226)}" cy="${f(S() * 336)}" r="${f(0.3 + S() * 0.8)}" opacity="${f(0.25 + S() * 0.6)}"/>`;
+  for (let i = 0; i < 14; i++) tint += `<circle cx="${f(22 + S() * 226)}" cy="${f(S() * 290)}" r="${f(1 + S() * 0.8)}" fill="${S() > .5 ? d.light : '#fff'}"/>`;
+  for (let i = 0; i < 6; i++) bigStars += `<path d="${star4(24 + S() * 220, 70 + S() * 210, 3.5 + S() * 3.5)}" opacity="${f(.6 + S() * .35)}"/>`;
+
+  let ticks = '', majors = '';
+  for (let i = 0; i < 72; i++) {
+    const a = i * Math.PI / 36, big = i % 6 === 0, r1 = 96, r2 = big ? 105 : 100;
+    ticks += `<line x1="${f(CX + Math.cos(a) * r1)}" y1="${f(CY + Math.sin(a) * r1)}" x2="${f(CX + Math.cos(a) * r2)}" y2="${f(CY + Math.sin(a) * r2)}" stroke-width="${big ? .9 : .5}"/>`;
+    if (big) majors += `<circle cx="${f(CX + Math.cos(a) * 109)}" cy="${f(CY + Math.sin(a) * 109)}" r="1.9"/>`;
+  }
+  let star12 = '', path = '';
+  for (let i = 0; i < 12; i++) {
+    const x = 36 + i * 17.4, y = 266 - Math.sin(i / 11 * Math.PI) * 13 + (i % 2 ? 4 : -2);
+    path += (i ? 'L' : 'M') + f(x) + ' ' + f(y);
+    star12 += `<path d="${star4(x, y, i % 3 === 0 ? 6 : 4.4)}"/><circle cx="${f(x)}" cy="${f(y)}" r="1.1" fill="${d.c}"/>`;
+  }
+
+  const n = d.n;
+  const defs = `
+    <clipPath id="r${n}"><path d="M3 0H238Q250 0 250 12V328Q250 340 238 340H3Q0 340 0 337V3Q0 0 3 0Z"/></clipPath>
+    <linearGradient id="bg${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070918"/><stop offset=".55" stop-color="#12162F"/><stop offset="1" stop-color="${d.dark}"/></linearGradient>
+    <radialGradient id="gl${n}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${d.c}" stop-opacity=".42"/><stop offset=".6" stop-color="${d.mid}" stop-opacity=".16"/><stop offset="1" stop-color="${d.c}" stop-opacity="0"/></radialGradient>
+    <radialGradient id="n2${n}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${d.mid}" stop-opacity=".5"/><stop offset="1" stop-color="${d.mid}" stop-opacity="0"/></radialGradient>
+    <linearGradient id="rg${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${d.dark}"/><stop offset="1" stop-color="${d.deep}"/></linearGradient>
+    <linearGradient id="pl${n}" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="${d.light}"/><stop offset=".45" stop-color="${d.mid}"/><stop offset="1" stop-color="${d.deep}"/></linearGradient>
+    <linearGradient id="hg${n}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".72" stop-color="#000" stop-opacity=".2"/><stop offset=".8" stop-color="#fff" stop-opacity=".14"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+    <filter id="mw${n}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="3" seed="${n}"/><feColorMatrix values="0 0 0 0 ${rgb(d.c)}  0 0 0 0 ${rgb(d.c)}  0 0 0 0 ${rgb(d.c)}  1.9 0 0 0 -0.82"/></filter>
+    <filter id="g${n}" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="gg${n}" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+
+  const inner = `
+    <rect width="${W}" height="${H}" fill="url(#bg${n})"/>
+    <rect width="${W}" height="${H}" filter="url(#mw${n})" opacity=".4"/>
+    <ellipse cx="${CX}" cy="${CY}" rx="125" ry="115" fill="url(#gl${n})"/>
+    <ellipse cx="40" cy="290" rx="90" ry="60" fill="url(#n2${n})"/>
+    <g fill="#fff">${sky}</g><g>${tint}</g>
+    <g fill="#fff" filter="url(#g${n})">${bigStars}</g>
+    ${cluster(24, 100, n * 3, d)}${cluster(204, 232, n * 7, d)}
+    <g transform="rotate(-8 ${CX} ${CY})" stroke="${d.light}" fill="none">
+      <circle cx="${CX}" cy="${CY}" r="96" stroke-width=".7" opacity=".55"/>
+      <circle cx="${CX}" cy="${CY}" r="88" stroke-width=".5" stroke-dasharray="1.5 3.5" opacity=".5"/>
+      <circle cx="${CX}" cy="${CY}" r="108" stroke-width=".4" opacity=".28"/>
+      <g opacity=".65">${ticks}</g>
+      <g fill="${d.light}" stroke="none" filter="url(#g${n})">${majors}</g>
+    </g>
+    <g stroke="${d.c}" stroke-width=".5" opacity=".28">${diag}</g>
+    <g stroke="${d.c}" stroke-width=".75" opacity=".5">${lines}</g>
+    <g fill="${d.light}" opacity=".9">${dots}</g>
+    <g fill="#fff" filter="url(#gg${n})">${edge}</g>
+    <g fill="#fff" opacity=".9">${flare}</g>
+    <rect x="25" y="10" width="217" height="320" rx="6" fill="none" stroke="${d.light}" stroke-width=".6" opacity=".3"/>
+    <g fill="${d.light}" opacity=".75"><path d="${star4(25, 10, 5)}"/><path d="${star4(242, 10, 5)}"/><path d="${star4(25, 330, 5)}"/><path d="${star4(242, 330, 5)}"/></g>
+    <text x="36" y="38" font-size="11" font-weight="800" letter-spacing="2.4" fill="#fff">CAMBRIDGE IELTS</text>
+    <text x="36" y="53" font-size="9" font-weight="800" letter-spacing="3" fill="${d.light}">READING</text>
+    <g transform="translate(205 47)">
+      <ellipse rx="35" ry="9" transform="rotate(-18)" fill="none" stroke="${d.light}" stroke-width="1" opacity=".7"/>
+      <circle r="23" fill="url(#pl${n})" stroke="${d.c}" stroke-width="1.4"/>
+      <path d="M-14 -16 A20 20 0 0 0 -17 12 A25 25 0 0 1 -14 -16Z" fill="${d.light}" opacity=".35"/>
+      <circle cx="9" cy="-12" r="2.2" fill="${d.c}" opacity=".35"/><circle cx="14" cy="-5" r="1.3" fill="${d.c}" opacity=".35"/>
+      <path d="M-35 0 A35 9 0 0 0 35 0" transform="rotate(-18)" fill="none" stroke="${d.light}" stroke-width="1.2"/>
+      <text class="num" y="3" font-size="17" font-weight="800" letter-spacing=".6" text-anchor="middle" fill="#fff" stroke="${d.deep}" stroke-width="2.6" paint-order="stroke">${d.words}</text>
+      <text class="num" y="13.5" font-size="7.6" font-weight="700" letter-spacing="2.6" text-anchor="middle" fill="${d.light}" stroke="${d.deep}" stroke-width="2" paint-order="stroke">TỪ</text>
+    </g>
+    <path d="M0 296 L20 288 L38 296 L64 276 L92 294 L118 282 L146 298 L176 278 L206 296 L232 284 L250 292 V340 H0Z" fill="${d.mid}" opacity=".4"/>
+    <path d="M0 308 L26 300 L50 310 L82 296 L112 310 L150 298 L186 312 L220 300 L250 308 V340 H0Z" fill="url(#rg${n})"/>
+    <path d="${path}" fill="none" stroke="${d.light}" stroke-width=".9" opacity=".75"/>
+    <g fill="#fff" filter="url(#gg${n})">${star12}</g>
+    <text x="36" y="326" font-size="16.5" font-weight="800" letter-spacing=".8" fill="#fff">VOCABULARY</text>
+    <rect width="19" height="${H}" fill="url(#hg${n})"/>
+    <rect x="15.5" width="1" height="${H}" fill="rgba(0,0,0,.45)"/><rect x="16.5" width=".8" height="${H}" fill="rgba(255,255,255,.2)"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><defs>${defs}</defs><g clip-path="url(#r${n})">${inner}</g></svg>`;
+}
+
+/* Gáy sách thật: chữ nằm giữa gáy, đọc từ trên xuống. */
+function spine(d) {
+  const n = d.n;
+  return `<svg viewBox="0 0 44 408" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sp${n}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${d.deep}"/><stop offset=".3" stop-color="${d.mid}"/><stop offset=".5" stop-color="${d.c}" stop-opacity=".85"/><stop offset=".72" stop-color="${d.mid}"/><stop offset="1" stop-color="${d.deep}"/></linearGradient>
+      <linearGradient id="sv${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".3"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+    </defs>
+    <rect width="44" height="408" fill="url(#sp${n})"/>
+    <rect width="44" height="408" fill="url(#sv${n})"/>
+    <rect x="4" width=".8" height="408" fill="#fff" opacity=".18"/><rect x="39" width=".8" height="408" fill="#000" opacity=".3"/>
+    <path d="${star4(22, 38, 6.5)}" fill="#fff" opacity=".9"/><path d="${star4(22, 370, 6.5)}" fill="#fff" opacity=".9"/>
+    <line x1="22" y1="54" x2="22" y2="84" stroke="#fff" stroke-width=".6" opacity=".5"/><line x1="22" y1="324" x2="22" y2="354" stroke="#fff" stroke-width=".6" opacity=".5"/>
+    <text transform="translate(22 204) rotate(90)" font-size="14" font-weight="800" letter-spacing="3.4" text-anchor="middle" dominant-baseline="central" fill="#fff">IELTS <tspan fill="${d.light}">${n}</tspan> · READING</text>
+  </svg>`;
+}
+
+function book(d) {
+  return `<div class="stage"><div class="floor"></div>
+    <div class="box" style="--deep:${d.deep};--dark:${d.dark}">
+      <div class="face front">${front(d)}<div class="shine"></div></div>
+      <div class="face back"></div>
+      <div class="face spine">${spine(d)}</div>
+      <div class="face pages"></div>
+      <div class="face top"></div>
+      <div class="face bottom"></div>
+    </div></div>`;
+}
+
+async function main() {
+  try { await document.fonts.load("800 150px 'Inter'"); await document.fonts.load("800 17px 'Oxanium'"); await document.fonts.ready; } catch (e) {}
+  document.getElementById('shelf').innerHTML = VOLS.map(book).join('');
+}
+main();
+</script>
+</body>
+</html>

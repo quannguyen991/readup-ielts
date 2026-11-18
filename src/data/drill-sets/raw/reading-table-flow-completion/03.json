@@ -1,0 +1,127 @@
+{
+ "title": "The Global Journey of the Potato",
+ "topic": "the spread of the potato",
+ "context": "A. Archaeological evidence indicates that the wild potato was first domesticated around Lake Titicaca, a high-altitude plateau spanning present-day Peru and Bolivia, roughly 8,000 years ago. Early indigenous cultivators selectively bred bitter, toxic tubers into edible varieties resilient enough to withstand harsh Andean frosts. A pivotal technological innovation was chuño, a primitive freeze-dried product created by exposing harvested tubers to freezing nocturnal temperatures and trampling them to expel moisture. Chuño could be preserved in sealed storehouses for over a decade. This dependable nutritional foundation sustained dense highland populations and fueled the imperial expansion of the Inca Empire.\n\nB. Following the Spanish conquest in the 1530s, conquistadors observed the tuber being consumed by miners in Potosí. The potato crossed the Atlantic aboard returning galleons around 1570, initially entering Europe through the port of Seville. However, its broader acceptance was impeded by deep-seated cultural skepticism. Because the plant belonged to the toxic Solanaceae family, peasants viewed it with dread, suspecting it of causing leprosy. Botanical gardens throughout Italy, Spain, and England cultivated the plant primarily as an ornamental curiosity, valuing its delicate violet blossoms rather than subterranean tubers, which theologians condemned as unmentioned in scripture.\n\nC. The widespread transition from novelty to staple crop gained momentum during the eighteenth century, largely orchestrated through state intervention. Facing recurring grain shortages and warfare, European monarchs recognized the tuber’s superior caloric yield. In Prussia, King Frederick the Great issued the Potato Decree of 1756, compelling regional bailiffs to enforce compulsory planting under threat of corporal punishment. Simultaneously in France, agronomist Antoine-Augustin Parmentier dismantled public prejudice through clever publicity, including stationing armed guards around royal potato fields during daylight to induce local citizens to steal the seemingly precious tubers under cover of darkness.\n\nD. In the British Isles, the crop transformed demographics, most dramatically in Ireland, where tenant farmers became utterly dependent on a single cultivar known as the Irish Lumper. By the early nineteenth century, potatoes supplied the primary caloric intake for nearly two-fifths of the population. However, this heavy reliance on an extreme genetic monoculture proved catastrophic. In 1845, a fungal pathogen called Phytophthora infestans arrived via maritime trade routes, unleashing late blight. The resulting Great Famine caused over one million deaths and triggered massive emigration waves, permanently altering Ireland's demographic trajectory.\n\nE. While European societies integrated the crop, maritime trade networks facilitated its migration to the Asian continent. Portuguese merchants introduced the tuber to coastal enclaves in India, whereas the Manila galleons transported it from Mexico across the Pacific to the Philippines. From there, it penetrated southern China during the late Ming dynasty. Chinese farmers discovered that the potato flourished in degraded hill soils where lowland rice faltered. Consequently, the crop opened up marginal mountainous terrain, mitigating regional famines and sustaining explosive demographic growth across interior provinces.\n\nF. By the twentieth century, the potato had become the fourth most important food crop worldwide, trailing only maize, wheat, and rice. To safeguard the plant's future amidst ecological threats, scientists founded the International Potato Center, known as CIP, in Lima in 1971. Researchers there maintain an extensive germplasm bank harboring thousands of native wild accessions. In an era marked by shifting climatic regimes, modern agronomists exploit the potato's rapid maturation cycle and exceptional water-use efficiency, deploying disease-resistant hybrids to secure food supplies across arid zones.",
+ "questions": [
+  {
+   "prompt": "Table - Andean Domestication | Plateau region of origin: ____",
+   "answer": "Lake Titicaca",
+   "why": "Đoạn A nêu rõ rằng khoai tây hoang dã ban đầu được thuần hóa quanh vùng Lake Titicaca.",
+   "quote": "the wild potato was first domesticated around Lake Titicaca, a high-altitude plateau"
+  },
+  {
+   "prompt": "Flow-chart - Chuño Processing | Step 1: Raw potatoes subjected to ____",
+   "answer": "freezing nocturnal temperatures",
+   "why": "Đoạn A mô tả bước đầu tiên để tạo ra chuño là phơi khoai tây thu hoạch dưới nhiệt độ ban đêm đóng băng.",
+   "quote": "exposing harvested tubers to freezing nocturnal temperatures and trampling them to expel moisture"
+  },
+  {
+   "prompt": "Flow-chart - Chuño Processing | Step 2: Tubers trodden on to discharge ____",
+   "answer": "moisture",
+   "why": "Hành động dẫm đạp (trampling) lên củ khoai nhằm mục đích loại bỏ độ ẩm (moisture).",
+   "quote": "and trampling them to expel moisture. Chuño could be preserved in sealed storehouses"
+  },
+  {
+   "prompt": "Table - Andean Domestication | Storage facilities: ____",
+   "answer": "sealed storehouses",
+   "why": "Chuño có thể được lưu trữ và bảo quản trong các kho chứa kín (sealed storehouses) trong hơn mười năm.",
+   "quote": "Chuño could be preserved in sealed storehouses for over a decade."
+  },
+  {
+   "prompt": "Notes - Early European Encounters | Eaten by local ____ in Potosí",
+   "answer": "miners",
+   "why": "Đoạn B đề cập rằng những người lính chinh phục Tây Ban Nha đã quan sát thấy khoai tây được các thợ mỏ (miners) tại Potosí sử dụng làm thức ăn.",
+   "quote": "conquistadors observed the tuber being consumed by miners in Potosí."
+  },
+  {
+   "prompt": "Table - European Arrival | First entry location: ____",
+   "answer": "Seville | port of Seville",
+   "why": "Khoai tây bắt đầu vào châu Âu lần đầu tiên qua cảng Seville (port of Seville).",
+   "quote": "initially entering Europe through the port of Seville."
+  },
+  {
+   "prompt": "Notes - European Skepticism | Peasant superstition: consumption triggered ____",
+   "answer": "leprosy",
+   "why": "Nông dân châu Âu có thành kiến và sợ hãi củ khoai tây vì nghi ngờ nó gây ra bệnh phong (leprosy).",
+   "quote": "peasants viewed it with dread, suspecting it of causing leprosy."
+  },
+  {
+   "prompt": "Table - European Botanical Gardens | Admired for their ____",
+   "answer": "delicate violet blossoms | violet blossoms",
+   "why": "Các khu vườn bách thảo trồng khoai tây làm cảnh vì vẻ đẹp của những bông hoa màu tím thanh tao của nó.",
+   "quote": "valuing its delicate violet blossoms rather than subterranean tubers, which theologians condemned"
+  },
+  {
+   "prompt": "Notes - State Promotion | Royal motivation: plant provided higher ____",
+   "answer": "caloric yield",
+   "why": "Các vị vua châu Âu khuyến khích trồng khoai tây vì nhận ra sản lượng calo vượt trội (caloric yield) của nó.",
+   "quote": "European monarchs recognized the tuber’s superior caloric yield."
+  },
+  {
+   "prompt": "Table - Prussian Policy (1756) | Decree executed by: ____",
+   "answer": "regional bailiffs | bailiffs",
+   "why": "Sắc lệnh năm 1756 buộc các viên chấp sự địa phương (regional bailiffs) phải đôn đốc việc gieo trồng.",
+   "quote": "compelling regional bailiffs to enforce compulsory planting under threat of corporal punishment."
+  },
+  {
+   "prompt": "Table - Prussian Policy (1756) | Penalty for refusal: ____",
+   "answer": "corporal punishment",
+   "why": "Việc từ chối tuân thủ mệnh lệnh trồng trọt bị đe dọa trừng phạt bằng đòn roi/thể xác (corporal punishment).",
+   "quote": "enforce compulsory planting under threat of corporal punishment. Simultaneously in France"
+  },
+  {
+   "prompt": "Flow-chart - French Popularization | Daytime tactic: Deploying ____ near crops",
+   "answer": "armed guards",
+   "why": "Parmentier đã triển khai các lính gác có vũ trang (armed guards) quanh ruộng khoai ban ngày để khiến người dân tưởng là thứ quý hiếm và lén trộm vào ban đêm.",
+   "quote": "stationing armed guards around royal potato fields during daylight to induce local citizens"
+  },
+  {
+   "prompt": "Table - Ireland | Dominant variety: the ____",
+   "answer": "Irish Lumper",
+   "why": "Đoạn D chỉ ra giống khoai tây duy nhất mà nông dân Ireland lệ thuộc vào là giống Irish Lumper.",
+   "quote": "dependent on a single cultivar known as the Irish Lumper. By the early nineteenth century"
+  },
+  {
+   "prompt": "Notes - Irish Demographics | Provided basic calories for approximately ____ of citizens",
+   "answer": "two-fifths",
+   "why": "Khoai tây cung cấp năng lượng chính cho gần 2/5 (two-fifths) dân số Ireland vào đầu thế kỷ 19.",
+   "quote": "potatoes supplied the primary caloric intake for nearly two-fifths of the population."
+  },
+  {
+   "prompt": "Table - Irish Crisis | Pathogen name: ____",
+   "answer": "Phytophthora infestans",
+   "why": "Mầm bệnh nấm gây ra bệnh mốc sương tàn phá mùa màng năm 1845 là Phytophthora infestans.",
+   "quote": "a fungal pathogen called Phytophthora infestans arrived via maritime trade routes, unleashing late blight."
+  },
+  {
+   "prompt": "Table - Asian Dissemination | Introduced into India by: ____",
+   "answer": "Portuguese merchants",
+   "why": "Đoạn E nêu rõ các thương nhân Bồ Đào Nha (Portuguese merchants) là những người đã đưa khoai tây đến các vùng ven biển của Ấn Độ.",
+   "quote": "Portuguese merchants introduced the tuber to coastal enclaves in India, whereas the Manila galleons"
+  },
+  {
+   "prompt": "Table - Asian Dissemination | Transpacific carrier to Philippines: ____",
+   "answer": "Manila galleons | the Manila galleons",
+   "why": "Các đoàn thuyền buồm Manila (Manila galleons) đã vận chuyển khoai tây từ Mexico qua Thái Bình Dương đến Philippines.",
+   "quote": "whereas the Manila galleons transported it from Mexico across the Pacific to the Philippines."
+  },
+  {
+   "prompt": "Notes - Expansion in China | Successfully grown in ____",
+   "answer": "degraded hill soils",
+   "why": "Nông dân Trung Quốc phát hiện ra khoai tây có thể phát triển tốt trên các vùng đất đồi cằn cỗi / thoái hóa (degraded hill soils).",
+   "quote": "Chinese farmers discovered that the potato flourished in degraded hill soils where lowland rice faltered."
+  },
+  {
+   "prompt": "Table - 20th Century Research | Entity created in Peru: ____",
+   "answer": "International Potato Center | CIP",
+   "why": "Tổ chức được thành lập ở Lima vào năm 1971 để bảo vệ khoai tây là International Potato Center (CIP).",
+   "quote": "scientists founded the International Potato Center, known as CIP, in Lima in 1971."
+  },
+  {
+   "prompt": "Notes - Modern Breeding Traits | Key traits include speedy maturation and exceptional ____",
+   "answer": "water-use efficiency",
+   "why": "Bên cạnh chu kỳ chín nhanh, các nhà nông học đặc biệt tận dụng hiệu quả sử dụng nước vượt trội (water-use efficiency) của khoai tây.",
+   "quote": "exploit the potato's rapid maturation cycle and exceptional water-use efficiency, deploying disease-resistant hybrids"
+  }
+ ]
+}

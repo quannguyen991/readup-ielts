@@ -1,0 +1,117 @@
+{
+ "id": "public-speaking",
+ "title": "Public Speaking",
+ "titleVi": "Nói trước đám đông",
+ "tipVi": "Hãy thành thật chia sẻ cảm xúc cá nhân như sự hồi hộp ban đầu và cách bạn vượt qua nó thay vì cố tỏ ra mình là một diễn giả hoàn hảo.",
+ "part1": [
+  "Have you ever given a speech or presentation in public?",
+  "Do you feel nervous when speaking in front of a group of people?",
+  "Would you like to improve your public speaking skills in the future?"
+ ],
+ "part2": {
+  "prompt": "Describe a speech or presentation that you gave to a large audience",
+  "bullets": [
+   "when and where you gave it",
+   "what topic you talked about",
+   "who was in the audience",
+   "and explain how you felt before and after delivering the talk"
+  ]
+ },
+ "part3": [
+  "Why do many people find speaking in public terrifying?",
+  "How important is body language compared to spoken words during a speech?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "stage fright",
+    "vi": "nỗi sợ sân khấu, run sợ trước khán giả",
+    "ex": "Even seasoned performers can suffer from stage fright before stepping up to the microphone."
+   },
+   {
+    "en": "command the room",
+    "vi": "làm chủ khán phòng, thu hút sự chú ý của mọi người",
+    "ex": "A charismatic speaker knows how to command the room from the very first minute."
+   },
+   {
+    "en": "deliver a compelling talk",
+    "vi": "thuyết trình một bài nói lôi cuốn",
+    "ex": "She managed to deliver a compelling talk that kept everyone on the edge of their seats."
+   },
+   {
+    "en": "butterflies in one's stomach",
+    "vi": "cảm giác bồn chồn, hồi hộp",
+    "ex": "I had butterflies in my stomach right up until I cleared my throat and began."
+   },
+   {
+    "en": "engage the audience",
+    "vi": "tương tác và cuốn hút người nghe",
+    "ex": "He asked rhetorical questions and maintained eye contact to engage the audience."
+   },
+   {
+    "en": "lose one's train of thought",
+    "vi": "mất mạch suy nghĩ, quên mất định nói gì",
+    "ex": "When the projector flickered, I momentarily lost my train of thought."
+   },
+   {
+    "en": "convey a message",
+    "vi": "truyền tải thông điệp",
+    "ex": "Effective visuals can help you convey a complex message much more clearly."
+   },
+   {
+    "en": "a round of applause",
+    "vi": "một tràng pháo tay",
+    "ex": "Her closing remarks were greeted with an enthusiastic round of applause."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn bài thuyết trình bạn từng thực hiện (buổi bảo vệ đồ án tốt nghiệp đại học trước hội đồng và sinh viên).",
+   "Ý 1: Mô tả bối cảnh thời gian, địa điểm giảng đường lớn, chủ đề về giao thông đô thị bền vững, cùng thành phần khán giả tham dự.",
+   "Ý 2: Miêu tả quá trình trình bày (sử dụng slide, ngôn ngữ hình thể, cách xử lý sự im lặng ban đầu và giải đáp câu hỏi phản biện).",
+   "Kết: Chia sẻ cảm xúc ban đầu (tim đập nhanh, run rẩy) và sự tự hào, nhẹ nhõm tột cùng khi nhận được tràng pháo tay tán thưởng."
+  ],
+  "sample": "I'd like to share an experience of giving a presentation during my final year at university. It took place in a lecture hall packed with over a hundred people, including professors, industry experts, and fellow classmates. My talk centered on sustainable urban transport solutions in emerging economies. Right before stepping up to the podium, I had intense butterflies in my stomach. My palms were sweaty, and I genuinely feared I would lose my train of thought. However, once I gripped the remote and made eye contact with the front row, my stage fright began to dissolve. I focused on telling relatable stories rather than merely reciting dry statistics, which helped me engage the audience and command the room. Towards the end, I opened the floor to questions, handling a few tough queries from the committee with composure. Hearing the enthusiastic round of applause at the finish line was an immense relief. I walked off the stage feeling exhausted yet thoroughly exhilarated and proud of having stepped out of my comfort zone.",
+  "p1": [
+   {
+    "q": "Have you ever given a speech or presentation in public?",
+    "a": "Yes, definitely. Back at university, I frequently gave group presentations in seminars. My most memorable one was pitching a digital marketing strategy to a panel of lecturers, which went surprisingly well."
+   },
+   {
+    "q": "Do you feel nervous when speaking in front of a group of people?",
+    "a": "To be honest, yes. I almost always get butterflies in my stomach beforehand, especially if the audience is unfamiliar. But once I speak the first few lines, that initial anxiety usually fades away."
+   },
+   {
+    "q": "Would you like to improve your public speaking skills in the future?",
+    "a": "Certainly, because it is vital for career progression. I would love to master storytelling techniques and voice modulation so that I can deliver compelling presentations with absolute confidence at corporate conferences."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do many people find speaking in public terrifying?",
+    "a": "I believe the primary trigger is the acute fear of negative social judgment. When standing under the spotlight, people feel deeply vulnerable and worry about stumbling over words or embarrassing themselves. While confident individuals might treat a presentation as an opportunity to shine, most people perceive an audience as critical evaluators, which naturally induces severe anxiety."
+   },
+   {
+    "q": "How important is body language compared to spoken words during a speech?",
+    "a": "Non-verbal cues are just as crucial as the verbal message itself, if not more so. A speaker might have flawless content, yet slouching and avoiding eye contact will immediately undermine their authority and disconnect the listeners. Conversely, purposeful gestures and open posture project genuine confidence. Therefore, body language reinforces spoken words and makes the delivery far more persuasive."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai từ vựng: Học viên thường lạm dụng từ 'speech' thay cho 'presentation' (thuyết trình học tập/công việc) hoặc nói 'talk to many people' thay vì cụm collocation tự nhiên như 'address an audience' hay 'command the room'.",
+   "Lỗi ngữ pháp thì quá khứ trong Part 2: Khi kể lại sự việc đã diễn ra, thí sinh hay quên chia động từ ở Past Simple (ví dụ nói 'I feel nervous' thay vì 'I felt nervous') hoặc chuyển đổi thì lộn xộn giữa quá khứ và hiện tại.",
+   "Thiếu cấu trúc phát triển ý trong Part 3: Câu trả lời ngắn cụt và chỉ dừng lại ở cảm nhận cá nhân ('I think public speaking is hard because I am shy') thay vì phân tích khái quát ở góc độ tâm lý xã hội (như nỗi sợ bị đánh giá hay cảm giác yếu thế)."
+  ],
+  "p1More": [
+   "Did you enjoy reading aloud in front of the class as a child?",
+   "What kind of public talks do you find most interesting to listen to?",
+   "Do you think schools should teach students how to speak in public?",
+   "Have you ever attended an inspiring public lecture?",
+   "Do you prefer speaking online via webinars or in person on a stage?"
+  ],
+  "p3More": [
+   "To what extent can charismatic public speakers influence public opinion in modern society?",
+   "Do you believe effective public speakers are born with talent or created through training?",
+   "How has virtual conferencing technology altered the traditional concept of public speaking?",
+   "Why do some political leaders rely heavily on emotion rather than facts in their public addresses?"
+  ]
+ }
+}

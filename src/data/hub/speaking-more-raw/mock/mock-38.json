@@ -1,0 +1,62 @@
+{
+ "id": "mock-38",
+ "title": "IELTS Speaking Mock Test 38",
+ "titleVi": "Đề thi thử số 38",
+ "focusVi": "Phát triển câu trả lời trừu tượng và sử dụng ngôn ngữ biểu cảm để miêu tả trải nghiệm nghệ thuật.",
+ "part1": [
+  {
+   "topic": "Music",
+   "qs": [
+    "Do you often listen to music when you are studying or working?",
+    "What genres of music are popular among young people in your country?",
+    "Did you learn to play any musical instruments when you were a child?",
+    "Do you prefer listening to live concerts or recorded tracks?"
+   ]
+  },
+  {
+   "topic": "Technology at Home",
+   "qs": [
+    "Which electronic device do you use the most when you are at home?",
+    "Has modern home technology made household chores much easier?",
+    "Are there any smart appliances in your house that you find difficult to use?",
+    "Would you like your home to be fully automated in the future?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a song or piece of music that has had a significant impact on you",
+  "bullets": [
+   "what song or piece of music it is",
+   "when and where you first listened to it",
+   "what the lyrics or melody convey",
+   "and explain why this music has had such a meaningful impact on your life"
+  ]
+ },
+ "part3": [
+  "Why do people of different generations often have distinct musical tastes?",
+  "In what ways can traditional folk music help preserve cultural heritage?",
+  "Has the rise of digital streaming platforms affected the quality of modern music?",
+  "Should schools make musical education compulsory for all children?",
+  "How can governments effectively support independent musicians and emerging artists?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, I regularly play instrumental lo-fi beats while working. It drowns out ambient background noise and boosts my productivity, especially during demanding tasks like writing reports.",
+   "V-pop and hip-hop definitely dominate among Vietnamese youth today. Catchy melodies blended with rap verses are extremely trendy, and they frequently go viral on social media platforms like TikTok.",
+   "I briefly tried learning the piano when I was ten, but I lacked patience. Practicing repetitive scales every afternoon felt tedious, so I eventually quit after a few months.",
+   "I prefer recorded tracks because of the superior sound clarity. While live concerts offer electrifying energy, recorded audio lets me appreciate subtle nuances through my noise-canceling headphones without distractions.",
+   "My laptop is definitely the gadget I rely on most. I use it for attending remote meetings, researching information, and unwinding with streaming series after a hectic workday.",
+   "Undoubtedly, smart appliances have revolutionized domestic life. For instance, our robotic vacuum cleaner tidies the living room floors automatically, freeing up precious evening hours for my family to relax together.",
+   "Actually, my grandparents struggle with our smart microwave because of its digital touch controls. Traditional physical dials were much simpler, whereas multi-step digital interfaces can often be bewildering for seniors.",
+   "To be honest, I would love that convenience. Having lighting, air conditioning, and security systems synchronize seamlessly via voice commands would drastically improve comfort and streamline daily routines."
+  ],
+  "sample": "I’d like to talk about 'A Million Dreams' from the musical The Greatest Showman. It is an uplifting pop ballad that I first encountered back in 2018 during my final year of high school, while watching the film at a local cinema with close friends. The song begins with a gentle piano melody before swelling into an inspiring, powerful chorus. Lyrically, it portrays someone daring to envision a brighter, extraordinary future despite current hardships. The core message is about perseverance, unshakeable ambition, and believing in possibilities when others doubt you. This piece has had a profound impact on my life because it became my personal anthem during stressful college entrance exams. Whenever academic burnout or self-doubt crept in, listening to those soaring vocals instantly reignited my determination. Even now, whenever I face professional hurdles or creative blocks at work, putting this track on helps me regain perspective and reminds me why pursuing long-term aspirations is worth the temporary struggle. It simply never fails to give me goosebumps and lift my spirits.",
+  "p3": [
+   "In my view, musical tastes are fundamentally shaped by the socio-cultural environment during one’s formative years. Older generations usually gravitate toward acoustic or classic genres that evoke nostalgia for simpler times, whereas teenagers today gravitate toward electronic synthesizers and fast-paced beats that reflect modern digital culture. Consequently, music acts as a generational marker, reflecting different lifestyles and shifting societal values.",
+   "Traditional music serves as a living archive of a nation's history, folklore, and collective memory. Songs often embed indigenous languages, poetic storytelling, and customary rituals that might otherwise vanish in an era of rapid globalization. For instance, Vietnamese Quan Ho singing preserves ancient courtship traditions and regional dialects. Without these musical traditions, future generations would lose an emotional bridge to their ancestral roots.",
+   "I believe streaming has produced mixed outcomes for musical artistry. On one hand, algorithms incentivize shorter, formulaic tracks designed to hook listeners within five seconds, arguably diminishing lyrical depth. However, it also democratizes production, allowing avant-garde creators to distribute experimental work globally without record label interference. Ultimately, while commercial pop may sound repetitive, true musical innovation remains highly vibrant.",
+   "I strongly advocate for mandatory music lessons in elementary curricula. Learning an instrument fosters cognitive dexterity, patience, and team coordination far better than purely academic subjects. While some skeptics argue that schools should focus exclusively on STEM fields, exposure to melody and rhythm stimulates creative problem-solving and emotional well-being. Therefore, a balanced education should definitely integrate formal musical training for every pupil.",
+   "Governments should establish dedicated cultural grants and subsidize affordable studio rehearsal spaces. Many promising artists abandon creative careers because commercial venues and production gear are prohibitively expensive. In countries like South Korea, state-backed cultural incubators and public performance festivals have successfully propelled domestic talent onto global stages. Providing reliable safety nets ensures diverse artistic expression survives alongside major corporate entertainment franchises."
+  ]
+ }
+}

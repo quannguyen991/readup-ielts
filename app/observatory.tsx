@@ -175,7 +175,7 @@ export default function ObservatoryScreen() {
               <Text style={{ fontSize: 13, color: color.accent, fontWeight: '700', letterSpacing: 0.6 }}>
                 OPEN MEASUREMENT
               </Text>
-              <Text style={{ fontSize: 30, fontWeight: '800', color: color.ink, marginTop: 4 }}>
+              <Text style={{ fontSize: 30, fontWeight: '400', color: color.ink, marginTop: 4 }}>
                 How often does an AI-written reading question not need the passage?
               </Text>
             </View>
@@ -209,7 +209,7 @@ export default function ObservatoryScreen() {
                 borderRadius: radius.sm,
               }}
             >
-              <Text style={{ color: tone.fg, fontWeight: '800', fontSize: 12, letterSpacing: 0.5 }}>
+              <Text style={{ color: tone.fg, fontWeight: '400', fontSize: 12, letterSpacing: 0.5 }}>
                 {tone.label}
               </Text>
             </View>
@@ -353,7 +353,7 @@ export default function ObservatoryScreen() {
           <View style={{ gap: space.sm, marginTop: space.sm }}>
             {CAVEATS.map((c) => (
               <View key={c} style={{ flexDirection: 'row', gap: space.sm }}>
-                <Text style={{ color: color.warning, fontWeight: '800' }}>⚠</Text>
+                <Text style={{ color: color.warning, fontWeight: '400' }}>⚠</Text>
                 <Text style={{ flex: 1, fontSize: 14, color: color.body, lineHeight: 21 }}>{c}</Text>
               </View>
             ))}
@@ -373,7 +373,7 @@ export default function ObservatoryScreen() {
 function Stat({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
     <View>
-      <Text style={{ fontSize: 26, fontWeight: '800', color: color.ink }}>{value}</Text>
+      <Text style={{ fontSize: 26, fontWeight: '400', color: color.ink }}>{value}</Text>
       <Text style={{ fontSize: 12, color: color.muted }}>{label}</Text>
       {hint ? <Text style={{ fontSize: 12, color: color.subtle }}>{hint}</Text> : null}
     </View>

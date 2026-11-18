@@ -1,0 +1,227 @@
+{
+ "title": "The Green Corner",
+ "topic": "Community gardens",
+ "context": "Narrator: At the Riverside community centre, volunteer Maya is answering questions about a new garden before its Saturday opening.\nVisitor: I saw the notice about the opening. Is it still happening this Saturday, even with the rain forecast?\nMaya: Yes, it’s on. We’ll move the welcome table under the covered walkway if it rains, but the planting demonstration will go ahead.\nVisitor: Great. I’m interested in joining, but I work most weekends. Do members have to come every Saturday?\nMaya: Not at all. We ask each member to help for two hours a month. You can choose a weekday evening or a Saturday morning, and you can swap with someone if plans change.\nVisitor: And is there a fee?\nMaya: There’s a twelve-pound annual membership fee. That covers shared tools and water. We considered charging ten pounds, but the members voted for twelve so we could replace the broken wheelbarrow.\nVisitor: I have a small child. Are children allowed in the growing area?\nMaya: They’re welcome, but children under eight need to stay with an adult. We’ve got a little sandpit near the entrance, not inside the growing beds.\nVisitor: That sounds manageable. Where should I sign up?\nMaya: At the welcome table on Saturday. If you can’t make it, email the centre and ask for the garden form. The opening starts at ten thirty, though the volunteer team will arrive at nine.\nNarrator: Later that morning, garden coordinator Daniel gives a short talk to residents who have signed up for the first growing season.\nDaniel: Thanks for coming. Before we decide what to plant, I want to explain how this site came about. The ground used to be a council storage yard. It was cleared three years ago, and for a while people assumed it would become a car park. Our neighbourhood group asked the council to lease it for food growing instead. We got the keys last spring, but the first season was spent testing the soil, not planting vegetables. The tests showed it was safe, although we still use raised beds so people can garden without bending too much.\nDaniel: We now have twenty-four beds. That number is fixed, because the water pipes run between them and there isn’t room to add more. At first we planned to give each household a whole bed. After discussing it, we divided most beds into two plots, so forty-eight households can take part. Four beds are kept for shared crops, including herbs and beans, which anyone can pick during the weekly open hour.\nResident: I thought the open hour was on Sunday afternoon.\nDaniel: It was going to be, but we changed it after several volunteers said they work then. It’s now Wednesday from six until seven in the evening. Please don’t pick from a household plot, even if the vegetables look ready. The shared crops are marked with blue signs; the individual plots have white labels.\nDaniel: We’re starting with tomatoes, runner beans, lettuce and beetroot. We considered potatoes, but they need more space than we have. Someone suggested sweet corn, too, but it would shade the neighbouring plots. We’ll plant tomatoes in the warmest beds beside the brick wall, and lettuce near the water tank, where it gets afternoon shade. Beans will climb the wooden frames at the far end.\nDaniel: The seed order arrives on the fourteenth of April. We originally expected it on the tenth, but the supplier delayed delivery because of a shortage of seed trays. We can still begin sowing lettuce indoors this week, using trays donated by the school. On the twenty-first of April, we’ll have our first group workday. That’s when we’ll assemble the frames and spread compost. Please bring gloves if you have them; we’ll provide spades, and there’s no need to bring a watering can because the site has two.\nResident: Will the garden be open every day once the season starts?\nDaniel: The gate will be unlocked from eight in the morning until seven in the evening, Monday to Saturday. We’ll keep it locked on Sundays for quiet maintenance and to give the volunteers a break. If you’re visiting outside those hours, don’t climb the fence; contact the coordinator instead.\nDaniel: Finally, we want the garden to be useful beyond growing food. A local cook, Priya Shah, will run a free seasonal cooking session on the last Thursday of each month. The first one is on the twenty-fifth of May, in the community centre kitchen, not here among the beds. She’ll show us how to prepare whatever is in season, and we’ll share the recipes on the noticeboard. We had hoped to offer a weekly class, but Priya can only come monthly. We’ll review attendance in September and decide whether to continue through the winter.\nNarrator: After the talk, residents collect forms and arrange their first volunteer shifts.",
+ "questions": [
+  {
+   "prompt": "What will happen if it rains during the Saturday opening?",
+   "answer": "The welcome table will be moved under the covered walkway.",
+   "why": "Maya nói rõ bàn đón khách sẽ được chuyển vào lối đi có mái che nếu trời mưa; phần trình diễn trồng cây vẫn diễn ra.",
+   "quote": "We’ll move the welcome table under the covered walkway if it rains",
+   "options": [
+    "The planting demonstration will be cancelled.",
+    "The welcome table will be moved under the covered walkway.",
+    "The opening will be postponed until Sunday."
+   ]
+  },
+  {
+   "prompt": "How much time does each member need to volunteer?",
+   "answer": "Two hours a month.",
+   "why": "Mỗi thành viên được yêu cầu hỗ trợ hai giờ mỗi tháng. Các lựa chọn khác không khớp với thời lượng được nêu.",
+   "quote": "We ask each member to help for two hours a month.",
+   "options": [
+    "Two hours every Saturday.",
+    "One evening a week.",
+    "Two hours a month."
+   ]
+  },
+  {
+   "prompt": "What is the annual membership fee?",
+   "answer": "Twelve pounds.",
+   "why": "Maya xác nhận phí thường niên là mười hai bảng. Mười bảng từng được cân nhắc nhưng không được chọn.",
+   "quote": "There’s a twelve-pound annual membership fee.",
+   "options": [
+    "Ten pounds.",
+    "Twelve pounds.",
+    "Fourteen pounds."
+   ]
+  },
+  {
+   "prompt": "What is the membership fee used to cover?",
+   "answer": "Shared tools and water.",
+   "why": "Phí thành viên chi trả cho dụng cụ dùng chung và nước; thay xe cút kít là lý do các thành viên chọn mức phí đó.",
+   "quote": "That covers shared tools and water.",
+   "options": [
+    "Seeds and compost.",
+    "A new sandpit and tools.",
+    "Shared tools and water."
+   ]
+  },
+  {
+   "prompt": "What must children under eight do in the growing area?",
+   "answer": "Stay with an adult.",
+   "why": "Maya yêu cầu trẻ dưới tám tuổi ở cùng người lớn. Hố cát nằm gần lối vào, không phải yêu cầu dành cho trẻ trong luống trồng.",
+   "quote": "children under eight need to stay with an adult.",
+   "options": [
+    "Stay with an adult.",
+    "Play in the growing beds.",
+    "Wait at the welcome table alone."
+   ]
+  },
+  {
+   "prompt": "When does the opening start?",
+   "answer": "Ten thirty.",
+   "why": "Buổi khai trương bắt đầu lúc mười giờ ba mươi; đội tình nguyện đến lúc chín giờ, là mốc dễ gây nhầm.",
+   "quote": "The opening starts at ten thirty",
+   "options": [
+    "Nine o’clock.",
+    "Ten thirty.",
+    "Six o’clock."
+   ]
+  },
+  {
+   "prompt": "What had people thought the cleared council yard might become?",
+   "answer": "A car park.",
+   "why": "Daniel nói người dân từng cho rằng khu đất sẽ thành bãi đỗ xe, trước khi nhóm dân cư đề xuất làm vườn trồng thực phẩm.",
+   "quote": "people assumed it would become a car park.",
+   "options": [
+    "A community centre.",
+    "A car park.",
+    "A storage yard."
+   ]
+  },
+  {
+   "prompt": "What did the garden group do during its first season with the site?",
+   "answer": "Tested the soil.",
+   "why": "Mùa đầu tiên được dành để kiểm tra đất chứ chưa trồng rau. Việc dọn khu đất đã diễn ra trước đó.",
+   "quote": "the first season was spent testing the soil, not planting vegetables.",
+   "options": [
+    "Tested the soil.",
+    "Planted vegetables in every bed.",
+    "Built a car park."
+   ]
+  },
+  {
+   "prompt": "Why are there only twenty-four beds?",
+   "answer": "The water pipes run between them and there is no room for more.",
+   "why": "Số luống cố định vì các đường ống nước chạy giữa chúng và không gian không đủ để thêm luống.",
+   "quote": "the water pipes run between them and there isn’t room to add more.",
+   "options": [
+    "The council only approved twelve beds.",
+    "The water pipes run between them and there is no room for more.",
+    "The soil tests showed the ground was unsafe."
+   ]
+  },
+  {
+   "prompt": "How many households can take part using the divided plots?",
+   "answer": "Forty-eight households.",
+   "why": "Phần lớn luống được chia thành hai ô, cho phép bốn mươi tám hộ tham gia. Ban đầu nhóm định cấp nguyên một luống cho mỗi hộ.",
+   "quote": "so forty-eight households can take part.",
+   "options": [
+    "Twenty-four households.",
+    "Forty households.",
+    "Forty-eight households."
+   ]
+  },
+  {
+   "prompt": "When is the weekly open hour for picking shared crops?",
+   "answer": "Wednesday from six until seven in the evening.",
+   "why": "Daniel sửa lịch từ chiều Chủ nhật sang tối thứ Tư, từ sáu đến bảy giờ.",
+   "quote": "It’s now Wednesday from six until seven in the evening.",
+   "options": [
+    "Sunday afternoon.",
+    "Wednesday from six until seven in the evening.",
+    "Saturday morning."
+   ]
+  },
+  {
+   "prompt": "How can residents identify shared crops?",
+   "answer": "They are marked with blue signs.",
+   "why": "Cây trồng chung có biển màu xanh; nhãn trắng được dùng cho các ô riêng của hộ gia đình.",
+   "quote": "The shared crops are marked with blue signs",
+   "options": [
+    "They are marked with white labels.",
+    "They are marked with blue signs.",
+    "They are beside the brick wall."
+   ]
+  },
+  {
+   "prompt": "Why will the group not grow potatoes?",
+   "answer": "They need more space than the garden has.",
+   "why": "Khoai tây bị loại vì cần nhiều không gian hơn khu vườn có. Ngô ngọt được cân nhắc nhưng sẽ che bóng các ô bên cạnh.",
+   "quote": "they need more space than we have.",
+   "options": [
+    "They need more space than the garden has.",
+    "The seed supplier cannot provide them.",
+    "They would shade the neighbouring plots."
+   ]
+  },
+  {
+   "prompt": "Where will the lettuce be planted?",
+   "answer": "Near the water tank.",
+   "why": "Daniel dự định trồng xà lách gần bồn nước, nơi có bóng râm vào buổi chiều.",
+   "quote": "lettuce near the water tank, where it gets afternoon shade.",
+   "options": [
+    "Beside the brick wall.",
+    "At the far end by the wooden frames.",
+    "Near the water tank."
+   ]
+  },
+  {
+   "prompt": "When will the seed order arrive?",
+   "answer": "The fourteenth of April.",
+   "why": "Đơn hạt giống đến ngày mười bốn tháng Tư; ngày mười là lịch dự kiến ban đầu nhưng bị nhà cung cấp trì hoãn.",
+   "quote": "The seed order arrives on the fourteenth of April.",
+   "options": [
+    "The tenth of April.",
+    "The fourteenth of April.",
+    "The twenty-first of April."
+   ]
+  },
+  {
+   "prompt": "What should volunteers bring to the first group workday if they have them?",
+   "answer": "Gloves.",
+   "why": "Daniel đề nghị mọi người mang găng tay nếu có; nhóm sẽ cung cấp xẻng và khu vườn đã có bình tưới.",
+   "quote": "Please bring gloves if you have them",
+   "options": [
+    "Spades.",
+    "A watering can.",
+    "Gloves."
+   ]
+  },
+  {
+   "prompt": "On which day will the garden gate remain locked?",
+   "answer": "Sunday.",
+   "why": "Cổng mở từ thứ Hai đến thứ Bảy và khóa vào Chủ nhật để bảo trì yên tĩnh, đồng thời cho tình nguyện viên nghỉ.",
+   "quote": "We’ll keep it locked on Sundays for quiet maintenance",
+   "options": [
+    "Saturday.",
+    "Sunday.",
+    "Wednesday."
+   ]
+  },
+  {
+   "prompt": "Where will Priya Shah hold the cooking sessions?",
+   "answer": "In the community centre kitchen.",
+   "why": "Buổi nấu ăn diễn ra trong bếp của trung tâm cộng đồng, không phải giữa các luống trồng.",
+   "quote": "in the community centre kitchen, not here among the beds.",
+   "options": [
+    "In the community centre kitchen.",
+    "Beside the water tank.",
+    "At the welcome table."
+   ]
+  },
+  {
+   "prompt": "How often will Priya run the cooking session?",
+   "answer": "Once a month.",
+   "why": "Priya chỉ có thể đến hàng tháng; nhóm từng mong muốn tổ chức lớp học hàng tuần nhưng không thể thực hiện.",
+   "quote": "Priya can only come monthly.",
+   "options": [
+    "Every week.",
+    "Once a month.",
+    "Twice a year."
+   ]
+  },
+  {
+   "prompt": "When will the group review whether to continue the cooking sessions through winter?",
+   "answer": "In September.",
+   "why": "Nhóm sẽ xem xét số người tham dự vào tháng Chín rồi quyết định có tiếp tục trong mùa đông hay không.",
+   "quote": "We’ll review attendance in September and decide whether to continue through the winter.",
+   "options": [
+    "In April.",
+    "In May.",
+    "In September."
+   ]
+  }
+ ]
+}

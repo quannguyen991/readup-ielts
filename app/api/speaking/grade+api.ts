@@ -5,6 +5,7 @@ import { getSpeakingQuestion } from '@/services/speaking/bank';
 import { answerMetrics, attemptMetrics, type AnswerMetrics, type RecognizedSegment } from '@/services/speaking/metrics';
 import type { GradeAnswerInput } from '@/services/speaking/prompt';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { hubQuestionPart } from '@/services/hub/hub-questions';
 import { errorText, msg } from '@/lib/server-locale';
 import { getPoiContent } from '@/data/travel/pois';
 import { replyPool } from '@/services/travel/content';
@@ -38,9 +39,16 @@ const MAX_SEGMENTS = 200;
 const num = (v: unknown, lo: number, hi: number): number | null =>
   typeof v === 'number' && Number.isFinite(v) ? Math.min(hi, Math.max(lo, v)) : null;
 
-type RawAnswer = { questionId?: unknown; transcript?: unknown; segments?: unknown; metrics?: unknown };
+type RawAnswer = { questionId?: unknown; question?: unknown; transcript?: unknown; segments?: unknown; metrics?: unknown };
 
-function resolvePrompt(questionId: string): { part: 1 | 2 | 3; question: string; context?: 'travel' } | null {
+function resolvePrompt(questionId: string, clientQuestion?: string): { part: 1 | 2 | 3; question: string; context?: 'travel' } | null {
+  // Câu của khu Luyện nói (Hub): chỉ nhận khi nguyên văn có trong kho đề trên máy chủ.
+  if (questionId.startsWith('hub:')) {
+    const q = (clientQuestion ?? '').trim();
+    const part = hubQuestionPart(q);
+    return part ? { part, question: q } : null;
+  }
+
   const bankQuestion = getSpeakingQuestion(questionId);
   if (bankQuestion) {
     return {
@@ -132,7 +140,7 @@ export async function POST(request: Request): Promise<Response> {
 
     const answers: (GradeAnswerInput & { metrics: AnswerMetrics })[] = [];
     for (const a of rawAnswers) {
-      const prompt = resolvePrompt(typeof a.questionId === 'string' ? a.questionId : '');
+      const prompt = resolvePrompt(typeof a.questionId === 'string' ? a.questionId : '', typeof a.question === 'string' ? a.question : undefined);
       if (!prompt) return Response.json({ error: msg(request, 'Không tìm thấy câu hỏi hoặc bối cảnh hội thoại hợp lệ.', 'The question or conversation situation could not be found.') }, { status: 400 });
       const transcript = (typeof a.transcript === 'string' ? a.transcript : '').trim().slice(0, MAX_CHARS);
       const segments: RecognizedSegment[] = (Array.isArray(a.segments) ? a.segments : [])

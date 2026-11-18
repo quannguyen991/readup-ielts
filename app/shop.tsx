@@ -346,7 +346,7 @@ export default function ShopScreen() {
             {ideas.now.length > 0 ? (
               <View aria-hidden>
                 <Motion kind="pop">
-                  <Label text={L('Đủ sao rồi! ✨', 'You can afford it! ✨')} color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
+                  <Label text={L('Đủ sao rồi! ✨', 'You can afford it! ✨')} color="#22A06B" ink="#FFFFFF" tilt={-4} size={13} />
                 </Motion>
               </View>
             ) : null}
@@ -552,7 +552,7 @@ function ItemCard({
         </View>
       ) : !have && affordable ? (
         <View aria-hidden style={{ position: 'absolute', top: -10, left: 8, zIndex: 3, pointerEvents: 'none' }}>
-          <Label text={L('Đủ sao', 'Affordable')} color="#F2B632" ink="#2B2350" tilt={-6} size={10} />
+          <Label text={L('Đủ sao', 'Affordable')} color="#F2B632" ink="#2B2350" tilt={-6} size={13} />
         </View>
       ) : null}
       <Pressable
@@ -577,7 +577,7 @@ function ItemCard({
             <Badge label={item.kind in SLOT ? L('Bấm để dùng', 'Tap to use') : L('Đã có', 'Owned')} tone="neutral" shape="tag" />
           ) : (
             <View className="flex-row items-center gap-1 rounded-pill px-2.5 py-1" style={{ backgroundColor: GOLD_SOFT }}>
-              <Text style={{ fontSize: 12 }}>⭐</Text>
+              <Text style={{ fontSize: 13 }}>⭐</Text>
               <Text className="font-heavy text-label text-ink">{item.price === 0 ? L('Miễn phí', 'Free') : formatStars(item.price)}</Text>
             </View>
           )}
@@ -693,7 +693,7 @@ function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
       >
         <View style={{ position: 'absolute', top: 8, left: 8, width: 12, height: 12, borderRadius: 6, backgroundColor: p.accent }} />
         <Text style={{ fontSize: 32 }}>{item.glyph}</Text>
-        <Text style={{ fontSize: 12, fontWeight: '700', color: p.text, marginTop: 2 }}>{L('Giao diện', 'Theme')}</Text>
+        <Text style={{ fontSize: 13, fontWeight: '700', color: p.text, marginTop: 2 }}>{L('Giao diện', 'Theme')}</Text>
       </View>
     );
   }

@@ -1,0 +1,96 @@
+{
+ "id": "music",
+ "extra": {
+  "vocab": [
+   {
+    "en": "resonate with",
+    "vi": "tạo sự đồng cảm sâu sắc với",
+    "ex": "Her heartfelt lyrics really resonate with young listeners who are going through tough breakups."
+   },
+   {
+    "en": "catchy tune",
+    "vi": "giai điệu bắt tai, dễ nhớ",
+    "ex": "It has such a catchy tune that I found myself humming it all day after hearing it once."
+   },
+   {
+    "en": "eclectic taste",
+    "vi": "gu thưởng thức đa dạng, phong phú",
+    "ex": "My brother has an eclectic taste in music, listening to everything from 90s hip-hop to classical piano."
+   },
+   {
+    "en": "mellow out",
+    "vi": "thư giãn, lắng dịu tâm trạng",
+    "ex": "Listening to instrumental lo-fi beats in the evening helps me mellow out after a hectic day."
+   },
+   {
+    "en": "strike a chord",
+    "vi": "chạm đúng cảm xúc, tâm can",
+    "ex": "The singer's vulnerable performance really struck a chord with the entire audience."
+   },
+   {
+    "en": "lift one's spirits",
+    "vi": "làm ai đó phấn chấn, vui vẻ hơn",
+    "ex": "Whenever I feel down, upbeat pop music never fails to lift my spirits."
+   },
+   {
+    "en": "tone-deaf",
+    "vi": "mù âm nhạc, không phân biệt được cao độ",
+    "ex": "I avoid singing at karaoke parties because I am completely tone-deaf."
+   },
+   {
+    "en": "evoke memories",
+    "vi": "gợi lại ký ức xưa",
+    "ex": "That acoustic guitar intro always evokes vivid memories of my high school graduation trip."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên bài hát ('Fix You' của ban nhạc rock Coldplay), thể loại và vị trí đặc biệt của nó trong đời sống tinh thần của bạn.",
+   "Ý 1 (Khi nghe lần đầu): Kể hoàn cảnh nghe bài hát lần đầu vào giai đoạn ôn thi đại học căng thẳng, qua một chiếc tai nghe được bạn thân chia sẻ.",
+   "Ý 2 (Ý nghĩa): Giải thích thông điệp về sự kiên cường và an ủi vô điều kiện, nhắc nhở rằng vấp ngã là điều bình thường và hy vọng luôn ở phía trước.",
+   "Kết (Tại sao đặc biệt): Nhấn mạnh bài hát như một điểm tựa cảm xúc (emotional anchor) giúp xoa dịu áp lực và nhắc nhớ về tình bạn đẹp đẽ."
+  ],
+  "sample": "I'd like to talk about 'Fix You' by the British rock band Coldplay, a song that holds a genuinely special place in my heart. I first stumbled upon it about five years ago during high school. It was an extremely stressful period because I was preparing for the grueling university entrance exams. One late afternoon in the school library, feeling thoroughly burnt out, my best friend handed me an earbud and pressed play. From the opening church organ chords to Chris Martin's gentle vocals, the track instantly struck a chord with me. The lyrics convey a message of unconditional support and resilience, reminding the listener that it's okay to falter and that hope will always guide you through dark times. What makes this song truly unique to me is that it acts as an emotional anchor. Whenever I experience setbacks at work or in my personal life, playing 'Fix You' helps me mellow out and puts things into perspective. More than just a piece of music, it serves as a comforting reminder of my friend's kindness and my own capacity to overcome hardships.",
+  "p1": [
+   {
+    "q": "What kind of music do you like?",
+    "a": "I have quite an eclectic taste, but I mostly lean towards indie pop and R&B. Upbeat melodies really lift my spirits, so I frequently listen to artists like Lauv or Daniel Caesar during my daily commute."
+   },
+   {
+    "q": "Do you play any musical instruments?",
+    "a": "Honestly, I don't play any instruments because I'm virtually tone-deaf. I attempted to pick up the acoustic guitar a few years ago, but my clumsy fingers just couldn't master the chords, so I gave up."
+   },
+   {
+    "q": "Do you listen to music when you study?",
+    "a": "Yes, but strictly instrumental tunes or lo-fi beats without lyrics. Songs with words tend to distract me, whereas ambient background music helps drown out surrounding noise and keeps me focused on challenging tasks."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do people like different kinds of music?",
+    "a": "I believe musical preference is largely shaped by personality and cultural upbringing. For instance, energetic individuals often gravitate towards EDM or rock for stimulation, while introverted people might prefer classical or acoustic pieces to unwind. Additionally, the music we are exposed to during our teenage years creates deep emotional attachments. Therefore, diversity in personal experiences naturally leads to varied musical tastes."
+   },
+   {
+    "q": "Should music be taught in all schools?",
+    "a": "Undoubtedly, yes. Music education fosters creativity and stimulates cognitive development in ways that traditional academic subjects cannot. For example, learning to read sheet music enhances spatial-temporal reasoning and mathematical thinking. Some argue that schools should focus exclusively on STEM subjects, but neglecting arts like music deprives children of a vital emotional outlet. Hence, it should definitely remain an integral part of the core curriculum."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai ngữ pháp với danh từ không đếm được: 'Music' là uncountable noun, người học thường quen miệng nói 'a music' hoặc 'many musics' thay vì 'a piece of music', 'a genre of music' hoặc dùng từ 'songs'.",
+   "Thiếu giới từ hoặc mạo từ: Rất nhiều thí sinh nói 'I often listen music' (thiếu 'to') hoặc 'I can play guitar' thay vì cụm chuẩn 'play the guitar' (nhạc cụ sau động từ play luôn cần mạo từ 'the').",
+   "Lạm dụng cách dịch thô từ tiếng Việt: Thường lặp đi lặp lại cụm 'relax my brain' hay 'relax my mind' (nghe gượng gạo trong tiếng Anh) thay vì dùng các cách diễn đạt tự nhiên như 'unwind', 'mellow out' hoặc 'take my mind off work'."
+  ],
+  "p1More": [
+   "Have you ever been to a live music concert?",
+   "How much time do you spend listening to music each day?",
+   "Did you listen to different kinds of music when you were younger?",
+   "Do you prefer listening to music through headphones or through speakers?",
+   "Is music an essential part of your daily routine?"
+  ],
+  "p3More": [
+   "How has music streaming technology changed the way people consume music?",
+   "Do you think traditional folk music is at risk of disappearing in modern society?",
+   "Why do some governments use music as a tool to promote national unity?",
+   "To what extent can international music help bridge cultural divides across countries?"
+  ]
+ }
+}

@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-di-chuyen-1",
+  "level": "EASY",
+  "title": "Describing Your Daily Commute",
+  "titleVi": "Kể về lộ trình đi làm hàng ngày",
+  "situationVi": "Bạn đang trò chuyện giờ giải lao với một đồng nghiệp nước ngoài mới chuyển tới thành phố của bạn. Người đó tò mò muốn biết bạn đi làm bằng cách nào và giao thông ở đây ra sao.",
+  "task": "Tell your new expat coworker about how you travel to work every day. Describe your usual transportation, mention rush hour traffic conditions, and share what you like to do on the road to pass the time.",
+  "mustVi": [
+   "Phương tiện bạn sử dụng hàng ngày và thời gian di chuyển thường mất bao lâu.",
+   "Tình hình giao thông vào giờ cao điểm trên tuyến đường bạn đi.",
+   "Cách bạn thư giãn hoặc tận dụng thời gian trên đường đi làm (nghe nhạc, podcast hoặc ngắm phố xá)."
+  ],
+  "phrases": [
+   {
+    "en": "I commute to work by...",
+    "vi": "Tôi đi làm bằng...",
+    "ex": "I commute to work by motorbike every morning."
+   },
+   {
+    "en": "It takes me about [time] to get there",
+    "vi": "Tôi mất khoảng [thời gian] để tới đó",
+    "ex": "It takes me about thirty minutes to get there."
+   },
+   {
+    "en": "rush hour",
+    "vi": "giờ cao điểm",
+    "ex": "Traffic during rush hour is always crazy."
+   },
+   {
+    "en": "get stuck in a traffic jam",
+    "vi": "bị kẹt xe",
+    "ex": "I often get stuck in a traffic jam near the bridge."
+   },
+   {
+    "en": "To pass the time, I...",
+    "vi": "Để giết thời gian/tận dụng thời gian, tôi...",
+    "ex": "To pass the time, I listen to English podcasts."
+   },
+   {
+    "en": "navigate through heavy traffic",
+    "vi": "luồn lách qua dòng xe cộ đông đúc",
+    "ex": "It requires full attention to navigate through heavy traffic."
+   }
+  ],
+  "sample": "Every weekday, I commute to work by motorbike, which is the most popular way to travel in my city. My office is about eight kilometers away, and it usually takes me around thirty minutes. However, during rush hour, traffic gets really crazy. I often get stuck in a traffic jam along the main avenue, where thousands of motorbikes and cars crowd together. To pass the time and stay calm, I love listening to music or upbeat podcasts through my earphones. Despite the heavy traffic, riding a motorbike gives me the flexibility to take small alleys when main roads are blocked.",
+  "tipVi": "Giữ giọng điệu cởi mở, thân thiện và dùng các từ nối thời gian như 'usually', 'however', 'every weekday' để bài nói mạch lạc tự nhiên."
+ },
+ {
+  "id": "gt-di-chuyen-2",
+  "level": "EASY",
+  "title": "Guiding a Driver for Pickup",
+  "titleVi": "Chỉ vị trí đón cho tài xế xe công nghệ",
+  "situationVi": "Bạn vừa đặt xe qua ứng dụng tại một trung tâm thương mại rất đông đúc. Tài xế gọi điện báo không tìm thấy bạn, và bạn cần hướng dẫn anh ấy tới đúng chỗ.",
+  "task": "Speak on the phone with your ride-hailing driver outside a crowded mall. Explain your exact location, describe what you are wearing and holding, and tell him how to spot you easily.",
+  "mustVi": [
+   "Địa điểm cụ thể bạn đang đứng (tên cổng, gần cửa hàng hoặc biển hiệu nào).",
+   "Đặc điểm nhận dạng của bạn (màu sắc trang phục, phụ kiện hoặc hành lý mang theo).",
+   "Chỉ dẫn cách xe tiếp cận hoặc yêu cầu tài xế bật đèn khẩn cấp để bạn dễ nhận diện."
+  ],
+  "phrases": [
+   {
+    "en": "I'm standing right in front of...",
+    "vi": "Tôi đang đứng ngay trước...",
+    "ex": "I'm standing right in front of Gate B."
+   },
+   {
+    "en": "next to the coffee shop",
+    "vi": "bên cạnh quán cà phê",
+    "ex": "I am standing right next to the coffee shop on the ground floor."
+   },
+   {
+    "en": "I'm wearing a...",
+    "vi": "Tôi đang mặc một chiếc...",
+    "ex": "I'm wearing a bright blue jacket and dark jeans."
+   },
+   {
+    "en": "pull over near...",
+    "vi": "tấp xe vào gần...",
+    "ex": "Could you pull over near the pedestrian crossing?"
+   },
+   {
+    "en": "turn on your hazard lights",
+    "vi": "bật đèn khẩn cấp/đèn cảnh báo nguy hiểm",
+    "ex": "Please turn on your hazard lights so I can spot you."
+   },
+   {
+    "en": "I'll wave my hand",
+    "vi": "Tôi sẽ vẫy tay",
+    "ex": "I'll wave my hand as soon as I see your license plate."
+   }
+  ],
+  "sample": "Hello, driver! I'm standing right in front of Gate B, just next to the Highlands Coffee shop on the ground floor. It's quite crowded out here, so to help you recognize me, I'm wearing a bright blue jacket and dark jeans, and I'm holding a small black suitcase. When you turn into the pickup lane, please drive slowly and pull over near the pedestrian crossing. Could you also turn on your hazard lights? I'm watching out for your license plate number right now, and I'll wave my hand as soon as I see your car approaching. Thanks!",
+  "tipVi": "Nói với tốc độ vừa phải, nhấn mạnh các từ khóa nhận diện như số cổng, màu áo và luôn giữ lời cảm ơn lịch sự ở cuối cuộc gọi."
+ },
+ {
+  "id": "gt-di-chuyen-3",
+  "level": "MEDIUM",
+  "title": "Asking for Directions When Lost",
+  "titleVi": "Hỏi đường khi điện thoại hết pin",
+  "situationVi": "Bạn đang đi du lịch tự túc ở nước ngoài và bị lạc trong khu phố lạ. Điện thoại của bạn vừa sập nguồn, bạn cần dừng một người đi đường lại để hỏi đường ra ga tàu điện ngầm.",
+  "task": "You are lost in an unfamiliar city abroad and your phone battery just died. Stop a local pedestrian, politely explain your situation, and ask for clear walking directions to the nearest subway station.",
+  "mustVi": [
+   "Giải thích rằng bạn bị lạc và điện thoại vừa hết pin nên không dùng được bản đồ.",
+   "Hỏi đường đi bộ tới ga tàu điện ngầm gần nhất kèm các mốc nhận biết chính trên đường.",
+   "Xác nhận lại khoảng cách hoặc thời gian đi bộ và cảm ơn sự giúp đỡ của họ."
+  ],
+  "phrases": [
+   {
+    "en": "Excuse me, could you help me for a second?",
+    "vi": "Xin lỗi, bạn có thể giúp tôi một lát được không?",
+    "ex": "Excuse me, could you help me for a second? I'm a bit lost."
+   },
+   {
+    "en": "My phone just died",
+    "vi": "Điện thoại của tôi vừa sập nguồn/hết pin",
+    "ex": "My phone just died, so I can't check my navigation app."
+   },
+   {
+    "en": "the nearest subway station",
+    "vi": "ga tàu điện ngầm gần nhất",
+    "ex": "Could you please show me the way to the nearest subway station?"
+   },
+   {
+    "en": "go straight until you see...",
+    "vi": "đi thẳng cho tới khi bạn thấy...",
+    "ex": "Do I go straight until I see the clock tower?"
+   },
+   {
+    "en": "take a left/right at the intersection",
+    "vi": "rẽ trái/phải ở ngã tư",
+    "ex": "Should I take a right at the main intersection?"
+   },
+   {
+    "en": "Is it within walking distance?",
+    "vi": "Nơi đó có trong tầm đi bộ được không?",
+    "ex": "Is it within easy walking distance from here?"
+   }
+  ],
+  "sample": "Excuse me, could you help me for a moment? I'm visiting the city, but I seem to be completely lost. My phone just died, so I can't check my navigation app. Could you please show me the way to the nearest subway station? Do I need to walk straight down this avenue and take a right at the main intersection, or is there a shortcut? Also, what major landmarks should I look out for along the way? Finally, is it within easy walking distance, or would it take more than fifteen minutes? Thank you so much for your kindness!",
+  "tipVi": "Bắt đầu bằng lời xin lỗi nhã nhặn ('Excuse me'), sử dụng cấu trúc câu hỏi gián tiếp ('Could you please...') để tăng tính lịch sự với người lạ."
+ },
+ {
+  "id": "gt-di-chuyen-4",
+  "level": "MEDIUM",
+  "title": "Explaining a Transit Delay",
+  "titleVi": "Báo trễ hẹn do phương tiện công cộng gặp sự cố",
+  "situationVi": "Bạn đang trên đường tới buổi gặp mặt quan trọng với đối tác kinh doanh thì tàu điện bất ngờ dừng lại do trục trặc kỹ thuật. Bạn gọi điện thông báo cho đối tác.",
+  "task": "Call your business partner to inform them that you are stuck on a delayed train. Apologize sincerely, explain the transit issue, give an updated arrival estimate, and propose a flexible solution.",
+  "mustVi": [
+   "Giải thích nguyên nhân bị trễ (sự cố kỹ thuật trên tuyến tàu khiến phương tiện dừng hẳn).",
+   "Ước tính thời gian đến muộn và thời điểm dự kiến bạn có thể có mặt.",
+   "Lời xin lỗi chân thành cùng giải pháp thay thế (lùi giờ họp hoặc gửi tài liệu trước)."
+  ],
+  "phrases": [
+   {
+    "en": "I'm calling to let you know that...",
+    "vi": "Tôi gọi điện để báo với bạn rằng...",
+    "ex": "I'm calling to let you know that I'm stuck on the train."
+   },
+   {
+    "en": "due to unexpected technical difficulties",
+    "vi": "do sự cố kỹ thuật bất ngờ",
+    "ex": "The train halted due to unexpected technical difficulties on the track."
+   },
+   {
+    "en": "I'm afraid I won't make it on time",
+    "vi": "Tôi e là tôi sẽ không tới kịp giờ",
+    "ex": "I'm afraid I won't make it to our two o'clock meeting on time."
+   },
+   {
+    "en": "My estimated arrival time is...",
+    "vi": "Thời gian dự kiến đến của tôi là...",
+    "ex": "My updated estimated arrival time is now two thirty."
+   },
+   {
+    "en": "I sincerely apologize for this inconvenience",
+    "vi": "Tôi thành thật xin lỗi vì sự bất tiện này",
+    "ex": "I sincerely apologize for this unexpected inconvenience."
+   },
+   {
+    "en": "push the meeting back by [time]",
+    "vi": "lùi lịch họp lại [khoảng thời gian]",
+    "ex": "Could we push the meeting back by thirty minutes?"
+   }
+  ],
+  "sample": "Good afternoon, Mr. Davis. I'm calling to let you know that I'm currently stuck on the express train. Unfortunately, the train has come to a complete halt due to unexpected technical difficulties on the track. I'm afraid I won't make it to our two o'clock meeting on time. The conductor announced that we should start moving in ten minutes, so my estimated arrival time is now two thirty. I sincerely apologize for this inconvenience. If your schedule allows, could we push the meeting back by thirty minutes? Alternatively, I can email you the presentation slides right now.",
+  "tipVi": "Giữ thái độ điềm tĩnh, chuyên nghiệp và chủ động đưa ra phương án xử lý thay vì chỉ thụ động báo tin trễ."
+ },
+ {
+  "id": "gt-di-chuyen-5",
+  "level": "HARD",
+  "title": "Comparing Cars and Public Transit",
+  "titleVi": "Trình bày so sánh xe cá nhân và phương tiện công cộng",
+  "situationVi": "Trong cuộc họp nội bộ về chính sách phát triển bền vững của công ty, bạn được yêu cầu phát biểu so sánh giữa việc nhân viên đi làm bằng xe riêng và phương tiện công cộng.",
+  "task": "Deliver a short, persuasive presentation comparing private cars with public transit for employee commutes. Analyze the pros and cons of both, evaluate environmental and stress factors, and recommend a company policy.",
+  "mustVi": [
+   "Phân tích ưu và nhược điểm của xe cá nhân so với phương tiện công cộng (chi phí, thời gian, sự tiện lợi cá nhân).",
+   "Đánh giá tác động đến môi trường (lượng khí thải carbon) và mức độ căng thẳng của người đi làm.",
+   "Đề xuất chính sách công ty khuyến khích đi lại xanh (trợ cấp vé tàu xe công cộng thay vì tiền đỗ xe)."
+  ],
+  "phrases": [
+   {
+    "en": "On the one hand..., on the other hand...",
+    "vi": "Một mặt thì..., mặt khác thì...",
+    "ex": "On the one hand, cars offer flexibility; on the other hand, transit reduces stress."
+   },
+   {
+    "en": "shrink our collective carbon footprint",
+    "vi": "cắt giảm dấu chân carbon chung của chúng ta",
+    "ex": "Public transport helps shrink our collective carbon footprint significantly."
+   },
+   {
+    "en": "cost-effective alternative",
+    "vi": "giải pháp thay thế tiết kiệm chi phí",
+    "ex": "Subway passes are a far more cost-effective alternative for staff."
+   },
+   {
+    "en": "the daily hassle of finding parking",
+    "vi": "nỗi phiền toái hàng ngày khi tìm chỗ đỗ xe",
+    "ex": "Drivers regularly face the daily hassle of finding parking."
+   },
+   {
+    "en": "promote sustainable commuting habits",
+    "vi": "thúc đẩy thói quen đi lại bền vững",
+    "ex": "We need initiatives to promote sustainable commuting habits."
+   },
+   {
+    "en": "subsidize monthly transit passes",
+    "vi": "trợ cấp vé tháng giao thông công cộng",
+    "ex": "I propose that management subsidize monthly subway and bus passes."
+   }
+  ],
+  "sample": "When evaluating our commuting options, both private vehicles and public transit present clear trade-offs. On the one hand, private cars offer unmatched privacy and flexible scheduling. However, drivers face worsening traffic jams, high fuel costs, and the daily hassle of finding parking. On the other hand, public transportation is a far more cost-effective alternative that significantly shrinks our collective carbon footprint and eases commuting stress. Therefore, to promote sustainable commuting habits across our company, I strongly propose that management subsidize monthly subway and bus passes instead of expanding parking allowances. This initiative will support our sustainability goals while improving employee wellbeing.",
+  "tipVi": "Sử dụng cấu trúc so sánh tương phản rõ ràng ('On the one hand... On the other hand... Therefore...') và kết thúc bằng đề xuất hành động dứt khoát."
+ }
+]

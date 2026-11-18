@@ -1,103 +1,105 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
+import { PC, SectionCard, useCourseFonts } from '@/components/hub/PhonemeCourse';
 import { Screen } from '@/components/layout/Screen';
-import { Appear } from '@/components/motion/Motion';
+import { NeonPageHero } from '@/components/neon/NeonPageHero';
+import { Icon } from '@/components/ui/Icon';
 import { CEFR_LEVELS, GRAMMAR_LESSONS, lessonsOfLevel, type CefrLevel } from '@/data/grammar';
-import { LevelCard } from '@/components/vocab/LevelCard';
-import { LevelHeader } from '@/components/vocab/LevelHeader';
-import { useReadingFonts } from '@/lib/readingFonts';
+import { useL } from '@/i18n/useL';
 import { isPassed, useGrammarProgressStore } from '@/store/useGrammarProgressStore';
 
-/** DANH SÁCH NGỮ PHÁP: chọn cấp độ A1 → C2, bấm bài để vào phòng học. */
-
-const INK = '#2B2350';
-const ACCENT = '#B94A70';
+/** Luyện ngữ pháp: chọn cấp A1 → C2, bấm bài để vào học. Ít chữ, tiến độ nhìn là thấy. */
+const SOFT = { boxShadow: '0 6px 24px rgba(60, 40, 120, 0.08)' } as object;
+const ACCENT = '#E0713B';
 
 export default function GrammarIndex() {
-  useReadingFonts();
-  const { width } = useWindowDimensions();
-  const wide = width >= 900;
-  const [level, setLevel] = useState<CefrLevel>('A1');
-  const lessons = lessonsOfLevel(level);
-  const counts = (lv: CefrLevel) => GRAMMAR_LESSONS.filter((l) => l.level === lv).length;
+  useCourseFonts();
+  const { L } = useL();
   const best = useGrammarProgressStore((st) => st.best);
   const passed = (id: string) => isPassed(best, id);
+  const total = GRAMMAR_LESSONS.length;
+  const done = GRAMMAR_LESSONS.filter((l) => passed(l.id)).length;
   const next = GRAMMAR_LESSONS.find((l) => !passed(l.id));
-  const doneCount = GRAMMAR_LESSONS.filter((l) => passed(l.id)).length;
   const passedIn = (lv: CefrLevel) => lessonsOfLevel(lv).filter((l) => passed(l.id)).length;
-  // Cấp đầu tiên còn bài chưa đạt: đó là chỗ nên học tiếp theo lộ trình.
-  const suggested = CEFR_LEVELS.find((lv) => passedIn(lv) < counts(lv)) ?? null;
+  const suggested = CEFR_LEVELS.find((lv) => passedIn(lv) < lessonsOfLevel(lv).length) ?? 'A1';
+  const [level, setLevel] = useState<CefrLevel>(suggested);
+  const lessons = lessonsOfLevel(level);
 
   return (
     <Screen>
-      <LevelHeader eyebrow="Ngữ pháp" title="Luyện ngữ pháp" subtitle="Mỗi bài có các bước rõ ràng: định nghĩa, dùng khi nào, quy tắc, lỗi hay mắc, rồi kiểm tra cuối." />
-
-      <View style={{ marginTop: 18, backgroundColor: '#FFFFFF', borderRadius: 20, borderWidth: 2, borderColor: INK, padding: 18, gap: 6, boxShadow: `0 4px 0 ${INK}` } as object}>
-        <Text className="font-sans" style={{ fontSize: 13, color: '#6B5E4E' }}>Tiến độ của bạn: {doneCount} / {GRAMMAR_LESSONS.length} bài đã đạt</Text>
-        <View style={{ height: 8, borderRadius: 4, backgroundColor: '#F3F0FB', overflow: 'hidden' }}>
-          <View style={{ width: `${Math.round((doneCount / GRAMMAR_LESSONS.length) * 100)}%`, height: 8, backgroundColor: ACCENT } as object} />
-        </View>
+      <NeonPageHero scene="path" title={L('Luyện ngữ pháp', 'Grammar')} subtitle={L('Chọn cấp, bấm bài để vào học.', 'Pick a level, tap a lesson.')} chips={[{ label: `${done}/${total} ${L('bài đạt', 'passed')}`, icon: 'star5' }]}>
         {next ? (
           <Pressable
-            accessibilityRole="link"
+            accessibilityRole="button"
             onPress={() => router.push(`/ngu-phap/${next.id}` as never)}
-            style={({ pressed }: { pressed: boolean }) => ({ marginTop: 4, flexDirection: 'row', alignItems: 'center', gap: 8, opacity: pressed ? 0.8 : 1 }) as object}
+            style={{ minHeight: 52, maxWidth: 320, paddingHorizontal: 22, flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 26, backgroundColor: '#FFD84A', borderWidth: 2, borderColor: '#FFF1A8', boxShadow: '0 5px 0 #B88A00' } as object}
           >
-            <Text className="font-strong" style={{ fontSize: 12, color: ACCENT, letterSpacing: 0.5 }}>BÀI TIẾP THEO</Text>
-            <Text className="font-heavy" style={{ fontSize: 18, color: INK }}>{next.level} · {next.title} ›</Text>
-          </Pressable>
-        ) : (
-          <Text className="font-heavy" style={{ fontSize: 18, color: INK }}>Bạn đã đạt hết các bài.</Text>
-        )}
-        {suggested && suggested !== level ? (
-          <Pressable accessibilityRole="button" onPress={() => setLevel(suggested)} style={{ alignSelf: 'flex-start' }}>
-            <Text className="font-strong" style={{ fontSize: 14, color: ACCENT }}>Lộ trình gợi ý cấp {suggested} · xem ›</Text>
+            <Text numberOfLines={1} style={{ flexShrink: 1, fontFamily: 'Nunito_400Regular', fontSize: 17, color: '#2B1D00' }}>{L('Học tiếp', 'Continue')} · {next.level}</Text>
+            <Icon name="chevron-right" size={18} color="#2B1D00" />
           </Pressable>
         ) : null}
+      </NeonPageHero>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 18 }} accessibilityRole="tablist">
+        {CEFR_LEVELS.map((lv) => {
+          const active = lv === level;
+          const n = lessonsOfLevel(lv).length;
+          return (
+            <Pressable
+              key={lv}
+              accessibilityRole="tab"
+              aria-selected={active}
+              onPress={() => setLevel(lv)}
+              style={{ flexGrow: 1, flexBasis: 90, paddingVertical: 12, paddingHorizontal: 14, borderRadius: 20, backgroundColor: active ? PC.purple : '#FFFFFF', ...SOFT }}
+            >
+              <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 22, color: active ? '#FFFFFF' : PC.ink }}>{lv}</Text>
+              <Text style={{ fontFamily: PC.body, fontWeight: '600', fontSize: 13, color: active ? 'rgba(255,255,255,0.85)' : PC.muted }}>{passedIn(lv)}/{n}</Text>
+            </Pressable>
+          );
+        })}
       </View>
 
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 18 }}>
-        {CEFR_LEVELS.map((lv) => (
-          <LevelCard
-            key={lv}
-            lv={lv}
-            title={lv}
-            sub={`${passedIn(lv)}/${counts(lv)} bài đạt${lv === suggested ? ' · gợi ý' : ''}`}
-            en={false}
-            selected={lv === level}
-            onPress={() => setLevel(lv)}
-          />
-        ))}
-      </View>
+      <Pressable
+        accessibilityRole="link"
+        onPress={() => router.push(`/ngu-phap/tong-hop?level=${level}` as never)}
+        style={({ hovered }: { hovered?: boolean }) => ({ marginTop: 14, minHeight: 64, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 20, backgroundColor: hovered ? '#FFE9DA' : '#FFF3EA', borderWidth: 1.5, borderColor: '#F7CFB5' }) as never}
+      >
+        <View style={{ width: 40, height: 40, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: ACCENT }}>
+          <Icon name="target" size={20} color="#FFFFFF" />
+        </View>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 17, color: PC.ink }}>{L(`Kiểm tra tổng hợp ${level}`, `${level} review test`)}</Text>
+          <Text style={{ fontFamily: PC.body, fontSize: 13, color: PC.muted }}>{L('15 câu từ mọi bài của cấp', '15 questions from every lesson')}{best[`final-${level}`] !== undefined ? ` · ${best[`final-${level}`]}/15` : ''}</Text>
+        </View>
+        <Icon name="chevron-right" size={18} color={ACCENT} />
+      </Pressable>
 
-      {lessons.length === 0 ? (
-        <Text className="font-sans" style={{ marginTop: 22, fontSize: 16, color: INK }}>Cấp {level} đang được soạn. Bạn có thể học các cấp đã có bài.</Text>
-      ) : (
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16, marginTop: 18 }}>
-          {lessons.map((l, i) => (
-            <Appear key={l.id} index={i} style={{ width: wide ? '48%' : '100%' } as object}>
+      <SectionCard title={`${level} · ${lessons.length} ${L('bài', 'lessons')}`}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+          {lessons.map((l) => {
+            const ok = passed(l.id);
+            return (
               <Pressable
+                key={l.id}
                 accessibilityRole="link"
                 onPress={() => router.push(`/ngu-phap/${l.id}` as never)}
-                style={{ backgroundColor: '#FFFFFF', borderRadius: 22, borderWidth: 2, borderColor: INK, padding: 20, gap: 8, boxShadow: `0 5px 0 ${INK}` } as object}
+                style={{ flexGrow: 1, flexBasis: 250, minHeight: 72, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 18, backgroundColor: ok ? '#EAF9F0' : '#FBFAFF', borderWidth: 1.5, borderColor: ok ? '#BFEBD0' : PC.line }}
               >
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <View style={{ paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, backgroundColor: '#F3F0FB' }}>
-                    <Text className="font-strong" style={{ color: ACCENT, fontSize: 12 }}>{l.level} · Bài {l.order}</Text>
-                  </View>
-                  {passed(l.id) ? <Text className="font-strong" style={{ color: '#15803D', fontSize: 13 }}>✓ Đã đạt</Text> : null}
-                  <Text className="font-sans" style={{ color: '#6B5E4E', fontSize: 13 }}>{l.minutes} phút</Text>
+                <View style={{ width: 38, height: 38, borderRadius: 19, alignItems: 'center', justifyContent: 'center', backgroundColor: ok ? '#22C55E' : '#EFEBFA' }}>
+                  <Text style={{ fontFamily: PC.display, fontWeight: '400', fontSize: 16, color: ok ? '#FFFFFF' : PC.purple }}>{ok ? '✓' : l.order}</Text>
                 </View>
-                <Text className="font-heavy" style={{ fontSize: 21, lineHeight: 27, color: INK }}>{l.title}</Text>
-                <Text className="font-sans" style={{ fontSize: 14, lineHeight: 20, color: '#4B4036' }}>{l.summary}</Text>
-                <Text className="font-strong" style={{ marginTop: 6, color: ACCENT, fontSize: 15 }}>Vào bài học ›</Text>
+                <View style={{ flex: 1, minWidth: 0 }}>
+                  <Text numberOfLines={2} style={{ fontFamily: PC.display, fontWeight: '700', fontSize: 16, lineHeight: 20, color: PC.ink }}>{l.title}</Text>
+                  <Text style={{ fontFamily: PC.body, fontWeight: '500', fontSize: 13, color: PC.muted }}>{l.minutes} {L('phút', 'min')}</Text>
+                </View>
               </Pressable>
-            </Appear>
-          ))}
+            );
+          })}
         </View>
-      )}
+      </SectionCard>
     </Screen>
   );
 }
+

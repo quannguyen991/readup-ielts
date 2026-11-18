@@ -5,21 +5,21 @@ import { ExamToolbar, ExamToolbarButton } from '@/components/exam/ExamToolbar';
 import { ReadingShell } from '@/components/exam/ReadingLayout';
 import { readLS, writeLS, type Page, type Grade } from './ComputerDeliveredExamRoom';
 
-/** Phông Be Vietnam Pro của Band 9, chọn theo độ đậm cũ của từng chữ. */
+/** Phông Inter của Band 9, chọn theo độ đậm cũ của từng chữ. */
 function fontFor(weight: unknown): string {
   switch (String(weight)) {
     case '900':
     case '800':
-      return 'BeVietnamPro_800ExtraBold';
+      return 'Nunito_700Bold';
     case '700':
     case 'bold':
-      return 'BeVietnamPro_700Bold';
+      return 'Nunito_700Bold';
     case '600':
-      return 'BeVietnamPro_600SemiBold';
+      return 'Nunito_600SemiBold';
     case '500':
-      return 'BeVietnamPro_500Medium';
+      return 'Nunito_600SemiBold';
     default:
-      return 'BeVietnamPro_400Regular';
+      return 'Nunito_400Regular';
   }
 }
 
@@ -201,7 +201,7 @@ export function PracticeRoom({
         <ToolButton icon="close" label="Xóa tô sáng" hint="Phần đang xem" onPress={clearHighlights} />
       </View>
       <View style={{ flex: 1, minHeight: 0, paddingHorizontal: 18, paddingTop: 12 }}>
-        <Text style={{ fontSize: 11, fontWeight: '800', color: GOLD_DARK, letterSpacing: 1 }}>
+        <Text style={{ fontSize: 11, fontWeight: '400', color: GOLD_DARK, letterSpacing: 1 }}>
           {selectedPart === 'all' ? 'TOÀN BỘ BÀI ĐỌC' : `READING PASSAGE ${selectedPart}`}
         </Text>
         <Text style={{ fontSize: 12, color: MUTED, marginTop: 4, marginBottom: 8 }}>Chạm vào đoạn để tô sáng. Bôi đen chữ để tra từ.</Text>
@@ -212,7 +212,7 @@ export function PracticeRoom({
             const letter = String.fromCharCode(65 + (i % 26));
             return (
               <View key={key} style={{ flexDirection: 'row', gap: 10 }}>
-                <Text style={{ width: 22, fontSize: 14, fontWeight: '800', color: GOLD_DARK, paddingTop: 2 }}>{letter}</Text>
+                <Text style={{ width: 22, fontSize: 14, fontWeight: '400', color: GOLD_DARK, paddingTop: 2 }}>{letter}</Text>
                 <Pressable
                   onPress={() => toggleHighlight(key)}
                   accessibilityRole="button"
@@ -242,7 +242,7 @@ export function PracticeRoom({
           ['NOT GIVEN', 'Bài đọc không đề cập'],
         ].map(([k, v]) => (
           <View key={k} style={{ flexDirection: 'row', gap: 10 }}>
-            <Text style={{ width: 84, fontSize: 12, fontWeight: '800', color: INK }}>{k}</Text>
+            <Text style={{ width: 84, fontSize: 12, fontWeight: '400', color: INK }}>{k}</Text>
             <Text style={{ flex: 1, fontSize: 12, color: MUTED }}>{v}</Text>
           </View>
         ))}
@@ -270,7 +270,7 @@ export function PracticeRoom({
                   <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: val.trim() ? NAVY : PAPER, borderWidth: 1, borderColor: val.trim() ? NAVY : LINE }}>
                     <Text style={{ fontSize: 13, fontWeight: '900', color: val.trim() ? '#FFFFFF' : INK }}>{num}</Text>
                   </View>
-                  <Text style={{ fontSize: 14, fontWeight: '800', color: INK }}>Câu {num}</Text>
+                  <Text style={{ fontSize: 14, fontWeight: '400', color: INK }}>Câu {num}</Text>
                 </View>
                 <Pressable
                   onPress={() => {
@@ -280,7 +280,7 @@ export function PracticeRoom({
                   accessibilityRole="button"
                   style={{ paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE }}
                 >
-                  <Text style={{ fontSize: 11, fontWeight: '800', color: GOLD_DARK }}>{isShowingExpl ? 'Ẩn giải thích' : 'Xem giải thích'}</Text>
+                  <Text style={{ fontSize: 11, fontWeight: '400', color: GOLD_DARK }}>{isShowingExpl ? 'Ẩn giải thích' : 'Xem giải thích'}</Text>
                 </Pressable>
               </View>
 
@@ -289,7 +289,7 @@ export function PracticeRoom({
                   const on = val.toUpperCase() === opt;
                   return (
                     <Pressable key={opt} onPress={() => onAnswerChange(num, opt)} accessibilityRole="button" accessibilityState={{ selected: on }} style={{ paddingHorizontal: 12, paddingVertical: 7, borderRadius: 8, backgroundColor: on ? NAVY : PAPER, borderWidth: 1, borderColor: on ? NAVY : LINE }}>
-                      <Text style={{ fontSize: 11, fontWeight: '800', color: on ? '#FFFFFF' : INK }}>{opt}</Text>
+                      <Text style={{ fontSize: 11, fontWeight: '400', color: on ? '#FFFFFF' : INK }}>{opt}</Text>
                     </Pressable>
                   );
                 })}
@@ -297,7 +297,7 @@ export function PracticeRoom({
                   const on = val.toUpperCase() === letter;
                   return (
                     <Pressable key={letter} onPress={() => onAnswerChange(num, letter)} accessibilityRole="button" accessibilityState={{ selected: on }} style={{ width: 32, height: 32, borderRadius: 8, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? NAVY : PAPER, borderWidth: 1, borderColor: on ? NAVY : LINE }}>
-                      <Text style={{ fontSize: 12, fontWeight: '800', color: on ? '#FFFFFF' : INK }}>{letter}</Text>
+                      <Text style={{ fontSize: 12, fontWeight: '400', color: on ? '#FFFFFF' : INK }}>{letter}</Text>
                     </Pressable>
                   );
                 })}
@@ -312,7 +312,7 @@ export function PracticeRoom({
               />
 
               <Pressable onPress={() => setNoteOpen((p) => ({ ...p, [num]: !p[num] }))} accessibilityRole="button" style={{ alignSelf: 'flex-start' }}>
-                <Text style={{ fontSize: 12, fontWeight: '800', color: GOLD_DARK }}>
+                <Text style={{ fontSize: 12, fontWeight: '400', color: GOLD_DARK }}>
                   {notes[String(num)] ? 'Ghi chú của câu này' : noteOpen[num] ? 'Ẩn ghi chú' : '+ Ghi chú'}
                 </Text>
               </Pressable>
@@ -329,7 +329,7 @@ export function PracticeRoom({
 
               {isShowingExpl ? (
                 <View style={{ padding: 12, borderRadius: 10, backgroundColor: PAPER, borderWidth: 1, borderColor: LINE, gap: 6 }}>
-                  <Text style={{ fontSize: 12, fontWeight: '800', color: GOLD_DARK }}>Đáp án chuẩn: {res ? res.expected : 'Xem đáp án trong bộ đề'}</Text>
+                  <Text style={{ fontSize: 12, fontWeight: '400', color: GOLD_DARK }}>Đáp án chuẩn: {res ? res.expected : 'Xem đáp án trong bộ đề'}</Text>
                   {res?.quote ? <Text style={{ fontSize: 12, fontStyle: 'italic', color: '#0369A1' }}>Trích dẫn: "{res.quote}"</Text> : null}
                   {res?.paraphrase ? <Text style={{ fontSize: 12, color: '#9D174D' }}>Diễn đạt lại: {res.paraphrase}</Text> : null}
                   <Text style={{ fontSize: 12, color: INK, lineHeight: 17 }}>{res?.explanation || 'Dữ liệu được chuẩn hoá theo bộ đề Cambridge IELTS.'}</Text>
@@ -362,7 +362,7 @@ function ToolButton({ icon, label, hint, active, onPress }: { icon: IconName; la
       <View style={{ width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center', backgroundColor: PAPER }}>
         <Icon name={icon} size={16} color={GOLD_DARK} />
       </View>
-      <Text style={{ fontSize: 11, fontWeight: '800', color: INK, textAlign: 'center' }}>{label}</Text>
+      <Text style={{ fontSize: 11, fontWeight: '400', color: INK, textAlign: 'center' }}>{label}</Text>
       <Text style={{ fontSize: 9.5, color: MUTED, textAlign: 'center' }}>{hint}</Text>
     </Pressable>
   );

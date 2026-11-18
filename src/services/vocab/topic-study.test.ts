@@ -183,3 +183,11 @@ test('đổi bộ lọc, thứ tự, dạng câu hay học xen kẽ thì mở v�
   // Cùng các dạng nhưng khác thứ tự lưu thì không tính là đổi.
   assert.equal(needsNewRound({ ...base, kinds: ['mcq', 'flash'] }, base), false);
 });
+
+test('clozeOf: chữ Hán / kana khoét thẳng chuỗi, không cần biên chữ cái', () => {
+  const zh = clozeOf('我爱你', '爱');
+  assert.deepEqual(zh, { before: '我', answer: '爱', after: '你' });
+  const ja = clozeOf('私は学校へ行きます', '学校');
+  assert.deepEqual(ja, { before: '私は', answer: '学校', after: 'へ行きます' });
+  assert.equal(clozeOf('私は食べます', '食べる'), null);
+});

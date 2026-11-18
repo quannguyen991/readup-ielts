@@ -1,0 +1,574 @@
+[
+ {
+  "id": "zh-g-h6-03",
+  "level": 6,
+  "order": 1,
+  "title": "Diễn tả phạm vi bao quát",
+  "titleZh": "凡是……都……",
+  "summary": "Học xong, bạn có thể dùng 凡是……，都…… để nói một điều áp dụng cho mọi người hoặc sự vật trong phạm vi đã nêu.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói điều áp dụng cho cả nhóm",
+    "body": "凡是 nêu một nhóm hoặc phạm vi; 都 cho biết điều phía sau đúng với toàn bộ nhóm ấy.",
+    "examples": [
+     {
+      "zh": "凡是来这家店的人，都喜欢这里的茶。",
+      "py": "fánshì lái zhè jiā diàn de rén dōu xǐhuan zhèlǐ de chá",
+      "vi": "Ai đến cửa hàng này cũng thích trà ở đây.",
+      "mark": "凡是来这家店的人"
+     },
+     {
+      "zh": "凡是我的朋友，都知道我爱看书。",
+      "py": "fánshì wǒ de péngyou dōu zhīdào wǒ ài kànshū",
+      "vi": "Tất cả bạn bè của tôi đều biết tôi thích đọc sách.",
+      "mark": "凡是我的朋友"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi muốn khái quát một phạm vi",
+    "body": "Dùng mẫu này khi muốn nói về một nhóm người, sự vật hoặc trường hợp nói chung. Vế sau thường nêu đặc điểm, quy tắc hoặc việc cả nhóm cùng làm.",
+    "examples": [
+     {
+      "zh": "凡是有时间的人，都可以来这里看书。",
+      "py": "fánshì yǒu shíjiān de rén dōu kěyǐ lái zhèlǐ kànshū",
+      "vi": "Ai có thời gian đều có thể đến đây đọc sách.",
+      "mark": "凡是有时间的人"
+     },
+     {
+      "zh": "凡是新来的学生，都要先写名字。",
+      "py": "fánshì xīn lái de xuésheng dōu yào xiān xiě míngzi",
+      "vi": "Tất cả học sinh mới đến đều phải viết tên trước.",
+      "mark": "凡是新来的学生"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 都 trong vế sau",
+    "body": "凡是 đứng trước phần nêu phạm vi. 都 thường đứng sau chủ ngữ của vế sau và trước hành động hoặc đặc điểm.",
+    "formula": "凡是 + phạm vi，(chủ ngữ) + 都 + vị ngữ",
+    "examples": [
+     {
+      "zh": "老师说，凡是学生都要每天学习。",
+      "py": "lǎoshī shuō fánshì xuésheng dōu yào měitiān xuéxí",
+      "vi": "Thầy nói, học sinh nào cũng phải học mỗi ngày.",
+      "mark": "凡是学生都要"
+     },
+     {
+      "zh": "凡是下雨的日子，我都在家看书。",
+      "py": "fánshì xiàyǔ de rìzi wǒ dōu zài jiā kànshū",
+      "vi": "Hễ ngày nào trời mưa, tôi đều ở nhà đọc sách.",
+      "mark": "凡是下雨的日子"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Thiếu 都 hoặc dùng cho một trường hợp riêng",
+    "body": "Đừng bỏ 都 nếu muốn nhấn mạnh rằng điều phía sau áp dụng cho cả phạm vi. 凡是 thường nêu một nhóm hoặc nhiều trường hợp, không dùng tự nhiên để giới thiệu riêng một người.",
+    "mistakes": [
+     {
+      "wrong": "凡是学生喜欢中文。",
+      "right": "凡是学生都喜欢中文。",
+      "why": "Thiếu 都 nên vế sau chưa thể hiện rõ ý áp dụng cho toàn bộ học sinh."
+     },
+     {
+      "wrong": "凡是我妈妈，都喜欢喝茶。",
+      "right": "我妈妈喜欢喝茶。",
+      "why": "Câu chỉ nói về một người cụ thể, không cần dùng 凡是 để giới thiệu cả một phạm vi."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Trong mẫu 凡是……，___……, từ nào thường cho biết điều sau áp dụng cho cả phạm vi?",
+    "options": [
+     "才 (mới)",
+     "都 (đều)",
+     "也 (cũng)",
+     "以便 (để tiện)"
+    ],
+    "answer": 1,
+    "explain": "都 đặt ở vế sau để biểu thị ý bao quát toàn bộ phạm vi đã nêu."
+   },
+   {
+    "q": "Muốn nói “học sinh nào cũng có thể mượn sách”, mẫu nào phù hợp?",
+    "options": [
+     "凡是……，都……",
+     "除非……，才……",
+     "就算……，也……",
+     "……，以便……"
+    ],
+    "answer": 0,
+    "explain": "凡是……，都…… diễn tả điều áp dụng cho mọi đối tượng trong nhóm."
+   },
+   {
+    "q": "凡是 giới thiệu phần nào của câu?",
+    "options": [
+     "Kết quả của hành động",
+     "Mục đích của hành động",
+     "Phạm vi hoặc nhóm được nói đến",
+     "Điều kiện cần để hành động xảy ra"
+    ],
+    "answer": 2,
+    "explain": "凡是 đứng trước phạm vi hoặc nhóm mà người nói muốn khái quát."
+   },
+   {
+    "q": "Trong mẫu này, 凡是 thường đứng ở đâu?",
+    "options": [
+     "Sau kết quả",
+     "Cuối câu",
+     "Thay cho vị ngữ",
+     "Trước phạm vi được bao quát"
+    ],
+    "answer": 3,
+    "explain": "凡是 mở đầu phần nêu phạm vi, rồi vế sau nói điều đúng với cả phạm vi đó."
+   },
+   {
+    "q": "Từ nào thường đứng trong vế sau để thể hiện ý “đều”?",
+    "options": [
+     "都",
+     "才",
+     "也",
+     "以便"
+    ],
+    "answer": 0,
+    "explain": "都 là từ thể hiện ý bao quát toàn bộ nhóm được nêu sau 凡是."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h6-04",
+  "level": 6,
+  "order": 2,
+  "title": "Nêu điều kiện cần",
+  "titleZh": "除非……才……",
+  "summary": "Học xong, bạn có thể dùng 除非……，才…… để nói một việc chỉ xảy ra khi điều kiện cần được đáp ứng.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Chỉ khi điều kiện được đáp ứng",
+    "body": "除非 nêu điều kiện cần; 才 giới thiệu kết quả chỉ xảy ra khi điều kiện ấy được đáp ứng.",
+    "examples": [
+     {
+      "zh": "除非你先做完作业，妈妈才让你出去玩。",
+      "py": "chúfēi nǐ xiān zuò wán zuòyè māma cái ràng nǐ chūqù wán",
+      "vi": "Chỉ khi con làm xong bài tập trước, mẹ mới cho con ra ngoài chơi.",
+      "mark": "除非你先做完作业"
+     },
+     {
+      "zh": "除非天气变好，我们才去公园散步。",
+      "py": "chúfēi tiānqì biàn hǎo wǒmen cái qù gōngyuán sànbù",
+      "vi": "Chỉ khi thời tiết tốt lên, chúng tôi mới đi dạo ở công viên.",
+      "mark": "除非天气变好"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi muốn nhấn mạnh điều kiện",
+    "body": "Dùng mẫu này khi muốn nói rằng nếu điều kiện ở vế đầu không xảy ra thì kết quả ở vế sau cũng không xảy ra. Điều kiện thường nằm ngoài khả năng quyết định ngay của người nói hoặc cần được đáp ứng trước.",
+    "examples": [
+     {
+      "zh": "除非你告诉我，我才知道怎么帮忙。",
+      "py": "chúfēi nǐ gàosu wǒ wǒ cái zhīdào zěnme bāngmáng",
+      "vi": "Chỉ khi bạn nói cho tôi biết, tôi mới biết cách giúp.",
+      "mark": "除非你告诉我"
+     },
+     {
+      "zh": "除非妹妹先回家，爸爸才会开始做饭。",
+      "py": "chúfēi mèimei xiān huí jiā bàba cái huì kāishǐ zuòfàn",
+      "vi": "Chỉ khi em gái về nhà trước, bố mới bắt đầu nấu cơm.",
+      "mark": "除非妹妹先回家"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt điều kiện trước kết quả",
+    "body": "Vế có 除非 nêu điều kiện; vế có 才 nêu kết quả phụ thuộc vào điều kiện đó. Chủ ngữ có thể được lặp lại hoặc lược đi nếu người nghe đã hiểu.",
+    "formula": "除非 + điều kiện，(chủ ngữ) + 才 + kết quả",
+    "examples": [
+     {
+      "zh": "除非老师来了，大家才开始活动。",
+      "py": "chúfēi lǎoshī lái le dàjiā cái kāishǐ huódòng",
+      "vi": "Chỉ khi thầy đến, mọi người mới bắt đầu hoạt động.",
+      "mark": "除非老师来了"
+     },
+     {
+      "zh": "除非今天下雨，我们才不去公园。",
+      "py": "chúfēi jīntiān xiàyǔ wǒmen cái bú qù gōngyuán",
+      "vi": "Chỉ khi hôm nay trời mưa, chúng tôi mới không đi công viên.",
+      "mark": "除非今天下雨"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Dùng sai từ nối ở vế kết quả",
+    "body": "Vế kết quả thường dùng 才 để nhấn mạnh tính cần thiết của điều kiện. Dùng 就 thay 才 có thể làm lệch ý của mẫu đang học.",
+    "mistakes": [
+     {
+      "wrong": "除非你告诉我，我知道这件事。",
+      "right": "除非你告诉我，我才知道这件事。",
+      "why": "Thiếu 才 làm mất ý rằng chỉ sau khi được nói cho biết thì người nghe mới biết việc đó."
+     },
+     {
+      "wrong": "除非你每天学习，你就会进步。",
+      "right": "除非你每天学习，你才会进步。",
+      "why": "Trong mẫu này, 才 nêu kết quả phụ thuộc vào điều kiện cần ở vế đầu."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Trong mẫu 除非……，___……, từ nào thường giới thiệu kết quả chỉ xảy ra khi điều kiện được đáp ứng?",
+    "options": [
+     "也",
+     "都",
+     "才",
+     "以便"
+    ],
+    "answer": 2,
+    "explain": "才 đánh dấu kết quả phụ thuộc vào điều kiện được nêu sau 除非."
+   },
+   {
+    "q": "Mẫu 除非……，才…… thường diễn tả quan hệ nào?",
+    "options": [
+     "Nêu mục đích thực hiện hành động",
+     "Nêu điều kiện cần để việc sau xảy ra",
+     "Nhượng bộ: dù thế nào vẫn làm",
+     "Áp dụng cho mọi đối tượng"
+    ],
+    "answer": 1,
+    "explain": "Điều kiện ở vế 除非 cần được đáp ứng thì kết quả ở vế 才 mới xảy ra."
+   },
+   {
+    "q": "Từ nào phù hợp với chỗ trống trong mẫu 除非……，___……?",
+    "options": [
+     "也",
+     "都",
+     "以便",
+     "才"
+    ],
+    "answer": 3,
+    "explain": "才 là từ nối thường đi với 除非 để nêu kết quả phụ thuộc vào điều kiện."
+   },
+   {
+    "q": "Vế bắt đầu bằng 除非 thường đứng ở vị trí nào?",
+    "options": [
+     "Trước vế nêu kết quả",
+     "Sau toàn bộ câu",
+     "Thay cho chủ ngữ của câu",
+     "Sau từ 才"
+    ],
+    "answer": 0,
+    "explain": "Đưa điều kiện lên trước giúp người nghe biết kết quả nào phụ thuộc vào điều kiện đó."
+   },
+   {
+    "q": "Từ nào thường đặt trước kết quả trong mẫu 除非……，___……?",
+    "options": [
+     "也",
+     "才",
+     "都",
+     "以便"
+    ],
+    "answer": 1,
+    "explain": "才 nằm trong vế kết quả và nhấn mạnh rằng điều kiện là cần thiết."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h6-05",
+  "level": 6,
+  "order": 3,
+  "title": "Nhượng bộ với điều kiện giả định",
+  "titleZh": "就算……也……",
+  "summary": "Học xong, bạn có thể dùng 就算……，也…… để nói rằng một kết quả vẫn giữ nguyên dù điều kiện ở vế đầu xảy ra.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Dù có tình huống ấy, kết quả vẫn vậy",
+    "body": "就算 nêu một tình huống giả định hoặc bất lợi. 也 cho biết kết quả ở vế sau vẫn xảy ra.",
+    "examples": [
+     {
+      "zh": "就算今天下雨，我们也要去学校上课。",
+      "py": "jiùsuàn jīntiān xiàyǔ wǒmen yě yào qù xuéxiào shàngkè",
+      "vi": "Dù hôm nay trời mưa, chúng tôi vẫn phải đến trường học.",
+      "mark": "就算今天下雨"
+     },
+     {
+      "zh": "就算我很忙，也会给妈妈打电话。",
+      "py": "jiùsuàn wǒ hěn máng yě huì gěi māma dǎ diànhuà",
+      "vi": "Dù rất bận, tôi vẫn sẽ gọi điện cho mẹ.",
+      "mark": "就算我很忙"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi muốn khẳng định kết quả không đổi",
+    "body": "Dùng mẫu này khi vế đầu đưa ra một trở ngại hoặc tình huống người nói chấp nhận là có thể xảy ra. Vế sau cho biết việc vẫn làm hoặc kết quả vẫn giữ nguyên.",
+    "examples": [
+     {
+      "zh": "就算朋友不来，我们也可以开始吃饭。",
+      "py": "jiùsuàn péngyou bù lái wǒmen yě kěyǐ kāishǐ chīfàn",
+      "vi": "Dù bạn bè không đến, chúng tôi vẫn có thể bắt đầu ăn.",
+      "mark": "就算朋友不来"
+     },
+     {
+      "zh": "就算我不太会做饭，也愿意自己做。",
+      "py": "jiùsuàn wǒ bú tài huì zuòfàn yě yuànyì zìjǐ zuò",
+      "vi": "Dù không giỏi nấu ăn lắm, tôi vẫn muốn tự nấu.",
+      "mark": "就算我不太会做饭"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 也 trong vế sau",
+    "body": "就算 đứng trước tình huống nhượng bộ. Ở vế sau, 也 thường đứng sau chủ ngữ và trước động từ hoặc phần nêu kết quả.",
+    "formula": "就算 + tình huống，chủ ngữ + 也 + kết quả",
+    "examples": [
+     {
+      "zh": "就算路很远，我也想去看朋友。",
+      "py": "jiùsuàn lù hěn yuǎn wǒ yě xiǎng qù kàn péngyou",
+      "vi": "Dù đường đi xa, tôi vẫn muốn đến thăm bạn.",
+      "mark": "就算路很远"
+     },
+     {
+      "zh": "就算大家互相不认识，我们也可以一起玩。",
+      "py": "jiùsuàn dàjiā hùxiāng bú rènshi wǒmen yě kěyǐ yìqǐ wán",
+      "vi": "Dù mọi người không quen biết nhau, chúng ta vẫn có thể chơi cùng nhau.",
+      "mark": "就算大家互相不认识"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Quên 也 hoặc thêm từ nối thừa",
+    "body": "Nên dùng 也 ở vế sau để thể hiện rõ ý “vẫn”. Tránh thêm 但是 cùng mẫu này vì 就算 đã mở đầu phần nhượng bộ.",
+    "mistakes": [
+     {
+      "wrong": "就算今天很冷，我们要去公园。",
+      "right": "就算今天很冷，我们也要去公园。",
+      "why": "Thiếu 也 khiến quan hệ nhượng bộ và ý “vẫn đi” chưa được thể hiện rõ."
+     },
+     {
+      "wrong": "就算下雨，但是我们也去公园。",
+      "right": "就算下雨，我们也去公园。",
+      "why": "就算 đã nối hai vế mang ý nhượng bộ nên không cần thêm 但是."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Trong mẫu 就算……，___……, từ nào thường thể hiện ý “vẫn”?",
+    "options": [
+     "都",
+     "才",
+     "以便",
+     "也"
+    ],
+    "answer": 3,
+    "explain": "也 nằm trong vế sau và cho biết kết quả vẫn xảy ra dù tình huống ở vế đầu xuất hiện."
+   },
+   {
+    "q": "就算……，也…… thường diễn tả ý nào?",
+    "options": [
+     "Mọi đối tượng đều có chung một đặc điểm",
+     "Một điều kiện cần để việc sau xảy ra",
+     "Dù có tình huống ấy, kết quả vẫn vậy",
+     "Mục đích của hành động phía trước"
+    ],
+    "answer": 2,
+    "explain": "就算 nêu tình huống nhượng bộ, còn 也 giới thiệu kết quả vẫn giữ nguyên."
+   },
+   {
+    "q": "Từ nối nào thường thừa nếu đã dùng 就算……，也……?",
+    "options": [
+     "但是",
+     "才",
+     "都",
+     "以便"
+    ],
+    "answer": 0,
+    "explain": "就算 đã mang ý nhượng bộ nên thêm 但是 thường làm câu rườm rà."
+   },
+   {
+    "q": "Trong vế sau, 也 thường đứng ở đâu?",
+    "options": [
+     "Trong vế điều kiện trước 就算",
+     "Sau chủ ngữ và trước vị ngữ",
+     "Ở cuối vế đầu",
+     "Trước 就算"
+    ],
+    "answer": 1,
+    "explain": "Vị trí thường gặp là chủ ngữ + 也 + hành động hoặc kết quả."
+   },
+   {
+    "q": "Muốn nói “dù xe buýt đến muộn, tôi vẫn đợi”, nên chọn mẫu nào?",
+    "options": [
+     "凡是……，都……",
+     "除非……，才……",
+     "就算……，也……",
+     "……，以便……"
+    ],
+    "answer": 2,
+    "explain": "Câu cần diễn tả rằng việc chờ vẫn tiếp tục dù xe buýt đến muộn."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h6-06",
+  "level": 6,
+  "order": 4,
+  "title": "Nêu mục đích",
+  "titleZh": "以便",
+  "summary": "Học xong, bạn có thể dùng 以便 để nối một hành động với mục đích muốn đạt được sau hành động đó.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu mục đích của hành động",
+    "body": "以便 có nghĩa là “để”, “để tiện”, dùng để giới thiệu mục đích mà hành động phía trước hướng tới.",
+    "examples": [
+     {
+      "zh": "老师告诉我地址，以便我找到学校。",
+      "py": "lǎoshī gàosu wǒ dìzhǐ yǐbiàn wǒ zhǎodào xuéxiào",
+      "vi": "Thầy cho tôi biết địa chỉ để tôi tìm được trường.",
+      "mark": "以便我找到学校"
+     },
+     {
+      "zh": "我把门开着，以便孩子进来。",
+      "py": "wǒ bǎ mén kāi zhe yǐbiàn háizi jìnlái",
+      "vi": "Tôi để cửa mở để trẻ con vào nhà.",
+      "mark": "以便孩子进来"
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi muốn giải thích việc làm để làm gì",
+    "body": "Dùng 以便 khi muốn cho người nghe biết hành động trước giúp việc gì thuận lợi hơn. Phần sau thường là điều người nói mong muốn hoặc dự định đạt được.",
+    "examples": [
+     {
+      "zh": "我们先看时间，以便按时出发。",
+      "py": "wǒmen xiān kàn shíjiān yǐbiàn ànshí chūfā",
+      "vi": "Chúng tôi xem giờ trước để khởi hành đúng giờ.",
+      "mark": "以便按时出发"
+     },
+     {
+      "zh": "我把你的电话号码写下来，以便以后找你。",
+      "py": "wǒ bǎ nǐ de diànhuà hàomǎ xiě xiàlai yǐbiàn yǐhòu zhǎo nǐ",
+      "vi": "Tôi ghi lại số điện thoại của bạn để sau này tìm bạn.",
+      "mark": "以便以后找你"
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 以便 trước mục đích",
+    "body": "Nêu hành động trước, rồi dùng 以便 để dẫn vào mục đích. Chủ thể của hành động chính và mục đích có thể giống hoặc khác nhau.",
+    "formula": "Hành động， 以便 + mục đích",
+    "examples": [
+     {
+      "zh": "他把书放在桌上，以便大家一起看。",
+      "py": "tā bǎ shū fàng zài zhuō shàng yǐbiàn dàjiā yìqǐ kàn",
+      "vi": "Anh ấy đặt sách lên bàn để mọi người cùng xem.",
+      "mark": "以便大家一起看"
+     },
+     {
+      "zh": "我每天记下新词，以便以后复习。",
+      "py": "wǒ měitiān jì xià xīn cí yǐbiàn yǐhòu fùxí",
+      "vi": "Mỗi ngày tôi ghi lại từ mới để sau này ôn tập.",
+      "mark": "以便以后复习"
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Nhầm mục đích với nguyên nhân hoặc kết quả",
+    "body": "以便 giới thiệu mục đích mà hành động hướng tới. Không dùng từ này để nối một nguyên nhân không có chủ ý với kết quả đã xảy ra.",
+    "mistakes": [
+     {
+      "wrong": "他已经找到学校了，以便我告诉他地址。",
+      "right": "我告诉他地址，以便他找到学校。",
+      "why": "Câu sai đặt một kết quả đã xảy ra trước mục đích; 以便 nên dẫn vào mục tiêu của hành động phía trước."
+     },
+     {
+      "wrong": "今天下雨，以便我们不去公园。",
+      "right": "今天下雨，所以我们不去公园。",
+      "why": "Mưa là nguyên nhân khiến chúng tôi không đi công viên, không phải hành động có chủ ý nhằm đạt mục đích đó."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "以便 dùng để giới thiệu phần nào của câu?",
+    "options": [
+     "Mục đích mà hành động trước hướng tới",
+     "Điều kiện cần để hành động xảy ra",
+     "Phạm vi áp dụng cho mọi đối tượng",
+     "Tình huống nhượng bộ"
+    ],
+    "answer": 0,
+    "explain": "以便 nối hành động với mục đích hoặc việc người nói muốn thực hiện thuận lợi hơn."
+   },
+   {
+    "q": "Vị trí nào phù hợp nhất với 以便 trong câu?",
+    "options": [
+     "Trước hành động chính",
+     "Thay cho chủ ngữ",
+     "Ở cuối câu sau kết quả",
+     "Sau hành động và trước mục đích"
+    ],
+    "answer": 3,
+    "explain": "Thông thường, hành động được nêu trước rồi 以便 dẫn vào mục đích."
+   },
+   {
+    "q": "Tình huống nào không phù hợp để dùng 以便?",
+    "options": [
+     "Ghi lại số điện thoại để sau này liên lạc",
+     "Trời mưa nên mọi người không đi công viên",
+     "Đặt sách lên bàn để cả nhóm cùng xem",
+     "Xem giờ trước để khởi hành đúng giờ"
+    ],
+    "answer": 1,
+    "explain": "Đây là quan hệ nguyên nhân và kết quả, không phải hành động được làm nhằm đạt một mục đích."
+   },
+   {
+    "q": "Muốn nói “ghi lại số điện thoại để sau này tìm bạn”, từ nối nào phù hợp?",
+    "options": [
+     "就算……，也……",
+     "凡是……，都……",
+     "以便",
+     "除非……，才……"
+    ],
+    "answer": 2,
+    "explain": "Ghi lại số điện thoại là hành động hướng tới mục đích tìm bạn sau này."
+   },
+   {
+    "q": "Phần sau 以便 thường nêu điều gì?",
+    "options": [
+     "Lý do đã gây ra hành động",
+     "Một nhóm người được bao quát",
+     "Điều kiện cần của kết quả",
+     "Mục đích hoặc việc mong muốn đạt được"
+    ],
+    "answer": 3,
+    "explain": "以便 thường dẫn vào mục tiêu mà hành động trước giúp thực hiện."
+   }
+  ]
+ }
+]

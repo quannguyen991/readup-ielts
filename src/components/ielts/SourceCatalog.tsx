@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, TextInput, View, type LayoutChangeEvent } from 'react-native';
 
+import { NeonWindow } from '@/components/neon/Neon';
 import { Icon } from '@/components/ui/Icon';
 import { FlatCover, numOf, SECTION_TONE, Text, type SkillName } from '@/components/ielts/SourceCover';
 import { color } from '@/theme/tokens';
@@ -40,7 +41,7 @@ type Hover = { hovered?: boolean };
 const FIRST_GROUPS = 3;
 const MORE_GROUPS = 4;
 const GAP = 16;
-const MIN_CARD = 190;
+const MIN_CARD = 230;
 const SIDEBAR = 248;
 const WIDE = 920;
 
@@ -63,7 +64,7 @@ export function SourceCatalog(props: Props) {
 
   const wide = width >= WIDE;
   const gridWidth = wide ? width - SIDEBAR - GAP : width;
-  const cols = Math.max(1, Math.min(5, Math.floor((gridWidth + GAP) / (MIN_CARD + GAP))));
+  const cols = Math.max(1, Math.min(4, Math.floor((gridWidth + GAP) / (MIN_CARD + GAP))));
   const cardWidth = Math.floor((gridWidth - GAP * (cols - 1)) / cols);
 
   // Lọc theo tab bộ đề + tìm kiếm trước, để số đếm ở cột trái luôn khớp với kết quả.
@@ -162,7 +163,8 @@ export function SourceCatalog(props: Props) {
   );
 
   return (
-    <View onLayout={onLayout} style={{ gap: 16 }}>
+    <NeonWindow title={L('Bộ đề IELTS', 'IELTS tests')} icon="book" padded={false}>
+    <View onLayout={onLayout} style={{ gap: 16, padding: 18 }}>
       {/* Thanh tab bộ đề */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, padding: 4, borderRadius: 14, backgroundColor: color.surfaceAlt, alignSelf: 'flex-start', flexWrap: 'wrap' }}>
         <Tab label={L('Tất cả', 'All')} on={collection === 'all'} onPress={() => props.onCollection('all')} />
@@ -196,7 +198,7 @@ export function SourceCatalog(props: Props) {
                 onChangeText={props.onQuery}
                 placeholder={L('Tìm đề, ví dụ: Cam 19 Reading', 'Search, e.g. Cam 19 Reading')}
                 placeholderTextColor={color.subtle}
-                style={{ flex: 1, height: '100%', color: color.ink, fontSize: 14, fontFamily: 'BeVietnamPro_500Medium', outlineStyle: 'none' } as never}
+                style={{ flex: 1, height: '100%', color: color.ink, fontSize: 14, fontFamily: 'Nunito_600SemiBold', outlineStyle: 'none' } as never}
               />
               {props.query ? (
                 <Pressable onPress={() => props.onQuery('')} accessibilityLabel={L('Xóa từ khóa', 'Clear search')} hitSlop={8}>
@@ -228,14 +230,15 @@ export function SourceCatalog(props: Props) {
 
           {shown.map((group) => (
             <View key={group.source} style={{ gap: 12 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>{group.source}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                <FlatCover kind={group.source.toLowerCase().includes('cambridge') ? 'CAMBRIDGE' : 'ACTUAL VOL'} num={numOf(group.source)} width={52} height={58} radius={10} />
+                <Text style={{ fontSize: 20, fontWeight: '400', color: color.ink }}>{group.source}</Text>
                 <View style={{ paddingHorizontal: 9, paddingVertical: 2, borderRadius: 999, backgroundColor: color.primarySoft }}>
                   <Text style={{ fontSize: 12, fontWeight: '700', color: color.primaryDark }}>{group.items.length}</Text>
                 </View>
                 <View style={{ flex: 1, height: 1, backgroundColor: color.border }} />
               </View>
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: GAP }}>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
                 {group.items.map((item) => (
                   <TestCard key={item.id} item={item} width={cardWidth} L={L} onOpen={open} />
                 ))}
@@ -267,13 +270,14 @@ export function SourceCatalog(props: Props) {
 
           {!groups.length ? (
             <View style={{ padding: 32, alignItems: 'center', gap: 8, borderRadius: 18, backgroundColor: color.surface, borderWidth: 1, borderColor: color.border }}>
-              <Text style={{ fontSize: 16, fontWeight: '800', color: color.ink }}>{L('Không có đề phù hợp', 'No tests match')}</Text>
+              <Text style={{ fontSize: 16, fontWeight: '400', color: color.ink }}>{L('Không có đề phù hợp', 'No tests match')}</Text>
               <Text style={{ fontSize: 13, color: color.body }}>{L('Thử bỏ bớt bộ lọc hoặc đổi từ khóa.', 'Try removing a filter or changing the keyword.')}</Text>
             </View>
           ) : null}
         </View>
       </View>
     </View>
+    </NeonWindow>
   );
 }
 
@@ -374,9 +378,9 @@ function BookRow({ label, on, onPress }: { label: string; on: boolean; onPress: 
 }
 
 const TestCard = memo(function TestCard({ item, width, L, onOpen }: { item: CatalogTest; width: number; L: Props['L']; onOpen: (id: string) => void }) {
-  const isCam = item.source.toLowerCase().includes('cambridge');
   const tone = item.section ? SECTION_TONE[item.section] : null;
-  const coverW = width - 16;
+  // Tên nhóm đã nằm ở đầu mục, nên thẻ chỉ giữ phần "Listening Test 1".
+  const short = item.title.startsWith(item.source) ? item.title.slice(item.source.length).replace(/^[\s·\-–:]+/, '') || item.title : item.title;
   const meta = `${item.questionCount} ${L('câu', 'q')}`;
 
   return (
@@ -386,29 +390,26 @@ const TestCard = memo(function TestCard({ item, width, L, onOpen }: { item: Cata
       accessibilityLabel={item.title}
       style={({ hovered }: Hover) => ({
         width,
-        padding: 8,
-        gap: 10,
-        borderRadius: 18,
+        minHeight: 64,
+        paddingVertical: 10,
+        paddingHorizontal: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 12,
+        borderRadius: 16,
         backgroundColor: color.surface,
         borderWidth: 1,
         borderColor: hovered ? color.primaryDark : color.border,
       })}
     >
-      <FlatCover kind={isCam ? 'CAMBRIDGE' : 'ACTUAL VOL'} num={numOf(item.source)} width={coverW} height={Math.round(coverW * 1.11)} radius={12} />
-      <View style={{ paddingHorizontal: 6, gap: 8 }}>
-        <Text style={{ fontSize: 14, fontWeight: '700', color: color.ink, lineHeight: 20, minHeight: 40 }} numberOfLines={2}>{item.title}</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-          {tone && item.section ? (
-            <View style={{ paddingHorizontal: 8, paddingVertical: 2, borderRadius: 6, backgroundColor: tone.bg }}>
-              <Text style={{ fontSize: 11, fontWeight: '700', color: tone.fg }}>{item.section}</Text>
-            </View>
-          ) : null}
-          <Text style={{ fontSize: 12, color: color.muted, fontWeight: '500' }} numberOfLines={1}>{meta}</Text>
-        </View>
+      <View style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: tone?.bg ?? color.surfaceAlt }}>
+        <Icon name={item.section === 'Listening' ? 'volume' : item.section === 'Writing' ? 'list' : item.section === 'Speaking' ? 'target' : 'book'} size={18} color={tone?.fg ?? color.primaryDark} />
       </View>
-      <View style={{ height: 38, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: color.primaryDark, marginBottom: 4 }}>
-        <Text style={{ fontSize: 14, fontWeight: '700', color: color.white }}>{L('Làm bài', 'Start')}</Text>
+      <View style={{ flex: 1, minWidth: 0 }}>
+        <Text style={{ fontSize: 15, fontWeight: '700', color: color.ink, lineHeight: 20 }} numberOfLines={2}>{short}</Text>
+        <Text style={{ fontSize: 13, color: color.muted, fontWeight: '500' }} numberOfLines={1}>{meta}</Text>
       </View>
+      <Icon name="chevron-right" size={18} color={color.primaryDark} />
     </Pressable>
   );
 });

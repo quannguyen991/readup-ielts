@@ -1,0 +1,246 @@
+[
+  {
+    "id": "vfi",
+    "kicker": "CAMBRIDGE",
+    "sub": "20 UNITS",
+    "mark": "IELTS",
+    "title": "VOCABULARY",
+    "spine": "VOCABULARY FOR IELTS",
+    "value": 1660
+  },
+  {
+    "id": "vfia",
+    "kicker": "CAMBRIDGE",
+    "sub": "ADVANCED",
+    "mark": "IELTS",
+    "title": "VOCABULARY",
+    "spine": "VOCABULARY FOR IELTS · ADVANCED",
+    "value": 863
+  },
+  {
+    "id": "gs10",
+    "kicker": "GLOBAL SUCCESS",
+    "sub": "GRADE",
+    "mark": "10",
+    "title": "VOCABULARY",
+    "spine": "GLOBAL SUCCESS 10",
+    "value": 522
+  },
+  {
+    "id": "gs11",
+    "kicker": "GLOBAL SUCCESS",
+    "sub": "GRADE",
+    "mark": "11",
+    "title": "VOCABULARY",
+    "spine": "GLOBAL SUCCESS 11",
+    "value": 584
+  },
+  {
+    "id": "gs12",
+    "kicker": "GLOBAL SUCCESS",
+    "sub": "GRADE",
+    "mark": "12",
+    "title": "VOCABULARY",
+    "spine": "GLOBAL SUCCESS 12",
+    "value": 547
+  },
+  {
+    "id": "listening",
+    "kicker": "IELTS",
+    "sub": "4 SECTIONS",
+    "mark": "4",
+    "title": "LISTENING",
+    "spine": "IELTS · LISTENING",
+    "value": 840
+  },
+  {
+    "id": "ielts-topics",
+    "kicker": "IELTS",
+    "sub": "TOPICS",
+    "mark": "50",
+    "title": "VOCABULARY",
+    "spine": "IELTS · 50 TOPICS",
+    "value": 8500
+  },
+  {
+    "id": "oxford",
+    "kicker": "OXFORD",
+    "sub": "CEFR A1–C1",
+    "mark": "3000",
+    "title": "TOPICS",
+    "spine": "OXFORD 3000 · TOPICS",
+    "value": 18,
+    "unit": "CHỦ ĐỀ"
+  },
+  {
+    "id": "daily",
+    "kicker": "EVERYDAY",
+    "sub": "TALK",
+    "mark": "20",
+    "title": "VOCABULARY",
+    "spine": "EVERYDAY TALK",
+    "value": 824
+  },
+  {
+    "id": "dest-b1",
+    "kicker": "DESTINATION",
+    "sub": "LEVEL",
+    "mark": "B1",
+    "title": "VOCABULARY",
+    "spine": "DESTINATION B1",
+    "value": 418
+  },
+  {
+    "id": "dest-b2",
+    "kicker": "DESTINATION",
+    "sub": "LEVEL",
+    "mark": "B2",
+    "title": "VOCABULARY",
+    "spine": "DESTINATION B2",
+    "value": 409
+  },
+  {
+    "id": "dest-c1c2",
+    "kicker": "DESTINATION",
+    "sub": "LEVEL",
+    "mark": "C1·C2",
+    "title": "VOCABULARY",
+    "spine": "DESTINATION C1 · C2",
+    "value": 1475
+  },
+  {
+    "id": "sat-math",
+    "kicker": "SAT",
+    "sub": "MATH",
+    "mark": "SAT",
+    "title": "VOCABULARY",
+    "spine": "SAT · MATH VOCABULARY",
+    "value": 193
+  },
+  {
+    "id": "sat-verbal",
+    "kicker": "SAT",
+    "sub": "VERBAL",
+    "mark": "SAT",
+    "title": "VOCABULARY",
+    "spine": "SAT · VERBAL VOCABULARY",
+    "value": 2340
+  },
+  {
+    "id": "toeic",
+    "kicker": "TOEIC",
+    "sub": "20 UNITS",
+    "mark": "TOEIC",
+    "title": "VOCABULARY",
+    "spine": "TOEIC · 20 UNITS",
+    "value": 200
+  },
+  {
+    "id": "toefl",
+    "kicker": "TOEFL",
+    "sub": "20 UNITS",
+    "mark": "TOEFL",
+    "title": "VOCABULARY",
+    "spine": "TOEFL · 20 UNITS",
+    "value": 200
+  },
+  {
+    "id": "study4-common-ielts-listening",
+    "kicker": "IELTS",
+    "sub": "LISTENING",
+    "mark": "IELTS",
+    "title": "COMMON WORDS",
+    "spine": "MOST COMMON IELTS LISTENING WORDS",
+    "value": 1124
+  },
+  {
+    "id": "study4-barrons-essentials-ielts",
+    "kicker": "IELTS",
+    "sub": "BARRON'S",
+    "mark": "IELTS",
+    "title": "ESSENTIAL WORDS",
+    "spine": "BARRON'S ESSENTIAL WORDS FOR IELTS",
+    "value": 750
+  },
+  {
+    "id": "study4-toeic-word-list",
+    "kicker": "TOEIC",
+    "sub": "WORD LIST",
+    "mark": "TOEIC",
+    "title": "WORD LIST",
+    "spine": "TOEIC WORD LIST",
+    "value": 1194
+  },
+  {
+    "id": "study4-600-toeic-words",
+    "kicker": "TOEIC",
+    "sub": "ESSENTIAL",
+    "mark": "600",
+    "title": "TOEIC WORDS",
+    "spine": "600 TOEIC WORDS",
+    "value": 620
+  },
+  {
+    "id": "study4-barrons-sat-words",
+    "kicker": "SAT",
+    "sub": "BARRON'S",
+    "mark": "SAT",
+    "title": "SAT WORDS",
+    "spine": "BARRON'S SAT WORDS",
+    "value": 1467
+  },
+  {
+    "id": "study4-college-panda-400-sat",
+    "kicker": "SAT",
+    "sub": "COLLEGE PANDA",
+    "mark": "400",
+    "title": "SAT WORDS",
+    "spine": "THE COLLEGE PANDA 400 SAT WORDS",
+    "value": 400
+  },
+  {
+    "id": "study4-new-academic-word-list",
+    "kicker": "VOCABULARY",
+    "sub": "ACADEMIC",
+    "mark": "NAWL",
+    "title": "ACADEMIC WORDS",
+    "spine": "NEW ACADEMIC WORD LIST",
+    "value": 924
+  },
+  {
+    "id": "study4-business-word-list",
+    "kicker": "VOCABULARY",
+    "sub": "BUSINESS",
+    "mark": "BIZ",
+    "title": "WORD LIST",
+    "spine": "BUSINESS WORD LIST",
+    "value": 1665
+  },
+  {
+    "id": "study4-toefl-word-list",
+    "kicker": "TOEFL",
+    "sub": "WORD LIST",
+    "mark": "TOEFL",
+    "title": "WORD LIST",
+    "spine": "TOEFL WORD LIST",
+    "value": 3193
+  },
+  {
+    "id": "study4-powerscore-gre-repeat-offenders",
+    "kicker": "GRE",
+    "sub": "POWERSCORE",
+    "mark": "GRE",
+    "title": "REPEAT OFFENDERS",
+    "spine": "POWERSCORE GRE 700 REPEAT OFFENDERS",
+    "value": 699
+  },
+  {
+    "id": "study4-essential-english-idioms",
+    "kicker": "VOCABULARY",
+    "sub": "ESSENTIAL",
+    "mark": "IDIOM",
+    "title": "ENGLISH IDIOMS",
+    "spine": "ESSENTIAL ENGLISH IDIOMS",
+    "value": 468
+  }
+]

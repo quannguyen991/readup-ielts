@@ -28,7 +28,7 @@ có **ảnh nền phủ kín**, **khung chữ song ngữ bên trái**, **thanh b
 ### 2. Việc cần làm (làm đúng thứ tự)
 1. Chép các file `road/dawn/night/battle/flag.*` vào thư mục tĩnh của app (ví dụ `public/bg/`).
    Chép `SceneBackground.tsx` vào `src/components/` và `poster-theme.css` vào nơi chứa CSS toàn cục, rồi import nó
-   **sau** CSS hiện có. Nạp font Playfair Display, Barlow Condensed, Be Vietnam Pro như hướng dẫn đầu file CSS.
+   **sau** CSS hiện có. Nạp font Playfair Display, Barlow Condensed, Inter như hướng dẫn đầu file CSS.
 2. Tìm component đang render **ảnh nền của cảnh** và thay bằng:
    `<SceneBackground scene={{ base: BG_BY_SCENE[sceneIndex] }} />`
    đặt ngay dưới thẻ gốc của trang với `position: fixed; inset: 0; z-index: 0`. Nội dung còn lại phải có

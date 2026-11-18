@@ -245,9 +245,6 @@ function MockTestCard({
             */}
             <Chip label={L(`~${minutes} phút đọc`, `~${minutes} min reading`)} tone="neutral" />
           </View>
-          <Text className="mt-2 font-sans text-label text-muted">
-            {L('Listening 4 section, rồi Reading 3 passage tăng dần độ khó — đúng thứ tự bài thi thật.', 'Listening in 4 sections, then 3 Reading passages of rising difficulty — the real exam order.')}
-          </Text>
         </View>
       </View>
 
@@ -269,7 +266,7 @@ function MockTestCard({
               className="h-6 w-6 items-center justify-center rounded-pill"
               style={{ backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: color.border }}
             >
-              <Text className="font-heavy text-muted" style={{ fontSize: 12 }}>
+              <Text className="font-heavy text-muted" style={{ fontSize: 13 }}>
                 {i + 1}
               </Text>
             </View>
@@ -348,7 +345,7 @@ function TestCover({ index }: { index: number }) {
         style={{ position: 'absolute', inset: 0 } as never}
       />
       <View style={{ zIndex: 1, alignItems: 'center' }}>
-        <Text className="font-heavy text-white" style={{ fontSize: 12, letterSpacing: 1 }}>
+        <Text className="font-heavy text-white" style={{ fontSize: 13, letterSpacing: 1 }}>
           MOCK
         </Text>
         <Text className="font-heavy text-white" style={{ fontSize: 26, lineHeight: 30 }}>
@@ -365,7 +362,7 @@ function Chip({ label, tone }: { label: string; tone: 'neutral' | 'warning' }) {
   const fg = tone === 'warning' ? '#6A4BD9' : color.muted;
   return (
     <View className="rounded-pill px-2 py-0.5" style={{ backgroundColor: bg }}>
-      <Text className="font-semi" style={{ fontSize: 12, color: fg }}>
+      <Text className="font-semi" style={{ fontSize: 13, color: fg }}>
         {label}
       </Text>
     </View>

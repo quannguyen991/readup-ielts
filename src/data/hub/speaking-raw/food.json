@@ -1,0 +1,96 @@
+{
+ "id": "food",
+ "extra": {
+  "vocab": [
+   {
+    "en": "wholesome ingredients",
+    "vi": "nguyên liệu tươi sạch, lành mạnh",
+    "ex": "I always prioritize cooking with wholesome ingredients rather than relying on pre-packaged goods."
+   },
+   {
+    "en": "tantalize someone's taste buds",
+    "vi": "kích thích vị giác của ai đó",
+    "ex": "The blend of aromatic spices and herbs truly tantalizes your taste buds."
+   },
+   {
+    "en": "comfort food",
+    "vi": "món ăn ruột, đem lại cảm giác ấm lòng/dễ chịu",
+    "ex": "Whenever I feel under the weather, a piping-hot bowl of chicken soup is my favorite comfort food."
+   },
+   {
+    "en": "whip up",
+    "vi": "nấu nhanh một món ăn đơn giản",
+    "ex": "On busy weeknights, I usually whip up a quick stir-fry instead of ordering takeout."
+   },
+   {
+    "en": "culinary delicacy",
+    "vi": "món ăn mỹ vị, đặc sản ẩm thực",
+    "ex": "Crispy spring rolls are considered a true culinary delicacy during traditional festive feasts."
+   },
+   {
+    "en": "cut down on",
+    "vi": "cắt giảm tiêu thụ thứ gì",
+    "ex": "Doctors frequently advise people to cut down on saturated fats and sugary treats."
+   },
+   {
+    "en": "an acquired taste",
+    "vi": "món ban đầu khó ăn nhưng ăn quen sẽ thích",
+    "ex": "Fermented shrimp paste is definitely an acquired taste, but it adds incredible depth to the dish."
+   },
+   {
+    "en": "sit-down meal",
+    "vi": "bữa ăn ngồi đàng hoàng, tươm tất",
+    "ex": "With demanding work schedules, our family rarely has the chance to enjoy a proper sit-down meal together."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu trực tiếp món phở bò truyền thống và vị trí đặc biệt của nó trong nền ẩm thực Việt Nam.",
+   "Ý 1 (Nguyên liệu & Cách nấu): Nêu các thành phần cốt lõi (bánh phở, thịt bò tái/nạm) và quy trình hầm xương ống cùng thảo mộc để tạo nên nước dùng thanh ngọt.",
+   "Ý 2 (Thời điểm thưởng thức): Nhắc đến việc món này phổ biến nhất vào bữa sáng nhưng có thể ăn cả ngày, nhất là vào tiết trời se lạnh.",
+   "Kết (Cảm nhận cá nhân): Bày tỏ niềm yêu thích nhờ sự hòa quyện hương vị tinh tế cùng cảm giác hoài niệm, gắn kết gia đình."
+  ],
+  "sample": "I would like to talk about Phở bò, which is undoubtedly the most iconic traditional dish from Vietnam.\n\nAt its core, this dish consists of delicate, flat rice noodles served in a piping-hot, aromatic broth and topped with tender cuts of beef, along with fresh scallions and coriander. The true magic lies in the broth, which is patiently simmered for hours using beef marrow bones, charred ginger, star anise, and cinnamon to achieve an extraordinarily rich, savory depth of flavor.\n\nTraditionally, Vietnamese people savor a bowl of Pho for breakfast to kick-start their day, but nowadays it is enjoyed around the clock, from quick lunches to late-night suppers. It is particularly satisfying on chilly mornings or rainy evenings when that steaming soup warms you from the inside out.\n\nThe main reason I adore Pho is its remarkable balance of flavors and textures. It feels nourishing and light rather than greasy, and every single spoonful offers a wonderful sense of nostalgia, reminding me of cozy weekend breakfasts with my grandparents. It is truly the ultimate comfort food.",
+  "p1": [
+   {
+    "q": "What kind of food do you enjoy most?",
+    "a": "I am particularly fond of home-cooked Vietnamese meals. I appreciate dishes featuring balanced flavors and plenty of fresh greens, such as sweet and sour fish soup, because they are wholesome and never feel heavy or greasy."
+   },
+   {
+    "q": "Do you enjoy cooking?",
+    "a": "Yes, absolutely. Preparing meals is a therapeutic way for me to unwind after a stressful day. I genuinely love experimenting with fresh herbs and spices, and whipping up a delicious dinner gives me a great sense of satisfaction."
+   },
+   {
+    "q": "Do you prefer eating at home or in restaurants?",
+    "a": "I generally prefer eating at home because it is far healthier and budget-friendly. However, on weekends, I do occasionally eat out with friends to try diverse international cuisines, like Japanese sushi or authentic Italian pasta."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Is fast food a problem in your country?",
+    "a": "Yes, it is increasingly becoming a serious public health concern, especially among young people in metropolitan areas. Due to hectic work routines, many individuals regularly consume burgers, fried chicken, and sugary drinks. This regular reliance on processed meals has contributed significantly to alarming spikes in childhood obesity, diabetes, and cardiovascular complications across modern cities."
+   },
+   {
+    "q": "How has the way people eat changed over the last few decades?",
+    "a": "In the past, families almost exclusively gathered for home-cooked meals prepared with fresh ingredients bought daily from wet markets. In contrast, modern dining revolves heavily around speed and convenience. The widespread popularity of food delivery apps and ready-to-eat convenience store meals means people often eat on the go, which unfortunately undermines communal family dining traditions and nutritional balance."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng quá mức từ 'delicious' khi miêu tả món ăn; nên linh hoạt dùng 'savory', 'mouth-watering', 'flavorful', hoặc 'tantalizing' để bài nói phong phú hơn.",
+   "Nhầm lẫn giữa danh từ không đếm được 'food' (nói chung) và danh từ đếm được 'foods' (các nhóm hoặc loại thực phẩm cụ thể, như 'processed foods').",
+   "Dịch từ ngữ một cách gượng gạo từ tiếng Việt, ví dụ nói 'eat delicious' thay vì 'it tastes delicious', hoặc dùng 'cook myself' thay vì 'cook for myself / cook on my own'."
+  ],
+  "p1More": [
+   "What is your favorite meal of the day?",
+   "Did you learn how to cook when you were a child?",
+   "Is there any food that you strongly dislike?",
+   "Do you often eat fresh fruits and vegetables?",
+   "What kind of new food would you like to try in the future?"
+  ],
+  "p3More": [
+   "Should schools be responsible for teaching children about nutrition and healthy eating habits?",
+   "To what extent has globalization affected traditional culinary cultures around the world?",
+   "Why are plant-based diets becoming increasingly popular in modern society?",
+   "Do you think governments should impose higher taxes on junk food and sugary beverages?"
+  ]
+ }
+}

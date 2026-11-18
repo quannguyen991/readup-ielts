@@ -1,0 +1,62 @@
+{
+ "id": "mock-33",
+ "title": "IELTS Speaking Mock Test 33",
+ "titleVi": "Đề thi thử số 33",
+ "focusVi": "Rèn luyện kỹ năng kể chuyện mạch lạc theo trình tự thời gian kết hợp diễn giải nguyên nhân - kết quả và bộc lộ cảm xúc.",
+ "part1": [
+  {
+   "topic": "Tourism",
+   "qs": [
+    "Do you prefer traveling alone or in a group?",
+    "What makes a tourist destination popular in your country?",
+    "How has tourism changed in your hometown over recent years?",
+    "Would you like to work in the tourism industry in the future?"
+   ]
+  },
+  {
+   "topic": "Culture and Traditions",
+   "qs": [
+    "What is an important traditional festival in your country?",
+    "Do you think young people still value traditional customs today?",
+    "How do families in your country celebrate special occasions?",
+    "Is it important to learn about other cultures when traveling abroad?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a journey you took that was difficult or challenging.",
+  "bullets": [
+   "where you went and who accompanied you",
+   "what difficulties you encountered during the trip",
+   "how you managed to overcome these challenges",
+   "and explain why this journey was so memorable to you"
+  ]
+ },
+ "part3": [
+  "Why do some people actively seek out arduous or adventurous trips rather than relaxing holidays?",
+  "How have technological advancements made journeys safer and more predictable today?",
+  "What role does public infrastructure play in reducing travel hardship for daily commuters?",
+  "Can facing adversity while traveling contribute to a person's personal growth?",
+  "Do you think space tourism will ever become accessible despite the immense physical challenges involved?"
+ ],
+ "answers": {
+  "p1": [
+   "I definitely prefer traveling with friends because sharing experiences enhances the joy. For instance, when we explore local street food together in Da Nang, the laughter and shared moments make the trip far more memorable.",
+   "Scenic beauty and rich heritage usually draw travelers. In Vietnam, places like Ha Long Bay attract millions primarily because of their stunning limestone karsts and unique floating villages, which offer unforgettable visual experiences.",
+   "It has grown dramatically, with many modern hotels and cafes replacing older residential quarters. While this boom boosts our local economy, it has noticeably increased traffic congestion during peak holiday seasons.",
+   "Not really, because working in tourism requires irregular working hours and dealing with demanding customers constantly. I prefer a predictable schedule, such as an office job in finance, which suits my personality better.",
+   "Tet, or the Lunar New Year, is undeniably the most vital celebration. It reunites separated family members, who gather to prepare traditional dishes like banh chung and exchange heartfelt wishes for prosperity.",
+   "Yes, though they adapt customs to modern lifestyles. For example, during mid-autumn festivals, youngsters still buy mooncakes and gather with relatives, even if they document the festivities on social media rather than lighting lanterns.",
+   "Most Vietnamese families celebrate milestones by hosting large communal feasts at home. Relatives gather to cook classic dishes, toast with rice wine, and reminisce about shared family memories throughout the evening.",
+   "Absolutely, because understanding local norms prevents unintentional disrespect. For instance, knowing dress codes when entering temples in Thailand shows genuine appreciation for their spiritual traditions and enriches your overall experience."
+  ],
+  "sample": "I would like to talk about a treacherous motorbike journey I took two years ago across Ha Giang's Ma Pi Leng Pass with my university friend, Minh. Our plan was to reach Dong Van before dusk, but midway through the mountains, a torrential downpour triggered thick fog and minor landslides. The winding roads became slick as ice, and visibility dropped to barely two meters. Worse yet, our rear tyre suffered a puncture on an isolated stretch with no mobile signal. To cope, Minh and I had to push the bike through pouring rain for nearly two kilometres until we spotted a local ethnic minority homestead. The generous host welcomed us inside, helped patch our tyre with improvised tools, and offered us hot ginger tea to ward off hypothermia. We eventually reached our homestay late at night, thoroughly exhausted. This trip remains unforgettable because it truly tested my composure and resilience under pressure. More importantly, it taught me that unexpected kindness from total strangers can turn a frightening ordeal into one of life's most heartwarming memories.",
+  "p3": [
+   "In my view, people pursue demanding journeys to escape monotony and test their personal limits. While beach holidays offer rest, navigating rugged terrain or survival trekking delivers an intense rush of dopamine and a profound sense of achievement. By conquering physical fatigue and unpredictable obstacles, adventurous travelers discover their inner fortitude, which makes the experience vastly more rewarding than ordinary leisure.",
+   "Technology has revolutionized travel safety primarily through real-time communication and precise satellite navigation. Previously, explorers relied on physical maps and local guesswork, risking becoming lost in hazardous areas. Nowadays, GPS applications alert drivers to road hazards immediately, while satellite phones ensure emergency assistance even in remote wilderness. Consequently, journeys that were once perilous can now be navigated with minimal uncertainty.",
+   "Well-maintained infrastructure plays a crucial role in alleviating daily travel distress. When cities invest in reliable metro lines and synchronized traffic signals, workers spend significantly less time gridlocked on congested roads. Conversely, shoddy road surfaces and inadequate bus networks induce chronic stress and physical exhaustion. Therefore, modern transit systems are fundamental not just for mobility, but for safeguarding public mental well-being.",
+   "Undoubtedly, encountering adversity fosters emotional maturity and adaptability. When travelers confront travel disruptions, such as canceled connections or language barriers in foreign environments, they are forced to solve problems independently. This contrasts sharply with routine daily life, where solutions are readily accessible. Ultimately, surmounting travel challenges builds self-reliance and patience, equipping individuals with resilience that extends into their professional careers.",
+   "I believe commercial space travel will eventually become viable, although democratization will take several decades. Currently, extreme G-forces, radiation, and astronomical costs restrict this pursuit to billionaires and elite astronauts. However, just as commercial aviation transitioned from a perilous luxury into everyday transportation throughout the twentieth century, advancing aerospace engineering will likely streamline spaceflight, eventually making orbital excursions safe for the wider public."
+  ]
+ }
+}

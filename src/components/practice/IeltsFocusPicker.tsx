@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo } from 'react';
-import { Text, View, useWindowDimensions } from 'react-native';
+import React, { useMemo } from 'react';
+import { View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
-import { BlueHero } from '@/components/home/BlueHero';
 import { Grid } from '@/components/layout/Grid';
-import { HeroStat } from '@/components/layout/LightHero';
-import type { IconName } from '@/components/ui/Icon';
-import { PICKER_ART_ORDER, PosterTile, prefetchPickerArt } from '@/components/practice/PosterTile';
+import { NeonSectionBar } from '@/components/neon/Neon';
+import type { NeonIconId } from '@/components/neon/neon-art';
+import { NEON_PALETTES, NeonTile } from '@/components/neon/NeonTile';
+import { OverviewHero } from '@/components/neon/OverviewHero';
 import { useL } from '@/i18n/useL';
 import { IELTS_SKILL_OF, IELTS_SKILL_ORDER, type IeltsSkill } from '@/navigation/ielts-focus';
 import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
@@ -19,19 +19,45 @@ const SKILL_NAME: Record<IeltsSkill, { vi: string; en: string }> = {
   other: { vi: 'Khác', en: 'Other' },
 };
 
-/** Bảng màu theo thứ tự trong nhóm: cặp [nhạt, đậm]. Màu nhạt tô nền icon, màu đậm vẽ vòng và icon. */
-const TONES: ReadonlyArray<readonly [string, string]> = [
-  ['#FFC4D8', '#E45A8C'],
-  ['#D9CCFF', '#6A4BD9'],
-  ['#BFEBD3', '#23875E'],
-  ['#FFE0B0', '#C27417'],
-  ['#C8DDFF', '#2F6FD6'],
-  ['#FFD6BF', '#D9503E'],
-];
+/** Icon pixel neon của từng nhóm kỹ năng (dùng cho viên số liệu và tiêu đề mục). */
+const SKILL_ICON: Record<IeltsSkill, NeonIconId> = {
+  reading: 'book',
+  listening: 'speaker',
+  writing: 'star5',
+  speaking: 'flame',
+  other: 'gem',
+};
+
+/** Icon riêng từng trang con; trang con mới chưa có ở đây thì lấy icon của nhóm kỹ năng. */
+const ITEM_ICON: Record<string, NeonIconId> = {
+  'luyen-doc': 'book',
+  'ielts-skills': 'gem',
+  'mock-tests': 'medal',
+  'ielts-source-practice': 'trophy',
+  library: 'moon',
+  bilingual: 'planet',
+  writing: 'star5',
+  grammar: 'bolt',
+  'video-hub': 'gamepad',
+  listening: 'speaker',
+  sentence: 'note',
+  hub: 'flame',
+  'toeic-toefl': 'cloud',
+  'hsa-english': 'crown',
+};
+
+/** Tông màu theo nhóm: mỗi nhóm một họ màu, thẻ trong nhóm xoay vòng cho khác nhau. */
+const SKILL_TONES: Record<IeltsSkill, string[]> = {
+  reading: ['sunset', 'gold', 'berry', 'grape', 'sunset'],
+  listening: ['ocean', 'lime', 'ocean', 'grape'],
+  writing: ['grape', 'berry'],
+  speaking: ['berry', 'sunset', 'ocean'],
+  other: ['lime', 'gold', 'ocean', 'grape'],
+};
 
 /**
- * Trang Luyện IELTS: mỗi thẻ là một lối vào, bấm là mở thẳng phần đó.
- * Thẻ kiểu poster: nền ảnh vẽ theo tông, tiêu đề lớn và đậm.
+ * Trang tổng quan IELTS theo kiểu game neon: đầu trang trời hoàng hôn + chữ IELTS nhiều màu, mỗi kỹ năng một mục
+ * với thẻ nổi bật rộng cả hàng và các thẻ nhỏ hai cột, mỗi thẻ một tông màu và một icon pixel 3D.
  */
 export function IeltsFocusPicker() {
   const { L, locale } = useL();
@@ -43,69 +69,53 @@ export function IeltsFocusPicker() {
     [],
   );
 
-  useEffect(() => {
-    prefetchPickerArt();
-  }, []);
-
   return (
-    <View className="gap-5">
-      <BlueHero
-        wide={wide}
-        eyebrow={L('IELTS · 4 KỸ NĂNG', 'IELTS · 4 SKILLS')}
-        chip={L('Bạn muốn', 'Pick')}
-        title={L('học gì với IELTS?', 'your IELTS lesson.')}
-        subtitle={L('Mỗi thẻ là một phần học, bấm là vào ngay.', 'Each card is one part of the course. Tap to open it.')}
-        primary={{ label: L('Luyện đọc', 'Reading practice'), onPress: () => router.push('/luyen-doc' as never) }}
-        secondary={{ label: L('Luyện theo dạng bài', 'Practise by question type'), onPress: () => router.push('/ielts/skills' as never) }}
-        footer={IELTS_SKILL_ORDER.map((skill) => {
+    <View style={{ gap: 22 }}>
+      <OverviewHero
+        variant="sunset"
+        text="IELTS"
+        pills={IELTS_SKILL_ORDER.flatMap((skill) => {
           const n = items.filter((i) => IELTS_SKILL_OF[i.key] === skill).length;
-          return n ? <HeroStat key={skill} value={String(n)} label={SKILL_NAME[skill][locale]} /> : null;
+          return n ? [{ icon: SKILL_ICON[skill], label: `${n} ${SKILL_NAME[skill][locale]}` }] : [];
         })}
+        primary={{ label: L('Luyện đọc', 'Reading'), onPress: () => router.push('/luyen-doc' as never) }}
+        secondary={{ label: L('Theo dạng bài', 'By type'), onPress: () => router.push('/ielts/skills' as never) }}
       />
 
       {IELTS_SKILL_ORDER.map((skill) => {
         const list = items.filter((i) => IELTS_SKILL_OF[i.key] === skill);
         if (list.length === 0) return null;
-        // Mục đầu nhóm là thẻ nổi bật rộng cả hàng; các mục sau xếp hai cột, mỗi thẻ một tông màu.
-        const k = IELTS_SKILL_ORDER.indexOf(skill);
+        const tones = SKILL_TONES[skill];
         const [featured, ...rest] = list;
         return (
-          <View key={skill} className="gap-3">
-            <View className="flex-row items-center gap-2">
-              <Text className="font-heavy text-cardTitle text-ink">{SKILL_NAME[skill][locale]}</Text>
-              <View className="rounded-pill bg-white px-2.5 py-0.5" style={{ borderWidth: 1, borderColor: '#EAE4F8' }}>
-                <Text className="font-strong text-label text-muted">{list.length}</Text>
-              </View>
-            </View>
+          <View key={skill} style={{ gap: 14 }}>
+            <NeonSectionBar title={SKILL_NAME[skill][locale]} count={list.length} icon={SKILL_ICON[skill]} />
 
             {featured ? (
-              <PosterTile
-                art={PICKER_ART_ORDER[k % PICKER_ART_ORDER.length]!}
-                accent={TONES[k % TONES.length]![1]}
-                icon={featured.icon as IconName}
-                title={navLabel(featured, locale)}
-                sub={SKILL_NAME[skill][locale]}
-                chip={L('Bắt đầu tại đây', 'Start here')}
+              <NeonTile
                 featured
-                wide={wide}
-                href={featured.href}
+                title={navLabel(featured, locale)}
+                chip={SKILL_NAME[skill][locale].toUpperCase()}
+                index="01"
+                cta={L('Bắt đầu', 'Start')}
+                icon={ITEM_ICON[featured.key] ?? SKILL_ICON[skill]}
+                palette={NEON_PALETTES[tones[0]!]!}
+                minHeight={wide ? 240 : 200}
                 onPress={() => router.push(featured.href as never)}
               />
             ) : null}
 
             {rest.length > 0 ? (
-              <Grid columns={2} tabletColumns={2} mobileColumns={2} gap={12}>
+              <Grid columns={2} tabletColumns={2} mobileColumns={2} gap={14}>
                 {rest.map((item, index) => (
-                  <PosterTile
+                  <NeonTile
                     key={item.key}
-                    art={PICKER_ART_ORDER[(k + index + 1) % PICKER_ART_ORDER.length]!}
-                    accent={TONES[(k + index + 1) % TONES.length]![1]}
-                    icon={item.icon as IconName}
                     title={navLabel(item, locale)}
-                    sub={SKILL_NAME[skill][locale]}
-                    chip={L(`Bài ${index + 2}`, `No. ${index + 2}`)}
-                    wide={wide}
-                    href={item.href}
+                    chip={SKILL_NAME[skill][locale].toUpperCase()}
+                    index={String(index + 2).padStart(2, '0')}
+                    icon={ITEM_ICON[item.key] ?? SKILL_ICON[skill]}
+                    palette={NEON_PALETTES[tones[(index + 1) % tones.length]!]!}
+                    minHeight={wide ? 190 : 205}
                     onPress={() => router.push(item.href as never)}
                   />
                 ))}

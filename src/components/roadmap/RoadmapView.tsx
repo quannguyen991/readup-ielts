@@ -73,15 +73,15 @@ export function RoadmapView({ input, plan, onEdit }: { input: PlanInput; plan: C
       {/* ----------------------------------------------- đầu trang: người học, mục tiêu, chuỗi, XP */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
         <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: c.gold, alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderColor: c.card }}>
-          <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: '800' }}>{initial}</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: '400' }}>{initial}</Text>
         </View>
         <View style={{ flex: 1, minWidth: 160, gap: 4 }}>
-          <Text numberOfLines={1} style={{ color: c.ink, fontSize: 18, fontWeight: '800' }}>
+          <Text numberOfLines={1} style={{ color: c.ink, fontSize: 18, fontWeight: '400' }}>
             {name || L('Bạn', 'You')}
           </Text>
           <View style={{ flexDirection: 'row' }}>
             <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: c.goldSoft }}>
-              <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '800' }}>{goalLabel}</Text>
+              <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '400' }}>{goalLabel}</Text>
             </View>
           </View>
         </View>
@@ -116,7 +116,7 @@ export function RoadmapView({ input, plan, onEdit }: { input: PlanInput; plan: C
                 onPress={() => setTab(key)}
                 style={{ flex: 1, height: 42, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? c.ink : c.card }}
               >
-                <Text style={{ color: on ? '#FFFFFF' : c.body, fontSize: 13, fontWeight: '800' }}>{label}</Text>
+                <Text style={{ color: on ? '#FFFFFF' : c.body, fontSize: 13, fontWeight: '400' }}>{label}</Text>
               </Pressable>
             );
           })}
@@ -147,7 +147,7 @@ function Stat({ icon, value, label, color }: { icon: 'flame' | 'sparkle'; value:
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, height: 44, borderRadius: 22, backgroundColor: c.card, boxShadow: '0 4px 12px rgba(120,80,20,0.12)' } as never}>
       <Icon name={icon} size={18} color={color} />
-      <Text style={{ color: c.ink, fontSize: 15, fontWeight: '800' }}>{value}</Text>
+      <Text style={{ color: c.ink, fontSize: 15, fontWeight: '400' }}>{value}</Text>
       <Text style={{ color: c.muted, fontSize: 11, fontWeight: '700' }}>{label}</Text>
     </View>
   );
@@ -175,9 +175,9 @@ function StageBanner({
     >
       <View style={{ flex: 1, minWidth: 0, gap: 8 }}>
         <View style={{ alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 5, borderRadius: 999, backgroundColor: c.card }}>
-          <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '800' }}>{goalLabel}</Text>
+          <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '400' }}>{goalLabel}</Text>
         </View>
-        <Text style={{ color: c.ink, fontSize: 22, fontWeight: '800', lineHeight: 28 }}>{L(stageTitle.vi, stageTitle.en)}</Text>
+        <Text style={{ color: c.ink, fontSize: 22, fontWeight: '400', lineHeight: 28 }}>{L(stageTitle.vi, stageTitle.en)}</Text>
         <Text style={{ color: c.body, fontSize: 13 }}>
           {L(`Tuần ${stageNumbers.weekFrom}–${stageNumbers.weekTo} · còn ${stageNumbers.daysLeft} ngày tới kỳ thi`, `Weeks ${stageNumbers.weekFrom}–${stageNumbers.weekTo} · ${stageNumbers.daysLeft} days to the exam`)}
         </Text>

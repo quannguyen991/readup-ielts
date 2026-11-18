@@ -1,0 +1,957 @@
+{
+ "id": "band9-listening-20",
+ "title": "Band 9 Listening Test 20",
+ "source": "Band 9 Original",
+ "level": "medium",
+ "cover": {
+  "topic": "Catering orders, library tours, sustainable packaging and wool",
+  "category": "Canada, Australia and New Zealand"
+ },
+ "sections": [
+  {
+   "n": 1,
+   "title": "Ordering catering for a staff meeting",
+   "context": "You will hear a man phoning a café in Halifax to order lunch for a staff meeting.",
+   "audio": "/listening/band9-listening-20/s1.mp3",
+   "durationSec": 233,
+   "transcript": [
+    {
+     "speaker": "Maureen",
+     "text": "Pier Street Café, Maureen speaking."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "Oh, hello. I saw on your website that you do catering for events. I'd like to order lunch for a staff meeting at our office."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Certainly. Let me bring up the catering order form. Is this for a company?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "Yes, it's an accounting firm. We hold a big meeting for all the staff twice a year, and this time I've been put in charge of the food."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Lovely. Could I have your surname, please?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "It's Gallagher."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "And how do you spell that?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "G-A-L-L-A-G-H-E-R."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Thank you, Mr Gallagher. And what date is the meeting?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "It's on Thursday, 13 November. Or, hold on. Let me check my diary. No, I'm sorry, they've moved it. It's Friday now, so it's 14 November."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Friday 14 November. Good, we're not too busy that day. How many people should I plan for?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "At first I was told thirty. But a few more people from the Dartmouth office are coming, so it's now 36."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Thirty-six. It's always better to order a little extra. Now, what would you like to eat? Our most popular lunch for groups is the soup and sandwich option, and the soup of the day is a seafood chowder, which is made with fresh haddock and scallops from Nova Scotia."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "That sounds perfect, and I'm sure a lot of people will want it. Is there anything for people who don't eat fish?"
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Yes, there's a vegetable soup as well, and that's included. But I need to know about any special dietary needs in advance. Do any of your guests have allergies or other requirements?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "Two of them are vegetarian, which the vegetable soup covers. And one person can't eat wheat, so we need gluten-free meals for her."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Fine. We make gluten-free bread, so we'll prepare one of those for her. I'll note that on the form. Do you want drinks as well?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "Just coffee and tea, if you can."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Certainly. Now, the price. The soup, the sandwich platter and the coffee and tea come to 16 dollars per person. If you'd like dessert as well, we do lemon squares and fruit, and that brings it up to 18 dollars per person."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "I think we'd better have dessert. People always remember dessert. So, 18 dollars."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Great, so 18 dollars a head, plus tax. The total comes to 648 dollars, before tax."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "Okay. And what time would you be able to deliver? The meeting starts at noon."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "We could come at 11:30, but the problem is that our van is out on another delivery until a quarter to twelve. So the earliest possible time is 11:45. Is that all right?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "That's a bit tight, but I think we can manage. I'll ask the others to set up the tables before then."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Good. Where do we deliver to?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "We're at 250 Lorne Street."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Was that 205?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "No, 250. Two, five, zero. It's on the third floor, and there's a lift."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "And the postal code?"
+    },
+    {
+     "speaker": "Dylan",
+     "text": "It's B3K 2R8. That's B as in Bravo, 3, K as in Kilo, 2, R as in Romeo, and 8."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Thank you. I've got B3K 2R8. Now, for orders of this size we ask for a deposit when you confirm. For orders over five hundred dollars, it's 50 percent, but for smaller ones, it's a quarter. Yours is above that limit, so we need half."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "Oh, I thought it was less. So 50 percent?"
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Actually, I've just looked at the notice on my screen. We changed the policy this month. The deposit is now 25 percent for every order, large or small, which is 162 dollars for yours."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "That's even better. Can I pay by card over the phone?"
+    },
+    {
+     "speaker": "Maureen",
+     "text": "Yes, I can take it now if you like, or you can pay online using the link in your confirmation email. Whichever you prefer."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "I'll pay online this afternoon, if that's all right."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "No problem. And one more thing. If you need to change the numbers, please let us know at least two days before the event, because we buy the fish fresh."
+    },
+    {
+     "speaker": "Dylan",
+     "text": "Understood. Thank you so much for your help, Maureen."
+    },
+    {
+     "speaker": "Maureen",
+     "text": "You're welcome. We'll see you on the fourteenth, Mr Gallagher."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 1-10",
+     "instruction": "Complete the catering order form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Pier Street Café: Catering Order",
+      "Customer surname: {{1}}",
+      "Date of event: {{2}}",
+      "Number of people: {{3}}",
+      "Main item: {{4}}",
+      "Special meals needed: {{5}}",
+      "Price per person: ${{6}}",
+      "Delivery time: {{7}}",
+      "Delivery address: {{8}}",
+      "Postal code: {{9}}",
+      "Deposit: {{10}} percent"
+     ],
+     "questions": [
+      {
+       "n": 1,
+       "answer": "Gallagher"
+      },
+      {
+       "n": 2,
+       "answer": "14 November"
+      },
+      {
+       "n": 3,
+       "answer": "36",
+       "accept": [
+        "thirty-six"
+       ]
+      },
+      {
+       "n": 4,
+       "answer": "seafood chowder",
+       "accept": [
+        "chowder"
+       ]
+      },
+      {
+       "n": 5,
+       "answer": "gluten-free",
+       "accept": [
+        "gluten free"
+       ]
+      },
+      {
+       "n": 6,
+       "answer": "18",
+       "accept": [
+        "eighteen"
+       ]
+      },
+      {
+       "n": 7,
+       "answer": "11:45",
+       "accept": [
+        "11.45",
+        "quarter to twelve"
+       ]
+      },
+      {
+       "n": 8,
+       "answer": "250 Lorne Street"
+      },
+      {
+       "n": 9,
+       "answer": "B3K 2R8"
+      },
+      {
+       "n": 10,
+       "answer": "25",
+       "accept": [
+        "twenty-five"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "A tour of the Central Library",
+   "context": "You will hear a librarian giving a tour to new members of a public library in Winnipeg.",
+   "audio": "/listening/band9-listening-20/s2.mp3",
+   "durationSec": 234,
+   "transcript": [
+    {
+     "speaker": "Fiona",
+     "text": "Good morning, everyone, and welcome to the Central Library. My name's Fiona, and I'm the community librarian. I'm delighted to see so many new faces. Before we start the tour, I'd like to tell you a few practical things about becoming a member, and then we'll walk through the building floor by floor."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "First of all, joining. A library card is free for everyone who lives in the city, and all you need is a document showing your address, like a utility bill. If you live outside the city, you can still join, but there's an annual fee. Children can get their own card at any age, as long as a parent signs the form."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "Now, let me tell you about borrowing. Until recently, members could borrow twenty books at a time, but that was a bit limiting for the keen readers among you, so we've raised it to 30 books. The limit for DVDs hasn't changed. It's still five. There's a higher limit of fifty items for teachers, but that doesn't apply to most people."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "If you want to keep a book for longer, you can renew it. You used to be able to do this by phone, but we've closed the phone service, because hardly anyone was using it. Instead, you can renew online, using our website, or on the library app, which you can download for free. Of course, you can also renew your books at the desk, if you're here in person."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "Right, let's go on to the building. We start here, on the ground floor. This is the main entrance, and you can see the reading lounge on your left. It's where we keep the newspapers and magazines, and there are comfortable armchairs. Many regulars spend the whole morning here, and the café is next door, so you can bring a coffee in, as long as it has a lid."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "If you take the stairs or the lift, you'll find the first floor, which is the busiest part of the library. It's where you'll find our public computers, and a printing station. Using the computers is free for an hour a day, and you just need to sign in with your library card. Printing costs ten cents a page, and if you need help, a member of staff is always on duty."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "On the second floor we have the quiet study area, which is very popular with students. There are twelve small study pods, each with a desk and a power socket, and you can book one for up to three hours through the website. They're often fully booked during exams, so I suggest you plan ahead."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "The third floor is the most unusual, and it's my favourite. Here we have the local history archive, where you can look at old maps, photographs and newspapers from Winnipeg going back to the eighteen seventies. Some families come to trace their ancestors, and our archivist can help. It's open Tuesday to Saturday, and you need to make an appointment."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "You may have heard that there are plans for a makerspace with 3D printers and sewing machines. It's a lovely idea, but the funding has been delayed, so I'm afraid that it's been postponed. We'll announce it on the website when it's ready. And if you're looking for conversation groups for people who are learning English, those take place at the community centre next door on Wednesday evenings, not here."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "Finally, down in the lower level, we have the children's library. This is a bright space, with low shelves and beanbags, and there are storytelling sessions for the youngest children on Tuesday and Saturday mornings. Parents are welcome to stay, and there's a quiet corner for breastfeeding."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "Now, a few announcements. Some of you may remember paying fines for returning books late. I'm very pleased to say that we no longer charge late fees on any item. If you are late, we'll send you a reminder, and you simply can't borrow more until you've returned the overdue books. It's made a huge difference, and many people who had stopped visiting have come back."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "Another thing. Next month, the library will be closed on Monday mornings, as we're replacing the carpet on the first and second floors. We'll be open as usual in the afternoons. The notice is on the website, and we'll put signs on the doors. Sorry for any inconvenience."
+    },
+    {
+     "speaker": "Fiona",
+     "text": "That's all from me for now. Please feel free to explore, and ask any of the staff if you can't find something. Enjoy the library."
+    }
+   ],
+   "groups": [
+    {
+     "type": "mcq-one",
+     "title": "Questions 11-13",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 11,
+       "prompt": "What does the librarian say about a library card?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "It is free for city residents."
+        },
+        {
+         "key": "B",
+         "text": "It is free for children only."
+        },
+        {
+         "key": "C",
+         "text": "It costs a small annual fee for everyone."
+        }
+       ]
+      },
+      {
+       "n": 12,
+       "prompt": "What is the new limit on the number of books members can borrow?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "20"
+        },
+        {
+         "key": "B",
+         "text": "30"
+        },
+        {
+         "key": "C",
+         "text": "50"
+        }
+       ]
+      },
+      {
+       "n": 13,
+       "prompt": "How can members renew items?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "by phone"
+        },
+        {
+         "key": "B",
+         "text": "online or through the app"
+        },
+        {
+         "key": "C",
+         "text": "only at the desk"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 14-18",
+     "instruction": "What can visitors find on each floor of the library? Choose FIVE answers from the box and write the correct letter, A-G, next to Questions 14-18.",
+     "options": [
+      {
+       "key": "A",
+       "text": "newspapers and magazines"
+      },
+      {
+       "key": "B",
+       "text": "storytelling sessions for young children"
+      },
+      {
+       "key": "C",
+       "text": "bookable study pods"
+      },
+      {
+       "key": "D",
+       "text": "computers and a printing station"
+      },
+      {
+       "key": "E",
+       "text": "a local history archive"
+      },
+      {
+       "key": "F",
+       "text": "a workshop with 3D printers"
+      },
+      {
+       "key": "G",
+       "text": "conversation groups for English learners"
+      }
+     ],
+     "questions": [
+      {
+       "n": 14,
+       "prompt": "Ground floor",
+       "answer": "A"
+      },
+      {
+       "n": 15,
+       "prompt": "First floor",
+       "answer": "D"
+      },
+      {
+       "n": 16,
+       "prompt": "Second floor",
+       "answer": "C"
+      },
+      {
+       "n": 17,
+       "prompt": "Third floor",
+       "answer": "E"
+      },
+      {
+       "n": 18,
+       "prompt": "Lower level",
+       "answer": "B"
+      }
+     ]
+    },
+    {
+     "type": "mcq-one",
+     "title": "Questions 19-20",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 19,
+       "prompt": "What does the librarian say about late fees?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "They have been reduced."
+        },
+        {
+         "key": "B",
+         "text": "They are no longer charged."
+        },
+        {
+         "key": "C",
+         "text": "They now apply only to DVDs."
+        }
+       ]
+      },
+      {
+       "n": 20,
+       "prompt": "Why will the library close on Monday mornings next month?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "for staff training"
+        },
+        {
+         "key": "B",
+         "text": "for new carpets to be laid"
+        },
+        {
+         "key": "C",
+         "text": "for a book sale"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "A marketing project on food packaging",
+   "context": "You will hear two business students, Ines and Marcus, discussing a marketing project with their tutor, Doctor Kowalski.",
+   "audio": "/listening/band9-listening-20/s3.mp3",
+   "durationSec": 289,
+   "transcript": [
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Good afternoon, Ines. Good afternoon, Marcus. I've read your outline for the marketing project. It's about reducing single-use packaging at the food trucks on campus, is that right?"
+    },
+    {
+     "speaker": "Ines",
+     "text": "That's right. We want to find out what would persuade students to use less packaging, and then recommend a plan to the truck owners."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Ines, what drew you to the topic?"
+    },
+    {
+     "speaker": "Ines",
+     "text": "I worked for a summer on a food truck in Halifax. At the end of every shift we threw away bags and bags of containers and cups, and I thought there must be a better way. The owner was interested, but he said he didn't know what customers wanted."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "And for me it was more about the business side. I think sustainability will be a big selling point in the next few years."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Good. Now, tell me about the survey you're planning."
+    },
+    {
+     "speaker": "Ines",
+     "text": "We'll ask about two hundred students whether they'd prefer reusable containers, and what they'd be willing to pay."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "I'm a bit worried about that, though. People often say they care about the environment, but when it comes to paying fifty cents extra, they behave differently. So the survey might give us an over-optimistic picture."
+    },
+    {
+     "speaker": "Ines",
+     "text": "But we can't really observe what they'd do without actually running a trial."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "That's a fair point, Marcus, and it's a well-known problem in market research. I'd suggest you do both. Use the survey to find out what people say, then spend two lunchtimes watching what they actually do at the trucks. Count how many people bring their own cups, for example. That would give you a much stronger result than interviewing the owners, which I know you were considering."
+    },
+    {
+     "speaker": "Ines",
+     "text": "I'd thought of the interviews because the owners know their customers well."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "They do, and you might still talk to one or two. But it's the customers' behaviour that matters most."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "Okay. Should we look at the different types of packaging in the report?"
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Yes, that would be useful. Let's go through the ones you've listed. Start with the paper cups."
+    },
+    {
+     "speaker": "Ines",
+     "text": "We found that most of them have a thin plastic lining, so they look recyclable, but they aren't."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Exactly. In most Canadian cities, they can't be recycled, because the plastic can't be separated from the paper. That surprises many people, so it's worth explaining carefully."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "Then there are the compostable containers. They're the obvious solution, but they cost nearly three times as much as plastic."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Which is a serious problem for a small business, with very thin margins. You'll need to show how the owners could afford it. What about the reusable bowls?"
+    },
+    {
+     "speaker": "Ines",
+     "text": "We thought we'd charge a deposit. The customer pays two dollars, and gets it back when they return the bowl."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "It's a good model, but be careful about who returns them. In similar trials, it was mostly the regular customers who brought them back. Visitors and occasional customers tended to keep them, or throw them away."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "So the scheme only works if you have a loyal group."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Right. Next, the cardboard trays."
+    },
+    {
+     "speaker": "Ines",
+     "text": "They're cheap and they're recyclable, but there's one problem."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "They go soggy. If you put hot food in them, like curry or noodles, they start to collapse within ten minutes."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Precisely. Mention that, because it affects how customers see the product. And the wooden cutlery?"
+    },
+    {
+     "speaker": "Ines",
+     "text": "That's the surprise. In our pilot survey, it was the most popular change, because people thought it felt nicer than plastic, and it was only a tiny extra cost."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "That's a useful finding, and an easy win for the owners. Now, what recommendations will you make at the end?"
+    },
+    {
+     "speaker": "Ines",
+     "text": "I think we should recommend a discount for people who bring their own cup. Even a small amount, like twenty cents, might change behaviour."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "And we could suggest a partnership with a composting company, so that the trucks don't have to dispose of the containers themselves."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Those are both realistic. What about banning single-use packaging altogether?"
+    },
+    {
+     "speaker": "Marcus",
+     "text": "I'd like to, but the owners would never agree."
+    },
+    {
+     "speaker": "Ines",
+     "text": "And a social media campaign could help, but it's not really the key."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "Should we also include a section on the costs of our own recommendations?"
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Definitely. An owner will only act if he can see the numbers. Work out how many cups a truck sells in a week, what the discount would cost, and how much it would save on packaging. Even a rough calculation is better than none."
+    },
+    {
+     "speaker": "Ines",
+     "text": "I could ask the owner I worked for. He'd probably let us see his sales figures if we promised not to publish his name."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "That's a good idea, but get his agreement in writing. And think about the length of your report. The limit is four thousand words, and the best reports I see are usually closer to three thousand five hundred, with clear headings and short paragraphs."
+    },
+    {
+     "speaker": "Marcus",
+     "text": "We'll aim for that."
+    },
+    {
+     "speaker": "Ines",
+     "text": "What about the presentation? Should we use slides?"
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Yes, but keep them simple, with one main idea per slide, and perhaps a photograph from your observation days. A picture of a full rubbish bin makes the point better than a paragraph of text."
+    },
+    {
+     "speaker": "Doctor Kowalski",
+     "text": "Agreed. Concentrate on the discount and the partnership. Send me a draft of the survey by next Wednesday, and I'll give you some feedback before you launch it."
+    }
+   ],
+   "groups": [
+    {
+     "type": "mcq-one",
+     "title": "Questions 21-23",
+     "instruction": "Choose the correct letter, A, B or C.",
+     "questions": [
+      {
+       "n": 21,
+       "prompt": "What first made Ines interested in the topic?",
+       "answer": "A",
+       "options": [
+        {
+         "key": "A",
+         "text": "her work on a food truck"
+        },
+        {
+         "key": "B",
+         "text": "a documentary she watched"
+        },
+        {
+         "key": "C",
+         "text": "her family's business"
+        }
+       ]
+      },
+      {
+       "n": 22,
+       "prompt": "What is Marcus's concern about the survey?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "Too few students will reply."
+        },
+        {
+         "key": "B",
+         "text": "People may not do what they say they will."
+        },
+        {
+         "key": "C",
+         "text": "The questions may be unclear."
+        }
+       ]
+      },
+      {
+       "n": 23,
+       "prompt": "What does the tutor recommend in addition to the survey?",
+       "answer": "B",
+       "options": [
+        {
+         "key": "A",
+         "text": "interviewing the truck owners"
+        },
+        {
+         "key": "B",
+         "text": "observing customers' behaviour"
+        },
+        {
+         "key": "C",
+         "text": "running an online poll"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "matching",
+     "title": "Questions 24-28",
+     "instruction": "What does the tutor say about each type of packaging? Choose FIVE answers from the box and write the correct letter, A-G, next to Questions 24-28.",
+     "options": [
+      {
+       "key": "A",
+       "text": "It was the most popular with customers."
+      },
+      {
+       "key": "B",
+       "text": "It is too expensive for small businesses."
+      },
+      {
+       "key": "C",
+       "text": "It cannot be recycled in most cities."
+      },
+      {
+       "key": "D",
+       "text": "It is usually returned only by regular customers."
+      },
+      {
+       "key": "E",
+       "text": "It becomes soggy with hot food."
+      },
+      {
+       "key": "F",
+       "text": "It needs new equipment to produce."
+      },
+      {
+       "key": "G",
+       "text": "It can be bought from local suppliers."
+      }
+     ],
+     "questions": [
+      {
+       "n": 24,
+       "prompt": "Paper cups",
+       "answer": "C"
+      },
+      {
+       "n": 25,
+       "prompt": "Compostable containers",
+       "answer": "B"
+      },
+      {
+       "n": 26,
+       "prompt": "Reusable bowls",
+       "answer": "D"
+      },
+      {
+       "n": 27,
+       "prompt": "Cardboard trays",
+       "answer": "E"
+      },
+      {
+       "n": 28,
+       "prompt": "Wooden cutlery",
+       "answer": "A"
+      }
+     ]
+    },
+    {
+     "type": "mcq-many",
+     "title": "Questions 29-30",
+     "instruction": "Choose TWO letters, A-E. Which TWO recommendations will the students make to the truck owners?",
+     "options": [
+      {
+       "key": "A",
+       "text": "give a discount to customers who bring their own cup"
+      },
+      {
+       "key": "B",
+       "text": "work with a composting company"
+      },
+      {
+       "key": "C",
+       "text": "stop using single-use packaging completely"
+      },
+      {
+       "key": "D",
+       "text": "start a social media campaign"
+      },
+      {
+       "key": "E",
+       "text": "change the menu"
+      }
+     ],
+     "questions": [
+      {
+       "n": 29,
+       "answer": [
+        "A",
+        "B"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Wool: structure and sustainability",
+   "context": "You will hear a lecturer in textile science talking about the properties of wool.",
+   "audio": "/listening/band9-listening-20/s4.mp3",
+   "durationSec": 271,
+   "transcript": [
+    {
+     "speaker": "Professor Quinn",
+     "text": "Good morning, everyone. Today I want to talk about wool, which is one of the oldest textile fibres in the world, and also one of the most interesting from a scientific point of view. Both Australia and New Zealand built their economies on wool, and it still matters a great deal to farmers in both countries, so I'd like us to understand why it behaves as it does."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "Let me start with a little history. The sheep that produce the finest wool are called merinos, and they came originally from Spain. The first merinos arrived in Australia in 1797, brought by a small group of settlers, and within a few decades, the colony had become the world's largest producer of fine wool. The animals adapted very well to the dry climate, and the industry grew rapidly."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "What does fine mean? The quality of wool is measured by the diameter of the individual fibres, in a unit called the micron, which is one thousandth of a millimetre. A human hair is about seventy microns across. The finest merino wool is less than 19 microns, which makes it soft enough to wear next to the skin. Coarser wool, which is used for carpets, can be more than thirty microns."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "Now, what makes wool so special? Let's look at the structure. If you looked at a wool fibre under a microscope, you would see that its outer layer is made of overlapping scales, which together are called the cuticle. They are rather like the tiles on a roof. This is important for two reasons. It makes the fibre slightly water-repellent, so rain runs off, and it is also the reason wool can felt, which is what happens when a woollen jumper shrinks in a hot wash. The scales catch on each other and lock together."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "Inside the fibre, there is another feature, which is the natural crimp, or waviness. Because the fibres are curly, they don't pack together tightly, and they form tiny pockets that trap air. That is why wool is such a good insulator. Air is a poor conductor of heat, so the trapped air keeps the warmth in on a cold day."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "At the same time, the fibre is able to take in moisture. Wool can absorb up to 30 percent of its own weight in water vapour before it even feels damp. That's a lot more than cotton, and far more than synthetic fibres, which hardly absorb anything. This is why a wool garment keeps you comfortable when you sweat, instead of making you feel clammy."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "Wool has some other useful properties. For one, it is naturally resistant to fire. It's hard to ignite, and when it does burn, it tends to go out by itself, so it's often used for uniforms and for furnishings in public buildings. It also resists odours, because the fibre doesn't hold bacteria in the way that synthetic fibres do."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "Let's turn to sustainability, which is where wool has attracted a lot of interest recently. One concern with synthetic clothes is that every time they're washed, they release tiny pieces of plastic into the water. These are called microplastics, and they end up in rivers and oceans. Wool doesn't release microplastics, because it's a natural protein fibre, and in the right conditions, it breaks down in the soil, and returns nutrients."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "However, we shouldn't be uncritical. Sheep farming has its own environmental costs, including methane emissions and land use. A typical merino sheep is shorn once a year, and it produces a fleece weighing about 4 kilograms, which is enough for several jumpers, but not a great deal in global terms. So the industry is working on reducing its emissions."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "There has also been a lot of discussion about animal welfare. One issue concerns a practice called mulesing, in which a strip of skin is removed from around the sheep's tail area. The purpose is to prevent a serious condition called flystrike, which happens when flies lay their eggs on damp, dirty wool, and the maggots attack the animal. Mulesing is painful, and many consumers and retailers now refuse to buy wool from farms that practise it. Farmers are looking at alternatives, such as breeding sheep with smoother skin, or using better treatments."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "Finally, a word about new uses. For decades, the main use of wool was clothing and carpets, but demand for those has fallen. In New Zealand and Australia, there is growing interest in using wool as building insulation. It's natural, it regulates humidity, and it doesn't release harmful dust. Several companies already sell wool insulation batts, and early results are promising, though they cost more than the standard fibreglass."
+    },
+    {
+     "speaker": "Professor Quinn",
+     "text": "For next week, please read the two articles on the course page, and think about whether wool can compete with synthetic fibres on price, or whether it should be marketed purely as a premium product."
+    }
+   ],
+   "groups": [
+    {
+     "type": "gap",
+     "title": "Questions 31-40",
+     "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+     "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+     "lines": [
+      "## Wool",
+      "Merino sheep first arrived in Australia in {{31}}",
+      "The finest merino wool is less than {{32}} microns across",
+      "## Structure and properties",
+      "Outer layer of overlapping scales: the {{33}}",
+      "The natural crimp traps {{34}}, which provides insulation",
+      "Can absorb up to {{35}} percent of its weight in moisture",
+      "Naturally resistant to {{36}}",
+      "## Sustainability and welfare",
+      "Does not release {{37}} when washed",
+      "A merino fleece weighs about {{38}} kilograms",
+      "Mulesing is used to prevent {{39}}",
+      "New use for wool: building {{40}}"
+     ],
+     "questions": [
+      {
+       "n": 31,
+       "answer": "1797"
+      },
+      {
+       "n": 32,
+       "answer": "19",
+       "accept": [
+        "nineteen"
+       ]
+      },
+      {
+       "n": 33,
+       "answer": "cuticle"
+      },
+      {
+       "n": 34,
+       "answer": "air"
+      },
+      {
+       "n": 35,
+       "answer": "30",
+       "accept": [
+        "thirty"
+       ]
+      },
+      {
+       "n": 36,
+       "answer": "fire"
+      },
+      {
+       "n": 37,
+       "answer": "microplastics"
+      },
+      {
+       "n": 38,
+       "answer": "4",
+       "accept": [
+        "four"
+       ]
+      },
+      {
+       "n": 39,
+       "answer": "flystrike"
+      },
+      {
+       "n": 40,
+       "answer": "insulation"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

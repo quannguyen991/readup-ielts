@@ -5,9 +5,16 @@ import { shuffled, type StudyWord } from './topic-study';
  * kiểm đáp án. Không đụng React nên test được bằng node.
  */
 
-/** Từ chơi được bằng chữ cái: chỉ a–z, dài 3–12. Bỏ cụm từ, dấu gạch và số. */
+/** Từ đơn viết bằng a–z, dùng cho trò chơi chỉ hỗ trợ một từ. */
 export function isLetterWord(word: string): boolean {
   return /^[a-z]{3,12}$/i.test(word.trim());
+}
+
+/** Hangman cũng hỗ trợ cụm từ; khoảng trắng và dấu câu được mở sẵn. */
+export function isHangmanAnswer(word: string): boolean {
+  const value = word.trim();
+  const letters = value.match(/[a-z]/gi)?.length ?? 0;
+  return letters >= 3 && letters <= 28 && /^[a-z]+(?:[ '\u2019-][a-z]+)*$/i.test(value);
 }
 
 /** Chọn tối đa n từ khác nhau (không phân biệt hoa thường) có nghĩa tiếng Việt, xáo ngẫu nhiên. */
@@ -47,12 +54,12 @@ export function isPairMatch(a: PairTile, b: PairTile): boolean {
 
 /** Từng chữ của từ: chữ đã đoán thì hiện, chưa đoán thì là gạch dưới. */
 export function revealedLetters(word: string, guessed: ReadonlySet<string>): string[] {
-  return [...word.toLowerCase()].map((ch) => (guessed.has(ch) ? ch : '_'));
+  return [...word.toLowerCase()].map((ch) => (/[a-z]/i.test(ch) ? (guessed.has(ch) ? ch : '_') : ch));
 }
 
 /** Số chữ đã đoán mà không có trong từ. */
 export function wrongGuessCount(word: string, guessed: ReadonlySet<string>): number {
-  const letters = new Set(word.toLowerCase());
+  const letters = new Set(word.toLowerCase().match(/[a-z]/g) ?? []);
   let n = 0;
   for (const ch of guessed) if (!letters.has(ch)) n += 1;
   return n;
@@ -60,7 +67,7 @@ export function wrongGuessCount(word: string, guessed: ReadonlySet<string>): num
 
 /** Đã đoán đủ mọi chữ cái khác nhau của từ (chữ lặp chỉ cần đoán một lần). */
 export function isGuessSolved(word: string, guessed: ReadonlySet<string>): boolean {
-  return [...new Set(word.toLowerCase())].every((ch) => guessed.has(ch));
+  return [...new Set(word.toLowerCase().match(/[a-z]/g) ?? [])].every((ch) => guessed.has(ch));
 }
 
 export type SentenceChip = { id: number; text: string };

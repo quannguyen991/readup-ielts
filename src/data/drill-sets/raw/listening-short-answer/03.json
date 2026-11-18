@@ -1,0 +1,127 @@
+{
+ "title": "Adult Music Learning Research Tutorial",
+ "topic": "learning musical instruments as an adult (set 3)",
+ "context": "Narrator: You will hear a discussion between a university tutor and two postgraduate students about their research project on adults learning musical instruments. First, you have some time to look at questions 1 to 20.\nDr. Aris: Good morning, Maya, Liam. Come in and take a seat. Before we review your survey draft, let's verify a few administrative details. Which project title is officially registered on the departmental system?\nLiam: Well, we initially suggested Project Melody, but the administration recorded our project as Project Cadence.\nMaya: That is right. It appears under Project Cadence in our student records.\nDr. Aris: Good, I have noted that down. Now, regarding your submission deadline, where should your written report be handed in?\nLiam: We need to submit hard copies directly to Room 308 in the humanities building.\nDr. Aris: And when is the revised submission date?\nMaya: The original date was late October, but our department head extended it to the second of November.\nDr. Aris: Perfect. That gives you some extra time. Now, how many participants completed your preliminary survey?\nLiam: We had hoped for fifty people, but we actually managed to collect data from eighty-five respondents.\nDr. Aris: That is a very solid sample size. And what specific age bracket did you select?\nMaya: We deliberately excluded younger adults and focused exclusively on individuals aged over forty-five, because their learning patterns are rarely investigated.\nNarrator: Now listen to the rest of the discussion.\nDr. Aris: Let us explore your main research findings now. Which instrument proved most popular among these mature beginners?\nLiam: Most people assume it would be piano or acoustic guitar, but the acoustic cello was the top selection by a wide margin.\nDr. Aris: That is quite surprising! And what did respondents identify as their primary motivation for picking up an instrument?\nMaya: While a few mentioned creative fulfillment or socialising, stress relief was chosen by nearly seventy percent as their main goal.\nDr. Aris: That makes sense given modern work pressures. Did the participants face any notable physical obstacles during the early weeks?\nLiam: Yes, several complained of posture fatigue, but finger stiffness was clearly the most common complaint reported during initial sessions.\nDr. Aris: On the positive side, adult learners usually bring valuable intellectual strengths. Did you identify any specific cognitive advantage?\nMaya: Definitely. Dr. Vance noted that their developed capacity for analytical reasoning allows them to understand harmonic theory much quicker than children do.\nDr. Aris: And does that connect to modern neurological research on adult learning capacity?\nLiam: Yes, we reviewed several articles on neuroplasticity, which confirm that synaptic pathways continue adapting when adults practice new motor tasks regularly.\nDr. Aris: What did your respondents report regarding the most productive practice schedule?\nMaya: Long weekend cramming sessions caused burnout. Instead, participants who maintained daily sessions lasting twenty-five minutes made the most consistent progress.\nDr. Aris: What about psychological hurdles? Adult learners often struggle with self-perception.\nLiam: That was evident. The single biggest psychological barrier reported was intense perfectionism, because adults are often far too critical of their own mistakes.\nDr. Aris: How did experienced instructors help students navigate that emotional pressure?\nLiam: The most effective teachers structured lessons using micro-goals, which break complex musical compositions into manageable daily steps.\nDr. Aris: Did learners use modern technology for practicing outside the classroom?\nMaya: Yes, a majority of our respondents monitored their pitch accuracy with a mobile application called NoteCraft.\nDr. Aris: Did they rely primarily on sound alerts from the software?\nLiam: Actually, no. Most learners explicitly preferred visual feedback, such as real-time pitch graphs and color-coded indicators.\nDr. Aris: You mentioned interviewing an external specialist for this research. Who was that?\nMaya: We consulted Professor Keller, who is an experienced music therapist specializing in adult rehabilitation.\nDr. Aris: Regarding the repertoire, what musical genre did the adult learners find most enjoyable to practice?\nLiam: Surprisingly, they avoided classical exercises and opted for traditional folk tunes, because familiar melodies gave them immediate satisfaction.\nDr. Aris: Many adult beginners give up early. What did your data reveal as the main cause of attrition?\nMaya: The leading factor was unrealistic expectations regarding the speed of skill acquisition.\nLiam: To keep spirits high and celebrate milestone achievements, the community centre held an informal recital at the end of the term.\nDr. Aris: That sounds like an encouraging environment. And when will you present your complete research findings to the faculty?\nMaya: We are scheduled to host an interactive workshop on the fifteenth of December.\nDr. Aris: Excellent. Your methodology looks thorough and well thought out.",
+ "questions": [
+  {
+   "prompt": "What is the official title of the students' project on the departmental system?",
+   "answer": "Project Cadence",
+   "why": "Liam giải thích rằng ban đầu nhóm đề xuất 'Project Melody', nhưng phía quản trị khoa đã ghi nhận tên chính thức là 'Project Cadence'.",
+   "quote": "the administration recorded our project as Project Cadence."
+  },
+  {
+   "prompt": "Where should the students hand in their hard copies of the report?",
+   "answer": "Room 308",
+   "why": "Liam nói rõ các bản in cần nộp trực tiếp tại 'Room 308' ở tòa nhà nhân văn.",
+   "quote": "We need to submit hard copies directly to Room 308 in the humanities building."
+  },
+  {
+   "prompt": "On what date is the revised submission due?",
+   "answer": "second of November | 2nd of November | November 2nd",
+   "why": "Hạn nộp ban đầu là cuối tháng 10 nhưng trưởng khoa đã gia hạn đến ngày 2 tháng 11 ('second of November').",
+   "quote": "The original date was late October, but our department head extended it to the second of November."
+  },
+  {
+   "prompt": "How many respondents took part in the preliminary survey?",
+   "answer": "85 | eighty-five",
+   "why": "Liam cho biết dù ban đầu dự kiến 50 người, họ đã thu thập được số liệu từ 85 người tham gia ('eighty-five respondents').",
+   "quote": "We had hoped for fifty people, but we actually managed to collect data from eighty-five respondents."
+  },
+  {
+   "prompt": "What age group did the researchers specifically focus on?",
+   "answer": "over forty-five | over 45",
+   "why": "Maya nhấn mạnh nghiên cứu loại trừ người trẻ và tập trung duy nhất vào những người trên 45 tuổi ('over forty-five').",
+   "quote": "focused exclusively on individuals aged over forty-five, because their learning patterns are rarely investigated."
+  },
+  {
+   "prompt": "Which musical instrument was selected by the largest number of beginners?",
+   "answer": "acoustic cello | the acoustic cello",
+   "why": "Liam lưu ý đa số người nghĩ là piano hay guitar, nhưng đàn cello mộc ('acoustic cello') mới là lựa chọn dẫn đầu cách biệt lớn.",
+   "quote": "Most people assume it would be piano or acoustic guitar, but the acoustic cello was the top selection by a wide margin."
+  },
+  {
+   "prompt": "What did most adult beginners cite as their primary motivation for learning?",
+   "answer": "stress relief",
+   "why": "Dù có người nhắc đến sáng tạo hay giao lưu xã hội, gần 70% chọn giải tỏa căng thẳng ('stress relief') làm mục tiêu chính.",
+   "quote": "While a few mentioned creative fulfillment or socialising, stress relief was chosen by nearly seventy percent as their main goal."
+  },
+  {
+   "prompt": "What physical problem was reported as the most common complaint initially?",
+   "answer": "finger stiffness",
+   "why": "Một số người bị mỏi do tư thế, nhưng cứng ngón tay ('finger stiffness') là khiếu nại phổ biến nhất trong các buổi đầu.",
+   "quote": "finger stiffness was clearly the most common complaint reported during initial sessions."
+  },
+  {
+   "prompt": "Which cognitive strength helps adults learn harmonic theory faster than children?",
+   "answer": "analytical reasoning",
+   "why": "Maya giải thích rằng năng lực tư duy phân tích ('analytical reasoning') giúp người lớn hiểu lý thuyết hòa âm nhanh hơn trẻ em.",
+   "quote": "their developed capacity for analytical reasoning allows them to understand harmonic theory much quicker than children do."
+  },
+  {
+   "prompt": "What neurological concept explains the brain's ability to adapt when adults practice?",
+   "answer": "neuroplasticity",
+   "why": "Liam đề cập đến các tài liệu về tính mềm dẻo của não ('neuroplasticity'), cho thấy đường dẫn thần kinh vẫn thích nghi khi tập luyện.",
+   "quote": "we reviewed several articles on neuroplasticity, which confirm that synaptic pathways continue adapting when adults practice new motor tasks regularly."
+  },
+  {
+   "prompt": "What practice duration per day yielded the most consistent progress?",
+   "answer": "25 minutes | twenty-five minutes",
+   "why": "Việc dồn giờ vào cuối tuần gây kiệt sức, thay vào đó các buổi tập 25 phút ('twenty-five minutes') mỗi ngày mang lại kết quả tốt nhất.",
+   "quote": "participants who maintained daily sessions lasting twenty-five minutes made the most consistent progress."
+  },
+  {
+   "prompt": "What was identified as the single biggest psychological barrier for adult learners?",
+   "answer": "intense perfectionism | perfectionism",
+   "why": "Liam khẳng định rào cản tâm lý lớn nhất là tính cầu toàn quá mức ('intense perfectionism'), khiến người lớn khắt khe với lỗi sai của mình.",
+   "quote": "The single biggest psychological barrier reported was intense perfectionism, because adults are often far too critical of their own mistakes."
+  },
+  {
+   "prompt": "What technique did successful teachers use to divide complex pieces?",
+   "answer": "micro-goals",
+   "why": "Giáo viên chia nhỏ các tác phẩm phức tạp thành các bước quản lý được hàng ngày bằng cách sử dụng các mục tiêu siêu nhỏ ('micro-goals').",
+   "quote": "The most effective teachers structured lessons using micro-goals, which break complex musical compositions into manageable daily steps."
+  },
+  {
+   "prompt": "What is the name of the mobile application used to check pitch accuracy?",
+   "answer": "NoteCraft",
+   "why": "Maya nêu tên ứng dụng di động mà người tham gia dùng để theo dõi cao độ là 'NoteCraft'.",
+   "quote": "a majority of our respondents monitored their pitch accuracy with a mobile application called NoteCraft."
+  },
+  {
+   "prompt": "What type of feedback did learners prefer from the application?",
+   "answer": "visual feedback",
+   "why": "Khi giáo viên hỏi về âm thanh, Liam phủ định và nói rằng người học chuộng phản hồi bằng hình ảnh ('visual feedback') như biểu đồ cao độ.",
+   "quote": "Most learners explicitly preferred visual feedback, such as real-time pitch graphs and color-coded indicators."
+  },
+  {
+   "prompt": "What profession does Professor Keller hold?",
+   "answer": "music therapist | a music therapist",
+   "why": "Maya giới thiệu Giáo sư Keller là một chuyên gia trị liệu bằng âm nhạc ('music therapist').",
+   "quote": "We consulted Professor Keller, who is an experienced music therapist specializing in adult rehabilitation."
+  },
+  {
+   "prompt": "Which genre of music did mature beginners prefer playing?",
+   "answer": "traditional folk tunes | traditional folk | folk tunes",
+   "why": "Người học né tránh các bài tập cổ điển và ưa chuộng các giai điệu dân ca truyền thống ('traditional folk tunes').",
+   "quote": "Surprisingly, they avoided classical exercises and opted for traditional folk tunes, because familiar melodies gave them immediate satisfaction."
+  },
+  {
+   "prompt": "What was the leading factor causing learners to quit?",
+   "answer": "unrealistic expectations",
+   "why": "Maya chỉ ra rằng nguyên nhân bỏ cuộc hàng đầu là những kỳ vọng thiếu thực tế ('unrealistic expectations') về tốc độ tiến bộ.",
+   "quote": "The leading factor was unrealistic expectations regarding the speed of skill acquisition."
+  },
+  {
+   "prompt": "What kind of event was organized by the community centre to motivate learners?",
+   "answer": "informal recital | an informal recital",
+   "why": "Trung tâm cộng đồng đã tổ chức một buổi biểu diễn nhỏ ấm cúng ('informal recital') vào cuối kỳ để khích lệ tinh thần học viên.",
+   "quote": "To keep spirits high and celebrate milestone achievements, the community centre held an informal recital at the end of the term."
+  },
+  {
+   "prompt": "On what date will the students present their findings at the symposium?",
+   "answer": "fifteenth of December | 15th of December | December 15th",
+   "why": "Maya cho biết họ dự kiến tổ chức buổi thảo luận chuyên đề vào ngày 15 tháng 12 ('fifteenth of December').",
+   "quote": "We are scheduled to host an interactive workshop on the fifteenth of December."
+  }
+ ]
+}

@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { DrillSetRunner } from '@/components/ielts/DrillSetRunner';
+import { DrillExamHost } from '@/components/ielts/exam/DrillExamHost';
 import { Icon } from '@/components/ui';
 import { getDrillSets, hasDrillSets } from '@/data/drill-sets';
 import { getWritingPromptById, WRITING_PROMPTS } from '@/data/writing-repository';
@@ -51,7 +51,7 @@ export function TypePractice({ typeId, skill, listening }: { typeId: string; ski
     const open = sets.find((s) => s.id === openId);
     if (open) {
       const i = sets.indexOf(open);
-      return <DrillSetRunner typeId={typeId} set={open} listening={listening} nextSetId={sets[i + 1]?.id} onExit={() => setOpenId(null)} onNext={setOpenId} />;
+      return <DrillExamHost typeId={typeId} set={open} skill={listening ? 'listening' : 'reading'} nextSetId={sets[i + 1]?.id} onExit={() => setOpenId(null)} onNext={setOpenId} />;
     }
     return (
       <View className="gap-3 pb-12">

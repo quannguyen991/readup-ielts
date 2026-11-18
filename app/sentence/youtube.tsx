@@ -9,6 +9,7 @@ import { ListeningQuiz } from '@/components/sentence/ListeningQuiz';
 import { Badge, Button, Icon } from '@/components/ui';
 import { useListen } from '@/components/hub/useListen';
 import { parsePastedTranscript } from '@/services/youtube/paste-transcript';
+import { fetchStaticSubs } from '@/services/youtube/static-subs';
 import { parseVideoId, type TranscriptSentence } from '@/services/youtube/transcript';
 import { splitForDictation } from '@/services/youtube/dictation-drills';
 import { clock, indexAt } from '@/services/youtube/transcript-view';
@@ -73,6 +74,8 @@ export default function YoutubeDictationScreen() {
   const { v } = useLocalSearchParams<{ v?: string }>();
   const savedVideos = useVideoTranscriptStore((s) => s.videos);
   const remember = useVideoTranscriptStore((s) => s.save);
+  const setStoredTranslations = useVideoTranscriptStore((s) => s.setTranslations);
+  const storedTr = useVideoTranscriptStore((s) => (typeof v === 'string' && v ? s.translations[v] : undefined));
 
   const fromLibrary = typeof v === 'string' && v ? savedVideos[v] : undefined;
   const initialVideoId = typeof v === 'string' ? parseVideoId(v) : null;
@@ -94,6 +97,29 @@ export default function YoutubeDictationScreen() {
     // phần đáng tiếc nhất để mất chính là công dán phụ đề.
     remember(id, list, auto);
   };
+
+  /*
+    Vào từ Thư viện video mà chưa có phụ đề trong máy: thử nạp phụ đề dựng sẵn (`/video-subs/<id>.json`) trước. Có thì vào
+    luyện ngay, không phải dán gì; không có thì giữ nguyên đường cũ (máy chủ lấy phụ đề, hoặc dán tay).
+  */
+  useEffect(() => {
+    if (!initialVideoId) return;
+    const needSentences = !fromLibrary && sentences.length === 0;
+    const needVi = !storedTr;
+    if (!needSentences && !needVi) return;
+    let alive = true;
+    void fetchStaticSubs(initialVideoId).then((r) => {
+      if (!alive || !r) return;
+      if (needSentences) start(initialVideoId, r.sentences, r.auto);
+      // Bản dịch dựng sẵn: chỉ nhận khi khớp số câu đang dùng (app ghép theo vị trí).
+      if (needVi && r.vi && (needSentences || r.sentences.length === fromLibrary?.sentences.length)) setStoredTranslations(initialVideoId, r.vi);
+    });
+    return () => {
+      alive = false;
+    };
+    // Chỉ chạy khi đổi video; `start` đổi mỗi lần vẽ nhưng chỉ dùng setState và `remember` ổn định.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialVideoId]);
 
   /*
     Chọn video → luyện: vào bằng nhịp chuyển trang. KHÔNG làm hiệu ứng khi sang câu

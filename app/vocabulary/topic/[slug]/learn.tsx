@@ -1,3 +1,4 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, {
   useEffect,
   useLayoutEffect,
@@ -22,6 +23,7 @@ import {
   StudyCard,
   StudyFrame,
   useHotkeys,
+  exitStudy,
 } from "@/components/vocab/study/StudyKit";
 import {
   DetailFace,
@@ -42,7 +44,7 @@ import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
 import { levelOf } from "@/data/study-decks";
 import { dueLemmasToday } from "@/services/vocab/topic-fsrs";
 import { useVocabStore } from "@/store/useVocabStore";
-import { mixByLevel } from "@/services/vocab/topic-study";
+import { mixByLevel, shuffled } from "@/services/vocab/topic-study";
 import { uid } from "@/store/persist";
 import {
   activeKinds,
@@ -173,7 +175,9 @@ export default function LearnScreen() {
     );
     // Từ đến hạn ôn hôm nay vào vòng trước, để lịch ôn thật sự chạy (mỗi lần trả lời đẩy hạn xa thêm).
     const dueSet = dueLemmasToday(useVocabStore.getState(), new Date());
-    const dueFirst = pool.filter((w) => dueSet.has(w.word.trim().toLowerCase())).slice(0, ROUND_SIZE);
+    // Từ đến hạn xáo đều trước khi cắt: không thì chỉ lấy những từ đầu bộ, nối đuôi nhau theo từng unit.
+    const dueAll = pool.filter((w) => dueSet.has(w.word.trim().toLowerCase()));
+    const dueFirst = (s.ordered ? dueAll : shuffled(dueAll, seededRng((Date.now() + 7919) % 100000))).slice(0, ROUND_SIZE);
     const rest = picked.filter((w) => !dueSet.has(w.word.trim().toLowerCase()));
     return topUpRound([...dueFirst, ...rest].slice(0, ROUND_SIZE), mixByLevel(pool, levelOf));
   };
@@ -264,17 +268,17 @@ export default function LearnScreen() {
   // Chiều nghe: đọc to ngay khi câu hiện ra.
   useEffect(() => {
     if (dir === "listen" && word && verdict === null && head?.kind !== "fill")
-      speak(word.word, { rate: 0.85 });
+      speak(word.word, { rate: 0.85, language: word.language });
     // Chỉ khi sang câu mới, không phải mỗi lần chấm.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, dir, word?.word]);
 
-  // TỰ PHÁT ÂM (quy tắc ở `services/vocab/auto-speak.ts`): đọc từ tiếng Anh đúng một lần mỗi câu,
+  // TỰ PHÁT ÂM (quy tắc ở `services/vocab/auto-speak.ts`): đọc từ đích đúng một lần mỗi câu,
   // lúc nó xuất hiện — làm đề, lật ra, hoặc lộ ra cùng đáp án (đúng hay sai đều đọc).
   const speakWhen = word && head ? autoSpeakWhen({ kind: head.kind, dir, flipped, revealed: verdict !== null }) : null;
   const shownWord: string | null = word && speakWhen ? word.word : null;
   const speakKey = `${slug}-${seed}-${step}-${speakWhen ?? ""}`;
-  useAutoPronounce(shownWord, speakKey);
+  useAutoPronounce(shownWord, speakKey, word?.language);
   useEffect(() => {
     preloadPronunciation(round.map((w) => w.word));
   }, [round]);
@@ -622,6 +626,7 @@ export default function LearnScreen() {
       matchCount={(d) =>
         filterWords(topic.words, d, stageOf, starredSet).length
       }
+      sourceLanguage={topic.language}
       onClose={() => setShowSettings(false)}
       onApply={(s) => {
         setLearnSettings(s);
@@ -702,7 +707,7 @@ export default function LearnScreen() {
             />
             <GhostButton
               label={L("Về bộ từ", "Back to word set")}
-              onPress={() => router.replace(backHref as never)}
+              onPress={() => exitStudy(backHref)}
             />
           </StudyCard>
         </CrossFade>
@@ -739,12 +744,12 @@ export default function LearnScreen() {
       <View className="mb-4 flex-row flex-wrap items-center justify-center gap-2">
         <StreakBadge n={streak} />
         <View className="rounded-pill px-3.5 py-1.5" style={{ backgroundColor: "#FFFFFF" }}>
-          <Text className="font-strong text-label" style={{ color: color.primary }}>
+          <Text className="font-strong text-label" style={{ color: accentFor(theme, color.primary) }}>
             {en ? KIND_LABEL[head!.kind].en : KIND_LABEL[head!.kind].vi}
           </Text>
         </View>
         {head!.tag ? (
-          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? (theme.dark || theme.id === "scene" ? AMBER_ON_NAVY : "#6A4BD9") : theme.onBg }}>
+          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? (theme.dark || theme.id === "scene" ? AMBER_ON_NAVY : theme.warn) : theme.onBg }}>
             {head!.tag === "retry" ? L("↻ Gặp lại từ vừa sai", "↻ Back after a miss") : L("↻ Gặp lại cho nhớ lâu", "↻ Repeat for long-term memory")}
           </Text>
         ) : null}
@@ -847,7 +852,7 @@ export default function LearnScreen() {
                 <View className="flex-row items-start justify-between gap-3">
                   <Text className="font-semi text-label text-muted">
                     {dir === "viToEn"
-                      ? L("Chọn từ tiếng Anh đúng", "Choose the right English word")
+                      ? L(`Chọn từ ${w.language === 'ja' ? 'tiếng Nhật' : 'tiếng Anh'} đúng`, `Choose the right ${w.language === 'ja' ? 'Japanese' : 'English'} word`)
                       : dir === "enToEn"
                         ? L("Chọn định nghĩa tiếng Anh đúng", "Choose the right English definition")
                         : L("Chọn nghĩa đúng", "Choose the right meaning")}
@@ -872,7 +877,7 @@ export default function LearnScreen() {
                     ) : null}
                   </View>
                   {dir !== "viToEn" ? (
-                    <SpeakButton text={w.word} rate={0.85} />
+                    <SpeakButton text={w.word} rate={0.85} language={w.language} />
                   ) : null}
                 </View>
                 <View className="mt-6">
@@ -895,13 +900,13 @@ export default function LearnScreen() {
                   <Text className="font-semi text-label text-muted">
                     {dir === "listen"
                       ? L("Nghe rồi gõ lại từ", "Listen and type the word")
-                      : L("Gõ từ tiếng Anh", "Type the English word")}
+                      : L(`Gõ từ ${w.language === 'ja' ? 'tiếng Nhật' : 'tiếng Anh'}`, `Type the ${w.language === 'ja' ? 'Japanese' : 'English'} word`)}
                   </Text>
                   {star}
                 </View>
                 {dir === "listen" ? (
                   <View className="mt-1 flex-row items-center gap-3">
-                    <SpeakButton text={w.word} rate={0.85} size={24} />
+                    <SpeakButton text={w.word} rate={0.85} size={24} language={w.language} />
                     <Text className="font-sans text-bodyLg text-muted">
                       {[w.pos, L(`${w.word.length} chữ cái`, `${w.word.length} letters`)]
                         .filter(Boolean)
@@ -936,7 +941,7 @@ export default function LearnScreen() {
                     style={{
                       borderWidth: 1,
                       borderColor:
-                        verdict === null ? (listening ? color.primary : theme.fieldBorder) : verdict ? theme.good : theme.bad,
+                        verdict === null ? (listening ? accentFor(theme, color.primary) : theme.fieldBorder) : verdict ? theme.good : theme.bad,
                       backgroundColor: theme.field,
                     }}
                   />
@@ -946,14 +951,14 @@ export default function LearnScreen() {
                       accessibilityLabel={listening ? L("Dừng nghe", "Stop listening") : L("Nói từ", "Say the word")}
                       onPress={toggleMic}
                       className="h-14 w-14 items-center justify-center rounded-2xl"
-                      style={{ backgroundColor: listening ? RED : color.primary }}
+                      style={{ backgroundColor: listening ? RED : accentFor(theme, color.primary) }}
                     >
                       <Icon name="mic" size={22} color="#FFFFFF" strokeWidth={2.2} />
                     </Pressable>
                   ) : null}
                 </View>
                 {listening ? (
-                  <Text className="mt-2 text-center font-semi text-label" style={{ color: color.primary }}>
+                  <Text className="mt-2 text-center font-semi text-label" style={{ color: accentFor(theme, color.primary) }}>
                     {L("Đang nghe… nói từ tiếng Anh", "Listening… say the English word")}
                   </Text>
                 ) : micNote ? (

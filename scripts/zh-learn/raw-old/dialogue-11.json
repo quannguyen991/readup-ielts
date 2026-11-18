@@ -1,0 +1,505 @@
+[
+ {
+  "id": "zh-d-h3-06",
+  "level": 3,
+  "order": 6,
+  "title": "Chuẩn bị sang Trung Quốc học tập",
+  "titleZh": "准备去中国学习",
+  "topic": "học ngoại ngữ",
+  "scene": "小林 chuẩn bị sang Bắc Kinh học tiếng Trung và hỏi giáo viên cách luyện tập.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小林",
+    "zh": "老师，我下个月要去中国学习。",
+    "py": "lǎoshī wǒ xià ge yuè yào qù Zhōngguó xuéxí",
+    "vi": "Thầy ơi, tháng sau em sẽ sang Trung Quốc học."
+   },
+   {
+    "who": "老师",
+    "zh": "你真要去北京学习吗？",
+    "py": "nǐ zhēn yào qù Běijīng xuéxí ma",
+    "vi": "Em thật sự sẽ đến Bắc Kinh học sao?"
+   },
+   {
+    "who": "小林",
+    "zh": "对，我想去北京学中文。",
+    "py": "duì wǒ xiǎng qù Běijīng xué Zhōngwén",
+    "vi": "Vâng, em muốn đến Bắc Kinh học tiếng Trung."
+   },
+   {
+    "who": "老师",
+    "zh": "你最近说中文很自然。",
+    "py": "nǐ zuìjìn shuō Zhōngwén hěn zìrán",
+    "vi": "Dạo này em nói tiếng Trung rất tự nhiên."
+   },
+   {
+    "who": "小林",
+    "zh": "谢谢，我每天听中文，也跟同学说中文。",
+    "py": "xièxie wǒ měitiān tīng Zhōngwén yě gēn tóngxué shuō Zhōngwén",
+    "vi": "Cảm ơn thầy, ngày nào em cũng nghe tiếng Trung và nói tiếng Trung với bạn học."
+   },
+   {
+    "who": "老师",
+    "zh": "你把新词写到本子上了吗？",
+    "py": "nǐ bǎ xīncí xiě dào běnzi shàng le ma",
+    "vi": "Em đã viết từ mới vào vở chưa?"
+   },
+   {
+    "who": "小林",
+    "zh": "我已经写好了，晚上还会再看一遍。",
+    "py": "wǒ yǐjīng xiě hǎo le wǎnshang hái huì zài kàn yí biàn",
+    "vi": "Em viết xong rồi, tối nay sẽ xem lại một lần nữa."
+   },
+   {
+    "who": "老师",
+    "zh": "除了上课，你还要多听中国人说话。",
+    "py": "chúle shàngkè nǐ hái yào duō tīng Zhōngguórén shuōhuà",
+    "vi": "Ngoài giờ học, em còn nên nghe người Trung Quốc nói chuyện nhiều hơn."
+   },
+   {
+    "who": "小林",
+    "zh": "为了交朋友，我会多跟大家说话。",
+    "py": "wèile jiāo péngyou wǒ huì duō gēn dàjiā shuōhuà",
+    "vi": "Để kết bạn, em sẽ trò chuyện nhiều hơn với mọi người."
+   },
+   {
+    "who": "老师",
+    "zh": "你会慢慢习惯那里的生活。",
+    "py": "nǐ huì mànmàn xíguàn nàli de shēnghuó",
+    "vi": "Em sẽ dần quen với cuộc sống ở đó."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "下个月",
+    "py": "xià ge yuè",
+    "vi": "tháng sau"
+   },
+   {
+    "zh": "中文",
+    "py": "Zhōngwén",
+    "vi": "tiếng Trung"
+   },
+   {
+    "zh": "新词",
+    "py": "xīncí",
+    "vi": "từ mới"
+   },
+   {
+    "zh": "本子",
+    "py": "běnzi",
+    "vi": "quyển vở"
+   },
+   {
+    "zh": "同学",
+    "py": "tóngxué",
+    "vi": "bạn học"
+   },
+   {
+    "zh": "习惯",
+    "py": "xíguàn",
+    "vi": "quen"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h3-01",
+   "zh-g-h3-19",
+   "zh-g-h3-27"
+  ],
+  "quiz": [
+   {
+    "q": "小林下个月准备去哪里学习？",
+    "options": [
+     "上海",
+     "北京",
+     "广州",
+     "成都"
+    ],
+    "answer": 1,
+    "explain": "小林说他想去北京学中文。"
+   },
+   {
+    "q": "小林每天听中文以外，还做什么？",
+    "options": [
+     "看电视",
+     "写信给老师",
+     "跟同学说中文",
+     "去图书馆"
+    ],
+    "answer": 2,
+    "explain": "小林每天也跟同学说中文。"
+   },
+   {
+    "q": "老师问小林把新词写到哪里？",
+    "options": [
+     "本子上",
+     "桌子上",
+     "书包里",
+     "黑板上"
+    ],
+    "answer": 0,
+    "explain": "老师问他有没有把新词写到本子上。"
+   },
+   {
+    "q": "除了上课，老师建议小林多做什么？",
+    "options": [
+     "多看电影",
+     "多买中文书",
+     "多写汉字",
+     "多听中国人说话"
+    ],
+    "answer": 3,
+    "explain": "老师建议他多听中国人说话。"
+   },
+   {
+    "q": "为了交朋友，小林打算怎么做？",
+    "options": [
+     "每天给朋友打电话",
+     "多跟大家说话",
+     "请同学吃饭",
+     "参加中文考试"
+    ],
+    "answer": 1,
+    "explain": "小林说为了交朋友会多跟大家说话。"
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h5-01",
+  "level": 5,
+  "order": 1,
+  "title": "商量店里的经营计划",
+  "titleZh": "商量店里的经营计划",
+  "topic": "tiền bạc, kinh doanh",
+  "scene": "两位同事商量店里的成本、贷款和接下来的经营安排。",
+  "minutes": 6,
+  "lines": [
+   {
+    "who": "王经理",
+    "zh": "从收入来看，我们的生意稳定多了。",
+    "py": "cóng shōurù lái kàn wǒmen de shēngyi wěndìng duō le",
+    "vi": "Xét về doanh thu, việc kinh doanh của chúng ta ổn định hơn nhiều rồi."
+   },
+   {
+    "who": "陈佳",
+    "zh": "可是店里的成本还在增加。",
+    "py": "kěshì diàn lǐ de chéngběn hái zài zēngjiā",
+    "vi": "Nhưng chi phí của cửa hàng vẫn đang tăng."
+   },
+   {
+    "who": "王经理",
+    "zh": "一旦房租再涨，我们就得调整计划。",
+    "py": "yídàn fángzū zài zhǎng wǒmen jiù děi tiáozhěng jìhuà",
+    "vi": "Một khi tiền thuê nhà lại tăng, chúng ta sẽ phải điều chỉnh kế hoạch."
+   },
+   {
+    "who": "陈佳",
+    "zh": "我建议先减少广告费用。",
+    "py": "wǒ jiànyì xiān jiǎnshǎo guǎnggào fèiyòng",
+    "vi": "Tôi đề nghị trước tiên giảm chi phí quảng cáo."
+   },
+   {
+    "who": "王经理",
+    "zh": "我们想贷款买新机器。",
+    "py": "wǒmen xiǎng dàikuǎn mǎi xīn jīqì",
+    "vi": "Chúng ta muốn vay tiền mua máy móc mới."
+   },
+   {
+    "who": "陈佳",
+    "zh": "现在现金够吗？",
+    "py": "xiànzài xiànjīn gòu ma",
+    "vi": "Bây giờ tiền mặt có đủ không?"
+   },
+   {
+    "who": "王经理",
+    "zh": "账上还有一些钱，但不能全部花掉。",
+    "py": "zhàng shàng hái yǒu yìxiē qián dàn bù néng quánbù huādiào",
+    "vi": "Trong tài khoản vẫn còn một ít tiền, nhưng không thể tiêu hết."
+   },
+   {
+    "who": "陈佳",
+    "zh": "我可以找银行谈一个更好的利率。",
+    "py": "wǒ kěyǐ zhǎo yínháng tán yí ge gèng hǎo de lìlǜ",
+    "vi": "Tôi có thể tìm ngân hàng để thương lượng một mức lãi suất tốt hơn."
+   },
+   {
+    "who": "王经理",
+    "zh": "你明天去谈，先看清楚合同。",
+    "py": "nǐ míngtiān qù tán xiān kàn qīngchu hétong",
+    "vi": "Ngày mai cô đi thương lượng nhé, trước hết hãy đọc kỹ hợp đồng."
+   },
+   {
+    "who": "陈佳",
+    "zh": "我会把贷款条件问得清清楚楚。",
+    "py": "wǒ huì bǎ dàikuǎn tiáojiàn wèn de qīngqīngchǔchǔ",
+    "vi": "Tôi sẽ hỏi cho rõ ràng các điều kiện vay vốn."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "收入",
+    "py": "shōurù",
+    "vi": "thu nhập"
+   },
+   {
+    "zh": "生意",
+    "py": "shēngyi",
+    "vi": "việc kinh doanh"
+   },
+   {
+    "zh": "成本",
+    "py": "chéngběn",
+    "vi": "chi phí"
+   },
+   {
+    "zh": "房租",
+    "py": "fángzū",
+    "vi": "tiền thuê nhà"
+   },
+   {
+    "zh": "贷款",
+    "py": "dàikuǎn",
+    "vi": "vay vốn"
+   },
+   {
+    "zh": "利率",
+    "py": "lìlǜ",
+    "vi": "lãi suất"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h5-01",
+   "zh-g-h5-04",
+   "zh-g-h5-13"
+  ],
+  "quiz": [
+   {
+    "q": "Theo 王经理, việc kinh doanh hiện nay thế nào?",
+    "options": [
+     "Ổn định hơn nhiều",
+     "Đang thua lỗ",
+     "Mới bắt đầu",
+     "Không có khách"
+    ],
+    "answer": 0,
+    "explain": "王经理 nói việc kinh doanh ổn định hơn nhiều xét về doanh thu."
+   },
+   {
+    "q": "Điều gì có thể khiến cửa hàng phải điều chỉnh kế hoạch?",
+    "options": [
+     "Thiếu máy móc",
+     "Tiền thuê nhà lại tăng",
+     "Quảng cáo giảm giá",
+     "Ngân hàng đóng cửa"
+    ],
+    "answer": 1,
+    "explain": "Nếu tiền thuê nhà lại tăng, họ sẽ phải điều chỉnh kế hoạch."
+   },
+   {
+    "q": "Họ muốn vay tiền để mua gì?",
+    "options": [
+     "Một cửa hàng mới",
+     "Xe chở hàng",
+     "Máy móc mới",
+     "Hàng quảng cáo"
+    ],
+    "answer": 2,
+    "explain": "王经理 nói họ muốn vay tiền mua máy móc mới."
+   },
+   {
+    "q": "陈佳 muốn thương lượng với ngân hàng về điều gì?",
+    "options": [
+     "Giờ làm việc",
+     "Địa điểm cửa hàng",
+     "Giá máy móc",
+     "Mức lãi suất tốt hơn"
+    ],
+    "answer": 3,
+    "explain": "陈佳 muốn bàn với ngân hàng để có mức lãi suất tốt hơn."
+   },
+   {
+    "q": "陈佳 sẽ hỏi rõ điều gì?",
+    "options": [
+     "Chi phí quảng cáo",
+     "Điều kiện vay vốn",
+     "Lịch làm việc",
+     "Giá thuê cửa hàng"
+    ],
+    "answer": 1,
+    "explain": "Cô ấy nói sẽ hỏi cho rõ các điều kiện vay vốn."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h5-02",
+  "level": 5,
+  "order": 2,
+  "title": "Phong tục sum họp ngày Tết",
+  "titleZh": "春节里的团圆习俗",
+  "topic": "văn hóa",
+  "scene": "两位朋友聊起春节时家人团聚和一起吃饭的习俗。",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "林娜",
+    "zh": "你们家春节最重视什么习俗？",
+    "py": "nǐmen jiā Chūnjié zuì zhòngshì shénme xísú",
+    "vi": "Gia đình bạn coi trọng phong tục nào nhất vào Tết?"
+   },
+   {
+    "who": "阿梅",
+    "zh": "我们全家一起包饺子，吃团圆饭。",
+    "py": "wǒmen quánjiā yìqǐ bāo jiǎozi chī tuányuánfàn",
+    "vi": "Cả nhà mình cùng gói sủi cảo và ăn bữa cơm đoàn viên."
+   },
+   {
+    "who": "林娜",
+    "zh": "这个习俗从什么时候开始的？",
+    "py": "zhège xísú cóng shénme shíhou kāishǐ de",
+    "vi": "Phong tục này bắt đầu từ khi nào vậy?"
+   },
+   {
+    "who": "阿梅",
+    "zh": "自我记事以来，家里一直这样过年。",
+    "py": "zì wǒ jìshì yǐlái jiālǐ yìzhí zhèyàng guònián",
+    "vi": "Từ khi mình nhớ được mọi chuyện, gia đình đã đón Tết như vậy."
+   },
+   {
+    "who": "林娜",
+    "zh": "饺子有什么特别的意思吗？",
+    "py": "jiǎozi yǒu shénme tèbié de yìsi ma",
+    "vi": "Sủi cảo có ý nghĩa gì đặc biệt không?"
+   },
+   {
+    "who": "阿梅",
+    "zh": "它们象征团圆，也带来新年的祝福。",
+    "py": "tāmen xiàngzhēng tuányuán yě dàilái xīnnián de zhùfú",
+    "vi": "Sủi cảo tượng trưng cho sự đoàn viên và mang đến lời chúc năm mới."
+   },
+   {
+    "who": "林娜",
+    "zh": "哪怕大家住得很远，也会回来吃饭。",
+    "py": "nǎpà dàjiā zhù de hěn yuǎn yě huì huílái chīfàn",
+    "vi": "Dù mọi người sống ở rất xa, họ vẫn sẽ về ăn cơm."
+   },
+   {
+    "who": "阿梅",
+    "zh": "对，这顿饭由几道家常菜和饺子组成。",
+    "py": "duì zhè dùn fàn yóu jǐ dào jiāchángcài hé jiǎozi zǔchéng",
+    "vi": "Đúng vậy, bữa ăn này gồm vài món ăn nhà làm và sủi cảo."
+   },
+   {
+    "who": "林娜",
+    "zh": "你们还会一起看晚会吗？",
+    "py": "nǐmen hái huì yìqǐ kàn wǎnhuì ma",
+    "vi": "Mọi người còn cùng nhau xem chương trình đêm hội không?"
+   },
+   {
+    "who": "阿梅",
+    "zh": "会，吃完饭以后，我们常常一起看节目。",
+    "py": "huì chī wán fàn yǐhòu wǒmen chángcháng yìqǐ kàn jiémù",
+    "vi": "Có, sau bữa ăn, cả nhà thường cùng nhau xem chương trình."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "春节",
+    "py": "Chūnjié",
+    "vi": "Tết Nguyên đán"
+   },
+   {
+    "zh": "习俗",
+    "py": "xísú",
+    "vi": "phong tục"
+   },
+   {
+    "zh": "饺子",
+    "py": "jiǎozi",
+    "vi": "sủi cảo"
+   },
+   {
+    "zh": "团圆饭",
+    "py": "tuányuánfàn",
+    "vi": "bữa cơm đoàn viên"
+   },
+   {
+    "zh": "象征",
+    "py": "xiàngzhēng",
+    "vi": "tượng trưng"
+   },
+   {
+    "zh": "祝福",
+    "py": "zhùfú",
+    "vi": "lời chúc"
+   },
+   {
+    "zh": "晚会",
+    "py": "wǎnhuì",
+    "vi": "đêm hội"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h5-02",
+   "zh-g-h5-06",
+   "zh-g-h5-03"
+  ],
+  "quiz": [
+   {
+    "q": "Gia đình 阿梅 thường làm gì cùng nhau vào Tết?",
+    "options": [
+     "Gói sủi cảo và ăn cơm đoàn viên",
+     "Đi xem pháo hoa",
+     "Đến nhà bạn bè",
+     "Cùng đi mua quần áo"
+    ],
+    "answer": 0,
+    "explain": "阿梅 nói cả nhà cùng gói sủi cảo và ăn bữa cơm đoàn viên."
+   },
+   {
+    "q": "Từ khi nào gia đình 阿梅 đã đón Tết theo cách đó?",
+    "options": [
+     "Từ năm ngoái",
+     "Từ khi cô ấy nhớ được mọi chuyện",
+     "Từ khi cô ấy kết hôn",
+     "Từ lúc chuyển nhà"
+    ],
+    "answer": 1,
+    "explain": "阿梅 nói từ khi cô ấy nhớ được mọi chuyện, gia đình đã đón Tết như vậy."
+   },
+   {
+    "q": "Sủi cảo tượng trưng cho điều gì?",
+    "options": [
+     "Sức khỏe",
+     "Sự giàu có",
+     "Sự đoàn viên",
+     "Mùa xuân"
+    ],
+    "answer": 2,
+    "explain": "阿梅 nói sủi cảo tượng trưng cho sự đoàn viên."
+   },
+   {
+    "q": "Dù sống ở xa, mọi người vẫn làm gì?",
+    "options": [
+     "Gọi điện cho nhau",
+     "Cùng xem đêm hội",
+     "Gửi quà về nhà",
+     "Trở về ăn cơm"
+    ],
+    "answer": 3,
+    "explain": "林娜 nói mọi người vẫn trở về ăn cơm dù sống ở xa."
+   },
+   {
+    "q": "Bữa ăn ngày Tết của gia đình 阿梅 gồm những gì?",
+    "options": [
+     "Chỉ có sủi cảo",
+     "Vài món ăn nhà làm và sủi cảo",
+     "Món ăn mua ngoài",
+     "Bánh và hoa quả"
+    ],
+    "answer": 1,
+    "explain": "阿梅 nói bữa ăn gồm vài món ăn nhà làm và sủi cảo."
+   }
+  ]
+ }
+]

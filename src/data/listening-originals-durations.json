@@ -1,0 +1,242 @@
+{
+ "study-skills-and-peer-learning": {
+  "1": 69,
+  "2": 65,
+  "3": 81,
+  "4": 92
+ },
+ "the-future-of-public-libraries": {
+  "1": 69,
+  "2": 66,
+  "3": 81,
+  "4": 92
+ },
+ "fieldwork-for-urban-ecology": {
+  "1": 67,
+  "2": 65,
+  "3": 79,
+  "4": 94
+ },
+ "learning-a-language-through-exchange": {
+  "1": 69,
+  "2": 66,
+  "3": 77,
+  "4": 94
+ },
+ "designing-accessible-classrooms": {
+  "1": 68,
+  "2": 68,
+  "3": 82,
+  "4": 91
+ },
+ "preparing-for-a-first-interview": {
+  "1": 70,
+  "2": 65,
+  "3": 81,
+  "4": 89
+ },
+ "skills-for-remote-teamwork": {
+  "1": 69,
+  "2": 63,
+  "3": 83,
+  "4": 89
+ },
+ "apprenticeships-in-clean-energy": {
+  "1": 68,
+  "2": 70,
+  "3": 79,
+  "4": 96
+ },
+ "building-a-portfolio-career": {
+  "1": 68,
+  "2": 62,
+  "3": 77,
+  "4": 93
+ },
+ "mentoring-across-generations": {
+  "1": 72,
+  "2": 71,
+  "3": 81,
+  "4": 92
+ },
+ "making-city-buses-easier-to-use": {
+  "1": 72,
+  "2": 68,
+  "3": 80,
+  "4": 90
+ },
+ "walking-routes-through-old-towns": {
+  "1": 67,
+  "2": 67,
+  "3": 83,
+  "4": 95
+ },
+ "tourism-beyond-the-peak-season": {
+  "1": 71,
+  "2": 68,
+  "3": 82,
+  "4": 94
+ },
+ "cycling-safely-to-work": {
+  "1": 72,
+  "2": 67,
+  "3": 79,
+  "4": 94
+ },
+ "how-museums-welcome-visitors": {
+  "1": 65,
+  "2": 69,
+  "3": 82,
+  "4": 90
+ },
+ "restoring-a-neighbourhood-stream": {
+  "1": 69,
+  "2": 68,
+  "3": 93,
+  "4": 102
+ },
+ "reducing-food-waste-at-home": {
+  "1": 75,
+  "2": 75,
+  "3": 88,
+  "4": 105
+ },
+ "community-gardens-and-biodiversity": {
+  "1": 76,
+  "2": 75,
+  "3": 94,
+  "4": 105
+ },
+ "repair-caf-s-and-the-circular-economy": {
+  "1": 80,
+  "2": 72,
+  "3": 93,
+  "4": 103
+ },
+ "preparing-towns-for-hotter-summers": {
+  "1": 77,
+  "2": 74,
+  "3": 87,
+  "4": 103
+ },
+ "everyday-uses-of-satellite-data": {
+  "1": 78,
+  "2": 73,
+  "3": 94,
+  "4": 106
+ },
+ "designing-safer-apps-for-children": {
+  "1": 76,
+  "2": 74,
+  "3": 89,
+  "4": 106
+ },
+ "robots-in-hospital-logistics": {
+  "1": 81,
+  "2": 72,
+  "3": 129,
+  "4": 104
+ },
+ "how-cities-measure-air-quality": {
+  "1": 78,
+  "2": 77,
+  "3": 94,
+  "4": 101
+ },
+ "the-hidden-work-of-digital-archives": {
+  "1": 76,
+  "2": 73,
+  "3": 88,
+  "4": 101
+ },
+ "designing-calmer-public-spaces": {
+  "1": 81,
+  "2": 72,
+  "3": 85,
+  "4": 109
+ },
+ "food-traditions-and-family-memory": {
+  "1": 81,
+  "2": 80,
+  "3": 90,
+  "4": 102
+ },
+ "supporting-people-who-live-alone": {
+  "1": 79,
+  "2": 73,
+  "3": 94,
+  "4": 101
+ },
+ "sleep-routines-for-shift-workers": {
+  "1": 80,
+  "2": 80,
+  "3": 92,
+  "4": 91
+ },
+ "making-community-sport-inclusive": {
+  "1": 70,
+  "2": 64,
+  "3": 78,
+  "4": 84
+ },
+ "soundscapes-of-the-seaside": {
+  "1": 68,
+  "2": 67,
+  "3": 82,
+  "4": 91
+ },
+ "restoring-photographs-from-family-albums": {
+  "1": 75,
+  "2": 65,
+  "3": 73,
+  "4": 89
+ },
+ "public-art-and-local-identity": {
+  "1": 72,
+  "2": 62,
+  "3": 80,
+  "4": 104
+ },
+ "the-craft-of-documentary-photography": {
+  "1": 70,
+  "2": 65,
+  "3": 81,
+  "4": 101
+ },
+ "why-small-theatres-matter": {
+  "1": 70,
+  "2": 67,
+  "3": 80,
+  "4": 86
+ },
+ "emergency-planning-for-apartment-buildings": {
+  "1": 72,
+  "2": 67,
+  "3": 88,
+  "4": 93
+ },
+ "sharing-tools-across-a-neighbourhood": {
+  "1": 75,
+  "2": 62,
+  "3": 76,
+  "4": 87
+ },
+ "helping-new-residents-find-local-support": {
+  "1": 69,
+  "2": 66,
+  "3": 77,
+  "4": 107
+ },
+ "volunteers-and-local-food-banks": {
+  "1": 68,
+  "2": 60,
+  "3": 74,
+  "4": 93
+ },
+ "making-council-information-clearer": {
+  "1": 72,
+  "2": 64,
+  "3": 74,
+  "4": 90
+ }
+}

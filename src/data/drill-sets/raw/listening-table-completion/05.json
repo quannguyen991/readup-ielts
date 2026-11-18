@@ -1,0 +1,127 @@
+{
+ "title": "Tropical Fruit Export Manifests and Protocols",
+ "topic": "tropical fruit exports",
+ "context": "Narrator: You will hear an export manager discussing tropical fruit consignments with a logistics supervisor, followed by a presentation on fruit export guidelines.\nDavid: Good morning Elena. Thanks for meeting me before your main briefing. Let's quickly review the morning manifests and shipping schedule so we can finalize today's ground logistics. Which facility is receiving the first consolidation of cargo today?\nElena: That will be the Bayview Terminal down near the south docks. The refrigerated trucks began unloading there at dawn.\nDavid: Right, Bayview Terminal. And what is the clearance reference number for tracking that particular consignment through customs?\nElena: It's registered under code TX-409. The documentation has already cleared the regional border post without any delays.\nDavid: Perfect, TX-409 is in the database. Now, what's the primary destination port for that initial sea consignment?\nElena: That entire batch is heading directly to Rotterdam. It connects with European continental distribution networks from there.\nDavid: Got it, Rotterdam. And what fruit is currently being loaded into that refrigerated section?\nElena: We have three full containers of premium wax apples, harvested early yesterday from our contract orchards in the highland valley.\nDavid: Okay, wax apples. At what temperature setting should the refrigerated container be held during transit?\nElena: It must be calibrated at exactly 8.5 degrees to avoid chilling injury while maintaining firmness during the long voyage.\nDavid: Understood, 8.5 degrees. And what is the expected arrival day at the central distribution hub?\nElena: If current maritime weather conditions hold, the vessel docks on Thursday morning ahead of local distribution.\nDavid: Excellent. Everything is in order. Whenever you're ready, the export committee is waiting in the main conference room for your overview of the four fruit categories.\nElena: Thank you David, I'll head straight in now.\nElena: Good morning, everyone. Today, I'll outline the operational export requirements for our four primary tropical fruits, focusing specifically on target markets, post-harvest treatments, packaging specifications, and transport limits.\nFirst, let's examine Red Dragonfruit. Our strongest emerging destination for this variety is Singapore, where demand for certified organic produce has surged over the past two quarters. To comply with strict biosecurity protocols, all consignments undergo vapor heat treatment to eliminate potential fruit fly larvae without damaging the delicate skin appearance. For protective packaging, each individual fruit is wrapped in a sleeve of foam mesh to prevent friction bruises during rough cargo handling. Under controlled low temperatures, the fruit maintains commercial quality with an expected shelf life of 21 days.\nNext, we look at the Golden Papaya. This variety has seen an impressive expansion across North America, with our key export market being Canada. Because papayas are especially vulnerable to fungal anthracnose during shipment, our mandatory quarantine protocol is a short hot water dip right after grading and sorting. Regarding packaging, shippers must use ventilated cartons with side perforations to ensure continuous airflow and prevent heat buildup. Moreover, the atmosphere inside the reefer container must maintain a relative humidity of 90 percent, preventing moisture loss while keeping the peel firm.\nMoving on to our third commodity, the Queen Pineapple. South Korea has become our principal buyer, driven by strong seasonal retail promotions in supermarkets. Unlike other fruits, pineapples are prone to internal browning and water loss, so the automated packing line applies a food-grade wax coating over the rind. To stabilize the crowns and prevent lateral movement inside the shipping boxes, workers must fit corrugated divider inserts between individual units. Due to the high sugar content accelerating fermentation, the maximum transit time for this sea route cannot exceed 14 days.\nFinally, we come to our premium Honey Mango. For this high-value crop, overseas luxury retailers only accept our certified Grade A selection, which requires uniform coloration and zero superficial scarring. Before departure, government agricultural inspectors verify chemical residues, and issuing authorities must approve an official phytosanitary certificate for every container. Compliance ensures seamless customs clearance through quarantine borders. Thank you, and let's move on to the questions.",
+ "questions": [
+  {
+   "prompt": "Morning Consignment | Consolidation facility: ____",
+   "answer": "Bayview Terminal",
+   "why": "Elena xác nhận rằng cơ sở nhận lô hàng gom đầu tiên là 'Bayview Terminal'.",
+   "quote": "That will be the Bayview Terminal down near the south docks."
+  },
+  {
+   "prompt": "Morning Consignment | Customs tracking code: ____",
+   "answer": "TX-409",
+   "why": "Mã hải quan để theo dõi lô hàng được Elena nêu chính xác là 'TX-409'.",
+   "quote": "It's registered under code TX-409."
+  },
+  {
+   "prompt": "Morning Consignment | Destination port: ____",
+   "answer": "Rotterdam",
+   "why": "Elena cho biết lô hàng đường biển đầu tiên sẽ đi thẳng tới cảng 'Rotterdam'.",
+   "quote": "That entire batch is heading directly to Rotterdam."
+  },
+  {
+   "prompt": "Morning Consignment | Fruit type loaded: ____",
+   "answer": "wax apples",
+   "why": "Trái cây được xếp vào container lạnh là 'wax apples' (mận/roi).",
+   "quote": "We have three full containers of premium wax apples, harvested early yesterday"
+  },
+  {
+   "prompt": "Morning Consignment | Container temperature: ____",
+   "answer": "8.5 degrees",
+   "why": "Mức nhiệt độ cài đặt cho container lạnh được xác định là '8.5 degrees'.",
+   "quote": "It must be calibrated at exactly 8.5 degrees to avoid chilling injury"
+  },
+  {
+   "prompt": "Morning Consignment | Scheduled arrival day: ____",
+   "answer": "Thursday",
+   "why": "Tàu dự kiến cập cảng vào sáng 'Thursday' nếu thời tiết trên biển thuận lợi.",
+   "quote": "If current maritime weather conditions hold, the vessel docks on Thursday morning"
+  },
+  {
+   "prompt": "Fruit Profiles: Red Dragonfruit | Target market: ____",
+   "answer": "Singapore",
+   "why": "Thị trường đích tiềm năng nhất cho thanh long ruột đỏ là 'Singapore'.",
+   "quote": "Our strongest emerging destination for this variety is Singapore, where demand for certified organic produce has surged"
+  },
+  {
+   "prompt": "Fruit Profiles: Red Dragonfruit | Biosecurity procedure: ____ treatment",
+   "answer": "vapor heat",
+   "why": "Quy trình xử lý kiểm dịch sinh học đối với thanh long ruột đỏ là 'vapor heat' (xử lý nhiệt hơi).",
+   "quote": "all consignments undergo vapor heat treatment to eliminate potential fruit fly larvae"
+  },
+  {
+   "prompt": "Fruit Profiles: Red Dragonfruit | Packaging material: sleeve of ____",
+   "answer": "foam mesh",
+   "why": "Mỗi quả được bọc bảo vệ bằng một lớp lưới xốp ('foam mesh') nhằm tránh trầy xước do cọ xát.",
+   "quote": "each individual fruit is wrapped in a sleeve of foam mesh to prevent friction bruises"
+  },
+  {
+   "prompt": "Fruit Profiles: Red Dragonfruit | Shelf life: ____",
+   "answer": "21 days",
+   "why": "Thời hạn bảo quản chất lượng thương phẩm của thanh long là '21 days'.",
+   "quote": "the fruit maintains commercial quality with an expected shelf life of 21 days."
+  },
+  {
+   "prompt": "Fruit Profiles: Golden Papaya | Primary market: ____",
+   "answer": "Canada",
+   "why": "Thị trường xuất khẩu trọng điểm của đu đủ Golden tại Bắc Mỹ là 'Canada'.",
+   "quote": "with our key export market being Canada."
+  },
+  {
+   "prompt": "Fruit Profiles: Golden Papaya | Disease treatment: short ____",
+   "answer": "hot water dip",
+   "why": "Phương pháp xử lý bắt buộc sau phân loại để ngừa nấm thán thư là 'hot water dip' (ngâm nước nóng).",
+   "quote": "our mandatory quarantine protocol is a short hot water dip right after grading and sorting."
+  },
+  {
+   "prompt": "Fruit Profiles: Golden Papaya | Box requirement: ____",
+   "answer": "ventilated cartons",
+   "why": "Loại bao bì bắt buộc phải sử dụng là thùng carton có lỗ thông khí ('ventilated cartons').",
+   "quote": "shippers must use ventilated cartons with side perforations to ensure continuous airflow"
+  },
+  {
+   "prompt": "Fruit Profiles: Golden Papaya | Cold storage relative humidity: ____",
+   "answer": "90 percent | 90%",
+   "why": "Độ ẩm tương đối trong container lạnh phải được giữ ở mức '90 percent' (hoặc '90%').",
+   "quote": "the atmosphere inside the reefer container must maintain a relative humidity of 90 percent, preventing moisture loss"
+  },
+  {
+   "prompt": "Fruit Profiles: Queen Pineapple | Leading buyer: ____",
+   "answer": "South Korea",
+   "why": "Thị trường nhập khẩu chính đối với dứa Queen là 'South Korea'.",
+   "quote": "South Korea has become our principal buyer, driven by strong seasonal retail promotions"
+  },
+  {
+   "prompt": "Fruit Profiles: Queen Pineapple | Surface application: food-grade ____",
+   "answer": "wax coating",
+   "why": "Vỏ quả dứa được phủ một lớp sáp an toàn thực phẩm ('wax coating') để chống mất nước và thâm đen.",
+   "quote": "the automated packing line applies a food-grade wax coating over the rind."
+  },
+  {
+   "prompt": "Fruit Profiles: Queen Pineapple | Box internal support: corrugated ____",
+   "answer": "divider inserts",
+   "why": "Để giữ cố định và tránh va đập giữa các quả, công nhân lắp các vách ngăn lượn sóng ('divider inserts').",
+   "quote": "workers must fit corrugated divider inserts between individual units."
+  },
+  {
+   "prompt": "Fruit Profiles: Queen Pineapple | Maximum sea transit time: ____",
+   "answer": "14 days",
+   "why": "Thời gian vận chuyển tối đa cho tuyến đường biển này không được vượt quá '14 days'.",
+   "quote": "the maximum transit time for this sea route cannot exceed 14 days."
+  },
+  {
+   "prompt": "Fruit Profiles: Honey Mango | Required quality classification: certified ____",
+   "answer": "Grade A",
+   "why": "Các nhà bán lẻ cao cấp chỉ nhập khẩu xoài Honey đạt chuẩn 'Grade A'.",
+   "quote": "overseas luxury retailers only accept our certified Grade A selection, which requires uniform coloration"
+  },
+  {
+   "prompt": "Fruit Profiles: Honey Mango | Essential regulatory clearance: official ____",
+   "answer": "phytosanitary certificate",
+   "why": "Văn bản kiểm định bắt buộc đối với mỗi container trước khi xuất khẩu là 'phytosanitary certificate' (chứng thư kiểm dịch thực vật).",
+   "quote": "issuing authorities must approve an official phytosanitary certificate for every container."
+  }
+ ]
+}

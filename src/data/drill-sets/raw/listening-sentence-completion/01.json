@@ -1,0 +1,127 @@
+{
+ "title": "Tour of Wookey Paper Heritage Centre",
+ "topic": "paper-making",
+ "context": "Narrator: You will hear a tour guide welcoming visitors to the Wookey Paper Heritage Centre and explaining the traditional process of hand paper-making.\nRachel: Welcome everyone to the Wookey Paper Heritage Centre. Before we begin, a couple of administrative points. Our historic water-powered mill was established in 1742, making it one of the oldest working sites in the county.\nMark: Excuse me, do we need special footwear?\nRachel: No, your shoes are fine, but you must put on these cotton aprons before we enter the pulp preparation room to protect your clothes from splashes. Our full guided tour takes about 45 minutes. If you have booked the afternoon masterclass, please meet your instructor at the courtyard cafe at two o'clock. Also, if you bought a concession ticket, please show your student ID card to the clerk before leaving the desk.\nMark: Thank you!\nRachel: Now, let's step into the preparation hall. Historically, before wood pulp was introduced in the nineteenth century, European papermakers relied almost exclusively on linen rags collected by scrap merchants. These fabrics were shredded and fermented in water. By the 1680s, the invention of the Hollander beater revolutionized this stage. It used a revolving drum equipped with metal blades to macerate fibers into a smooth slurry in hours rather than weeks.\nRachel: Moving through to the vat room, you will notice the large wooden tub. The vatman keeps the pulp suspension warm, strictly at 28 degrees, which allows the water to drain freely through the mould. The mould consists of a fine brass mesh mounted on a wooden frame, fitted with a detachable rim known as the deckle. The deckle determines the final dimensions of the sheet.\nSarah: Does the papermaker just dip it in?\nRachel: Yes, but the critical technique is the shake. As the vatman lifts the mould from the vat, he gives it a crosswise shake to interlock the floating fibers in both directions, giving the paper uniform strength.\nRachel: Next is the couching process. The coucher transfers the wet web of fibers off the wire onto dampened wool felts. He alternates each paper layer with a felt until he builds a pile, historically called a post, which contains exactly 144 sheets.\nMark: That must be incredibly heavy!\nRachel: It is, especially with all the trapped water. The post is transferred to a massive screw press. Several men would pull on a wooden lever, generating enough force so that mechanical pressing extracts 50 percent of the water before any heat is applied.\nRachel: From here, the sheets were separated from the felts and carried up to the airy drying loft. They hung the damp paper across horsehair ropes because horsehair contains natural oils that do not rust or stain the white fibers.\nSarah: Can you write on it straight away after drying?\nRachel: Not yet! Unsized paper absorbs ink like blotting paper. To prevent bleeding, the dried sheets underwent sizing, where they were dipped in warm animal gelatin made from parchment clippings.\nRachel: Once dry again, the sheets were smoothed. Workers would burnish the paper surface using a polished agate stone to close up pores and create a sleek writing surface. Every single sheet was then inspected against a window. Defective sheets discarded during sorting were termed broke and thrown back into the beater.\nMark: How did mills put their logos on the paper?\nRachel: Ah, watermarks! A craftsman twisted thin copper wire into a motif or monogram and stitched it onto the mould's wire screen. Because the pulp lay thinner over the raised design, light passes through easily when held up. Finally, packs of twenty quires were wrapped in a heavy ream wrapper, stamped with the mill's crest for shipping. Any questions?",
+ "questions": [
+  {
+   "prompt": "The heritage paper mill was originally established in the year ____.",
+   "answer": "1742",
+   "why": "Rachel nêu rõ mốc thời gian thành lập xưởng là '1742'. Cần tránh nhầm với mốc thập niên 1680 hoặc thế kỷ 19 xuất hiện ở đoạn sau.",
+   "quote": "Our historic water-powered mill was established in 1742"
+  },
+  {
+   "prompt": "Visitors are required to put on ____ before entering the pulp preparation area.",
+   "answer": "cotton aprons",
+   "why": "Hướng dẫn viên lưu ý du khách phải đeo 'cotton aprons' để tránh bẩn quần áo. Vị khách hỏi về giày dép (footwear) nhưng cô khẳng định không cần thiết.",
+   "quote": "you must put on these cotton aprons before we enter the pulp preparation room"
+  },
+  {
+   "prompt": "The guided walk around the mill is scheduled to last for ____.",
+   "answer": "45 minutes | forty-five minutes",
+   "why": "Tour tham quan có hướng dẫn kéo dài 'about 45 minutes'. Tránh nhầm với mốc 'two o'clock' dành cho lớp học buổi chiều.",
+   "quote": "Our full guided tour takes about 45 minutes."
+  },
+  {
+   "prompt": "Participants joining the afternoon masterclass must meet at the ____.",
+   "answer": "courtyard cafe",
+   "why": "Địa điểm hẹn cho lớp học nâng cao buổi chiều là 'courtyard cafe'.",
+   "quote": "please meet your instructor at the courtyard cafe at two o'clock."
+  },
+  {
+   "prompt": "Concession ticket holders must present a ____ at the desk.",
+   "answer": "student ID card",
+   "why": "Khách mua vé giảm giá (concession ticket) được yêu cầu xuất trình 'student ID card' cho nhân viên quầy.",
+   "quote": "show your student ID card to the clerk before leaving the desk."
+  },
+  {
+   "prompt": "Historically, European papermakers relied predominantly on ____ to obtain cellulose fibers.",
+   "answer": "linen rags",
+   "why": "Trước khi bột gỗ xuất hiện vào thế kỷ 19, nguồn xơ sợi chính là từ 'linen rags'.",
+   "quote": "European papermakers relied almost exclusively on linen rags collected by scrap merchants."
+  },
+  {
+   "prompt": "Fiber preparation became much faster after the 1680s due to the creation of the ____.",
+   "answer": "Hollander beater",
+   "why": "Thiết bị mang tính cách mạng giúp đẩy nhanh công đoạn nghiền sợi vào thập niên 1680 là 'Hollander beater'.",
+   "quote": "the invention of the Hollander beater revolutionized this stage."
+  },
+  {
+   "prompt": "The temperature of the slurry within the vat is maintained at ____.",
+   "answer": "28 degrees",
+   "why": "Dịch bột giấy trong thùng được giữ ấm chính xác ở mức '28 degrees' để nước thoát nhanh.",
+   "quote": "keeps the pulp suspension warm, strictly at 28 degrees, which allows the water to drain freely"
+  },
+  {
+   "prompt": "The detachable wooden rim placed over the wire screen is called the ____.",
+   "answer": "deckle",
+   "why": "Vành gỗ tháo rời gắn trên khung lưới được gọi là 'deckle'.",
+   "quote": "fitted with a detachable rim known as the deckle."
+  },
+  {
+   "prompt": "To entangle the fibers evenly, the vatman must perform a crosswise ____ with the mould.",
+   "answer": "shake | crosswise shake",
+   "why": "Thao tác then chốt của người múc giấy là thực hiện một cú lắc ngang ('crosswise shake') để các sợi đan xen chặt chẽ.",
+   "quote": "he gives it a crosswise shake to interlock the floating fibers in both directions"
+  },
+  {
+   "prompt": "During couching, wet sheets are transferred onto dampened ____.",
+   "answer": "wool felts",
+   "why": "Người thợ đặt từng tấm giấy ướt vừa vớt lên các tấm nỉ len ẩm ('wool felts').",
+   "quote": "transfers the wet web of fibers off the wire onto dampened wool felts."
+  },
+  {
+   "prompt": "A traditional stack of paper layers and felts, called a post, holds exactly ____.",
+   "answer": "144 sheets | 144",
+   "why": "Chồng giấy chuẩn bị đem ép (gọi là post) bao gồm chính xác '144 sheets'.",
+   "quote": "historically called a post, which contains exactly 144 sheets."
+  },
+  {
+   "prompt": "Heavy pressure is applied to the post using a large ____.",
+   "answer": "screw press",
+   "why": "Chồng giấy được ép chặt bằng một máy ép trục vít ('screw press') khổng lồ bằng gỗ.",
+   "quote": "The post is transferred to a massive screw press."
+  },
+  {
+   "prompt": "The mechanical pressing stage succeeds in eliminating ____ of water from the paper.",
+   "answer": "50 percent | 50%",
+   "why": "Quá trình ép cơ học bằng trục vít loại bỏ '50 percent' lượng nước có trong giấy.",
+   "quote": "mechanical pressing extracts 50 percent of the water before any heat is applied."
+  },
+  {
+   "prompt": "In the loft, sheets were hung on ____ to prevent chemical discoloration.",
+   "answer": "horsehair ropes",
+   "why": "Giấy được phơi trên các sợi dây bện bằng lông đuôi ngựa ('horsehair ropes') vì dầu tự nhiên trong đó không làm ố hay gỉ giấy.",
+   "quote": "They hung the damp paper across horsehair ropes because horsehair contains natural oils"
+  },
+  {
+   "prompt": "Sheets were immersed in warm ____ to prevent ink from spreading.",
+   "answer": "animal gelatin",
+   "why": "Để chống loang mực (bleeding), giấy khô được nhúng vào dung dịch keo hồ làm từ 'animal gelatin'.",
+   "quote": "where they were dipped in warm animal gelatin made from parchment clippings."
+  },
+  {
+   "prompt": "The paper's surface was burnished to a smooth finish using a polished ____.",
+   "answer": "agate stone",
+   "why": "Bề mặt giấy được chà láng cho phẳng nhẵn bằng một viên đá mã não bóng ('agate stone').",
+   "quote": "Workers would burnish the paper surface using a polished agate stone to close up pores"
+  },
+  {
+   "prompt": "Faulty sheets sorted out during inspection were referred to as ____.",
+   "answer": "broke",
+   "why": "Các tờ giấy lỗi bị phát hiện khi soi trước cửa sổ được gọi là 'broke' rồi đem nghiền lại.",
+   "quote": "Defective sheets discarded during sorting were termed broke and thrown back into the beater."
+  },
+  {
+   "prompt": "Watermarks were produced by attaching patterns made of ____ to the mould.",
+   "answer": "copper wire",
+   "why": "Hình hoa văn chìm (watermark) được làm bằng cách uốn và khâu sợi dây đồng ('copper wire') lên lưới khuôn.",
+   "quote": "A craftsman twisted thin copper wire into a motif or monogram"
+  },
+  {
+   "prompt": "Bundles of finished paper were packaged inside a heavy ____ before transport.",
+   "answer": "ream wrapper",
+   "why": "Các tệp giấy hoàn chỉnh được bọc ngoài bằng lớp bao bì dày gọi là 'ream wrapper' trước khi xuất xưởng.",
+   "quote": "packs of twenty quires were wrapped in a heavy ream wrapper, stamped with the mill's crest"
+  }
+ ]
+}

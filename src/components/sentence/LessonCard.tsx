@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from '@/components/ui';
+import { LearnSticker } from '@/components/sentence/LearnSticker';
+import type { SetProgress } from '@/services/sentence/learn-status';
 import { useL } from '@/i18n/useL';
 
 /**
@@ -59,6 +61,8 @@ export function LessonCard({
   onPress,
   eyebrow,
   secondary,
+  status,
+  bleed = false,
 }: {
   number: number;
   level: string;
@@ -77,6 +81,10 @@ export function LessonCard({
   eyebrow?: string;
   /** Lối phụ ở góc dưới phải (ví dụ "Luyện từng phần"). */
   secondary?: { label: string; onPress: () => void };
+  /** Nhãn dán chưa học / đang học / đã học, từ lịch sử làm bài thật. */
+  status?: SetProgress;
+  /** Bìa tràn hết khung (không đệm, không nền nhạt) — cho bìa tự vẽ gradient. */
+  bleed?: boolean;
 }) {
   const tone = LEVEL_TONE[level] ?? SKY;
   const [hover, setHover] = useState(false);
@@ -124,7 +132,13 @@ export function LessonCard({
         ) : null}
       </View>
 
-      <View className="mt-3.5 justify-center overflow-hidden rounded-xl px-3" style={{ height: visualHeight, backgroundColor: tone.soft }}>
+      {status ? (
+        <View className="mt-2.5">
+          <LearnSticker state={status.state} learned={status.learned} total={status.total} />
+        </View>
+      ) : null}
+
+      <View className={bleed ? 'mt-3 justify-center overflow-hidden rounded-2xl' : 'mt-3 justify-center overflow-hidden rounded-xl px-3'} style={{ height: visualHeight, backgroundColor: bleed ? 'transparent' : tone.soft }}>
         {visual(tone, hover)}
       </View>
 

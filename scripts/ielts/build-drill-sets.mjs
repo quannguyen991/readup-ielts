@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const base = path.resolve('src/data/drill-sets');
-const TYPES = ['reading-tfng', 'reading-matching-headings', 'reading-summary-completion', 'reading-matching-info', 'reading-multiple-choice', 'listening-form-completion', 'listening-map-labelling', 'listening-matching'];
+const TYPES = ['reading-tfng', 'reading-matching-headings', 'reading-summary-completion', 'reading-matching-info', 'reading-multiple-choice', 'listening-form-completion', 'listening-map-labelling', 'listening-matching', 'reading-ynng', 'reading-matching-features', 'reading-matching-endings', 'reading-sentence-completion', 'reading-table-flow-completion', 'reading-short-answer', 'listening-mcq', 'listening-sentence-completion', 'listening-table-completion', 'listening-short-answer'];
 fs.mkdirSync(path.join(base, 'generated'), { recursive: true });
 for (const t of TYPES) {
   const dir = path.join(base, 'raw', t);

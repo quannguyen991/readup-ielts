@@ -88,7 +88,7 @@ function ExploreTile({ tile, compact }: { tile: Tile; compact: boolean }) {
       <Text className="font-heavy" style={{ marginTop: 10, fontSize: compact ? 15 : 16, lineHeight: 20, color: HUB.ink }} numberOfLines={1}>
         {title}
       </Text>
-      <Text className="font-sans" style={{ marginTop: 3, fontSize: 12.5, lineHeight: 17, color: HUB.muted }} numberOfLines={2}>
+      <Text className="font-sans" style={{ marginTop: 3, fontSize: 13, lineHeight: 17, color: HUB.muted }} numberOfLines={2}>
         {detail}
       </Text>
     </Pressable>

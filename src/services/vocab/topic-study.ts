@@ -14,6 +14,12 @@ export type StudyWord = {
   definitionEn: string;
   example: string;
   collocation: string;
+  exampleVi?: string;
+  /** Bản dịch tiếng Anh của câu ví dụ (bộ Trung/Nhật), dùng khi học bằng nghĩa tiếng Anh. */
+  exampleEn?: string;
+  /** Nghĩa tiếng Việt GỐC, giữ lại khi `meaningVi` đang bị thay bằng nghĩa tiếng Anh (xem meaning-lang.ts). */
+  viMeaning?: string;
+  exampleReading?: string;
   band: string;
   /** Mức CEFR B1–C2 (bộ IELTS sau khi ghép). */
   cefr?: 'B1' | 'B2' | 'C1' | 'C2';
@@ -22,6 +28,18 @@ export type StudyWord = {
   /** Chỉ bộ có dữ liệu viết tay (SAT Verbal): từ đồng nghĩa, trái nghĩa. */
   synonyms?: string[];
   antonyms?: string[];
+  language?: 'en' | 'ja' | 'zh';
+  romanization?: string;
+  zhuyin?: string;
+  traditional?: string;
+  glossLanguage?: 'vi' | 'en';
+  sourcePos?: string;
+  glossLanguage?: 'vi' | 'en';
+  sourcePage?: number;
+  sourceLevel?: string;
+  sourceLevels?: string[];
+  readingVariants?: { pinyin: string; zhuyin?: string; definitionEn: string; traditional?: string }[];
+  sourceNote?: string;
 };
 
 /** RNG gieo hạt — cùng hạt ra cùng thứ tự, để test tái lập được. */
@@ -108,7 +126,9 @@ export function makeChoices(
  */
 export function clozeOf(example: string, word: string): { before: string; answer: string; after: string } | null {
   const w = word.trim().toLowerCase();
-  if (!w || w.includes(' ')) {
+  // Chữ Hán / kana không có dấu cách giữa các từ nên không có "biên chữ cái": tìm thẳng chuỗi.
+  const cjk = /[぀-ヿ㐀-鿿]/.test(w);
+  if (!w || w.includes(' ') || cjk) {
     const i = example.toLowerCase().indexOf(w);
     if (!w || i < 0) return null;
     return { before: example.slice(0, i), answer: example.slice(i, i + w.length), after: example.slice(i + w.length) };
@@ -167,7 +187,7 @@ export type LearnSettings = {
   /** Giọng đọc: một giọng nữ hoặc một giọng nam tốt nhất của máy. */
   voiceGender: 'f' | 'm';
   /** Giọng đọc có sẵn clip; Kore có clip từ đơn, còn câu sẽ tự chuyển sang giọng có clip. */
-  clipVoice: 'aoede' | 'adam' | 'sarah' | 'kore';
+  clipVoice: 'aoede' | 'adam' | 'sarah' | 'emma' | 'kore';
 };
 
 export const DEFAULT_LEARN_SETTINGS: LearnSettings = {

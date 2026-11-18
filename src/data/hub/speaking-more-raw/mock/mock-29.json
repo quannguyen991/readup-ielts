@@ -1,0 +1,62 @@
+{
+ "id": "mock-29",
+ "title": "IELTS Speaking Mock Test 29",
+ "titleVi": "Đề thi thử số 29",
+ "focusVi": "Kỹ năng xây dựng mục tiêu dài hạn, phát triển kế hoạch hành động và lập luận thuyết phục về thành công cá nhân.",
+ "part1": [
+  {
+   "topic": "Online Shopping",
+   "qs": [
+    "How often do you buy things on the internet?",
+    "What kind of items do you usually purchase online?",
+    "Have you ever had a bad experience while shopping online?",
+    "Do you think traditional stores will disappear in the future?"
+   ]
+  },
+  {
+   "topic": "Mobile Apps",
+   "qs": [
+    "What kinds of mobile apps do you use most frequently?",
+    "Have you downloaded any new applications recently?",
+    "Do you prefer free apps or are you willing to pay for premium ones?",
+    "How have mobile applications changed people's daily routines?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a long-term goal you would like to achieve in the future.",
+  "bullets": [
+   "what the goal is",
+   "when you first decided to pursue it",
+   "what steps you need to take to achieve it",
+   "and explain why this goal is particularly important to you"
+  ]
+ },
+ "part3": [
+  "Why do some individuals find it difficult to stick to their long-term plans?",
+  "How can parents encourage their children to set realistic personal ambitions?",
+  "Should people prioritize personal happiness or professional success when setting targets?",
+  "In what ways do modern technology and social media influence young people's aspirations?",
+  "Do you agree that experiencing failure is an essential part of reaching meaningful goals?"
+ ],
+ "answers": {
+  "p1": [
+   "I purchase items online roughly twice a month, mainly because it saves time compared to visiting retail stores. For instance, last week I ordered several household supplies through Shopee while commuting home.",
+   "I usually buy tech gadgets and books over the internet since they offer better discounts and authentic customer reviews. Recently, I picked up a wireless keyboard online that was significantly cheaper than in local shops.",
+   "Yes, I once ordered a winter jacket that arrived two sizes too small and looked nothing like the pictures. Returning it proved to be a real headache because the merchant was unresponsive.",
+   "No, I doubt physical shops will vanish completely because shoppers still value hands-on experience and immediate gratification. For example, people generally prefer trying on clothes or testing perfume in person before paying.",
+   "I rely heavily on messaging platforms and educational apps throughout the day to stay connected and productive. In particular, I spend about twenty minutes every morning reviewing vocabulary on Duolingo.",
+   "Yes, I recently installed a budget tracking app called Spendee to monitor my monthly expenses. It has already helped me cut back on unnecessary coffee runs by showing clear visual charts of my spending.",
+   "I generally stick to free applications because they easily satisfy my basic needs, even with ads. However, I did pay for a meditation app called Headspace since the ad-free guidance was truly worth the investment.",
+   "Mobile applications have streamlined everyday tasks, making communication, banking, and food delivery practically instantaneous. For instance, rather than waiting in bank queues, we can transfer money securely within seconds using a mobile banking app."
+  ],
+  "sample": "One major long-term objective that I am determined to accomplish is establishing my own sustainable coffee shop within the next five years. I first conceived this ambition during my university years, when I worked part-time as a barista in downtown Da Nang. Seeing how a welcoming cafe could bring communities together sparked a genuine passion for hospitality. To turn this vision into reality, I have mapped out several concrete milestones. Currently, I am setting aside a portion of my monthly salary while taking weekend courses in business management and supply chain logistics. Additionally, I intend to visit ethical coffee farms in the Central Highlands to secure direct-trade partnerships with local growers. This aspiration is exceptionally meaningful to me because it combines entrepreneurship with social responsibility. Rather than just running a commercial enterprise, I want to create an eco-friendly space that supports fair wages for farmers and promotes zero-waste practices. Achieving this would not only signify financial independence, but also grant me the fulfillment of contributing positively to both society and the environment.",
+  "p3": [
+   "In my view, many people fail to maintain their long-term focus because they crave immediate gratification rather than gradual progress. When tangible results take months or years to materialize, frustration sets in and motivation dwindles. For instance, individuals frequently abandon fitness routines after a few weeks if visible changes do not appear immediately. Consequently, without self-discipline and interim benchmarks, sticking to ambitious targets becomes exceedingly challenging.",
+   "Parents can guide children by teaching them to break down grand aspirations into manageable, step-by-step milestones. Instead of demanding perfection or imposing unrealistic expectations, adults should celebrate small accomplishments along the way. For example, if a child dreams of becoming a musician, encouraging daily thirty-minute practice sessions is far healthier than expecting instant mastery. Ultimately, positive reinforcement builds resilience and practical goal-setting habits.",
+   "Personally, I believe emotional well-being should take precedence, as career achievements feel hollow if one is chronically exhausted or unhappy. While professional milestones provide financial stability and status, prioritizing work at the expense of health often leads to severe burnout. A corporate executive earning a high salary, for instance, might still feel unfulfilled without genuine connections. Therefore, true success relies on sustaining personal contentment first.",
+   "Digital platforms significantly shape youth aspirations by exposing them to global opportunities, yet they also foster unrealistic benchmarks. On one hand, educational tutorials inspire self-taught skills; on the other hand, curated lifestyle posts on Instagram breed unhealthy comparison and imposter syndrome. Young people may pursue superficial vanity metrics rather than grounded career paths. Hence, while technology expands horizons, it can distort how adolescents measure accomplishment.",
+   "I wholeheartedly agree with this premise because setbacks provide invaluable feedback that success simply cannot offer. When plans go awry, individuals are forced to reassess their strategies, develop mental fortitude, and cultivate humility. For example, prominent innovators like Thomas Edison refined hundreds of prototypes before perfecting the incandescent bulb. In essence, enduring adversity is not a roadblock, but the very foundation upon which genuine achievement is built."
+  ]
+ }
+}

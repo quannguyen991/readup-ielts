@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-mua-sam-1",
+  "level": "EASY",
+  "title": "Shopping for a New Jacket",
+  "titleVi": "Mua áo khoác tại cửa hàng",
+  "situationVi": "Bạn đang ở một cửa hàng quần áo để mua một chiếc áo khoác ấm cho chuyến du lịch sắp tới. Hãy nói chuyện với nhân viên bán hàng để tìm món đồ phù hợp.",
+  "task": "You are looking for a jacket in a clothing store. Tell the shop assistant what style and color you prefer, ask to try a different size, and inquire if there is any discount today.",
+  "mustVi": [
+   "Nêu rõ loại áo khoác, màu sắc hoặc mục đích bạn muốn mua",
+   "Yêu cầu đổi kích cỡ khác để thử vì cỡ hiện tại chưa vừa",
+   "Hỏi xem cửa hàng hiện có chương trình giảm giá hay khuyến mãi nào không"
+  ],
+  "phrases": [
+   {
+    "en": "I'm looking for...",
+    "vi": "Tôi đang tìm kiếm...",
+    "ex": "I'm looking for a warm jacket for my trip."
+   },
+   {
+    "en": "Do you have this in...?",
+    "vi": "Bạn có món này cỡ/màu... không?",
+    "ex": "Do you have this in a medium size?"
+   },
+   {
+    "en": "It feels a bit too tight/loose",
+    "vi": "Mặc vào cảm thấy hơi chật/rộng",
+    "ex": "It feels a bit too tight around the chest."
+   },
+   {
+    "en": "Where is the fitting room?",
+    "vi": "Phòng thử đồ ở đâu?",
+    "ex": "Excuse me, where is the fitting room?"
+   },
+   {
+    "en": "Is there any discount on this?",
+    "vi": "Món này có được giảm giá không?",
+    "ex": "Is there any discount on this winter jacket today?"
+   },
+   {
+    "en": "I'll take it",
+    "vi": "Tôi sẽ lấy món này",
+    "ex": "The larger size fits well, so I'll take it."
+   }
+  ],
+  "sample": "Excuse me, I'm looking for a warm jacket for my upcoming trip to Hanoi. I really like this black bomber jacket, but it feels a bit too tight around my chest. Do you have this in a larger size, maybe size L? Also, where is the fitting room so I can try it on? By the way, is there any special discount on winter clothes today? If the larger size fits comfortably and the price is reasonable, I will definitely take it right away. Thank you for your help!",
+  "tipVi": "Hãy bắt đầu bằng lời chào lịch sự như 'Excuse me' và dùng trợ động từ khiêm tốn 'Could you please' khi nhờ nhân viên tìm đồ."
+ },
+ {
+  "id": "gt-mua-sam-2",
+  "level": "EASY",
+  "title": "Finding Ingredients at the Supermarket",
+  "titleVi": "Hỏi mua nguyên liệu tại siêu thị",
+  "situationVi": "Bạn đang đi siêu thị để mua đồ nấu bữa tối cho gia đình nhưng không tìm thấy vài món cần thiết. Bạn tiến lại nhờ một nhân viên siêu thị giúp đỡ.",
+  "task": "You are at a local supermarket shopping for groceries. Ask the supermarket clerk where to find specific ingredients, check if they have fresh stock, and ask about current promotions.",
+  "mustVi": [
+   "Hỏi vị trí của ít nhất hai loại thực phẩm hoặc nguyên liệu bạn đang cần",
+   "Hỏi về độ tươi mới hoặc ngày nhập hàng của sản phẩm tươi sống",
+   "Hỏi về chương trình khuyến mãi hoặc ưu đãi đặc biệt trong ngày"
+  ],
+  "phrases": [
+   {
+    "en": "Could you tell me where... is?",
+    "vi": "Bạn có thể chỉ cho tôi chỗ để... không?",
+    "ex": "Could you tell me where the dairy section is?"
+   },
+   {
+    "en": "Which aisle is... in?",
+    "vi": "...nằm ở lối đi số mấy?",
+    "ex": "Which aisle is the olive oil in?"
+   },
+   {
+    "en": "Are these freshly arrived?",
+    "vi": "Những món này mới về hôm nay phải không?",
+    "ex": "Are these salmon fillets freshly arrived today?"
+   },
+   {
+    "en": "What is the expiration date?",
+    "vi": "Hạn sử dụng là ngày nào?",
+    "ex": "Could you help me check the expiration date on this bottle?"
+   },
+   {
+    "en": "Is this item on sale?",
+    "vi": "Mặt hàng này có đang giảm giá không?",
+    "ex": "Is this organic pasta on sale right now?"
+   },
+   {
+    "en": "Buy one get one free",
+    "vi": "Mua một tặng một",
+    "ex": "Is there a buy one get one free promotion on this shelf?"
+   }
+  ],
+  "sample": "Excuse me, could you help me find a few ingredients for dinner? Which aisle is the organic pasta in, and where can I find the tomato sauce? Also, I want to pick some salmon fillets, but could you tell me if these were freshly delivered today? I want to make sure the seafood is fresh. Finally, are there any promotions going on, like buy one get one free on dairy or pasta today? Thank you so much for your guidance!",
+  "tipVi": "Từ 'aisle' (lối đi giữa các quầy kệ) phát âm là /aɪl/ với âm 's' câm, hãy phát âm chuẩn từ này để nhân viên siêu thị dễ hiểu."
+ },
+ {
+  "id": "gt-mua-sam-3",
+  "level": "MEDIUM",
+  "title": "Returning a Faulty Electronic Device",
+  "titleVi": "Đổi trả thiết bị điện tử bị lỗi",
+  "situationVi": "Bạn vừa mua một chiếc tai nghe không dây hôm qua nhưng mang về nhà thì tai nghe bên trái không hoạt động. Bạn đem sản phẩm cùng hóa đơn quay lại quầy dịch vụ khách hàng để khiếu nại.",
+  "task": "You are speaking to a customer service representative at an electronics store. Explain the defect with the item you purchased, present your receipt, and request a replacement or a full refund.",
+  "mustVi": [
+   "Nêu rõ sản phẩm đã mua, thời điểm mua và lỗi kỹ thuật cụ thể gặp phải",
+   "Xuất trình hóa đơn mua hàng và cho biết sản phẩm còn nguyên hộp, phụ kiện",
+   "Đưa ra yêu cầu rõ ràng: muốn đổi sang sản phẩm mới tương đương hoặc hoàn tiền"
+  ],
+  "phrases": [
+   {
+    "en": "I would like to return/exchange...",
+    "vi": "Tôi muốn trả lại/đổi...",
+    "ex": "I would like to exchange these wireless earbuds."
+   },
+   {
+    "en": "There seems to be a defect with...",
+    "vi": "Dường như có lỗi sản xuất ở...",
+    "ex": "There seems to be a defect with the left earbud."
+   },
+   {
+    "en": "It doesn't work properly",
+    "vi": "Nó không hoạt động bình thường",
+    "ex": "It doesn't work properly even after charging all night."
+   },
+   {
+    "en": "I have the original receipt right here",
+    "vi": "Tôi có mang theo hóa đơn gốc ngay đây",
+    "ex": "I have the original receipt and full packaging right here."
+   },
+   {
+    "en": "Still under warranty",
+    "vi": "Vẫn còn trong thời hạn bảo hành",
+    "ex": "The product was bought yesterday, so it is still under warranty."
+   },
+   {
+    "en": "A replacement or a full refund",
+    "vi": "Một sản phẩm thay thế hoặc hoàn tiền toàn bộ",
+    "ex": "I prefer a replacement, but a full refund works too."
+   }
+  ],
+  "sample": "Good afternoon. I bought these wireless earbuds here yesterday afternoon, but there seems to be a serious defect. When I tested them at home, the left earbud didn't charge at all and made a constant buzzing noise. I brought everything back in the original box with all cables, and I have the original receipt right here. Since it is brand new and still under warranty, I would really appreciate an immediate replacement with a working pair. If you don't have another one in stock, I would like to request a full refund to my card, please.",
+  "tipVi": "Giữ thái độ bình tĩnh, lịch sự nhưng dứt khoát; tập trung mô tả chính xác triệu chứng hỏng hóc thay vì bày tỏ sự bực tức cá nhân."
+ },
+ {
+  "id": "gt-mua-sam-4",
+  "level": "MEDIUM",
+  "title": "Bargaining at a Souvenir Market",
+  "titleVi": "Mặc cả mua quà lưu niệm tại chợ",
+  "situationVi": "Bạn đang đi du lịch nước ngoài và muốn mua vài món đồ thủ công mỹ nghệ làm quà lưu niệm tại một khu chợ đêm địa phương. Bạn đang thương lượng giá cả với người bán hàng.",
+  "task": "You are talking to a souvenir vendor at a local night market. Inquire about the price of handcrafted items, negotiate a lower price for buying in bulk, and agree on a final deal.",
+  "mustVi": [
+   "Hỏi giá ban đầu của món đồ và nhận xét rằng mức giá hơi cao so với túi tiền của bạn",
+   "Đề xuất mức giảm giá nếu bạn mua số lượng nhiều (từ 3 đến 4 món trở lên)",
+   "Chốt mức giá thỏa thuận cuối cùng và xác nhận hình thức thanh toán thuận tiện"
+  ],
+  "phrases": [
+   {
+    "en": "How much are you asking for this?",
+    "vi": "Bạn bán món này giá bao nhiêu?",
+    "ex": "How much are you asking for this handmade scarf?"
+   },
+   {
+    "en": "That's a bit beyond my budget",
+    "vi": "Mức giá đó hơi vượt quá ngân sách của tôi",
+    "ex": "Twenty dollars each is a bit beyond my budget."
+   },
+   {
+    "en": "Can you give me a discount if I buy...?",
+    "vi": "Bạn có thể giảm giá nếu tôi mua... không?",
+    "ex": "Can you give me a discount if I buy four of them?"
+   },
+   {
+    "en": "What's your best price?",
+    "vi": "Giá tốt nhất bạn có thể để lại là bao nhiêu?",
+    "ex": "What's your best price if I take the whole set?"
+   },
+   {
+    "en": "Could we meet in the middle?",
+    "vi": "Chúng ta có thể thương lượng mức giá ở giữa được không?",
+    "ex": "How about sixteen dollars? Could we meet in the middle?"
+   },
+   {
+    "en": "It's a deal",
+    "vi": "Thống nhất giá đó nhé / Đồng ý chốt đơn",
+    "ex": "If sixteen dollars is okay, it's a deal."
+   }
+  ],
+  "sample": "Hi there! These handmade ceramic bowls look lovely. How much are you asking for one? Hmm, twenty dollars each is a bit beyond my budget for souvenirs. If I buy four bowls together for my family, can you give me a good discount? How about fifteen dollars each? Could we meet in the middle at sixteen dollars? If that works for you, it's a deal, and I'll take all four right now. Do you accept mobile payment, or do you prefer cash?",
+  "tipVi": "Hãy duy trì nụ cười thân thiện và sử dụng cấu trúc 'Could we meet in the middle?' để tạo cảm giác đôi bên cùng có lợi khi trả giá."
+ },
+ {
+  "id": "gt-mua-sam-5",
+  "level": "HARD",
+  "title": "Reviewing Household Budget and Expenses",
+  "titleVi": "Rà soát ngân sách và chi tiêu gia đình",
+  "situationVi": "Chi tiêu tháng vừa rồi của bạn và bạn đời (hoặc bạn cùng phòng) vượt quá kế hoạch ban đầu, đặc biệt là tiền ăn ngoài và hóa đơn tiện ích. Hai bạn cùng ngồi lại để phân tích và lập kế hoạch thắt chặt chi tiêu.",
+  "task": "You are discussing monthly household finances with your partner or roommate. Analyze why last month's spending exceeded the budget, propose specific ways to cut down recurring costs, and establish a realistic financial target for next month.",
+  "mustVi": [
+   "Chỉ ra những khoản chi cụ thể đã bị bội chi trong tháng qua (ăn ngoài, hóa đơn điện, mua sắm tùy hứng...)",
+   "Đề xuất ít nhất hai giải pháp thiết thực để cắt giảm chi phí sinh hoạt hàng ngày và hóa đơn cố định",
+   "Thiết lập một con số ngân sách trần cụ thể hoặc mục tiêu tiết kiệm rõ ràng cho tháng tới"
+  ],
+  "phrases": [
+   {
+    "en": "We went way over budget on...",
+    "vi": "Chúng ta đã chi vượt quá xa ngân sách cho...",
+    "ex": "We went way over budget on food delivery and dining out."
+   },
+   {
+    "en": "Utility bills have skyrocketed",
+    "vi": "Hóa đơn điện nước đã tăng vọt",
+    "ex": "Our electricity bill skyrocketed because of the heatwave."
+   },
+   {
+    "en": "Cut back on non-essential spending",
+    "vi": "Cắt giảm các khoản chi tiêu không thiết yếu",
+    "ex": "We need to cut back on non-essential spending immediately."
+   },
+   {
+    "en": "Track our daily expenses",
+    "vi": "Theo dõi chi tiêu hàng ngày",
+    "ex": "Let's use a budgeting app to track our daily expenses."
+   },
+   {
+    "en": "Cap our spending at...",
+    "vi": "Giới hạn chi tiêu tối đa ở mức...",
+    "ex": "Let's cap our entertainment spending at one hundred dollars."
+   },
+   {
+    "en": "Set aside a fixed amount for savings",
+    "vi": "Trích riêng một khoản cố định để tiết kiệm",
+    "ex": "We should set aside twenty percent of our income for savings."
+   }
+  ],
+  "sample": "I think we need to sit down and review our monthly finances. Looking at our bank statements, we went way over budget last month, especially on food delivery and weekend entertainment. On top of that, our electricity bill skyrocketed because we kept the air conditioning running all night. To fix this, I suggest we cook at home on weekdays and prepare our own lunchboxes for work. We should also cancel unused streaming subscriptions to cut recurring costs. Let's cap our personal spending at two hundred dollars each and aim to set aside twenty percent of our total income for savings next month.",
+  "tipVi": "Sử dụng đại từ tập thể 'we' và 'our' thay vì 'you' để thể hiện tinh thần hợp tác, tránh tạo cảm giác chỉ trích hay đổ lỗi khi bàn về tiền bạc."
+ }
+]

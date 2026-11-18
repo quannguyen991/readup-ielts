@@ -1,0 +1,619 @@
+[
+ {
+  "id": "zh-g-h1-21",
+  "level": 1,
+  "order": 1,
+  "title": "Lượng từ riêng",
+  "titleZh": "专用量词",
+  "summary": "Bạn sẽ chọn đúng lượng từ khi đếm sách, người, cửa hàng, đồ vật và tiền.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Lượng từ đứng giữa số và danh từ",
+    "body": "Lượng từ cho biết đơn vị của người, đồ vật hoặc tiền. Trong tiếng Trung, thường đặt lượng từ sau số từ và trước danh từ.",
+    "formula": "Số từ + lượng từ + danh từ",
+    "examples": [
+     {
+      "zh": "今天我买了一本中文书。",
+      "py": "jīntiān wǒ mǎi le yì běn zhōngwén shū",
+      "vi": "Hôm nay tôi mua một quyển sách tiếng Trung."
+     },
+     {
+      "zh": "我桌子上有一个苹果。",
+      "py": "wǒ zhuōzi shàng yǒu yí ge píngguǒ",
+      "vi": "Trên bàn tôi có một quả táo."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Đếm người và cơ sở kinh doanh",
+    "body": "Một số danh từ thường đi với lượng từ riêng.口 dùng để đếm người trong gia đình, còn 家 thường đi với cửa hàng hoặc cơ sở kinh doanh.",
+    "examples": [
+     {
+      "zh": "我家有三口人，爸爸妈妈和我。",
+      "py": "wǒ jiā yǒu sān kǒu rén bàba māma hé wǒ",
+      "vi": "Nhà tôi có ba người, bố mẹ và tôi."
+     },
+     {
+      "zh": "我爸爸开了一家商店。",
+      "py": "wǒ bàba kāi le yì jiā shāngdiàn",
+      "vi": "Bố tôi mở một cửa hàng."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Chọn lượng từ theo loại đồ vật",
+    "body": "本 thường dùng với sách, 个 dùng được với nhiều danh từ thông dụng. 件 thường đi với quần áo, còn 只 thường dùng để đếm một số con vật.",
+    "formula": "一 + 本/个/件/只 + danh từ",
+    "examples": [
+     {
+      "zh": "我今天买了一件衣服。",
+      "py": "wǒ jīntiān mǎi le yí jiàn yīfu",
+      "vi": "Hôm nay tôi mua một bộ quần áo."
+     },
+     {
+      "zh": "我今天看到一只小狗。",
+      "py": "wǒ jīntiān kàndào yì zhī xiǎo gǒu",
+      "vi": "Hôm nay tôi nhìn thấy một chú chó nhỏ."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Dùng 块 và 元 khi nói tiền",
+    "body": "块钱 là cách nói thường ngày; 元 cũng dùng để nói đơn vị tiền. Hãy đặt chúng sau số tiền.",
+    "examples": [
+     {
+      "zh": "这个苹果三块钱，那个苹果五块钱。",
+      "py": "zhège píngguǒ sān kuài qián nàge píngguǒ wǔ kuài qián",
+      "vi": "Quả táo này ba đồng, quả kia năm đồng."
+     },
+     {
+      "zh": "妈妈给我十元买苹果。",
+      "py": "māma gěi wǒ shí yuán mǎi píngguǒ",
+      "vi": "Mẹ đưa tôi mười đồng để mua táo."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không dùng một lượng từ cho mọi danh từ",
+    "body": "Đừng đặt trực tiếp một lượng từ bất kỳ trước danh từ. Hãy nhớ các cặp thường gặp như 一本书 và 一家商店.",
+    "mistakes": [
+     {
+      "wrong": "我买了一个书。",
+      "right": "我买了一本书。",
+      "why": "书 thường đi với 本, không dùng 个 trong cách nói này."
+     },
+     {
+      "wrong": "我爸爸开了一口商店。",
+      "right": "我爸爸开了一家商店。",
+      "why": "Cửa hàng thường đi với lượng từ 家."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn lượng từ đúng: 一本___",
+    "options": [
+     "书",
+     "人",
+     "苹果",
+     "衣服"
+    ],
+    "answer": 0,
+    "explain": "本 thường dùng để đếm sách."
+   },
+   {
+    "q": "Điền lượng từ để nói nhà có ba người: 我家有三___人。",
+    "options": [
+     "本",
+     "口",
+     "只",
+     "元"
+    ],
+    "answer": 1,
+    "explain": "口 dùng để đếm số người trong gia đình."
+   },
+   {
+    "q": "Câu nào dùng 元 để nói tiền đúng?",
+    "options": [
+     "妈妈给我十个买苹果。",
+     "妈妈给我十口买苹果。",
+     "妈妈给我十元买苹果。",
+     "妈妈给我十本买苹果。"
+    ],
+    "answer": 2,
+    "explain": "元 đặt sau số tiền để chỉ đơn vị tiền."
+   },
+   {
+    "q": "Lượng từ nào hợp với quần áo trong câu này: 一___衣服？",
+    "options": [
+     "家",
+     "口",
+     "本",
+     "件"
+    ],
+    "answer": 3,
+    "explain": "件 thường dùng để đếm quần áo."
+   },
+   {
+    "q": "Câu nào dùng lượng từ cho cửa hàng đúng?",
+    "options": [
+     "我爸爸开了一家商店。",
+     "我爸爸开了一口商店。",
+     "我爸爸开了一本商店。",
+     "我爸爸开了一只商店。"
+    ],
+    "answer": 0,
+    "explain": "商店 thường đi với lượng từ 家."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-22",
+  "level": 1,
+  "order": 2,
+  "title": "Từ chỉ phương vị",
+  "titleZh": "方位词",
+  "summary": "Bạn sẽ dùng các từ 上、下、里、外、前、后 để nói vị trí tương đối.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Từ chỉ vị trí tương đối",
+    "body": "上、下、里、外、前、后 cho biết vị trí của người hoặc vật so với một nơi hay vật khác. Chúng thường đi sau danh từ chỉ nơi chốn hoặc vật làm mốc.",
+    "examples": [
+     {
+      "zh": "我的中文书在桌子上。",
+      "py": "wǒ de zhōngwén shū zài zhuōzi shàng",
+      "vi": "Sách tiếng Trung của tôi ở trên bàn."
+     },
+     {
+      "zh": "小狗在椅子下等我。",
+      "py": "xiǎo gǒu zài yǐzi xià děng wǒ",
+      "vi": "Chú chó nhỏ đang đợi tôi dưới ghế."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói một người hay vật ở đâu",
+    "body": "Dùng các từ này khi muốn nói vật ở trên hay dưới, người ở trong hay ngoài một nơi. Cần có địa điểm làm mốc để người nghe hiểu vị trí.",
+    "examples": [
+     {
+      "zh": "我在家里看中文书。",
+      "py": "wǒ zài jiālǐ kàn zhōngwén shū",
+      "vi": "Tôi đọc sách tiếng Trung ở trong nhà."
+     },
+     {
+      "zh": "爸爸现在在学校外面。",
+      "py": "bàba xiànzài zài xuéxiào wàimiàn",
+      "vi": "Bố hiện đang ở bên ngoài trường học."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt từ chỉ phương vị sau địa điểm",
+    "body": "Cấu trúc thường gặp là danh từ chỉ nơi chốn cộng với từ chỉ phương vị. Khi nói câu đầy đủ, 在 thường đứng trước cụm chỉ vị trí.",
+    "formula": "在 + danh từ chỉ nơi chốn + phương vị từ",
+    "examples": [
+     {
+      "zh": "妈妈在家里看电视。",
+      "py": "māma zài jiālǐ kàn diànshì",
+      "vi": "Mẹ xem tivi ở trong nhà."
+     },
+     {
+      "zh": "我在家外面等爸爸。",
+      "py": "wǒ zài jiā wàimiàn děng bàba",
+      "vi": "Tôi đợi bố ở bên ngoài nhà."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Phân biệt 前 và 后",
+    "body": "前 chỉ phía trước, còn 后 chỉ phía sau, theo vị trí của người hoặc vật làm mốc. Hai từ này cũng có thể kết hợp với 面 để tạo thành 前面 và 后面.",
+    "examples": [
+     {
+      "zh": "我朋友坐在我前面。",
+      "py": "wǒ péngyou zuò zài wǒ qiánmiàn",
+      "vi": "Bạn tôi ngồi phía trước tôi."
+     },
+     {
+      "zh": "老师现在在我后面。",
+      "py": "lǎoshī xiànzài zài wǒ hòumiàn",
+      "vi": "Thầy giáo hiện đang ở phía sau tôi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đặt phương vị từ trước địa điểm",
+    "body": "Với cách nói vị trí thông dụng, hãy đặt phương vị từ sau danh từ chỉ nơi chốn. Không đảo hai phần này.",
+    "mistakes": [
+     {
+      "wrong": "我的书在上桌子。",
+      "right": "我的书在桌子上。",
+      "why": "上 đứng sau 桌子 để nói sách ở trên bàn."
+     },
+     {
+      "wrong": "我在里家看书。",
+      "right": "我在家里看书。",
+      "why": "里 đứng sau 家 để tạo cụm chỉ vị trí."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Điền từ để nói sách ở trên bàn: 我的书在桌子___。",
+    "options": [
+     "上",
+     "里",
+     "前",
+     "外"
+    ],
+    "answer": 0,
+    "explain": "上 đứng sau 桌子 để chỉ vị trí ở trên bàn."
+   },
+   {
+    "q": "Câu nào có nghĩa “chú chó nhỏ ở dưới ghế”?",
+    "options": [
+     "小狗在椅子上。",
+     "小狗在椅子下。",
+     "小狗在椅子里。",
+     "小狗在椅子外。"
+    ],
+    "answer": 1,
+    "explain": "下 chỉ vị trí ở phía dưới."
+   },
+   {
+    "q": "Cụm nào có nghĩa là “ở trong nhà”?",
+    "options": [
+     "家上",
+     "家下",
+     "家里",
+     "家前"
+    ],
+    "answer": 2,
+    "explain": "里 đứng sau 家 để chỉ vị trí ở bên trong nhà."
+   },
+   {
+    "q": "Điền từ để nói “bên ngoài trường”: 学校___面。",
+    "options": [
+     "上",
+     "里",
+     "前",
+     "外"
+    ],
+    "answer": 3,
+    "explain": "学校外面 có nghĩa là bên ngoài trường học."
+   },
+   {
+    "q": "Câu nào diễn đạt đúng “sách ở trên bàn”?",
+    "options": [
+     "桌子在上书。",
+     "书在桌子上。",
+     "在上桌子书。",
+     "上桌子在书。"
+    ],
+    "answer": 1,
+    "explain": "Từ chỉ phương vị đứng sau danh từ chỉ nơi chốn."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-23",
+  "level": 1,
+  "order": 3,
+  "title": "Bổ ngữ động lượng",
+  "titleZh": "动量补语",
+  "summary": "Bạn sẽ dùng 次 để đếm số lần và 遍 để nhấn mạnh làm trọn một lượt.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Đếm số lần thực hiện hành động",
+    "body": "次 và 遍 đứng sau động từ để bổ sung số lần hành động xảy ra. 次 đếm lần; 遍 thường nhấn mạnh hành động được làm trọn từ đầu đến cuối.",
+    "examples": [
+     {
+      "zh": "我昨天去了一次学校。",
+      "py": "wǒ zuótiān qù le yí cì xuéxiào",
+      "vi": "Hôm qua tôi đã đến trường một lần."
+     },
+     {
+      "zh": "姐姐昨天看了两遍这个电影。",
+      "py": "jiějie zuótiān kàn le liǎng biàn zhège diànyǐng",
+      "vi": "Hôm qua chị tôi xem bộ phim này hai lượt."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Dùng 次 để đếm sự việc",
+    "body": "Dùng 次 khi muốn nói một hành động diễn ra bao nhiêu lần, mà không cần nhấn mạnh việc làm trọn nội dung. Số từ đứng ngay trước 次.",
+    "examples": [
+     {
+      "zh": "我每天看一次中文书。",
+      "py": "wǒ měitiān kàn yí cì zhōngwén shū",
+      "vi": "Mỗi ngày tôi đọc sách tiếng Trung một lần."
+     },
+     {
+      "zh": "我今天听了两次中文课。",
+      "py": "wǒ jīntiān tīng le liǎng cì zhōngwén kè",
+      "vi": "Hôm nay tôi nghe bài học tiếng Trung hai lần."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt số từ và 次 hoặc 遍 sau động từ",
+    "body": "Sau động từ, đặt số từ rồi đến 次 hoặc 遍. Nếu có tân ngữ, tân ngữ có thể đứng sau cụm bổ ngữ trong những câu thông dụng.",
+    "formula": "Động từ + số từ + 次/遍 + tân ngữ",
+    "examples": [
+     {
+      "zh": "我每周去一次商店。",
+      "py": "wǒ měi zhōu qù yí cì shāngdiàn",
+      "vi": "Mỗi tuần tôi đến cửa hàng một lần."
+     },
+     {
+      "zh": "老师说得很快，我请他再说一遍。",
+      "py": "lǎoshī shuō de hěn kuài wǒ qǐng tā zài shuō yí biàn",
+      "vi": "Thầy nói nhanh quá, tôi nhờ thầy nói lại một lượt."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Chọn 遍 khi muốn nói làm trọn lượt",
+    "body": "遍 phù hợp khi người nói muốn nhấn mạnh đã nghe, đọc hoặc nói hết một lượt. Với một lần diễn ra của sự việc, 次 thường phù hợp hơn.",
+    "examples": [
+     {
+      "zh": "我把这本书看了一遍。",
+      "py": "wǒ bǎ zhè běn shū kàn le yí biàn",
+      "vi": "Tôi đã đọc hết quyển sách này một lượt."
+     },
+     {
+      "zh": "姐姐昨天把中文课听了一遍。",
+      "py": "jiějie zuótiān bǎ zhōngwén kè tīng le yí biàn",
+      "vi": "Hôm qua chị tôi nghe hết bài học tiếng Trung một lượt."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không dùng 遍 cho mọi hành động",
+    "body": "遍 gợi ý hành động được làm hết một lượt, nên không thể thay 次 trong mọi trường hợp. Hãy xét xem câu đang đếm lần xảy ra hay nhấn mạnh sự hoàn tất.",
+    "mistakes": [
+     {
+      "wrong": "我去了一遍学校。",
+      "right": "我去了一次学校。",
+      "why": "Đi đến trường là một lần xảy ra của hành động, nên dùng 次."
+     },
+     {
+      "wrong": "我看了这本书两次遍。",
+      "right": "我把这本书看了两遍。",
+      "why": "Chỉ dùng một bổ ngữ động lượng; đặt số từ trước 遍."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Điền từ để đếm số lần: 我今天看了两___中文书。",
+    "options": [
+     "遍",
+     "次",
+     "件",
+     "块"
+    ],
+    "answer": 1,
+    "explain": "次 dùng để đếm số lần hành động xảy ra."
+   },
+   {
+    "q": "遍 thường nhấn mạnh điều gì?",
+    "options": [
+     "Giá tiền",
+     "Vị trí",
+     "Làm trọn một lượt",
+     "Số người"
+    ],
+    "answer": 2,
+    "explain": "遍 thường nhấn mạnh hành động được làm hết một lượt."
+   },
+   {
+    "q": "Điền từ để nói thầy đã nói hết một lượt: 老师今天把中文说了一___。",
+    "options": [
+     "元",
+     "次",
+     "遍",
+     "口"
+    ],
+    "answer": 2,
+    "explain": "遍 phù hợp khi muốn nhấn mạnh đã nói trọn một lượt."
+   },
+   {
+    "q": "Câu nào nói đúng “hôm qua tôi đến trường một lần”?",
+    "options": [
+     "我昨天去了一本学校。",
+     "我昨天去了一块学校。",
+     "我昨天去了一遍学校。",
+     "我昨天去了一次学校。"
+    ],
+    "answer": 3,
+    "explain": "次 đếm một lần đi đến trường."
+   },
+   {
+    "q": "Muốn nhấn mạnh đã đọc hết quyển sách hai lượt, chọn câu nào?",
+    "options": [
+     "我看了两次这本书。",
+     "我看了两遍这本书。",
+     "我看了两元这本书。",
+     "我看了两口这本书。"
+    ],
+    "answer": 1,
+    "explain": "两遍 nhấn mạnh đã đọc trọn hai lượt."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h1-24",
+  "level": 1,
+  "order": 4,
+  "title": "Số, tiền và thứ tự",
+  "titleZh": "数额和序数",
+  "summary": "Bạn sẽ đọc số tiền, dùng 两 trước lượng từ và tạo số thứ tự với 第.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Số từ chỉ lượng và thứ tự",
+    "body": "Số từ cho biết số lượng hoặc số tiền; 第 đứng trước số từ để tạo số thứ tự. Các số 一 đến 九 kết hợp với 十、百、千 theo từng hàng; 零 đọc ở hàng bị bỏ trống, còn 半 nghĩa là một nửa.",
+    "examples": [
+     {
+      "zh": "我有两个苹果，妹妹有三个苹果。",
+      "py": "wǒ yǒu liǎng ge píngguǒ mèimei yǒu sān ge píngguǒ",
+      "vi": "Tôi có hai quả táo, em gái có ba quả táo."
+     },
+     {
+      "zh": "她今天第一个到学校。",
+      "py": "tā jīntiān dì yī ge dào xuéxiào",
+      "vi": "Hôm nay cô ấy là người đầu tiên đến trường."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Đọc giá tiền theo số lượng",
+    "body": "Khi nói giá tiền, đọc số trước rồi đến 元 hoặc 块钱. Đọc đúng từng hàng để phân biệt các số như một trăm lẻ năm và một nghìn.",
+    "examples": [
+     {
+      "zh": "这本书一百零五元。",
+      "py": "zhè běn shū yì bǎi líng wǔ yuán",
+      "vi": "Quyển sách này giá một trăm lẻ năm đồng."
+     },
+     {
+      "zh": "爸爸今天给我一千元。",
+      "py": "bàba jīntiān gěi wǒ yì qiān yuán",
+      "vi": "Hôm nay bố đưa tôi một nghìn đồng."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Dùng 两 trước lượng từ, 第 trước số thứ tự",
+    "body": "Khi nói số lượng trước lượng từ, thường dùng 两 thay vì 二. Muốn chỉ thứ tự, đặt 第 trước số từ và lượng từ.",
+    "formula": "两 + lượng từ + danh từ；第 + số từ + lượng từ + danh từ",
+    "examples": [
+     {
+      "zh": "我有两本中文书。",
+      "py": "wǒ yǒu liǎng běn zhōngwén shū",
+      "vi": "Tôi có hai quyển sách tiếng Trung."
+     },
+     {
+      "zh": "这是我第一次来这里。",
+      "py": "zhè shì wǒ dì yī cì lái zhèlǐ",
+      "vi": "Đây là lần đầu tiên tôi đến đây."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Đọc 半 và số có hàng trống",
+    "body": "半 đứng trước đơn vị để nói một nửa đơn vị. Khi một hàng ở giữa không có số, đọc 零 để giữ đúng giá trị của số.",
+    "examples": [
+     {
+      "zh": "现在是七点半，我要回家了。",
+      "py": "xiànzài shì qī diǎn bàn wǒ yào huí jiā le",
+      "vi": "Bây giờ là bảy giờ rưỡi, tôi phải về nhà rồi."
+     },
+     {
+      "zh": "妹妹有三十元，我有五十元。",
+      "py": "mèimei yǒu sān shí yuán wǒ yǒu wǔ shí yuán",
+      "vi": "Em gái có ba mươi đồng, tôi có năm mươi đồng."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Phân biệt 二 với 两 và nhớ lượng từ sau 第",
+    "body": "Trước lượng từ, cách nói thông dụng là 两个 hoặc 两本. Số thứ tự vẫn cần lượng từ phù hợp trước danh từ.",
+    "mistakes": [
+     {
+      "wrong": "我有二个苹果。",
+      "right": "我有两个苹果。",
+      "why": "Trước lượng từ 个, thường dùng 两 để nói số lượng hai."
+     },
+     {
+      "wrong": "这是第三书。",
+      "right": "这是第三本书。",
+      "why": "Số thứ tự 第三 đứng trước lượng từ 本 rồi mới đến 书."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Điền số từ thích hợp: 我有___个苹果。",
+    "options": [
+     "两",
+     "二",
+     "第",
+     "半"
+    ],
+    "answer": 0,
+    "explain": "Trước lượng từ 个, dùng 两 để nói có hai quả táo."
+   },
+   {
+    "q": "“Năm mươi đồng” được viết thế nào?",
+    "options": [
+     "五元",
+     "五十元",
+     "十五元",
+     "五十个"
+    ],
+    "answer": 1,
+    "explain": "五十元 là năm mươi đồng."
+   },
+   {
+    "q": "Cụm nào có nghĩa là “nửa tiếng”?",
+    "options": [
+     "一个小时",
+     "十个小时",
+     "半个小时",
+     "三个小时"
+    ],
+    "answer": 2,
+    "explain": "半个小时 nghĩa là nửa tiếng."
+   },
+   {
+    "q": "Cách viết nào có nghĩa là “ngày thứ ba”?",
+    "options": [
+     "三天",
+     "第天三",
+     "三十天",
+     "第三天"
+    ],
+    "answer": 3,
+    "explain": "Đặt 第 trước số từ để tạo số thứ tự."
+   },
+   {
+    "q": "Chọn cách đọc đúng của 105 đồng.",
+    "options": [
+     "一百五元",
+     "一百零五元",
+     "一百五十元",
+     "一千零五元"
+    ],
+    "answer": 1,
+    "explain": "Đọc 零 ở hàng chục trống: 一百零五元."
+   }
+  ]
+ }
+]

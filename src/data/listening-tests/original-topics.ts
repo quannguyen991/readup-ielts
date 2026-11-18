@@ -1,4 +1,5 @@
 import type { ListeningGroup, ListeningSection, ListeningTest, TranscriptLine } from '@/services/listening/types';
+import DURATIONS from '../listening-originals-durations.json';
 
 type Topic = {
   category: string;
@@ -98,7 +99,7 @@ function buildSection1(t: Topic): ListeningSection {
     { type: 'mcq-many', title: 'Questions 8–9', instruction: 'Choose TWO letters, A–E. Which TWO items are provided?', options: options('activity materials', 'refreshments', 'a follow-up handout', 'a travel pass', 'a certificate'), questions: [question(8, ['A', 'C'])] },
     { type: 'matching', title: 'Question 10', instruction: 'Choose the correct letter, A–C.', options: options('morning', 'afternoon', 'evening'), questions: [question(10, 'C', { prompt: 'When is the workshop held?' })] },
   ];
-  return { n: 1, title: t.event, context: `A caller asks ${t.venue} about ${t.event}.`, audio: audioUrl(t.title, 1), durationSec: 300, transcript, groups };
+  return { n: 1, title: t.event, context: `A caller asks ${t.venue} about ${t.event}.`, audio: audioUrl(t.title, 1), durationSec: durationOf(t.title, 1), transcript, groups };
 }
 
 function buildSection2(t: Topic, variant: number): ListeningSection {
@@ -125,7 +126,7 @@ function buildSection2(t: Topic, variant: number): ListeningSection {
       : ['## Information about the programme', `The programme focuses on {{11}} and takes place at {{12}}. It accepts {{13}} participants and costs {{14}}. The meetings use {{15}} and run for {{16}}. Participants should bring {{17}} and will produce {{18}}. Sessions are held on {{19}}, with a focus on {{20}}.`];
   const title = variant % 3 === 1 ? 'Questions 11–20 · Table Completion' : variant % 3 === 2 ? 'Questions 11–20 · Summary Completion' : 'Questions 11–20 · Note Completion';
   const group: ListeningGroup = { type: 'gap', title, instruction: 'Complete the notes below. Write NO MORE THAN EIGHT WORDS AND/OR A NUMBER for each answer.', wordLimit: 'NO MORE THAN EIGHT WORDS AND/OR A NUMBER', lines: groupLines, questions: qs };
-  return { n: 2, title: `Information about ${t.title.toLowerCase()}`, context: `A coordinator explains a local programme connected with ${t.title.toLowerCase()}.`, audio: audioUrl(t.title, 2), durationSec: 300, transcript, groups: [group] };
+  return { n: 2, title: `Information about ${t.title.toLowerCase()}`, context: `A coordinator explains a local programme connected with ${t.title.toLowerCase()}.`, audio: audioUrl(t.title, 2), durationSec: durationOf(t.title, 2), transcript, groups: [group] };
 }
 
 function buildSection3(t: Topic, variant: number): ListeningSection {
@@ -165,10 +166,10 @@ function buildSection3(t: Topic, variant: number): ListeningSection {
       ] },
       { type: 'gap', title: 'Questions 27–30 · Sentence Completion', instruction: 'Complete the sentences. Write NO MORE THAN EIGHT WORDS AND/OR A NUMBER for each answer.', wordLimit: 'NO MORE THAN EIGHT WORDS AND/OR A NUMBER', lines: [
         `The project investigates {{27}}.`, `The main difficulty is {{28}}.`, `The sample will include {{29}} people.`, `The final presentation will explain {{30}}.`,
-      ], questions: [question(27, t.focus), question(28, t.obstacle), question(29, String(t.groupSize)), question(30, 'the evidence, its limitations and a next step')] },
+      ], questions: [question(27, t.focus), question(28, t.obstacle), question(29, String(t.groupSize)), question(30, 'the evidence, the limits and the next step')] },
     );
   }
-  return { n: 3, title: `Project discussion: ${t.title}`, context: `Two students discuss a project about ${t.title.toLowerCase()} with their tutor.`, audio: audioUrl(t.title, 3), durationSec: 300, transcript, groups };
+  return { n: 3, title: `Project discussion: ${t.title}`, context: `Two students discuss a project about ${t.title.toLowerCase()} with their tutor.`, audio: audioUrl(t.title, 3), durationSec: durationOf(t.title, 3), transcript, groups };
 }
 
 function buildSection4(t: Topic, variant: number): ListeningSection {
@@ -199,11 +200,13 @@ function buildSection4(t: Topic, variant: number): ListeningSection {
     lines: layoutLines,
     questions: facts.map(([, answer], i) => question(31 + i, answer)),
   };
-  return { n: 4, title: `Lecture: ${t.title}`, context: `A short lecture reviews research connected with ${t.title.toLowerCase()}.`, audio: audioUrl(t.title, 4), durationSec: 300, transcript, groups: [group] };
+  return { n: 4, title: `Lecture: ${t.title}`, context: `A short lecture reviews research connected with ${t.title.toLowerCase()}.`, audio: audioUrl(t.title, 4), durationSec: durationOf(t.title, 4), transcript, groups: [group] };
 }
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const audioBase = (process.env.EXPO_PUBLIC_SUPABASE_URL ?? '').replace(/\/+$/, '');
+/** Thời lượng THẬT của bản âm thanh Aoede đã đưa lên kho (đo bằng ffprobe 16/11/2026), không phải số ước 300 giây. */
+const durationOf = (title: string, section: number): number => (DURATIONS as Record<string, Record<string, number>>)[slug(title)]?.[String(section)] ?? 90;
 const audioUrl = (title: string, section: number) => {
   const path = `/listening/original/${slug(title)}/s${section}.mp3`;
   return audioBase ? `${audioBase}/storage/v1/object/public/listening-audio${path}` : path;
@@ -211,8 +214,8 @@ const audioUrl = (title: string, section: number) => {
 
 export const ORIGINAL_TOPIC_TESTS: ListeningTest[] = TOPICS.map((topic, i) => ({
   id: `band9-topic-${pad(i + 1)}`,
-  title: topic.title,
-  titleVi: topic.title,
+  title: `${topic.title} (Mini)`,
+  titleVi: `${topic.title} (Mini)`,
   source: 'Band 9 Original',
   level: i % 3 === 0 ? 'easy' : i % 3 === 1 ? 'medium' : 'hard',
   cover: { topic: topic.title, category: topic.category, hue: (28 + i * 29) % 360 },

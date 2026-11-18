@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-hoc-tap-1",
+  "level": "EASY",
+  "title": "Joining an English Club",
+  "titleVi": "Đăng ký tham gia câu lạc bộ tiếng Anh",
+  "situationVi": "Bạn đang đến bàn thông tin của Câu lạc bộ Tiếng Anh tại trường để đăng ký làm thành viên mới và gặp bạn phụ trách câu lạc bộ.",
+  "task": "You want to join the campus English club. Talk to the club leader to introduce yourself, explain why you want to join, and ask about the meeting schedule.",
+  "mustVi": [
+   "Giới thiệu ngắn gọn về bản thân và trình độ tiếng Anh hiện tại",
+   "Nêu lý do bạn muốn tham gia câu lạc bộ",
+   "Hỏi về lịch sinh hoạt hàng tuần và địa điểm gặp mặt"
+  ],
+  "phrases": [
+   {
+    "en": "I'm interested in joining...",
+    "vi": "Tôi rất quan tâm đến việc tham gia...",
+    "ex": "I'm interested in joining the English speaking club this term."
+   },
+   {
+    "en": "My speaking skills are...",
+    "vi": "Kỹ năng nói của tôi thì...",
+    "ex": "My speaking skills are quite basic right now."
+   },
+   {
+    "en": "I want to improve my...",
+    "vi": "Tôi muốn cải thiện...",
+    "ex": "I want to improve my communication confidence."
+   },
+   {
+    "en": "How often do you meet?",
+    "vi": "Câu lạc bộ sinh hoạt bao lâu một lần?",
+    "ex": "How often do you meet every week?"
+   },
+   {
+    "en": "Where do you usually meet?",
+    "vi": "Mọi người thường sinh hoạt ở đâu?",
+    "ex": "Where do you usually meet for discussions?"
+   },
+   {
+    "en": "I'm looking forward to...",
+    "vi": "Tôi rất mong chờ...",
+    "ex": "I'm looking forward to meeting new friends."
+   }
+  ],
+  "sample": "Hi there! My name is Linh, and I'm a second-year business student. I'm really interested in joining your English club this semester. To be honest, my speaking skills are quite basic, and I often feel shy when talking to foreigners. I really want to improve my speaking confidence and make new friends who share the same goal. Could you tell me how often the club meets each week and what time you usually start? Also, is there any membership fee I need to pay today? Thank you so much!",
+  "tipVi": "Hãy giữ nụ cười và thái độ cởi mở, dùng các câu đơn giản và ngắt nghỉ tự nhiên để người nghe dễ theo dõi."
+ },
+ {
+  "id": "gt-hoc-tap-2",
+  "level": "EASY",
+  "title": "Asking a Teacher for Help",
+  "titleVi": "Hỏi giáo viên về bài tập về nhà",
+  "situationVi": "Bạn nán lại lớp sau giờ học để hỏi giáo viên về một phần bài tập lớn mà nhóm bạn chưa hiểu rõ.",
+  "task": "You stayed after class to speak with your instructor. Politely explain which part of the assignment confuses you, ask for an example, and confirm the submission deadline.",
+  "mustVi": [
+   "Chào hỏi lịch sự và xin phép thầy cô vài phút để hỏi bài",
+   "Chỉ rõ phần yêu cầu bài tập chưa hiểu và xin một ví dụ minh họa",
+   "Xác nhận lại hạn nộp và hình thức nộp bài"
+  ],
+  "phrases": [
+   {
+    "en": "Do you have a few minutes?",
+    "vi": "Thầy/Cô có rảnh vài phút không ạ?",
+    "ex": "Excuse me, do you have a few minutes to help me?"
+   },
+   {
+    "en": "I'm a bit confused about...",
+    "vi": "Em hơi bối rối/chưa rõ về...",
+    "ex": "I'm a bit confused about the second question."
+   },
+   {
+    "en": "Could you give me an example?",
+    "vi": "Thầy/Cô có thể cho em một ví dụ được không ạ?",
+    "ex": "Could you give me an example of this concept?"
+   },
+   {
+    "en": "Just to make sure, ...",
+    "vi": "Để chắc chắn thì...",
+    "ex": "Just to make sure, is the essay due on Friday?"
+   },
+   {
+    "en": "Should we submit it online or...?",
+    "vi": "Tụi em nên nộp trực tuyến hay là...?",
+    "ex": "Should we submit it online or bring a hard copy?"
+   },
+   {
+    "en": "Thank you for your time.",
+    "vi": "Em cảm ơn thầy/cô đã dành thời gian.",
+    "ex": "Thank you for your time and helpful guidance."
+   }
+  ],
+  "sample": "Excuse me, Mr. David, do you have a few minutes? I have a quick question about the group presentation next week. I'm a bit confused about the case study requirement in section two. Could you explain what kind of real-world examples you want us to focus on? Also, just to make sure, is the final deadline next Monday at midnight or before class starts? We want to organize our research properly this weekend. Thank you so much for your help and time!",
+  "tipVi": "Luôn mở đầu bằng lời xin phép lịch sự và sử dụng các từ khiếm khuyết như 'could' hay 'would' để tạo sự tôn trọng."
+ },
+ {
+  "id": "gt-hoc-tap-3",
+  "level": "MEDIUM",
+  "title": "Dividing Group Project Work",
+  "titleVi": "Phân chia công việc bài tập nhóm",
+  "situationVi": "Nhóm của bạn đang họp trực tiếp để phân công nhiệm vụ cho bài thuyết trình kết thúc môn, nhưng một thành viên chưa chủ động nhận việc.",
+  "task": "Lead a short discussion with your team members. Review the remaining project tasks, assign a specific task to your teammate tactfully, and set an internal deadline for everyone.",
+  "mustVi": [
+   "Tóm tắt tiến độ chung và liệt kê các phần việc còn thiếu người làm",
+   "Gợi ý phân công một đầu việc phù hợp cho bạn cùng nhóm một cách khéo léo",
+   "Thống nhất mốc thời gian hoàn thành bản nháp đầu tiên của cả nhóm"
+  ],
+  "phrases": [
+   {
+    "en": "Let's review where we are.",
+    "vi": "Hãy cùng xem lại tiến độ hiện tại của chúng ta.",
+    "ex": "Let's review where we are before assigning new roles."
+   },
+   {
+    "en": "We still need someone to handle...",
+    "vi": "Chúng ta vẫn cần ai đó đảm nhận phần...",
+    "ex": "We still need someone to handle the survey analysis."
+   },
+   {
+    "en": "Since you are good at...",
+    "vi": "Vì bạn rất có thế mạnh về...",
+    "ex": "Since you are good at graphic design, could you take this?"
+   },
+   {
+    "en": "How would you feel about...?",
+    "vi": "Bạn thấy thế nào nếu nhận...?",
+    "ex": "How would you feel about designing the presentation slides?"
+   },
+   {
+    "en": "To keep things on track, ...",
+    "vi": "Để giữ mọi việc đúng tiến độ, ...",
+    "ex": "To keep things on track, we should set strict milestones."
+   },
+   {
+    "en": "Let's aim to finish by...",
+    "vi": "Chúng ta hãy đặt mục tiêu xong trước...",
+    "ex": "Let's aim to finish by Thursday evening."
+   }
+  ],
+  "sample": "Hi everyone, let's review where we are with our marketing project. Nam and I have drafted the introduction and background research, but we still need someone to handle the survey analysis and slide design. Huy, since you're really good at visual presentations, how would you feel about taking charge of the slides and charts? That would really help the team. To keep things on track before the presentation day, let's aim to finish our individual drafts by Thursday evening. Then, we can practice together on Friday. Does that sound workable for you?",
+  "tipVi": "Dùng câu hỏi gợi mở như 'How would you feel about...?' thay vì mệnh lệnh để đồng đội cảm thấy được tôn trọng và sẵn lòng hợp tác."
+ },
+ {
+  "id": "gt-hoc-tap-4",
+  "level": "MEDIUM",
+  "title": "Managing Stress and Study Plans",
+  "titleVi": "Giải tỏa áp lực thi cử và lập kế hoạch",
+  "situationVi": "Bạn và bạn học cùng lớp đang cảm thấy quá tải vì kỳ thi cuối kỳ sắp diễn ra và hai bạn ngồi lại để lên lịch ôn thi hiệu quả hơn.",
+  "task": "Talk to your study partner about how stressed you feel, suggest a realistic revision schedule for both of you, and propose a healthy habit to avoid burnout.",
+  "mustVi": [
+   "Bày tỏ sự lo lắng về kỳ thi sắp tới và nêu môn học bạn thấy khó khăn nhất",
+   "Đề xuất một thời gian biểu ôn tập cụ thể chia theo từng khung giờ hoặc ngày",
+   "Gợi ý một thói quen hoặc hoạt động thư giãn để giữ sức khỏe tinh thần"
+  ],
+  "phrases": [
+   {
+    "en": "I'm feeling completely overwhelmed by...",
+    "vi": "Tôi đang cảm thấy hoàn toàn quá tải bởi...",
+    "ex": "I'm feeling completely overwhelmed by the upcoming finals."
+   },
+   {
+    "en": "My biggest concern right now is...",
+    "vi": "Mối lo lớn nhất của tôi hiện tại là...",
+    "ex": "My biggest concern right now is advanced statistics."
+   },
+   {
+    "en": "If we break it down into...",
+    "vi": "Nếu chúng ta chia nhỏ nó thành...",
+    "ex": "If we break it down into smaller chapters, it's easier."
+   },
+   {
+    "en": "How about dedicating two hours to...?",
+    "vi": "Hay là chúng ta dành hai tiếng cho...?",
+    "ex": "How about dedicating two hours to practice tests every morning?"
+   },
+   {
+    "en": "We shouldn't forget to...",
+    "vi": "Chúng ta không nên quên việc...",
+    "ex": "We shouldn't forget to get enough sleep each night."
+   },
+   {
+    "en": "It will keep us from burning out.",
+    "vi": "Nó sẽ giúp chúng ta không bị kiệt sức.",
+    "ex": "Short daily walks will keep us from burning out."
+   }
+  ],
+  "sample": "Honestly, I'm feeling completely overwhelmed by this upcoming exam week. My biggest concern right now is advanced statistics because there are so many complex formulas to memorize. If we break it down into smaller steps, it will be much more manageable. How about dedicating two hours every morning to practice calculations together, and reviewing theory in the afternoon? Also, we shouldn't forget to take proper breaks. We can take a thirty-minute walk in the park every evening or grab a smoothie. It will keep us from burning out before finals.",
+  "tipVi": "Kết hợp từ vựng chia sẻ cảm xúc chân thành với các cấu trúc đề xuất hành động thực tế để bài nói vừa tự nhiên vừa có giải pháp."
+ },
+ {
+  "id": "gt-hoc-tap-5",
+  "level": "HARD",
+  "title": "Consulting an Academic Advisor",
+  "titleVi": "Tư vấn chọn môn học và định hướng",
+  "situationVi": "Bạn đang tham gia buổi tư vấn học tập 1-1 với giáo sư cố vấn để xin lời khuyên về việc chọn chuyên ngành hẹp cho năm học tiếp theo.",
+  "task": "Speak with your academic advisor. Present your career dilemma between two elective tracks, weigh the pros and cons of each option, and ask for their expert recommendation based on industry trends.",
+  "mustVi": [
+   "Trình bày định hướng nghề nghiệp và sự phân vân giữa hai hướng môn học tự chọn",
+   "Phân tích ưu điểm và nhược điểm của từng lựa chọn đối với năng lực bản thân",
+   "Xin lời khuyên của giáo sư dựa trên nhu cầu tuyển dụng thực tế của doanh nghiệp"
+  ],
+  "phrases": [
+   {
+    "en": "I'm currently at a crossroads regarding...",
+    "vi": "Em hiện đang đứng trước ngã rẽ về việc...",
+    "ex": "I'm currently at a crossroads regarding my elective modules."
+   },
+   {
+    "en": "On one hand, ... but on the other hand, ...",
+    "vi": "Một mặt thì..., nhưng mặt khác thì...",
+    "ex": "On one hand, it is lucrative, but on the other hand, it requires heavy coding."
+   },
+   {
+    "en": "This path would provide solid foundations in...",
+    "vi": "Hướng đi này sẽ mang lại nền tảng vững chắc về...",
+    "ex": "This path would provide solid foundations in quantitative analytics."
+   },
+   {
+    "en": "I'm slightly concerned about the workload.",
+    "vi": "Em hơi lo ngại về khối lượng bài vở.",
+    "ex": "I'm slightly concerned about the heavy research workload."
+   },
+   {
+    "en": "From your perspective, which option aligns better with...?",
+    "vi": "Theo góc nhìn của thầy/cô, lựa chọn nào phù hợp hơn với...?",
+    "ex": "From your perspective, which option aligns better with corporate needs?"
+   },
+   {
+    "en": "What skill sets are employers prioritizing?",
+    "vi": "Các nhà tuyển dụng đang ưu tiên những bộ kỹ năng nào?",
+    "ex": "What skill sets are employers prioritizing for fresh graduates?"
+   }
+  ],
+  "sample": "Good afternoon, Professor Thorne. I'm currently at a crossroads regarding my electives for next year. I'm passionate about business analytics, but I'm torn between Data Science and Digital Marketing. On one hand, Data Science provides solid technical foundations in Python and machine learning, but I'm concerned the heavy mathematical workload might affect my GPA. On the other hand, Digital Marketing seems more practical and immediately applicable to brand strategy. From your perspective, which pathway aligns better with modern corporate demands? I'd appreciate your advice on what skill sets employers are prioritizing in today's job market.",
+  "tipVi": "Duy trì phong thái học thuật đĩnh đạc, sử dụng cấu trúc tương phản ('On one hand... on the other hand') để thể hiện khả năng tư duy phân tích sâu sắc."
+ }
+]

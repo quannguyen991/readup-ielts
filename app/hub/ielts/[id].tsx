@@ -81,22 +81,22 @@ function Lesson({ lesson }: { lesson: IeltsLesson }) {
     <HubScreen title={lesson.title} subtitle={lesson.goal} back>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
         {lesson.criteria.map((c) => (
-          <Text key={c} style={{ color: HUB.body, fontSize: 11, borderWidth: 1, borderColor: HUB.line, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2 }}>
+          <Text key={c} style={{ color: HUB.body, fontSize: 13, borderWidth: 1, borderColor: HUB.line, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2 }}>
             {c === 'fluency' ? 'Lưu loát' : c === 'lexical' ? 'Vốn từ' : c === 'grammar' ? 'Ngữ pháp' : 'Phát âm'}
           </Text>
         ))}
       </View>
 
       <View style={[GLASS_CARD, { padding: 16, gap: 8 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Hiểu trước khi nói</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Hiểu trước khi nói</Text>
         {lesson.explanation.map((line, i) => (
           <Text key={i} style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>{line}</Text>
         ))}
       </View>
 
       <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Cụm từ mẫu</Text>
-        <Text style={{ color: HUB.muted, fontSize: 12 }}>Bấm để nghe.</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Cụm từ mẫu</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>Bấm để nghe.</Text>
         {lesson.phrases.map((p) => (
           <Pressable key={p.phrase} accessibilityRole="button" accessibilityLabel={`Nghe ${p.phrase}`} onPress={() => speak(p.phrase)} style={{ gap: 2, paddingVertical: 4 }}>
             <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{p.phrase}</Text>
@@ -105,27 +105,27 @@ function Lesson({ lesson }: { lesson: IeltsLesson }) {
         ))}
       </View>
 
-      <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Nói theo cụm từ</Text>
-      <Text style={{ color: HUB.muted, fontSize: 12, marginTop: -10 }}>
+      <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '400' }}>Nói theo cụm từ</Text>
+      <Text style={{ color: HUB.muted, fontSize: 13, marginTop: -10 }}>
         Ghi âm từng cụm. Từ nào đúng, sai hiện ngay bên dưới.
       </Text>
       {lesson.phrases.map((p) => (
         <SayItCard key={p.phrase} id={`${lesson.id}:${p.phrase}`} phrase={p.phrase} meaningVi={p.meaningVi} />
       ))}
 
-      <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Bài tập ghi âm</Text>
-      <Text style={{ color: HUB.muted, fontSize: 12, marginTop: -10 }}>
+      <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '400' }}>Bài tập ghi âm</Text>
+      <Text style={{ color: HUB.muted, fontSize: 13, marginTop: -10 }}>
         Mục tiêu: {lesson.target.wpmMin}–{lesson.target.wpmMax} từ/phút, từ đệm dưới {Math.round(lesson.target.fillerRateMax * 100)}%.
       </Text>
-      {!listen.supported ? <Text style={{ color: HUB.amber, fontSize: 12 }}>Ghi âm cần Chrome trên máy tính hoặc Android.</Text> : null}
+      {!listen.supported ? <Text style={{ color: HUB.amber, fontSize: 13 }}>Ghi âm cần Chrome trên máy tính hoặc Android.</Text> : null}
       {lesson.drills.map((d, i) => {
         const r = results[i];
         const recording = listen.listening && activeDrill === i;
         return (
           <View key={`${d.prompt}-${i}`} style={[GLASS_CARD, { padding: 14, gap: 8 }]}>
-            <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>{d.part === 'all' ? 'TỔNG HỢP' : `PART ${d.part}`}</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>{d.part === 'all' ? 'TỔNG HỢP' : `PART ${d.part}`}</Text>
             <Text style={{ color: HUB.ink, fontSize: 15, lineHeight: 22 }}>{d.prompt}</Text>
-            {d.hint ? <Text style={{ color: HUB.body, fontSize: 12 }}>Gợi ý: {d.hint}</Text> : null}
+            {d.hint ? <Text style={{ color: HUB.body, fontSize: 13 }}>Gợi ý: {d.hint}</Text> : null}
             <View style={{ flexDirection: 'row', gap: 10 }}>
               <Pressable accessibilityRole="button" accessibilityLabel="Nghe câu hỏi" onPress={() => speak(d.prompt)} style={{ width: 44, height: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong }}>
                 <Icon name="volume" size={18} color={HUB.blue} />
@@ -138,7 +138,7 @@ function Lesson({ lesson }: { lesson: IeltsLesson }) {
                 style={{ flex: 1, height: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8, backgroundColor: recording ? HUB.red : HUB.blue, opacity: listen.supported ? 1 : 0.5 }}
               >
                 <Icon name="mic" size={16} color="#fff" />
-                <Text style={{ color: '#fff', fontWeight: '800' }}>{recording ? 'Dừng' : r ? 'Ghi lại' : 'Ghi âm'}</Text>
+                <Text style={{ color: '#fff', fontWeight: '400' }}>{recording ? 'Dừng' : r ? 'Ghi lại' : 'Ghi âm'}</Text>
               </Pressable>
             </View>
             {r ? (
@@ -151,28 +151,28 @@ function Lesson({ lesson }: { lesson: IeltsLesson }) {
       })}
 
       <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Bài mẫu</Text>
-        <Text style={{ color: HUB.muted, fontSize: 12 }}>Câu hỏi: {lesson.model.prompt}</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Bài mẫu</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13 }}>Câu hỏi: {lesson.model.prompt}</Text>
         <Text style={{ color: HUB.ink, fontSize: 15, lineHeight: 23 }}>{lesson.model.answer}</Text>
         <Pressable accessibilityRole="button" onPress={() => speak(lesson.model.answer)} style={{ height: 42, borderRadius: 12, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8, backgroundColor: HUB.glassStrong }}>
           <Icon name="play" size={16} color={HUB.blue} />
           <Text style={{ color: HUB.ink, fontWeight: '700' }}>Nghe bài mẫu</Text>
         </Pressable>
-        <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '800', marginTop: 4 }}>Vì sao bài này tốt</Text>
+        <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '400', marginTop: 4 }}>Vì sao bài này tốt</Text>
         {lesson.model.whyGood.map((w) => (
           <Text key={w} style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>• {w}</Text>
         ))}
       </View>
 
       <View style={[GLASS_CARD, { padding: 16, gap: 8 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Lỗi người học hay mắc</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Lỗi người học hay mắc</Text>
         {lesson.mistakes.map((m) => (
           <Text key={m} style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>• {m}</Text>
         ))}
       </View>
 
       <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Tự kiểm trước khi xong</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Tự kiểm trước khi xong</Text>
         {lesson.checklist.map((item, i) => (
           <Pressable
             key={item}
@@ -195,7 +195,7 @@ function Lesson({ lesson }: { lesson: IeltsLesson }) {
         onPress={() => completeIelts(lesson.id)}
         style={{ height: 50, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: isDone ? '#2E7D4F' : canFinish ? HUB.blue : HUB.glassStrong, opacity: canFinish || isDone ? 1 : 0.6 }}
       >
-        <Text style={{ color: isDone || canFinish ? '#fff' : HUB.muted, fontWeight: '800', fontSize: 15 }}>
+        <Text style={{ color: isDone || canFinish ? '#fff' : HUB.muted, fontWeight: '400', fontSize: 15 }}>
           {isDone ? 'Đã hoàn thành bài này' : canFinish ? 'Đánh dấu hoàn thành' : 'Ghi âm ít nhất một bài tập và tích đủ danh sách'}
         </Text>
       </Pressable>

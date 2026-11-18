@@ -1,92 +1,66 @@
+import type { DeckSource } from '@/components/vocab/deck-style';
+
 /**
- * Bìa vẽ bằng code cho 7 bộ sách từ vựng (thẻ ở thư viện "Sách từ vựng").
- * Kiểu: nền tối, tiêu đề lớn, nhãn màu, vòng số từ ở góc dưới, dải chéo màu ở góc trên.
- * Không dùng logo hay tên nhà xuất bản — chỉ tên sách và màu nhấn của app.
+ * Bìa các bộ sách trong thư viện bộ từ. Ảnh sinh bằng `node scripts/vocab/book-covers/render.mjs`
+ * từ `scripts/vocab/book-covers/books.json`; thứ tự id ở đây PHẢI giống thứ tự trong file đó,
+ * vì màu mỗi bìa suy ra từ vị trí của nó.
  */
-export type BookCoverSpec = {
-  /** Dòng nhỏ trên cùng. */
-  top: string;
-  /** Tiêu đề lớn, xuống dòng bằng "\n". */
-  big: string;
-  bigSize: number;
-  /** Nhãn màu giữa bìa. */
-  tag: string;
-  /** Dòng nghiêng dưới nhãn. */
-  sub: string;
-  /** Dòng đậm ở góc dưới bên trái (chủ đề chính của sách). */
-  detail: string;
-  /** Màu nhấn: nhãn, dải chéo, vòng số. */
-  accent: string;
-  /** Tranh bìa (ChatGPT vẽ, không chữ) ở public/book-covers; chữ đè lên bằng mã. */
-  image?: string;
+export const BOOK_COVER_IDS = [
+  'vfi', 'vfia', 'gs10', 'gs11', 'gs12', 'listening', 'ielts-topics', 'oxford', 'daily',
+  'dest-b1', 'dest-b2', 'dest-c1c2', 'sat-math', 'sat-verbal', 'toeic', 'toefl',
+  'study4-common-ielts-listening', 'study4-barrons-essentials-ielts', 'study4-toeic-word-list', 'study4-600-toeic-words',
+  'study4-barrons-sat-words', 'study4-college-panda-400-sat', 'study4-new-academic-word-list', 'study4-business-word-list',
+  'study4-toefl-word-list', 'study4-powerscore-gre-repeat-offenders', 'study4-essential-english-idioms',
+] as const;
+
+export type BookCoverId = (typeof BOOK_COVER_IDS)[number];
+
+export function bookCoverUri(id: string): string {
+  return `/books/vocab-books/${id}.webp`;
+}
+
+/** Góc màu của bìa (cùng công thức với `palette()` trong gen.html), dùng để tô nền banner cho hợp bìa. */
+export function bookHue(id: string): number {
+  const i = Math.max(0, (BOOK_COVER_IDS as readonly string[]).indexOf(id));
+  return (i * 137.508 + 252) % 360;
+}
+
+/** Nhóm bộ từ nào có bìa riêng, theo thứ tự bìa hiện ra (nhóm nhiều sách có nhiều bìa). */
+export const SOURCE_BOOKS: Partial<Record<DeckSource, readonly BookCoverId[]>> = {
+  vfi: ['vfi'],
+  vfia: ['vfia'],
+  listening: ['listening'],
+  ielts: ['ielts-topics'],
+  oxford: ['oxford'],
+  daily: ['daily'],
+  satMath: ['sat-math'],
+  satVerbal: ['sat-verbal'],
+  toeic: ['toeic'],
+  toefl: ['toefl'],
+  globalSuccess: ['gs10', 'gs11', 'gs12'],
+  destination: ['dest-b1', 'dest-b2', 'dest-c1c2'],
 };
 
-const TOP = 'Band 9 · Sách từ vựng';
-
-export const BOOK_COVERS: Record<string, BookCoverSpec> = {
-  'book-ericas-vocabulary': {
-    top: TOP,
-    big: 'ERICA’S\nVOCAB',
-    bigSize: 36,
-    tag: 'TRONG NGỮ CẢNH',
-    sub: 'A New Approach',
-    detail: 'Từ dễ nhầm · Từ nối',
-    accent: '#E0A526',
-  },
-  'book-sat-power-vocab': {
-    top: TOP,
-    big: 'POWER\nVOCAB',
-    bigSize: 36,
-    tag: 'GỐC TỪ & MẸO',
-    sub: 'Luyện SAT từ gốc',
-    detail: 'Liên tưởng · Thuật ngữ',
-    accent: '#E4572E',
-  },
-  'book-vocab-in-use-elementary': {
-    top: TOP,
-    big: 'ELEMENTARY',
-    bigSize: 30,
-    tag: 'CƠ BẢN',
-    sub: 'Từ hằng ngày quanh bạn',
-    detail: 'Gia đình · Nhà cửa',
-    accent: '#34A853',
-  },
-  'book-vocab-in-use-preintermediate': {
-    top: TOP,
-    big: 'PRE-\nINTERMEDIATE',
-    bigSize: 26,
-    tag: 'SƠ TRUNG CẤP',
-    sub: 'Sinh hoạt và học tập',
-    detail: 'Du lịch · Công việc',
-    accent: '#2F80ED',
-  },
-  'book-vocab-in-use-upperintermediate': {
-    top: TOP,
-    big: 'UPPER-\nINTERMEDIATE',
-    bigSize: 26,
-    tag: 'TRUNG CẤP CAO',
-    sub: 'Cảm xúc và khái niệm',
-    detail: 'Từ nối · Cụm động từ',
-    accent: '#9B51E0',
-  },
-  'book-vocab-in-use-advanced': {
-    top: TOP,
-    big: 'ADVANCED',
-    bigSize: 34,
-    tag: 'NÂNG CAO',
-    sub: 'Từ học thuật, đúng ngữ cảnh',
-    detail: 'Môi trường · Sức khỏe',
-    accent: '#EB5757',
-  },
-  'book-1100-words': {
-    top: TOP,
-    big: '1100\nWORDS',
-    bigSize: 40,
-    tag: 'HỌC THEO TUẦN',
-    sub: 'You Need to Know',
-    detail: 'Từ học thuật · Thành ngữ',
-    accent: '#1FA59A',
-  },
+/** Tên sách cho nhóm có nhiều sách (Global Success, Destination). */
+export const BOOK_NAMES: Partial<Record<BookCoverId, { vi: string; en: string }>> = {
+  gs10: { vi: 'Global Success 10', en: 'Global Success 10' },
+  gs11: { vi: 'Global Success 11', en: 'Global Success 11' },
+  gs12: { vi: 'Global Success 12', en: 'Global Success 12' },
+  'dest-b1': { vi: 'Destination B1', en: 'Destination B1' },
+  'dest-b2': { vi: 'Destination B2', en: 'Destination B2' },
+  'dest-c1c2': { vi: 'Destination C1 & C2', en: 'Destination C1 & C2' },
 };
 
-for (const [slug, spec] of Object.entries(BOOK_COVERS)) spec.image = `/book-covers/${slug}.webp`;
+/** Bộ thuộc sách nào, suy từ mã bộ; nhóm không chia sách thì trả undefined. */
+export function bookIdOfDeck(slug: string): BookCoverId | undefined {
+  const gs = slug.match(/^global-success-(10|11|12)-/);
+  if (gs) return `gs${gs[1]}` as BookCoverId;
+  const dest = slug.match(/^destination-(b1|b2|c1c2)-/);
+  if (dest) return `dest-${dest[1]}` as BookCoverId;
+  return undefined;
+}
+
+/** Bộ bổ trợ mỗi bộ là một cuốn: mã bộ chính là mã bìa. */
+export function hasOwnCover(slug: string): boolean {
+  return (BOOK_COVER_IDS as readonly string[]).includes(slug);
+}

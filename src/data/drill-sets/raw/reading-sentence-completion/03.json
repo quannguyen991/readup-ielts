@@ -1,0 +1,127 @@
+{
+ "title": "Pediatric Screen Engagement and Developmental Trajectories",
+ "topic": "children and screen time (set 3)",
+ "context": "A. In recent decades, pediatric digital engagement has experienced a paradigm shift, transitioning from communal, stationary television viewing to pervasive interaction with handheld digital devices. Modern infants and young children encounter touchscreens during critical windows of neurodevelopment, when synaptic plasticity is remarkably elevated. While proponents argue that intuitive interfaces foster digital literacy, developmental specialists caution that excessive exposure during infancy can profoundly alter the trajectories of structural brain maturation. The sensory richness of portable screens often captivates young minds through rapid auditory and visual shifts, creating an artificial stimulus landscape that natural environments cannot replicate.\n\nB. A central theoretical framework examining these effects is the displacement hypothesis, which posits that screen time harms development primarily by supplanting essential real-world activities. Time allocated to digital media inevitably curtails opportunities for unstructured tactile play, physical locomotion, and reciprocal vocal exchanges with primary caregivers. Observational studies demonstrate that when toddlers use portable tablets, their conversational turns with parents decline sharply. Because language acquisition relies heavily on dynamic, contingent verbal interactions, prolonged digital absorption during formative years is consistently correlated with expressive vocabulary deficits and communicative delays.\n\nC. Beyond linguistic setbacks, screen immersion exerts quantifiable physiological tolls on pediatric biological rhythms. Handheld displays emit short-wavelength blue light, which directly stimulates retinal ganglion cells and subsequently inhibits the pineal gland's secretion of melatonin. In young subjects, whose ocular lenses are clearer and pupils larger than those of adults, this photochemical vulnerability is particularly acute. The resultant suppression of evening melatonin disrupts natural circadian cycles, precipitating prolonged sleep latency, frequent nocturnal awakenings, and compromised sleep architecture, which ultimately hampers memory consolidation and somatic growth.\n\nD. Nevertheless, researchers emphasize that the developmental consequences of screen exposure are contingent upon media typology. A critical distinction is made between passive video consumption and interactive educational software embedded with cognitive scaffolding. When programs feature responsive feedback, age-appropriate narratives, and joint-attention prompts, older preschoolers can acquire early numeracy skills and domain-specific knowledge. Conversely, media saturated with rapid pacing and sensory overstimulation often overwhelms immature working memory, impeding information processing rather than facilitating intellectual advancement.\n\nE. Emotional and behavioral self-regulation constitutes another vulnerability domain. In contemporary parenting, handheld electronics are frequently deployed as digital pacifiers to soothe distressed infants or avert public tantrums. While offering immediate behavioral compliance, this coping strategy denies children crucial opportunities to practice internal distress tolerance and emotional modulation. Longitudinal research indicates that relying on screens for affective regulation correlates with diminished executive functioning, lower frustration tolerance, and an inability to master delay of gratification during early primary school.\n\nF. To mitigate these risks, pediatric authorities advocate for nuanced parental mediation rather than punitive total bans. Active co-viewing, wherein adults scaffold digital experiences by discussing plot elements and drawing real-world parallels, substantially buffers against negative developmental outcomes. Furthermore, establishing consistent digital hygiene—such as designating screen-free zones, enforcing tech-free meals, and curating high-quality interactive content—cultivates an intentional media environment. Through collaborative engagement and clear structural boundaries, caregivers can preserve the developmental integrity of early childhood while safely navigating digital technology.",
+ "questions": [
+  {
+   "prompt": "Pediatric media habits have shifted away from stationary television toward regular use of ____.",
+   "answer": "handheld digital devices",
+   "why": "Đoạn A chỉ ra rằng thói quen dùng thiết bị kỹ thuật số của trẻ em đã chuyển đổi từ việc xem tivi cố định sang tương tác thường xuyên với 'handheld digital devices'.",
+   "quote": "transitioning from communal, stationary television viewing to pervasive interaction with handheld digital devices."
+  },
+  {
+   "prompt": "Children interact with touchscreens at stages when their level of ____ is exceptionally high.",
+   "answer": "synaptic plasticity",
+   "why": "Đoạn A nêu rõ trẻ tiếp xúc với màn hình cảm ứng trong các giai đoạn phát triển thần kinh quan trọng khi 'synaptic plasticity' (tính mềm dẻo của synap) tăng cao đáng kể.",
+   "quote": "Modern infants and young children encounter touchscreens during critical windows of neurodevelopment, when synaptic plasticity is remarkably elevated."
+  },
+  {
+   "prompt": "Specialists warn that too much screen time in infancy may disrupt the path of ____.",
+   "answer": "structural brain maturation",
+   "why": "Đoạn A đề cập lời cảnh báo của các chuyên gia rằng việc tiếp xúc quá nhiều với màn hình khi còn nhỏ có thể làm thay đổi quỹ đạo phát triển cấu trúc não ('structural brain maturation').",
+   "quote": "developmental specialists caution that excessive exposure during infancy can profoundly alter the trajectories of structural brain maturation."
+  },
+  {
+   "prompt": "Devices present an ____ which the real world is unable to reproduce.",
+   "answer": "artificial stimulus landscape",
+   "why": "Đoạn A giải thích màn hình điện tử tạo ra một bối cảnh kích thích nhân tạo ('artificial stimulus landscape') mà môi trường tự nhiên không thể tái tạo được.",
+   "quote": "creating an artificial stimulus landscape that natural environments cannot replicate."
+  },
+  {
+   "prompt": "According to the ____, digital devices are detrimental because they replace vital everyday activities.",
+   "answer": "displacement hypothesis",
+   "why": "Đoạn B giới thiệu 'displacement hypothesis' (giả thuyết thay thế) giải thích rằng việc sử dụng thiết bị gây hại chủ yếu vì thay thế các hoạt động thực tế quan trọng.",
+   "quote": "A central theoretical framework examining these effects is the displacement hypothesis, which posits that screen time harms development primarily by supplanting essential real-world activities."
+  },
+  {
+   "prompt": "Engaging with screens reduces opportunities for children to participate in ____ and physical movement.",
+   "answer": "unstructured tactile play",
+   "why": "Đoạn B nêu rõ thời gian cho thiết bị điện tử làm giảm các cơ hội chơi xúc giác tự do ('unstructured tactile play') và vận động thể chất.",
+   "quote": "curtails opportunities for unstructured tactile play, physical locomotion, and reciprocal vocal exchanges with primary caregivers."
+  },
+  {
+   "prompt": "Research shows a marked reduction in ____ between parents and toddlers while using tablets.",
+   "answer": "conversational turns",
+   "why": "Đoạn B chỉ ra rằng khi trẻ mới biết đi dùng máy tính bảng, số lượt tương tác hội thoại ('conversational turns') giữa trẻ và cha mẹ bị sụt giảm nghiêm trọng.",
+   "quote": "Observational studies demonstrate that when toddlers use portable tablets, their conversational turns with parents decline sharply."
+  },
+  {
+   "prompt": "Excessive digital use in early childhood is regularly linked to ____ and delays in communication.",
+   "answer": "expressive vocabulary deficits",
+   "why": "Đoạn B giải thích việc tiếp xúc màn hình kéo dài có mối liên hệ mật thiết với sự suy giảm vốn từ vựng biểu đạt ('expressive vocabulary deficits') và chậm giao tiếp.",
+   "quote": "prolonged digital absorption during formative years is consistently correlated with expressive vocabulary deficits and communicative delays."
+  },
+  {
+   "prompt": "The blue light produced by screens targets retinal ganglion cells, stopping the pineal gland's ____.",
+   "answer": "secretion of melatonin",
+   "why": "Đoạn C nói rằng ánh sáng xanh tác động lên tế bào võng mạc và làm ức chế quá trình tiết melatonin ('secretion of melatonin') của tuyến tùng.",
+   "quote": "directly stimulates retinal ganglion cells and subsequently inhibits the pineal gland's secretion of melatonin."
+  },
+  {
+   "prompt": "Due to clearer lenses and wider pupils, younger individuals face a heightened ____.",
+   "answer": "photochemical vulnerability",
+   "why": "Đoạn C đề cập rằng mắt trẻ nhỏ có thủy tinh thể trong và đồng tử to hơn khiến mức độ dễ tổn thương quang hóa ('photochemical vulnerability') trở nên đặc biệt nghiêm trọng.",
+   "quote": "In young subjects, whose ocular lenses are clearer and pupils larger than those of adults, this photochemical vulnerability is particularly acute."
+  },
+  {
+   "prompt": "A drop in melatonin levels can lead to longer ____ and frequent awakenings at night.",
+   "answer": "sleep latency",
+   "why": "Đoạn C nêu việc giảm tiết melatonin kích thích sự kéo dài thời gian đi vào giấc ngủ ('sleep latency') và làm trẻ hay tỉnh giấc lúc nửa đêm.",
+   "quote": "precipitating prolonged sleep latency, frequent nocturnal awakenings, and compromised sleep architecture,"
+  },
+  {
+   "prompt": "Poor sleep quality resulting from screen exposure impairs both physical growth and ____.",
+   "answer": "memory consolidation",
+   "why": "Đoạn C khẳng định cấu trúc giấc ngủ bị xáo trộn gây trở ngại cho quá trình củng cố trí nhớ ('memory consolidation') và sự phát triển thể chất.",
+   "quote": "compromised sleep architecture, which ultimately hampers memory consolidation and somatic growth."
+  },
+  {
+   "prompt": "Scientists point out that the developmental influence of screen exposure relies on ____.",
+   "answer": "media typology",
+   "why": "Đoạn D lưu ý rằng các tác động lên sự phát triển của trẻ phụ thuộc vào loại hình phương tiện truyền thông ('media typology').",
+   "quote": "researchers emphasize that the developmental consequences of screen exposure are contingent upon media typology."
+  },
+  {
+   "prompt": "Helpful educational software is typically designed with ____ to support learning.",
+   "answer": "cognitive scaffolding",
+   "why": "Đoạn D chỉ ra rằng phần mềm giáo dục có ích thường được tích hợp cấu trúc hỗ trợ nhận thức ('cognitive scaffolding').",
+   "quote": "interactive educational software embedded with cognitive scaffolding."
+  },
+  {
+   "prompt": "Preschoolers can develop domain-specific knowledge and ____ from well-designed digital programs.",
+   "answer": "early numeracy skills",
+   "why": "Đoạn D nhấn mạnh trẻ mẫu giáo có thể tiếp thu kiến thức chuyên môn và các kỹ năng làm quen với số học sớm ('early numeracy skills') từ các chương trình chất lượng.",
+   "quote": "older preschoolers can acquire early numeracy skills and domain-specific knowledge."
+  },
+  {
+   "prompt": "Content that features fast pacing and intense stimulation can overload a child's ____.",
+   "answer": "immature working memory | working memory",
+   "why": "Đoạn D giải thích nội dung có nhịp độ dồn dập và kích thích giác quan quá mức sẽ làm quá tải trí nhớ làm việc non nớt ('immature working memory') của trẻ nhỏ.",
+   "quote": "sensory overstimulation often overwhelms immature working memory, impeding information processing rather than facilitating intellectual advancement."
+  },
+  {
+   "prompt": "Parents often resort to digital devices as ____ to calm upset children.",
+   "answer": "digital pacifiers",
+   "why": "Đoạn E mô tả việc cha mẹ thường tận dụng các thiết bị cầm tay làm núm vú giả kỹ thuật số ('digital pacifiers') để xoa dịu trẻ sơ sinh.",
+   "quote": "handheld electronics are frequently deployed as digital pacifiers to soothe distressed infants or avert public tantrums."
+  },
+  {
+   "prompt": "Using screens to pacify infants deprives them of the chance to develop ____ and manage emotions.",
+   "answer": "internal distress tolerance",
+   "why": "Đoạn E khẳng định thói quen dỗ trẻ bằng màn hình tước đi cơ hội rèn luyện khả năng tự chịu đựng áp lực/khó chịu ('internal distress tolerance') của chính bản thân.",
+   "quote": "denies children crucial opportunities to practice internal distress tolerance and emotional modulation."
+  },
+  {
+   "prompt": "Children conditioned to regulate emotions with screens struggle to achieve ____ in primary school.",
+   "answer": "delay of gratification",
+   "why": "Đoạn E cảnh báo việc phụ thuộc vào màn hình để điều hòa tâm trạng khiến trẻ không thể làm chủ sự trì hoãn thỏa mãn ('delay of gratification') ở bậc tiểu học.",
+   "quote": "diminished executive functioning, lower frustration tolerance, and an inability to master delay of gratification during early primary school."
+  },
+  {
+   "prompt": "Negative effects can be minimized when parents practice ____ by engaging with content alongside their children.",
+   "answer": "active co-viewing | co-viewing",
+   "why": "Đoạn F khuyến khích phương pháp cùng xem chủ động ('active co-viewing'), nơi cha mẹ đồng hành và thảo luận nội dung cùng con để giảm thiểu tác động tiêu cực.",
+   "quote": "Active co-viewing, wherein adults scaffold digital experiences by discussing plot elements and drawing real-world parallels, substantially buffers against negative developmental outcomes."
+  }
+ ]
+}

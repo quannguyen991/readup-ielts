@@ -84,7 +84,7 @@ else:
     print("WARNING: handleNextGroup not matched")
 
 # 6. Group question range banner pink pill
-old_banner_pill = re.search(r'style=\{\{\s*backgroundColor:\s*\'#FEE2E2\',\s*paddingHorizontal:\s*10,\s*paddingVertical:\s*3,\s*borderRadius:\s*6,\s*\}\}\s*>\s*<Text style=\{\{\s*fontFamily:\s*\'BeVietnamPro_700Bold\',\s*fontSize:\s*12,\s*color:\s*\'#DC2626\'\s*\}\}>', code)
+old_banner_pill = re.search(r'style=\{\{\s*backgroundColor:\s*\'#FEE2E2\',\s*paddingHorizontal:\s*10,\s*paddingVertical:\s*3,\s*borderRadius:\s*6,\s*\}\}\s*>\s*<Text style=\{\{\s*fontFamily:\s*\'Inter_600SemiBold\',\s*fontSize:\s*12,\s*color:\s*\'#DC2626\'\s*\}\}>', code)
 if old_banner_pill:
     new_banner_pill = """style={{
                       backgroundColor: themeStyles.border,
@@ -93,7 +93,7 @@ if old_banner_pill:
                       borderRadius: 6,
                     }}
                   >
-                    <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: themeStyles.text }}>"""
+                    <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12, color: themeStyles.text }}>"""
     code = code[:old_banner_pill.start()] + new_banner_pill + code[old_banner_pill.end():]
     print("Updated group banner pill")
 else:
@@ -133,8 +133,8 @@ old_header_title = "{passageDisplayData.title}"
 new_header_title = "{test.title || passageDisplayData.title}"
 # Only replace the top bar occurrence
 code = re.sub(
-    r'<Text\s+numberOfLines=\{1\}\s+style=\{\{\s*fontFamily:\s*\'BeVietnamPro_700Bold\',\s*fontSize:\s*15,\s*color:\s*themeStyles\.text,\s*\}\}\s*>\s*\{passageDisplayData\.title\}\s*</Text>',
-    r'<Text numberOfLines={1} style={{ fontFamily: \'BeVietnamPro_700Bold\', fontSize: 15, color: themeStyles.text }}>{test.title || passageDisplayData.title}</Text>',
+    r'<Text\s+numberOfLines=\{1\}\s+style=\{\{\s*fontFamily:\s*\'Inter_600SemiBold\',\s*fontSize:\s*15,\s*color:\s*themeStyles\.text,\s*\}\}\s*>\s*\{passageDisplayData\.title\}\s*</Text>',
+    r'<Text numberOfLines={1} style={{ fontFamily: \'Inter_600SemiBold\', fontSize: 15, color: themeStyles.text }}>{test.title || passageDisplayData.title}</Text>',
     code
 )
 code = re.sub(
@@ -144,13 +144,13 @@ code = re.sub(
 )
 
 # 10. Reading Passage N above passage title
-old_passage_title = re.search(r'\{\s*/\*\s*Tiêu đề bài đọc lớn & phụ đề dẫn dắt\s*\*/\s*\}\s*<View className="gap-2 border-b border-border/60 pb-4">\s*<Text\s*style=\{\{\s*fontFamily:\s*\'BeVietnamPro_800ExtraBold\',', code)
+old_passage_title = re.search(r'\{\s*/\*\s*Tiêu đề bài đọc lớn & phụ đề dẫn dắt\s*\*/\s*\}\s*<View className="gap-2 border-b border-border/60 pb-4">\s*<Text\s*style=\{\{\s*fontFamily:\s*\'InterTight_600SemiBold\',', code)
 if old_passage_title:
     new_passage_title = """{/* Tiêu đề bài đọc lớn & phụ đề dẫn dắt */}
               <View className="gap-2 border-b border-border/60 pb-4">
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_700Bold',
+                    fontFamily: 'Inter_600SemiBold',
                     fontSize: 13,
                     letterSpacing: 1.2,
                     textTransform: 'uppercase',
@@ -161,7 +161,7 @@ if old_passage_title:
                 </Text>
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_800ExtraBold',"""
+                    fontFamily: 'InterTight_600SemiBold',"""
     code = code[:old_passage_title.start()] + new_passage_title + code[old_passage_title.end():]
     print("Added READING PASSAGE header")
 else:
@@ -195,8 +195,8 @@ code = re.sub(
 
 # 12. Bottom navigator Reading toolbar
 code = re.sub(
-    r'<Text style=\{\{\s*fontFamily:\s*\'BeVietnamPro_700Bold\',\s*fontSize:\s*12,\s*color:\s*themeStyles\.text\s*\}\}>\s*Practice\s*</Text>',
-    r'<Text style={{ fontFamily: \'BeVietnamPro_700Bold\', fontSize: 12, color: themeStyles.text }}>{currentPart?.label || `Reading Passage ${activePartId}`}</Text>',
+    r'<Text style=\{\{\s*fontFamily:\s*\'Inter_600SemiBold\',\s*fontSize:\s*12,\s*color:\s*themeStyles\.text\s*\}\}>\s*Practice\s*</Text>',
+    r'<Text style={{ fontFamily: \'Inter_600SemiBold\', fontSize: 12, color: themeStyles.text }}>{currentPart?.label || `Reading Passage ${activePartId}`}</Text>',
     code
 )
 code = re.sub(

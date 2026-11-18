@@ -49,7 +49,7 @@ export default function GrammarLevels() {
 
       {/* Level Summary Header */}
       <View style={{ gap: 2 }}>
-        <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{LEVEL_TITLE[level]}</Text>
+        <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '400' }}>{LEVEL_TITLE[level]}</Text>
         <Text style={{ color: HUB.muted, fontSize: 13 }}>
           {`Hoàn thành ${list.length} bài học để nâng cao kỹ năng · Đã xong ${doneCount}/${list.length}`}
         </Text>
@@ -66,7 +66,7 @@ export default function GrammarLevels() {
         </View>
         <View style={{ flex: 1, gap: 2 }}>
           <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{`Đề kiểm tra chuẩn ${level}`}</Text>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>
             {best ? `Điểm cao nhất ${best.percent}% · Đã làm ${best.attempts} lần` : `10 câu kiểm tra tổng hợp · Đạt từ ${PASS_PERCENT}%`}
           </Text>
         </View>
@@ -111,7 +111,7 @@ export default function GrammarLevels() {
                 }}
               >
                 {emojiIcon === 'abc' ? (
-                  <Text style={{ color: done ? '#34D399' : '#6A4BD9', fontSize: 14, fontWeight: '800' }}>abc</Text>
+                  <Text style={{ color: done ? '#34D399' : '#6A4BD9', fontSize: 14, fontWeight: '400' }}>abc</Text>
                 ) : (
                   <Text style={{ fontSize: 18 }}>{emojiIcon}</Text>
                 )}
@@ -122,11 +122,11 @@ export default function GrammarLevels() {
                   <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{l.title}</Text>
                   {done ? (
                     <View style={{ paddingHorizontal: 6, paddingVertical: 1, borderRadius: 4, backgroundColor: 'rgba(34, 197, 94, 0.2)' }}>
-                      <Text style={{ color: '#34D399', fontSize: 10, fontWeight: '800' }}>ĐÃ XONG</Text>
+                      <Text style={{ color: '#34D399', fontSize: 13, fontWeight: '400' }}>ĐÃ XONG</Text>
                     </View>
                   ) : null}
                 </View>
-                <Text style={{ color: HUB.muted, fontSize: 12 }}>{l.subtitle}</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>{l.subtitle}</Text>
               </View>
 
               {/* Action shortcuts: voice orb or quiz */}
@@ -151,7 +151,7 @@ export default function GrammarLevels() {
                   }}
                 >
                   <Icon name="mic" size={13} color="#38BDF8" />
-                  <Text style={{ color: '#6A4BD9', fontSize: 11, fontWeight: '800' }}>Luyện nói</Text>
+                  <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '400' }}>Luyện nói</Text>
                 </Pressable>
                 <Icon name="chevron-right" size={16} color={HUB.muted} />
               </View>

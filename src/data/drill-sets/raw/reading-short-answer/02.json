@@ -1,0 +1,121 @@
+{
+ "title": "Mechanisms and Adaptations of Mammalian Hibernation",
+ "topic": "the biology of hibernation (set 2)",
+ "context": "A. Hibernation represents an extreme physiological adaptation characterised by profound metabolic suppression and regulated hypothermia. In 2012, Dr Elena Rostova at the Fairbanks Institute of Arctic Biology conducted investigations into the Arctic ground squirrel (Urocitellus parryii). During deep torpor in Alaska, this rodent reduces its basal metabolic rate to 2 percent of resting levels. Astonishingly, its core body temperature plunges to minus 2.9 degrees Celsius without freezing, a phenomenon known as supercooling. This state is sustained because the animal systematically eliminates endogenous ice-nucleating agents from its bloodstream, preventing crystallisation within vascular tissues.\n\nB. At the cellular level, the entry into torpor requires precise biochemical switches. Research directed by Dr Marcus Vance in 2015 at the University of Tromsø demonstrated that the activation of central A1 adenosine receptors initiates hypometabolism. When these receptors are stimulated, mitochondrial respiration decreases, mediated by phosphorylation of electron transport chain complexes. Furthermore, global protein synthesis falls by more than 90 percent to conserve energy. Concurrently, an intracellular enzyme called AMP-activated protein kinase reorganises metabolic flux, diverting resources from carbohydrate catabolism toward the oxidation of stored lipid reserves held within white adipose depots.\n\nC. The cardiovascular adjustments demanded by hibernation are equally striking. In non-hibernating mammals, severe hypothermia precipitates ventricular fibrillation and cardiac arrest. However, hibernators possess specialized electrophysiological safeguards. In 2017, the Zurich Cardiovascular Laboratory examined European hedgehogs (Erinaceus europaeus) and recorded heart rates dropping from 350 beats per minute to roughly 4 beats per minute. This extreme bradycardia is tolerated because specialised calcium-handling proteins, predominantly an altered isoform of SERCA2a, maintain ion equilibrium. Concurrently, modified cardiac titin filaments provide myocardial flexibility, allowing ventricular pumping against heightened blood viscosity.\n\nD. Prolonged inactivity in humans induces muscular atrophy and skeletal decalcification. Yet, hibernating black bears (Ursus americanus) in Minnesota, studied by Dr Hannah Lindqvist in 2019, remain dormant for up to seven months without structural degradation. Lindqvist revealed that skeletal integrity is sustained by parathyroid hormone-related protein, which suppresses osteoclast activity while maintaining osteoblastic bone deposition. Additionally, bears do not urinate during winter sleep; instead, gut microbiota hydrolyse circulating urea into ammonia, which hepatic pathways recycle into new amino acids, thereby preserving skeletal muscle mass.\n\nE. Deep torpor is periodically punctuated by brief intervals termed interbout arousals. Every 10 to 20 days, animals generate heat via brown adipose tissue, elevating body temperature to 37 degrees Celsius for approximately 12 hours. At the Kyoto Bioscience Institute in 2021, Professor Kenji Sato discovered that during torpor, cortical neurons lose substantial numbers of dendritic spines. Remarkably, these neural connections reassemble within two hours of arousal. Sato also observed elevated phosphorylated tau protein—a pathological hallmark of Alzheimer's disease—which dissolves completely upon rewarming, leaving no neurological deficits.\n\nF. The discovery of primate hibernation opened new possibilities for translational medicine. In 2023, Dr Sophie Girard examined the fat-tailed dwarf lemur (Cheirogaleus medius) in the Kirindy Forest of western Madagascar. Girard confirmed that this tropical primate can hibernate in tree hollows for seven months despite ambient temperatures reaching 30 degrees Celsius. These findings have spurred efforts to induce synthetic torpor in humans. Space agencies project that synthetic torpor could reduce consumable demands during crewed missions to Mars in the late 2030s, while clinical trials explore its potential to limit tissue necrosis after ischaemic stroke.",
+ "questions": [
+  {
+   "prompt": "Who investigated the Arctic ground squirrel at the Fairbanks Institute of Arctic Biology in 2012?",
+   "answer": "Dr Elena Rostova | Elena Rostova",
+   "why": "Đoạn A chỉ rõ Dr Elena Rostova là nhà khoa học đã tiến hành nghiên cứu trên loài sóc đất Bắc Cực tại Viện Sinh học Bắc Cực Fairbanks vào năm 2012.",
+   "quote": "In 2012, Dr Elena Rostova at the Fairbanks Institute of Arctic Biology conducted investigations into the Arctic ground squirrel"
+  },
+  {
+   "prompt": "To what percentage of resting levels does the Arctic ground squirrel reduce its basal metabolic rate?",
+   "answer": "2 percent | 2%",
+   "why": "Đoạn A nêu rõ trong trạng thái tê cóng sâu, loài gặm nhấm này hạ thấp tốc độ trao đổi chất cơ bản xuống còn 2 phần trăm (2 percent).",
+   "quote": "reduces its basal metabolic rate to 2 percent of resting levels."
+  },
+  {
+   "prompt": "To what temperature in degrees Celsius can the Arctic ground squirrel's core body plunge without freezing?",
+   "answer": "minus 2.9",
+   "why": "Đoạn A cung cấp số liệu nhiệt độ chính xác mà cơ thể sóc đất có thể đạt tới mà không bị đông đá là minus 2.9 độ C.",
+   "quote": "plunges to minus 2.9 degrees Celsius without freezing, a phenomenon known as supercooling."
+  },
+  {
+   "prompt": "What term refers to the process of remaining unfrozen below freezing temperatures?",
+   "answer": "supercooling",
+   "why": "Đoạn A định nghĩa hiện tượng nhiệt độ cơ thể xuống dưới điểm đông nhưng không đóng băng là 'supercooling' (hiện tượng quá lạnh).",
+   "quote": "plunges to minus 2.9 degrees Celsius without freezing, a phenomenon known as supercooling."
+  },
+  {
+   "prompt": "What agents does the Arctic ground squirrel eliminate from its blood to prevent freezing?",
+   "answer": "ice-nucleating agents | endogenous ice-nucleating agents",
+   "why": "Đoạn A giải thích rằng loài vật này chủ động đào thải các tác nhân tạo mầm đá ('endogenous ice-nucleating agents') khỏi máu.",
+   "quote": "systematically eliminates endogenous ice-nucleating agents from its bloodstream, preventing crystallisation within vascular tissues."
+  },
+  {
+   "prompt": "Who directed research on the cellular triggers of torpor at the University of Tromsø in 2015?",
+   "answer": "Dr Marcus Vance | Marcus Vance",
+   "why": "Đoạn B nêu rõ nghiên cứu về các cơ chế kích hoạt sinh hóa ở cấp độ tế bào năm 2015 được chỉ đạo bởi Dr Marcus Vance.",
+   "quote": "Research directed by Dr Marcus Vance in 2015 at the University of Tromsø demonstrated"
+  },
+  {
+   "prompt": "Which receptors must be activated to initiate hypometabolism?",
+   "answer": "A1 adenosine receptors | central A1 adenosine",
+   "why": "Đoạn B chỉ ra rằng sự kích hoạt của các thụ thể adenosin A1 ở hệ thần kinh trung ương ('central A1 adenosine receptors') là điều kiện để bắt đầu trạng thái giảm trao đổi chất.",
+   "quote": "activation of central A1 adenosine receptors initiates hypometabolism."
+  },
+  {
+   "prompt": "By more than what percentage does protein synthesis fall during torpor?",
+   "answer": "90 percent | 90%",
+   "why": "Đoạn B ghi nhận quá trình tổng hợp protein nói chung giảm hơn 90 phần trăm ('90 percent') nhằm tiết kiệm năng lượng.",
+   "quote": "protein synthesis falls by more than 90 percent to conserve energy."
+  },
+  {
+   "prompt": "What enzyme redirects metabolic resources toward the oxidation of stored fat?",
+   "answer": "AMP-activated protein kinase",
+   "why": "Đoạn B nêu tên loại enzyme nội bào có tên là AMP-activated protein kinase chịu trách nhiệm tái tổ chức luồng trao đổi chất sang đốt cháy mỡ.",
+   "quote": "an intracellular enzyme called AMP-activated protein kinase reorganises metabolic flux, diverting resources from carbohydrate catabolism toward the oxidation of stored lipid reserves"
+  },
+  {
+   "prompt": "Which institution investigated the cardiac responses of European hedgehogs in 2017?",
+   "answer": "Zurich Cardiovascular Laboratory",
+   "why": "Đoạn C xác nhận đơn vị nghiên cứu tiến hành kiểm tra trên loài nhím châu Âu vào năm 2017 là Zurich Cardiovascular Laboratory.",
+   "quote": "In 2017, the Zurich Cardiovascular Laboratory examined European hedgehogs (Erinaceus europaeus)"
+  },
+  {
+   "prompt": "Which calcium-handling protein helps maintain ionic balance in the hibernating hedgehog's heart?",
+   "answer": "SERCA2a",
+   "why": "Đoạn C chỉ rõ biến thể của protein vận chuyển canxi có tên SERCA2a đóng vai trò giữ cân bằng ion khi tim đập rất chậm.",
+   "quote": "predominantly an altered isoform of SERCA2a, maintain ion equilibrium."
+  },
+  {
+   "prompt": "What filaments maintain heart muscle flexibility during cold-induced blood thickening?",
+   "answer": "cardiac titin filaments | titin filaments",
+   "why": "Đoạn C giải thích các sợi titin cơ tim biến đổi ('modified cardiac titin filaments') mang lại sự mềm dẻo cho cơ tim chống lại độ nhớt của máu.",
+   "quote": "Concurrently, modified cardiac titin filaments provide myocardial flexibility, allowing ventricular pumping"
+  },
+  {
+   "prompt": "For up to how many months can black bears hibernate without experiencing structural degradation?",
+   "answer": "seven months",
+   "why": "Đoạn D cho biết gấu đen có thể ngủ li bì tới 7 tháng ('seven months') mà không bị thoái hóa cơ xương.",
+   "quote": "remain dormant for up to seven months without structural degradation."
+  },
+  {
+   "prompt": "What protein preserves bone integrity in dormant black bears?",
+   "answer": "parathyroid hormone-related protein",
+   "why": "Đoạn D nêu tên loại protein giúp duy trì mật độ và độ vững của xương là 'parathyroid hormone-related protein'.",
+   "quote": "skeletal integrity is sustained by parathyroid hormone-related protein, which suppresses osteoclast activity"
+  },
+  {
+   "prompt": "What substance do gut bacteria produce when hydrolysing urea in dormant bears?",
+   "answer": "ammonia",
+   "why": "Đoạn D giải thích vi khuẩn đường ruột thủy phân urê lưu thông thành amoniac ('ammonia'), chất sau đó được gan tái sử dụng.",
+   "quote": "gut microbiota hydrolyse circulating urea into ammonia, which hepatic pathways recycle into new amino acids"
+  },
+  {
+   "prompt": "What term describes the brief warming periods that interrupt deep torpor?",
+   "answer": "interbout arousals",
+   "why": "Đoạn E định nghĩa các khoảng thời gian thức giấc ngắn làm gián đoạn trạng thái ngủ đông là 'interbout arousals'.",
+   "quote": "Deep torpor is periodically punctuated by brief intervals termed interbout arousals."
+  },
+  {
+   "prompt": "What neuronal structures are substantially lost in cortical neurons during torpor?",
+   "answer": "dendritic spines",
+   "why": "Đoạn E nêu rõ các tế bào thần kinh vỏ não bị rụng mất một số lượng đáng kể các gai nhánh ('dendritic spines') trong kỳ ngủ đông.",
+   "quote": "cortical neurons lose substantial numbers of dendritic spines."
+  },
+  {
+   "prompt": "Which phosphorylated protein temporarily accumulates in the brains of hibernating animals?",
+   "answer": "tau protein | phosphorylated tau protein",
+   "why": "Đoạn E ghi nhận lượng protein tau bị phosphoryl hóa tăng cao trong não bộ động vật ngủ đông tương tự như bệnh Alzheimer nhưng tự tan biến khi cơ thể ấm lại.",
+   "quote": "Sato also observed elevated phosphorylated tau protein—a pathological hallmark of Alzheimer's disease"
+  },
+  {
+   "prompt": "In which forest did Dr Sophie Girard study the fat-tailed dwarf lemur?",
+   "answer": "Kirindy Forest",
+   "why": "Đoạn F cho biết địa điểm nghiên cứu vượn cáo lùn đuôi béo năm 2023 của TS. Sophie Girard là Rừng Kirindy ('Kirindy Forest') ở tây Madagascar.",
+   "quote": "examined the fat-tailed dwarf lemur (Cheirogaleus medius) in the Kirindy Forest of western Madagascar."
+  }
+ ]
+}

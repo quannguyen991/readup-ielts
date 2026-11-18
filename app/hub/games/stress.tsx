@@ -31,15 +31,15 @@ export default function StressGame() {
     <HubScreen title="Trọng âm từ" subtitle="Chạm vào âm tiết được nhấn mạnh nhất" back>
       {done ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '800' }}>Đúng {score}/{rounds.length}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '400' }}>Đúng {score}/{rounds.length}</Text>
           <Pressable accessibilityRole="button" onPress={() => { setI(0); setScore(0); setPicked(null); }} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Chơi lại</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Chơi lại</Text>
           </Pressable>
         </View>
       ) : w ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Từ {i + 1}/{rounds.length} · đúng {score}</Text>
-          <Text style={{ color: HUB.ink, fontSize: 22, fontWeight: '800', textAlign: 'center' }}>{w.word}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Từ {i + 1}/{rounds.length} · đúng {score}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 22, fontWeight: '400', textAlign: 'center' }}>{w.word}</Text>
           <Text style={{ color: HUB.muted, fontSize: 13, textAlign: 'center' }}>{w.ipa}</Text>
           <View style={{ flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', gap: 8 }}>
             {w.syllables.map((syl, k) => {
@@ -47,14 +47,14 @@ export default function StressGame() {
               const tone = picked === null ? HUB.line : correct ? HUB.green : picked === k ? HUB.red : HUB.line;
               return (
                 <Pressable key={`${syl}-${k}`} accessibilityRole="button" accessibilityLabel={`Âm tiết ${syl}`} onPress={() => pick(k)} style={{ minWidth: 68, height: 60, paddingHorizontal: 10, borderRadius: 14, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: tone, backgroundColor: HUB.glassStrong }}>
-                  <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{syl}</Text>
+                  <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '400' }}>{syl}</Text>
                 </Pressable>
               );
             })}
           </View>
           {picked !== null ? (
             <Pressable accessibilityRole="button" onPress={next} style={{ height: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet }}>
-              <Text style={{ color: '#fff', fontWeight: '800' }}>Tiếp</Text>
+              <Text style={{ color: '#fff', fontWeight: '400' }}>Tiếp</Text>
             </Pressable>
           ) : null}
         </View>

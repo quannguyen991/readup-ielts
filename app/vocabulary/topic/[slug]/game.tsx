@@ -23,6 +23,8 @@ import { playQuestDamageSound } from "@/services/audio/chime";
 import { useGameStore } from "@/store/useGameStore";
 import { useTopicStudyStore, type GameScore } from "@/store/useTopicStudyStore";
 import { color } from "@/theme/tokens";
+import { accentFor } from "@/components/vocab/study/study-theme";
+import { useStoreTheme } from "@/components/vocab/study/useStudyTheme";
 import { useL } from "@/i18n/useL";
 
 /**
@@ -61,6 +63,8 @@ export default function GameScreen() {
   const scores = useTopicStudyStore((s) => s.scores[slug] ?? NO_SCORES);
   const addScore = useTopicStudyStore((s) => s.addScore);
 
+  const studyTheme = useStoreTheme();
+  const primary = accentFor(studyTheme, color.primary);
   const [tab, setTab] = useState<"play" | "board">("play");
   const [phase, setPhase] = useState<"idle" | "playing" | "over">("idle");
   const [score, setScore] = useState(0);
@@ -211,7 +215,7 @@ export default function GameScreen() {
             onPress={() => setTab(t)}
             className="rounded-xl px-6 py-2"
             style={{
-              backgroundColor: tab === t ? color.primary : "transparent",
+              backgroundColor: tab === t ? primary : "transparent",
             }}
           >
             <Text
@@ -276,7 +280,7 @@ export default function GameScreen() {
               <View className="flex-row items-center justify-between px-5 pt-4">
                 <View
                   className="rounded-pill px-3 py-1.5"
-                  style={{ backgroundColor: color.primary }}
+                  style={{ backgroundColor: primary }}
                 >
                   <Text className="font-strong text-body text-white">
                     {L("Điểm", "Score")}: {score}
@@ -379,7 +383,7 @@ export default function GameScreen() {
                           ? L("Điểm cao nhất của bạn ở bộ này!", "Your best score for this set!")
                           : L(`Điểm cao nhất: ${best}`, `High score: ${best}`)
                         : L(
-                            "Đọc nghĩa tiếng Việt, bấm (hoặc phím 1–4) vào quả bóng mang đúng từ tiếng Anh trước khi nó bay mất. Đúng liên tiếp được nhân điểm.",
+                            `Đọc nghĩa tiếng Việt, bấm (hoặc phím 1–4) vào quả bóng mang đúng từ ${topic?.language === "zh" ? "tiếng Trung" : topic?.language === "ja" ? "tiếng Nhật" : "tiếng Anh"} trước khi nó bay mất. Đúng liên tiếp được nhân điểm.`,
                             "Read the Vietnamese meaning, then tap (or press 1–4) the balloon with the matching English word before it floats away. Streaks multiply your score.",
                           )}
                     </Text>

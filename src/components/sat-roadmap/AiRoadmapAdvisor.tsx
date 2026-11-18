@@ -69,7 +69,7 @@ export function AiRoadmapAdvisor({ onSelectDay }: { onSelectDay?: (day: number) 
                 {L('Trợ lý AI Phân tích Lộ trình SAT', 'AI SAT Roadmap Advisor')}
               </Text>
               <View style={{ backgroundColor: '#10B981', paddingHorizontal: 6, paddingVertical: 1.5, borderRadius: 5 }}>
-                <Text style={{ fontSize: 9.5, fontWeight: '800', color: '#FFFFFF' }}>AI PRO</Text>
+                <Text style={{ fontSize: 9.5, fontWeight: '400', color: '#FFFFFF' }}>AI PRO</Text>
               </View>
             </View>
             <Text style={{ fontSize: 12.5, color: '#64748B', fontWeight: '500' }}>
@@ -305,7 +305,7 @@ export function AiRoadmapAdvisor({ onSelectDay }: { onSelectDay?: (day: number) 
 
       {/* AI Strategy Milestones */}
       <View style={{ gap: 8 }}>
-        <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+        <Text style={{ fontSize: 13, fontWeight: '400', color: '#2B2350', textTransform: 'uppercase', letterSpacing: 0.5 }}>
           {L('Lộ trình hành động đề xuất theo từng giai đoạn:', 'Action plan by milestones:')}
         </Text>
         <View style={{ gap: 8 }}>
@@ -332,10 +332,10 @@ export function AiRoadmapAdvisor({ onSelectDay }: { onSelectDay?: (day: number) 
                   alignSelf: 'flex-start',
                 }}
               >
-                <Text style={{ fontSize: 11, fontWeight: '800', color: '#FFFFFF' }}>{m.week}</Text>
+                <Text style={{ fontSize: 11, fontWeight: '400', color: '#FFFFFF' }}>{m.week}</Text>
               </View>
               <View style={{ flex: 1, gap: 2 }}>
-                <Text style={{ fontSize: 13.5, fontWeight: '800', color: '#0F1D33' }}>
+                <Text style={{ fontSize: 13.5, fontWeight: '400', color: '#0F1D33' }}>
                   {m.goalVi}
                 </Text>
                 <Text style={{ fontSize: 12, color: '#64748B', lineHeight: 18 }}>
@@ -360,7 +360,7 @@ export function AiRoadmapAdvisor({ onSelectDay }: { onSelectDay?: (day: number) 
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
           <Text style={{ fontSize: 14 }}>⚠️</Text>
-          <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 0.4 }}>
+          <Text style={{ fontSize: 12.5, fontWeight: '400', color: '#6A4BD9', textTransform: 'uppercase', letterSpacing: 0.4 }}>
             {L('Cảnh báo bẫy điểm số từ AI:', 'AI Trap Warnings:')}
           </Text>
         </View>
@@ -386,7 +386,7 @@ export function AiRoadmapAdvisor({ onSelectDay }: { onSelectDay?: (day: number) 
             backgroundColor: '#0F1D33',
           }}
         >
-          <Text style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>
+          <Text style={{ fontSize: 13, fontWeight: '400', color: '#FFFFFF' }}>
             {L('Bắt đầu bài học hôm nay', 'Start today task')}
           </Text>
           <Icon name="arrow-right" size={14} color="#FBBF24" />

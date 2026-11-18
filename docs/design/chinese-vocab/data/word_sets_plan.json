@@ -1,0 +1,66 @@
+{
+  "sheets": [
+    {"name": "A", "items": [
+      ["book-irodori-starter-topic-01-tu-01", "a Japanese street candy shop with a glass candy jar and a shopkeeper waving goodbye at dusk"],
+      ["book-irodori-starter-topic-01-tu-02", "an immigration office counter with a residence card and a name form on a desk"],
+      ["book-irodori-starter-topic-01-tu-03", "a classroom desk with an eraser, an umbrella, a smartphone and a driving license card"],
+      ["book-irodori-starter-topic-02-tu-01", "people from Myanmar, Korea, Thailand and Brazil shaking hands at a welcome meeting with flags"],
+      ["book-irodori-starter-topic-02-tu-02", "a registration form with a calendar, an address card, a phone icon and an email envelope on a desk"],
+      ["book-irodori-starter-topic-02-tu-03", "a host introducing a guest in a Japanese living room with a grandmother and a child"],
+      ["book-irodori-starter-topic-02-tu-04", "a birthday party by the sea with a photo of two friends and a small cake"],
+      ["book-irodori-starter-topic-03-tu-01", "a sushi bar counter with sashimi, tempura and a steaming beef bowl"],
+      ["book-irodori-starter-topic-03-tu-02", "a restaurant table with glasses of water, juice, cola, beer, a bowl of rice and bread"]
+    ]},
+    {"name": "B", "items": [
+      ["book-irodori-starter-topic-03-tu-03", "a burger counter with a double hamburger, cheese, teriyaki chicken and french fries"],
+      ["book-irodori-starter-topic-03-tu-04", "a takeout coffee stand with iced coffee, oolong tea and a cola cup"],
+      ["book-irodori-starter-topic-03-tu-05", "an izakaya table with chicken tsukune skewers, diced steak, cold tofu and chilled tomatoes"],
+      ["book-irodori-starter-topic-03-tu-06", "a table setting with mayonnaise, ketchup, a spoon and a wet hand towel"],
+      ["book-irodori-starter-topic-04-tu-01", "a Japanese house entrance with a genkan, stairs, a veranda and a kitchen"],
+      ["book-irodori-starter-topic-04-tu-02", "a kitchen with a refrigerator, a microwave, a rice cooker, a toaster, a futon and a chair"],
+      ["book-irodori-starter-topic-04-tu-03", "a clean tidy room beside a messy untidy room, side by side"],
+      ["book-irodori-starter-topic-04-tu-04", "a park with a robot vacuum and a control panel with start and pause buttons"],
+      ["book-irodori-starter-topic-04-tu-05", "an air conditioner remote with temperature, timer and wind buttons, a changing room sign"]
+    ]},
+    {"name": "C", "items": [
+      ["book-irodori-starter-topic-04-tu-06", "an office corner with duct tape, a box, a copy machine, scissors and a trash can"],
+      ["book-irodori-starter-topic-05-tu-01", "a wall clock and a calendar showing morning, afternoon and night times"],
+      ["book-irodori-starter-topic-05-tu-02", "an office morning assembly with a lunch table, music notes and a break time clock"],
+      ["book-irodori-starter-topic-05-tu-03", "a bank counter with a swimming pool sign, a movie ticket and a weekly calendar"],
+      ["book-irodori-starter-topic-05-tu-04", "a person stacking copies, carrying the trash out and closing a window"],
+      ["book-irodori-starter-topic-05-tu-05", "a desk with a pencil, a pen, a calculator, a charger, a sticky note, a fork and a knife"],
+      ["book-irodori-starter-topic-05-tu-06", "a bathroom shelf with a toothbrush, a razor, a towel and a bath towel"],
+      ["book-irodori-starter-topic-06-tu-01", "a hobby table with a sports ball, a movie reel, a book, a shopping basket and a game controller"],
+      ["book-irodori-starter-topic-06-tu-02", "a bookshelf with mystery and fantasy novels and a romantic movie poster"]
+    ]},
+    {"name": "D", "items": [
+      ["book-irodori-starter-topic-06-tu-03", "a person playing tennis beside a pachinko parlor with sparkling lights"],
+      ["book-irodori-starter-topic-06-tu-04", "a summer festival square with food stalls, a stage and a cultural center"],
+      ["book-irodori-starter-topic-06-tu-05", "a festival poster with a calendar, a free entry sign and a contact card"],
+      ["book-irodori-starter-topic-06-tu-06", "a hiking trail with a drinking party under paper lanterns and a farewell card"],
+      ["book-irodori-starter-topic-07-tu-01", "a city transport panel with a train, a bus, a taxi, a subway, a plane and a ship"],
+      ["book-irodori-starter-topic-07-tu-02", "a bus stop with a bicycle, a clock and a sign saying final stop"],
+      ["book-irodori-starter-topic-07-tu-03", "a train station with west, south and north exit signs, an escalator and ticket gates"],
+      ["book-irodori-starter-topic-07-tu-04", "a cat placed above, below, in front, behind, inside and beside a box"],
+      ["book-irodori-starter-topic-07-tu-05", "a shopping street with a temple, a baseball stadium and a park, wide and clean"]
+    ]},
+    {"name": "E", "items": [
+      ["book-irodori-starter-topic-07-tu-06", "a shop door with open, closed and under construction signs, a bank and a tobacco shop"],
+      ["book-irodori-starter-topic-08-tu-01", "a street row of a convenience store, a supermarket, a drugstore, a home center and a department store"],
+      ["book-irodori-starter-topic-08-tu-02", "a department store floor with men's and women's clothing and food section signs"],
+      ["book-irodori-starter-topic-08-tu-03", "an electronics corner with a hair dryer, a camera, a phone case and an extension cord"],
+      ["book-irodori-starter-topic-08-tu-04", "a clothes rack with a bag, socks, a shirt, trousers, a dress, shoes and a necktie"],
+      ["book-irodori-starter-topic-08-tu-05", "a gift shop with a calendar, sweets and a maneki-neko lucky cat"],
+      ["book-irodori-starter-topic-08-tu-06", "a cashier counter with a shopping bag, chopsticks and a next customer sign"],
+      ["book-irodori-starter-topic-08-tu-07", "a supermarket price board with a strawberry shortcake, a half-price sticker and a reward points card"],
+      ["book-irodori-starter-topic-09-tu-01", "a weekend family outing with a concert ticket, an orchestra stage and a gym bag"]
+    ]},
+    {"name": "F", "items": [
+      ["book-irodori-starter-topic-09-tu-02", "a family at an aquarium with a Godzilla poster and smiling faces"],
+      ["book-irodori-starter-topic-09-tu-03", "a ticket counter with adult, high school and general admission tickets"],
+      ["book-irodori-starter-topic-09-tu-04", "a restaurant menu board with all-you-can-drink, a package deal and a private room booth"],
+      ["book-irodori-starter-topic-09-tu-05", "a family planning a summer vacation over a map of Hiroshima with a rice cooker"],
+      ["book-irodori-starter-topic-09-tu-06", "a tourist with a camera in Shinjuku near a shrine and a Doraemon statue"]
+    ]}
+  ]
+}

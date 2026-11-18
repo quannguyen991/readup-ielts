@@ -1,0 +1,117 @@
+{
+ "id": "gardens",
+ "title": "Gardens and Plants",
+ "titleVi": "Vườn và cây cối",
+ "tipVi": "Hãy kết hợp từ vựng miêu tả cảm giác thư thái và tác động của mảng xanh đối với sức khỏe tinh thần thay vì chỉ liệt kê tên các loài thực vật.",
+ "part1": [
+  "Do you have any potted plants or flowers in your home?",
+  "Did you enjoy visiting public gardens when you were a child?",
+  "Would you like to grow your own vegetables in the future?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable garden or park with plants that you have visited",
+  "bullets": [
+   "where this garden or park is located",
+   "what kinds of plants or flowers you saw there",
+   "what you did during your visit",
+   "and explain why this visit left such a strong impression on you"
+  ]
+ },
+ "part3": [
+  "Why do many urban residents find it important to maintain green spaces in modern cities?",
+  "How might children benefit from participating in gardening activities at school?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "have a green thumb",
+    "vi": "mát tay làm vườn, có khiếu trồng cây",
+    "ex": "My grandmother really has a green thumb; her balcony is always bursting with vibrant orchids."
+   },
+   {
+    "en": "lush greenery",
+    "vi": "cây cối xanh tươi rậm rạp",
+    "ex": "I love escaping the noisy downtown area to unwind amid lush greenery."
+   },
+   {
+    "en": "commune with nature",
+    "vi": "hòa mình vào thiên nhiên",
+    "ex": "Taking a weekend stroll through the botanical park allows me to commune with nature."
+   },
+   {
+    "en": "urban sprawl",
+    "vi": "sự mở rộng đô thị tràn lan",
+    "ex": "Due to rapid urban sprawl, many community gardens have been replaced by commercial complexes."
+   },
+   {
+    "en": "therapeutic effect",
+    "vi": "tác dụng chữa lành, thư giãn tinh thần",
+    "ex": "Caring for indoor houseplants has a noticeable therapeutic effect after a hectic workday."
+   },
+   {
+    "en": "in full bloom",
+    "vi": "đang nở rộ rực rỡ",
+    "ex": "The cherry blossoms were in full bloom, attracting hundreds of sightseers."
+   },
+   {
+    "en": "concrete jungle",
+    "vi": "rừng bê tông (thành phố ngột ngạt thiếu cây xanh)",
+    "ex": "Living in a concrete jungle makes people appreciate pocket parks and rooftop gardens even more."
+   },
+   {
+    "en": "green lung",
+    "vi": "lá phổi xanh của thành phố",
+    "ex": "Large botanical gardens function as the green lungs of industrial metropolises by purifying polluted air."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu địa điểm ghé thăm (ví dụ Vườn bách thảo Đà Lạt) và thời điểm cùng người đồng hành.",
+   "Ý 1: Miêu tả địa hình, quy mô và thảm thực vật nổi bật (các luống hoa cẩm tú cầu nở rộ, đồi thông cổ thụ, nhà kính xương rồng).",
+   "Ý 2: Trình bày các hoạt động đã làm (tản bộ trên lối đi lát đá, chụp ảnh lưu niệm, ngồi hít thở không khí trong lành).",
+   "Kết: Nêu lý do gây ấn tượng mạnh (tác dụng giải tỏa căng thẳng sau chuỗi ngày ở đô thị, khơi dậy niềm đam mê chăm sóc cây cỏ)."
+  ],
+  "sample": "I would like to talk about the botanical garden in Da Lat that I visited last spring with a close friend. It is nestled right near the city centre, surrounded by rolling hills. The garden was breathtaking, filled with lush greenery and diverse indigenous flora. I saw vibrant beds of hydrangeas in full bloom, towering pine trees offering soothing shade, and a massive greenhouse packed with rare orchids and desert succulents. During our visit, we spent hours meandering down stone pathways, taking snapshots of exotic flowers, and simply sitting on a wooden bench to breathe in the crisp, floral-scented air. What made this visit truly unforgettable was how incredibly peaceful it felt. Living in a bustling concrete jungle, I rarely get the chance to slow down, so immersing myself in that tranquil sanctuary was like a breath of fresh air. It had an immediate therapeutic effect on my stressed mind and sparked my genuine appreciation for botanical conservation.",
+  "p1": [
+   {
+    "q": "Do you have any potted plants or flowers in your home?",
+    "a": "Yes, I keep a few small succulents and a money plant on my windowsill. They do not require frequent watering, and having that touch of green really brightens up my living space after a long day."
+   },
+   {
+    "q": "Did you enjoy visiting public gardens when you were a child?",
+    "a": "Definitely. My parents used to take me to the municipal flower park on weekends. I was fascinated by the colourful blossoms and loved chasing dragonflies across the spacious lawns with my siblings."
+   },
+   {
+    "q": "Would you like to grow your own vegetables in the future?",
+    "a": "I certainly would. Having a small rooftop vegetable patch would allow me to harvest fresh organic herbs like basil and mint, which are much safer and taste far better than store-bought produce."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do many urban residents find it important to maintain green spaces in modern cities?",
+    "a": "In fast-paced metropolitan areas, green spaces serve as vital sanctuaries. They act as natural air purifiers, absorbing carbon dioxide and mitigating urban heat. Furthermore, spending time amidst trees and flower beds offers people an emotional refuge from daily workplace pressures. Without these green lungs, concrete jungles can feel suffocating and contribute significantly to mental exhaustion, which is why preserving public parks has become indispensable for urban well-being."
+   },
+   {
+    "q": "How might children benefit from participating in gardening activities at school?",
+    "a": "Engaging in gardening fosters a strong sense of responsibility and patience among young learners. When children plant seeds and tend to them daily, they understand where food comes from and gain respect for nature. Unlike passive classroom learning, getting their hands dirty provides tactile experiences that stimulate scientific curiosity. Ultimately, this hands-on involvement nurtures environmental awareness from an early age, helping them develop into more eco-conscious adults."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng từ 'tree' hoặc 'flower' lặp đi lặp lại thay vì linh hoạt biến hóa với các thuật ngữ chính xác như 'houseplants', 'succulents', 'foliage', hay 'botanical species'.",
+   "Dịch thô cụm từ 'trồng cây' thành 'grow tree' thay vì dùng chuẩn xác 'plant trees' (hành động hạ giống) hoặc 'grow/cultivate plants' (quá trình chăm bón để cây phát triển).",
+   "Nhầm lẫn giới từ trong cụm từ kết nối với thiên nhiên, thường nói 'connect to nature' thay vì cấu trúc tự nhiên hơn trong văn nói là 'connect with nature' hoặc 'commune with nature'."
+  ],
+  "p1More": [
+   "What kinds of plants are popular in your country?",
+   "Have you ever received a potted plant or flowers as a gift?",
+   "Do you think you have a green thumb?",
+   "Is it easy to take care of indoor houseplants?",
+   "Do you prefer spending your free time in a garden or at the beach?"
+  ],
+  "p3More": [
+   "To what extent should municipal governments mandate rooftop gardens on commercial high-rises?",
+   "How has rapid urbanization over recent decades transformed the relationship between citizens and nature?",
+   "Do you think artificial indoor greenery can provide the same psychological benefits as genuine living gardens?",
+   "In what ways can community allotment gardens promote social cohesion among diverse residential groups?"
+  ]
+ }
+}

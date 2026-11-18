@@ -1,0 +1,127 @@
+{
+ "title": "Rainwater Harvesting Project Consultation",
+ "topic": "rainwater harvesting",
+ "context": "Narrator: You will hear a discussion between two university students, Maya and Liam, and their academic tutor, Dr Aris Thorne, reviewing their rainwater harvesting project proposal.\nDr Thorne: Good morning, Maya, Liam. Come on in. Let's look at your field project proposal on rainwater harvesting. First off, what's your official project reference code?\nLiam: It is registered under project code RW seven-zero-four.\nDr Thorne: Right, RW seven-zero-four. And where exactly have you decided to construct the demonstration unit?\nMaya: After visiting three sites, we selected Bramley Community Garden because it has high public footfall and supportive staff.\nDr Thorne: Excellent choice. What is the target holding capacity of your primary storage system?\nLiam: We calculated the catchment area and settled on a capacity of five thousand litres.\nDr Thorne: Good. Now, water quality depends heavily on catchment surface. What type of roofing material does the garden shed have?\nMaya: It has corrugated metal, which is ideal because it releases fewer toxic chemical contaminants than asphalt shingles.\nDr Thorne: Very true. Before setting foot on site, who is your primary community liaison?\nLiam: That is the garden manager, Mr Harrison. That is spelt H-A-R-R-I-S-O-N.\nDr Thorne: Grand. Have you set a firm date for the baseline structural inspection?\nMaya: Yes, we are booked in for the twenty-fourth of April.\nDr Thorne: Great. Now, moving on to the technical layout of the filtration and collection apparatus. Talk me through your pre-filtration stage.\nLiam: At the collection gutters, we are installing stainless mesh gutter guards to prevent large leaves and twigs from entering the downpipes.\nDr Thorne: Necessary, indeed. And how will you handle the initial wash containing airborne pollutants and dust?\nMaya: We have incorporated a first-flush diverter, which isolates the initial sixty litres of contaminated runoff away from the clean cistern.\nDr Thorne: Good design. Storage tanks come in various materials. Which did you pick?\nLiam: We chose food-grade polyethylene, primarily because it resists corrosion, inhibits sunlight penetration, and is light to transport.\nDr Thorne: Smart. How will you track the reservoir volume without constantly opening the inspection hatch?\nMaya: We bought an ultrasonic sensor that mounts on the tank roof and transmits continuous level readings to our phones.\nDr Thorne: Excellent. Once water leaves the tank, what downstream filter will you pass it through?\nLiam: We are running it through an activated carbon cartridge to neutralise any unpleasant organic odours and minor sediment particles.\nDr Thorne: And for microbiological purification?\nMaya: We've integrated a compact ultraviolet lamp to neutralise pathogens without altering the chemical composition of the water.\nDr Thorne: What will this purified yield primarily supply?\nLiam: It is strictly designated for vegetable irrigation across the communal allotment plots.\nDr Thorne: Sensible. In terms of biological safety, what specific biosecurity hazard must you inspect the cistern for weekly?\nMaya: We need to monitor carefully for mosquito larvae, especially around the overflow vent.\nDr Thorne: Very important during warm spells. Part of your university grant requires outreach. What topic will your hands-on resident seminar cover?\nLiam: We will conduct a practical workshop on basic plumbing maintenance so the gardeners can repair loose fittings independently.\nDr Thorne: Splendid. What was your total financial allocation from the green initiative fund?\nMaya: We secured a budget of three thousand pounds, which covers all pipes, electronic sensors, and instructional leaflets.\nDr Thorne: Which application will you use to log daily flow rates and rainfall statistics?\nLiam: We will enter all operational figures into HydroTrack, the university's environmental logging software.\nDr Thorne: Have you identified any seasonal water quality hazards?\nMaya: We are concerned about potential algae growth if ambient temperatures spike in mid-July.\nDr Thorne: A valid concern; ensure your shade covers are durable. Are you collaborating with any external facility for water assaying?\nLiam: Yes, CleanStreams Lab agreed to conduct monthly chemical analyses of our samples free of charge.\nDr Thorne: Terrific. Keep to your schedule, and remember your comprehensive assessment report is due on the eighteenth of June.\nMaya: Understood. Thank you very much, Dr Thorne!",
+ "questions": [
+  {
+   "prompt": "What is the official reference code for the project?",
+   "answer": "RW seven-zero-four | RW 704",
+   "why": "Liam nêu rõ mã dự án được đăng ký là 'RW seven-zero-four'.",
+   "quote": "registered under project code RW seven-zero-four."
+  },
+  {
+   "prompt": "At which location will the demonstration system be built?",
+   "answer": "Bramley Community Garden",
+   "why": "Maya giải thích rằng sau khi khảo sát ba địa điểm, họ đã chọn 'Bramley Community Garden'.",
+   "quote": "we selected Bramley Community Garden because it has high public footfall and supportive staff."
+  },
+  {
+   "prompt": "What is the intended capacity of the main storage unit?",
+   "answer": "five thousand litres | 5,000 litres",
+   "why": "Liam cho biết họ đã chốt dung tích của bể chứa là 'five thousand litres'.",
+   "quote": "settled on a capacity of five thousand litres."
+  },
+  {
+   "prompt": "What material covers the roof of the garden shed?",
+   "answer": "corrugated metal",
+   "why": "Maya xác nhận mái nhà kho là 'corrugated metal' vì giải phóng ít chất độc hại hơn so với mái ngói bitum (asphalt shingles).",
+   "quote": "It has corrugated metal, which is ideal because it releases fewer toxic chemical contaminants"
+  },
+  {
+   "prompt": "What is the surname of the local garden manager?",
+   "answer": "Harrison",
+   "why": "Liam nói người quản lý vườn là Mr Harrison và đánh vần từng chữ cái: H-A-R-R-I-S-O-N.",
+   "quote": "That is the garden manager, Mr Harrison. That is spelt H-A-R-R-I-S-O-N."
+  },
+  {
+   "prompt": "On what date will the baseline inspection take place?",
+   "answer": "twenty-fourth of April | 24th of April | 24th April",
+   "why": "Maya khẳng định ngày kiểm tra kết cấu ban đầu đã được đặt lịch là 'twenty-fourth of April'.",
+   "quote": "we are booked in for the twenty-fourth of April."
+  },
+  {
+   "prompt": "What item will be fitted to gutters to block large debris?",
+   "answer": "mesh gutter guards",
+   "why": "Liam đề cập việc lắp đặt 'mesh gutter guards' (tấm chắn rãnh lưới) bằng thép không gỉ để ngăn lá và cành cây.",
+   "quote": "we are installing stainless mesh gutter guards to prevent large leaves and twigs from entering the downpipes."
+  },
+  {
+   "prompt": "Which mechanism will separate the first sixty litres of dirty runoff?",
+   "answer": "first-flush diverter",
+   "why": "Maya cho biết thiết bị phân tách dòng chảy ô nhiễm ban đầu là 'first-flush diverter'.",
+   "quote": "We have incorporated a first-flush diverter, which isolates the initial sixty litres of contaminated runoff"
+  },
+  {
+   "prompt": "What specific substance is the storage tank made from?",
+   "answer": "food-grade polyethylene",
+   "why": "Liam khẳng định họ chọn 'food-grade polyethylene' để làm bồn chứa vì chống ăn mòn và ngăn ánh sáng.",
+   "quote": "We chose food-grade polyethylene, primarily because it resists corrosion, inhibits sunlight penetration"
+  },
+  {
+   "prompt": "Which device will be installed on the tank roof to check water levels?",
+   "answer": "ultrasonic sensor",
+   "why": "Maya giải thích họ mua một 'ultrasonic sensor' để theo dõi mực nước liên tục qua điện thoại.",
+   "quote": "We bought an ultrasonic sensor that mounts on the tank roof and transmits continuous level readings"
+  },
+  {
+   "prompt": "What type of filter cartridge will eliminate odours and sediment?",
+   "answer": "activated carbon",
+   "why": "Liam nói rằng nước sau bể chứa sẽ chảy qua lõi lọc 'activated carbon' để khử mùi và cặn bẩn nhỏ.",
+   "quote": "running it through an activated carbon cartridge to neutralise any unpleasant organic odours and minor sediment particles."
+  },
+  {
+   "prompt": "What equipment will be used to destroy microorganisms?",
+   "answer": "ultraviolet lamp | UV lamp",
+   "why": "Maya nói việc xử lý vi sinh vật được thực hiện bằng một 'ultraviolet lamp' mà không làm biến đổi hoá học nguồn nước.",
+   "quote": "integrated a compact ultraviolet lamp to neutralise pathogens without altering the chemical composition"
+  },
+  {
+   "prompt": "For what single purpose will the collected water be used?",
+   "answer": "vegetable irrigation",
+   "why": "Liam chỉ ra rằng nước sau lọc chỉ dùng cho việc 'vegetable irrigation' (tưới rau củ).",
+   "quote": "It is strictly designated for vegetable irrigation across the communal allotment plots."
+  },
+  {
+   "prompt": "What biological threat must be inspected weekly near the overflow vent?",
+   "answer": "mosquito larvae",
+   "why": "Maya nhắc đến việc phải theo dõi hàng tuần để phát hiện 'mosquito larvae' (bọ gậy/lăng quăng).",
+   "quote": "We need to monitor carefully for mosquito larvae, especially around the overflow vent."
+  },
+  {
+   "prompt": "What is the subject of the workshop offered to residents?",
+   "answer": "basic plumbing maintenance",
+   "why": "Liam cho hay họ sẽ tổ chức buổi hướng dẫn thực hành về 'basic plumbing maintenance' cho người làm vườn.",
+   "quote": "practical workshop on basic plumbing maintenance so the gardeners can repair loose fittings independently."
+  },
+  {
+   "prompt": "How much funding did the students receive from the green initiative fund?",
+   "answer": "three thousand pounds | 3,000 pounds | £3,000",
+   "why": "Maya xác nhận họ nhận được khoản ngân sách 'three thousand pounds' từ quỹ sáng kiến xanh.",
+   "quote": "secured a budget of three thousand pounds, which covers all pipes, electronic sensors, and instructional leaflets."
+  },
+  {
+   "prompt": "What software program will store the flow and rainfall records?",
+   "answer": "HydroTrack",
+   "why": "Liam cho biết tất cả thông số hoạt động sẽ được nhập vào phần mềm 'HydroTrack'.",
+   "quote": "operational figures into HydroTrack, the university's environmental logging software."
+  },
+  {
+   "prompt": "What seasonal issue might affect water quality in July?",
+   "answer": "algae growth",
+   "why": "Maya bày tỏ lo ngại về hiện tượng 'algae growth' (tảo phát triển) nếu nhiệt độ tăng cao vào giữa tháng 7.",
+   "quote": "concerned about potential algae growth if ambient temperatures spike in mid-July."
+  },
+  {
+   "prompt": "Which facility has offered to conduct free chemical testing?",
+   "answer": "CleanStreams Lab",
+   "why": "Liam cho biết 'CleanStreams Lab' đã đồng ý phân tích mẫu nước miễn phí hàng tháng.",
+   "quote": "CleanStreams Lab agreed to conduct monthly chemical analyses of our samples free of charge."
+  },
+  {
+   "prompt": "When is the final project report due for submission?",
+   "answer": "eighteenth of June | 18th of June | 18th June",
+   "why": "Tiến sĩ Thorne nhắc nhở hạn chót nộp báo cáo đánh giá toàn diện là ngày 'eighteenth of June'.",
+   "quote": "comprehensive assessment report is due on the eighteenth of June."
+  }
+ ]
+}

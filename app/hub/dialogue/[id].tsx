@@ -4,7 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
 import { DIFF_COLOR, GLASS_CARD, HUB } from '@/components/hub/theme';
-import { SCENE_IMAGE } from '@/data/hub/scenes';
+import { SCENE_THUMB } from '@/data/hub/scenes';
 import { CATEGORY_LABEL } from '@/services/hub/roleplay';
 import { dialogueById, gradeDialogue } from '@/services/hub/dialogue';
 import { markTaskDone } from '@/components/hub/hooks';
@@ -67,28 +67,28 @@ export default function DialoguePage() {
 
   return (
     <HubScreen title={dialogue.title} subtitle={`${CATEGORY_LABEL[dialogue.category]} · ${dialogue.minutes} phút`} back>
-      <Image source={{ uri: SCENE_IMAGE[dialogue.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
+      <Image source={{ uri: SCENE_THUMB[dialogue.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        <Text style={{ color: DIFF_COLOR[dialogue.difficulty], fontSize: 11, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[dialogue.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{dialogue.difficulty}</Text>
+        <Text style={{ color: DIFF_COLOR[dialogue.difficulty], fontSize: 13, fontWeight: '400', borderWidth: 1, borderColor: DIFF_COLOR[dialogue.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{dialogue.difficulty}</Text>
         <Pressable accessibilityRole="button" onPress={() => setPlaying(playing === null ? 0 : null)} style={{ paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, backgroundColor: HUB.blue }}>
-          <Text style={{ color: '#fff', fontSize: 12, fontWeight: '800' }}>{playing === null ? 'Nghe cả đoạn' : 'Dừng'}</Text>
+          <Text style={{ color: '#fff', fontSize: 13, fontWeight: '400' }}>{playing === null ? 'Nghe cả đoạn' : 'Dừng'}</Text>
         </Pressable>
         <Pressable accessibilityRole="switch" accessibilityState={{ checked: showVi }} onPress={() => setShowVi((v) => !v)} style={{ paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, borderWidth: 1, borderColor: HUB.line }}>
-          <Text style={{ color: HUB.ink, fontSize: 12, fontWeight: '700' }}>{showVi ? 'Ẩn bản dịch' : 'Hiện bản dịch'}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '700' }}>{showVi ? 'Ẩn bản dịch' : 'Hiện bản dịch'}</Text>
         </Pressable>
       </View>
 
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
         {dialogue.keyPhrases.map((p) => (
           <Pressable key={p} accessibilityRole="button" accessibilityLabel={`Nghe ${p}`} onPress={() => speak(p)} style={{ paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999, backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
-            <Text style={{ color: HUB.ink, fontSize: 12 }}>{p}</Text>
+            <Text style={{ color: HUB.ink, fontSize: 13 }}>{p}</Text>
           </Pressable>
         ))}
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 12 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Đoạn hội thoại</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Đoạn hội thoại</Text>
         {dialogue.lines.map((line, i) => {
           const speaking = playing === i;
           return (
@@ -99,7 +99,7 @@ export default function DialoguePage() {
               onPress={() => speak(line.en)}
               style={{ gap: 4, padding: 10, borderRadius: 12, backgroundColor: speaking ? 'rgba(59,130,246,0.14)' : 'transparent' }}
             >
-              <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '800' }}>{line.speaker.toUpperCase()}</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '400' }}>{line.speaker.toUpperCase()}</Text>
               <Text style={{ color: HUB.ink, fontSize: 15, lineHeight: 22 }}>{line.en}</Text>
               {showVi ? <Text style={{ color: HUB.muted, fontSize: 13, lineHeight: 19 }}>{line.vi}</Text> : null}
             </Pressable>
@@ -108,7 +108,7 @@ export default function DialoguePage() {
       </View>
 
       <View style={[GLASS_CARD, { padding: 14, gap: 14 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Điền từ còn thiếu</Text>
+        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Điền từ còn thiếu</Text>
         {dialogue.quiz.map((item, qi) => (
           <View key={item.q} style={{ gap: 8 }}>
             <Text style={{ color: HUB.ink, fontSize: 14, lineHeight: 20 }}>{`${qi + 1}. ${item.q}`}</Text>
@@ -123,20 +123,20 @@ export default function DialoguePage() {
                 </Pressable>
               );
             })}
-            {submitted ? <Text style={{ color: picks[qi] === item.answer ? HUB.green : HUB.amber, fontSize: 12, lineHeight: 18 }}>{item.tip}</Text> : null}
+            {submitted ? <Text style={{ color: picks[qi] === item.answer ? HUB.green : HUB.amber, fontSize: 13, lineHeight: 18 }}>{item.tip}</Text> : null}
           </View>
         ))}
 
         {!submitted ? (
           <Pressable accessibilityRole="button" disabled={!allAnswered} onPress={submit} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet, opacity: allAnswered ? 1 : 0.4 }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Nộp bài</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Nộp bài</Text>
           </Pressable>
         ) : (
           <View style={{ gap: 8 }}>
-            <Text style={{ color: grade?.passed ? HUB.green : HUB.amber, fontSize: 15, fontWeight: '800' }}>
+            <Text style={{ color: grade?.passed ? HUB.green : HUB.amber, fontSize: 15, fontWeight: '400' }}>
               {`Đúng ${grade?.correct}/${grade?.total} câu (${grade?.percent}%) · ${grade?.passed ? 'Đạt' : 'Chưa đạt'}`}
             </Text>
-            <Text style={{ color: HUB.muted, fontSize: 12, lineHeight: 18 }}>Đạt khi đúng ít nhất 2 trên 3 câu. Điểm cao nhất của bài được lưu và đồng bộ.</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13, lineHeight: 18 }}>Đạt khi đúng ít nhất 2 trên 3 câu. Điểm cao nhất của bài được lưu và đồng bộ.</Text>
           </View>
         )}
       </View>

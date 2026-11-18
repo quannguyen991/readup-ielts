@@ -79,7 +79,7 @@ export default function HubProgress() {
           { label: 'Đã lưu', value: String(wordBookmarks.length + saved.length), tone: '#0369A1', bg: '#E0F2FE' },
         ].map((x) => (
           <View key={x.label} style={[GLASS_CARD, { flexBasis: '47%', flexGrow: 1, padding: 14, gap: 4 }]}>
-            <Text style={{ color: HUB.muted, fontSize: 12, fontWeight: '700' }}>{x.label}</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>{x.label}</Text>
             <Text style={{ color: x.tone, fontSize: 24, fontWeight: '900' }}>{x.value}</Text>
             <View style={{ alignSelf: 'flex-start', height: 4, width: 36, borderRadius: 2, backgroundColor: x.bg }} />
           </View>
@@ -89,15 +89,15 @@ export default function HubProgress() {
       {/* 1. Biểu đồ Radar 6 Đỉnh & Điểm Dự đoán (Proficiency Radar & Band Predictor) */}
       <View style={[GLASS_CARD, { padding: 18, gap: 14, borderWidth: 1.5, borderColor: 'rgba(56, 189, 248, 0.3)' }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <View style={{ gap: 2 }}>
-            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Biểu đồ Năng lực 6 Chiều</Text>
-            <Text style={{ color: HUB.muted, fontSize: 12 }}>Chuẩn đánh giá quốc tế CEFR & IELTS Examiner</Text>
+          <View style={{ gap: 2, flex: 1, minWidth: 0 }}>
+            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Biểu đồ Năng lực 6 Chiều</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>Chuẩn đánh giá quốc tế CEFR & IELTS Examiner</Text>
           </View>
-          <View style={{ alignItems: 'flex-end', gap: 2 }}>
+          <View style={{ alignItems: 'flex-end', gap: 2, flexShrink: 0 }}>
             <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8, backgroundColor: 'rgba(14, 165, 233, 0.25)', borderWidth: 1, borderColor: '#6A4BD9' }}>
-              <Text style={{ color: '#6A4BD9', fontSize: 14, fontWeight: '800' }}>IELTS 7.5 • C1</Text>
+              <Text style={{ color: '#6A4BD9', fontSize: 14, fontWeight: '400' }}>IELTS 7.5 • C1</Text>
             </View>
-            <Text style={{ color: '#16A34A', fontSize: 10, fontWeight: '700' }}>EPS: 82/100</Text>
+            <Text style={{ color: '#16A34A', fontSize: 13, fontWeight: '700' }}>EPS: 82/100</Text>
           </View>
         </View>
 
@@ -108,9 +108,9 @@ export default function HubProgress() {
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                   <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '700' }}>{dim.name}</Text>
-                  <Text style={{ color: HUB.muted, fontSize: 11 }}>({dim.nameEn})</Text>
+                  <Text style={{ color: HUB.muted, fontSize: 13 }}>({dim.nameEn})</Text>
                 </View>
-                <Text style={{ color: dim.score >= 80 ? '#16A34A' : '#6A4BD9', fontSize: 13, fontWeight: '800' }}>
+                <Text style={{ color: dim.score >= 80 ? '#16A34A' : '#6A4BD9', fontSize: 13, fontWeight: '400' }}>
                   {dim.score}%
                 </Text>
               </View>
@@ -133,23 +133,23 @@ export default function HubProgress() {
 
       {/* 2. Ma trận 44 Âm vị IPA & Nút Cầu cứu Mentor */}
       <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <View style={{ gap: 2 }}>
-            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Ma trận 44 Âm vị IPA</Text>
-            <Text style={{ color: HUB.muted, fontSize: 11 }}>Chạm vào âm đỏ để kích hoạt 1-Click Mentor Escalation</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+          <View style={{ gap: 2, flexShrink: 1, minWidth: 180 }}>
+            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Ma trận 44 Âm vị IPA</Text>
+            <Text style={{ color: HUB.muted, fontSize: 13 }}>Chạm vào âm đỏ để nhờ gia sư kèm</Text>
           </View>
           <View style={{ flexDirection: 'row', gap: 6 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
               <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: HUB.green }} />
-              <Text style={{ color: HUB.muted, fontSize: 10 }}>&gt;80%</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13 }}>&gt;80%</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
               <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: HUB.amber }} />
-              <Text style={{ color: HUB.muted, fontSize: 10 }}>50-79%</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13 }}>50-79%</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
               <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: HUB.red }} />
-              <Text style={{ color: HUB.muted, fontSize: 10 }}>&lt;50%</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13 }}>&lt;50%</Text>
             </View>
           </View>
         </View>
@@ -180,7 +180,7 @@ export default function HubProgress() {
                 <Text style={{ color: isRed ? '#DC2626' : HUB.ink, fontSize: 14, fontWeight: '700' }}>
                   /{p.symbol}/
                 </Text>
-                <Text style={{ color: isRed ? '#B91C1C' : HUB.muted, fontSize: 9, fontWeight: '700' }}>
+                <Text style={{ color: isRed ? '#B91C1C' : HUB.muted, fontSize: 13, fontWeight: '700' }}>
                   {s === undefined ? '—' : `${s}%`}
                 </Text>
               </Pressable>
@@ -239,8 +239,8 @@ export default function HubProgress() {
         {bottomTab === 'leaderboard' ? (
           <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Bảng Xếp Hạng Tuần Này</Text>
-              <Text style={{ color: '#6A4BD9', fontSize: 12, fontWeight: '800' }}>🏆 Giải 10,000+</Text>
+              <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Bảng Xếp Hạng Tuần Này</Text>
+              <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '400' }}>🏆 Giải 10,000+</Text>
             </View>
 
             {[
@@ -264,27 +264,27 @@ export default function HubProgress() {
                 }}
               >
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                  <Text style={{ color: r.rank <= 3 ? '#6A4BD9' : HUB.muted, fontSize: 14, fontWeight: '800' }}>
+                  <Text style={{ color: r.rank <= 3 ? '#6A4BD9' : HUB.muted, fontSize: 14, fontWeight: '400' }}>
                     #{r.rank}
                   </Text>
                   <Text style={{ color: r.isMe ? '#6A4BD9' : HUB.ink, fontSize: 13, fontWeight: r.isMe ? '800' : '600' }}>
                     {r.name}
                   </Text>
                 </View>
-                <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '800' }}>{r.points} 🏆</Text>
+                <Text style={{ color: '#6A4BD9', fontSize: 13, fontWeight: '400' }}>{r.points} 🏆</Text>
               </View>
             ))}
           </View>
         ) : (
           <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Từ vựng & Bộ học đã lưu</Text>
+            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Từ vựng & Bộ học đã lưu</Text>
             {wordBookmarks.length === 0 && saved.length === 0 ? (
-              <Text style={{ color: HUB.muted, fontSize: 12 }}>Bạn chưa lưu từ vựng hay bộ học nào.</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13 }}>Bạn chưa lưu từ vựng hay bộ học nào.</Text>
             ) : null}
 
             {wordBookmarks.length > 0 ? (
               <View style={{ gap: 6 }}>
-                <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>TỪ VỰNG TỪ ĐIỂN ĐÃ BOOKMARK:</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>TỪ VỰNG TỪ ĐIỂN ĐÃ BOOKMARK:</Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                   {wordBookmarks.map((w) => (
                     <Pressable
@@ -302,7 +302,7 @@ export default function HubProgress() {
                         gap: 4,
                       }}
                     >
-                      <Text style={{ color: HUB.sky, fontSize: 12, fontWeight: '700' }}>{w}</Text>
+                      <Text style={{ color: HUB.sky, fontSize: 13, fontWeight: '700' }}>{w}</Text>
                       <Icon name="volume" size={12} color={HUB.muted} />
                     </Pressable>
                   ))}
@@ -321,9 +321,9 @@ export default function HubProgress() {
               {/* Modal Header */}
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>/{selectedPhoneme.symbol}/</Text>
+                  <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '400' }}>/{selectedPhoneme.symbol}/</Text>
                   <View style={{ paddingHorizontal: 8, paddingVertical: 2, borderRadius: 6, backgroundColor: HUB.glassStrong }}>
-                    <Text style={{ color: HUB.muted, fontSize: 11 }}>{selectedPhoneme.group}</Text>
+                    <Text style={{ color: HUB.muted, fontSize: 13 }}>{selectedPhoneme.group}</Text>
                   </View>
                 </View>
                 <Pressable onPress={() => setSelectedPhoneme(null)} style={{ padding: 4 }}>
@@ -342,7 +342,7 @@ export default function HubProgress() {
                     style={{ flex: 1, padding: 10, borderRadius: 10, backgroundColor: HUB.glassStrong, alignItems: 'center', gap: 2 }}
                   >
                     <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '700' }}>{word}</Text>
-                    <Text style={{ color: HUB.sky, fontSize: 11 }}>{ipa}</Text>
+                    <Text style={{ color: HUB.sky, fontSize: 13 }}>{ipa}</Text>
                   </Pressable>
                 ))}
               </View>
@@ -352,12 +352,12 @@ export default function HubProgress() {
                 <View style={{ padding: 14, borderRadius: 12, backgroundColor: 'rgba(239, 68, 68, 0.12)', borderWidth: 1.5, borderColor: '#EF4444', gap: 10 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                     <Text style={{ fontSize: 16 }}>🚨</Text>
-                    <Text style={{ color: '#DC2626', fontSize: 13, fontWeight: '800' }}>
+                    <Text style={{ color: '#DC2626', fontSize: 13, fontWeight: '400' }}>
                       ĐIỂM YẾU BÁO ĐỘNG ({best[selectedPhoneme.symbol] ?? 45}%)
                     </Text>
                   </View>
 
-                  <Text style={{ color: HUB.body, fontSize: 12, lineHeight: 17 }}>
+                  <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 18 }}>
                     Bạn đang gặp trở ngại với âm /{selectedPhoneme.symbol}/. Bạn có thể nhờ Mentor Band 8.5+ thị phạm và gửi nhận xét cá nhân.
                   </Text>
 
@@ -372,23 +372,23 @@ export default function HubProgress() {
                         backgroundColor: '#EF4444',
                       }}
                     >
-                      <Text style={{ color: '#fff', fontSize: 13, fontWeight: '800' }}>
+                      <Text style={{ color: '#fff', fontSize: 13, fontWeight: '400' }}>
                         🔥 Nhờ Mentor Band 8.5+ sửa giúp (Ghi âm 5s)
                       </Text>
                     </Pressable>
                   ) : escalationStep === 'recording' ? (
                     <View style={{ alignItems: 'center', gap: 6 }}>
-                      <Text style={{ color: '#EF4444', fontSize: 14, fontWeight: '800' }}>
+                      <Text style={{ color: '#EF4444', fontSize: 14, fontWeight: '400' }}>
                         Đang thu âm: {mentorRecordTimer}s còn lại...
                       </Text>
-                      <Text style={{ color: HUB.muted, fontSize: 11 }}>Hãy đọc to 2 từ ví dụ phía trên.</Text>
+                      <Text style={{ color: HUB.muted, fontSize: 13 }}>Hãy đọc to 2 từ ví dụ phía trên.</Text>
                     </View>
                   ) : (
                     <View style={{ padding: 10, borderRadius: 8, backgroundColor: 'rgba(16, 185, 129, 0.2)', alignItems: 'center', gap: 4 }}>
-                      <Text style={{ color: '#16A34A', fontSize: 13, fontWeight: '800' }}>
+                      <Text style={{ color: '#16A34A', fontSize: 13, fontWeight: '400' }}>
                         ✓ Đã gửi bản ghi âm thành công!
                       </Text>
-                      <Text style={{ color: HUB.muted, fontSize: 11, textAlign: 'center' }}>
+                      <Text style={{ color: HUB.muted, fontSize: 13, textAlign: 'center' }}>
                         Mentor Band 8.5+ sẽ phản hồi thị phạm âm /{selectedPhoneme.symbol}/ trong vòng 15 phút.
                       </Text>
                     </View>
@@ -410,7 +410,7 @@ export default function HubProgress() {
                   backgroundColor: HUB.blue,
                 }}
               >
-                <Text style={{ color: '#fff', fontSize: 14, fontWeight: '800' }}>Luyện lại với AI</Text>
+                <Text style={{ color: '#fff', fontSize: 14, fontWeight: '400' }}>Luyện lại với AI</Text>
               </Pressable>
             </View>
           ) : null}

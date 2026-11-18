@@ -88,7 +88,7 @@ export function BadgeShelf() {
       : L(`${r.target} lần luyện nói`, `${r.target} speaking sessions`);
 
   return (
-    <View style={{ marginTop: 16, borderRadius: 24, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EEE9FF', padding: 18, overflow: 'hidden', boxShadow: '0 8px 22px rgba(106,75,217,0.08)' } as object}>
+    <View style={{ marginTop: 16, borderRadius: 22, backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: '#2A22B5', padding: 18, overflow: 'hidden', boxShadow: '0 6px 0 rgba(42,34,181,0.38)' } as object}>
       {fresh ? (
         <View pointerEvents="none" style={StyleSheet.absoluteFill}>
           <Confetti seed={fresh} pieces={70} />

@@ -216,6 +216,14 @@ export default function SpacedRepetitionScreen() {
             {dueEntries.length > 0 ? L(`Ôn ngay (${dueEntries.length})`, `Review now (${dueEntries.length})`) : L('Ôn tất cả', 'Review all')}
           </Text>
         </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={L("Ôn với thứ tự ngẫu nhiên", "Review in random order")}
+          onPress={() => router.push({ pathname: "/vocabulary/topic/so-tu", params: { shuffle: "1" } } as never)}
+          style={{ alignSelf: "flex-start", marginTop: 10, paddingVertical: 10, paddingHorizontal: 16, borderRadius: 999, backgroundColor: "rgba(255,255,255,0.7)" }}
+        >
+          <Text className="font-strong" style={{ color: "#1B1140" }}>{L("Trộn thẻ để ôn", "Shuffle cards to review")}</Text>
+        </Pressable>
       </HeroShell>
 
       {/* Lịch ôn 7 ngày: số từ đến hạn mỗi ngày, cộng dồn khi học thêm */}

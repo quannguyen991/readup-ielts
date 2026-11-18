@@ -83,19 +83,19 @@ module.exports = {
       // Tên key tránh trùng với utility font-weight của Tailwind
       // (medium / semibold / bold / extrabold) để không sinh class đè nhau.
       fontFamily: {
-        // Be Vietnam Pro: phông chính, nạp trong app/_layout.tsx. Plus Jakarta Sans vẫn còn cho trang giới thiệu.
-        // Inter (21/10/2026): gọn, mỏng hơn Be Vietnam Pro. Độ đậm vẫn phân cấp nhưng nhẹ hơn:
+        // Inter: phông chính, nạp trong app/_layout.tsx. Inter vẫn còn cho trang giới thiệu.
+        // Inter (21/10/2026): gọn, mỏng hơn phông cũ. Độ đậm vẫn phân cấp nhưng nhẹ hơn:
         // tiêu đề dùng 600 thay cho 800.
-        sans: ['Inter_400Regular', 'system-ui', 'sans-serif'],
-        mid: ['Inter_500Medium', 'system-ui', 'sans-serif'],
-        semi: ['Inter_600SemiBold', 'system-ui', 'sans-serif'],
-        strong: ['Inter_600SemiBold', 'system-ui', 'sans-serif'],
-        heavy: ['InterTight_600SemiBold', 'Inter_600SemiBold', 'system-ui', 'sans-serif'],
-        // Nunito (bo tròn): phòng Listening và Writing theo bố cục tham chiếu.
+        sans: ['Nunito_400Regular', 'system-ui', 'sans-serif'],
+        mid: ['Nunito_600SemiBold', 'system-ui', 'sans-serif'],
+        semi: ['Nunito_600SemiBold', 'system-ui', 'sans-serif'],
+        strong: ['Nunito_600SemiBold', 'system-ui', 'sans-serif'],
+        heavy: ['Nunito_400Regular', 'system-ui', 'sans-serif'],
+        // Alias tương thích cũ, hiện cùng dùng Inter.
         nun: ['Nunito_400Regular', 'system-ui', 'sans-serif'],
         'nun-mid': ['Nunito_600SemiBold', 'system-ui', 'sans-serif'],
         'nun-strong': ['Nunito_700Bold', 'system-ui', 'sans-serif'],
-        'nun-heavy': ['Nunito_800ExtraBold', 'system-ui', 'sans-serif'],
+        'nun-heavy': ['Nunito_400Regular', 'system-ui', 'sans-serif'],
       },
       // Thang chữ nâng một bậc (22/09/2026): chữ thường 14px -> 16px. Bản cũ
       // đọc như app thu nhỏ trên màn laptop — người dùng so với các app luyện

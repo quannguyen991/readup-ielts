@@ -1,20 +1,25 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import { Confetti } from '@/components/motion/Confetti';
-import { LionMascot, type LionPose } from '@/components/mascot/LionMascot';
 import { HubScreen } from '@/components/hub/HubScreen';
-import { GLASS_CARD, HUB } from '@/components/hub/theme';
+import { HUB } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { SpeakingWave } from '@/components/sentence/SpeakingWave';
 import { Icon } from '@/components/ui/Icon';
-import { topicById, type SpeakingTopic } from '@/data/hub/speaking-topics';
+import { AnswerAnalysis } from '@/components/hub/AnswerAnalysis';
+import { HUB_UI, HubBar, HubHero, HubPanel, HubTag, hubLift } from '@/components/hub/HubUi';
+import { RecordStage } from '@/components/hub/RecordStage';
+import { ModelAnswer, PrepTimer, StudyPanel } from '@/components/hub/SpeakingStudy';
+import { topicById, topicExtra, type SpeakingExtra, type SpeakingTopic } from '@/data/hub/speaking-topics';
 import { speak } from '@/services/hub/speak';
 import { buildVoiceReport } from '@/services/hub/voice-report';
 import { useHubStore } from '@/store/useHubStore';
-import { themedHex } from '@/theme/palette-state';
+import { useSpeakingStore } from '@/store/useSpeakingStore';
+import { part2Question } from '@/services/hub/hub-questions';
+import type { SpeakingAnswer, SpeakingAttempt } from '@/services/speaking/attempts';
+import { answerMetrics, attemptMetrics, type AnswerMetrics, type RecognizedSegment } from '@/services/speaking/metrics';
 
 /** Thí sinh được nói tối đa hai phút ở cue card (Part 2). */
 const PART2_LIMIT_MS = 120_000;
@@ -26,16 +31,17 @@ type Part = 'part1' | 'part2' | 'part3';
 type Step = { part: Part; index: number; total: number; text: string; bullets?: string[] };
 
 /** Một bài đủ sáu bước theo thứ tự thi: 3 câu Part 1, một cue card Part 2, 2 câu Part 3. */
-function stepsOf(topic: SpeakingTopic): Step[] {
-  return [
+function stepsOf(topic: SpeakingTopic, only?: 1 | 2 | 3): Step[] {
+  const all: Step[] = [
     ...topic.part1.map((text, index) => ({ part: 'part1' as const, index, total: topic.part1.length, text })),
     { part: 'part2' as const, index: 0, total: 1, text: topic.part2.prompt, bullets: topic.part2.bullets },
     ...topic.part3.map((text, index) => ({ part: 'part3' as const, index, total: topic.part3.length, text })),
   ];
+  return only ? all.filter((st) => st.part === `part${only}`) : all;
 }
 
 /** Kết quả một lượt nói: số liệu lấy từ `buildVoiceReport`, cùng bản ghi lời nói để đọc lại. */
-type Report = { transcript: string; wpm: number | null; fillers: number; words: number; silent: boolean; ms: number };
+type Report = { transcript: string; wpm: number | null; fillers: number; words: number; silent: boolean; ms: number; segments?: RecognizedSegment[]; metrics?: AnswerMetrics };
 
 /**
  * Luyện đề theo chủ đề, đi lần lượt qua Part 1, cue card Part 2 và Part 3 như bài thi.
@@ -43,8 +49,9 @@ type Report = { transcript: string; wpm: number | null; fillers: number; words: 
  * và bản ghi để tự đọc lại. Linh vật đổi theo tiến độ để cả trang luôn có điểm nhấn.
  */
 export default function TopicPractice() {
-  const { id = '' } = useLocalSearchParams<{ id: string }>();
+  const { id = '', part } = useLocalSearchParams<{ id: string; part?: string }>();
   const topic = topicById(id);
+  const only = part === '1' ? 1 : part === '2' ? 2 : part === '3' ? 3 : undefined;
   if (!topic) {
     return (
       <HubScreen title="Không tìm thấy chủ đề" back>
@@ -52,13 +59,14 @@ export default function TopicPractice() {
       </HubScreen>
     );
   }
-  return <Practice topic={topic} />;
+  return <Practice topic={topic} only={only} />;
 }
 
-function Practice({ topic }: { topic: SpeakingTopic }) {
+export function Practice({ topic, only, extra: extraProp, header }: { topic: SpeakingTopic; only?: 1 | 2 | 3; extra?: SpeakingExtra; header?: React.ReactNode }) {
   const listen = useListen();
   const { stop } = listen;
-  const steps = useMemo(() => stepsOf(topic), [topic]);
+  const steps = useMemo(() => stepsOf(topic, only), [topic, only]);
+  const extra = extraProp ?? topicExtra(topic.id);
   const completeTopic = useHubStore((s) => s.completeTopic);
   const doneAt = useHubStore((s) => s.topicsDone[topic.id]);
 
@@ -66,6 +74,7 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
   const [reports, setReports] = useState<Record<number, Report>>({});
   const [, setTick] = useState(0);
   const [justDone, setJustDone] = useState(false);
+  const startedAt = useRef(new Date().toISOString());
   // Chỉ chấm lượt vừa ghi xong, và ghi vào đúng bước đã bắt đầu ghi (không phải bước đang hiển thị).
   const armed = useRef(false);
   const recordingAt = useRef(0);
@@ -108,9 +117,11 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
       eventTimes: listen.times,
       durationMs: ms,
     });
+    const segments: RecognizedSegment[] = listen.segments.map((sg) => ({ text: sg.text, confidence: sg.confidence }));
+    const metrics = answerMetrics({ transcript, segments, durationMs: ms, eventTimes: listen.times });
     setReports((r) => ({
       ...r,
-      [bucket]: { transcript, wpm: report.wpm, fillers: report.fillers.total, words: report.wordCount, silent: false, ms },
+      [bucket]: { transcript, wpm: report.wpm, fillers: report.fillers.total, words: report.wordCount, silent: false, ms, segments, metrics },
     }));
     // Chỉ chạy khi micro dừng hoặc có chữ mới; số liệu lấy từ chính các giá trị đó.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,58 +147,74 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
     setAt(next);
   };
 
+  /** Gói các câu đã nói thành một lượt chấm rồi mở phiếu chấm chi tiết (điểm theo bốn tiêu chí, đáp án, đối chiếu band). */
+  const openResult = () => {
+    const answers: SpeakingAnswer[] = [];
+    steps.forEach((st, i) => {
+      const r = reports[i];
+      if (!r || r.silent || !r.metrics) return;
+      answers.push({
+        questionId: `hub:${topic.id}:${st.part}:${st.index}`,
+        part: st.part === 'part1' ? 1 : st.part === 'part2' ? 2 : 3,
+        question: st.bullets ? part2Question(st.text, st.bullets) : st.text,
+        transcript: r.transcript,
+        segments: r.segments ?? [],
+        metrics: r.metrics,
+      });
+    });
+    if (answers.length === 0) return;
+    const attempt: SpeakingAttempt = {
+      id: `hub-${Date.now().toString(36)}`,
+      mode: only ? (`p${only}` as 'p1' | 'p2' | 'p3') : 'full',
+      typed: false,
+      titleVi: topic.titleVi,
+      startedAt: startedAt.current,
+      finishedAt: new Date().toISOString(),
+      answers,
+      metrics: attemptMetrics(answers.map((a) => ({ part: a.part, transcript: a.transcript, metrics: a.metrics }))),
+      grade: null,
+    };
+    useSpeakingStore.getState().add(attempt);
+    router.push(`/hub/result/${attempt.id}` as never);
+  };
+
   const restart = () => {
     setReports({});
     setAt(0);
     setJustDone(false);
   };
 
-  const lionPose: LionPose = finished
-    ? answered === steps.length
-      ? 'cheer'
-      : 'think'
-    : listen.listening
-      ? 'point'
-      : current && !current.silent
-        ? 'wave'
-        : 'read';
-
   return (
     <HubScreen title={topic.titleVi} subtitle={finished ? 'Tổng kết' : partLabel(step)} back padBottom={140}>
-      <LinearGradient
-        colors={[themedHex('#F3F0FB'), themedHex('#F6E3AE')]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={{ borderRadius: 24, padding: 18, flexDirection: 'row', alignItems: 'center', gap: 14 }}
-      >
-        <LionMascot pose={lionPose} size={92} />
-        <View style={{ flex: 1, minWidth: 0, gap: 6 }}>
-          <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{topic.title}</Text>
-          <Text style={{ color: HUB.body, fontSize: 13, lineHeight: 19 }}>{topic.tipVi}</Text>
-          <ProgressBar value={answered / steps.length} />
-          <Text style={{ color: HUB.muted, fontSize: 12, fontWeight: '700' }}>
-            {answered}/{steps.length} câu đã nói
-            {doneAt ? '  ·  đã hoàn thành' : ''}
-          </Text>
+      <HubPanel title={topic.titleVi} icon="planet" badge={doneAt ? 'ĐÃ XONG' : `${answered}/${steps.length}`}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+          <Text style={{ color: HUB_UI.navy, fontSize: 22, fontWeight: '900', flex: 1, minWidth: 160 }}>{topic.title}</Text>
+          <HubTag label={`${answered}/${steps.length} câu đã nói`} />
         </View>
-      </LinearGradient>
+        <HubBar ratio={answered / Math.max(1, steps.length)} color={HUB_UI.green} />
+        <Text style={{ color: HUB_UI.muted, fontSize: 14, lineHeight: 20, fontWeight: '600' }}>{topic.tipVi}</Text>
+      </HubPanel>
 
       <StepRail steps={steps} at={at} reports={reports} onPick={goTo} />
+
+      {header}
+
+      {extra && !finished ? <StudyPanel extra={extra} /> : null}
 
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Nói cùng Leo, giám khảo AI"
         onPress={() => router.push(`/hub/live/${topic.id}` as never)}
-        style={[GLASS_CARD, { padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }]}
+        style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 18, borderWidth: 1.5, backgroundColor: '#FFFFFF', ...hubLift(hovered) }) as never}
       >
-        <View style={{ width: 40, height: 40, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: '#D9A441' }}>
-          <Icon name="sparkle" size={18} color="#fff" />
+        <View style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFF0D6' }}>
+          <Text style={{ fontSize: 24 }}>🦁</Text>
         </View>
-        <View style={{ flex: 1, gap: 2 }}>
-          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Nói cùng Leo</Text>
-          <Text style={{ color: HUB.body, fontSize: 12, lineHeight: 17 }}>Giám khảo AI hỏi bằng giọng nói và phân tích buổi nói.</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={{ color: HUB_UI.navy, fontSize: 15.5, fontWeight: '900' }}>Nói cùng Leo</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13.5, fontWeight: '600' }}>Giám khảo AI hỏi bằng giọng nói</Text>
         </View>
-        <Icon name="chevron-right" size={18} color={HUB.muted} />
+        <Icon name="chevron-right" size={18} color={HUB_UI.muted} />
       </Pressable>
 
       {finished ? (
@@ -204,22 +231,45 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
           }}
           onRestart={restart}
           onJump={goTo}
+          onResult={openResult}
         />
       ) : (
         <>
           <QuestionCard step={step} />
 
-          <RecordPanel
+          {step.part === 'part2' ? <PrepTimer key={`prep-${at}`} /> : null}
+
+          <RecordStage
             listening={listen.listening}
             supported={listen.supported}
             elapsedMs={listen.listening ? listen.elapsed() : current?.ms ?? 0}
             hasReport={Boolean(current)}
-            part={step.part}
+            part2={step.part === 'part2'}
             onStart={start}
             onStop={finishRecording}
           />
 
           {current ? <ReportCard report={current} /> : null}
+
+          {current && !current.silent ? (
+            <AnswerAnalysis
+              input={{
+                part: step.part === 'part1' ? 1 : step.part === 'part2' ? 2 : 3,
+                question: step.bullets ? `${step.text} (${step.bullets.join('; ')})` : step.text,
+                transcript: current.transcript,
+                wpm: current.wpm,
+                fillers: current.fillers,
+                ms: current.ms,
+              }}
+            />
+          ) : null}
+
+          {extra && current ? (
+            <ModelAnswer
+              text={step.part === 'part2' ? extra.sample : (step.part === 'part1' ? extra.p1 : extra.p3)[step.index]?.a ?? ''}
+              label={step.part === 'part2' ? 'Bài mẫu Part 2 · Band 8' : 'Đáp án mẫu'}
+            />
+          ) : null}
 
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <Pressable
@@ -250,10 +300,10 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
                 justifyContent: 'center',
                 flexDirection: 'row',
                 gap: 8,
-                backgroundColor: HUB.blue,
+                backgroundColor: HUB_UI.purple,
               }}
             >
-              <Text style={{ color: '#fff', fontWeight: '800', fontSize: 16 }}>
+              <Text style={{ color: '#fff', fontWeight: '400', fontSize: 16 }}>
                 {at + 1 === steps.length ? 'Xem tổng kết' : 'Câu tiếp theo'}
               </Text>
               <Icon name={at + 1 === steps.length ? 'trophy' : 'arrow-right'} size={18} color="#fff" />
@@ -262,16 +312,6 @@ function Practice({ topic }: { topic: SpeakingTopic }) {
         </>
       )}
     </HubScreen>
-  );
-}
-
-/** Thanh tiến độ mảnh, tô bằng màu nhấn của chủ đề hiện tại. */
-function ProgressBar({ value }: { value: number }) {
-  const pct = Math.round(Math.max(0, Math.min(1, value)) * 100);
-  return (
-    <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(106, 75, 217,0.16)', overflow: 'hidden' }}>
-      <View style={{ width: `${pct}%`, height: 8, borderRadius: 4, backgroundColor: HUB.blue }} />
-    </View>
   );
 }
 
@@ -290,155 +330,56 @@ function StepRail({
   reports: Record<number, Report>;
   onPick: (i: number) => void;
 }) {
-  return (
-    <View style={{ flexDirection: 'row', gap: 6 }}>
-      {steps.map((s, i) => {
-        const said = Boolean(reports[i] && !reports[i]!.silent);
-        const on = i === at;
-        return (
-          <Pressable
-            key={`${s.part}-${s.index}`}
-            accessibilityRole="button"
-            accessibilityLabel={`${shortLabel(s)}${said ? ', đã nói' : ''}`}
-            accessibilityState={{ selected: on }}
-            onPress={() => onPick(i)}
-            style={{
-              flex: 1,
-              height: 48,
-              borderRadius: 14,
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 2,
-              backgroundColor: on ? HUB.blue : said ? 'rgba(46,125,79,0.16)' : HUB.glassStrong,
-            }}
-          >
-            {said && !on ? <Icon name="check" size={13} color={HUB.green} strokeWidth={2.6} /> : null}
-            <Text style={{ color: on ? '#fff' : said ? HUB.green : HUB.body, fontSize: 12, fontWeight: '800' }}>
-              {shortLabel(s)}
-            </Text>
-          </Pressable>
-        );
-      })}
-    </View>
+  const many = steps.length > 8;
+  const pills = steps.map((s, i) => {
+    const said = Boolean(reports[i] && !reports[i]!.silent);
+    const on = i === at;
+    return (
+      <Pressable
+        key={`${s.part}-${s.index}`}
+        accessibilityRole="button"
+        accessibilityLabel={`${shortLabel(s)}${said ? ', đã nói' : ''}`}
+        accessibilityState={{ selected: on }}
+        onPress={() => onPick(i)}
+        style={{ flex: many ? undefined : 1, minWidth: many ? 58 : undefined, height: 46, borderRadius: 14, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 4, borderWidth: 1.5, borderColor: on ? HUB_UI.purple : said ? '#BFE7CD' : HUB_UI.line, backgroundColor: on ? HUB_UI.purple : said ? '#EAF8EF' : '#FFFFFF' }}
+      >
+        {said && !on ? <Icon name="check" size={13} color={HUB_UI.green} strokeWidth={2.6} /> : null}
+        <Text style={{ color: on ? '#FFFFFF' : said ? HUB_UI.green : HUB_UI.navy, fontSize: 13.5, fontWeight: '900' }}>{shortLabel(s)}</Text>
+      </Pressable>
+    );
+  });
+  return many ? (
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>{pills}</ScrollView>
+  ) : (
+    <View style={{ flexDirection: 'row', gap: 6 }}>{pills}</View>
   );
 }
 
 /** Thẻ câu hỏi. Part 2 hiện như một cue card: đề mô tả và bốn gợi ý đánh số. */
 function QuestionCard({ step }: { step: Step }) {
   return (
-    <View style={[GLASS_CARD, { padding: 20, gap: 14 }]}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.blue, fontSize: 11, fontWeight: '800', letterSpacing: 0.6 }}>{partLabel(step)}</Text>
-        </View>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Nghe câu hỏi"
-          onPress={() => speak(step.text)}
-          style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, height: 36, borderRadius: 999, backgroundColor: HUB.glassStrong }}
-        >
-          <Icon name="volume" size={15} color={HUB.blue} />
-          <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '700' }}>Nghe</Text>
+    <HubPanel title={partLabel(step)} icon={step.part === 'part2' ? 'note' : step.part === 'part1' ? 'speaker' : 'planet'}>
+      <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
+        <Text style={{ color: HUB_UI.navy, fontSize: step.part === 'part2' ? 20 : 24, fontWeight: '900', lineHeight: step.part === 'part2' ? 29 : 33, flex: 1 }}>{step.text}</Text>
+        <Pressable accessibilityRole="button" accessibilityLabel="Nghe câu hỏi" onPress={() => speak(step.text)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, height: 38, borderRadius: 999, backgroundColor: HUB_UI.wash }}>
+          <Icon name="volume" size={16} color={HUB_UI.purple} />
+          <Text style={{ color: HUB_UI.purple, fontSize: 14, fontWeight: '900' }}>Nghe</Text>
         </Pressable>
       </View>
-
-      <Text style={{ color: HUB.ink, fontSize: step.part === 'part2' ? 19 : 23, fontWeight: '800', lineHeight: step.part === 'part2' ? 28 : 32 }}>
-        {step.text}
-      </Text>
-
-      {step.bullets ? (
-        <View style={{ gap: 10, paddingTop: 4 }}>
-          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>Bạn nên nói về:</Text>
+      {step.bullets && step.bullets.length ? (
+        <View style={{ gap: 8, padding: 14, borderRadius: 16, backgroundColor: '#FFFBF0', borderWidth: 1.5, borderColor: '#F2DFA6' }}>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13, fontWeight: '400' }}>Bạn nên nói về:</Text>
           {step.bullets.map((b, i) => (
-            <View key={b} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-              <View
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 14,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: HUB.blue,
-                }}
-              >
-                <Text style={{ color: '#fff', fontSize: 13, fontWeight: '800' }}>{i + 1}</Text>
+            <View key={b} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <View style={{ width: 26, height: 26, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB_UI.purple }}>
+                <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '900' }}>{i + 1}</Text>
               </View>
-              <Text style={{ color: HUB.ink, fontSize: 15, lineHeight: 22, flex: 1 }}>{b}</Text>
+              <Text style={{ color: HUB_UI.navy, fontSize: 15, lineHeight: 22, flex: 1 }}>{b}</Text>
             </View>
           ))}
         </View>
       ) : null}
-    </View>
-  );
-}
-
-/**
- * Khu ghi âm: nút micro lớn, đồng hồ, sóng âm khi đang nói. Sóng chỉ chạy khi micro
- * thật sự đang nghe, nên nhìn vào là biết app đang thu hay không.
- */
-function RecordPanel({
-  listening,
-  supported,
-  elapsedMs,
-  hasReport,
-  part,
-  onStart,
-  onStop,
-}: {
-  listening: boolean;
-  supported: boolean;
-  elapsedMs: number;
-  hasReport: boolean;
-  part: Part;
-  onStart: () => void;
-  onStop: () => void;
-}) {
-  const hint = !supported
-    ? 'Ghi âm cần Chrome trên máy tính hoặc Android.'
-    : listening
-      ? 'Đang nghe. Bấm lần nữa để dừng.'
-      : hasReport
-        ? 'Muốn nói lại thì bấm micro.'
-        : part === 'part2'
-          ? 'Bấm micro rồi nói, tối đa hai phút.'
-          : 'Bấm micro rồi trả lời tự nhiên.';
-  return (
-    <View style={[GLASS_CARD, { padding: 22, alignItems: 'center', gap: 14 }]}>
-      <View
-        style={{
-          width: 116,
-          height: 116,
-          borderRadius: 58,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: listening ? 'rgba(179,58,42,0.14)' : 'rgba(106, 75, 217,0.12)',
-        }}
-      >
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={listening ? 'Dừng ghi' : 'Ghi âm trả lời'}
-          disabled={!supported}
-          onPress={() => (listening ? onStop() : onStart())}
-          style={{
-            width: 88,
-            height: 88,
-            borderRadius: 44,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: listening ? HUB.red : HUB.blue,
-            opacity: supported ? 1 : 0.5,
-          }}
-        >
-          <Icon name={listening ? 'close' : 'mic'} size={32} color="#fff" strokeWidth={2.2} />
-        </Pressable>
-      </View>
-
-      <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '800', fontVariant: ['tabular-nums'] }}>
-        {formatClock(elapsedMs)}
-      </Text>
-      <SpeakingWave active={listening} />
-      <Text style={{ color: HUB.muted, fontSize: 13, textAlign: 'center' }}>{hint}</Text>
-    </View>
+    </HubPanel>
   );
 }
 
@@ -449,11 +390,9 @@ function RecordPanel({
 function ReportCard({ report }: { report: Report }) {
   if (report.silent) {
     return (
-      <View style={[GLASS_CARD, { padding: 16 }]}>
-        <Text style={{ color: HUB.amber, fontSize: 14, fontWeight: '700' }}>
-          Chưa nghe rõ. Thử lại gần micro hơn, nói chậm và rõ.
-        </Text>
-      </View>
+      <HubPanel title="Chưa nghe rõ" icon="cloud">
+        <Text style={{ color: '#B45309', fontSize: 14.5, fontWeight: '700', lineHeight: 21 }}>Thử lại gần micro hơn, nói chậm và rõ.</Text>
+      </HubPanel>
     );
   }
   const ratio = report.words > 0 ? report.fillers / report.words : 0;
@@ -461,12 +400,12 @@ function ReportCard({ report }: { report: Report }) {
   const wpmPos = report.wpm === null ? 0 : Math.min(100, (report.wpm / WPM_SCALE_MAX) * 100);
   const coachTone = coachKind(report);
   return (
-    <View style={[GLASS_CARD, { padding: 16, gap: 14 }]}>
+    <HubPanel title="Số liệu lượt nói" icon="medal">
       <View style={{ flexDirection: 'row', gap: 10 }}>
         <View style={{ flex: 1.4, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>TỐC ĐỘ</Text>
-          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>{report.wpm ?? '—'}</Text>
-          <Text style={{ color: HUB.muted, fontSize: 11, marginTop: -6 }}>từ/phút</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>TỐC ĐỘ</Text>
+          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '400' }}>{report.wpm ?? '—'}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, marginTop: -6 }}>từ/phút</Text>
           <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(106, 75, 217,0.14)', overflow: 'hidden' }}>
             <View
               style={{
@@ -482,14 +421,14 @@ function ReportCard({ report }: { report: Report }) {
           </View>
         </View>
         <View style={{ flex: 1, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>TỪ ĐỆM</Text>
-          <Text style={{ color: fillerTone, fontSize: 24, fontWeight: '800' }}>{report.fillers}</Text>
-          <Text style={{ color: HUB.muted, fontSize: 11 }}>{Math.round(ratio * 100)}% số từ</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>TỪ ĐỆM</Text>
+          <Text style={{ color: fillerTone, fontSize: 24, fontWeight: '400' }}>{report.fillers}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>{Math.round(ratio * 100)}% số từ</Text>
         </View>
         <View style={{ flex: 1, gap: 8, padding: 12, borderRadius: 14, backgroundColor: HUB.glassStrong }}>
-          <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>SỐ TỪ</Text>
-          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '800' }}>{report.words}</Text>
-          <Text style={{ color: HUB.muted, fontSize: 11 }}>{formatClock(report.ms)}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>SỐ TỪ</Text>
+          <Text style={{ color: HUB.ink, fontSize: 24, fontWeight: '400' }}>{report.words}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>{formatClock(report.ms)}</Text>
         </View>
       </View>
 
@@ -506,10 +445,10 @@ function ReportCard({ report }: { report: Report }) {
       </View>
 
       <View style={{ padding: 14, borderRadius: 14, backgroundColor: HUB.glassStrong, gap: 6 }}>
-        <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>BẢN GHI CỦA BẠN</Text>
+        <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>BẢN GHI CỦA BẠN</Text>
         <Text style={{ color: HUB.ink, fontSize: 15, lineHeight: 23, fontStyle: 'italic' }}>“{report.transcript}”</Text>
       </View>
-    </View>
+    </HubPanel>
   );
 }
 
@@ -524,6 +463,7 @@ function Summary({
   onComplete,
   onRestart,
   onJump,
+  onResult,
 }: {
   topic: SpeakingTopic;
   steps: Step[];
@@ -534,6 +474,7 @@ function Summary({
   onComplete: () => void;
   onRestart: () => void;
   onJump: (i: number) => void;
+  onResult: () => void;
 }) {
   const all = Object.values(reports).filter((r) => !r.silent);
   const words = all.reduce((sum, r) => sum + r.words, 0);
@@ -544,27 +485,20 @@ function Summary({
 
   return (
     <View style={{ gap: 14 }}>
-      <View style={{ alignItems: 'center', gap: 6, paddingTop: 4 }}>
-        <LionMascot pose={complete ? 'cheer' : 'think'} size={132} />
-        <Text style={{ color: HUB.ink, fontSize: 22, fontWeight: '800', textAlign: 'center' }}>
-          {complete ? 'Bạn đã nói hết cả đề!' : `Còn ${steps.length - answered} câu chưa nói`}
-        </Text>
-        <Text style={{ color: HUB.body, fontSize: 14, textAlign: 'center', lineHeight: 21 }}>
-          {complete
-            ? 'Đọc lại bản ghi, rồi làm lại chủ đề này sau một ngày để thấy tốc độ và từ đệm đổi thế nào.'
-            : 'Quay lại những câu còn trống để có số liệu đầy đủ.'}
-        </Text>
-      </View>
+      <HubHero
+        eyebrow="TỔNG KẾT"
+        title={complete ? 'Bạn đã nói hết cả đề!' : `Còn ${steps.length - answered} câu chưa nói`}
+        accent={complete ? 'làm lại sau một ngày để so sánh' : 'quay lại những câu còn trống'}
+      />
 
-      <View style={{ flexDirection: 'row', gap: 8 }}>
+      <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
         <StatTile label="câu đã nói" value={`${answered}/${steps.length}`} />
         <StatTile label="từ/phút TB" value={avgWpm === null ? '—' : String(avgWpm)} />
         <StatTile label="tổng số từ" value={String(words)} />
         <StatTile label="từ đệm" value={String(fillers)} />
       </View>
 
-      <View style={[GLASS_CARD, { padding: 14, gap: 8 }]}>
-        <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Từng câu</Text>
+      <HubPanel title="Từng câu" icon="book" badge={`${answered}/${steps.length}`}>
         {steps.map((s, i) => {
           const r = reports[i];
           return (
@@ -585,7 +519,7 @@ function Summary({
                   backgroundColor: r && !r.silent ? 'rgba(46,125,79,0.16)' : HUB.glassStrong,
                 }}
               >
-                <Text style={{ color: r && !r.silent ? HUB.green : HUB.muted, fontSize: 12, fontWeight: '800' }}>{shortLabel(s)}</Text>
+                <Text style={{ color: r && !r.silent ? HUB.green : HUB.muted, fontSize: 13, fontWeight: '400' }}>{shortLabel(s)}</Text>
               </View>
               <Text style={{ color: HUB.body, fontSize: 13, flex: 1 }} numberOfLines={1}>
                 {r && !r.silent ? `“${r.transcript}”` : s.text}
@@ -596,7 +530,21 @@ function Summary({
             </Pressable>
           );
         })}
-      </View>
+      </HubPanel>
+
+      <Pressable
+        accessibilityRole="button"
+        disabled={answered === 0}
+        onPress={onResult}
+        style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16, borderRadius: 18, borderWidth: 2, borderColor: HUB_UI.purple, backgroundColor: HUB_UI.wash, opacity: answered === 0 ? 0.5 : 1, ...(hovered ? { transform: [{ translateY: -2 }] } : null) }) as never}
+      >
+        <Text style={{ fontSize: 30 }}>📝</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={{ color: HUB_UI.navy, fontSize: 16.5, fontWeight: '900' }}>Xem phiếu chấm chi tiết</Text>
+          <Text style={{ color: HUB_UI.muted, fontSize: 13.5, fontWeight: '600' }}>Band, 4 tiêu chí, đáp án và đối chiếu</Text>
+        </View>
+        <Icon name="arrow-right" size={18} color={HUB_UI.purple} />
+      </Pressable>
 
       <Pressable
         accessibilityRole="button"
@@ -609,12 +557,12 @@ function Summary({
           justifyContent: 'center',
           flexDirection: 'row',
           gap: 8,
-          backgroundColor: doneAt ? HUB.green : HUB.blue,
+          backgroundColor: doneAt ? HUB_UI.green : HUB_UI.purple,
           opacity: answered === 0 && !doneAt ? 0.5 : 1,
         }}
       >
         <Icon name={doneAt ? 'check' : 'trophy'} size={18} color="#fff" />
-        <Text style={{ color: '#fff', fontWeight: '800', fontSize: 16 }}>
+        <Text style={{ color: '#fff', fontWeight: '400', fontSize: 16 }}>
           {doneAt ? `Đã hoàn thành ${topic.titleVi}` : 'Đánh dấu hoàn thành'}
         </Text>
       </Pressable>
@@ -630,9 +578,9 @@ function Summary({
 
 function StatTile({ label, value }: { label: string; value: string }) {
   return (
-    <View style={{ flex: 1, padding: 10, borderRadius: 14, backgroundColor: HUB.glassStrong, gap: 2 }}>
-      <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{value}</Text>
-      <Text style={{ color: HUB.muted, fontSize: 10, fontWeight: '700' }}>{label}</Text>
+    <View style={{ flexGrow: 1, flexBasis: 120, padding: 12, borderRadius: 16, backgroundColor: HUB_UI.wash, borderWidth: 1, borderColor: HUB_UI.line, gap: 2 }}>
+      <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '900' }}>{value}</Text>
+      <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>{label}</Text>
     </View>
   );
 }

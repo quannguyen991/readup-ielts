@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
 
+  Image,
+
   Modal,
 
   Platform,
@@ -30,6 +32,7 @@ import { ieltsAudioUrl } from '@/services/ielts/audio-url';
 
 import type { Grade } from './ComputerDeliveredExamRoom';
 import { trackAppEvent } from '@/services/analytics/app-events';
+import { readingExplanation } from '@/data/ielts-reading-explanations';
 
 function Text(props: TextProps) {
 
@@ -168,9 +171,9 @@ export function SourceAudio({
       <View style={{ borderRadius: 14, borderWidth: 1, borderColor: '#F59E0B', backgroundColor: '#F3F0FB', padding: 16, gap: 8 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Icon name="volume" size={18} color="#6A4BD9" />
-          <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 14, color: '#6A4BD9' }}>IELTS Listening Audio</Text>
+          <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 14, color: '#6A4BD9' }}>IELTS Listening Audio</Text>
         </View>
-        <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#2B2350' }}>
+        <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 13, color: '#2B2350' }}>
           Đang chuẩn bị file audio cho bài này. Bạn có thể mở bản chép lời transcript để luyện nghe đọc song song.
         </Text>
       </View>
@@ -196,10 +199,10 @@ export function SourceAudio({
             <Icon name="volume" size={16} color="#6A4BD9" />
           </View>
           <View>
-            <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 14, color: '#2B2350', letterSpacing: 0.2 }}>
+            <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 14, color: '#2B2350', letterSpacing: 0.2 }}>
               {files.length > 1 ? `IELTS LISTENING · PART ${track + 1}/${files.length}` : 'IELTS LISTENING · TOÀN BÀI THI'}
             </Text>
-            <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 11.5, color: '#7C6552' }}>
+            <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 11.5, color: '#7C6552' }}>
               {simulation ? 'Thi thử như thi thật · Audio chuẩn CD IELTS' : 'Luyện tập tự do · Có thể tạm dừng và tua lại'}
             </Text>
           </View>
@@ -221,7 +224,7 @@ export function SourceAudio({
               backgroundColor: showTranscript ? '#6A4BD9' : '#F3F0FB',
             }}
           >
-            <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: showTranscript ? '#FFFFFF' : '#6A4BD9' }}>
+            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 12, color: showTranscript ? '#FFFFFF' : '#6A4BD9' }}>
               {showTranscript ? '✕ Ẩn Transcript' : '👁️ Mở Transcript tham khảo'}
             </Text>
           </Pressable>
@@ -257,7 +260,7 @@ export function SourceAudio({
                 {active && <Text style={{ fontSize: 12 }}>🔊</Text>}
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_700Bold',
+                    fontFamily: 'Nunito_700Bold',
                     fontSize: 12.5,
                     color: active ? '#FFFFFF' : '#2B2350',
                   }}
@@ -301,17 +304,17 @@ export function SourceAudio({
             }}
           >
             <Text style={{ fontSize: 14, color: '#FFFFFF' }}>{isPlaying ? '⏸' : '▶'}</Text>
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+            <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: '#FFFFFF' }}>
               {isPlaying ? 'Tạm dừng' : started ? 'Tiếp tục phát' : 'Bắt đầu nghe'}
             </Text>
           </Pressable>
 
           {/* Time indicator */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13.5, color: '#2B2350' }}>
+            <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13.5, color: '#2B2350' }}>
               {formatAudioTime(currentTime)}
             </Text>
-            <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#7C6552' }}>
+            <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 13, color: '#7C6552' }}>
               / {formatAudioTime(duration)}
             </Text>
           </View>
@@ -320,7 +323,7 @@ export function SourceAudio({
           <View style={{ marginLeft: 'auto', flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginRight: 2 }}>
               <Text style={{ fontSize: 13 }}>🔊</Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#2B2350' }}>
+              <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 12, color: '#2B2350' }}>
                 Âm lượng:
               </Text>
             </View>
@@ -348,7 +351,7 @@ export function SourceAudio({
                 >
                   <Text
                     style={{
-                      fontFamily: active ? 'BeVietnamPro_700Bold' : 'BeVietnamPro_500Medium',
+                      fontFamily: active ? 'Nunito_700Bold' : 'Nunito_600SemiBold',
                       fontSize: 11.5,
                       color: active ? '#FFFFFF' : '#4B5563',
                     }}
@@ -420,7 +423,7 @@ export function SourceAudio({
       ) : null}
 
       {error ? (
-        <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 12.5, color: '#DC2626' }}>
+        <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 12.5, color: '#DC2626' }}>
           {error}
         </Text>
       ) : null}
@@ -550,12 +553,12 @@ export function parsePageQuestions(text: string, qStart: number, qEnd: number): 
     }
 
     // Kiểm tra TRUE / FALSE / NOT GIVEN hoặc YES / NO / NOT GIVEN
-    const surroundingText = text.slice(Math.max(0, (qIndex - 8) * 50), (qIndex + 3) * 50);
-    const isYesNo = /YES\s*[/,]|claims|views/i.test(surroundingText) || /YES\s*[/,]|claims|views/i.test(currentInstruction);
-    const isTfng =
-      /TRUE|FALSE|NOT GIVEN|YES|NO/i.test(surroundingText) ||
-      /TRUE|FALSE|NOT GIVEN|YES|NO/i.test(qLine);
-
+    // Chỉ coi là T/F/NG hoặc Y/N/NG khi phần chỉ dẫn của nhóm câu (từ dòng "Questions …" gần nhất) nêu đúng các từ khoá viết HOA.
+    let instrFrom = Math.max(0, qIndex - 60);
+    for (let j = Math.max(0, qIndex - 60); j <= qIndex; j++) if (/^Questions?\s*\d/i.test(lines[j] ?? '')) instrFrom = j;
+    const instrWindow = lines.slice(instrFrom, qIndex + 1).join(' ');
+    const isYesNo = /\bYES\b[\s\S]*\bNO\b[\s\S]*\bNOT\s*GIVEN\b/.test(instrWindow);
+    const isTfng = isYesNo || /\bTRUE\b[\s\S]*\bFALSE\b[\s\S]*\bNOT\s*GIVEN\b/.test(instrWindow);
     if (choiceOptions.length >= 3) {
       groupQuestions.push({
         number: num,
@@ -728,6 +731,8 @@ export function SourceExamRoom({
   }, [submitted]);
 
   const { width: winW } = useWindowDimensions();
+  const [openExpl, setOpenExpl] = useState<Record<number, boolean>>({});
+  const [paperMode, setPaperMode] = useState(test.section === 'Listening');
 
   const isDesktop = winW >= 1024;
 
@@ -1111,7 +1116,7 @@ export function SourceExamRoom({
                       borderRadius: 6,
                     }}
                   >
-                    <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: themeStyles.text }}>
+                    <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 12, color: themeStyles.text }}>
 
                       {group.rangeLabel}
 
@@ -1123,7 +1128,7 @@ export function SourceExamRoom({
 
                     style={{
 
-                      fontFamily: 'BeVietnamPro_600SemiBold',
+                      fontFamily: 'Nunito_600SemiBold',
 
                       fontSize: 13,
 
@@ -1185,7 +1190,7 @@ export function SourceExamRoom({
 
                           <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 6 }}>
 
-                            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 14, color: themeStyles.text }}>
+                            <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 14, color: themeStyles.text }}>
 
                               {q.number}.
 
@@ -1193,7 +1198,7 @@ export function SourceExamRoom({
 
                             {q.prefixText ? (
 
-                              <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 15, color: themeStyles.text }}>
+                              <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 15, color: themeStyles.text }}>
 
                                 {q.prefixText}
 
@@ -1231,7 +1236,7 @@ export function SourceExamRoom({
 
                                 backgroundColor: '#FFFFFF',
 
-                                fontFamily: 'BeVietnamPro_600SemiBold',
+                                fontFamily: 'Nunito_600SemiBold',
 
                                 fontSize: 15,
 
@@ -1243,7 +1248,7 @@ export function SourceExamRoom({
 
                             {q.suffixText ? (
 
-                              <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 15, color: themeStyles.text }}>
+                              <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 15, color: themeStyles.text }}>
 
                                 {q.suffixText}
 
@@ -1261,9 +1266,9 @@ export function SourceExamRoom({
 
                           <View style={{ gap: 8 }}>
 
-                            <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 15, color: themeStyles.text }}>
+                            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 15, color: themeStyles.text }}>
 
-                              <Text style={{ fontFamily: 'BeVietnamPro_700Bold' }}>{q.number}. </Text>
+                              <Text style={{ fontFamily: 'Nunito_700Bold' }}>{q.number}. </Text>
 
                               {q.stem}
 
@@ -1345,7 +1350,7 @@ export function SourceExamRoom({
 
                                       style={{
 
-                                        fontFamily: selected ? 'BeVietnamPro_600SemiBold' : 'BeVietnamPro_400Regular',
+                                        fontFamily: selected ? 'Nunito_600SemiBold' : 'Nunito_400Regular',
 
                                         fontSize: 14,
 
@@ -1381,9 +1386,9 @@ export function SourceExamRoom({
 
                           <View style={{ gap: 8 }}>
 
-                            <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 15, color: themeStyles.text }}>
+                            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 15, color: themeStyles.text }}>
 
-                              <Text style={{ fontFamily: 'BeVietnamPro_700Bold' }}>{q.number}. </Text>
+                              <Text style={{ fontFamily: 'Nunito_700Bold' }}>{q.number}. </Text>
 
                               {q.stem}
 
@@ -1431,7 +1436,7 @@ export function SourceExamRoom({
 
                                       style={{
 
-                                        fontFamily: 'BeVietnamPro_700Bold',
+                                        fontFamily: 'Nunito_700Bold',
 
                                         fontSize: 13,
 
@@ -1477,7 +1482,7 @@ export function SourceExamRoom({
 
               <View style={{ gap: 10 }}>
 
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 16, color: themeStyles.text }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 16, color: themeStyles.text }}>
 
                   Bài làm của bạn:
 
@@ -1509,7 +1514,7 @@ export function SourceExamRoom({
 
                     padding: 16,
 
-                    fontFamily: 'BeVietnamPro_400Regular',
+                    fontFamily: 'Nunito_400Regular',
 
                     fontSize: 15,
 
@@ -1522,8 +1527,8 @@ export function SourceExamRoom({
                 />
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-                  <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 13, color: '#6B7280' }}>
-                    Số từ đã viết: <Text style={{ fontFamily: 'BeVietnamPro_700Bold', color: themeStyles.text }}>{words(answers[String(activePartId)] ?? '')}</Text> từ
+                  <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 13, color: '#6B7280' }}>
+                    Số từ đã viết: <Text style={{ fontFamily: 'Nunito_700Bold', color: themeStyles.text }}>{words(answers[String(activePartId)] ?? '')}</Text> từ
                   </Text>
                   {currentPart?.minimumWords ? (
                     <View style={{
@@ -1535,7 +1540,7 @@ export function SourceExamRoom({
                       borderColor: words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords ? '#86EFAC' : '#FCD34D',
                     }}>
                       <Text style={{
-                        fontFamily: 'BeVietnamPro_600SemiBold',
+                        fontFamily: 'Nunito_600SemiBold',
                         fontSize: 12,
                         color: words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords ? '#15803D' : '#6A4BD9',
                       }}>
@@ -1577,7 +1582,7 @@ export function SourceExamRoom({
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
-                  <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 18, color: '#166534' }}>
+                  <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 18, color: '#166534' }}>
 
                     Kết quả chấm thi: {grade.score} / {grade.total} câu đúng
 
@@ -1587,7 +1592,7 @@ export function SourceExamRoom({
 
                     <View style={{ backgroundColor: '#15803D', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 8 }}>
 
-                      <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                      <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: '#FFFFFF' }}>
 
                         Band {grade.bandEstimate}
 
@@ -1603,45 +1608,40 @@ export function SourceExamRoom({
 
                 <View style={{ gap: 8 }}>
 
-                  {grade.results.map((r) => (
-
-                    <View
-
-                      key={r.number}
-
-                      style={{
-
-                        flexDirection: 'row',
-
-                        alignItems: 'center',
-
-                        justifyContent: 'space-between',
-
-                        padding: 10,
-
-                        borderRadius: 8,
-
-                        backgroundColor: r.correct ? '#DCFCE7' : '#FEE2E2',
-
-                      }}
-
-                    >
-
-                      <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
-
-                        Câu {r.number}: {r.answer || '(chưa làm)'}
-
-                      </Text>
-
-                      <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
-
-                        Đáp án chuẩn: {r.expected}
-
-                      </Text>
-
-                    </View>
-
-                  ))}
+                  {grade.results.map((r) => {
+                    const ex = readingExplanation(test.id, r.number);
+                    const open = !!openExpl[r.number];
+                    return (
+                      <View key={r.number} style={{ gap: 6 }}>
+                        <Pressable
+                          disabled={!ex}
+                          onPress={() => setOpenExpl((m) => ({ ...m, [r.number]: !m[r.number] }))}
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            padding: 10,
+                            borderRadius: 8,
+                            backgroundColor: r.correct ? '#DCFCE7' : '#FEE2E2',
+                          }}
+                        >
+                          <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
+                            Câu {r.number}: {r.answer || '(chưa làm)'}
+                          </Text>
+                          <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: r.correct ? '#166534' : '#991B1B' }}>
+                            Đáp án chuẩn: {r.expected}{ex ? (open ? '  ▲' : '  ▼ Giải') : ''}
+                          </Text>
+                        </Pressable>
+                        {ex && open ? (
+                          <View style={{ padding: 12, borderRadius: 8, backgroundColor: '#F8FAFC', borderWidth: 1, borderColor: '#E2E8F0', gap: 6 }}>
+                            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 13, lineHeight: 19, color: '#0F172A' }}>{ex.vi}</Text>
+                            <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 12.5, lineHeight: 18, color: '#334155', fontStyle: 'italic' }}>“{ex.quote}”</Text>
+                            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 11.5, color: '#64748B' }}>{ex.where}</Text>
+                          </View>
+                        ) : null}
+                      </View>
+                    );
+                  })}
 
                 </View>
 
@@ -1650,6 +1650,62 @@ export function SourceExamRoom({
             )}
     </View>
   );
+
+  /** Đề gốc: ảnh trang sách của Part đang làm, giữ nguyên bảng, bản đồ, sơ đồ như bản in IELTS; trả lời trong phiếu đánh số. */
+  const sourceImages = currentPart?.sourceImages ?? [];
+  const paperAvailable = sourceImages.length > 0 && Platform.OS === 'web';
+  const paperContent = (
+    <View style={{ gap: 14 }}>
+      <View style={{ gap: 10 }}>
+        {sourceImages.map((name) => (
+          <Image
+            key={name}
+            source={{ uri: `/api/ielts/local-ocr?asset=${encodeURIComponent(name)}` }}
+            style={{ width: '100%', aspectRatio: 0.707, backgroundColor: '#FFFFFF', borderRadius: 6, borderWidth: 1, borderColor: themeStyles.border }}
+            resizeMode="contain"
+          />
+        ))}
+      </View>
+      <View style={{ backgroundColor: themeStyles.surface, borderWidth: 1, borderColor: themeStyles.border, borderRadius: 12, padding: 16, gap: 10 }}>
+        <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 14, color: themeStyles.text }}>Phiếu trả lời · Questions {qStart}–{qEnd}</Text>
+        <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 12.5, color: '#64748B' }}>Gõ chữ cái (A, B, C…), TRUE / FALSE / NOT GIVEN (hoặc YES / NO / NOT GIVEN), hay từ cần điền đúng như đề yêu cầu.</Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+          {partNumbers.map((n) => (
+            <View key={n} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, width: isDesktop ? '48%' : '100%' }}>
+              <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: answers[String(n)]?.trim() ? '#6A4BD9' : themeStyles.border }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 12, color: answers[String(n)]?.trim() ? '#FFFFFF' : themeStyles.text }}>{n}</Text>
+              </View>
+              <TextInput
+                value={answers[String(n)] ?? ''}
+                onChangeText={(text) => onAnswerChange(n, text)}
+                editable={!submitted}
+                autoCapitalize="none"
+                autoCorrect={false}
+                spellCheck={false}
+                style={{ flex: 1, height: 38, borderRadius: 8, borderWidth: 1, borderColor: themeStyles.border, paddingHorizontal: 10, fontFamily: 'Nunito_600SemiBold', fontSize: 14, color: themeStyles.text, backgroundColor: themeStyles.bg }}
+              />
+            </View>
+          ))}
+        </View>
+      </View>
+    </View>
+  );
+  const worksheetView = paperAvailable ? (
+    <View style={{ gap: 16 }}>
+      <View style={{ flexDirection: 'row', gap: 8 }}>
+        {([['Phiếu câu hỏi', false], ['Đề gốc (ảnh trang sách)', true]] as const).map(([label, mode]) => (
+          <Pressable
+            key={label}
+            onPress={() => setPaperMode(mode)}
+            style={{ paddingVertical: 8, paddingHorizontal: 14, borderRadius: 999, borderWidth: 1, borderColor: paperMode === mode ? '#6A4BD9' : themeStyles.border, backgroundColor: paperMode === mode ? '#6A4BD9' : themeStyles.surface }}
+          >
+            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 13, color: paperMode === mode ? '#FFFFFF' : themeStyles.text }}>{label}</Text>
+          </Pressable>
+        ))}
+      </View>
+      {paperMode ? paperContent : questionWorksheetContent}
+    </View>
+  ) : questionWorksheetContent;
 
   return (
 
@@ -1723,7 +1779,7 @@ export function SourceExamRoom({
 
           <View style={{ minWidth: 0, flex: 1 }}>
 
-            <Text numberOfLines={1} style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 15, color: themeStyles.text }}>{test.title || passageDisplayData.title}</Text>
+            <Text numberOfLines={1} style={{ fontFamily: 'Nunito_700Bold', fontSize: 15, color: themeStyles.text }}>{test.title || passageDisplayData.title}</Text>
 
             <Text
 
@@ -1731,7 +1787,7 @@ export function SourceExamRoom({
 
               style={{
 
-                fontFamily: 'BeVietnamPro_400Regular',
+                fontFamily: 'Nunito_400Regular',
 
                 fontSize: 12,
 
@@ -1783,7 +1839,7 @@ export function SourceExamRoom({
 
             style={{
 
-              fontFamily: 'BeVietnamPro_700Bold',
+              fontFamily: 'Nunito_700Bold',
 
               fontSize: 15,
 
@@ -1835,7 +1891,7 @@ export function SourceExamRoom({
 
           >
 
-            <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 13, color: themeStyles.text }}>
+            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 13, color: themeStyles.text }}>
 
               Aa
 
@@ -1942,27 +1998,27 @@ export function SourceExamRoom({
                   borderColor: '#FECACA',
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#DC2626' }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: '#DC2626' }}>
                   Questions {qStart}–{qEnd}
                 </Text>
               </View>
             </View>
 
             {/* Section Title (Image 2) */}
-            <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 20, color: '#0F172A', marginTop: 4 }}>
+            <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 20, color: '#0F172A', marginTop: 4 }}>
               {test.parts?.[activePartId - 1]?.label || `Part ${activePartId}`}
             </Text>
 
             {/* Questions Worksheet */}
-            {questionWorksheetContent}
+            {worksheetView}
 
             {/* End of Section Notice (Image 2) */}
             <View style={{ alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 40, paddingVertical: 24 }}>
               <Text style={{ fontSize: 24, color: '#94A3B8', letterSpacing: 4 }}>• • •</Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 16, color: '#0F172A' }}>
+              <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 16, color: '#0F172A' }}>
                 Hết câu hỏi của Part {activePartId}
               </Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#64748B' }}>
+              <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 13, color: '#64748B' }}>
                 Bạn còn {Math.max(0, partNumbers.length - answeredInPartCount)} câu chưa trả lời ở phần này. Hãy hoàn thành bài của mình nhé!
               </Text>
             </View>
@@ -2019,7 +2075,7 @@ export function SourceExamRoom({
               <View className="gap-2 border-b border-border/60 pb-4">
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_700Bold',
+                    fontFamily: 'Nunito_700Bold',
                     fontSize: 13,
                     letterSpacing: 1.2,
                     textTransform: 'uppercase',
@@ -2030,7 +2086,7 @@ export function SourceExamRoom({
                 </Text>
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_800ExtraBold',
+                    fontFamily: 'Nunito_700Bold',
                     fontSize: 24,
                     lineHeight: 32,
                     color: themeStyles.text,
@@ -2041,7 +2097,7 @@ export function SourceExamRoom({
                 {passageDisplayData.subtitle ? (
                   <Text
                     style={{
-                      fontFamily: 'BeVietnamPro_500Medium',
+                      fontFamily: 'Nunito_600SemiBold',
                       fontSize: 14,
                       lineHeight: 22,
                       color: '#4B5563',
@@ -2058,7 +2114,7 @@ export function SourceExamRoom({
                     key={pIdx}
                     selectable={true}
                     style={{
-                      fontFamily: 'BeVietnamPro_400Regular',
+                      fontFamily: 'Nunito_400Regular',
                       fontSize: fontSizeLevel,
                       lineHeight: fontSizeLevel * 1.7,
                       color: themeStyles.text,
@@ -2083,7 +2139,7 @@ export function SourceExamRoom({
               showsVerticalScrollIndicator={true}
               contentContainerStyle={{ paddingHorizontal: isDesktop ? 28 : 16, paddingVertical: 24 }}
             >
-              {questionWorksheetContent}
+              {worksheetView}
             </ScrollView>
           </View>
         </View>
@@ -2107,7 +2163,7 @@ export function SourceExamRoom({
           {/* Đề chưa có file audio trên máy: nói rõ thay vì để nút phát chết. */}
           {!activeAudioTrackUrl ? (
             <View style={{ paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#F1F5F9' }}>
-              <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 13, color: '#64748B' }}>
+              <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 13, color: '#64748B' }}>
                 Đề này chưa có file audio. Hãy thêm file audio của đề rồi tải lại trang.
               </Text>
             </View>
@@ -2145,7 +2201,7 @@ export function SourceExamRoom({
             </Pressable>
 
             {/* Current Time in Red (Image 2) */}
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12.5, color: '#B7791F', minWidth: 42 }}>
+            <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 12.5, color: '#B7791F', minWidth: 42 }}>
               {formatAudioTime(audioCurrentTime)}
             </Text>
 
@@ -2180,7 +2236,7 @@ export function SourceExamRoom({
             </Pressable>
 
             {/* Total Duration in Gray (Image 2) */}
-            <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 12.5, color: '#64748B', minWidth: 42 }}>
+            <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 12.5, color: '#64748B', minWidth: 42 }}>
               {audioDuration > 0 ? formatAudioTime(audioDuration) : '--:--'}
             </Text>
           </View>
@@ -2199,10 +2255,10 @@ export function SourceExamRoom({
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, minWidth: 140 }}>
               <Text style={{ fontSize: 18, color: '#64748B' }}>⠿</Text>
               <View>
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#0F172A' }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: '#0F172A' }}>
                   Section {activePartId}
                 </Text>
-                <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 11, color: '#64748B' }}>
+                <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 11, color: '#64748B' }}>
                   Đã làm {answeredInPartCount} / {partNumbers.length}
                 </Text>
               </View>
@@ -2224,7 +2280,7 @@ export function SourceExamRoom({
                   backgroundImage: goldLeaf.fill,
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: goldLeaf.ink }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 12, color: goldLeaf.ink }}>
                   Section {activePartId}
                 </Text>
               </View>
@@ -2252,7 +2308,7 @@ export function SourceExamRoom({
                   >
                     <Text
                       style={{
-                        fontFamily: 'BeVietnamPro_700Bold',
+                        fontFamily: 'Nunito_700Bold',
                         fontSize: 12,
                         color: hasAnswer ? '#FFFFFF' : '#334155',
                       }}
@@ -2295,7 +2351,7 @@ export function SourceExamRoom({
                       borderColor: '#E2E8F0',
                     }}
                   >
-                    <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: '#64748B' }}>
+                    <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 12, color: '#64748B' }}>
                       S{p.id}
                     </Text>
                   </Pressable>
@@ -2324,7 +2380,7 @@ export function SourceExamRoom({
                   gap: 4,
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: goldLeaf.ink }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: goldLeaf.ink }}>
                   Part {activePartId + 1} →
                 </Text>
               </Pressable>
@@ -2341,7 +2397,7 @@ export function SourceExamRoom({
                   backgroundImage: goldLeaf.fill,
                 }}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: goldLeaf.ink }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: goldLeaf.ink }}>
                   {submitted ? '✓ Đã nộp' : 'Nộp bài →'}
                 </Text>
               </Pressable>
@@ -2364,8 +2420,8 @@ export function SourceExamRoom({
           {/* Bên trái: Trạng thái tiến độ & chọn Passage */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <View>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: themeStyles.text }}>{currentPart?.label || `Reading Passage ${activePartId}`}</Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 11, color: '#6B7280' }}>
+              <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 12, color: themeStyles.text }}>{currentPart?.label || `Reading Passage ${activePartId}`}</Text>
+              <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 11, color: '#6B7280' }}>
                 Đã làm {answeredInPartCount}/{partNumbers.length}
               </Text>
             </View>
@@ -2389,7 +2445,7 @@ export function SourceExamRoom({
                     >
                       <Text
                         style={{
-                          fontFamily: 'BeVietnamPro_700Bold',
+                          fontFamily: 'Nunito_700Bold',
                           fontSize: 11,
                           color: active ? '#FFFFFF' : themeStyles.text,
                         }}
@@ -2440,7 +2496,7 @@ export function SourceExamRoom({
                     position: 'relative',
                   }}
                 >
-                  <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: textColor }}>
+                  <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: textColor }}>
                     {num}
                   </Text>
                   {isFlag ? (
@@ -2475,7 +2531,7 @@ export function SourceExamRoom({
                 backgroundColor: themeStyles.surface,
               }}
             >
-              <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: themeStyles.text }}>
+              <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 12, color: themeStyles.text }}>
                 Tiếp →
               </Text>
             </Pressable>
@@ -2494,13 +2550,13 @@ export function SourceExamRoom({
                   transform: [{ translateY: pressed ? 1 : 0 }],
                 })}
               >
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: '#FFFFFF' }}>
                   Nộp bài
                 </Text>
               </Pressable>
             ) : (
               <View style={{ paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8, backgroundColor: '#DCFCE7' }}>
-                <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#166534' }}>
+                <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: '#166534' }}>
                   ✓ Đã nộp
                 </Text>
               </View>
@@ -2539,13 +2595,13 @@ export function SourceExamRoom({
 
             >
 
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 18, color: '#0F172A' }}>
+              <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 18, color: '#0F172A' }}>
 
                 Xác nhận nộp bài thi?
 
               </Text>
 
-              <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 14, color: '#4B5563', lineHeight: 22 }}>
+              <Text style={{ fontFamily: 'Nunito_400Regular', fontSize: 14, color: '#4B5563', lineHeight: 22 }}>
 
                 Bạn đã hoàn thành {Object.values(answers).filter((a) => a.trim()).length} / {test.questionCount} câu.
 
@@ -2575,7 +2631,7 @@ export function SourceExamRoom({
 
                 >
 
-                  <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 13, color: '#374151' }}>
+                  <Text style={{ fontFamily: 'Nunito_600SemiBold', fontSize: 13, color: '#374151' }}>
 
                     Tiếp tục làm bài
 
@@ -2607,7 +2663,7 @@ export function SourceExamRoom({
 
                 >
 
-                  <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+                  <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: 13, color: '#FFFFFF' }}>
 
                     Nộp bài ngay
 

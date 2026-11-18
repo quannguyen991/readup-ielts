@@ -1,19 +1,21 @@
-import { GlossOrb } from '@/components/ui/GlossOrb';
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Appear } from '@/components/motion/Motion';
 import { Screen } from '@/components/layout/Screen';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
-import { Badge, Button, Card, Icon, StickerCard } from '@/components/ui';
+import { NightHero } from '@/components/catalog/NightHero';
+import { NeonIcon } from '@/components/neon/Neon';
+import { Badge, Card, Icon } from '@/components/ui';
+import { DictationLibrary } from '@/components/sentence/DictationLibrary';
+import { TranslationLibrary } from '@/components/sentence/TranslationLibrary';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
 import { dictationSetStats } from '@/data/dictation-sets';
 import { translationSetStats } from '@/data/translation-sets';
 import { audioLibraryStats } from '@/data/audio-library';
 import { videoLibraryStats } from '@/data/video-library';
 import { useSentenceStats, useSentenceStore } from '@/store/useSentenceStore';
-import { color, stickerGradient } from '@/theme/tokens';
+import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 
 /**
@@ -29,64 +31,53 @@ export default function SentenceHubScreen() {
   const dateLoc = en ? 'en-US' : 'vi-VN';
   const { dictation, translation } = useSentenceStats();
   const sessions = useSentenceStore((s) => s.sessions);
+  const [mode, setMode] = useState<'dictation' | 'translation'>('dictation');
 
   return (
     <Screen>
       <Appear>
-        <LightHero
-          badge="SENTENCE PRACTICE" art="listening"
-          line1={L('Luyện câu', 'Sentence practice')}
-          line2={L('nghe kỹ, viết đúng', 'listen closely, write accurately')}
-          subtitle={L(
+        <NightHero
+          scene="today"
+          title={L('Luyện câu', 'Sentence practice')}
+          sub={L(
             `Nghe rồi gõ lại nguyên văn, hoặc đọc một câu tiếng Việt rồi tự dịch sang tiếng Anh. ${dictationSetStats().sets + translationSetStats().sets} bài có chủ đề và ${DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} câu lẻ để ôn rải.`,
             `Listen and type it back word for word, or read a Vietnamese sentence and translate it into English yourself. ${dictationSetStats().sets + translationSetStats().sets} topic sets and ${DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} single sentences for spaced review.`,
           )}
-          footer={
-            <>
-              <HeroStat value={String(DICTATION_SENTENCES.length)} label={L('câu chép chính tả', 'dictation sentences')} />
-              <HeroStat value={String(TRANSLATION_SENTENCES.length)} label={L('câu dịch', 'translation sentences')} />
-              <HeroStat value={String(audioLibraryStats().items)} label={L('bài nghe', 'listening tracks')} />
-            </>
-          }
-        >
-          <Button
-            label={L('Chép chính tả', 'Dictation')}
-            iconRight="arrow-right"
-            onPress={() => router.push('/sentence/dictation' as never)}
-          />
-          <Button
-            label={L('Dịch câu', 'Translation')}
-            variant="outline"
-            onPress={() => router.push('/sentence/translate' as never)}
-          />
-        </LightHero>
+          pills={[
+            { icon: 'speaker', label: L(`${DICTATION_SENTENCES.length} câu chép chính tả`, `${DICTATION_SENTENCES.length} dictation sentences`) },
+            { icon: 'book', label: L(`${TRANSLATION_SENTENCES.length} câu dịch`, `${TRANSLATION_SENTENCES.length} translation sentences`) },
+            { icon: 'note', label: L(`${audioLibraryStats().items} bài nghe`, `${audioLibraryStats().items} listening tracks`) },
+          ]}
+          primary={{ label: L('Chép chính tả', 'Dictation'), onPress: () => setMode('dictation') }}
+          secondary={{ label: L('Dịch câu', 'Translation'), onPress: () => setMode('translation') }}
+        />
       </Appear>
 
-      <View className="mt-5 flex-row flex-wrap gap-4">
-        <Appear index={1} style={{ flex: 1, minWidth: 280 }}>
-          <ModeCard
-            icon="volume"
-            colors={stickerGradient.primary}
-            title={L('Chép chính tả', 'Dictation')}
-            description={L('Nghe một câu, điền lại từng chữ. Sai chữ nào đỏ chữ đó.', 'Hear a sentence, type it back letter by letter.')}
-            total={DICTATION_SENTENCES.length}
-            stats={dictation}
-            scoreLabel={L('chính xác', 'accuracy')}
-            onPress={() => router.push('/sentence/dictation' as never)}
-          />
-        </Appear>
-        <Appear index={2} style={{ flex: 1, minWidth: 280 }}>
-          <ModeCard
-            icon="languages"
-            colors={stickerGradient.accent}
-            title={L('Dịch câu', 'Translation')}
-            description={L('Dịch câu tiếng Việt. Gõ đúng từ nào, từ đó mở ra.', 'Translate the Vietnamese sentence word by word.')}
-            total={TRANSLATION_SENTENCES.length}
-            stats={translation}
-            scoreLabel={L('tự tái tạo được', 'reproduced')}
-            onPress={() => router.push('/sentence/translate' as never)}
-          />
-        </Appear>
+      {/* Chọn kiểu luyện, rồi lộ trình + danh sách bài của kiểu đó (cùng một khung cho cả hai). */}
+      <View className="mt-6 flex-row flex-wrap gap-3 self-start" accessibilityRole="tablist">
+        {([
+          ['dictation', L('Chép chính tả', 'Dictation'), 'speaker', dictation.sessions],
+          ['translation', L('Dịch câu', 'Translation'), 'book', translation.sessions],
+        ] as const).map(([key, label, icon, n]) => {
+          const on = mode === key;
+          return (
+            <Pressable
+              key={key}
+              accessibilityRole="tab"
+              aria-selected={on}
+              onPress={() => setMode(key)}
+              className="flex-row items-center gap-2 rounded-pill px-4"
+              style={{ minHeight: 50, borderWidth: 2, borderColor: on ? '#2A22B5' : '#C9C2EE', backgroundColor: on ? '#2A22B5' : '#FFFFFF', ...(on ? ({ boxShadow: '0 4px 0 #1A1566' } as object) : null) }}
+            >
+              <NeonIcon name={icon} height={28} />
+              <Text className="font-nun-heavy" style={{ fontSize: 15, color: on ? '#FFFFFF' : '#2B2350' }}>{label}</Text>
+              {n > 0 ? <Text className="font-nun-strong" style={{ fontSize: 13, color: on ? 'rgba(255,255,255,0.85)' : '#6B6590' }}>{n}</Text> : null}
+            </Pressable>
+          );
+        })}
+      </View>
+      <View className="mt-4">
+        {mode === 'dictation' ? <DictationLibrary heading={false} /> : <TranslationLibrary />}
       </View>
 
       {/*
@@ -95,7 +86,39 @@ export default function SentenceHubScreen() {
         trong đầu người dùng, nên chúng phải nằm đúng chỗ mắt đi tới.
       */}
       <Appear index={3}>
-        <View className="mt-4 flex-row flex-wrap gap-4">
+        <View className="mt-8 flex-row flex-wrap gap-4">
+          <EntryCard
+            icon="pencil"
+            tint="accent"
+            title={L('Tự diễn đạt', 'Write it your way')}
+            body={L('Đọc nghĩa tiếng Việt, tự viết câu tiếng Anh, sửa lặp lại cho tới khi đúng và đúng cấu trúc.', 'Read the Vietnamese, write your own English, and revise until it is right.')}
+            cta={L('Bắt đầu viết', 'Start writing')}
+            onPress={() => router.push('/sentence/express' as never)}
+          />
+          <EntryCard
+            icon="pencil"
+            tint="accent"
+            title={L('Dịch essay dài', 'Long essay translation')}
+            body={L('Dịch bài văn dài và đoạn IELTS Reading (Cambridge) từng câu một, nhận góp ý sau mỗi câu.', 'Translate a 25-sentence text one sentence at a time with feedback.')}
+            cta={L('Mở essay', 'Open essays')}
+            onPress={() => router.push('/sentence/essay' as never)}
+          />
+          <EntryCard
+            icon="play"
+            tint="primary"
+            title={L('Luyện đa dạng', 'Mixed drills')}
+            body={L('Sắp xếp từ, điền từ, tìm lỗi sai — bài ngắn, chấm ngay.', 'Word order, gap fill and error spotting — short, instant feedback.')}
+            cta={L('Làm bài', 'Start')}
+            onPress={() => router.push('/sentence/mix' as never)}
+          />
+          <EntryCard
+            icon="pencil"
+            tint="primary"
+            title={L('Viết cả đoạn', 'Paragraph writing')}
+            body={L('Viết cả đoạn, nhận góp ý từng câu và nhận xét cả đoạn.', 'Write a paragraph and get feedback sentence by sentence.')}
+            cta={L('Viết đoạn văn', 'Write a paragraph')}
+            onPress={() => router.push('/sentence/paragraph' as never)}
+          />
           <EntryCard
             icon="play"
             tint="primary"
@@ -169,7 +192,7 @@ function EntryCard({
   cta,
   onPress,
 }: {
-  icon: 'play' | 'volume';
+  icon: 'play' | 'volume' | 'pencil';
   tint: 'primary' | 'accent';
   title: string;
   body: string;
@@ -201,55 +224,6 @@ function EntryCard({
         </Text>
         <Icon name="arrow-right" size={16} color={strong} strokeWidth={2} />
       </View>
-    </Pressable>
-  );
-}
-
-function ModeCard({
-  icon,
-  colors,
-  title,
-  description,
-  total,
-  stats,
-  scoreLabel,
-  onPress,
-}: {
-  icon: 'volume' | 'languages';
-  colors: readonly [string, string];
-  title: string;
-  description: string;
-  total: number;
-  stats: { sessions: number; attempts: number; avgScore: number | null };
-  scoreLabel: string;
-  onPress: () => void;
-}) {
-  const { L } = useL();
-  return (
-    <Pressable onPress={onPress} accessibilityRole="button">
-      <StickerCard colors={colors} artSeed={'mode-' + title} style={{ height: '100%' }}>
-        <GlossOrb icon={icon} tone={colors} size={48} />
-        <Text className="mt-3 font-heavy text-cardTitle text-white">{title}</Text>
-        <Text className="mt-1.5 font-sans text-body text-white/85">{description}</Text>
-
-        <View className="mt-4 flex-row flex-wrap items-center gap-2">
-          <View className="rounded-pill bg-white/20 px-2.5 py-1">
-            <Text className="font-strong text-label text-white">{total} {L('câu', 'sentences')}</Text>
-          </View>
-          <View className="rounded-pill bg-white/20 px-2.5 py-1">
-            <Text className="font-strong text-label text-white">
-              {stats.avgScore !== null ? `${Math.round(stats.avgScore * 100)}% ${scoreLabel}` : L('Chưa luyện lần nào', 'Not practised yet')}
-            </Text>
-          </View>
-        </View>
-
-        <View className="mt-4 flex-row items-center gap-1.5">
-          <Text className="font-strong text-body text-white">
-            {stats.sessions > 0 ? L('Luyện tiếp', 'Continue') : L('Bắt đầu', 'Start')}
-          </Text>
-          <Icon name="arrow-right" size={16} color="#fff" />
-        </View>
-      </StickerCard>
     </Pressable>
   );
 }

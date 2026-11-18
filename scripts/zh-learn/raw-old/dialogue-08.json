@@ -1,0 +1,514 @@
+[
+ {
+  "id": "zh-d-h3-01",
+  "level": 3,
+  "order": 1,
+  "title": "Đi khám khi bị sốt",
+  "titleZh": "发烧去看医生",
+  "topic": "Bệnh viện, sức khỏe",
+  "scene": "Một người đến khám vì bị sốt và hỏi bác sĩ cách chăm sóc sức khỏe.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "患者",
+    "zh": "医生，我今天头疼，还有一点儿发烧。",
+    "py": "yīshēng wǒ jīntiān tóuténg hái yǒu yìdiǎnr fāshāo",
+    "vi": "Bác sĩ, hôm nay tôi đau đầu, còn hơi sốt nữa."
+   },
+   {
+    "who": "医生",
+    "zh": "你先坐下来，我给你看看。",
+    "py": "nǐ xiān zuò xiàlái wǒ gěi nǐ kànkan",
+    "vi": "Bạn ngồi xuống trước đi, tôi xem cho bạn."
+   },
+   {
+    "who": "患者",
+    "zh": "我昨天晚上开始发烧，今天还觉得冷。",
+    "py": "wǒ zuótiān wǎnshang kāishǐ fāshāo jīntiān hái juéde lěng",
+    "vi": "Tối qua tôi bắt đầu sốt, hôm nay còn thấy lạnh."
+   },
+   {
+    "who": "医生",
+    "zh": "你先把衣服放到椅子上，再坐好。",
+    "py": "nǐ xiān bǎ yīfu fàng dào yǐzi shàng zài zuò hǎo",
+    "vi": "Trước tiên bạn đặt áo lên ghế, rồi ngồi ngay ngắn nhé."
+   },
+   {
+    "who": "患者",
+    "zh": "好，我最近晚上也睡不好。",
+    "py": "hǎo wǒ zuìjìn wǎnshang yě shuì bù hǎo",
+    "vi": "Vâng, gần đây buổi tối tôi cũng ngủ không ngon."
+   },
+   {
+    "who": "医生",
+    "zh": "我先看看你的身体，再问几个问题。",
+    "py": "wǒ xiān kànkan nǐ de shēntǐ zài wèn jǐ ge wèntí",
+    "vi": "Tôi xem tình trạng của bạn trước, rồi hỏi vài câu."
+   },
+   {
+    "who": "患者",
+    "zh": "我是不是要吃药？",
+    "py": "wǒ shì bu shì yào chī yào",
+    "vi": "Tôi có cần uống thuốc không?"
+   },
+   {
+    "who": "医生",
+    "zh": "先多喝水，今天晚上早点儿休息。",
+    "py": "xiān duō hē shuǐ jīntiān wǎnshang zǎodiǎnr xiūxi",
+    "vi": "Trước hết hãy uống nhiều nước, tối nay nghỉ sớm nhé."
+   },
+   {
+    "who": "患者",
+    "zh": "明天我还要来医院吗？",
+    "py": "míngtiān wǒ hái yào lái yīyuàn ma",
+    "vi": "Ngày mai tôi có cần đến bệnh viện nữa không?"
+   },
+   {
+    "who": "医生",
+    "zh": "如果明天还发烧，就再来找我。",
+    "py": "rúguǒ míngtiān hái fāshāo jiù zài lái zhǎo wǒ",
+    "vi": "Nếu ngày mai vẫn còn sốt thì hãy đến gặp tôi."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "发烧",
+    "py": "fāshāo",
+    "vi": "bị sốt"
+   },
+   {
+    "zh": "头疼",
+    "py": "tóuténg",
+    "vi": "đau đầu"
+   },
+   {
+    "zh": "衣服",
+    "py": "yīfu",
+    "vi": "quần áo"
+   },
+   {
+    "zh": "椅子",
+    "py": "yǐzi",
+    "vi": "cái ghế"
+   },
+   {
+    "zh": "吃药",
+    "py": "chī yào",
+    "vi": "uống thuốc"
+   },
+   {
+    "zh": "休息",
+    "py": "xiūxi",
+    "vi": "nghỉ ngơi"
+   },
+   {
+    "zh": "医院",
+    "py": "yīyuàn",
+    "vi": "bệnh viện"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h3-01",
+   "zh-g-h3-22",
+   "zh-g-h3-25"
+  ],
+  "quiz": [
+   {
+    "q": "Người bệnh bị làm sao hôm nay?",
+    "options": [
+     "Đau đầu và hơi sốt",
+     "Đau chân và ho",
+     "Đau bụng và lạnh",
+     "Đau mắt và chóng mặt"
+    ],
+    "answer": 0,
+    "explain": "Người bệnh nói hôm nay bị đau đầu và hơi sốt."
+   },
+   {
+    "q": "Bác sĩ bảo người bệnh đặt gì lên ghế?",
+    "options": [
+     "Cái túi",
+     "Quần áo",
+     "Thuốc",
+     "Cốc nước"
+    ],
+    "answer": 1,
+    "explain": "Bác sĩ bảo người bệnh đặt quần áo lên ghế."
+   },
+   {
+    "q": "Người bệnh bắt đầu bị sốt khi nào?",
+    "options": [
+     "Sáng nay",
+     "Hôm qua buổi chiều",
+     "Tối qua",
+     "Tuần trước"
+    ],
+    "answer": 2,
+    "explain": "Người bệnh nói mình bắt đầu sốt từ tối qua."
+   },
+   {
+    "q": "Khi nào người bệnh nên đến gặp bác sĩ lần nữa?",
+    "options": [
+     "Nếu tối nay không ngủ được",
+     "Nếu ngày mai thấy đói",
+     "Nếu hôm nay trời lạnh",
+     "Nếu ngày mai vẫn còn sốt"
+    ],
+    "answer": 3,
+    "explain": "Bác sĩ dặn người bệnh quay lại nếu ngày mai vẫn còn sốt."
+   },
+   {
+    "q": "Bác sĩ khuyên người bệnh làm gì tối nay?",
+    "options": [
+     "Uống nhiều nước và nghỉ sớm",
+     "Đi bộ quanh bệnh viện",
+     "Đến bệnh viện cùng bạn",
+     "Ăn tối muộn rồi đi ngủ"
+    ],
+    "answer": 0,
+    "explain": "Bác sĩ khuyên người bệnh uống nhiều nước và nghỉ sớm."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h3-02",
+  "level": 3,
+  "order": 2,
+  "title": "Cùng nhau tập thể dục",
+  "titleZh": "一起运动",
+  "topic": "Thể dục, sức khỏe",
+  "scene": "Hai người bạn nói về thói quen chạy bộ buổi sáng và hẹn tập cùng nhau.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "你最近每天早上都去公园吗？",
+    "py": "nǐ zuìjìn měitiān zǎoshang dōu qù gōngyuán ma",
+    "vi": "Gần đây sáng nào bạn cũng đến công viên à?"
+   },
+   {
+    "who": "小安",
+    "zh": "是啊，我跑步以后，身体越来越好了。",
+    "py": "shì a wǒ pǎobù yǐhòu shēntǐ yuèláiyuè hǎo le",
+    "vi": "Ừ, từ khi chạy bộ, sức khỏe của tôi ngày càng tốt hơn."
+   },
+   {
+    "who": "小明",
+    "zh": "你每天跑多长时间？",
+    "py": "nǐ měitiān pǎo duō cháng shíjiān",
+    "vi": "Mỗi ngày bạn chạy trong bao lâu?"
+   },
+   {
+    "who": "小安",
+    "zh": "我先跑二十分钟，再走一会儿。",
+    "py": "wǒ xiān pǎo èrshí fēnzhōng zài zǒu yíhuìr",
+    "vi": "Tôi chạy hai mươi phút trước, rồi đi bộ một lúc."
+   },
+   {
+    "who": "小明",
+    "zh": "我也想运动，可是总觉得累。",
+    "py": "wǒ yě xiǎng yùndòng kěshì zǒng juéde lèi",
+    "vi": "Tôi cũng muốn tập thể dục, nhưng cứ thấy mệt."
+   },
+   {
+    "who": "小安",
+    "zh": "你跟我一起跑吧，开始的时候慢一点儿。",
+    "py": "nǐ gēn wǒ yìqǐ pǎo ba kāishǐ de shíhou màn yìdiǎnr",
+    "vi": "Bạn chạy cùng tôi nhé, lúc đầu cứ chạy chậm một chút."
+   },
+   {
+    "who": "小明",
+    "zh": "如果我跑不动了，可以走吗？",
+    "py": "rúguǒ wǒ pǎo bu dòng le kěyǐ zǒu ma",
+    "vi": "Nếu tôi chạy không nổi nữa thì đi bộ được không?"
+   },
+   {
+    "who": "小安",
+    "zh": "当然可以，你跑不动的话，就慢慢走。",
+    "py": "dāngrán kěyǐ nǐ pǎo bu dòng de huà jiù mànmàn zǒu",
+    "vi": "Tất nhiên là được, nếu chạy không nổi thì cứ đi chậm thôi."
+   },
+   {
+    "who": "小明",
+    "zh": "好，那我明天早上跟你一起去。",
+    "py": "hǎo nà wǒ míngtiān zǎoshang gēn nǐ yìqǐ qù",
+    "vi": "Được, vậy sáng mai tôi sẽ đi cùng bạn."
+   },
+   {
+    "who": "小安",
+    "zh": "太好了，我们在公园门口见。",
+    "py": "tài hǎo le wǒmen zài gōngyuán ménkǒu jiàn",
+    "vi": "Hay quá, chúng ta gặp nhau ở cổng công viên nhé."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "跑步",
+    "py": "pǎobù",
+    "vi": "chạy bộ"
+   },
+   {
+    "zh": "公园",
+    "py": "gōngyuán",
+    "vi": "công viên"
+   },
+   {
+    "zh": "身体",
+    "py": "shēntǐ",
+    "vi": "cơ thể, sức khỏe"
+   },
+   {
+    "zh": "运动",
+    "py": "yùndòng",
+    "vi": "tập thể dục"
+   },
+   {
+    "zh": "一起",
+    "py": "yìqǐ",
+    "vi": "cùng nhau"
+   },
+   {
+    "zh": "分钟",
+    "py": "fēnzhōng",
+    "vi": "phút"
+   },
+   {
+    "zh": "门口",
+    "py": "ménkǒu",
+    "vi": "cửa ra vào"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h3-18",
+   "zh-g-h3-22",
+   "zh-g-h3-25"
+  ],
+  "quiz": [
+   {
+    "q": "小安 gần đây đi đâu vào buổi sáng?",
+    "options": [
+     "Đến công viên",
+     "Đến trường",
+     "Đến bệnh viện",
+     "Đến nhà bạn"
+    ],
+    "answer": 1,
+    "explain": "小安 nói sáng nào gần đây mình cũng đến công viên."
+   },
+   {
+    "q": "小安 chạy bao lâu rồi mới đi bộ?",
+    "options": [
+     "Mười phút",
+     "Nửa tiếng",
+     "Hai mươi phút",
+     "Một tiếng"
+    ],
+    "answer": 2,
+    "explain": "小安 chạy hai mươi phút trước khi đi bộ một lúc."
+   },
+   {
+    "q": "小安 thấy sức khỏe của mình thay đổi thế nào?",
+    "options": [
+     "Ngày càng yếu hơn",
+     "Không thay đổi",
+     "Thỉnh thoảng thấy mệt",
+     "Ngày càng tốt hơn"
+    ],
+    "answer": 3,
+    "explain": "小安 nói sức khỏe ngày càng tốt hơn từ khi chạy bộ."
+   },
+   {
+    "q": "Nếu chạy không nổi, 小明 có thể làm gì?",
+    "options": [
+     "Đi bộ chậm",
+     "Ngồi ở cổng công viên",
+     "Về nhà ngay",
+     "Chạy nhanh hơn"
+    ],
+    "answer": 0,
+    "explain": "小安 bảo nếu chạy không nổi thì cứ đi bộ chậm."
+   },
+   {
+    "q": "Hai người hẹn gặp nhau ở đâu?",
+    "options": [
+     "Trước nhà 小安",
+     "Ở cổng công viên",
+     "Trong bệnh viện",
+     "Trên đường đến trường"
+    ],
+    "answer": 1,
+    "explain": "Hai người hẹn gặp nhau ở cổng công viên."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h3-03",
+  "level": 3,
+  "order": 3,
+  "title": "Chọn một cuốn sách",
+  "titleZh": "选一本书",
+  "topic": "So sánh",
+  "scene": "Hai người bạn cùng xem sách ở hiệu sách và so sánh nội dung, giá tiền.",
+  "minutes": 4,
+  "lines": [
+   {
+    "who": "小林",
+    "zh": "这两本书，你觉得哪本更好？",
+    "py": "zhè liǎng běn shū nǐ juéde nǎ běn gèng hǎo",
+    "vi": "Bạn thấy trong hai cuốn sách này, cuốn nào hay hơn?"
+   },
+   {
+    "who": "小雨",
+    "zh": "我觉得这本比那本更有意思。",
+    "py": "wǒ juéde zhè běn bǐ nà běn gèng yǒu yìsi",
+    "vi": "Tôi thấy cuốn này thú vị hơn cuốn kia."
+   },
+   {
+    "who": "小林",
+    "zh": "可是那本跟你上次买的一样贵。",
+    "py": "kěshì nà běn gēn nǐ shàngcì mǎi de yíyàng guì",
+    "vi": "Nhưng cuốn kia đắt bằng cuốn bạn mua lần trước."
+   },
+   {
+    "who": "小雨",
+    "zh": "是吗？我还以为这本更便宜呢。",
+    "py": "shì ma wǒ hái yǐwéi zhè běn gèng piányi ne",
+    "vi": "Thế à? Tôi cứ tưởng cuốn này rẻ hơn chứ."
+   },
+   {
+    "who": "小林",
+    "zh": "我昨天看了一会儿，这本写得很清楚。",
+    "py": "wǒ zuótiān kàn le yíhuìr zhè běn xiě de hěn qīngchu",
+    "vi": "Hôm qua tôi đọc cuốn này một lúc, sách viết rất rõ ràng."
+   },
+   {
+    "who": "小雨",
+    "zh": "那本不比这本难，故事也很好看。",
+    "py": "nà běn bù bǐ zhè běn nán gùshi yě hěn hǎokàn",
+    "vi": "Cuốn kia không khó hơn cuốn này, câu chuyện cũng rất hay."
+   },
+   {
+    "who": "小林",
+    "zh": "你想买哪一本？我可以和你一起选。",
+    "py": "nǐ xiǎng mǎi nǎ yì běn wǒ kěyǐ hé nǐ yìqǐ xuǎn",
+    "vi": "Bạn muốn mua cuốn nào? Tôi có thể chọn cùng bạn."
+   },
+   {
+    "who": "小雨",
+    "zh": "我想先看看这本，再决定买哪本。",
+    "py": "wǒ xiǎng xiān kànkan zhè běn zài juédìng mǎi nǎ běn",
+    "vi": "Tôi muốn xem cuốn này trước, rồi quyết định mua cuốn nào."
+   },
+   {
+    "who": "小林",
+    "zh": "好，我们坐下来看一会儿吧。",
+    "py": "hǎo wǒmen zuò xià lái kàn yíhuìr ba",
+    "vi": "Được, chúng ta ngồi xuống đọc một lúc nhé."
+   },
+   {
+    "who": "小雨",
+    "zh": "好啊，今天有时间，我不想马上回家。",
+    "py": "hǎo a jīntiān yǒu shíjiān wǒ bù xiǎng mǎshàng huí jiā",
+    "vi": "Được đó, hôm nay tôi có thời gian, chưa muốn về nhà ngay."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "书",
+    "py": "shū",
+    "vi": "sách"
+   },
+   {
+    "zh": "有意思",
+    "py": "yǒu yìsi",
+    "vi": "thú vị"
+   },
+   {
+    "zh": "一样",
+    "py": "yíyàng",
+    "vi": "giống nhau, bằng nhau"
+   },
+   {
+    "zh": "贵",
+    "py": "guì",
+    "vi": "đắt"
+   },
+   {
+    "zh": "便宜",
+    "py": "piányi",
+    "vi": "rẻ"
+   },
+   {
+    "zh": "故事",
+    "py": "gùshi",
+    "vi": "câu chuyện"
+   },
+   {
+    "zh": "决定",
+    "py": "juédìng",
+    "vi": "quyết định"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h3-11",
+   "zh-g-h3-12"
+  ],
+  "quiz": [
+   {
+    "q": "小雨 thấy cuốn nào thú vị hơn?",
+    "options": [
+     "Cuốn 小林 mua hôm qua",
+     "Cuốn có câu chuyện ngắn",
+     "Cuốn này",
+     "Cuốn kia"
+    ],
+    "answer": 2,
+    "explain": "小雨 nói cuốn này thú vị hơn cuốn kia."
+   },
+   {
+    "q": "小雨 đã tưởng điều gì về giá của cuốn này?",
+    "options": [
+     "Nó đắt hơn cuốn kia",
+     "Nó rẻ hơn cuốn kia",
+     "Nó bằng giá cuốn cũ",
+     "Nó không có giá"
+    ],
+    "answer": 3,
+    "explain": "小雨 nói cô cứ tưởng cuốn này rẻ hơn."
+   },
+   {
+    "q": "小林 đọc cuốn này khi nào?",
+    "options": [
+     "Hôm qua",
+     "Sáng nay",
+     "Tuần trước",
+     "Ngày mai"
+    ],
+    "answer": 0,
+    "explain": "小林 nói hôm qua mình đã đọc cuốn này một lúc."
+   },
+   {
+    "q": "Theo 小林, cuốn kia có giá thế nào so với cuốn 小雨 mua lần trước?",
+    "options": [
+     "Rẻ hơn nhiều",
+     "Đắt bằng",
+     "Đắt hơn",
+     "Không ai biết"
+    ],
+    "answer": 1,
+    "explain": "小林 nói cuốn kia đắt bằng cuốn 小雨 mua lần trước."
+   },
+   {
+    "q": "小雨 muốn làm gì trước khi quyết định mua?",
+    "options": [
+     "Hỏi giá cuốn kia",
+     "Về nhà hỏi bạn",
+     "Xem cuốn này trước",
+     "Đọc hết cả hai cuốn"
+    ],
+    "answer": 2,
+    "explain": "小雨 muốn xem cuốn này trước rồi mới quyết định."
+   }
+  ]
+ }
+]

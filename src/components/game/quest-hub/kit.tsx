@@ -97,7 +97,7 @@ export function SectionHeader({
           </View>
         ) : null}
         <View style={{ flexShrink: 1, minWidth: 0 }}>
-          <Text accessibilityRole="header" className="font-heavy" style={{ fontSize: 18, lineHeight: 23, color: HUB.ink }}>
+          <Text accessibilityRole="header" className="font-heavy" style={{ fontSize: 18, lineHeight: 23, color: onDark ? '#FFF7E8' : HUB.ink }}>
             {title}
           </Text>
           {sub ? (
@@ -176,7 +176,7 @@ export function StatPill({ glyph, value, label }: { glyph: string; value: string
       <Text className="font-heavy" style={{ fontSize: 13, color: HUB.ink, fontVariant: ['tabular-nums'] }}>
         {value}
       </Text>
-      <Text className="font-sans" style={{ fontSize: 12, color: HUB.muted }}>
+      <Text className="font-sans" style={{ fontSize: 13, color: HUB.muted }}>
         {label}
       </Text>
     </View>
@@ -190,7 +190,7 @@ export function StatBox({ value, label, tone = HUB.ink }: { value: string; label
       <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 25, color: tone, fontVariant: ['tabular-nums'] }}>
         {value}
       </Text>
-      <Text className="font-sans" style={{ marginTop: 1, fontSize: 12, color: HUB.muted }} numberOfLines={1}>
+      <Text className="font-sans" style={{ marginTop: 1, fontSize: 13, color: HUB.muted }} numberOfLines={1}>
         {label}
       </Text>
     </View>
@@ -245,7 +245,7 @@ export function CtaButton({
         ) : null}
         <View style={{ flexShrink: 1, minWidth: 0 }}>
           {sub ? (
-            <Text className="font-semi" style={{ fontSize: 11, letterSpacing: 0.4, color: primary ? '#5B4205' : HUB.muted }} numberOfLines={1}>
+            <Text className="font-semi" style={{ fontSize: 12, letterSpacing: 0.4, color: primary ? '#5B4205' : HUB.muted }} numberOfLines={1}>
               {sub}
             </Text>
           ) : null}
@@ -262,7 +262,7 @@ export function CtaButton({
 /** Nhãn nhỏ viết hoa phía trên một khối (eyebrow). */
 export function Eyebrow({ text, tone = HUB.gold }: { text: string; tone?: string }) {
   return (
-    <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.3, color: tone }} numberOfLines={1}>
+    <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.3, color: tone }} numberOfLines={1}>
       {text}
     </Text>
   );

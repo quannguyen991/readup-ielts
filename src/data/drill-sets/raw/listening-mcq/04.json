@@ -1,0 +1,227 @@
+{
+ "title": "Building a Living Shoreline",
+ "topic": "Artificial reefs",
+ "context": "Narrator: You are at a coastal college, where student Maya is speaking with marine science tutor Ben before a public talk about artificial reefs.\nMaya: Ben, I signed up to help at the harbour exhibition, but I’m not sure what visitors usually ask first.\nBen: Usually they want to know whether an artificial reef is just a pile of concrete. The short answer is no; it’s a planned structure placed underwater to create habitat or change wave energy.\nMaya: And our display is about the old ferry site, isn’t it?\nBen: Not quite. The ferry was considered, but the chosen site is a stretch of bare seabed beside the eastern breakwater. We’ll explain why in the talk.\nMaya: I’ll bring the maps, then. Is the session still at half past ten?\nBen: It was, but we’ve moved it to eleven because the harbour master needs the room beforehand. Please tell the volunteers.\nNarrator: Later, at the exhibition, marine ecologist Dr Patel gives a talk and answers questions from the audience.\nDr Patel: Good morning. Artificial reefs are often described as a modern idea, but people have placed objects in the sea for centuries, sometimes to attract fish and sometimes to protect a shoreline. Today, though, we plan them more carefully. Our project began when the harbour authority asked us to reduce erosion along the eastern breakwater without extending it farther into the bay.\nDr Patel: We assessed three possible locations. The first was beside the old ferry landing, where the water is sheltered, but boats manoeuvre there and the sediment is contaminated. A second site, near the river mouth, has clean sand, yet the current is too strong for young corals to settle. We selected a bare, gently sloping seabed 400 metres east of the breakwater. It is close enough to soften incoming waves, but far enough from the navigation channel. I should correct one detail on the map: an early draft says 450 metres. The final survey measured 400.\nDr Patel: The design is not a single wall. It consists of six low modules arranged in a crescent, with gaps between them. Those openings allow fish to pass through and let some water move shoreward, rather than trapping it behind a solid barrier. Each module is made from marine-grade concrete cast with rough surfaces and small holes. We considered recycled tyres, which are cheap, but they can break apart and release material, so we rejected them. We also discussed using a retired ship. It would have offered a large surface, but removing fuel and preparing it safely would have cost more than the concrete units.\nDr Patel: We placed the modules in May, not April as the first newsletter reported. A specialist barge lowered them onto the seabed over three days. Before installation, divers recorded the site and found mainly sand, a few shell fragments, and almost no large animals. We did not move seagrass, as none grew in that area. After placement, the divers checked that every module was stable and that the gaps remained open. One unit shifted slightly during the first night, but the crew repositioned it the next morning; no unit was lost.\nDr Patel: What do we expect the reef to do? First, it should reduce the force of ordinary waves reaching the breakwater. It is not designed to stop storm waves completely, and we cannot promise that the beach will grow. Second, the rough surfaces and holes provide places for seaweed, shellfish, and small fish to attach or shelter. Larger fish may follow, but that is a possibility, not a guaranteed result. We chose concrete partly because its texture can be colonised, not because concrete itself is a food source.\nDr Patel: We’ll monitor the project for two years. Each month, a team will photograph fixed points on the modules and count fish during the same twenty-minute period. Every three months, divers will also measure how much sand has collected on the landward side. We had planned monthly sand measurements, but poor visibility makes those readings unreliable, so photographs will show longer-term changes instead. The harbour authority is paying for the construction; a university grant covers monitoring. Local volunteers can join the fish counts after a short training session, although only qualified divers may inspect the structures underwater.\nDr Patel: There are limits to what this project can tell us. A reef in a sheltered tropical bay might develop differently from one in our cooler, busier harbour. We’ll compare results with the natural rocky ledge west of town, not to claim the two habitats are identical, but to see which species appear in both. If fish numbers rise, we’ll still ask whether they have increased overall or simply moved in from nearby water. That distinction matters: attracting animals is not the same as creating more of them.\nAudience member: So would you recommend this approach for every damaged coast?\nDr Patel: No. First we would identify the cause of the erosion and check the seabed, currents, and shipping routes. In some places, restoring dunes or seagrass would be more suitable. An artificial reef is a tool, not a universal fix. Our hope is that this one will protect the breakwater gently while adding useful habitat, and the monitoring will tell us whether it has done both.",
+ "questions": [
+  {
+   "prompt": "What does Ben say an artificial reef is planned to do?",
+   "answer": "Create habitat or change wave energy",
+   "why": "Ben định nghĩa rạn nhân tạo là cấu trúc được đặt dưới nước để tạo môi trường sống hoặc thay đổi năng lượng sóng. Bài không nói đơn thuần là một đống bê tông.",
+   "quote": "it’s a planned structure placed underwater to create habitat or change wave energy.",
+   "options": [
+    "Attract boats to an old ferry landing",
+    "Create habitat or change wave energy",
+    "Extend a breakwater farther into the bay"
+   ]
+  },
+  {
+   "prompt": "Which location was selected for the project?",
+   "answer": "A stretch of bare seabed beside the eastern breakwater",
+   "why": "Ben sửa lại suy đoán của Maya: địa điểm được chọn là đáy biển trống cạnh đê chắn sóng phía đông. Bến phà cũ chỉ được cân nhắc.",
+   "quote": "the chosen site is a stretch of bare seabed beside the eastern breakwater.",
+   "options": [
+    "The sheltered water beside the old ferry landing",
+    "A stretch of bare seabed beside the eastern breakwater",
+    "The seabed near the river mouth"
+   ]
+  },
+  {
+   "prompt": "What time was the session moved to?",
+   "answer": "Eleven",
+   "why": "Buổi giới thiệu ban đầu dự kiến lúc mười giờ rưỡi nhưng được chuyển sang mười một giờ vì quản lý cảng cần phòng trước đó. Mười giờ rưỡi là giờ cũ.",
+   "quote": "we’ve moved it to eleven because the harbour master needs the room beforehand.",
+   "options": [
+    "Half past ten",
+    "Ten",
+    "Eleven"
+   ]
+  },
+  {
+   "prompt": "Why did the harbour authority start the project?",
+   "answer": "To reduce erosion along the eastern breakwater",
+   "why": "Cơ quan cảng yêu cầu giảm xói mòn dọc đê chắn sóng phía đông mà không kéo dài công trình ra vịnh. Kéo dài đê là điều họ muốn tránh.",
+   "quote": "asked us to reduce erosion along the eastern breakwater without extending it farther into the bay.",
+   "options": [
+    "To reduce erosion along the eastern breakwater",
+    "To create a navigation channel near the river mouth",
+    "To extend the breakwater farther into the bay"
+   ]
+  },
+  {
+   "prompt": "What made the old ferry landing unsuitable?",
+   "answer": "Boats manoeuvre there and the sediment is contaminated",
+   "why": "Tại bến phà cũ, tàu thuyền cần xoay trở và trầm tích bị ô nhiễm. Nước được che chắn, nhưng đó không đủ để khiến nơi này phù hợp.",
+   "quote": "boats manoeuvre there and the sediment is contaminated.",
+   "options": [
+    "The current is too strong for young corals",
+    "Boats manoeuvre there and the sediment is contaminated",
+    "The site is too far from the navigation channel"
+   ]
+  },
+  {
+   "prompt": "What was the main problem with the site near the river mouth?",
+   "answer": "The current is too strong for young corals to settle",
+   "why": "Cát ở cửa sông sạch, nhưng dòng chảy quá mạnh để san hô non định cư. Trầm tích ô nhiễm thuộc về địa điểm gần bến phà.",
+   "quote": "the current is too strong for young corals to settle.",
+   "options": [
+    "The sediment is contaminated",
+    "Boats manoeuvre there",
+    "The current is too strong for young corals to settle"
+   ]
+  },
+  {
+   "prompt": "How far east of the breakwater is the selected seabed?",
+   "answer": "400 metres",
+   "why": "Khảo sát cuối cùng đo được khoảng cách 400 mét về phía đông. Con số 450 mét trong bản nháp ban đầu đã được đính chính.",
+   "quote": "The final survey measured 400.",
+   "options": [
+    "450 metres",
+    "400 metres",
+    "Three hundred metres"
+   ]
+  },
+  {
+   "prompt": "How are the reef modules arranged?",
+   "answer": "Six low modules in a crescent",
+   "why": "Thiết kế gồm sáu mô-đun thấp xếp thành hình lưỡi liềm, có khoảng trống giữa chúng. Rạn không phải một bức tường liền.",
+   "quote": "It consists of six low modules arranged in a crescent, with gaps between them.",
+   "options": [
+    "Six low modules in a crescent",
+    "A single solid wall",
+    "A retired ship surrounded by concrete"
+   ]
+  },
+  {
+   "prompt": "Why does the design include gaps between the modules?",
+   "answer": "To let fish pass through and allow some water to move shoreward",
+   "why": "Các khe hở giúp cá đi xuyên qua và cho một phần nước di chuyển về phía bờ, thay vì bị giữ lại sau một rào chắn đặc. Chặn hoàn toàn dòng nước không phải mục tiêu.",
+   "quote": "Those openings allow fish to pass through and let some water move shoreward",
+   "options": [
+    "To trap water behind a solid barrier",
+    "To let fish pass through and allow some water to move shoreward",
+    "To make room for boats to manoeuvre"
+   ]
+  },
+  {
+   "prompt": "Why were recycled tyres rejected?",
+   "answer": "They can break apart and release material",
+   "why": "Lốp xe tái chế rẻ, nhưng có thể vỡ ra và giải phóng vật liệu nên bị loại. Chi phí chuẩn bị an toàn là vấn đề được nêu về con tàu cũ.",
+   "quote": "they can break apart and release material, so we rejected them.",
+   "options": [
+    "They are too expensive to cast",
+    "They can break apart and release material",
+    "They have no large surface"
+   ]
+  },
+  {
+   "prompt": "When were the modules placed?",
+   "answer": "In May",
+   "why": "Các mô-đun được đặt xuống vào tháng Năm. Bản tin đầu tiên nói tháng Tư nhưng thông tin đó không chính xác.",
+   "quote": "We placed the modules in May, not April as the first newsletter reported.",
+   "options": [
+    "In April",
+    "In June",
+    "In May"
+   ]
+  },
+  {
+   "prompt": "What did divers find at the site before installation?",
+   "answer": "Mainly sand, a few shell fragments, and almost no large animals",
+   "why": "Trước khi lắp đặt, thợ lặn ghi nhận chủ yếu là cát, một ít mảnh vỏ sò và gần như không có động vật lớn. Không có cỏ biển để di dời.",
+   "quote": "found mainly sand, a few shell fragments, and almost no large animals.",
+   "options": [
+    "Seagrass and many large animals",
+    "Mainly sand, a few shell fragments, and almost no large animals",
+    "Clean sand and young corals"
+   ]
+  },
+  {
+   "prompt": "What happened to one module on the first night?",
+   "answer": "It shifted slightly and was repositioned the next morning",
+   "why": "Một mô-đun dịch chuyển nhẹ trong đêm đầu tiên, rồi đội thi công đặt lại vào sáng hôm sau. Không có mô-đun nào bị mất.",
+   "quote": "One unit shifted slightly during the first night, but the crew repositioned it the next morning",
+   "options": [
+    "It was lost during a storm",
+    "It shifted slightly and was repositioned the next morning",
+    "It was removed because it blocked a gap"
+   ]
+  },
+  {
+   "prompt": "What is the reef designed to do to ordinary waves?",
+   "answer": "Reduce their force as they reach the breakwater",
+   "why": "Rạn được thiết kế để giảm lực của sóng thông thường khi chúng đến đê chắn sóng. Bà Patel nói rõ công trình không được thiết kế để chặn hoàn toàn sóng bão.",
+   "quote": "it should reduce the force of ordinary waves reaching the breakwater.",
+   "options": [
+    "Stop storm waves completely",
+    "Make ordinary waves stronger",
+    "Reduce their force as they reach the breakwater"
+   ]
+  },
+  {
+   "prompt": "What do the rough surfaces and holes provide?",
+   "answer": "Places for seaweed, shellfish, and small fish to attach or shelter",
+   "why": "Bề mặt gồ ghề và các lỗ tạo chỗ bám hoặc trú ẩn cho rong biển, động vật có vỏ và cá nhỏ. Cá lớn có thể xuất hiện nhưng không được đảm bảo.",
+   "quote": "provide places for seaweed, shellfish, and small fish to attach or shelter.",
+   "options": [
+    "A food source made from concrete",
+    "Places for seaweed, shellfish, and small fish to attach or shelter",
+    "A guaranteed shelter for larger fish"
+   ]
+  },
+  {
+   "prompt": "How often will the team photograph fixed points and count fish?",
+   "answer": "Each month",
+   "why": "Nhóm sẽ chụp ảnh các điểm cố định và đếm cá mỗi tháng, trong cùng khoảng thời gian hai mươi phút. Việc đo cát diễn ra ba tháng một lần.",
+   "quote": "Each month, a team will photograph fixed points on the modules and count fish",
+   "options": [
+    "Every three months",
+    "Each month",
+    "Every two years"
+   ]
+  },
+  {
+   "prompt": "How often will divers measure sand on the landward side?",
+   "answer": "Every three months",
+   "why": "Thợ lặn sẽ đo lượng cát tích tụ phía bờ mỗi ba tháng. Kế hoạch đo hàng tháng bị bỏ vì tầm nhìn kém làm số liệu không đáng tin cậy.",
+   "quote": "Every three months, divers will also measure how much sand has collected on the landward side.",
+   "options": [
+    "Every month",
+    "Every two years",
+    "Every three months"
+   ]
+  },
+  {
+   "prompt": "Who is paying for the monitoring?",
+   "answer": "A university grant",
+   "why": "Khoản tài trợ của trường đại học chi trả cho hoạt động theo dõi; cơ quan cảng trả chi phí xây dựng. Hai nguồn tài trợ có mục đích khác nhau.",
+   "quote": "a university grant covers monitoring.",
+   "options": [
+    "The harbour authority",
+    "A university grant",
+    "Local volunteers"
+   ]
+  },
+  {
+   "prompt": "Which site will the researchers compare the reef results with?",
+   "answer": "The natural rocky ledge west of town",
+   "why": "Nhóm sẽ đối chiếu kết quả với gờ đá tự nhiên ở phía tây thị trấn để xem loài nào xuất hiện ở cả hai nơi. Họ không cho rằng hai môi trường sống giống hệt nhau.",
+   "quote": "We’ll compare results with the natural rocky ledge west of town",
+   "options": [
+    "The old ferry landing",
+    "The natural rocky ledge west of town",
+    "The sheltered tropical bay"
+   ]
+  },
+  {
+   "prompt": "What important distinction will researchers consider if fish numbers rise?",
+   "answer": "Whether fish numbers increased overall or fish simply moved in from nearby water",
+   "why": "Nhóm sẽ kiểm tra xem tổng số cá có tăng hay chúng chỉ chuyển đến từ vùng nước lân cận. Thu hút cá đến không đồng nghĩa với việc tạo ra thêm cá.",
+   "quote": "whether they have increased overall or simply moved in from nearby water.",
+   "options": [
+    "Whether fish numbers increased overall or fish simply moved in from nearby water",
+    "Whether the beach grew or storm waves stopped",
+    "Whether volunteers or qualified divers counted the fish"
+   ]
+  }
+ ]
+}

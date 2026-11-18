@@ -1,0 +1,115 @@
+{
+ "title": "Lighthouse Project Planning",
+ "topic": "Lighthouses and coastal heritage",
+ "context": "Narrator: Two students meet their tutor to plan a short presentation about the history and preservation of lighthouses.\n\nSection 1\n\nMaya: Hi, Dr Ellis. We’ve brought a draft plan for our lighthouse project. Are you free for a few minutes?\n\nDr Ellis: Of course. I have a meeting at ten, so let’s use the time well. What have you decided so far?\n\nLeo: We’re focusing on lighthouses that are still useful, rather than only describing old buildings. Maya found a report from the coastal authority.\n\nMaya: It says the lighthouse at North Point is still maintained, though ships now use satellite navigation. We thought we could visit it next Saturday.\n\nDr Ellis: That could work. Check the opening arrangements first. The visitor centre is open, but the tower itself is closed during repairs.\n\nLeo: I called yesterday. The centre opens at half past nine, and the guided tour starts at eleven. We’d need to book by Thursday.\n\nDr Ellis: Good. How are you travelling?\n\nMaya: The bus leaves from the university at eight fifteen. It takes about an hour, and the stop is just outside the harbour gate.\n\nLeo: We can walk from there. I’ll bring the camera, and Maya will take notes.\n\nDr Ellis: Remember to ask permission before photographing staff or visitors. And take a recording device for interviews, but test it beforehand.\n\nMaya: I’ve got one. We also need to send you our question list before we go, don’t we?\n\nDr Ellis: Yes, email it to me on Wednesday evening. I’ll check that the questions are clear and suitable.\n\nSection 2\n\nLeo: We’ve drafted some questions. First, we want to ask how the lighthouse keeper’s job has changed.\n\nDr Ellis: That’s a useful starting point. Don’t assume the keeper simply watched for ships. At North Point, the last resident keeper left in 1986. The light is now monitored remotely from the regional control room.\n\nMaya: So there isn’t anyone living there now?\n\nDr Ellis: No. A technician visits every fortnight to check the lamp, the backup battery and the weather instruments. The main lamp is an LED, which uses much less electricity than the old halogen system.\n\nLeo: Should we ask about the tower’s original purpose, too?\n\nDr Ellis: Certainly. North Point was built in 1894, after several cargo ships ran aground on the reef. The original light used an oil lamp, and its lens was made by a company in France. That lens is still there, although it no longer turns.\n\nMaya: I read that the tower is thirty-two metres tall. Is that right?\n\nDr Ellis: Exactly. But make sure you distinguish the height of the structure from the height of the light above sea level. The light is fifty-eight metres above sea level because the tower stands on a cliff.\n\nLeo: We should explain the flashing pattern. I saw a chart that said three flashes every fifteen seconds.\n\nDr Ellis: That’s the current pattern. Each lighthouse has its own signal, so sailors can identify it at night. In fog, a separate sound signal operates as well. At North Point, it’s a low horn that sounds once every thirty seconds.\n\nMaya: Is that horn switched on all year?\n\nDr Ellis: Only when visibility falls below two kilometres. It’s tested every Monday morning, but the test is brief, so visitors rarely hear it.\n\nLeo: What about preservation? The coast authority seems to have limited money.\n\nDr Ellis: That’s a central issue for your project. The authority owns the site, but a local trust runs the visitor centre. Its income comes mainly from ticket sales and the small café. They received a grant last year to repair the gallery floor, but they still need donations for the roof.\n\nMaya: Could we include the volunteers’ work? I saw a notice saying they meet on Saturdays.\n\nDr Ellis: Yes. They clean the displays, guide visitors and record stories from former lighthouse workers. One volunteer, Mrs Patel, has collected photographs from families in the harbour town. Ask her whether the project may use one or two images.\n\nLeo: We also wondered whether tourism causes problems for the wildlife nearby.\n\nDr Ellis: It can. The cliffs are a nesting area for seabirds, so the path closes from April to July. Your visit is in August, when it’s open, but stay behind the marked fence. That’s worth mentioning as an example of balancing access with conservation.\n\nMaya: For the presentation, we’ll compare the old oil lamp with the modern LED and include a short interview with Mrs Patel.\n\nDr Ellis: Good. Keep the interview to about five minutes, and don’t let the technical details take over. Your conclusion should explain why the lighthouse matters to the community, not just how its equipment works.\n\nLeo: We’ll send you the questions on Wednesday and confirm the tour booking by Thursday.\n\nDr Ellis: Excellent. Then you’re ready for Saturday. Please meet at the university bus stop ten minutes before departure.",
+ "questions": [
+  {
+   "prompt": "What time does Dr Ellis have a meeting?",
+   "answer": "ten",
+   "why": "Dr Ellis nói mình có cuộc họp lúc ten. Câu hỏi hỏi thời điểm, không hỏi thời lượng cuộc họp.",
+   "quote": "I have a meeting at ten, so let’s use the time well."
+  },
+  {
+   "prompt": "Which lighthouse are the students focusing on?",
+   "answer": "North Point",
+   "why": "Maya nêu tên ngọn hải đăng mà họ sẽ tìm hiểu là North Point. Đây là địa danh được nói trực tiếp trong cuộc hội thoại.",
+   "quote": "It says the lighthouse at North Point is still maintained, though ships now use satellite navigation."
+  },
+  {
+   "prompt": "On which day do the students plan to visit the lighthouse?",
+   "answer": "next Saturday",
+   "why": "Maya nói họ dự định đến thăm vào next Saturday. Ngày này không phải ngày hạn chót đặt tour.",
+   "quote": "We thought we could visit it next Saturday."
+  },
+  {
+   "prompt": "What time does the visitor centre open?",
+   "answer": "half past nine",
+   "why": "Leo cho biết trung tâm đón khách mở cửa lúc half past nine. Tour có giờ bắt đầu khác, là eleven.",
+   "quote": "The centre opens at half past nine, and the guided tour starts at eleven."
+  },
+  {
+   "prompt": "By which day must the students book the guided tour?",
+   "answer": "Thursday",
+   "why": "Leo nói họ phải đặt tour by Thursday. Wednesday là ngày gửi danh sách câu hỏi cho gia sư.",
+   "quote": "The centre opens at half past nine, and the guided tour starts at eleven. We’d need to book by Thursday."
+  },
+  {
+   "prompt": "What time does the bus leave the university?",
+   "answer": "eight fifteen",
+   "why": "Maya nói xe buýt rời trường lúc eight fifteen. Khoảng một giờ là thời gian di chuyển, không phải giờ khởi hành.",
+   "quote": "The bus leaves from the university at eight fifteen."
+  },
+  {
+   "prompt": "What will Leo bring to the visit?",
+   "answer": "the camera",
+   "why": "Leo nhận phần mang theo máy ảnh; Maya sẽ ghi chép. Câu hỏi hỏi vật Leo đem theo.",
+   "quote": "I’ll bring the camera, and Maya will take notes."
+  },
+  {
+   "prompt": "On which day should the students email their question list to Dr Ellis?",
+   "answer": "Wednesday evening",
+   "why": "Dr Ellis yêu cầu gửi danh sách qua email vào Wednesday evening. Thứ Năm là hạn đặt tour, không phải hạn gửi câu hỏi.",
+   "quote": "Yes, email it to me on Wednesday evening."
+  },
+  {
+   "prompt": "In what year did the last resident keeper leave North Point?",
+   "answer": "1986",
+   "why": "Gia sư nói người giữ hải đăng cư trú cuối cùng rời đi vào 1986. Con số này được nêu trực tiếp trong lời thoại.",
+   "quote": "At North Point, the last resident keeper left in 1986."
+  },
+  {
+   "prompt": "How often does a technician visit the lighthouse?",
+   "answer": "every fortnight",
+   "why": "Kỹ thuật viên đến kiểm tra every fortnight. Không nên nhầm với việc kiểm tra còi vào mỗi sáng thứ Hai.",
+   "quote": "A technician visits every fortnight to check the lamp, the backup battery and the weather instruments."
+  },
+  {
+   "prompt": "What type of lamp is used now?",
+   "answer": "LED",
+   "why": "Đèn chính hiện tại được gọi là an LED. Halogen là hệ thống cũ, nên đó là lựa chọn dễ gây nhầm.",
+   "quote": "The main lamp is an LED, which uses much less electricity than the old halogen system."
+  },
+  {
+   "prompt": "In what year was North Point built?",
+   "answer": "1894",
+   "why": "Ngọn hải đăng được xây năm 1894, sau khi các tàu hàng mắc cạn trên rạn đá. Đây là năm xây dựng, không phải năm người giữ hải đăng cuối cùng rời đi.",
+   "quote": "North Point was built in 1894, after several cargo ships ran aground on the reef."
+  },
+  {
+   "prompt": "What was the original light powered by?",
+   "answer": "an oil lamp",
+   "why": "Ánh sáng ban đầu sử dụng an oil lamp. Đèn LED là loại đèn hiện đại đang được dùng hiện nay.",
+   "quote": "The original light used an oil lamp, and its lens was made by a company in France."
+  },
+  {
+   "prompt": "How high is the light above sea level?",
+   "answer": "fifty-eight metres",
+   "why": "Gia sư phân biệt chiều cao của đèn so với mực nước biển là fifty-eight metres với chiều cao của tháp là thirty-two metres. Câu hỏi hỏi độ cao của ánh sáng.",
+   "quote": "The light is fifty-eight metres above sea level because the tower stands on a cliff."
+  },
+  {
+   "prompt": "How many flashes are in the current signal pattern?",
+   "answer": "three",
+   "why": "Tín hiệu hiện tại gồm three flashes every fifteen seconds. Câu hỏi chỉ yêu cầu số lần chớp, không phải khoảng thời gian.",
+   "quote": "That’s the current pattern. Each lighthouse has its own signal, so sailors can identify it at night."
+  },
+  {
+   "prompt": "Below what visibility level does the horn switch on?",
+   "answer": "two kilometres",
+   "why": "Còi chỉ hoạt động khi tầm nhìn giảm xuống dưới two kilometres. Việc thử còi vào sáng thứ Hai là thông tin khác.",
+   "quote": "Only when visibility falls below two kilometres. It’s tested every Monday morning, but the test is brief, so visitors rarely hear it."
+  },
+  {
+   "prompt": "What did the trust receive a grant to repair?",
+   "answer": "the gallery floor",
+   "why": "Khoản tài trợ năm ngoái được dùng để sửa the gallery floor. Mái nhà vẫn cần tiền quyên góp, nên không phải hạng mục được sửa bằng khoản tài trợ đó.",
+   "quote": "They received a grant last year to repair the gallery floor, but they still need donations for the roof."
+  },
+  {
+   "prompt": "During which months is the cliff path closed?",
+   "answer": "April to July",
+   "why": "Lối đi trên vách đá đóng cửa từ April to July để bảo vệ khu vực làm tổ của chim biển. Tháng Tám là lúc lối đi mở cửa trở lại.",
+   "quote": "The cliffs are a nesting area for seabirds, so the path closes from April to July."
+  }
+ ]
+}

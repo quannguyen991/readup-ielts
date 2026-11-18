@@ -1,0 +1,453 @@
+[
+  {
+    "id": "zh-d-h2-07",
+    "level": 2,
+    "order": 7,
+    "title": "Đi ăn mừng sinh nhật",
+    "titleZh": "去饭馆吃饭",
+    "topic": "Ăn ở nhà hàng",
+    "scene": "Anh em rủ nhau đến nhà hàng ăn mừng sinh nhật em gái.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "王明",
+        "zh": "今天我妹妹过生日，我们去饭馆吧。",
+        "py": "Jīntiān wǒ mèimei guò shēngrì wǒmen qù fànguǎn ba",
+        "vi": "Hôm nay là sinh nhật em gái tôi, chúng ta đi nhà hàng nhé."
+      },
+      {
+        "who": "小雨",
+        "zh": "好啊，她喜欢吃鱼和米饭。",
+        "py": "Hǎo a tā xǐhuan chī yú hé mǐfàn",
+        "vi": "Được đấy, em ấy thích ăn cá và cơm."
+      },
+      {
+        "who": "王明",
+        "zh": "这家饭馆离我家很近。",
+        "py": "Zhè jiā fànguǎn lí wǒ jiā hěn jìn",
+        "vi": "Nhà hàng này rất gần nhà tôi."
+      },
+      {
+        "who": "小雨",
+        "zh": "你想吃鱼，还是吃饺子？",
+        "py": "Nǐ xiǎng chī yú háishi chī jiǎozi",
+        "vi": "Bạn muốn ăn cá hay ăn bánh chẻo?"
+      },
+      {
+        "who": "王明",
+        "zh": "我想吃鱼，妹妹想吃鸡蛋。",
+        "py": "Wǒ xiǎng chī yú mèimei xiǎng chī jīdàn",
+        "vi": "Tôi muốn ăn cá, còn em gái muốn ăn trứng."
+      },
+      {
+        "who": "小雨",
+        "zh": "那我们坐这儿，我去问一下。",
+        "py": "Nà wǒmen zuò zhèr wǒ qù wèn yíxià",
+        "vi": "Vậy chúng ta ngồi đây nhé, tôi đi hỏi một chút."
+      },
+      {
+        "who": "王明",
+        "zh": "你问问鱼多少钱，我还想喝茶。",
+        "py": "Nǐ wènwen yú duōshao qián wǒ hái xiǎng hē chá",
+        "vi": "Bạn hỏi thử cá giá bao nhiêu nhé, tôi còn muốn uống trà."
+      },
+      {
+        "who": "小雨",
+        "zh": "鱼不贵，我已经点好菜了。",
+        "py": "Yú bú guì wǒ yǐjīng diǎn hǎo cài le",
+        "vi": "Cá không đắt đâu, tôi gọi món xong rồi."
+      },
+      {
+        "who": "王明",
+        "zh": "太好了，我们等妹妹来吧。",
+        "py": "Tài hǎo le wǒmen děng mèimei lái ba",
+        "vi": "Tốt quá, chúng ta đợi em gái đến nhé."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "饭馆",
+        "py": "fànguǎn",
+        "vi": "nhà hàng"
+      },
+      {
+        "zh": "饺子",
+        "py": "jiǎozi",
+        "vi": "bánh chẻo"
+      },
+      {
+        "zh": "米饭",
+        "py": "mǐfàn",
+        "vi": "cơm"
+      },
+      {
+        "zh": "鸡蛋",
+        "py": "jīdàn",
+        "vi": "trứng"
+      },
+      {
+        "zh": "喝茶",
+        "py": "hē chá",
+        "vi": "uống trà"
+      },
+      {
+        "zh": "点好",
+        "py": "diǎn hǎo",
+        "vi": "gọi xong"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h2-14",
+      "zh-g-h2-01"
+    ],
+    "quiz": [
+      {
+        "q": "Vì sao họ đến nhà hàng?",
+        "options": [
+          "Để mừng sinh nhật em gái",
+          "Để gặp thầy giáo",
+          "Để mua bánh chẻo"
+        ],
+        "answer": 0,
+        "explain": "王明 nói hôm nay là sinh nhật em gái."
+      },
+      {
+        "q": "Em gái thích ăn gì?",
+        "options": [
+          "Bánh mì và trà",
+          "Cá và cơm",
+          "Táo và trứng"
+        ],
+        "answer": 1,
+        "explain": "小雨 nói em gái thích ăn cá và cơm."
+      },
+      {
+        "q": "Nhà hàng gần nơi nào?",
+        "options": [
+          "Nhà của 小雨",
+          "Trường học",
+          "Nhà của 王明"
+        ],
+        "answer": 2,
+        "explain": "王明 nói nhà hàng này gần nhà mình."
+      },
+      {
+        "q": "王明 muốn ăn món gì?",
+        "options": [
+          "Cá",
+          "Trứng",
+          "Bánh chẻo"
+        ],
+        "answer": 0,
+        "explain": "王明 nói mình muốn ăn cá."
+      },
+      {
+        "q": "小雨 hỏi giá món nào?",
+        "options": [
+          "Cơm",
+          "Cá",
+          "Trà"
+        ],
+        "answer": 1,
+        "explain": "王明 nhờ 小雨 hỏi cá giá bao nhiêu."
+      }
+    ]
+  },
+  {
+    "id": "zh-d-h2-08",
+    "level": 2,
+    "order": 8,
+    "title": "Sinh nhật của bà",
+    "titleZh": "奶奶的生日",
+    "topic": "Lễ tết",
+    "scene": "Hai anh em bàn cách mời bà đến nhà ăn mừng sinh nhật.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "妹妹",
+        "zh": "明天是奶奶的生日，我们请她来家里吧。",
+        "py": "Míngtiān shì nǎinai de shēngrì wǒmen qǐng tā lái jiālǐ ba",
+        "vi": "Ngày mai là sinh nhật bà, chúng ta mời bà đến nhà nhé."
+      },
+      {
+        "who": "哥哥",
+        "zh": "好啊，我想给奶奶买水果。",
+        "py": "Hǎo a wǒ xiǎng gěi nǎinai mǎi shuǐguǒ",
+        "vi": "Được đấy, anh muốn mua trái cây cho bà."
+      },
+      {
+        "who": "妹妹",
+        "zh": "你想买苹果，还是买茶？",
+        "py": "Nǐ xiǎng mǎi píngguǒ háishi mǎi chá",
+        "vi": "Anh muốn mua táo hay mua trà?"
+      },
+      {
+        "who": "哥哥",
+        "zh": "奶奶喜欢苹果，我们买一些吧。",
+        "py": "Nǎinai xǐhuan píngguǒ wǒmen mǎi yìxiē ba",
+        "vi": "Bà thích táo, chúng ta mua một ít nhé."
+      },
+      {
+        "who": "妹妹",
+        "zh": "我已经买好苹果了，你买茶吧。",
+        "py": "Wǒ yǐjīng mǎi hǎo píngguǒ le nǐ mǎi chá ba",
+        "vi": "Em mua táo xong rồi, anh mua trà nhé."
+      },
+      {
+        "who": "哥哥",
+        "zh": "我给奶奶打电话，她说中午来。",
+        "py": "Wǒ gěi nǎinai dǎdiànhuà tā shuō zhōngwǔ lái",
+        "vi": "Anh gọi điện cho bà, bà nói trưa sẽ đến."
+      },
+      {
+        "who": "妹妹",
+        "zh": "那我们在家等她，一起吃午饭。",
+        "py": "Nà wǒmen zài jiā děng tā yìqǐ chī wǔfàn",
+        "vi": "Vậy chúng ta đợi bà ở nhà rồi cùng ăn trưa."
+      },
+      {
+        "who": "哥哥",
+        "zh": "好，过年时我们也去看奶奶。",
+        "py": "Hǎo guònián shí wǒmen yě qù kàn nǎinai",
+        "vi": "Được, dịp Tết chúng ta cũng đến thăm bà."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "生日",
+        "py": "shēngrì",
+        "vi": "sinh nhật"
+      },
+      {
+        "zh": "奶奶",
+        "py": "nǎinai",
+        "vi": "bà nội"
+      },
+      {
+        "zh": "水果",
+        "py": "shuǐguǒ",
+        "vi": "trái cây"
+      },
+      {
+        "zh": "苹果",
+        "py": "píngguǒ",
+        "vi": "táo"
+      },
+      {
+        "zh": "打电话",
+        "py": "dǎdiànhuà",
+        "vi": "gọi điện thoại"
+      },
+      {
+        "zh": "过年",
+        "py": "guònián",
+        "vi": "đón Tết"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h2-09",
+      "zh-g-h2-14",
+      "zh-g-h2-01"
+    ],
+    "quiz": [
+      {
+        "q": "Sinh nhật bà là ngày nào?",
+        "options": [
+          "Ngày mai",
+          "Hôm nay",
+          "Dịp Tết"
+        ],
+        "answer": 0,
+        "explain": "妹妹 nói ngày mai là sinh nhật bà."
+      },
+      {
+        "q": "Hai anh em muốn mời bà đến đâu?",
+        "options": [
+          "Nhà hàng",
+          "Nhà của họ",
+          "Trường học"
+        ],
+        "answer": 1,
+        "explain": "妹妹 rủ mời bà đến nhà."
+      },
+      {
+        "q": "Bà thích loại quả nào?",
+        "options": [
+          "Chuối",
+          "Cam",
+          "Táo"
+        ],
+        "answer": 2,
+        "explain": "哥哥 nói bà thích táo."
+      },
+      {
+        "q": "妹妹 đã mua gì rồi?",
+        "options": [
+          "Trà",
+          "Táo",
+          "Cơm"
+        ],
+        "answer": 1,
+        "explain": "妹妹 nói mình đã mua táo xong."
+      },
+      {
+        "q": "Bà nói sẽ đến lúc nào?",
+        "options": [
+          "Buổi trưa",
+          "Buổi tối",
+          "Buổi sáng"
+        ],
+        "answer": 0,
+        "explain": "哥哥 nói bà bảo sẽ đến vào buổi trưa."
+      }
+    ]
+  },
+  {
+    "id": "zh-d-h2-09",
+    "level": 2,
+    "order": 9,
+    "title": "Rủ bạn đi xem phim",
+    "titleZh": "星期天看电影",
+    "topic": "Kế hoạch cuối tuần",
+    "scene": "Hai người bạn sắp xếp đi xem phim và uống cà phê vào Chủ nhật.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "小林",
+        "zh": "星期天你有时间吗？",
+        "py": "Xīngqītiān nǐ yǒu shíjiān ma",
+        "vi": "Chủ nhật bạn có thời gian không?"
+      },
+      {
+        "who": "小雨",
+        "zh": "有啊，我现在没事。",
+        "py": "Yǒu a wǒ xiànzài méi shì",
+        "vi": "Có chứ, bây giờ tôi rảnh."
+      },
+      {
+        "who": "小林",
+        "zh": "我想请你去看电影。",
+        "py": "Wǒ xiǎng qǐng nǐ qù kàn diànyǐng",
+        "vi": "Tôi muốn mời bạn đi xem phim."
+      },
+      {
+        "who": "小雨",
+        "zh": "好啊，你想看电影，还是喝咖啡？",
+        "py": "Hǎo a nǐ xiǎng kàn diànyǐng háishi hē kāfēi",
+        "vi": "Được đấy, bạn muốn xem phim hay uống cà phê?"
+      },
+      {
+        "who": "小林",
+        "zh": "我想看电影，下午也想喝咖啡。",
+        "py": "Wǒ xiǎng kàn diànyǐng xiàwǔ yě xiǎng hē kāfēi",
+        "vi": "Tôi muốn xem phim, buổi chiều cũng muốn uống cà phê."
+      },
+      {
+        "who": "小雨",
+        "zh": "那我们坐公交车去电影院吧。",
+        "py": "Nà wǒmen zuò gōngjiāochē qù diànyǐngyuàn ba",
+        "vi": "Vậy chúng ta đi xe buýt đến rạp chiếu phim nhé."
+      },
+      {
+        "who": "小林",
+        "zh": "好，我现在就去买票。",
+        "py": "Hǎo wǒ xiànzài jiù qù mǎi piào",
+        "vi": "Được, bây giờ tôi đi mua vé luôn."
+      },
+      {
+        "who": "小雨",
+        "zh": "我在家等你，我们星期天见。",
+        "py": "Wǒ zài jiā děng nǐ wǒmen xīngqītiān jiàn",
+        "vi": "Tôi đợi bạn ở nhà, Chủ nhật gặp nhé."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "星期天",
+        "py": "xīngqītiān",
+        "vi": "Chủ nhật"
+      },
+      {
+        "zh": "有时间",
+        "py": "yǒu shíjiān",
+        "vi": "có thời gian"
+      },
+      {
+        "zh": "看电影",
+        "py": "kàn diànyǐng",
+        "vi": "xem phim"
+      },
+      {
+        "zh": "咖啡",
+        "py": "kāfēi",
+        "vi": "cà phê"
+      },
+      {
+        "zh": "公交车",
+        "py": "gōngjiāochē",
+        "vi": "xe buýt"
+      },
+      {
+        "zh": "买票",
+        "py": "mǎi piào",
+        "vi": "mua vé"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h2-09",
+      "zh-g-h2-14"
+    ],
+    "quiz": [
+      {
+        "q": "Họ hẹn nhau vào ngày nào?",
+        "options": [
+          "Thứ sáu",
+          "Thứ bảy",
+          "Chủ nhật"
+        ],
+        "answer": 2,
+        "explain": "Hai người nhắc đến 星期天 là Chủ nhật."
+      },
+      {
+        "q": "小林 mời 小雨 đi đâu?",
+        "options": [
+          "Đến cửa hàng",
+          "Đi xem phim",
+          "Đến trường"
+        ],
+        "answer": 1,
+        "explain": "小林 mời bạn đi xem phim."
+      },
+      {
+        "q": "小雨 hỏi 小林 muốn chọn hoạt động nào?",
+        "options": [
+          "Xem phim hay uống cà phê",
+          "Đi xe buýt hay đi bộ",
+          "Mua vé hay ở nhà"
+        ],
+        "answer": 0,
+        "explain": "小雨 hỏi muốn xem phim hay uống cà phê."
+      },
+      {
+        "q": "小林 muốn uống cà phê vào lúc nào?",
+        "options": [
+          "Buổi sáng",
+          "Buổi tối",
+          "Buổi chiều"
+        ],
+        "answer": 2,
+        "explain": "小林 nói buổi chiều cũng muốn uống cà phê."
+      },
+      {
+        "q": "Ai sẽ đi mua vé?",
+        "options": [
+          "小雨",
+          "小林",
+          "奶奶"
+        ],
+        "answer": 1,
+        "explain": "小林 nói mình sẽ đi mua vé."
+      }
+    ]
+  }
+]

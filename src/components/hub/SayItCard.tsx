@@ -69,7 +69,7 @@ export function SayItCard({ id, phrase, meaningVi }: { id: string; phrase: strin
   return (
     <View style={[GLASS_CARD, { padding: 16, gap: 10 }]} accessibilityLabel={`Nói theo: ${phrase}`}>
       <View style={{ gap: 2 }}>
-        <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>{phrase}</Text>
+        <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>{phrase}</Text>
         <Text style={{ color: HUB.body, fontSize: 13 }}>{meaningVi}</Text>
       </View>
 
@@ -100,7 +100,7 @@ export function SayItCard({ id, phrase, meaningVi }: { id: string; phrase: strin
           }}
         >
           <Icon name="mic" size={16} color="#fff" />
-          <Text style={{ color: '#fff', fontWeight: '800' }}>{listen.listening ? 'Dừng' : result ? 'Nói lại' : 'Ghi âm'}</Text>
+          <Text style={{ color: '#fff', fontWeight: '400' }}>{listen.listening ? 'Dừng' : result ? 'Nói lại' : 'Ghi âm'}</Text>
         </Pressable>
       </View>
 
@@ -111,7 +111,7 @@ export function SayItCard({ id, phrase, meaningVi }: { id: string; phrase: strin
       {result && pct !== null ? (
         <View style={{ gap: 8, paddingTop: 4 }}>
           <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
-            <Text style={{ color: toneOf(pct), fontSize: 24, fontWeight: '800' }}>{pct}%</Text>
+            <Text style={{ color: toneOf(pct), fontSize: 24, fontWeight: '400' }}>{pct}%</Text>
             <Text style={{ color: toneOf(pct), fontSize: 13, fontWeight: '700' }}>
               {passed ? 'Đạt' : pct >= 60 ? 'Gần đạt' : 'Thử lại'}
             </Text>

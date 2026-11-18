@@ -40,7 +40,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/review\/[^/]+$/,
 
   // Luyện câu: dịch câu và chép chính tả.
-  /^\/sentence\/(translate|dictation|youtube)$/,
+  /^\/sentence\/(translate|dictation|youtube|express|paragraph|essay|mix)$/,
   // Đọc theo một bài VOA và phòng đấu 1–1: có micro / đồng hồ, không mời rẽ ngang.
   /^\/shadow\/[^/]+$/,
   /^\/duel\/[^/]+$/,
@@ -53,7 +53,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   // Từ vựng theo chủ đề — đây là màn học thẻ, không phải màn duyệt.
   /^\/vocabulary\/topic\/[^/]+$/,
   // Các màn học một bộ từ: Học, Nghe chép, Điền câu, Phát âm, Kiểm tra, Bóng bay, và ba game ôn tập.
-  /^\/vocabulary\/topic\/[^/]+\/(learn|quiz|dictation|cloze|speak|test|game|pairs|hangman|sentence)$/,
+  /^\/vocabulary\/topic\/[^/]+\/(learn|quiz|abcd|dictation|cloze|speak|test|game|pairs|hangman|sentence)$/,
   // Quiz ôn từ SAT (một chủ đề, một mức).
   /^\/vocabulary\/sat-quiz\/[^/]+$/,
 
@@ -79,7 +79,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
  * nền chàm kẻ ô như màn Đọc song ngữ — người dùng chọn nền này cho phần học từ
  * vựng (24/09/2026). AppShell vẽ nền, `StudyFrame` đổi chữ ngoài thẻ sang màu sáng.
  */
-const VOCAB_STUDY = /^\/vocabulary\/(topic\/[^/]+\/(learn|quiz|dictation|cloze|speak|test|game|pairs|hangman|sentence)|sat-quiz\/[^/]+)$/;
+const VOCAB_STUDY = /^\/vocabulary\/(topic\/[^/]+\/(learn|quiz|abcd|dictation|cloze|speak|test|game|pairs|hangman|sentence)|sat-quiz\/[^/]+)$/;
 
 /**
  * Màn KHÔNG bật "bôi đen là tra": màn làm đề (tra được là lộ đáp án) và màn đọc
@@ -106,7 +106,7 @@ export function isLookupBlocked(pathname: string): boolean {
 }
 
 /** Màn luyện câu có nền cá nhân hoá (cảnh bay, cảnh thành phố, tranh…; tông sáng): chép chính tả, dịch câu, nghe chép, chép theo video. */
-const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate|listen|youtube)$/;
+const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate|listen|youtube|express|paragraph|essay|mix)$/;
 
 /** Màn có nền cảnh bay: ôn từ vựng (tông tối) + luyện câu (tông sáng). */
 export function isTravelRoute(pathname: string): boolean {

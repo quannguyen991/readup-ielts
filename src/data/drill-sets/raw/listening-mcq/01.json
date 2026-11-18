@@ -1,0 +1,227 @@
+{
+ "title": "Origins and Evolution of Chess",
+ "topic": "the origins of chess (set 1)",
+ "context": "Narrator: You will hear a student talking to a museum curator about a lecture on the history of chess, followed by the lecture itself.\nMarcus: Excuse me, Dr Vance? I was looking for the special showcase on ancient board games. The brochure mentioned Gallery One, but the staff redirected me from the main atrium to Gallery Three on the mezzanine floor.\nDr Vance: Yes, Gallery Three is indeed where the boards are set up. Gallery One is undergoing ceiling repairs, and the atrium is only holding our reception desk.\nMarcus: Fantastic. My dissertation actually focuses on cultural migration routes, though I originally considered game design before exploring military history.\nDr Vance: That fits perfectly with our timeline today. Now, the introductory talk was scheduled for two fifteen, but because the audio technician was delayed, we pushed it back to two thirty, and we will finally commence at two forty-five sharp.\nMarcus: Good to know. Do I need to present a ticket receipt at the door?\nDr Vance: No, receipts are only for the workshop. Everyone must show their student identity card to the assistant, although visitors without one can scan a digital badge.\nMarcus: Understood. Could I grab a printed floor plan from your desk?\nDr Vance: Of course. Most people take the audio headset, and the exhibition booklet is behind the counter, but the printed floor plan is right here.\nMarcus: Thank you! I will take a seat.\nDr Vance: Welcome, everyone. Today we trace the extraordinary lineage of chess. Most historians agree that the definitive ancestor of modern chess is the ancient game of chaturanga, which emerged in northern India during the sixth century Gupta Empire. Some popular guidebooks claim it signifies the four administrative branches of government or the four seasons, but chaturanga translates literally as four divisions of the military, representing infantry, cavalry, chariots, and war elephants.\nInterestingly, some early variants of board games in the subcontinent utilized dice, primarily for determining which piece to move on a player's turn, rather than dictating movement distance or settling who played first.\nChaturanga traveled along trade corridors to Persia during the reign of King Khosrow the First, where it evolved into shatranj. Although some believed it arrived only after the Islamic conquest, records confirm Khosrow welcomed the game. The Persians embraced it as an aristocratic educational tool. It is also from this era that we derive the phrase checkmate, which stems from the Persian expression shah mat. In Old Persian this meant the king is helpless, though later European translations mistakenly assumed it signified the king is dead or the king is captured.\nFollowing the Islamic conquest of Persia, shatranj expanded across North Africa and penetrated Europe primarily via Moorish Spain, rather than through Byzantine diplomacy or Italian merchant fleets.\nBy the twelfth century, chess was firmly embedded across northern Europe. A spectacular archaeological testament to this period is the Isle of Lewis chessmen, uncovered in Scotland. These exquisite pieces were carved almost entirely from walrus ivory, rather than whale bone or local soapstone. Observers are often struck by the warders, equivalent to modern rooks, depicted biting their shields in a state of frenzied ferocity, rather than brandishing swords or holding banners.\nDuring the late medieval era, chess underwent radical mechanical transformations. The weakest piece on the old Persian board, the vizier or counselor, was gradually transformed into the queen. In the late fifteenth century, the queen's powers were dramatically amplified, largely to speed up gameplay, which contemporary players felt had grown painfully sluggish, although popular mythology attributes this shift entirely to honoring Queen Isabella of Castile or courtly love poetry.\nSimultaneously, the pawn gained the option of advancing two squares on its initial move to accelerate early combat, whereas earlier rules restricted it to moving one square or advancing only after capture. Other pieces underwent cultural assimilation: the elephant or alfil, having no role in western warfare, transformed into the bishop, while the Persian rukh, originally an armored chariot, was reinterpreted visually as a fortified tower or castle.\nBy the nineteenth century, international competitive play flourished. The landmark London tournament of eighteen fifty-one exposed the problem of prolonged games, prompting experiments in Paris and Berlin, and ultimately leading to modern standardized timers.\nBefore we conclude, I urge you to inspect the Persian manuscript in Cabinet Four; while the Samarkand wooden board attracts crowds and the bone dice are intriguing, that manuscript offers our rarest glimpse into early tactical treatises.",
+ "questions": [
+  {
+   "prompt": "Where is the ancient board games exhibition currently located?",
+   "options": [
+    "Gallery One",
+    "Gallery Three",
+    "the main atrium"
+   ],
+   "answer": "Gallery Three",
+   "why": "Dr Vance xác nhận các bàn cờ được trưng bày tại Gallery Three. Gallery One đang sửa chữa trần nhà, còn tiền sảnh chính (main atrium) chỉ đặt bàn lễ tân.",
+   "quote": "Gallery Three is indeed where the boards are set up."
+  },
+  {
+   "prompt": "What is the main subject of Marcus's academic dissertation?",
+   "options": [
+    "cultural migration routes",
+    "game design",
+    "military history"
+   ],
+   "answer": "cultural migration routes",
+   "why": "Marcus giải thích luận văn của mình nghiên cứu về các tuyến di cư văn hóa (cultural migration routes). Thiết kế trò chơi chỉ là ý định ban đầu và lịch sử quân sự là chủ đề anh từng tìm hiểu trước đó.",
+   "quote": "My dissertation actually focuses on cultural migration routes"
+  },
+  {
+   "prompt": "What time will the introductory lecture begin today?",
+   "options": [
+    "two fifteen",
+    "two thirty",
+    "two forty-five"
+   ],
+   "answer": "two forty-five",
+   "why": "Buổi nói chuyện ban đầu xếp lịch lúc 2:15, sau đó lùi lại 2:30 và cuối cùng chính thức bắt đầu lúc 2:45 do kỹ thuật viên âm thanh đến muộn.",
+   "quote": "we will finally commence at two forty-five sharp."
+  },
+  {
+   "prompt": "What must participants show to enter the introductory talk?",
+   "options": [
+    "a digital badge",
+    "a student identity card",
+    "a ticket receipt"
+   ],
+   "answer": "a student identity card",
+   "why": "Tất cả người tham dự phải trình thẻ sinh viên (student identity card) cho trợ lý. Biên lai vé chỉ dành cho buổi workshop, còn huy hiệu số chỉ dành cho khách vãng lai không có thẻ.",
+   "quote": "Everyone must show their student identity card to the assistant"
+  },
+  {
+   "prompt": "Which resource does Marcus take from the counter?",
+   "options": [
+    "an audio headset",
+    "an exhibition booklet",
+    "a printed floor plan"
+   ],
+   "answer": "a printed floor plan",
+   "why": "Marcus xin và nhận được sơ đồ in sẵn (printed floor plan) ngay tại bàn. Tai nghe thuyết minh là vật dụng đa số khách mượn, còn sách hướng dẫn được cất sau quầy.",
+   "quote": "the printed floor plan is right here."
+  },
+  {
+   "prompt": "Historians identify which game as the earliest true ancestor of chess?",
+   "options": [
+    "chaturanga",
+    "shatranj",
+    "alfil"
+   ],
+   "answer": "chaturanga",
+   "why": "Diễn giả nêu rõ trò chơi chaturanga từ thời kỳ Gupta ở Ấn Độ là tổ tiên xác thực của cờ vua hiện đại. Shatranj là biến thể sau này tại Ba Tư.",
+   "quote": "the definitive ancestor of modern chess is the ancient game of chaturanga"
+  },
+  {
+   "prompt": "The literal translation of the word 'chaturanga' refers to",
+   "options": [
+    "four administrative branches of government",
+    "four divisions of the military",
+    "the four seasons"
+   ],
+   "answer": "four divisions of the military",
+   "why": "Chaturanga dịch sát nghĩa là bốn binh chủng quân sự (bộ binh, kỵ binh, chiến xa, tượng binh). Bốn nhánh chính quyền và bốn mùa là những quan niệm sai lệch trong sách hướng dẫn.",
+   "quote": "chaturanga translates literally as four divisions of the military"
+  },
+  {
+   "prompt": "In early Indian versions of board games, dice served to",
+   "options": [
+    "determine which piece to move",
+    "dictate movement distance",
+    "settle who played first"
+   ],
+   "answer": "determine which piece to move",
+   "why": "Xúc xắc thời xưa được dùng để chọn xem quân cờ nào được phép đi trong lượt. Diễn giả nhấn mạnh nó không dùng để tính khoảng cách đi hay quyết định quyền đi trước.",
+   "quote": "primarily for determining which piece to move on a player's turn"
+  },
+  {
+   "prompt": "According to historical records, chess was introduced to Persia",
+   "options": [
+    "during the era of Queen Isabella of Castile",
+    "during the reign of King Khosrow the First",
+    "only after the Islamic conquest"
+   ],
+   "answer": "during the reign of King Khosrow the First",
+   "why": "Sử liệu ghi nhận cờ truyền vào Ba Tư dưới thời trị vì của vua Khosrow Đệ Nhất. Giả thuyết cờ chỉ xuất hiện sau cuộc xâm lược của Hồi giáo là nhận định cũ đã bị đính chính.",
+   "quote": "Chaturanga traveled along trade corridors to Persia during the reign of King Khosrow the First"
+  },
+  {
+   "prompt": "The original Persian term 'shah mat' meant that the king",
+   "options": [
+    "is dead",
+    "is captured",
+    "is helpless"
+   ],
+   "answer": "is helpless",
+   "why": "Trong tiếng Ba Tư cổ, cụm từ 'shah mat' có nghĩa là nhà vua rơi vào cảnh bất lực (the king is helpless). Quan niệm cho rằng nhà vua đã chết hoặc bị bắt là do các bản dịch châu Âu sau này hiểu lầm.",
+   "quote": "In Old Persian this meant the king is helpless"
+  },
+  {
+   "prompt": "Chess initially entered continental Europe primarily through",
+   "options": [
+    "Moorish Spain",
+    "Byzantine diplomacy",
+    "Italian merchant fleets"
+   ],
+   "answer": "Moorish Spain",
+   "why": "Cờ vua xâm nhập châu Âu chủ yếu thông qua Tây Ban Nha thời Moorish, chứ không phải qua quan hệ ngoại giao Byzantine hay tàu buôn của các thương gia Ý.",
+   "quote": "penetrated Europe primarily via Moorish Spain, rather than through Byzantine diplomacy or Italian merchant fleets."
+  },
+  {
+   "prompt": "What were the Isle of Lewis chess pieces carved from?",
+   "options": [
+    "whale bone",
+    "walrus ivory",
+    "local soapstone"
+   ],
+   "answer": "walrus ivory",
+   "why": "Các quân cờ đảo Lewis nổi tiếng được tạc gần như hoàn toàn từ ngà hải mã (walrus ivory), bác bỏ giả thuyết cũ về xương cá voi hoặc đá xà phòng địa phương.",
+   "quote": "carved almost entirely from walrus ivory, rather than whale bone or local soapstone."
+  },
+  {
+   "prompt": "The warder pieces in the Lewis collection are famously depicted",
+   "options": [
+    "brandishing swords",
+    "holding banners",
+    "biting their shields"
+   ],
+   "answer": "biting their shields",
+   "why": "Quân warder (tương đương quân xe) gây ấn tượng vì hình ảnh cắn khiên trong trạng thái hung tợn, thay vì cầm cờ hay vung gươm.",
+   "quote": "depicted biting their shields in a state of frenzied ferocity"
+  },
+  {
+   "prompt": "Which piece did the Persian vizier or counselor evolve into in Europe?",
+   "options": [
+    "the queen",
+    "the bishop",
+    "the rook"
+   ],
+   "answer": "the queen",
+   "why": "Quân cờ vizier (vị cố vấn) trên bàn cờ Ba Tư ban đầu rất yếu, sau đó dần chuyển hóa thành quân hậu (the queen) trong cờ vua châu Âu.",
+   "quote": "The weakest piece on the old Persian board, the vizier or counselor, was gradually transformed into the queen."
+  },
+  {
+   "prompt": "The movement of the queen was greatly expanded in the fifteenth century to",
+   "options": [
+    "honor Queen Isabella of Castile",
+    "speed up gameplay",
+    "reflect courtly love poetry"
+   ],
+   "answer": "speed up gameplay",
+   "why": "Quyền năng của quân hậu được mở rộng chủ yếu nhằm đẩy nhanh tốc độ ván đấu vốn quá chậm chạp. Việc vinh danh Nữ hoàng Isabella hay thi ca cung đình chỉ là truyền thuyết dân gian.",
+   "quote": "largely to speed up gameplay, which contemporary players felt had grown painfully sluggish"
+  },
+  {
+   "prompt": "What modern rule for pawns was introduced during the late medieval period?",
+   "options": [
+    "moving one square at all times",
+    "advancing only after capture",
+    "advancing two squares on its initial move"
+   ],
+   "answer": "advancing two squares on its initial move",
+   "why": "Quy tắc mới cho phép quân tốt đi hai ô trong nước đi đầu tiên để đẩy nhanh giao tranh, thay thế các luật cũ chỉ cho đi một ô hoặc chỉ tiến sau khi ăn quân.",
+   "quote": "the pawn gained the option of advancing two squares on its initial move"
+  },
+  {
+   "prompt": "In early Indian and Persian games, the bishop was represented by",
+   "options": [
+    "an elephant",
+    "an armored chariot",
+    "a fortified tower"
+   ],
+   "answer": "an elephant",
+   "why": "Quân tượng (bishop) có nguồn gốc từ quân voi (elephant/alfil). Cỗ chiến xa bọc giáp và tháp canh là tiền thân của quân xe (rook).",
+   "quote": "the elephant or alfil, having no role in western warfare, transformed into the bishop"
+  },
+  {
+   "prompt": "The Persian piece 'rukh', which became the rook, originally portrayed",
+   "options": [
+    "a fortified tower",
+    "an armored chariot",
+    "a war elephant"
+   ],
+   "answer": "an armored chariot",
+   "why": "Quân rukh trong tiếng Ba Tư nguyên gốc tượng trưng cho chiến xa bọc giáp (an armored chariot), sau này mới được người châu Âu hình dung lại thành tháp canh lâu đài.",
+   "quote": "the Persian rukh, originally an armored chariot, was reinterpreted visually as a fortified tower or castle."
+  },
+  {
+   "prompt": "Which city hosted the tournament that highlighted the need for chess clocks?",
+   "options": [
+    "Paris",
+    "Berlin",
+    "London"
+   ],
+   "answer": "London",
+   "why": "Giải đấu tại London năm 1851 làm phát sinh nhu cầu khống chế thời gian do các ván đấu quá dài, mở đường cho các thử nghiệm ở Paris, Berlin và sự ra đời của đồng hồ cờ vua chuẩn hóa.",
+   "quote": "The landmark London tournament of eighteen fifty-one exposed the problem of prolonged games"
+  },
+  {
+   "prompt": "At the end of the lecture, Dr Vance strongly advises students to view",
+   "options": [
+    "the Persian manuscript",
+    "the Samarkand wooden board",
+    "the bone dice"
+   ],
+   "answer": "the Persian manuscript",
+   "why": "Dr Vance khuyến khích người nghe xem bản thảo Ba Tư tại Tủ 4 vì tài liệu này hé lộ chiến thuật cổ xưa hiếm có. Bàn cờ Samarkand và các con xúc xắc xương chỉ là những hiện vật thu hút đám đông.",
+   "quote": "I urge you to inspect the Persian manuscript in Cabinet Four"
+  }
+ ]
+}

@@ -1,4 +1,3 @@
-import { HeroShell } from '@/components/layout/HeroShell';
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -7,9 +6,9 @@ import { BarChart, DonutChart, Heatmap, HorizontalBars, LineChart } from '@/comp
 import { Grid } from '@/components/layout/Grid';
 import { useNow } from '@/lib/clock';
 import { Screen } from '@/components/layout/Screen';
-import { LinearGradient } from 'expo-linear-gradient';
 
-import { LionMascot, type LionPose } from '@/components/mascot/LionMascot';
+import { NeonWindow, PixelText } from '@/components/neon/Neon';
+import { ProgressHero } from '@/components/progress/ProgressHero';
 import {
   Badge,
   Button,
@@ -23,7 +22,6 @@ import {
 import { filterArticles, getArticleWithBody, loadArticleWithBody } from '@/data/articles';
 import { ActivityList } from '@/components/progress/ActivityList';
 import { StreakRewardsCard } from '@/components/progress/StreakRewardsCard';
-import { StreakFlame } from '@/components/gamify/StreakFlame';
 import { BadgeShelf } from '@/components/gamify/BadgeShelf';
 import { useActivityFeed } from '@/services/activity/use-activity';
 import { isActiveDay } from '@/services/gamification/points';
@@ -61,17 +59,15 @@ function MathProgressCard() {
   const domains = (Object.keys(domainStats) as MathDomain[]).filter((d) => domainStats[d].total > 0);
 
   return (
-    <Card className="mt-4">
-      <SectionHeader
-        title="SAT Math"
-        subtitle={L(`${totals.questions} câu đã làm · đúng ${totals.correct}`, `${totals.questions} questions done · ${totals.correct} correct`)}
-        icon="grid"
-        iconTone="accent"
-        action={{ label: L('Mở module', 'Open module'), onPress: () => router.push('/math' as never) }}
-      />
+    <NeonWindow title="SAT Math" icon="gamepad" badge={`${totals.correct}/${totals.questions}`} style={{ marginTop: 16 }}>
+      <Pressable accessibilityRole="link" onPress={() => router.push('/math' as never)} className="self-start">
+        <Text className="font-strong text-label" style={{ color: '#2A22B5' }}>
+          {L('Mở module →', 'Open module →')}
+        </Text>
+      </Pressable>
 
       <View className="mt-4 flex-row flex-wrap gap-6">
-        <View className="min-w-[260px] flex-1 gap-3">
+        <View className="w-full flex-1 gap-3 lg:min-w-[260px]">
           <Text className="font-mid text-label text-muted">{L('Theo domain', 'By domain')}</Text>
           {domains.map((domain) => (
             <View key={domain}>
@@ -92,7 +88,7 @@ function MathProgressCard() {
           ))}
         </View>
 
-        <View className="min-w-[260px] flex-1 gap-2">
+        <View className="w-full flex-1 gap-2 lg:min-w-[260px]">
           <Text className="font-mid text-label text-muted">{L('Lỗi hay mắc nhất', 'Most common mistakes')}</Text>
           {errorTags.length === 0 ? (
             <Text className="font-sans text-body text-muted">
@@ -108,7 +104,7 @@ function MathProgressCard() {
           )}
         </View>
       </View>
-    </Card>
+    </NeonWindow>
   );
 }
 
@@ -210,76 +206,31 @@ export default function ProgressScreen() {
   const rangeLabel = (r: 7 | 30 | 90) => (r === 7 ? L('Tuần', 'Week') : r === 30 ? L('Tháng', 'Month') : L('3 tháng', '3 months'));
   const weekdays = en ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
   const weekdayOf = (date: string) => weekdays[new Date(`${date}T00:00:00`).getDay()] ?? date.slice(5);
-  // Linh vật theo chuỗi thật: chuỗi từ 3 ngày thì mừng, đang có chuỗi thì vẫy, chưa có thì đọc sách mời học.
-  const lionPose: LionPose = streak.current >= 3 ? 'cheer' : streak.current > 0 ? 'wave' : 'read';
+
+  const indigo = '#2A22B5';
+  const goalLabel = goal.state === 'no-goal' ? L('Đặt mục tiêu', 'Set goal') : `IELTS ${goal.target.toFixed(1)}`;
+  const goalSubtitle =
+    goal.state === 'no-goal'
+      ? L('Chưa đặt band mục tiêu', 'No target band yet')
+      : goal.state === 'no-score'
+        ? L('Chưa có bài chấm band', 'No band score yet')
+        : goal.state === 'reached'
+          ? L(`Đã đạt · hiện tại ${formatBand(goal.current)}`, `Reached · now ${formatBand(goal.current)}`)
+          : L(`${formatBand(goal.start)} → ${formatBand(goal.current)} · còn ${goal.left.toFixed(1)}`, `${formatBand(goal.start)} → ${formatBand(goal.current)} · ${goal.left.toFixed(1)} to go`);
 
   return (
     <Screen>
-      {/* Đầu trang: lời chào, linh vật, mục tiêu. Số liệu chi tiết nằm ở phần "Chi tiết" bên dưới. */}
-      <View className="flex-row items-center justify-between">
-        <Text className="font-heavy text-hero text-ink">{L('Tiến độ của bạn', 'Your progress')}</Text>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={L('Mở kế hoạch học', 'Open study plan')}
-          onPress={() => router.push('/plan' as never)}
-          className="h-11 w-11 items-center justify-center rounded-pill border border-border bg-white"
-        >
-          <Icon name="calendar" size={20} color={color.ink} />
-        </Pressable>
-      </View>
-
-      {/*
-        Thẻ đầu trang: linh vật đổi theo chuỗi ngày thật (chuỗi dài thì vui, chưa có chuỗi
-        thì mời học). Chấm 7 ngày gần nhất cho thấy nhịp học đều hay đứt quãng.
-      */}
-      <HeroShell radius={24} style={{ marginTop: 16, padding: 20 }}>
-        <View className="flex-row items-center gap-4">
-          <LionMascot pose={lionPose} size={104} />
-          <View className="min-w-0 flex-1 gap-1">
-            <Text numberOfLines={1} className="font-strong text-cardTitle text-ink">
-              {displayName || L('Bạn', 'You')}
-            </Text>
-            <View className="flex-row items-end gap-1.5">
-              <StreakFlame days={streak.current} size={34} />
-              <Text className="font-heavy text-stat text-ink">{streak.current}</Text>
-              <Text className="pb-1 font-mid text-label text-body">{L('ngày liên tiếp', 'day streak')}</Text>
-            </View>
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => router.push('/plan' as never)}
-              className="mt-1 self-start rounded-pill px-3 py-1.5"
-              style={{ backgroundColor: 'rgba(255,255,255,0.75)' }}
-            >
-              <Text className="font-semi text-label" style={{ color: themedHex('#6A4BD9') }}>
-                {goal.state === 'no-goal' ? L('Đặt mục tiêu', 'Set a goal') : L(`Mục tiêu IELTS ${goal.target.toFixed(1)}`, `IELTS goal ${goal.target.toFixed(1)}`)}
-              </Text>
-            </Pressable>
-          </View>
-        </View>
-
-        <View className="mt-4 flex-row gap-2">
-          {recentDays.slice(-7).map((d) => (
-            <View key={d.date} className="flex-1 items-center gap-1.5">
-              <View
-                accessibilityLabel={isActiveDay(d) ? L('Có học', 'Studied') : L('Chưa học', 'Not studied')}
-                className="h-8 w-8 items-center justify-center rounded-pill"
-                style={{ backgroundColor: isActiveDay(d) ? themedHex('#D9A441') : 'rgba(255,255,255,0.75)' }}
-              >
-                {isActiveDay(d) ? <Icon name="check" size={14} color="#FFFFFF" strokeWidth={2.6} /> : null}
-              </View>
-              <Text className="font-mid text-label text-muted">{weekdayOf(d.date)}</Text>
-            </View>
-          ))}
-        </View>
-      </HeroShell>
+      <ProgressHero
+        current={streak.current}
+        longest={streak.longest}
+        goalLabel={goalLabel}
+        days={recentDays.slice(-7).map((d) => ({ date: d.date, label: weekdayOf(d.date), studied: isActiveDay(d) }))}
+      />
 
       <StreakRewardsCard current={streak.current} longest={streak.longest} />
       <BadgeShelf />
 
-      <View
-        accessibilityRole="tablist"
-        className="mt-5 flex-row rounded-pill border border-border bg-white p-1"
-      >
+      <View accessibilityRole="tablist" style={{ marginTop: 20, flexDirection: 'row', gap: 8 }}>
         {([7, 30, 90] as const).map((r) => {
           const on = range === r;
           return (
@@ -288,116 +239,28 @@ export default function ProgressScreen() {
               accessibilityRole="tab"
               aria-selected={on}
               onPress={() => setRange(r)}
-              className="flex-1 items-center rounded-pill py-2"
-              style={on ? { backgroundColor: themedHex('#F1ECFF'), borderWidth: 1, borderColor: themedHex('#8B6CF0') } : undefined}
+              style={{ flex: 1, minHeight: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 22, borderWidth: 2, borderColor: indigo, backgroundColor: on ? indigo : '#FFFFFF', ...(on ? {} : ({ boxShadow: '0 3px 0 rgba(42,34,181,0.3)' } as object)) }}
             >
-              <Text className={on ? 'font-strong text-label' : 'font-mid text-label text-muted'} style={on ? { color: themedHex('#6A4BD9') } : undefined}>
+              <PixelText size={21} color={on ? '#FFFFFF' : indigo}>
                 {rangeLabel(r)}
-              </Text>
+              </PixelText>
             </Pressable>
           );
         })}
       </View>
 
-      <Card className="mt-4">
-        <View className="flex-row items-center justify-between">
-          <Text className="font-strong text-cardTitle text-ink">{L('Thời gian học', 'Study time')}</Text>
-          <Text className="font-mid text-label text-muted">{rangeLabel(range)}</Text>
-        </View>
-        <Text className="mt-2 font-heavy text-hero text-ink">{formatStudyTime(totalMinutes, en)}</Text>
+      <NeonWindow title={L('Thời gian học', 'Study time')} icon="clock" badge={rangeLabel(range)} style={{ marginTop: 16 }}>
+        <Text className="font-heavy text-hero text-ink">{formatStudyTime(totalMinutes, en)}</Text>
         <WeekBars
           days={recentDays.slice(-7).map((d) => ({ label: weekdayOf(d.date), minutes: d.minutes }))}
-          emptyLabel={L('Chưa có ngày học trong khoảng này', 'No study days in this range yet')}
+          emptyLabel={L('Chưa có ngày học', 'No study days yet')}
         />
-      </Card>
+      </NeonWindow>
 
-      <View className="mt-4 flex-row gap-3">
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => router.push('/vocabulary' as never)}
-          className="flex-1 gap-3 rounded-card border border-border bg-white p-4"
-        >
-          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: themedHex('#F1ECFF') }}>
-            <Icon name="book" size={18} color={themedHex('#6A4BD9')} />
-          </View>
-          <View>
-            <Text className="font-heavy text-stat text-ink">{words}</Text>
-            <Text className="font-mid text-label text-muted">{L('từ đã nhớ', 'words saved')}</Text>
-          </View>
-        </Pressable>
-        <View className="flex-1 gap-3 rounded-card border border-border bg-white p-4">
-          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F3F0FB' }}>
-            <Icon name="flame" size={18} color="#6A4BD9" />
-          </View>
-          <View>
-            <Text className="font-heavy text-stat text-ink">{streak.longest}</Text>
-            <Text className="font-mid text-label text-muted">{L('chuỗi dài nhất (ngày)', 'longest streak (days)')}</Text>
-          </View>
-        </View>
-      </View>
-
-      <Card className="mt-4">
-        <View className="flex-row items-center justify-between">
-          <Text className="font-strong text-cardTitle text-ink">{L('Kỹ năng', 'Skills')}</Text>
-          <Text className="font-mid text-label text-muted">{L('Theo dạng câu', 'By question type')}</Text>
-        </View>
-        <View className="mt-3">
-          {accuracyByType.length === 0 ? (
-            <Text className="py-4 font-sans text-body text-muted">
-              {L('Làm thử một bài để thấy điểm mạnh yếu.', 'Do a test to see your strengths and weaknesses.')}
-            </Text>
-          ) : (
-            <HorizontalBars
-              data={accuracyByType.slice(0, 4).map((row, i) => ({
-                label: QUESTION_TYPE_LABEL[row.type],
-                percent: row.percent,
-                tone: chartPalette[i % chartPalette.length],
-              }))}
-            />
-          )}
-        </View>
-      </Card>
-
-      <Pressable
-        accessibilityRole="button"
-        onPress={() => router.push('/plan' as never)}
-        className="mt-4 h-12 flex-row items-center justify-center gap-2 rounded-pill border bg-white"
-        style={{ borderColor: themedHex('#8B6CF0') }}
-      >
-        <Text className="font-strong text-body" style={{ color: themedHex('#6A4BD9') }}>
-          {L('Điều chỉnh mục tiêu', 'Adjust goal')}
-        </Text>
-        <Icon name="chevron-right" size={16} color={themedHex('#6A4BD9')} />
-      </Pressable>
-
-      <Text className="mt-8 font-strong text-cardTitle text-ink">{L('Chi tiết', 'Details')}</Text>
-
-      <Card className="mt-3">
-        <SectionHeader
-          title={L('Mục tiêu band', 'Band goal')}
-          subtitle={
-            goal.state === 'no-goal'
-              ? L('Chưa đặt band mục tiêu', 'No target band yet')
-              : goal.state === 'no-score'
-                ? L('Chưa có bài chấm band', 'No band score yet')
-                : goal.state === 'reached'
-                  ? L(`Đã đạt · band hiện tại ${formatBand(goal.current)}`, `Reached · current band ${formatBand(goal.current)}`)
-                  : L(`${formatBand(goal.start)} → ${formatBand(goal.current)} · còn ${goal.left.toFixed(1)} band`, `${formatBand(goal.start)} → ${formatBand(goal.current)} · ${goal.left.toFixed(1)} band to go`)
-          }
-          icon="target"
-          iconTone="accent"
-        />
-        {goal.state === 'no-goal' ? (
-          <Button className="mt-3 self-start" label={L('Đặt mục tiêu', 'Set a goal')} onPress={() => router.push('/plan' as never)} />
-        ) : (
-          <ProgressBar value={goal.state === 'no-score' ? 0 : goal.pct} className="mt-3" />
-        )}
-      </Card>
-
-      <View className="mt-4">
-        <Grid columns={5} tabletColumns={2} mobileColumns={1}>
+      <View style={{ marginTop: 16 }}>
+        <Grid columns={4} tabletColumns={2} mobileColumns={2}>
           <StatCard
-            label="Current Band Estimate"
+            label={L('Band ước tính', 'Band estimate')}
             value={formatBand(currentBand)}
             icon="trending"
             tone="primary"
@@ -406,118 +269,71 @@ export default function ProgressScreen() {
               currentBand == null
                 ? undefined
                 : currentBand >= 6.5
-                  ? { label: 'Good', tone: 'success' }
+                  ? { label: L('Tốt', 'Good'), tone: 'success' }
                   : { label: L('Đang lên', 'Improving'), tone: 'warning' }
             }
           />
           <StatCard
-            label="Study Time"
-            value={formatMinutes(totalMinutes)}
-            icon="clock"
-            tone="accent"
-            caption={L(`${range} ngày gần nhất`, `Last ${range} days`)}
-          />
-          <StatCard
-            label="Reading Speed"
-            value={avgWpm > 0 ? String(avgWpm) : '—'}
-            unit="words/min"
-            icon="gauge"
-            tone="info"
-          />
-          <StatCard
-            label="Accuracy"
+            label={L('Chính xác', 'Accuracy')}
             value={inRange.length === 0 ? '—' : `${accuracy}`}
             unit={inRange.length === 0 ? undefined : '%'}
             icon="target"
             tone="success"
-            caption={L(`${inRange.length} lượt làm bài`, `${inRange.length} attempts`)}
+            caption={L(`${inRange.length} lượt`, `${inRange.length} attempts`)}
           />
-          <StatCard
-            label="Current Streak"
-            value={String(streak.current)}
-            unit="days"
-            icon="flame"
-            tone="warning"
-            caption={L(`Dài nhất: ${streak.longest} ngày`, `Longest: ${streak.longest} days`)}
-          />
+          <StatCard label={L('Tốc độ đọc', 'Reading speed')} value={avgWpm > 0 ? String(avgWpm) : '—'} unit={L('từ/phút', 'wpm')} icon="gauge" tone="info" />
+          <StatCard label={L('Từ đã lưu', 'Words saved')} value={String(words)} icon="book" tone="accent" />
         </Grid>
       </View>
 
-      <View className="mt-4 flex-row flex-wrap gap-4">
-        <View className="min-w-[320px] flex-[3]">
-          <Card>
-            <SectionHeader title="Band Score Progress" icon="trending" hint />
-            <View className="mt-3">
-              <LineChart
-                data={bandSeries}
-                yMin={4}
-                yMax={9}
-                formatY={(v) => v.toFixed(1)}
-                height={220}
-              />
-            </View>
+      <NeonWindow title={L('Kỹ năng', 'Skills')} icon="gem" style={{ marginTop: 16 }}>
+        {accuracyByType.length === 0 ? (
+          <Text className="py-2 font-sans text-body text-muted">{L('Làm một bài để thấy điểm mạnh yếu.', 'Do a test to see your strengths.')}</Text>
+        ) : (
+          <HorizontalBars
+            data={accuracyByType.map((row, i) => ({
+              label: QUESTION_TYPE_LABEL[row.type],
+              percent: row.percent,
+              tone: chartPalette[i % chartPalette.length],
+            }))}
+          />
+        )}
+        {weakest ? (
+          <View className="mt-4 flex-row flex-wrap items-center gap-3 rounded-panel bg-danger-soft p-3">
+            <Text className="min-w-0 flex-1 font-semi text-body text-danger-ink">
+              {L('Yếu nhất', 'Weakest')}: {QUESTION_TYPE_LABEL[weakest.type]} ({weakest.percent}%)
+            </Text>
+            <Button label={L('Luyện ngay', 'Practise')} size="sm" iconRight="arrow-right" onPress={() => void practiceWeakest()} />
+          </View>
+        ) : null}
+      </NeonWindow>
 
-            <View className="mt-3 flex-row justify-between rounded-panel bg-surfaceAlt px-4 py-3">
-              <View>
-                <Text className="font-mid text-label text-muted">Initial Band</Text>
-                <Text className="font-strong text-cardTitle text-ink">
-                  {formatBand(initialBand)}
-                </Text>
-              </View>
-              <View className="items-end">
-                <Text className="font-mid text-label text-muted">Best Band</Text>
-                <Text className="font-strong text-cardTitle text-ink">
-                  {formatBand(bestBand)}
-                </Text>
-              </View>
-            </View>
-          </Card>
+      <NeonWindow title={L('Mục tiêu band', 'Band goal')} icon="medal" badge={goal.state === 'no-goal' ? undefined : goal.target.toFixed(1)} style={{ marginTop: 16 }}>
+        <Text className="font-sans text-label text-muted">{goalSubtitle}</Text>
+        {goal.state === 'no-goal' ? (
+          <Button className="mt-3 self-start" label={L('Đặt mục tiêu', 'Set a goal')} onPress={() => router.push('/plan' as never)} />
+        ) : (
+          <ProgressBar value={goal.state === 'no-score' ? 0 : goal.pct} className="mt-3" />
+        )}
+        <View className="mt-4">
+          <LineChart data={bandSeries} yMin={4} yMax={9} formatY={(v) => v.toFixed(1)} height={200} />
         </View>
-
-        <View className="min-w-[300px] flex-[2]">
-          <Card className="h-full">
-            <SectionHeader title="Performance by Question Type" icon="clipboard" hint />
-
-            <View className="mt-4">
-              <HorizontalBars
-                data={accuracyByType.map((row, i) => ({
-                  label: QUESTION_TYPE_LABEL[row.type],
-                  percent: row.percent,
-                  tone: chartPalette[i % chartPalette.length],
-                }))}
-              />
-
-              {accuracyByType.length === 0 ? (
-                <Text className="py-6 text-center font-sans text-body text-muted">
-                  {L('Làm thử một bài để thấy điểm mạnh yếu theo từng dạng câu.', 'Do a test to see your strengths and weaknesses by question type.')}
-                </Text>
-              ) : null}
-            </View>
-
-            {weakest ? (
-              <View className="mt-4 rounded-panel bg-danger-soft p-3">
-                <Text className="font-semi text-body text-danger-ink">
-                  {L('Dạng yếu nhất:', 'Weakest type:')} {QUESTION_TYPE_LABEL[weakest.type]} ({weakest.percent}%)
-                </Text>
-                <Button
-                  label={L('Luyện dạng yếu nhất', 'Practise your weakest type')}
-                  size="sm"
-                  iconRight="arrow-right"
-                  className="mt-2"
-                  onPress={() => void practiceWeakest()}
-                />
-              </View>
-            ) : null}
-          </Card>
+        <View className="mt-3 flex-row justify-between rounded-panel bg-surfaceAlt px-4 py-3">
+          <View>
+            <Text className="font-mid text-label text-muted">{L('Đầu tiên', 'First')}</Text>
+            <Text className="font-strong text-cardTitle text-ink">{formatBand(initialBand)}</Text>
+          </View>
+          <View className="items-end">
+            <Text className="font-mid text-label text-muted">{L('Cao nhất', 'Best')}</Text>
+            <Text className="font-strong text-cardTitle text-ink">{formatBand(bestBand)}</Text>
+          </View>
         </View>
-      </View>
+      </NeonWindow>
 
       <View className="mt-4 flex-row flex-wrap gap-4">
-        <View className="min-w-[280px] flex-1">
-          <Card className="h-full">
-            <SectionHeader title="Study Time Distribution" icon="clock" iconTone="accent" hint />
-
-            <View className="mt-4 flex-row items-center gap-4">
+        <View className="w-full flex-1 lg:min-w-[280px]">
+          <NeonWindow title={L('Phân bổ thời gian', 'Time split')} icon="clock" style={{ height: '100%' }}>
+            <View className="flex-row items-center gap-4">
               <DonutChart
                 data={[
                   { label: 'Practice', value: activityTotals.practice },
@@ -531,133 +347,82 @@ export default function ProgressScreen() {
 
               <View className="flex-1 gap-2">
                 {[
-                  { label: 'Practice', value: activityTotals.practice },
-                  { label: 'Mock Tests', value: activityTotals.mock_test },
-                  { label: 'Review', value: activityTotals.review },
-                  { label: 'Reading Library', value: activityTotals.reading_library },
+                  { label: L('Luyện tập', 'Practice'), value: activityTotals.practice },
+                  { label: L('Thi thử', 'Mock tests'), value: activityTotals.mock_test },
+                  { label: L('Ôn tập', 'Review'), value: activityTotals.review },
+                  { label: L('Thư viện', 'Library'), value: activityTotals.reading_library },
                 ].map((row, i) => (
                   <View key={row.label} className="flex-row items-center gap-2">
-                    <View
-                      className="h-2.5 w-2.5 rounded-pill"
-                      style={{ backgroundColor: chartPalette[i % chartPalette.length] }}
-                    />
+                    <View className="h-2.5 w-2.5 rounded-pill" style={{ backgroundColor: chartPalette[i % chartPalette.length] }} />
                     <Text className="flex-1 font-mid text-label text-body">{row.label}</Text>
-                    <Text className="font-semi text-label text-ink">
-                      {formatMinutes(row.value)}
-                    </Text>
-                    <Text className="w-10 text-right font-mid text-label text-muted">
-                      {totalMinutes === 0 ? '0%' : `${Math.round((row.value / totalMinutes) * 100)}%`}
-                    </Text>
+                    <Text className="font-semi text-label text-ink">{formatMinutes(row.value)}</Text>
+                    <Text className="w-10 text-right font-mid text-label text-muted">{totalMinutes === 0 ? '0%' : `${Math.round((row.value / totalMinutes) * 100)}%`}</Text>
                   </View>
                 ))}
               </View>
             </View>
-          </Card>
+          </NeonWindow>
         </View>
 
-        <View className="min-w-[280px] flex-1">
-          <Card className="h-full">
-            <SectionHeader title="Weekly Practice Calendar" icon="calendar" hint />
-
-            <View className="mt-4 flex-row gap-4">
-              <Heatmap
-                data={recentDays.map((d) => ({ date: d.date, value: d.minutes }))}
-                weeks={Math.ceil(range / 7)}
-              />
-
-              <View className="flex-1 gap-3">
-                <View className="rounded-panel bg-surfaceAlt p-3">
-                  <Text className="font-mid text-label text-muted">Best Day</Text>
-                  <Text className="font-strong text-body text-ink">{bestDay(recentDays)}</Text>
-                </View>
-                <View className="rounded-panel bg-surfaceAlt p-3">
-                  <Text className="font-mid text-label text-muted">{L('Từ đã lưu', 'Saved words')}</Text>
-                  <Text className="font-strong text-body text-ink">{words} {L('từ', 'words')}</Text>
-                </View>
-              </View>
-            </View>
-
+        <View className="w-full flex-1 lg:min-w-[280px]">
+          <NeonWindow title={L('Lịch học', 'Calendar')} icon="star5" badge={bestDay(recentDays)} style={{ height: '100%' }}>
+            <Heatmap data={recentDays.map((d) => ({ date: d.date, value: d.minutes }))} weeks={Math.ceil(range / 7)} />
             <View className="mt-4">
               <BarChart
-                data={recentDays.slice(-7).map((d) => ({
-                  label: d.date.slice(5),
-                  value: d.minutes,
-                  secondary: d.questions,
-                }))}
+                data={recentDays.slice(-7).map((d) => ({ label: d.date.slice(5), value: d.minutes, secondary: d.questions }))}
                 showSecondary
-                height={160}
+                height={150}
               />
             </View>
-          </Card>
+          </NeonWindow>
         </View>
       </View>
 
       <MathProgressCard />
 
-      <Card className="mt-4">
-        <SectionHeader
-          title={L('Hoạt động gần đây', 'Recent activity')}
-          icon="clock"
-          action={{ label: L('Xem tất cả', 'View all'), onPress: () => router.push('/lich-su' as never) }}
-        />
-        <View className="mt-3">
-          <ActivityList items={activity.slice(0, 6)} emptyText={L('Chưa có việc nào. Làm một bài, nghe một đề hoặc viết một bài là sẽ thấy ở đây.', 'Nothing yet. Do a test, a listening or a writing task and it will show up here.')} />
+      <NeonWindow title={L('Hoạt động', 'Activity')} icon="note" style={{ marginTop: 16 }}>
+        <ActivityList items={activity.slice(0, 6)} emptyText={L('Chưa có hoạt động.', 'No activity yet.')} />
+        <Pressable accessibilityRole="link" onPress={() => router.push('/lich-su' as never)} className="mt-3 self-start">
+          <Text className="font-strong text-label" style={{ color: indigo }}>
+            {L('Xem tất cả →', 'View all →')}
+          </Text>
+        </Pressable>
+      </NeonWindow>
+
+      <NeonWindow title={L('Lượt làm gần đây', 'Recent attempts')} icon="book" style={{ marginTop: 16 }}>
+        <View className="flex-row border-b border-border pb-2">
+          <Text className="flex-[3] font-mid text-label text-muted">{L('Bài', 'Test')}</Text>
+          <Text className="flex-1 font-mid text-label text-muted">{L('Ngày', 'Date')}</Text>
+          <Text className="w-20 font-mid text-label text-muted">Band</Text>
+          <Text className="w-16 font-mid text-label text-muted">{L('Đúng', 'Acc.')}</Text>
+          <View className="w-14" />
         </View>
-      </Card>
 
-      <Card className="mt-4">
-        <SectionHeader
-          title="Recent Mock Test Performance"
-          icon="clipboard"
-          action={{ label: 'View all', onPress: () => router.push('/mock-tests' as never) }}
-        />
+        {sessions.slice(0, 6).map((session, index) => {
+          const previous = sessions[index + 1];
+          // null khi một trong hai lượt là SAT — không có band thì không có gì để so.
+          const delta = bandDelta(session.estimatedBand, previous?.estimatedBand);
 
-        <View className="mt-3">
-          <View className="flex-row border-b border-border pb-2">
-            <Text className="flex-[3] font-mid text-label text-muted">Test</Text>
-            <Text className="flex-1 font-mid text-label text-muted">Date</Text>
-            <Text className="w-20 font-mid text-label text-muted">Band</Text>
-            <Text className="w-20 font-mid text-label text-muted">Accuracy</Text>
-            <Text className="w-20 font-mid text-label text-muted">Review</Text>
-          </View>
-
-          {sessions.slice(0, 6).map((session, index) => {
-            const previous = sessions[index + 1];
-            // null khi một trong hai lượt là SAT — không có band thì không có gì để so.
-            const delta = bandDelta(session.estimatedBand, previous?.estimatedBand);
-
-            return (
-              <View key={session.id} className="flex-row items-center border-b border-border py-3">
-                <Text className="flex-[3] font-semi text-body text-ink" numberOfLines={1}>
-                  {session.articleTitle}
-                </Text>
-                <Text className="flex-1 font-mid text-label text-muted">
-                  {session.finishedAt.slice(0, 10)}
-                </Text>
-                <View className="w-20 flex-row items-center gap-1.5">
-                  <Text className="font-strong text-body text-ink">
-                    {formatBand(session.estimatedBand)}
-                  </Text>
-                  {delta ? <TrendBadge value={delta} /> : null}
-                </View>
-                <Text className="w-20 font-mid text-body text-body">{session.accuracy}%</Text>
-                <Pressable
-                  onPress={() => router.push(`/review/${session.id}` as never)}
-                  className="w-20"
-                >
-                  <Badge label="Review" tone="primary" />
-                </Pressable>
+          return (
+            <View key={session.id} className="flex-row items-center border-b border-border py-3">
+              <Text className="flex-[3] font-semi text-body text-ink" numberOfLines={1}>
+                {session.articleTitle}
+              </Text>
+              <Text className="flex-1 font-mid text-label text-muted">{session.finishedAt.slice(5, 10)}</Text>
+              <View className="w-20 flex-row items-center gap-1.5">
+                <Text className="font-strong text-body text-ink">{formatBand(session.estimatedBand)}</Text>
+                {delta ? <TrendBadge value={delta} /> : null}
               </View>
-            );
-          })}
+              <Text className="w-16 font-mid text-body text-body">{session.accuracy}%</Text>
+              <Pressable accessibilityRole="button" onPress={() => router.push(`/review/${session.id}` as never)} className="w-14">
+                <Badge label={L('Xem', 'View')} tone="primary" />
+              </Pressable>
+            </View>
+          );
+        })}
 
-          {sessions.length === 0 ? (
-            <Text className="py-8 text-center font-sans text-body text-muted">
-              {L('Chưa có lượt làm bài nào. Vào Library chọn một bài rồi Submit để thấy số liệu ở đây.', 'No attempts yet. Pick a passage in the Library and submit it to see your stats here.')}
-            </Text>
-          ) : null}
-        </View>
-      </Card>
+        {sessions.length === 0 ? <Text className="py-6 text-center font-sans text-body text-muted">{L('Chưa có lượt nào.', 'No attempts yet.')}</Text> : null}
+      </NeonWindow>
     </Screen>
   );
 }
@@ -686,7 +451,7 @@ function WeekBars({ days, emptyLabel }: { days: { label: string; minutes: number
                   width: '100%',
                   height,
                   borderRadius: 10,
-                  backgroundColor: top ? themedHex('#D9A441') : d.minutes > 0 ? themedHex('#F1DDA0') : '#F3F0FB',
+                  backgroundColor: top ? '#6A3FE0' : d.minutes > 0 ? '#CFC4FF' : '#F3F0FB',
                 }}
               />
               <Text className={top ? 'font-strong text-label text-ink' : 'font-mid text-label text-muted'}>{d.label}</Text>
@@ -721,5 +486,5 @@ function formatMinutes(minutes: number): string {
 function bestDay(days: Array<{ date: string; minutes: number }>): string {
   if (days.length === 0) return '—';
   const best = days.reduce((a, b) => (b.minutes > a.minutes ? b : a));
-  return best.minutes === 0 ? '—' : `${best.date} · ${formatMinutes(best.minutes)}`;
+  return best.minutes === 0 ? '—' : `${best.date.slice(5)} · ${formatMinutes(best.minutes)}`;
 }

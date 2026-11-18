@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { useLocalSearchParams } from 'expo-router';
+
 import { Icon } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
 import { ExamModeModal, type ExamMode } from '@/components/ielts/ExamModeModal';
@@ -123,8 +125,8 @@ const CatalogHeader = React.memo(function CatalogHeader({ count, L }: { count: n
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
       <View style={{ gap: 2 }}>
-        <Text style={{ fontSize: 28, fontWeight: '800', color: color.ink }}>{L('Bộ đề IELTS', 'IELTS Tests')}</Text>
-        <Text style={{ fontSize: 14, color: color.muted, fontWeight: '500' }}>Cambridge & Actual Tests · {count}</Text>
+        <Text style={{ fontSize: 30, lineHeight: 36, fontWeight: '400', color: '#2B2350' }}>{L('Bộ đề IELTS', 'IELTS Tests')}</Text>
+        <Text style={{ fontSize: 14, fontWeight: '600', color: '#6B6590' }}>Cambridge & Actual Tests · {count}</Text>
       </View>
       <View style={{ flexGrow: 1, flexBasis: 360, maxWidth: 620 }}>
         <ExamResourceLinks exam="ielts" />
@@ -253,6 +255,15 @@ export default function IeltsSourcePracticeScreen() {
 
   loadTestRef.current = loadTest;
 
+  // Mở thẳng một đề từ trang Listening: /ielts-source-practice?test=<id>
+  const { test: deepLinkTest } = useLocalSearchParams<{ test?: string }>();
+  const deepLinkDone = useRef(false);
+  useEffect(() => {
+    if (deepLinkDone.current || typeof deepLinkTest !== 'string' || tests.length === 0) return;
+    deepLinkDone.current = true;
+    void loadTestRef.current(deepLinkTest);
+  }, [deepLinkTest, tests.length]);
+
   const updateAnswer = (number: number, value: string) => {
     setAnswers((current) => {
       const next = { ...current, [String(number)]: value };
@@ -325,7 +336,7 @@ export default function IeltsSourcePracticeScreen() {
                   backgroundColor: viewMode === 'catalog' ? color.primaryDark : 'transparent',
                 }}
               >
-                <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'catalog' ? color.surface : color.body }}>
+                <Text style={{ fontSize: 14, fontWeight: '400', color: viewMode === 'catalog' ? color.surface : color.body }}>
                   {L(`Bộ đề IELTS (${tests.length})`, `IELTS sources (${tests.length})`)}
                 </Text>
               </Pressable>
@@ -339,7 +350,7 @@ export default function IeltsSourcePracticeScreen() {
                   backgroundColor: viewMode === 'collections' ? color.primaryDark : 'transparent',
                 }}
               >
-                <Text style={{ fontSize: 14, fontWeight: '800', color: viewMode === 'collections' ? color.surface : color.body }}>
+                <Text style={{ fontSize: 14, fontWeight: '400', color: viewMode === 'collections' ? color.surface : color.body }}>
                   {L('Bộ sưu tập của bạn (24)', 'Your Collections (24)')}
                 </Text>
               </Pressable>
@@ -385,10 +396,10 @@ export default function IeltsSourcePracticeScreen() {
               {/* Top Banner Header with Mascot */}
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 20, paddingTop: 10 }}>
                 <View style={{ flex: 1, minWidth: 260, gap: 6 }}>
-                  <Text style={{ fontSize: 11, fontWeight: '800', letterSpacing: 2, color: '#6A4BD9', textTransform: 'uppercase' }}>
+                  <Text style={{ fontSize: 11, fontWeight: '400', letterSpacing: 2, color: '#6A4BD9', textTransform: 'uppercase' }}>
                     PRACTICE · PROGRESS · HIGHER BANDS
                   </Text>
-                  <Text style={{ fontSize: 32, fontWeight: '900', color: '#2B2350', fontFamily: 'BeVietnamPro_800ExtraBold', letterSpacing: -0.5 }}>
+                  <Text style={{ fontSize: 32, fontWeight: '900', color: '#2B2350', fontFamily: 'Nunito_700Bold', letterSpacing: -0.5 }}>
                     {L('Bộ sưu tập của bạn', 'Your Collections')}
                   </Text>
                   <Text style={{ fontSize: 15, color: '#7C6552', lineHeight: 22 }}>
@@ -492,7 +503,7 @@ export default function IeltsSourcePracticeScreen() {
                     gap: 6,
                   }}
                 >
-                  <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '800' }}>+ Tạo bộ sưu tập mới</Text>
+                  <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '400' }}>+ Tạo bộ sưu tập mới</Text>
                 </Pressable>
               </View>
 
@@ -500,7 +511,7 @@ export default function IeltsSourcePracticeScreen() {
               <View style={{ gap: 12 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                   <Text style={{ fontSize: 16 }}>👑</Text>
-                  <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
+                  <Text style={{ fontSize: 18, fontWeight: '400', color: '#2B2350' }}>
                     {L('Bộ sưu tập của bạn', 'Your Collections')}
                   </Text>
                 </View>
@@ -539,7 +550,7 @@ export default function IeltsSourcePracticeScreen() {
                             <Icon name="book" size={16} color="#6A4BD9" />
                           </View>
                           <View>
-                            <Text style={{ fontSize: 13, fontWeight: '800', color: '#2B2350' }}>{col.title}</Text>
+                            <Text style={{ fontSize: 13, fontWeight: '400', color: '#2B2350' }}>{col.title}</Text>
                             <Text style={{ fontSize: 11, color: '#7C6552' }}>{col.desc}</Text>
                           </View>
                         </View>
@@ -556,7 +567,7 @@ export default function IeltsSourcePracticeScreen() {
                   <View style={{ gap: 2 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                       <Text style={{ fontSize: 16 }}>🔖</Text>
-                      <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
+                      <Text style={{ fontSize: 18, fontWeight: '400', color: '#2B2350' }}>
                         {L('Đề đã lưu', 'Saved Tests')}
                       </Text>
                     </View>
@@ -619,19 +630,19 @@ export default function IeltsSourcePracticeScreen() {
                               backgroundColor: isCam ? '#E0F2FE' : '#FCE7F3',
                             }}
                           >
-                            <Text style={{ fontSize: 9.5, fontWeight: '800', color: isCam ? '#0369A1' : '#9D174D' }}>
+                            <Text style={{ fontSize: 9.5, fontWeight: '400', color: isCam ? '#0369A1' : '#9D174D' }}>
                               {card.type}
                             </Text>
                           </View>
 
-                          <Text style={{ fontSize: 12, fontWeight: '800', color: '#2B2350' }} numberOfLines={2}>
+                          <Text style={{ fontSize: 12, fontWeight: '400', color: '#2B2350' }} numberOfLines={2}>
                             {card.title}
                           </Text>
 
                           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 }}>
                             <Text style={{ fontSize: 10, fontWeight: '700', color: '#16A34A' }}>✓ Đã lưu</Text>
                             <Pressable onPress={() => loadTest(card.id, true)}>
-                              <Text style={{ fontSize: 10, fontWeight: '800', color: '#6A4BD9' }}>▶ Luyện tiếp</Text>
+                              <Text style={{ fontSize: 10, fontWeight: '400', color: '#6A4BD9' }}>▶ Luyện tiếp</Text>
                             </Pressable>
                           </View>
                         </View>
@@ -647,7 +658,7 @@ export default function IeltsSourcePracticeScreen() {
                   <View style={{ gap: 2 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                       <Text style={{ fontSize: 16 }}>💡</Text>
-                      <Text style={{ fontSize: 18, fontWeight: '800', color: '#2B2350' }}>
+                      <Text style={{ fontSize: 18, fontWeight: '400', color: '#2B2350' }}>
                         {L('Gợi ý theo mục tiêu band', 'Suggestions by Band Target')}
                       </Text>
                     </View>
@@ -692,7 +703,7 @@ export default function IeltsSourcePracticeScreen() {
                           <Text style={{ fontSize: 18 }}>{b.icon}</Text>
                         </View>
                         <View>
-                          <Text style={{ fontSize: 14, fontWeight: '800', color: '#2B2350' }}>{b.band}</Text>
+                          <Text style={{ fontSize: 14, fontWeight: '400', color: '#2B2350' }}>{b.band}</Text>
                           <Text style={{ fontSize: 12, color: '#7C6552' }}>{b.desc}</Text>
                         </View>
                       </View>

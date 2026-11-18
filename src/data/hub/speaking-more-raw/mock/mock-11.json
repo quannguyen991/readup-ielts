@@ -1,0 +1,62 @@
+{
+ "id": "mock-11",
+ "title": "IELTS Speaking Mock Test 11",
+ "titleVi": "Đề thi thử số 11",
+ "focusVi": "Bài thi này tập trung phát triển kỹ năng kể chuyện mạch lạc trong Phần 2 và thảo luận đa chiều về các khía cạnh văn hóa tiêu dùng trong Phần 3.",
+ "part1": [
+  {
+   "topic": "Studies",
+   "qs": [
+    "What subject are you currently studying, and why did you choose it?",
+    "Do you prefer studying alone or in a group?",
+    "How has technology changed the way you study?",
+    "What do you plan to do after finishing your current course of study?"
+   ]
+  },
+  {
+   "topic": "Social Media",
+   "qs": [
+    "How often do you use social media platforms?",
+    "Which social media app do you spend the most time on?",
+    "Do you think social media helps people stay genuinely connected?",
+    "Did you use social media more or less when you were younger?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a meaningful gift you gave to someone special.",
+  "bullets": [
+   "who you gave it to and what the occasion was",
+   "what the gift was",
+   "how you prepared or chose it",
+   "and explain why this gift was so meaningful to both of you"
+  ]
+ },
+ "part3": [
+  "In what situations do people in your country usually exchange gifts?",
+  "Do you think the commercialization of holidays has ruined the true spirit of giving gifts?",
+  "Why do some people prefer receiving experiences rather than physical presents?",
+  "Is it acceptable for someone to return or regift a present they do not like?",
+  "How might modern technology influence gift-giving practices in the future?"
+ ],
+ "answers": {
+  "p1": [
+   "I'm majoring in International Business because I've always been fascinated by global trade. For instance, analyzing supply chains during local market projects really confirmed that this field matches my career ambitions.",
+   "I definitely prefer studying on my own since I concentrate much better without distractions. Whenever I prepare for major exams, isolating myself in the library helps me digest complex theories efficiently.",
+   "Technology has made my study sessions far more streamlined and interactive. For example, cloud-based note-taking apps allow me to organize lecture materials and access academic journals instantly on my tablet.",
+   "Once I graduate, I intend to work as a supply chain analyst at a multinational corporation. Ultimately, gaining practical field experience will allow me to apply my university training to real-world logistics.",
+   "I check social media several times throughout the day, usually during study breaks. It serves as a quick mental reset when I browse short news updates or message my friends on Zalo.",
+   "I spend the majority of my screen time on Instagram because it is visually engaging. I mostly follow photography accounts and culinary creators, which gives me creative ideas for my own cooking.",
+   "Not entirely, because online interactions often lack authentic emotional depth. While messaging keeps distant friends informed about our daily routines, nothing truly replicates face-to-face conversations over a cup of coffee.",
+   "I actually used social media considerably less in my early teens because my parents strictly limited my screen time. Back then, I spent far more hours playing badminton outdoors with neighborhood peers."
+  ],
+  "sample": "I’d like to talk about a handmade photo album I gave to my grandmother on her eightieth birthday last winter. Reaching such a venerable age was a monumental milestone for our family, so I wanted to present her with something sentimental rather than a generic store-bought item. The gift was a vintage-style scrapbook filled with carefully restored photographs spanning six decades of her life. It included black-and-white snapshots of her youth, images from her wedding, and candid moments with her grandchildren. To assemble it, I spent weeks discreetly gathering old negatives from my relatives, restoring them digitally, and printing them on archival matte paper. Alongside each photo, I handwrote brief anecdotes and favorite memories narrated by family members. When she unwrapped it, she was visibly moved to tears. This gift was extraordinarily meaningful because it brought back cherished memories from her past, some of which she hadn't seen in decades. Moreover, for me, creating it was a rare opportunity to connect deeply with my family heritage and demonstrate genuine gratitude for her lifelong guidance.",
+  "p3": [
+   "In Vietnam, gift-giving is customary during major celebrations such as the Lunar New Year, weddings, and birthdays. People typically offer red envelopes with lucky money or luxury fruit hampers to show respect and convey good wishes. In contrast to Western spontaneous gifting, Vietnamese practices remain somewhat formal and community-oriented. Overall, these exchanges reinforce social bonds and demonstrate reciprocal gratitude within extended families.",
+   "To a significant extent, yes, because aggressive marketing often reduces heartfelt traditions to mere consumerist obligations. Retailers heavily promote extravagant packaging and overpriced items, which pressures people into buying things solely for social status rather than genuine affection. While some individuals still prioritize thoughtful presents, commercial campaigns have largely overshadowed the sincerity of giving. Consequently, the emotional essence of holidays is often compromised.",
+   "Many people favor experiential gifts, like concert tickets or weekend getaways, because tangible possessions eventually depreciate or become clutter. Shared experiences, on the other hand, generate lasting memories and emotional resonance that physical objects rarely match. For example, traveling with a partner fosters enduring connection far more effectively than receiving expensive jewelry. Hence, modern recipients increasingly value emotional enrichment over material accumulation.",
+   "In my view, regifting or returning an unsuitable item is entirely practical, provided it is handled discreetly. Storing an unwanted item in a closet merely leads to unnecessary waste, whereas passing it along to someone who genuinely appreciates it is environmentally and economically sound. Although traditional etiquette might label this ungrateful, modern pragmatism encourages utility over polite pretence. Thus, tactful regifting should be accepted.",
+   "Technology will likely make gift-giving increasingly digital, automated, and personalized. We already see people sending digital gift cards, subscription services, or non-fungible tokens rather than physical goods. Furthermore, artificial intelligence algorithms may soon analyze someone's digital footprint to recommend the perfect gift seamlessly. While this eliminates guesswork and logistical hurdles, it might also diminish the spontaneous human warmth historically associated with selecting gifts."
+  ]
+ }
+}

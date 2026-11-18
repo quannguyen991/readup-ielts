@@ -2,13 +2,16 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { LightHero } from '@/components/layout/LightHero';
+
+import { PC, useCourseFonts } from '@/components/hub/PhonemeCourse';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
+import { NeonPageHero } from '@/components/neon/NeonPageHero';
 import { DueToday } from '@/components/vocab/DueToday';
 import { Card, Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { DeckLibrary } from '@/components/vocab/DeckLibrary';
+import { EaEntryBanners } from '@/components/vocab/eastasia/EaEntry';
 import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { useL } from '@/i18n/useL';
 import { color } from '@/theme/tokens';
@@ -22,6 +25,7 @@ import { color } from '@/theme/tokens';
  * ngày đầu tiên nó trống trơn. Thư viện này cho người mới thứ để bắt đầu ngay.
  */
 export default function VocabTopicsScreen() {
+  useCourseFonts();
   const { L, locale } = useL();
   if (VOCAB_TOPICS.length === 0) {
     return (
@@ -47,20 +51,23 @@ export default function VocabTopicsScreen() {
   return (
     <Screen>
       <Appear>
-        <LightHero
+        <NeonPageHero
           scene="vocab"
-          badge={L('TỪ VỰNG', 'VOCABULARY')}
-          line1={L('Từ vựng theo chủ đề', 'Vocabulary by topic')}
-          line2={L('học trong câu, nhớ bằng ôn lặp', 'learn in context, remember with review')}
-          subtitle={L(
-            `${VOCAB_TOPIC_TOTALS.topics} chủ đề hay ra trong đề IELTS, ${VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ. Mỗi từ có phiên âm, nghĩa tiếng Việt, một câu ví dụ và một collocation đi kèm.`,
-            `${VOCAB_TOPIC_TOTALS.topics} common IELTS topics, ${VOCAB_TOPIC_TOTALS.words.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} words. Each word has its pronunciation, Vietnamese meaning, an example sentence and a collocation.`,
-          )}
+          title={L('Từ vựng', 'Vocabulary')}
+          subtitle={L('Chọn một bộ, học trong câu, nhớ bằng ôn lặp.', 'Pick a set, learn in context, remember by review.')}
+          chips={[
+            { label: `${VOCAB_TOPIC_TOTALS.topics.toLocaleString('vi-VN')} ${L('chủ đề IELTS', 'IELTS topics')}`, icon: 'book' },
+            { label: `${VOCAB_TOPIC_TOTALS.words.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} ${L('từ', 'words')}`, icon: 'gem' },
+            { label: `1.600+ ${L('bộ từ', 'decks')}`, icon: 'star5' },
+          ]}
         />
       </Appear>
 
-      {/* Tìm kiếm + lọc + "Tất cả" (có TOEIC/TOEFL với nhãn riêng) ở ngay đầu trang. */}
+      <View style={{ marginTop: 14 }} />
+      {/* Tìm kiếm + lọc + bìa các bộ sưu tập; chọn một bìa thì hiện lưới ô từng bộ. */}
       <DeckLibrary initialFilter="all" />
+
+      <EaEntryBanners />
 
       <DueToday />
 

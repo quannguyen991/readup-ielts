@@ -1,0 +1,5 @@
+# TÀI LIỆU: Bộ đề Chuyên Anh 2026-2027 các tỉnh thành có đáp án, file nghe, transcript miễn phí
+# TẬP TIN GỐC: dap-an-chinh-thuc.doc (từ De-Chuyen-Anh-Quang-Tri-2026-2027-dap-an-chinh-thuc-WORD.zip)
+# NGUỒN: https://tailieudieuky.com/baiviet/wp-content/uploads/2026/06/De-Chuyen-Anh-Quang-Tri-2026-2027-dap-an-chinh-thuc-WORD.zip
+
+[Lỗi giải nén DOCX: "no relationship of type 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument' in collection"]

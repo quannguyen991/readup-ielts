@@ -1,0 +1,127 @@
+{
+ "title": "Farming on Volcanic Ground",
+ "topic": "Volcanic soil and agriculture",
+ "context": "A. Volcanic landscapes can appear harsh, yet many support productive farms. Their soils begin with ash, lava fragments, and other material released during eruptions. Weathering gradually breaks these materials into smaller particles and releases mineral nutrients. The resulting soil is not uniformly fertile: its properties depend on the volcano's composition, the age of its deposits, and local climate. Farmers therefore cannot assume that any field near a volcano will provide the same conditions for crops.\n\nB. Fresh volcanic deposits may initially offer little support for cultivation. They can be coarse, unstable, and short of organic matter, while rain may wash away fine particles before plants become established. Over time, weathering and the accumulation of decaying vegetation change this picture. In humid regions, warm temperatures and frequent rainfall can speed chemical breakdown, but they may also leach soluble nutrients from the ground. The gradual development of a stable, biologically active soil often matters more to agriculture than the mere presence of volcanic minerals.\n\nC. One advantage of many volcanic soils is their ability to retain water. Some contain abundant fine particles and weathered minerals that create small pores, allowing moisture to remain available between rain showers. This can help crops through brief dry spells. Yet water retention varies considerably: soils dominated by coarse ash or gravel may drain rapidly, leaving roots thirsty. Their structure also affects aeration, since poorly drained layers can restrict oxygen around roots. Farmers assess texture and drainage rather than treating volcanic origin as a guarantee of reliable moisture.\n\nD. Volcanic materials may supply elements such as potassium, calcium, and magnesium, which plants use in growth. However, a high total mineral content does not necessarily mean that nutrients are immediately accessible. In some soils, phosphorus becomes bound to reactive iron and aluminium compounds, so crops cannot readily absorb it. Soil acidity can further influence nutrient availability. Testing helps farmers identify such constraints and choose suitable amendments, including organic matter or lime where appropriate. Applying fertilizer without diagnosing the underlying problem may waste money and can contribute to pollution.\n\nE. The physical structure of volcanic soil can also benefit cultivation. Weathered ash may form aggregates that are porous enough for roots to penetrate while remaining resistant to rapid erosion. Organic matter from crop residues and animal manure improves aggregation and supports soil organisms. Nevertheless, steep volcanic slopes are vulnerable to runoff, especially after vegetation has been cleared. Terraces, contour planting, and protective ground cover slow water moving downhill and reduce the loss of fertile topsoil. These measures are particularly important where intense rain follows a dry season.\n\nF. Agriculture on volcanic land thus depends on management as much as on geology. Farmers may select crops suited to local acidity and rainfall, maintain organic residues, and monitor nutrient levels over time. Coffee, vegetables, and fruit are grown in some volcanic regions, but no single crop thrives everywhere. Changing rainfall patterns can intensify erosion or create longer dry intervals, making water conservation and soil cover increasingly valuable. Volcanic soils offer real opportunities, but their benefits are conditional: careful observation and locally adapted practices turn geological materials into dependable farmland.",
+ "questions": [
+  {
+   "prompt": "The materials that eventually form volcanic soils are first emitted during ____.",
+   "answer": "eruptions",
+   "why": "Đoạn A nói đất bắt đầu từ tro, mảnh lava và vật liệu khác được giải phóng trong các lần phun trào.",
+   "quote": "Their soils begin with ash, lava fragments, and other material released during eruptions."
+  },
+  {
+   "prompt": "The process that breaks volcanic material into smaller particles is called ____.",
+   "answer": "Weathering",
+   "why": "Đoạn A xác định weathering là quá trình từ từ phá vỡ vật liệu thành những hạt nhỏ hơn.",
+   "quote": "Weathering gradually breaks these materials into smaller particles and releases mineral nutrients."
+  },
+  {
+   "prompt": "The fertility of volcanic ground differs according to the volcano's composition, deposit age, and ____.",
+   "answer": "local climate",
+   "why": "Ba yếu tố được liệt kê trong đoạn A gồm thành phần núi lửa, tuổi trầm tích và khí hậu địa phương.",
+   "quote": "its properties depend on the volcano's composition, the age of its deposits, and local climate."
+  },
+  {
+   "prompt": "Farmers should not expect identical growing conditions in every ____ close to a volcano.",
+   "answer": "field",
+   "why": "Đoạn A cảnh báo không thể cho rằng mọi cánh đồng gần núi lửa đều có điều kiện giống nhau.",
+   "quote": "Farmers therefore cannot assume that any field near a volcano will provide the same conditions for crops."
+  },
+  {
+   "prompt": "New volcanic deposits can lack ____ needed to support cultivation.",
+   "answer": "organic matter",
+   "why": "Đoạn B nêu vật liệu núi lửa mới có thể thiếu chất hữu cơ, cùng với tính chất thô và không ổn định.",
+   "quote": "They can be coarse, unstable, and short of organic matter, while rain may wash away fine particles before plants become established."
+  },
+  {
+   "prompt": "In rainy environments, warm conditions accelerate ____ of volcanic material.",
+   "answer": "chemical breakdown",
+   "why": "Đoạn B nói nhiệt độ ấm và mưa thường xuyên có thể thúc đẩy sự phân rã hóa học.",
+   "quote": "In humid regions, warm temperatures and frequent rainfall can speed chemical breakdown, but they may also leach soluble nutrients from the ground."
+  },
+  {
+   "prompt": "Frequent rainfall can remove nutrients from the soil through a process known as ____.",
+   "answer": "leach",
+   "why": "Đoạn B dùng động từ leach để mô tả việc mưa làm rửa trôi chất dinh dưỡng hòa tan khỏi đất.",
+   "quote": "In humid regions, warm temperatures and frequent rainfall can speed chemical breakdown, but they may also leach soluble nutrients from the ground."
+  },
+  {
+   "prompt": "For farming, the slow formation of biologically active soil may be more significant than the presence of ____.",
+   "answer": "volcanic minerals",
+   "why": "Đoạn B đối chiếu đất ổn định, có hoạt tính sinh học với việc chỉ đơn thuần có khoáng chất núi lửa.",
+   "quote": "The gradual development of a stable, biologically active soil often matters more to agriculture than the mere presence of volcanic minerals."
+  },
+  {
+   "prompt": "Certain fine soil particles and weathered minerals form small ____ that help keep water available.",
+   "answer": "pores",
+   "why": "Đoạn C giải thích các hạt mịn và khoáng chất phong hóa tạo ra những lỗ nhỏ giúp giữ độ ẩm.",
+   "quote": "Some contain abundant fine particles and weathered minerals that create small pores, allowing moisture to remain available between rain showers."
+  },
+  {
+   "prompt": "Stored soil moisture can help plants endure short periods without ____.",
+   "answer": "rain",
+   "why": "Đoạn C nói khả năng giữ nước giúp cây trồng vượt qua những đợt khô hạn ngắn giữa các trận mưa.",
+   "quote": "This can help crops through brief dry spells."
+  },
+  {
+   "prompt": "Ground containing mostly coarse ash or gravel may ____ quickly.",
+   "answer": "drain",
+   "why": "Đoạn C nêu đất chủ yếu gồm tro thô hoặc sỏi có thể thoát nước nhanh, khiến rễ cây thiếu nước.",
+   "quote": "soils dominated by coarse ash or gravel may drain rapidly, leaving roots thirsty."
+  },
+  {
+   "prompt": "Layers that do not allow water to pass adequately can reduce the supply of ____ around plant roots.",
+   "answer": "oxygen",
+   "why": "Đoạn C giải thích các lớp thoát nước kém có thể hạn chế oxy quanh rễ.",
+   "quote": "Their structure also affects aeration, since poorly drained layers can restrict oxygen around roots."
+  },
+  {
+   "prompt": "Plants require potassium, calcium, and magnesium as they ____.",
+   "answer": "grow",
+   "why": "Đoạn D nêu cây sử dụng các nguyên tố này trong quá trình phát triển.",
+   "quote": "Volcanic materials may supply elements such as potassium, calcium, and magnesium, which plants use in growth."
+  },
+  {
+   "prompt": "In certain soils, phosphorus attaches to iron and aluminium compounds that are ____.",
+   "answer": "reactive",
+   "why": "Đoạn D mô tả phosphorus bị giữ lại bởi các hợp chất sắt và nhôm có tính phản ứng.",
+   "quote": "In some soils, phosphorus becomes bound to reactive iron and aluminium compounds, so crops cannot readily absorb it."
+  },
+  {
+   "prompt": "A soil's level of ____ can affect whether nutrients are available to crops.",
+   "answer": "acidity",
+   "why": "Đoạn D nói độ chua của đất có thể tác động đến khả năng sẵn có của chất dinh dưỡng.",
+   "quote": "Soil acidity can further influence nutrient availability."
+  },
+  {
+   "prompt": "Before farmers apply fertilizers, soil ____ can reveal what is limiting crop growth.",
+   "answer": "Testing",
+   "why": "Đoạn D cho biết việc kiểm tra đất giúp xác định các hạn chế và lựa chọn biện pháp cải tạo phù hợp.",
+   "quote": "Testing helps farmers identify such constraints and choose suitable amendments, including organic matter or lime where appropriate."
+  },
+  {
+   "prompt": "Adding fertilizer without first identifying the problem can cause ____.",
+   "answer": "pollution",
+   "why": "Đoạn D cảnh báo bón phân mà không chẩn đoán nguyên nhân có thể gây ô nhiễm và lãng phí.",
+   "quote": "Applying fertilizer without diagnosing the underlying problem may waste money and can contribute to pollution."
+  },
+  {
+   "prompt": "Structures built across slopes can slow water flowing ____.",
+   "answer": "downhill",
+   "why": "Đoạn E nói ruộng bậc thang, trồng theo đường đồng mức và lớp phủ đất làm chậm nước chảy xuống dốc.",
+   "quote": "Terraces, contour planting, and protective ground cover slow water moving downhill and reduce the loss of fertile topsoil."
+  },
+  {
+   "prompt": "Measures to limit erosion are especially necessary when heavy rain comes after ____.",
+   "answer": "a dry season",
+   "why": "Đoạn E nhấn mạnh các biện pháp bảo vệ đất đặc biệt quan trọng khi mưa lớn xảy ra sau mùa khô.",
+   "quote": "These measures are particularly important where intense rain follows a dry season."
+  },
+  {
+   "prompt": "As rainfall changes, keeping soil covered and conserving ____ become more important.",
+   "answer": "water",
+   "why": "Đoạn F cho biết biến đổi lượng mưa làm tăng giá trị của việc bảo tồn nước và duy trì lớp phủ đất.",
+   "quote": "Changing rainfall patterns can intensify erosion or create longer dry intervals, making water conservation and soil cover increasingly valuable."
+  }
+ ]
+}

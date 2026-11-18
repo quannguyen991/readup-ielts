@@ -1,0 +1,127 @@
+{
+ "title": "Managing Noise in Open-Plan Offices",
+ "topic": "Noise control in open-plan offices",
+ "context": "A. Open-plan offices are often designed to make teams easier to reorganise and to use floor space efficiently. Yet removing walls also changes how sound travels: conversations, calls and equipment noise can reach people who are not involved. The result is not simply a louder room. Workers may lose concentration when speech is intelligible, even if its volume is modest. For this reason, workplace designers increasingly treat noise control as a sequence of decisions rather than as the installation of one soundproof barrier.\n\nB. The first decision is to identify what people need to do and where. A design team can map quiet tasks, such as checking figures, alongside collaborative activities such as project discussions. It should also record the location and operating hours of printers, kitchens and other persistent sources. Brief observations and staff interviews help distinguish an occasional disturbance from a recurring one. The resulting activity map is useful because a single average noise reading can hide important differences between areas and times of day.\n\nC. The next stage is to consider the room’s layout and its surfaces. A long, unobstructed route between a speaker and a listener allows speech to travel farther than a layout with storage units or partial screens between them. Screens can interrupt this direct path, but their effectiveness depends on their height and position; a low divider may leave a seated listener exposed. Meanwhile, carpets, upholstered furniture and ceiling panels absorb some sound energy. Hard glass and bare concrete tend to reflect it, potentially making a busy room seem more reverberant. Absorption reduces reflections, whereas a screen mainly blocks or redirects a sound path, so the two measures do different jobs.\n\nD. Designers then decide whether to introduce sound masking. This system uses loudspeakers to add a carefully controlled background sound, commonly described as a soft, steady airflow. Its purpose is not to cancel every conversation. Rather, the added sound reduces the contrast between speech and the background, making distant words less intelligible. A technician first measures the existing sound level and then adjusts the masking system across different zones. If the setting is too loud, it can become a distraction itself; if it is too quiet, it may have little effect. Masking is therefore calibrated, not simply switched on at one uniform level.\n\nE. These interventions can be compared by their strengths and limitations. Absorptive materials reduce reflected sound but cannot prevent every direct conversation from reaching a nearby colleague. Screens offer local separation, yet they may obstruct sightlines or make a compact floor feel enclosed. Masking can improve speech privacy across a broader area, but it does not remove the physical source of a noise. The appropriate combination depends on room geometry, the tasks performed and staff preferences. A team that spends much of the day in confidential calls may need a different balance from one that relies on frequent face-to-face discussion.\n\nF. Finally, noise control should be evaluated after the changes are made. Staff can report whether interruptions have become less frequent, while measurements can show whether sound levels vary sharply between work zones. These forms of evidence answer different questions: a lower reading does not automatically mean that speech is less distracting. If complaints persist, the team can identify the relevant area and adjust a screen, a surface treatment or the masking level. Periodic review is also important because team size and work patterns change. Effective design is thus an iterative process: observe, intervene, assess and refine.",
+ "questions": [
+  {
+   "prompt": "Planning | Main reason for adopting a sequence of decisions: noise control is not just one ____",
+   "answer": "soundproof barrier",
+   "why": "Đoạn A nói việc kiểm soát tiếng ồn là một chuỗi quyết định, không chỉ là lắp đặt một rào chắn cách âm.",
+   "quote": "rather than as the installation of one soundproof barrier"
+  },
+  {
+   "prompt": "Planning | Speech may disrupt concentration when it is ____",
+   "answer": "intelligible",
+   "why": "Từ này mô tả lời nói có thể hiểu được, điều gây mất tập trung ngay cả khi âm lượng vừa phải.",
+   "quote": "Workers may lose concentration when speech is intelligible, even if its volume is modest."
+  },
+  {
+   "prompt": "Stage 1 | First, map quiet tasks and ____ activities",
+   "answer": "collaborative",
+   "why": "Bản đồ hoạt động ghi lại cả công việc yên tĩnh và các hoạt động hợp tác như thảo luận dự án.",
+   "quote": "A design team can map quiet tasks, such as checking figures, alongside collaborative activities such as project discussions."
+  },
+  {
+   "prompt": "Stage 1 | Record operating hours and locations of printers, kitchens and other ____",
+   "answer": "persistent sources",
+   "why": "Đoạn B gọi máy in, nhà bếp và các nguồn tương tự là những nguồn gây tiếng ồn dai dẳng cần được ghi lại.",
+   "quote": "It should also record the location and operating hours of printers, kitchens and other persistent sources."
+  },
+  {
+   "prompt": "Stage 1 | Use staff interviews to distinguish occasional disturbances from a ____ one",
+   "answer": "recurring",
+   "why": "Phỏng vấn nhân viên giúp nhận diện sự việc lặp lại, trái với sự quấy nhiễu chỉ thỉnh thoảng xảy ra.",
+   "quote": "help distinguish an occasional disturbance from a recurring one."
+  },
+  {
+   "prompt": "Stage 1 | A single average noise reading can hide differences between areas and ____",
+   "answer": "times of day",
+   "why": "Đoạn B cảnh báo số đo trung bình có thể che khuất khác biệt theo khu vực và thời điểm trong ngày.",
+   "quote": "a single average noise reading can hide important differences between areas and times of day."
+  },
+  {
+   "prompt": "Stage 2 | An unobstructed route lets speech travel farther than a layout with ____ between people",
+   "answer": "storage units",
+   "why": "Các tủ lưu trữ hoặc màn chắn đặt giữa người nói và người nghe có thể gián đoạn đường truyền trực tiếp của âm thanh.",
+   "quote": "a layout with storage units or partial screens between them."
+  },
+  {
+   "prompt": "Stage 2 | A low divider may leave a seated listener ____",
+   "answer": "exposed",
+   "why": "Đoạn C lưu ý hiệu quả màn chắn phụ thuộc chiều cao; vách thấp có thể không che được người đang ngồi.",
+   "quote": "a low divider may leave a seated listener exposed."
+  },
+  {
+   "prompt": "Stage 2 | Carpets, upholstered furniture and ceiling panels absorb some sound ____",
+   "answer": "energy",
+   "why": "Các bề mặt mềm hấp thụ một phần năng lượng âm thanh theo nội dung đoạn C.",
+   "quote": "carpets, upholstered furniture and ceiling panels absorb some sound energy."
+  },
+  {
+   "prompt": "Stage 2 | Hard glass and bare concrete tend to ____ sound",
+   "answer": "reflect",
+   "why": "Kính cứng và bê tông trần phản xạ âm, có thể làm phòng nghe vang hơn.",
+   "quote": "Hard glass and bare concrete tend to reflect it, potentially making a busy room seem more reverberant."
+  },
+  {
+   "prompt": "Stage 2 | Absorption reduces reflections; a screen mainly blocks or redirects a sound ____",
+   "answer": "path",
+   "why": "Đoạn C phân biệt hai chức năng: vật liệu hấp thụ giảm phản xạ, còn màn chắn tác động lên đường truyền âm.",
+   "quote": "a screen mainly blocks or redirects a sound path"
+  },
+  {
+   "prompt": "Stage 3 | Sound masking adds a carefully controlled ____ sound",
+   "answer": "background",
+   "why": "Hệ thống masking bổ sung âm thanh nền được kiểm soát cẩn thận.",
+   "quote": "This system uses loudspeakers to add a carefully controlled background sound"
+  },
+  {
+   "prompt": "Stage 3 | The added sound reduces the contrast between speech and the ____",
+   "answer": "background",
+   "why": "Mục đích là giảm độ tương phản giữa lời nói và âm nền, khiến lời nói ở xa khó hiểu hơn.",
+   "quote": "the added sound reduces the contrast between speech and the background"
+  },
+  {
+   "prompt": "Stage 3 | A technician measures the existing sound level, then adjusts the system across different ____",
+   "answer": "zones",
+   "why": "Hệ thống được điều chỉnh theo các vùng khác nhau, thay vì bật cùng một mức cho toàn bộ văn phòng.",
+   "quote": "adjusts the masking system across different zones."
+  },
+  {
+   "prompt": "Stage 3 | Masking is ____ rather than switched on at one uniform level",
+   "answer": "calibrated",
+   "why": "Đoạn D kết luận masking cần được hiệu chỉnh; mức quá cao gây xao nhãng còn mức quá thấp ít tác dụng.",
+   "quote": "Masking is therefore calibrated, not simply switched on at one uniform level."
+  },
+  {
+   "prompt": "Comparison | Absorptive materials cannot prevent every ____ conversation reaching a nearby colleague",
+   "answer": "direct",
+   "why": "Vật liệu hút âm làm giảm âm phản xạ nhưng không ngăn mọi cuộc trò chuyện truyền trực tiếp tới đồng nghiệp gần đó.",
+   "quote": "cannot prevent every direct conversation from reaching a nearby colleague."
+  },
+  {
+   "prompt": "Comparison | Screens may obstruct ____ or make a compact floor feel enclosed",
+   "answer": "sightlines",
+   "why": "Một hạn chế của màn chắn được nêu rõ là có thể cản tầm nhìn.",
+   "quote": "they may obstruct sightlines or make a compact floor feel enclosed."
+  },
+  {
+   "prompt": "Evaluation | Staff can report whether interruptions have become less ____",
+   "answer": "frequent",
+   "why": "Báo cáo của nhân viên cho biết mức độ thường xuyên của các lần bị gián đoạn có giảm hay không.",
+   "quote": "Staff can report whether interruptions have become less frequent"
+  },
+  {
+   "prompt": "Evaluation | A lower reading does not automatically mean speech is less ____",
+   "answer": "distracting",
+   "why": "Số đo thấp hơn không đảm bảo lời nói gây ít xao nhãng hơn; hai loại bằng chứng trả lời các câu hỏi khác nhau.",
+   "quote": "a lower reading does not automatically mean that speech is less distracting."
+  },
+  {
+   "prompt": "Review | The iterative process: observe, intervene, assess and ____",
+   "answer": "refine",
+   "why": "Đoạn cuối tóm tắt quy trình thiết kế lặp lại bằng bốn bước; từ cuối cùng là tiếp tục điều chỉnh để hoàn thiện.",
+   "quote": "observe, intervene, assess and refine."
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "id": "childhood",
+ "title": "Childhood",
+ "titleVi": "Tuổi thơ",
+ "tipVi": "Hãy kết hợp nhuần nhuyễn thì quá khứ đơn với cấu trúc 'used to' hoặc 'would + V' để miêu tả những thói quen đã qua một cách tự nhiên và chính xác.",
+ "part1": [
+  "Did you enjoy your childhood?",
+  "What was your favourite game to play when you were younger?",
+  "Who was your closest friend during your primary school years?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable outdoor activity you enjoyed during your childhood",
+  "bullets": [
+   "what activity it was",
+   "where you usually did it",
+   "who you took part in it with",
+   "and explain why this activity left such a deep impression on you"
+  ]
+ },
+ "part3": [
+  "How have children's leisure activities changed compared to several decades ago?",
+  "To what extent does a person's childhood environment shape their adult personality?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "halcyon days",
+    "vi": "những ngày tháng êm đềm, tươi đẹp trong quá khứ",
+    "ex": "I often look back on my primary school years as the halcyon days of my youth."
+   },
+   {
+    "en": "reminisce about",
+    "vi": "hồi tưởng, nhớ lại kỷ niệm",
+    "ex": "My cousins and I love to reminisce about our summer breaks in the countryside."
+   },
+   {
+    "en": "formative years",
+    "vi": "những năm tháng định hình nhân cách",
+    "ex": "Parental warmth plays a vital role during a child's formative years."
+   },
+   {
+    "en": "be engrossed in",
+    "vi": "mải mê, chìm đắm vào",
+    "ex": "We used to be completely engrossed in hide-and-seek until the streetlights came on."
+   },
+   {
+    "en": "carefree attitude",
+    "vi": "tinh thần vô tư lự, không vướng bận",
+    "ex": "What I miss most about growing up is that carefree attitude toward life."
+   },
+   {
+    "en": "bring back a flood of memories",
+    "vi": "gợi lại vô vàn kỷ niệm",
+    "ex": "Smelling that old wooden table brought back a flood of childhood memories."
+   },
+   {
+    "en": "foster creativity",
+    "vi": "nuôi dưỡng trí sáng tạo",
+    "ex": "Unstructured outdoor play helps foster creativity in young children."
+   },
+   {
+    "en": "look back with fondness",
+    "vi": "nhìn lại quá khứ với sự trìu mến",
+    "ex": "I always look back on my neighborhood adventures with tremendous fondness."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn về trò thả diều vào mỗi buổi chiều hè tại cánh đồng ven ngoại ô thị trấn.",
+   "Ý 1 (Ở đâu & Với ai): Bối cảnh bãi cỏ rộng lộng gió sau giờ tan học và nhóm bạn cùng xóm tự vót nan tre làm diều.",
+   "Ý 2 (Hoạt động diễn ra thế nào): Kể chi tiết cảm giác chạy đón gió, thi nhau kéo dây để diều bay cao vút trên nền trời hoàng hôn.",
+   "Kết (Lý do ấn tượng sâu sắc): Khẳng định hoạt động không màn hình ảo này rèn luyện sự khéo léo, gắn kết tình bạn và là biểu tượng của tuổi thơ vô tư."
+  ],
+  "sample": "I'd like to talk about kite flying, an outdoor pastime that defined my childhood summers. Back in the early 2000s, my family lived near an expansive meadow on the outskirts of our town. Every breezy late afternoon, a bunch of neighborhood kids and I would dash out there after finishing our homework. We actually fashioned our own kites out of bamboo strips, old newspapers, and cooked rice paste, which made the experience even more rewarding. We would sprint against the wind, tugging the strings frantically until the kites soared high into the twilight sky. It was utterly thrilling to watch our homemade creations glide above the open fields. This activity left an indelible mark on me because it was completely free from digital distractions. It taught me patience and manual dexterity, as making the kite balance properly was no easy feat. More importantly, those carefree afternoons forged unbreakable bonds between us, and whenever I spot a kite fluttering today, it instantly transports me back to those halcyon days of pure innocence.",
+  "p1": [
+   {
+    "q": "Did you enjoy your childhood?",
+    "a": "Definitely, yes. I had an exceptionally joyful upbringing surrounded by loving relatives and lively neighborhood peers. We spent most afternoons playing outdoors until sunset, which gave me countless sweet memories that I still cherish today."
+   },
+   {
+    "q": "What was your favourite game to play when you were younger?",
+    "a": "I was head over heels for hide-and-seek. My friends and I would scout out every nook and cranny in our apartment complex, and the sheer thrill of evading detection made it an irresistible daily ritual."
+   },
+   {
+    "q": "Who was your closest friend during your primary school years?",
+    "a": "That would be Minh, my next-door neighbor. We sat at the same desk in class and shared virtually everything, from comic books to secret snacks, forming a genuine bond that lasted all the way through high school."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How have children's leisure activities changed compared to several decades ago?",
+    "a": "In the past, children's pastimes were largely outdoors and community-oriented, revolving around spontaneous physical games like tag or skipping rope. In contrast, modern youngsters gravitate toward solitary screen time, such as playing video games or streaming videos on tablets. While this shift certainly enhances tech literacy from an early age, it unfortunately deprives kids of valuable physical exercise and organic social interaction with their peers."
+   },
+   {
+    "q": "To what extent does a person's childhood environment shape their adult personality?",
+    "a": "I firmly believe childhood circumstances lay the groundwork for adulthood. Growing up in a secure, supportive household typically fosters emotional stability and self-confidence, whereas enduring prolonged adversity or neglect might lead to chronic anxiety later in life. Of course, adult experiences and conscious self-development can reshape one's outlook, but the behavioral patterns established during one's formative years undeniably remain the bedrock of adult identity."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng thì hiện tại đơn khi kể chuyện quá khứ: Người học hay quên chia động từ ở thì quá khứ đơn (V2/-ed) hoặc thiếu sự luân chuyển tự nhiên với 'used to' và 'would' khi nói về thói quen cũ.",
+   "Dùng sai từ vựng thành 'childhood memorial': 'Memorial' mang nghĩa là đài tưởng niệm hoặc công trình tưởng niệm; để chỉ kỷ niệm thời thơ ấu, bạn cần dùng danh từ 'memories' hoặc 'recollections'.",
+   "Mô tả cảm xúc quá chung chung: Thí sinh thường lặp đi lặp lại 'I was very happy' thay vì dùng các tính từ gợi tả trạng thái tinh thần sâu sắc hơn như 'carefree', 'blissful' hay 'nostalgic'."
+  ],
+  "p1More": [
+   "Did you have a lot of friends when you were a child?",
+   "What kind of music or stories did you like most in your early childhood?",
+   "Do you still live in the place where you grew up?",
+   "What was an important rule your parents set for you as a child?",
+   "Do you think it is better for children to grow up in a city or the countryside?"
+  ],
+  "p3More": [
+   "What responsibilities do schools have in safeguarding children's emotional well-being?",
+   "Why do some adults struggle to retain vivid memories of their early years?",
+   "Should parents strictly monitor their children's recreational time, or allow total freedom?",
+   "In what ways do socioeconomic inequalities impact the quality of a child's upbringing?"
+  ]
+ }
+}

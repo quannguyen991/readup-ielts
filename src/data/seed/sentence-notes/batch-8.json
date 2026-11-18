@@ -1,0 +1,6693 @@
+{
+ "dict-11": {
+  "c": [
+   [
+    "S",
+    "Plastic waste"
+   ],
+   [
+    "V",
+    "is becoming"
+   ],
+   [
+    "C",
+    "a serious problem"
+   ],
+   [
+    "P",
+    "in coastal areas."
+   ]
+  ],
+  "s": [
+   "present-continuous"
+  ],
+  "n": "'Is becoming' là hiện tại tiếp diễn nói sự thay đổi đang diễn ra; 'become' là động từ nối nên theo sau là bổ ngữ 'a serious problem', còn 'in coastal areas' nêu nơi chốn.",
+  "x": [
+   [
+    "Traffic noise is becoming a major worry in busy neighbourhoods.",
+    "Tiếng ồn giao thông đang trở thành mối lo lớn ở các khu phố đông đúc."
+   ],
+   [
+    "Online fraud is becoming a growing threat for older users.",
+    "Lừa đảo trực tuyến đang trở thành mối đe dọa ngày càng lớn với người dùng lớn tuổi."
+   ]
+  ],
+  "y": [
+   [
+    "is becoming",
+    "is turning into",
+    "is developing into",
+    "đang trở thành"
+   ],
+   [
+    "a serious problem",
+    "a major issue",
+    "a grave concern",
+    "một vấn đề nghiêm trọng"
+   ],
+   [
+    "coastal areas",
+    "seaside regions",
+    "shoreline communities",
+    "vùng ven biển"
+   ]
+  ],
+  "r": [
+   [
+    "In coastal areas, plastic waste is becoming a serious problem.",
+    "Đảo cụm nơi chốn lên đầu"
+   ],
+   [
+    "Plastic waste is turning into a serious problem in coastal areas.",
+    "Đổi becoming thành turning into"
+   ]
+  ]
+ },
+ "dict-12": {
+  "c": [
+   [
+    "S",
+    "More companies"
+   ],
+   [
+    "V",
+    "are allowing"
+   ],
+   [
+    "O",
+    "employees"
+   ],
+   [
+    "C",
+    "to work"
+   ],
+   [
+    "P",
+    "from home."
+   ]
+  ],
+  "s": [
+   "object-to-infinitive",
+   "present-continuous"
+  ],
+  "n": "'Are allowing employees to work' là allow + người + to V ở hiện tại tiếp diễn, nói xu hướng đang tăng; 'More companies' mang nghĩa ngày càng nhiều công ty.",
+  "x": [
+   [
+    "More schools are encouraging students to read outside class.",
+    "Ngày càng nhiều trường khuyến khích học sinh đọc ngoài giờ học."
+   ],
+   [
+    "More employers are permitting staff to start later in the morning.",
+    "Ngày càng nhiều chủ doanh nghiệp cho phép nhân viên bắt đầu muộn hơn vào buổi sáng."
+   ]
+  ],
+  "y": [
+   [
+    "are allowing",
+    "are permitting",
+    "are enabling",
+    "đang cho phép"
+   ],
+   [
+    "employees",
+    "staff",
+    "workers",
+    "nhân viên"
+   ],
+   [
+    "work from home",
+    "work remotely",
+    "telework",
+    "làm việc tại nhà"
+   ]
+  ],
+  "r": [
+   [
+    "More companies are permitting employees to work from home.",
+    "Đổi allowing thành permitting"
+   ],
+   [
+    "Employees are being allowed to work from home by more companies.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-13": {
+  "c": [
+   [
+    "S",
+    "Universities"
+   ],
+   [
+    "V",
+    "are encouraging"
+   ],
+   [
+    "O",
+    "students"
+   ],
+   [
+    "C",
+    "to think"
+   ],
+   [
+    "M",
+    "more critically."
+   ]
+  ],
+  "s": [
+   "object-to-infinitive",
+   "present-continuous"
+  ],
+  "n": "'Are encouraging students to think' là encourage + người + to V ở hiện tại tiếp diễn; 'more critically' là so sánh hơn của trạng từ, nghĩa là phản biện hơn trước.",
+  "x": [
+   [
+    "Teachers are urging pupils to read more carefully.",
+    "Giáo viên đang thúc giục học sinh đọc kỹ hơn."
+   ],
+   [
+    "Managers are asking staff to plan more realistically.",
+    "Quản lý đang yêu cầu nhân viên lập kế hoạch thực tế hơn."
+   ]
+  ],
+  "y": [
+   [
+    "encouraging",
+    "urging",
+    "motivating",
+    "khuyến khích"
+   ],
+   [
+    "think more critically",
+    "reason more analytically",
+    "think more analytically",
+    "tư duy phản biện hơn"
+   ]
+  ],
+  "r": [
+   [
+    "Students are being encouraged by universities to think more critically.",
+    "Dùng bị động"
+   ],
+   [
+    "Universities are urging students to think more critically.",
+    "Đổi encouraging thành urging"
+   ]
+  ]
+ },
+ "dict-14": {
+  "c": [
+   [
+    "S",
+    "The price of housing"
+   ],
+   [
+    "V",
+    "has increased"
+   ],
+   [
+    "M",
+    "significantly"
+   ],
+   [
+    "T",
+    "in the past decade."
+   ]
+  ],
+  "s": [
+   "present-perfect"
+  ],
+  "n": "'Has increased' là hiện tại hoàn thành vì 'in the past decade' là khoảng thời gian kéo đến hiện tại; 'significantly' bổ nghĩa cho động từ, 'price' số ít nên dùng 'has'.",
+  "x": [
+   [
+    "The cost of food has risen sharply in the last year.",
+    "Giá thực phẩm đã tăng mạnh trong năm vừa qua."
+   ],
+   [
+    "The number of visitors has grown steadily in recent months.",
+    "Lượng du khách đã tăng đều trong những tháng gần đây."
+   ]
+  ],
+  "y": [
+   [
+    "has increased",
+    "has risen",
+    "has gone up",
+    "đã tăng"
+   ],
+   [
+    "significantly",
+    "substantially",
+    "considerably",
+    "đáng kể"
+   ],
+   [
+    "in the past decade",
+    "over the last ten years",
+    "during the last ten years",
+    "trong mười năm qua"
+   ]
+  ],
+  "r": [
+   [
+    "In the past decade, the price of housing has increased significantly.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "Housing prices have risen significantly in the past decade.",
+    "Đổi cụm danh từ và động từ"
+   ]
+  ]
+ },
+ "dict-15": {
+  "c": [
+   [
+    "S",
+    "Regular exercise"
+   ],
+   [
+    "V",
+    "can reduce"
+   ],
+   [
+    "O",
+    "the risk of heart disease."
+   ]
+  ],
+  "s": [
+   "modal-ability"
+  ],
+  "n": "'Can reduce' là can + V nguyên mẫu nói khả năng hoặc tác dụng có thể xảy ra; 'Regular exercise' là chủ ngữ không đếm được, 'risk of heart disease' là tân ngữ.",
+  "x": [
+   [
+    "Healthy eating can lower the chance of many illnesses.",
+    "Ăn uống lành mạnh có thể làm giảm khả năng mắc nhiều bệnh."
+   ],
+   [
+    "Good sleep can improve the quality of daily work.",
+    "Giấc ngủ tốt có thể nâng chất lượng công việc hằng ngày."
+   ]
+  ],
+  "y": [
+   [
+    "can reduce",
+    "can lower",
+    "can decrease",
+    "có thể làm giảm"
+   ],
+   [
+    "the risk of",
+    "the chance of",
+    "the likelihood of",
+    "nguy cơ"
+   ],
+   [
+    "regular",
+    "frequent",
+    "consistent",
+    "đều đặn"
+   ]
+  ],
+  "r": [
+   [
+    "Exercising regularly can reduce the risk of heart disease.",
+    "Đổi cụm danh từ thành V-ing + trạng từ"
+   ],
+   [
+    "The risk of heart disease can be reduced by regular exercise.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-16": {
+  "c": [
+   [
+    "S",
+    "Public transport in the capital"
+   ],
+   [
+    "V",
+    "has improved"
+   ],
+   [
+    "M",
+    "considerably"
+   ],
+   [
+    "T",
+    "this year."
+   ]
+  ],
+  "s": [
+   "present-perfect"
+  ],
+  "n": "'Has improved' là hiện tại hoàn thành vì 'this year' là khoảng thời gian chưa kết thúc; 'transport' không đếm được nên chia 'has', còn 'considerably' nghĩa là đáng kể.",
+  "x": [
+   [
+    "Air quality in the region has improved noticeably this month.",
+    "Chất lượng không khí trong vùng đã cải thiện rõ rệt trong tháng này."
+   ],
+   [
+    "Internet access in rural areas has expanded rapidly this decade.",
+    "Kết nối internet ở nông thôn đã mở rộng nhanh chóng trong thập kỷ này."
+   ]
+  ],
+  "y": [
+   [
+    "has improved",
+    "has advanced",
+    "has got better",
+    "đã cải thiện"
+   ],
+   [
+    "considerably",
+    "substantially",
+    "markedly",
+    "đáng kể"
+   ],
+   [
+    "public transport",
+    "mass transit",
+    "public transportation",
+    "giao thông công cộng"
+   ]
+  ],
+  "r": [
+   [
+    "This year, public transport in the capital has improved considerably.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "There has been a considerable improvement in public transport in the capital this year.",
+    "Dùng danh từ improvement"
+   ]
+  ]
+ },
+ "dict-17": {
+  "c": [
+   [
+    "S",
+    "Many young people"
+   ],
+   [
+    "V",
+    "find"
+   ],
+   [
+    "O",
+    "it"
+   ],
+   [
+    "C",
+    "difficult"
+   ],
+   [
+    "C",
+    "to balance"
+   ],
+   [
+    "O",
+    "work and study."
+   ]
+  ],
+  "s": [
+   "find-it-adj"
+  ],
+  "n": "'Find it difficult to balance' là find + it + tính từ + to V: 'it' là tân ngữ giả thay cho việc cân bằng công việc và học tập; 'many young people' chia 'find' số nhiều.",
+  "x": [
+   [
+    "Many workers find it hard to save money each month.",
+    "Nhiều người lao động thấy khó dành dụm tiền mỗi tháng."
+   ],
+   [
+    "Most beginners find it easy to learn the basic rules.",
+    "Hầu hết người mới thấy dễ học các quy tắc cơ bản."
+   ]
+  ],
+  "y": [
+   [
+    "find it difficult",
+    "find it hard",
+    "consider it challenging",
+    "thấy khó"
+   ],
+   [
+    "balance",
+    "juggle",
+    "combine",
+    "cân bằng"
+   ],
+   [
+    "young people",
+    "youngsters",
+    "the young",
+    "người trẻ"
+   ]
+  ],
+  "r": [
+   [
+    "Many young people think it difficult to balance work and study.",
+    "Đổi find thành think"
+   ],
+   [
+    "For many young people, it is difficult to balance work and study.",
+    "Dùng It is difficult for … to"
+   ]
+  ]
+ },
+ "dict-18": {
+  "c": [
+   [
+    "S",
+    "Tourists"
+   ],
+   [
+    "V",
+    "are often surprised"
+   ],
+   [
+    "A",
+    "by"
+   ],
+   [
+    "J",
+    "how"
+   ],
+   [
+    "C",
+    "friendly"
+   ],
+   [
+    "S",
+    "the local people"
+   ],
+   [
+    "V",
+    "are."
+   ]
+  ],
+  "s": [
+   "passive"
+  ],
+  "n": "'Are often surprised by' là bị động hiện tại với trạng từ 'often' chen giữa; 'how friendly the local people are' là mệnh đề danh từ sau 'by', trật tự chủ ngữ + động từ.",
+  "x": [
+   [
+    "Visitors are often impressed by how clean the streets are.",
+    "Du khách thường ấn tượng vì đường phố sạch đến vậy."
+   ],
+   [
+    "Students are often shocked by how heavy the workload is.",
+    "Học sinh thường sốc vì khối lượng bài vở nặng đến vậy."
+   ]
+  ],
+  "y": [
+   [
+    "are often surprised by",
+    "are frequently amazed by",
+    "are commonly astonished by",
+    "thường ngạc nhiên vì"
+   ],
+   [
+    "how friendly",
+    "how welcoming",
+    "how hospitable",
+    "thân thiện đến vậy"
+   ],
+   [
+    "the local people",
+    "the locals",
+    "the residents",
+    "người dân địa phương"
+   ]
+  ],
+  "r": [
+   [
+    "The friendliness of the local people often surprises tourists.",
+    "Chuyển danh từ làm chủ ngữ"
+   ],
+   [
+    "How friendly the local people are often surprises tourists.",
+    "Đưa mệnh đề how lên làm chủ ngữ"
+   ]
+  ]
+ },
+ "dict-19": {
+  "c": [
+   [
+    "S",
+    "Social media"
+   ],
+   [
+    "V",
+    "has changed"
+   ],
+   [
+    "O",
+    "the way"
+   ],
+   [
+    "S",
+    "we"
+   ],
+   [
+    "V",
+    "communicate"
+   ],
+   [
+    "A",
+    "with friends."
+   ]
+  ],
+  "s": [
+   "present-perfect",
+   "relative-clause"
+  ],
+  "n": "'Has changed' là hiện tại hoàn thành nói thay đổi có kết quả đến nay; 'the way we communicate' là mệnh đề quan hệ lược 'in which', mô tả cách thức ta trò chuyện.",
+  "x": [
+   [
+    "Smartphones have changed the way we shop for clothes.",
+    "Điện thoại thông minh đã thay đổi cách chúng ta mua quần áo."
+   ],
+   [
+    "Online maps have transformed the way people travel in cities.",
+    "Bản đồ trực tuyến đã biến đổi cách người ta di chuyển trong thành phố."
+   ]
+  ],
+  "y": [
+   [
+    "has changed",
+    "has transformed",
+    "has altered",
+    "đã thay đổi"
+   ],
+   [
+    "the way",
+    "the manner in which",
+    "how",
+    "cách"
+   ],
+   [
+    "communicate with",
+    "interact with",
+    "keep in touch with",
+    "trò chuyện với"
+   ]
+  ],
+  "r": [
+   [
+    "Social media has changed how we communicate with friends.",
+    "Đổi the way thành how"
+   ],
+   [
+    "The way we communicate with friends has been changed by social media.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-20": {
+  "c": [
+   [
+    "S",
+    "Governments"
+   ],
+   [
+    "V",
+    "are investing"
+   ],
+   [
+    "O",
+    "more money"
+   ],
+   [
+    "A",
+    "in renewable energy."
+   ]
+  ],
+  "s": [
+   "present-continuous",
+   "comparative"
+  ],
+  "n": "'Are investing' là hiện tại tiếp diễn nói xu hướng đang diễn ra; 'more money' là so sánh hơn (more + danh từ không đếm được) ngầm so với trước đây.",
+  "x": [
+   [
+    "Schools are spending more time on digital skills.",
+    "Các trường đang dành nhiều thời gian hơn cho kỹ năng số."
+   ],
+   [
+    "Farmers are using more water in dry regions.",
+    "Nông dân đang dùng nhiều nước hơn ở các vùng khô."
+   ]
+  ],
+  "y": [
+   [
+    "are investing",
+    "are putting",
+    "are channelling",
+    "đang đầu tư"
+   ],
+   [
+    "more money",
+    "greater funds",
+    "additional funding",
+    "nhiều tiền hơn"
+   ],
+   [
+    "renewable energy",
+    "clean energy",
+    "green power",
+    "năng lượng tái tạo"
+   ]
+  ],
+  "r": [
+   [
+    "More money is being invested in renewable energy by governments.",
+    "Dùng bị động"
+   ],
+   [
+    "Governments are putting more money into renewable energy.",
+    "Đổi investing in thành putting into"
+   ]
+  ]
+ },
+ "dict-21": {
+  "c": [
+   [
+    "A",
+    "Despite recent economic growth,"
+   ],
+   [
+    "S",
+    "income inequality"
+   ],
+   [
+    "V",
+    "continues"
+   ],
+   [
+    "C",
+    "to widen."
+   ]
+  ],
+  "s": [
+   "concession",
+   "verb-to-infinitive"
+  ],
+  "n": "'Despite recent economic growth' là cụm danh từ sau 'despite' nêu sự tương phản, không cần mệnh đề; 'continues to widen' là continue + to V nghĩa là tiếp tục nới rộng.",
+  "x": [
+   [
+    "Despite heavy investment in schools, many pupils continue to struggle.",
+    "Dù đầu tư mạnh vào trường học, nhiều học sinh vẫn tiếp tục chật vật."
+   ],
+   [
+    "Despite repeated warnings, air pollution continues to increase.",
+    "Dù bị cảnh báo nhiều lần, ô nhiễm không khí vẫn tiếp tục tăng."
+   ]
+  ],
+  "y": [
+   [
+    "Despite",
+    "In spite of",
+    "Notwithstanding",
+    "Dù"
+   ],
+   [
+    "continues to widen",
+    "keeps widening",
+    "goes on widening",
+    "tiếp tục nới rộng"
+   ],
+   [
+    "income inequality",
+    "the income gap",
+    "wealth disparity",
+    "khoảng cách thu nhập"
+   ]
+  ],
+  "r": [
+   [
+    "Although the economy has grown recently, income inequality continues to widen.",
+    "Đổi Despite thành Although + mệnh đề"
+   ],
+   [
+    "Income inequality continues to widen in spite of recent economic growth.",
+    "Dùng in spite of, đảo xuống cuối"
+   ]
+  ]
+ },
+ "dict-22": {
+  "c": [
+   [
+    "S",
+    "Artificial intelligence"
+   ],
+   [
+    "V",
+    "is transforming"
+   ],
+   [
+    "O",
+    "industries"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "A",
+    "once"
+   ],
+   [
+    "V",
+    "relied"
+   ],
+   [
+    "A",
+    "entirely on human labour."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "present-continuous"
+  ],
+  "n": "'Industries that once relied entirely on human labour' là mệnh đề quan hệ ở quá khứ đơn bổ nghĩa cho 'industries'; 'is transforming' là hiện tại tiếp diễn nói thay đổi đang diễn ra.",
+  "x": [
+   [
+    "Robots are replacing workers who once performed simple tasks by hand.",
+    "Robot đang thay thế những công nhân từng làm việc đơn giản bằng tay."
+   ],
+   [
+    "Streaming is reshaping shops that once sold music exclusively on discs.",
+    "Dịch vụ phát trực tuyến đang định hình lại các cửa hàng từng chỉ bán nhạc trên đĩa."
+   ]
+  ],
+  "y": [
+   [
+    "is transforming",
+    "is reshaping",
+    "is revolutionising",
+    "đang làm thay đổi"
+   ],
+   [
+    "relied entirely on",
+    "depended entirely on",
+    "depended solely on",
+    "hoàn toàn dựa vào"
+   ],
+   [
+    "human labour",
+    "manual work",
+    "human effort",
+    "sức lao động của con người"
+   ]
+  ],
+  "r": [
+   [
+    "Artificial intelligence is transforming industries which once relied entirely on human labour.",
+    "Đổi that thành which"
+   ],
+   [
+    "Industries that once relied entirely on human labour are being transformed by artificial intelligence.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-23": {
+  "c": [
+   [
+    "S",
+    "Critics"
+   ],
+   [
+    "V",
+    "argue"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "standardized testing"
+   ],
+   [
+    "V",
+    "fails"
+   ],
+   [
+    "C",
+    "to measure"
+   ],
+   [
+    "O",
+    "genuine understanding."
+   ]
+  ],
+  "s": [
+   "that-clause",
+   "verb-to-infinitive"
+  ],
+  "n": "'Argue that…' là động từ nêu quan điểm + mệnh đề that, nên theo sau là câu đầy đủ; 'fails to measure' là fail + to V nghĩa là không đo được.",
+  "x": [
+   [
+    "Experts claim that cheap fuel fails to reflect its true cost.",
+    "Chuyên gia cho rằng nhiên liệu rẻ không phản ánh chi phí thật của nó."
+   ],
+   [
+    "Teachers believe that long lectures fail to hold students' attention.",
+    "Giáo viên tin rằng bài giảng dài không giữ được sự chú ý của học sinh."
+   ]
+  ],
+  "y": [
+   [
+    "argue that",
+    "claim that",
+    "maintain that",
+    "cho rằng"
+   ],
+   [
+    "fails to",
+    "does not manage to",
+    "is unable to",
+    "không … được"
+   ],
+   [
+    "genuine understanding",
+    "real comprehension",
+    "true understanding",
+    "mức độ hiểu bài thực chất"
+   ]
+  ],
+  "r": [
+   [
+    "According to critics, standardized testing fails to measure genuine understanding.",
+    "Dùng According to"
+   ],
+   [
+    "Critics argue that standardized testing does not measure genuine understanding.",
+    "Đổi fails to thành does not"
+   ]
+  ]
+ },
+ "dict-24": {
+  "c": [
+   [
+    "S",
+    "Rising sea levels"
+   ],
+   [
+    "V",
+    "threaten"
+   ],
+   [
+    "C",
+    "to displace"
+   ],
+   [
+    "O",
+    "millions of people"
+   ],
+   [
+    "T",
+    "within this century."
+   ]
+  ],
+  "s": [
+   "verb-to-infinitive"
+  ],
+  "n": "'Threaten to displace' là threaten + to V nghĩa là đe dọa/có nguy cơ gây ra; 'Rising sea levels' là chủ ngữ số nhiều nên dùng 'threaten', 'rising' là phân từ làm tính từ.",
+  "x": [
+   [
+    "Growing debts threaten to bankrupt thousands of families within this decade.",
+    "Nợ nần ngày càng tăng có nguy cơ làm phá sản hàng nghìn gia đình trong thập kỷ này."
+   ],
+   [
+    "Spreading fires threaten to destroy hundreds of homes within this week.",
+    "Các đám cháy lan rộng có nguy cơ thiêu rụi hàng trăm ngôi nhà trong tuần này."
+   ]
+  ],
+  "y": [
+   [
+    "threaten to",
+    "are likely to",
+    "risk",
+    "có nguy cơ"
+   ],
+   [
+    "displace",
+    "uproot",
+    "drive out",
+    "khiến phải rời bỏ nơi ở"
+   ],
+   [
+    "rising",
+    "increasing",
+    "climbing",
+    "dâng"
+   ]
+  ],
+  "r": [
+   [
+    "Millions of people are threatened with displacement by rising sea levels within this century.",
+    "Dùng bị động + threatened with"
+   ],
+   [
+    "Rising sea levels could displace millions of people within this century.",
+    "Đổi threaten to thành could"
+   ]
+  ]
+ },
+ "dict-25": {
+  "c": [
+   [
+    "S",
+    "Researchers"
+   ],
+   [
+    "V",
+    "have discovered"
+   ],
+   [
+    "O",
+    "a strong link"
+   ],
+   [
+    "A",
+    "between sleep deprivation and memory loss."
+   ]
+  ],
+  "s": [
+   "present-perfect"
+  ],
+  "n": "'Have discovered' là hiện tại hoàn thành nói phát hiện mới có ảnh hưởng đến hiện tại; 'a strong link between A and B' là cụm danh từ chỉ mối liên hệ giữa hai thứ.",
+  "x": [
+   [
+    "Scientists have found a clear connection between air pollution and asthma.",
+    "Các nhà khoa học đã tìm thấy mối liên quan rõ ràng giữa ô nhiễm không khí và bệnh hen."
+   ],
+   [
+    "Economists have identified a close relationship between education and income.",
+    "Các nhà kinh tế đã nhận ra mối quan hệ chặt chẽ giữa giáo dục và thu nhập."
+   ]
+  ],
+  "y": [
+   [
+    "have discovered",
+    "have found",
+    "have identified",
+    "đã phát hiện"
+   ],
+   [
+    "a strong link",
+    "a close connection",
+    "a clear correlation",
+    "mối liên hệ chặt chẽ"
+   ],
+   [
+    "sleep deprivation",
+    "lack of sleep",
+    "insufficient sleep",
+    "thiếu ngủ"
+   ]
+  ],
+  "r": [
+   [
+    "A strong link between sleep deprivation and memory loss has been discovered by researchers.",
+    "Dùng bị động"
+   ],
+   [
+    "Researchers have found a strong link between sleep deprivation and memory loss.",
+    "Đổi discovered thành found"
+   ]
+  ]
+ },
+ "dict-26": {
+  "c": [
+   [
+    "S",
+    "The gap between urban and rural development"
+   ],
+   [
+    "V",
+    "remains"
+   ],
+   [
+    "C",
+    "a persistent challenge."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Remains' là động từ nối hiện tại đơn nghĩa là vẫn còn là, theo sau là bổ ngữ 'a persistent challenge'; chủ ngữ 'The gap' số ít nên 'remains' có s.",
+  "x": [
+   [
+    "The difference between rich and poor schools remains a serious concern.",
+    "Khoảng cách giữa trường giàu và nghèo vẫn là mối lo nghiêm trọng."
+   ],
+   [
+    "The shortage of skilled nurses remains a major obstacle.",
+    "Tình trạng thiếu y tá lành nghề vẫn là trở ngại lớn."
+   ]
+  ],
+  "y": [
+   [
+    "remains",
+    "continues to be",
+    "stays",
+    "vẫn là"
+   ],
+   [
+    "persistent",
+    "enduring",
+    "long-standing",
+    "dai dẳng"
+   ],
+   [
+    "the gap between",
+    "the divide between",
+    "the disparity between",
+    "khoảng cách giữa"
+   ]
+  ],
+  "r": [
+   [
+    "The gap between urban and rural development continues to be a persistent challenge.",
+    "Đổi remains thành continues to be"
+   ],
+   [
+    "The gap between urban and rural development is still a persistent challenge.",
+    "Đổi remains thành is still"
+   ]
+  ]
+ },
+ "dict-27": {
+  "c": [
+   [
+    "S",
+    "Remote working arrangements"
+   ],
+   [
+    "V",
+    "have blurred"
+   ],
+   [
+    "O",
+    "the boundary between personal and professional life."
+   ]
+  ],
+  "s": [
+   "present-perfect"
+  ],
+  "n": "'Have blurred' là hiện tại hoàn thành nói thay đổi đã xảy ra và còn tác động; chủ ngữ số nhiều 'arrangements' nên 'have', còn 'blur the boundary' nghĩa là làm mờ ranh giới.",
+  "x": [
+   [
+    "Constant notifications have weakened the line between work time and rest time.",
+    "Thông báo liên tục đã làm yếu ranh giới giữa giờ làm và giờ nghỉ."
+   ],
+   [
+    "Online learning has reduced the distance between teachers and distant students.",
+    "Học trực tuyến đã giảm khoảng cách giữa giáo viên và học sinh ở xa."
+   ]
+  ],
+  "y": [
+   [
+    "have blurred",
+    "have eroded",
+    "have weakened",
+    "đã xóa nhòa"
+   ],
+   [
+    "the boundary between",
+    "the line between",
+    "the distinction between",
+    "ranh giới giữa"
+   ],
+   [
+    "remote working",
+    "working from home",
+    "teleworking",
+    "làm việc từ xa"
+   ]
+  ],
+  "r": [
+   [
+    "The boundary between personal and professional life has been blurred by remote working arrangements.",
+    "Dùng bị động"
+   ],
+   [
+    "Remote working arrangements have made the boundary between personal and professional life less clear.",
+    "Đổi blurred thành made … less clear"
+   ]
+  ]
+ },
+ "dict-28": {
+  "c": [
+   [
+    "S",
+    "Misinformation"
+   ],
+   [
+    "V",
+    "spreads"
+   ],
+   [
+    "M",
+    "faster online"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "S",
+    "most people"
+   ],
+   [
+    "V",
+    "realise."
+   ]
+  ],
+  "s": [
+   "comparative"
+  ],
+  "n": "'Faster … than most people realise' là so sánh hơn của trạng từ, mệnh đề sau than đối chiếu với nhận thức của mọi người; 'misinformation' không đếm được nên 'spreads'.",
+  "x": [
+   [
+    "Rumours travel faster in small towns than most visitors expect.",
+    "Tin đồn lan nhanh trong thị trấn nhỏ hơn hầu hết du khách tưởng."
+   ],
+   [
+    "Prices rise more quickly in cities than most families realise.",
+    "Giá cả tăng nhanh hơn ở thành phố so với hầu hết gia đình nghĩ."
+   ]
+  ],
+  "y": [
+   [
+    "spreads",
+    "circulates",
+    "travels",
+    "lan"
+   ],
+   [
+    "faster online than",
+    "more quickly online than",
+    "more rapidly online than",
+    "nhanh hơn trên mạng so với"
+   ],
+   [
+    "realise",
+    "appreciate",
+    "imagine",
+    "nghĩ"
+   ]
+  ],
+  "r": [
+   [
+    "Most people do not realise how fast misinformation spreads online.",
+    "Dùng how fast"
+   ],
+   [
+    "Misinformation spreads more quickly online than most people realise.",
+    "Đổi faster thành more quickly"
+   ]
+  ]
+ },
+ "dict-29": {
+  "c": [
+   [
+    "S",
+    "Small businesses"
+   ],
+   [
+    "V",
+    "often struggle"
+   ],
+   [
+    "C",
+    "to compete"
+   ],
+   [
+    "A",
+    "with large multinational corporations."
+   ]
+  ],
+  "s": [
+   "verb-to-infinitive"
+  ],
+  "n": "'Struggle to compete' là struggle + to V nghĩa là chật vật làm gì; 'often' chen giữa chủ ngữ và động từ, 'compete with' đi với giới từ with.",
+  "x": [
+   [
+    "Young graduates often struggle to find jobs in a crowded market.",
+    "Sinh viên mới ra trường thường chật vật tìm việc trong thị trường đông đúc."
+   ],
+   [
+    "Family farms often struggle to survive against big industrial producers.",
+    "Các trang trại gia đình thường chật vật tồn tại trước nhà sản xuất công nghiệp lớn."
+   ]
+  ],
+  "y": [
+   [
+    "often struggle to",
+    "frequently struggle to",
+    "regularly struggle to",
+    "thường chật vật"
+   ],
+   [
+    "compete with",
+    "rival",
+    "vie with",
+    "cạnh tranh với"
+   ],
+   [
+    "multinational corporations",
+    "global companies",
+    "transnational firms",
+    "tập đoàn đa quốc gia"
+   ]
+  ],
+  "r": [
+   [
+    "Small businesses often have difficulty competing with large multinational corporations.",
+    "Dùng have difficulty + V-ing"
+   ],
+   [
+    "It is often hard for small businesses to compete with large multinational corporations.",
+    "Dùng It is hard for … to"
+   ]
+  ]
+ },
+ "dict-30": {
+  "c": [
+   [
+    "S",
+    "Data privacy"
+   ],
+   [
+    "V",
+    "has become"
+   ],
+   [
+    "C",
+    "one of the most contested issues"
+   ],
+   [
+    "A",
+    "of the digital age."
+   ]
+  ],
+  "s": [
+   "superlative",
+   "present-perfect"
+  ],
+  "n": "'One of the most contested issues' là so sánh nhất dạng one of the + superlative + danh từ số nhiều; 'has become' là hiện tại hoàn thành nói thay đổi tới nay.",
+  "x": [
+   [
+    "Climate change has become one of the most discussed topics of the modern era.",
+    "Biến đổi khí hậu đã trở thành một trong những chủ đề được bàn nhiều nhất của thời hiện đại."
+   ],
+   [
+    "Online safety has become one of the most pressing concerns of the internet age.",
+    "An toàn trực tuyến đã trở thành một trong những mối lo cấp bách nhất của thời đại internet."
+   ]
+  ],
+  "y": [
+   [
+    "has become",
+    "has turned into",
+    "has emerged as",
+    "đã trở thành"
+   ],
+   [
+    "most contested",
+    "most disputed",
+    "most controversial",
+    "gây tranh cãi nhất"
+   ],
+   [
+    "the digital age",
+    "the information age",
+    "the internet era",
+    "thời đại số"
+   ]
+  ],
+  "r": [
+   [
+    "Among the most contested issues of the digital age is data privacy.",
+    "Dùng Among … is"
+   ],
+   [
+    "Data privacy is now one of the most contested issues of the digital age.",
+    "Đổi has become thành is now"
+   ]
+  ]
+ },
+ "dict-31": {
+  "c": [
+   [
+    "S",
+    "Students"
+   ],
+   [
+    "V",
+    "often review"
+   ],
+   [
+    "O",
+    "their notes"
+   ],
+   [
+    "T",
+    "before an important exam."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Often review' là hiện tại đơn với trạng từ tần suất đứng trước động từ thường; 'before an important exam' là cụm giới từ chỉ thời điểm.",
+  "x": [
+   [
+    "Athletes often stretch their muscles before a long race.",
+    "Vận động viên thường giãn cơ trước một cuộc đua dài."
+   ],
+   [
+    "Travellers often check their documents before an overseas flight.",
+    "Du khách thường kiểm tra giấy tờ trước một chuyến bay quốc tế."
+   ]
+  ],
+  "y": [
+   [
+    "often review",
+    "usually revise",
+    "regularly go over",
+    "thường xem lại"
+   ],
+   [
+    "notes",
+    "lecture notes",
+    "class notes",
+    "ghi chép"
+   ],
+   [
+    "an important exam",
+    "a major test",
+    "a crucial exam",
+    "kỳ thi quan trọng"
+   ]
+  ],
+  "r": [
+   [
+    "Before an important exam, students often review their notes.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "Reviewing their notes is something students often do before an important exam.",
+    "Dùng V-ing làm chủ ngữ"
+   ]
+  ]
+ },
+ "dict-32": {
+  "c": [
+   [
+    "S",
+    "Recycling old newspapers and bottles"
+   ],
+   [
+    "V",
+    "helps"
+   ],
+   [
+    "C",
+    "protect"
+   ],
+   [
+    "O",
+    "the environment."
+   ]
+  ],
+  "s": [
+   "gerund-subject"
+  ],
+  "n": "'Recycling old newspapers and bottles' là V-ing làm chủ ngữ nên 'helps' chia số ít; 'help + V' (có thể bỏ to) nghĩa là góp phần bảo vệ môi trường.",
+  "x": [
+   [
+    "Planting trees along roads helps reduce air pollution.",
+    "Trồng cây dọc đường giúp giảm ô nhiễm không khí."
+   ],
+   [
+    "Walking to school helps keep children healthy.",
+    "Đi bộ đến trường giúp trẻ khỏe mạnh."
+   ]
+  ],
+  "y": [
+   [
+    "helps protect",
+    "helps safeguard",
+    "helps preserve",
+    "góp phần bảo vệ"
+   ],
+   [
+    "recycling",
+    "reusing",
+    "reprocessing",
+    "tái chế"
+   ],
+   [
+    "the environment",
+    "nature",
+    "the planet",
+    "môi trường"
+   ]
+  ],
+  "r": [
+   [
+    "To recycle old newspapers and bottles helps protect the environment.",
+    "Đổi V-ing thành to V"
+   ],
+   [
+    "It helps protect the environment to recycle old newspapers and bottles.",
+    "Dùng It làm chủ ngữ giả"
+   ]
+  ]
+ },
+ "dict-33": {
+  "c": [
+   [
+    "S",
+    "Many students"
+   ],
+   [
+    "V",
+    "use"
+   ],
+   [
+    "O",
+    "laptops"
+   ],
+   [
+    "U",
+    "to complete"
+   ],
+   [
+    "O",
+    "their homework assignments."
+   ]
+  ],
+  "s": [
+   "purpose-clause"
+  ],
+  "n": "'To complete their homework assignments' là to V chỉ mục đích của việc dùng laptop; 'many students' chia 'use' số nhiều, tân ngữ 'laptops' số nhiều không mạo từ.",
+  "x": [
+   [
+    "Many farmers use drones to monitor their distant fields.",
+    "Nhiều nông dân dùng máy bay không người lái để theo dõi những cánh đồng xa."
+   ],
+   [
+    "Many commuters use apps to check their train times.",
+    "Nhiều người đi làm dùng ứng dụng để xem giờ tàu."
+   ]
+  ],
+  "y": [
+   [
+    "use laptops to",
+    "rely on laptops to",
+    "employ laptops to",
+    "dùng laptop để"
+   ],
+   [
+    "complete",
+    "finish",
+    "do",
+    "hoàn thành"
+   ],
+   [
+    "homework assignments",
+    "coursework",
+    "school tasks",
+    "bài tập về nhà"
+   ]
+  ],
+  "r": [
+   [
+    "Many students use laptops in order to complete their homework assignments.",
+    "Dùng in order to"
+   ],
+   [
+    "Many students complete their homework assignments using laptops.",
+    "Dùng using + V-ing"
+   ]
+  ]
+ },
+ "dict-34": {
+  "c": [
+   [
+    "S",
+    "Doctors"
+   ],
+   [
+    "V",
+    "recommend"
+   ],
+   [
+    "O",
+    "seven hours of sleep"
+   ],
+   [
+    "T",
+    "every night."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Recommend' là hiện tại đơn nói lời khuyên chung của bác sĩ; động từ này đi thẳng với danh từ 'seven hours of sleep', còn 'every night' nêu tần suất.",
+  "x": [
+   [
+    "Dentists recommend two minutes of brushing every morning.",
+    "Nha sĩ khuyên đánh răng hai phút mỗi sáng."
+   ],
+   [
+    "Teachers suggest thirty minutes of reading every evening.",
+    "Giáo viên gợi ý đọc ba mươi phút mỗi tối."
+   ]
+  ],
+  "y": [
+   [
+    "recommend",
+    "advise",
+    "suggest",
+    "khuyên"
+   ],
+   [
+    "seven hours of sleep",
+    "seven hours' rest",
+    "seven hours in bed",
+    "bảy tiếng ngủ"
+   ],
+   [
+    "every night",
+    "each night",
+    "nightly",
+    "mỗi đêm"
+   ]
+  ],
+  "r": [
+   [
+    "Doctors recommend that people sleep for seven hours every night.",
+    "Dùng recommend that + mệnh đề"
+   ],
+   [
+    "Doctors advise getting seven hours of sleep every night.",
+    "Dùng advise + V-ing"
+   ]
+  ]
+ },
+ "dict-35": {
+  "c": [
+   [
+    "S",
+    "She"
+   ],
+   [
+    "V",
+    "usually arrives"
+   ],
+   [
+    "P",
+    "at the office"
+   ],
+   [
+    "T",
+    "before nine o'clock."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Usually arrives' là hiện tại đơn với trạng từ tần suất 'usually' đặt trước động từ, nói thói quen; 'at the office' chỉ nơi, 'before nine o'clock' chỉ mốc giờ.",
+  "x": [
+   [
+    "He usually leaves the house before seven o'clock.",
+    "Anh ấy thường rời nhà trước bảy giờ."
+   ],
+   [
+    "My mother usually gets to the market before eight o'clock.",
+    "Mẹ tôi thường đến chợ trước tám giờ."
+   ]
+  ],
+  "y": [
+   [
+    "usually arrives",
+    "normally gets",
+    "typically reaches",
+    "thường đến"
+   ],
+   [
+    "before",
+    "prior to",
+    "ahead of",
+    "trước"
+   ],
+   [
+    "the office",
+    "her workplace",
+    "work",
+    "văn phòng"
+   ]
+  ],
+  "r": [
+   [
+    "She is usually at the office before nine o'clock.",
+    "Đổi arrives thành is usually at"
+   ],
+   [
+    "Before nine o'clock, she usually arrives at the office.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ]
+  ]
+ },
+ "dict-36": {
+  "c": [
+   [
+    "S",
+    "Older people in the neighbourhood"
+   ],
+   [
+    "V",
+    "often need"
+   ],
+   [
+    "O",
+    "extra support."
+   ]
+  ],
+  "s": [
+   "present-simple",
+   "comparative"
+  ],
+  "n": "'Older people' dùng so sánh hơn 'older' không có than để chỉ nhóm người cao tuổi nói chung; 'often need' là hiện tại đơn với trạng từ tần suất.",
+  "x": [
+   [
+    "Younger children in the village often need extra attention.",
+    "Trẻ nhỏ hơn trong làng thường cần được chú ý thêm."
+   ],
+   [
+    "New residents in the building often need extra guidance.",
+    "Cư dân mới trong tòa nhà thường cần hướng dẫn thêm."
+   ]
+  ],
+  "y": [
+   [
+    "older people",
+    "elderly people",
+    "senior citizens",
+    "người cao tuổi"
+   ],
+   [
+    "often need",
+    "frequently require",
+    "commonly need",
+    "thường cần"
+   ],
+   [
+    "extra support",
+    "additional help",
+    "further assistance",
+    "hỗ trợ thêm"
+   ]
+  ],
+  "r": [
+   [
+    "Elderly people in the neighbourhood often need extra support.",
+    "Đổi older thành elderly"
+   ],
+   [
+    "In the neighbourhood, older people often need extra support.",
+    "Đảo cụm nơi chốn lên đầu"
+   ]
+  ]
+ },
+ "dict-37": {
+  "c": [
+   [
+    "S",
+    "They"
+   ],
+   [
+    "V",
+    "plan"
+   ],
+   [
+    "C",
+    "to visit"
+   ],
+   [
+    "O",
+    "a different country"
+   ],
+   [
+    "T",
+    "every summer."
+   ]
+  ],
+  "s": [
+   "verb-to-infinitive"
+  ],
+  "n": "'Plan to visit' là plan + to V nói dự định; 'a different country' đi với mạo từ a, còn 'every summer' đặt ở cuối câu để chỉ tần suất.",
+  "x": [
+   [
+    "We hope to try a new restaurant every weekend.",
+    "Chúng tôi hy vọng thử một nhà hàng mới mỗi cuối tuần."
+   ],
+   [
+    "She intends to read a new book every month.",
+    "Cô ấy dự định đọc một cuốn sách mới mỗi tháng."
+   ]
+  ],
+  "y": [
+   [
+    "plan to",
+    "intend to",
+    "aim to",
+    "dự định"
+   ],
+   [
+    "a different country",
+    "another country",
+    "a new country",
+    "một đất nước khác nhau"
+   ],
+   [
+    "every summer",
+    "each summer",
+    "every summer holiday",
+    "mỗi mùa hè"
+   ]
+  ],
+  "r": [
+   [
+    "Every summer they plan to visit a different country.",
+    "Đảo trạng ngữ lên đầu"
+   ],
+   [
+    "Their plan is to visit a different country every summer.",
+    "Dùng Their plan is to V"
+   ]
+  ]
+ },
+ "dict-38": {
+  "c": [
+   [
+    "S",
+    "Many children"
+   ],
+   [
+    "V",
+    "spend"
+   ],
+   [
+    "O",
+    "too much time"
+   ],
+   [
+    "A",
+    "watching television."
+   ]
+  ],
+  "s": [
+   "verb-ing"
+  ],
+  "n": "'Spend too much time watching' là spend + thời gian + V-ing; 'too much' nghĩa là quá mức, đi với danh từ không đếm được 'time'.",
+  "x": [
+   [
+    "Many adults spend too much money buying unnecessary gadgets.",
+    "Nhiều người lớn tiêu quá nhiều tiền mua những món đồ không cần thiết."
+   ],
+   [
+    "Many teenagers spend too many hours playing video games.",
+    "Nhiều thanh thiếu niên dành quá nhiều giờ chơi điện tử."
+   ]
+  ],
+  "y": [
+   [
+    "spend too much time",
+    "devote too much time",
+    "waste too much time",
+    "dành quá nhiều thời gian"
+   ],
+   [
+    "watching",
+    "viewing",
+    "looking at",
+    "xem"
+   ],
+   [
+    "television",
+    "TV",
+    "the TV",
+    "tivi"
+   ]
+  ],
+  "r": [
+   [
+    "Many children spend an excessive amount of time watching television.",
+    "Dùng an excessive amount of"
+   ],
+   [
+    "Watching television takes up too much of many children's time.",
+    "Đổi chủ ngữ sang V-ing"
+   ]
+  ]
+ },
+ "dict-39": {
+  "c": [
+   [
+    "S",
+    "My father"
+   ],
+   [
+    "V",
+    "cooks"
+   ],
+   [
+    "O",
+    "breakfast"
+   ],
+   [
+    "A",
+    "for the whole family"
+   ],
+   [
+    "T",
+    "every Saturday morning."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Cooks' là hiện tại đơn ngôi thứ ba số ít nói thói quen; 'for the whole family' nêu người hưởng lợi, còn 'every Saturday morning' chỉ tần suất ở cuối câu.",
+  "x": [
+   [
+    "My sister bakes bread for the whole street every Sunday afternoon.",
+    "Chị tôi nướng bánh mì cho cả xóm vào mỗi chiều Chủ nhật."
+   ],
+   [
+    "Our neighbour prepares lunch for the whole class every Friday noon.",
+    "Hàng xóm chúng tôi chuẩn bị bữa trưa cho cả lớp vào mỗi trưa thứ Sáu."
+   ]
+  ],
+  "y": [
+   [
+    "cooks",
+    "prepares",
+    "makes",
+    "nấu"
+   ],
+   [
+    "the whole family",
+    "everyone in the family",
+    "the entire family",
+    "cả nhà"
+   ],
+   [
+    "every Saturday morning",
+    "each Saturday morning",
+    "on Saturday mornings",
+    "mỗi sáng thứ Bảy"
+   ]
+  ],
+  "r": [
+   [
+    "Every Saturday morning my father cooks breakfast for the whole family.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "My father cooks the whole family breakfast every Saturday morning.",
+    "Dùng tân ngữ gián tiếp"
+   ]
+  ]
+ },
+ "dict-40": {
+  "c": [
+   [
+    "S",
+    "The new supermarket"
+   ],
+   [
+    "V",
+    "offers"
+   ],
+   [
+    "O",
+    "lower prices"
+   ],
+   [
+    "A",
+    "than the old one."
+   ]
+  ],
+  "s": [
+   "comparative"
+  ],
+  "n": "'Lower prices than the old one' là so sánh hơn (adj-er + than); 'one' thay cho 'supermarket' để khỏi lặp, hai đối tượng được so sánh là siêu thị mới và siêu thị cũ.",
+  "x": [
+   [
+    "The new bus service offers faster trips than the old one.",
+    "Tuyến xe buýt mới có chuyến nhanh hơn tuyến cũ."
+   ],
+   [
+    "The modern library provides longer opening hours than the old one.",
+    "Thư viện hiện đại có giờ mở cửa dài hơn thư viện cũ."
+   ]
+  ],
+  "y": [
+   [
+    "offers",
+    "provides",
+    "features",
+    "đưa ra"
+   ],
+   [
+    "lower prices",
+    "cheaper prices",
+    "reduced prices",
+    "giá rẻ hơn"
+   ],
+   [
+    "the old one",
+    "the previous one",
+    "the former one",
+    "siêu thị cũ"
+   ]
+  ],
+  "r": [
+   [
+    "Prices at the new supermarket are lower than at the old one.",
+    "Đổi chủ ngữ sang prices"
+   ],
+   [
+    "The old supermarket offers higher prices than the new one.",
+    "Đảo vế, đổi sang higher"
+   ]
+  ]
+ },
+ "dict-41": {
+  "c": [
+   [
+    "S",
+    "Most students"
+   ],
+   [
+    "V",
+    "bring"
+   ],
+   [
+    "O",
+    "their own laptops"
+   ],
+   [
+    "P",
+    "to class"
+   ],
+   [
+    "T",
+    "now."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Bring' là hiện tại đơn chia số nhiều với 'most students'; 'their own' nhấn mạnh sở hữu riêng, còn 'now' ở cuối câu cho thấy thói quen đã thay đổi so với trước.",
+  "x": [
+   [
+    "Most travellers carry their own bottles to the airport now.",
+    "Bây giờ hầu hết du khách mang chai nước riêng ra sân bay."
+   ],
+   [
+    "Most workers bring their own lunches to the office now.",
+    "Bây giờ hầu hết người đi làm mang bữa trưa của riêng mình đến văn phòng."
+   ]
+  ],
+  "y": [
+   [
+    "bring",
+    "carry",
+    "take",
+    "mang"
+   ],
+   [
+    "their own",
+    "their personal",
+    "their individual",
+    "của riêng mình"
+   ],
+   [
+    "now",
+    "these days",
+    "nowadays",
+    "bây giờ"
+   ]
+  ],
+  "r": [
+   [
+    "Now most students bring their own laptops to class.",
+    "Đảo trạng ngữ now lên đầu"
+   ],
+   [
+    "These days, most students bring their own laptops to class.",
+    "Đổi now thành these days ở đầu"
+   ]
+  ]
+ },
+ "dict-42": {
+  "c": [
+   [
+    "S",
+    "Our town"
+   ],
+   [
+    "V",
+    "started"
+   ],
+   [
+    "O",
+    "a new recycling programme"
+   ],
+   [
+    "T",
+    "last year."
+   ]
+  ],
+  "s": [
+   "past-simple"
+  ],
+  "n": "'Started' là quá khứ đơn của động từ có quy tắc; 'last year' là mốc thời gian đã kết thúc nên bắt buộc dùng quá khứ đơn, còn 'recycling programme' là danh từ ghép.",
+  "x": [
+   [
+    "Our school launched a new reading scheme last month.",
+    "Trường chúng tôi triển khai một chương trình đọc sách mới tháng trước."
+   ],
+   [
+    "Their company introduced a new safety policy last spring.",
+    "Công ty họ áp dụng một chính sách an toàn mới vào mùa xuân năm ngoái."
+   ]
+  ],
+  "y": [
+   [
+    "started",
+    "launched",
+    "began",
+    "khởi động"
+   ],
+   [
+    "recycling programme",
+    "recycling scheme",
+    "recycling initiative",
+    "chương trình tái chế"
+   ],
+   [
+    "last year",
+    "a year ago",
+    "twelve months ago",
+    "năm ngoái"
+   ]
+  ],
+  "r": [
+   [
+    "Last year our town started a new recycling programme.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "A new recycling programme was started in our town last year.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-43": {
+  "c": [
+   [
+    "S",
+    "She"
+   ],
+   [
+    "V",
+    "uses"
+   ],
+   [
+    "O",
+    "her phone"
+   ],
+   [
+    "U",
+    "to check"
+   ],
+   [
+    "O",
+    "the weather forecast."
+   ]
+  ],
+  "s": [
+   "purpose-clause"
+  ],
+  "n": "'To check the weather forecast' là to V chỉ mục đích của việc dùng điện thoại; 'uses' là hiện tại đơn ngôi thứ ba số ít nói thói quen.",
+  "x": [
+   [
+    "He uses an app to learn new vocabulary.",
+    "Anh ấy dùng một ứng dụng để học từ vựng mới."
+   ],
+   [
+    "They use a calendar to plan the weekly schedule.",
+    "Họ dùng lịch để lên kế hoạch cho lịch tuần."
+   ]
+  ],
+  "y": [
+   [
+    "uses",
+    "relies on",
+    "employs",
+    "dùng"
+   ],
+   [
+    "to check",
+    "in order to check",
+    "so as to check",
+    "để xem"
+   ],
+   [
+    "weather forecast",
+    "weather report",
+    "forecast",
+    "dự báo thời tiết"
+   ]
+  ],
+  "r": [
+   [
+    "She uses her phone in order to check the weather forecast.",
+    "Dùng in order to"
+   ],
+   [
+    "She checks the weather forecast using her phone.",
+    "Dùng using + V-ing"
+   ]
+  ]
+ },
+ "dict-44": {
+  "c": [
+   [
+    "S",
+    "He"
+   ],
+   [
+    "V",
+    "goes"
+   ],
+   [
+    "A",
+    "for a short walk"
+   ],
+   [
+    "T",
+    "after every meal."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Goes' là hiện tại đơn ngôi thứ ba số ít; 'go for a walk' là cụm cố định nghĩa là đi dạo, 'after every meal' chỉ thời điểm lặp lại.",
+  "x": [
+   [
+    "She goes for a quick swim after every lesson.",
+    "Cô ấy đi bơi một lát sau mỗi buổi học."
+   ],
+   [
+    "My uncle goes for a long drive after every holiday.",
+    "Chú tôi đi lái xe một quãng dài sau mỗi kỳ nghỉ."
+   ]
+  ],
+  "y": [
+   [
+    "goes for a short walk",
+    "takes a short walk",
+    "has a short stroll",
+    "đi bộ một lát"
+   ],
+   [
+    "after every meal",
+    "after each meal",
+    "following every meal",
+    "sau mỗi bữa ăn"
+   ]
+  ],
+  "r": [
+   [
+    "After every meal, he goes for a short walk.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "He takes a short walk after every meal.",
+    "Đổi go for thành take"
+   ]
+  ]
+ },
+ "dict-45": {
+  "c": [
+   [
+    "S",
+    "The office"
+   ],
+   [
+    "V",
+    "always closes"
+   ],
+   [
+    "M",
+    "early"
+   ],
+   [
+    "T",
+    "on Friday afternoons."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Always closes' là hiện tại đơn với 'always' đặt trước động từ nói quy luật lặp lại; 'on Friday afternoons' dùng giới từ on và số nhiều để nói mọi chiều thứ Sáu.",
+  "x": [
+   [
+    "The shop always opens late on Sunday mornings.",
+    "Cửa hàng luôn mở muộn vào các sáng Chủ nhật."
+   ],
+   [
+    "The library usually shuts early on Saturday evenings.",
+    "Thư viện thường đóng sớm vào các tối thứ Bảy."
+   ]
+  ],
+  "y": [
+   [
+    "always closes",
+    "usually closes",
+    "invariably closes",
+    "luôn đóng cửa"
+   ],
+   [
+    "early",
+    "ahead of time",
+    "before the usual time",
+    "sớm"
+   ],
+   [
+    "on Friday afternoons",
+    "every Friday afternoon",
+    "each Friday afternoon",
+    "vào chiều thứ Sáu"
+   ]
+  ],
+  "r": [
+   [
+    "On Friday afternoons, the office always closes early.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "The office always shuts early on Friday afternoons.",
+    "Đổi closes thành shuts"
+   ]
+  ]
+ },
+ "dict-46": {
+  "c": [
+   [
+    "S",
+    "Many volunteers"
+   ],
+   [
+    "V",
+    "help"
+   ],
+   [
+    "C",
+    "clean"
+   ],
+   [
+    "O",
+    "the local park"
+   ],
+   [
+    "T",
+    "each weekend."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Help clean' là help + động từ nguyên mẫu (có thể bỏ to); 'many volunteers' chia 'help' số nhiều, còn 'each weekend' chỉ tần suất.",
+  "x": [
+   [
+    "Many parents help organise the school fair each spring.",
+    "Nhiều phụ huynh giúp tổ chức hội chợ trường mỗi mùa xuân."
+   ],
+   [
+    "Several neighbours help water the community garden each morning.",
+    "Vài người hàng xóm giúp tưới vườn cộng đồng mỗi sáng."
+   ]
+  ],
+  "y": [
+   [
+    "help clean",
+    "assist in cleaning",
+    "pitch in to clean",
+    "phụ dọn dẹp"
+   ],
+   [
+    "the local park",
+    "the neighbourhood park",
+    "the community park",
+    "công viên của khu"
+   ],
+   [
+    "each weekend",
+    "every weekend",
+    "at the weekend",
+    "mỗi cuối tuần"
+   ]
+  ],
+  "r": [
+   [
+    "Many volunteers help to clean the local park each weekend.",
+    "Thêm to sau help"
+   ],
+   [
+    "Each weekend, many volunteers help clean the local park.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ]
+  ]
+ },
+ "dict-47": {
+  "c": [
+   [
+    "S",
+    "We"
+   ],
+   [
+    "V",
+    "usually pack"
+   ],
+   [
+    "O",
+    "our bags"
+   ],
+   [
+    "T",
+    "the night before a trip."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Usually pack' là hiện tại đơn với trạng từ tần suất; 'the night before a trip' là cụm danh từ làm trạng ngữ thời gian, không cần giới từ đứng trước.",
+  "x": [
+   [
+    "We usually prepare our lunches the evening before a hike.",
+    "Chúng tôi thường chuẩn bị bữa trưa vào tối trước chuyến đi bộ đường dài."
+   ],
+   [
+    "They usually wash their uniforms the day before a match.",
+    "Họ thường giặt đồng phục vào ngày trước trận đấu."
+   ]
+  ],
+  "y": [
+   [
+    "usually pack",
+    "normally pack",
+    "typically pack",
+    "thường soạn"
+   ],
+   [
+    "the night before",
+    "the evening before",
+    "the previous night",
+    "tối trước"
+   ],
+   [
+    "bags",
+    "luggage",
+    "suitcases",
+    "hành lý"
+   ]
+  ],
+  "r": [
+   [
+    "The night before a trip, we usually pack our bags.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "We tend to pack our bags the night before a trip.",
+    "Đổi usually thành tend to"
+   ]
+  ]
+ },
+ "dict-48": {
+  "c": [
+   [
+    "S",
+    "My brother"
+   ],
+   [
+    "V",
+    "reads"
+   ],
+   [
+    "O",
+    "the news"
+   ],
+   [
+    "M",
+    "on his phone"
+   ],
+   [
+    "T",
+    "every day."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Reads' là hiện tại đơn ngôi thứ ba số ít; 'the news' là danh từ không đếm được, 'on his phone' chỉ phương tiện, còn 'every day' chỉ tần suất.",
+  "x": [
+   [
+    "My cousin watches the match on her tablet every weekend.",
+    "Em họ tôi xem trận đấu trên máy tính bảng mỗi cuối tuần."
+   ],
+   [
+    "Our teacher checks the schedule on his laptop every morning.",
+    "Thầy chúng tôi xem lịch trên laptop mỗi sáng."
+   ]
+  ],
+  "y": [
+   [
+    "reads the news",
+    "follows the news",
+    "catches up on the news",
+    "đọc tin tức"
+   ],
+   [
+    "on his phone",
+    "via his phone",
+    "through his phone",
+    "trên điện thoại"
+   ],
+   [
+    "every day",
+    "daily",
+    "each day",
+    "mỗi ngày"
+   ]
+  ],
+  "r": [
+   [
+    "Every day my brother reads the news on his phone.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "My brother reads the news daily on his phone.",
+    "Đổi every day thành daily"
+   ]
+  ]
+ },
+ "dict-49": {
+  "c": [
+   [
+    "S",
+    "My whole family"
+   ],
+   [
+    "V",
+    "goes camping"
+   ],
+   [
+    "M",
+    "together"
+   ],
+   [
+    "T",
+    "every summer."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Goes camping' là go + V-ing chỉ hoạt động giải trí; 'family' là danh từ tập hợp ở đây coi như số ít nên 'goes', còn 'every summer' chỉ thói quen hằng năm.",
+  "x": [
+   [
+    "My whole class goes hiking together every autumn.",
+    "Cả lớp tôi cùng nhau đi leo núi vào mỗi mùa thu."
+   ],
+   [
+    "Our whole street goes fishing together every spring.",
+    "Cả khu phố chúng tôi cùng nhau đi câu vào mỗi mùa xuân."
+   ]
+  ],
+  "y": [
+   [
+    "goes camping",
+    "goes hiking",
+    "goes trekking",
+    "đi cắm trại"
+   ],
+   [
+    "together",
+    "as a group",
+    "jointly",
+    "cùng nhau"
+   ],
+   [
+    "every summer",
+    "each summer",
+    "every summer holiday",
+    "mỗi mùa hè"
+   ]
+  ],
+  "r": [
+   [
+    "Every summer my whole family goes camping together.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "Every summer, my whole family goes on a camping trip together.",
+    "Đổi goes camping thành goes on a camping trip"
+   ]
+  ]
+ },
+ "dict-50": {
+  "c": [
+   [
+    "S",
+    "The government"
+   ],
+   [
+    "V",
+    "plans"
+   ],
+   [
+    "C",
+    "to create"
+   ],
+   [
+    "O",
+    "more jobs"
+   ],
+   [
+    "A",
+    "for young people"
+   ],
+   [
+    "T",
+    "this year."
+   ]
+  ],
+  "s": [
+   "verb-to-infinitive",
+   "comparative"
+  ],
+  "n": "'Plans to create' là plan + to V nói dự định của chính phủ; 'more jobs' là so sánh hơn (more + danh từ đếm được) ngầm so với hiện nay.",
+  "x": [
+   [
+    "The council hopes to build more homes for older residents this decade.",
+    "Hội đồng hy vọng xây thêm nhà cho cư dân lớn tuổi trong thập kỷ này."
+   ],
+   [
+    "The school intends to offer more courses for adult learners this term.",
+    "Nhà trường dự định mở thêm khóa cho người học lớn tuổi trong học kỳ này."
+   ]
+  ],
+  "y": [
+   [
+    "plans to",
+    "intends to",
+    "aims to",
+    "dự định"
+   ],
+   [
+    "create",
+    "generate",
+    "provide",
+    "tạo"
+   ],
+   [
+    "more jobs",
+    "additional jobs",
+    "extra employment",
+    "thêm việc làm"
+   ]
+  ],
+  "r": [
+   [
+    "This year the government plans to create more jobs for young people.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "The government is planning the creation of more jobs for young people this year.",
+    "Dùng danh từ creation"
+   ]
+  ]
+ },
+ "dict-51": {
+  "c": [
+   [
+    "S",
+    "Our teacher"
+   ],
+   [
+    "V",
+    "gave"
+   ],
+   [
+    "I",
+    "us"
+   ],
+   [
+    "O",
+    "extra homework"
+   ],
+   [
+    "T",
+    "for the weekend."
+   ]
+  ],
+  "s": [
+   "past-simple"
+  ],
+  "n": "'Gave us extra homework' là give + tân ngữ gián tiếp + tân ngữ trực tiếp ở quá khứ đơn bất quy tắc; 'homework' không đếm được nên không có a/s, 'extra' nghĩa là thêm.",
+  "x": [
+   [
+    "Our coach gave us extra training for the final match.",
+    "Huấn luyện viên giao thêm buổi tập cho trận chung kết."
+   ],
+   [
+    "My aunt sent me extra money for the school trip.",
+    "Dì tôi gửi thêm tiền cho tôi cho chuyến đi của trường."
+   ]
+  ],
+  "y": [
+   [
+    "gave us",
+    "assigned us",
+    "set us",
+    "giao cho chúng tôi"
+   ],
+   [
+    "extra homework",
+    "additional homework",
+    "more homework",
+    "bài tập thêm"
+   ],
+   [
+    "for the weekend",
+    "over the weekend",
+    "to do at the weekend",
+    "cho cuối tuần"
+   ]
+  ],
+  "r": [
+   [
+    "Our teacher gave extra homework to us for the weekend.",
+    "Dùng give … to"
+   ],
+   [
+    "Our teacher set us extra homework for the weekend.",
+    "Đổi gave thành set"
+   ]
+  ]
+ },
+ "dict-52": {
+  "c": [
+   [
+    "S",
+    "People"
+   ],
+   [
+    "V",
+    "should recycle"
+   ],
+   [
+    "O",
+    "more paper and plastic"
+   ],
+   [
+    "P",
+    "at home."
+   ]
+  ],
+  "s": [
+   "modal-advice",
+   "comparative"
+  ],
+  "n": "'Should recycle' là should + V nguyên mẫu đưa lời khuyên; 'more paper and plastic' là so sánh hơn với danh từ không đếm được, nghĩa là nhiều hơn mức hiện tại.",
+  "x": [
+   [
+    "Citizens should save more water and energy at home.",
+    "Người dân nên tiết kiệm nhiều nước và điện hơn ở nhà."
+   ],
+   [
+    "Families should eat more fruit and vegetables at dinner.",
+    "Các gia đình nên ăn nhiều trái cây và rau hơn trong bữa tối."
+   ]
+  ],
+  "y": [
+   [
+    "should recycle",
+    "ought to recycle",
+    "need to recycle",
+    "nên tái chế"
+   ],
+   [
+    "more paper and plastic",
+    "additional paper and plastic",
+    "larger amounts of paper and plastic",
+    "nhiều giấy và nhựa hơn"
+   ],
+   [
+    "at home",
+    "in the home",
+    "in their homes",
+    "tại nhà"
+   ]
+  ],
+  "r": [
+   [
+    "People ought to recycle more paper and plastic at home.",
+    "Đổi should thành ought to"
+   ],
+   [
+    "At home, people should recycle more paper and plastic.",
+    "Đảo cụm nơi chốn lên đầu"
+   ]
+  ]
+ },
+ "dict-53": {
+  "c": [
+   [
+    "S",
+    "She"
+   ],
+   [
+    "V",
+    "bought"
+   ],
+   [
+    "O",
+    "a new laptop"
+   ],
+   [
+    "U",
+    "for her online classes."
+   ]
+  ],
+  "s": [
+   "past-simple"
+  ],
+  "n": "'Bought' là quá khứ bất quy tắc của buy; 'for her online classes' dùng for + danh từ để nêu mục đích của việc mua.",
+  "x": [
+   [
+    "He ordered a new desk for his home office.",
+    "Anh ấy đặt mua một chiếc bàn mới cho văn phòng tại nhà."
+   ],
+   [
+    "They purchased a new projector for their weekly meetings.",
+    "Họ mua một máy chiếu mới cho các buổi họp hằng tuần."
+   ]
+  ],
+  "y": [
+   [
+    "bought",
+    "purchased",
+    "got",
+    "mua"
+   ],
+   [
+    "a new laptop",
+    "a brand-new laptop",
+    "a fresh laptop",
+    "máy tính xách tay mới"
+   ],
+   [
+    "online classes",
+    "virtual lessons",
+    "remote lessons",
+    "lớp học trực tuyến"
+   ]
+  ],
+  "r": [
+   [
+    "She bought a new laptop to attend her online classes.",
+    "Dùng to V chỉ mục đích"
+   ],
+   [
+    "For her online classes, she bought a new laptop.",
+    "Đảo cụm mục đích lên đầu"
+   ]
+  ]
+ },
+ "dict-54": {
+  "c": [
+   [
+    "S",
+    "He"
+   ],
+   [
+    "V",
+    "walks"
+   ],
+   [
+    "T",
+    "for thirty minutes"
+   ],
+   [
+    "T",
+    "every morning"
+   ],
+   [
+    "U",
+    "to stay fit."
+   ]
+  ],
+  "s": [
+   "purpose-clause",
+   "present-simple"
+  ],
+  "n": "'To stay fit' là to V chỉ mục đích của việc đi bộ; 'for thirty minutes' nêu khoảng thời gian, 'every morning' nêu tần suất, và 'stay fit' nghĩa là giữ dáng khỏe.",
+  "x": [
+   [
+    "She jogs for twenty minutes every evening to relax.",
+    "Cô ấy chạy bộ hai mươi phút mỗi tối để thư giãn."
+   ],
+   [
+    "They study for two hours every weekend to improve.",
+    "Họ học hai tiếng mỗi cuối tuần để tiến bộ."
+   ]
+  ],
+  "y": [
+   [
+    "to stay fit",
+    "in order to stay fit",
+    "so as to stay fit",
+    "để giữ gìn sức khỏe"
+   ],
+   [
+    "for thirty minutes",
+    "for half an hour",
+    "for about half an hour",
+    "trong ba mươi phút"
+   ],
+   [
+    "every morning",
+    "each morning",
+    "daily in the morning",
+    "mỗi sáng"
+   ]
+  ],
+  "r": [
+   [
+    "He walks for thirty minutes every morning in order to stay fit.",
+    "Dùng in order to"
+   ],
+   [
+    "To stay fit, he walks for thirty minutes every morning.",
+    "Đảo mục đích lên đầu"
+   ]
+  ]
+ },
+ "dict-55": {
+  "c": [
+   [
+    "S",
+    "Several schools"
+   ],
+   [
+    "V",
+    "have introduced"
+   ],
+   [
+    "O",
+    "coding classes"
+   ],
+   [
+    "U",
+    "to prepare"
+   ],
+   [
+    "O",
+    "students"
+   ],
+   [
+    "A",
+    "for future careers."
+   ]
+  ],
+  "s": [
+   "present-perfect",
+   "purpose-clause"
+  ],
+  "n": "'Have introduced' là hiện tại hoàn thành nói việc đã làm có ảnh hưởng đến nay; 'to prepare students for future careers' là to V chỉ mục đích của các lớp lập trình.",
+  "x": [
+   [
+    "Several companies have launched training schemes to equip staff for future challenges.",
+    "Một số công ty đã triển khai chương trình đào tạo để trang bị cho nhân viên đối mặt thách thức tương lai."
+   ],
+   [
+    "Several cities have built cycle lanes to prepare residents for greener transport.",
+    "Một số thành phố đã làm làn xe đạp để chuẩn bị cho cư dân với giao thông xanh hơn."
+   ]
+  ],
+  "y": [
+   [
+    "have introduced",
+    "have launched",
+    "have rolled out",
+    "đã đưa vào"
+   ],
+   [
+    "to prepare",
+    "in order to prepare",
+    "so as to prepare",
+    "để chuẩn bị cho"
+   ],
+   [
+    "future careers",
+    "upcoming careers",
+    "later professions",
+    "nghề nghiệp tương lai"
+   ]
+  ],
+  "r": [
+   [
+    "Several schools have introduced coding classes in order to prepare students for future careers.",
+    "Dùng in order to"
+   ],
+   [
+    "Coding classes have been introduced by several schools to prepare students for future careers.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-56": {
+  "c": [
+   [
+    "S",
+    "Factories"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "fail"
+   ],
+   [
+    "C",
+    "to control"
+   ],
+   [
+    "O",
+    "emissions"
+   ],
+   [
+    "V",
+    "are being fined"
+   ],
+   [
+    "M",
+    "more heavily"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "T",
+    "before."
+   ]
+  ],
+  "s": [
+   "passive",
+   "relative-clause"
+  ],
+  "n": "'Are being fined' là bị động hiện tại tiếp diễn nói việc đang xảy ra; 'Factories that fail to control emissions' là mệnh đề quan hệ, còn 'more heavily than before' là so sánh hơn của trạng từ.",
+  "x": [
+   [
+    "Drivers who fail to stop at crossings are being punished more strictly than before.",
+    "Tài xế không dừng ở vạch qua đường đang bị phạt nghiêm hơn trước."
+   ],
+   [
+    "Companies that fail to protect data are being criticised more openly than before.",
+    "Các công ty không bảo vệ được dữ liệu đang bị chỉ trích công khai hơn trước."
+   ]
+  ],
+  "y": [
+   [
+    "fail to",
+    "neglect to",
+    "do not manage to",
+    "không … được"
+   ],
+   [
+    "are being fined",
+    "are being penalised",
+    "are being punished",
+    "đang bị phạt"
+   ],
+   [
+    "more heavily than before",
+    "more severely than previously",
+    "more harshly than in the past",
+    "nặng hơn trước"
+   ]
+  ],
+  "r": [
+   [
+    "Factories which fail to control emissions are being fined more heavily than before.",
+    "Đổi that thành which"
+   ],
+   [
+    "Factories that fail to control emissions now face heavier fines than before.",
+    "Dùng face heavier fines"
+   ]
+  ]
+ },
+ "dict-57": {
+  "c": [
+   [
+    "S",
+    "Smartphones"
+   ],
+   [
+    "V",
+    "have become"
+   ],
+   [
+    "C",
+    "so essential"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "many people"
+   ],
+   [
+    "V",
+    "feel"
+   ],
+   [
+    "C",
+    "anxious"
+   ],
+   [
+    "M",
+    "without them."
+   ]
+  ],
+  "s": [
+   "result-clause",
+   "present-perfect"
+  ],
+  "n": "'So essential that…' là cấu trúc so + tính từ + that nêu mức độ và kết quả; 'have become' là hiện tại hoàn thành nói thay đổi kéo đến nay.",
+  "x": [
+   [
+    "Online shopping has become so convenient that many people avoid visiting stores.",
+    "Mua sắm trực tuyến đã trở nên tiện đến mức nhiều người tránh đến cửa hàng."
+   ],
+   [
+    "Electric cars have become so affordable that many families consider buying one.",
+    "Xe điện đã trở nên rẻ đến mức nhiều gia đình cân nhắc mua."
+   ]
+  ],
+  "y": [
+   [
+    "so essential that",
+    "so indispensable that",
+    "so vital that",
+    "thiết yếu đến mức"
+   ],
+   [
+    "feel anxious",
+    "become uneasy",
+    "get nervous",
+    "thấy bồn chồn"
+   ],
+   [
+    "without them",
+    "when they are not with them",
+    "if deprived of them",
+    "khi không có chúng"
+   ]
+  ],
+  "r": [
+   [
+    "Smartphones have become such an essential tool that many people feel anxious without them.",
+    "Dùng such … that"
+   ],
+   [
+    "Smartphones have become essential to the point that many people feel anxious without them.",
+    "Dùng to the point that"
+   ]
+  ]
+ },
+ "dict-58": {
+  "c": [
+   [
+    "S",
+    "Doctors"
+   ],
+   [
+    "V",
+    "have warned"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "skipping breakfast regularly"
+   ],
+   [
+    "V",
+    "can negatively affect"
+   ],
+   [
+    "O",
+    "concentration levels."
+   ]
+  ],
+  "s": [
+   "that-clause",
+   "gerund-subject"
+  ],
+  "n": "'Have warned that…' là hiện tại hoàn thành + mệnh đề that nêu cảnh báo; trong mệnh đề that, 'skipping breakfast regularly' là V-ing làm chủ ngữ và 'can negatively affect' nêu khả năng.",
+  "x": [
+   [
+    "Scientists have warned that ignoring early symptoms can seriously damage long-term health.",
+    "Các nhà khoa học cảnh báo rằng bỏ qua triệu chứng sớm có thể gây hại nặng cho sức khỏe lâu dài."
+   ],
+   [
+    "Teachers have noted that arriving late too often can strongly harm learning progress.",
+    "Giáo viên đã lưu ý rằng đi trễ quá thường xuyên có thể ảnh hưởng mạnh đến tiến độ học."
+   ]
+  ],
+  "y": [
+   [
+    "have warned",
+    "have cautioned",
+    "have advised",
+    "đã cảnh báo"
+   ],
+   [
+    "skipping",
+    "missing",
+    "going without",
+    "bỏ"
+   ],
+   [
+    "negatively affect",
+    "harm",
+    "damage",
+    "ảnh hưởng xấu đến"
+   ]
+  ],
+  "r": [
+   [
+    "Doctors have warned that regularly skipping breakfast can negatively affect concentration levels.",
+    "Đưa regularly lên trước V-ing"
+   ],
+   [
+    "Doctors have warned that if people skip breakfast regularly, their concentration levels can be negatively affected.",
+    "Dùng if + mệnh đề"
+   ]
+  ]
+ },
+ "dict-59": {
+  "c": [
+   [
+    "S",
+    "Companies"
+   ],
+   [
+    "V",
+    "are adopting"
+   ],
+   [
+    "O",
+    "flexible working policies"
+   ],
+   [
+    "U",
+    "in order to attract and retain"
+   ],
+   [
+    "O",
+    "talented staff."
+   ]
+  ],
+  "s": [
+   "purpose-clause",
+   "present-continuous"
+  ],
+  "n": "'In order to attract and retain' là in order to + V chỉ mục đích, có hai động từ nối bằng 'and'; 'are adopting' là hiện tại tiếp diễn nói xu hướng hiện nay.",
+  "x": [
+   [
+    "Hotels are offering free breakfasts in order to please and welcome loyal guests.",
+    "Khách sạn đang tặng bữa sáng miễn phí nhằm làm hài lòng và chào đón khách quen."
+   ],
+   [
+    "Schools are creating smaller classes in order to support and motivate struggling pupils.",
+    "Các trường đang lập lớp nhỏ hơn nhằm hỗ trợ và động viên học sinh học yếu."
+   ]
+  ],
+  "y": [
+   [
+    "in order to",
+    "so as to",
+    "with a view to",
+    "nhằm"
+   ],
+   [
+    "attract",
+    "draw in",
+    "recruit",
+    "thu hút"
+   ],
+   [
+    "retain",
+    "keep",
+    "hold on to",
+    "giữ chân"
+   ]
+  ],
+  "r": [
+   [
+    "Companies are adopting flexible working policies so as to attract and retain talented staff.",
+    "Dùng so as to"
+   ],
+   [
+    "In order to attract and retain talented staff, companies are adopting flexible working policies.",
+    "Đảo mục đích lên đầu"
+   ]
+  ]
+ },
+ "dict-60": {
+  "c": [
+   [
+    "S",
+    "Volunteering"
+   ],
+   [
+    "V",
+    "has been shown"
+   ],
+   [
+    "C",
+    "to strengthen"
+   ],
+   [
+    "O",
+    "the sense of community"
+   ],
+   [
+    "A",
+    "among neighbours."
+   ]
+  ],
+  "s": [
+   "passive",
+   "present-perfect"
+  ],
+  "n": "'Has been shown to strengthen' là hiện tại hoàn thành bị động + to V, nghĩa là đã được chứng minh là; 'Volunteering' là V-ing làm chủ ngữ số ít nên 'has'.",
+  "x": [
+   [
+    "Regular exercise has been proven to improve the quality of sleep among teenagers.",
+    "Tập thể dục đều đặn đã được chứng minh là cải thiện chất lượng giấc ngủ ở thanh thiếu niên."
+   ],
+   [
+    "Reading aloud has been found to build the confidence of young learners.",
+    "Đọc to đã được phát hiện là xây dựng sự tự tin cho người học nhỏ tuổi."
+   ]
+  ],
+  "y": [
+   [
+    "has been shown to",
+    "has been proven to",
+    "has been demonstrated to",
+    "đã được chứng minh là"
+   ],
+   [
+    "strengthen",
+    "reinforce",
+    "boost",
+    "gắn kết"
+   ],
+   [
+    "the sense of community",
+    "community spirit",
+    "a feeling of belonging",
+    "tình cảm cộng đồng"
+   ]
+  ],
+  "r": [
+   [
+    "Studies have shown that volunteering strengthens the sense of community among neighbours.",
+    "Dùng Studies have shown that"
+   ],
+   [
+    "Evidence shows that volunteering strengthens the sense of community among neighbours.",
+    "Dùng Evidence shows that"
+   ]
+  ]
+ },
+ "dict-61": {
+  "c": [
+   [
+    "S",
+    "Travelling by train"
+   ],
+   [
+    "V",
+    "is often considered"
+   ],
+   [
+    "C",
+    "more relaxing"
+   ],
+   [
+    "A",
+    "than flying long distances."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "passive"
+  ],
+  "n": "'More relaxing than flying' là so sánh hơn của tính từ dài (more + adj + than) giữa hai V-ing; 'is often considered' là bị động nói quan niệm chung.",
+  "x": [
+   [
+    "Studying in the morning is usually regarded as more productive than working late at night.",
+    "Học buổi sáng thường được xem là hiệu quả hơn làm việc khuya."
+   ],
+   [
+    "Cycling to work is often seen as healthier than driving through heavy traffic.",
+    "Đạp xe đi làm thường được coi là tốt cho sức khỏe hơn lái xe giữa ùn tắc."
+   ]
+  ],
+  "y": [
+   [
+    "is often considered",
+    "is widely regarded as",
+    "is commonly seen as",
+    "thường được xem là"
+   ],
+   [
+    "more relaxing than",
+    "less stressful than",
+    "calmer than",
+    "thư thái hơn"
+   ],
+   [
+    "long distances",
+    "lengthy journeys",
+    "great distances",
+    "đường dài"
+   ]
+  ],
+  "r": [
+   [
+    "People often consider travelling by train more relaxing than flying long distances.",
+    "Đổi sang câu chủ động"
+   ],
+   [
+    "Flying long distances is often considered less relaxing than travelling by train.",
+    "Đảo vế, đổi sang less … than"
+   ]
+  ]
+ },
+ "dict-62": {
+  "c": [
+   [
+    "S",
+    "Several newspapers"
+   ],
+   [
+    "V",
+    "have introduced"
+   ],
+   [
+    "O",
+    "paid subscription plans"
+   ],
+   [
+    "U",
+    "to encourage"
+   ],
+   [
+    "O",
+    "readers"
+   ],
+   [
+    "C",
+    "to support"
+   ],
+   [
+    "O",
+    "quality journalism"
+   ],
+   [
+    "P",
+    "online."
+   ]
+  ],
+  "s": [
+   "object-to-infinitive",
+   "purpose-clause",
+   "present-perfect"
+  ],
+  "n": "'To encourage readers to support' là mục đích to V chứa encourage + người + to V; 'have introduced' là hiện tại hoàn thành nói việc đã triển khai và vẫn đang áp dụng.",
+  "x": [
+   [
+    "Several museums have created membership cards to persuade visitors to return throughout the year.",
+    "Một số bảo tàng đã làm thẻ hội viên để thuyết phục khách quay lại suốt năm."
+   ],
+   [
+    "Several shops have launched loyalty programmes to motivate customers to buy locally.",
+    "Một số cửa hàng đã triển khai chương trình khách quen để khuyến khích khách mua đồ địa phương."
+   ]
+  ],
+  "y": [
+   [
+    "to encourage",
+    "to persuade",
+    "to motivate",
+    "nhằm khuyến khích"
+   ],
+   [
+    "have introduced",
+    "have launched",
+    "have rolled out",
+    "đã triển khai"
+   ],
+   [
+    "quality journalism",
+    "high-quality reporting",
+    "serious journalism",
+    "báo chí chất lượng"
+   ]
+  ],
+  "r": [
+   [
+    "Several newspapers have introduced paid subscription plans in order to encourage readers to support quality journalism online.",
+    "Dùng in order to"
+   ],
+   [
+    "Paid subscription plans have been introduced by several newspapers to encourage readers to support quality journalism online.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-63": {
+  "c": [
+   [
+    "S",
+    "Family gatherings"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "A",
+    "once"
+   ],
+   [
+    "V",
+    "happened"
+   ],
+   [
+    "T",
+    "every weekend"
+   ],
+   [
+    "V",
+    "have become"
+   ],
+   [
+    "C",
+    "increasingly rare"
+   ],
+   [
+    "T",
+    "nowadays."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "present-perfect"
+  ],
+  "n": "'Gatherings that once happened every weekend' là mệnh đề quan hệ ở quá khứ đơn chỉ thói quen cũ; 'have become increasingly rare' là hiện tại hoàn thành nói thay đổi đến nay.",
+  "x": [
+   [
+    "Letters that once arrived every week have become increasingly uncommon these days.",
+    "Những lá thư từng đến mỗi tuần nay ngày càng hiếm gặp."
+   ],
+   [
+    "Traditions that once united every village have grown increasingly fragile nowadays.",
+    "Những truyền thống từng gắn kết mọi làng nay ngày càng mong manh."
+   ]
+  ],
+  "y": [
+   [
+    "once",
+    "at one time",
+    "formerly",
+    "từng"
+   ],
+   [
+    "increasingly rare",
+    "ever rarer",
+    "more and more rare",
+    "ngày càng thưa"
+   ],
+   [
+    "nowadays",
+    "these days",
+    "at present",
+    "nay"
+   ]
+  ],
+  "r": [
+   [
+    "Family gatherings which once happened every weekend have become increasingly rare nowadays.",
+    "Đổi that thành which"
+   ],
+   [
+    "Nowadays, family gatherings that once happened every weekend have become increasingly rare.",
+    "Đảo trạng ngữ lên đầu"
+   ]
+  ]
+ },
+ "dict-64": {
+  "c": [
+   [
+    "S",
+    "The national economy"
+   ],
+   [
+    "V",
+    "has recovered"
+   ],
+   [
+    "M",
+    "faster"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "S",
+    "most financial analysts"
+   ],
+   [
+    "V",
+    "had originally expected."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "past-perfect"
+  ],
+  "n": "'Faster than … had originally expected' là so sánh hơn; 'had expected' ở quá khứ hoàn thành vì sự kỳ vọng xảy ra trước thời điểm hiện nay (has recovered).",
+  "x": [
+   [
+    "The new bridge has opened sooner than most engineers had initially predicted.",
+    "Cây cầu mới đã khai trương sớm hơn hầu hết kỹ sư dự đoán ban đầu."
+   ],
+   [
+    "The local team has played better than most fans had originally hoped.",
+    "Đội địa phương đã chơi tốt hơn hầu hết người hâm mộ từng hy vọng."
+   ]
+  ],
+  "y": [
+   [
+    "has recovered",
+    "has bounced back",
+    "has rebounded",
+    "đã phục hồi"
+   ],
+   [
+    "faster than",
+    "more quickly than",
+    "sooner than",
+    "nhanh hơn"
+   ],
+   [
+    "originally",
+    "at first",
+    "initially",
+    "ban đầu"
+   ]
+  ],
+  "r": [
+   [
+    "The national economy has recovered more quickly than most financial analysts had originally expected.",
+    "Đổi faster thành more quickly"
+   ],
+   [
+    "Most financial analysts had originally expected a slower recovery than the national economy has achieved.",
+    "Đảo chủ ngữ, dùng slower"
+   ]
+  ]
+ },
+ "dict-65": {
+  "c": [
+   [
+    "S",
+    "Students"
+   ],
+   [
+    "J",
+    "who"
+   ],
+   [
+    "V",
+    "struggle"
+   ],
+   [
+    "A",
+    "with mathematics"
+   ],
+   [
+    "V",
+    "are often given"
+   ],
+   [
+    "O",
+    "extra tutoring"
+   ],
+   [
+    "T",
+    "after school."
+   ]
+  ],
+  "s": [
+   "passive",
+   "relative-clause"
+  ],
+  "n": "'Are often given extra tutoring' là bị động của give với tân ngữ trực tiếp; 'who struggle with mathematics' là mệnh đề quan hệ xác định nên không có dấu phẩy.",
+  "x": [
+   [
+    "Patients who suffer from allergies are usually offered special treatment during spring.",
+    "Bệnh nhân bị dị ứng thường được điều trị đặc biệt vào mùa xuân."
+   ],
+   [
+    "Employees who work late shifts are sometimes paid extra allowances at the end of the month.",
+    "Nhân viên làm ca muộn đôi khi được trả thêm phụ cấp cuối tháng."
+   ]
+  ],
+  "y": [
+   [
+    "struggle with",
+    "have difficulty with",
+    "find it hard with",
+    "chật vật với"
+   ],
+   [
+    "are often given",
+    "are frequently provided with",
+    "are regularly offered",
+    "thường được"
+   ],
+   [
+    "extra tutoring",
+    "additional lessons",
+    "private coaching",
+    "kèm thêm"
+   ]
+  ],
+  "r": [
+   [
+    "Teachers often give extra tutoring after school to students who struggle with mathematics.",
+    "Đổi sang câu chủ động"
+   ],
+   [
+    "Extra tutoring is often given after school to students who struggle with mathematics.",
+    "Đưa tân ngữ làm chủ ngữ"
+   ]
+  ]
+ },
+ "dict-66": {
+  "c": [
+   [
+    "S",
+    "Forests"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "have been cleared"
+   ],
+   [
+    "A",
+    "for farming"
+   ],
+   [
+    "V",
+    "rarely recover"
+   ],
+   [
+    "O",
+    "their original biodiversity."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "passive"
+  ],
+  "n": "'Forests that have been cleared for farming' là mệnh đề quan hệ ở hiện tại hoàn thành bị động; 'rarely recover' dùng trạng từ phủ định ngầm nghĩa hiếm khi khôi phục.",
+  "x": [
+   [
+    "Rivers that have been polluted by factories rarely regain their natural clarity.",
+    "Những dòng sông bị nhà máy làm ô nhiễm hiếm khi lấy lại độ trong tự nhiên."
+   ],
+   [
+    "Habits that have been formed over decades rarely change their basic pattern.",
+    "Thói quen hình thành qua nhiều thập kỷ hiếm khi đổi kiểu cơ bản."
+   ]
+  ],
+  "y": [
+   [
+    "have been cleared",
+    "have been felled",
+    "have been stripped",
+    "bị phá"
+   ],
+   [
+    "rarely recover",
+    "seldom regain",
+    "hardly ever restore",
+    "hiếm khi khôi phục"
+   ],
+   [
+    "biodiversity",
+    "biological diversity",
+    "species richness",
+    "đa dạng sinh học"
+   ]
+  ],
+  "r": [
+   [
+    "Forests which have been cleared for farming rarely recover their original biodiversity.",
+    "Đổi that thành which"
+   ],
+   [
+    "It is rare for forests that have been cleared for farming to recover their original biodiversity.",
+    "Dùng It is rare for … to"
+   ]
+  ]
+ },
+ "dict-67": {
+  "c": [
+   [
+    "S",
+    "Using a smartphone late at night"
+   ],
+   [
+    "V",
+    "can make"
+   ],
+   [
+    "O",
+    "it"
+   ],
+   [
+    "C",
+    "harder"
+   ],
+   [
+    "A",
+    "for people"
+   ],
+   [
+    "C",
+    "to fall asleep."
+   ]
+  ],
+  "s": [
+   "find-it-adj",
+   "gerund-subject"
+  ],
+  "n": "'Can make it harder for people to fall asleep' là make + it + tính từ + (for sb) + to V, 'it' là tân ngữ giả; 'Using a smartphone…' là V-ing làm chủ ngữ.",
+  "x": [
+   [
+    "Drinking coffee late in the evening can make it harder for adults to relax.",
+    "Uống cà phê vào chiều muộn có thể khiến người lớn khó thư giãn hơn."
+   ],
+   [
+    "Studying with loud music can make it more difficult for students to concentrate.",
+    "Học với nhạc to có thể khiến học sinh khó tập trung hơn."
+   ]
+  ],
+  "y": [
+   [
+    "can make it harder",
+    "can make it more difficult",
+    "can render it tougher",
+    "có thể khiến … khó hơn"
+   ],
+   [
+    "fall asleep",
+    "drop off",
+    "get to sleep",
+    "ngủ"
+   ],
+   [
+    "late at night",
+    "in the middle of the night",
+    "well into the night",
+    "vào đêm khuya"
+   ]
+  ],
+  "r": [
+   [
+    "It can be harder for people to fall asleep if they use a smartphone late at night.",
+    "Dùng If + mệnh đề"
+   ],
+   [
+    "Late at night, using a smartphone can make it harder for people to fall asleep.",
+    "Đảo cụm thời gian lên đầu"
+   ]
+  ]
+ },
+ "dict-68": {
+  "c": [
+   [
+    "S",
+    "Patients"
+   ],
+   [
+    "J",
+    "who"
+   ],
+   [
+    "V",
+    "are diagnosed"
+   ],
+   [
+    "M",
+    "early"
+   ],
+   [
+    "V",
+    "usually have"
+   ],
+   [
+    "O",
+    "a much better chance of recovery."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "passive",
+   "comparative"
+  ],
+  "n": "'Patients who are diagnosed early' là mệnh đề quan hệ bị động; 'a much better chance' là so sánh hơn (better) nhấn bằng 'much', nói cơ hội hồi phục cao hơn.",
+  "x": [
+   [
+    "Players who are trained early usually have a much stronger foundation of skill.",
+    "Cầu thủ được huấn luyện sớm thường có nền tảng kỹ năng vững hơn nhiều."
+   ],
+   [
+    "Children who are taught kindly often have a much happier experience of school.",
+    "Trẻ được dạy nhẹ nhàng thường có trải nghiệm đi học vui hơn nhiều."
+   ]
+  ],
+  "y": [
+   [
+    "are diagnosed",
+    "are identified",
+    "are detected",
+    "được chẩn đoán"
+   ],
+   [
+    "a much better chance",
+    "a far greater likelihood",
+    "a considerably higher chance",
+    "cơ hội cao hơn nhiều"
+   ],
+   [
+    "recovery",
+    "healing",
+    "getting well",
+    "hồi phục"
+   ]
+  ],
+  "r": [
+   [
+    "Patients who are diagnosed early usually have a far better chance of recovery.",
+    "Đổi much thành far"
+   ],
+   [
+    "The earlier patients are diagnosed, the better their chance of recovery usually is.",
+    "Dùng so sánh kép"
+   ]
+  ]
+ },
+ "dict-69": {
+  "c": [
+   [
+    "S",
+    "Employees in this department"
+   ],
+   [
+    "V",
+    "usually finish"
+   ],
+   [
+    "O",
+    "their reports"
+   ],
+   [
+    "T",
+    "before the end of the week."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Usually finish' là hiện tại đơn với trạng từ tần suất đặt trước động từ; 'before the end of the week' là cụm giới từ nêu hạn chót thường lệ.",
+  "x": [
+   [
+    "Technicians in this laboratory usually complete their tests before the end of the day.",
+    "Kỹ thuật viên ở phòng thí nghiệm này thường hoàn thành bài thử trước khi hết ngày."
+   ],
+   [
+    "Nurses on this ward usually submit their notes before the end of the shift.",
+    "Y tá ở khoa này thường nộp ghi chú trước khi hết ca."
+   ]
+  ],
+  "y": [
+   [
+    "usually finish",
+    "normally complete",
+    "typically wrap up",
+    "thường hoàn thành"
+   ],
+   [
+    "before the end of",
+    "by the end of",
+    "prior to the end of",
+    "trước khi hết"
+   ],
+   [
+    "reports",
+    "paperwork",
+    "documents",
+    "báo cáo"
+   ]
+  ],
+  "r": [
+   [
+    "Before the end of the week, employees in this department usually finish their reports.",
+    "Đảo trạng ngữ thời gian lên đầu"
+   ],
+   [
+    "Employees in this department usually complete their reports by the end of the week.",
+    "Đổi finish thành complete và before thành by"
+   ]
+  ]
+ },
+ "dict-70": {
+  "c": [
+   [
+    "S",
+    "Communities"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "support"
+   ],
+   [
+    "O",
+    "one another"
+   ],
+   [
+    "V",
+    "tend to recover"
+   ],
+   [
+    "M",
+    "more quickly"
+   ],
+   [
+    "T",
+    "after a natural disaster."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "comparative"
+  ],
+  "n": "'Communities that support one another' là mệnh đề quan hệ làm chủ ngữ; 'tend to recover more quickly' là tend + to V cùng so sánh hơn của trạng từ, nêu xu hướng chung.",
+  "x": [
+   [
+    "Families that talk to one another tend to solve problems more calmly after a quarrel.",
+    "Những gia đình nói chuyện với nhau thường giải quyết vấn đề bình tĩnh hơn sau một cuộc cãi vã."
+   ],
+   [
+    "Teams that trust one another tend to adapt more smoothly after a major change.",
+    "Những đội tin nhau thường thích nghi suôn sẻ hơn sau một thay đổi lớn."
+   ]
+  ],
+  "y": [
+   [
+    "support one another",
+    "help each other",
+    "look after one another",
+    "đùm bọc lẫn nhau"
+   ],
+   [
+    "tend to",
+    "are inclined to",
+    "are apt to",
+    "thường có xu hướng"
+   ],
+   [
+    "more quickly",
+    "faster",
+    "more rapidly",
+    "nhanh hơn"
+   ]
+  ],
+  "r": [
+   [
+    "Communities which support one another tend to recover more quickly after a natural disaster.",
+    "Đổi that thành which"
+   ],
+   [
+    "Communities that support one another usually recover faster after a natural disaster.",
+    "Đổi tend to thành usually và faster"
+   ]
+  ]
+ },
+ "dict-71": {
+  "c": [
+   [
+    "S",
+    "Many travelers"
+   ],
+   [
+    "V",
+    "have started"
+   ],
+   [
+    "C",
+    "choosing"
+   ],
+   [
+    "O",
+    "eco-friendly accommodation"
+   ],
+   [
+    "U",
+    "to reduce"
+   ],
+   [
+    "O",
+    "their environmental impact."
+   ]
+  ],
+  "s": [
+   "present-perfect",
+   "purpose-clause"
+  ],
+  "n": "'Have started choosing' là hiện tại hoàn thành với start + V-ing nói thay đổi mới trong hành vi; 'to reduce their environmental impact' là to V chỉ mục đích.",
+  "x": [
+   [
+    "Many shoppers have begun buying local produce to support small farmers.",
+    "Nhiều người mua sắm đã bắt đầu mua nông sản địa phương để hỗ trợ nông dân nhỏ."
+   ],
+   [
+    "Many families have started using solar panels to cut their electricity bills.",
+    "Nhiều gia đình đã bắt đầu dùng pin mặt trời để cắt giảm tiền điện."
+   ]
+  ],
+  "y": [
+   [
+    "have started choosing",
+    "have begun selecting",
+    "have begun opting for",
+    "đã bắt đầu chọn"
+   ],
+   [
+    "eco-friendly",
+    "environmentally friendly",
+    "sustainable",
+    "thân thiện với môi trường"
+   ],
+   [
+    "to reduce",
+    "in order to reduce",
+    "so as to cut",
+    "để giảm bớt"
+   ]
+  ],
+  "r": [
+   [
+    "Many travelers have started to choose eco-friendly accommodation to reduce their environmental impact.",
+    "Đổi V-ing thành to V sau start"
+   ],
+   [
+    "To reduce their environmental impact, many travelers have started choosing eco-friendly accommodation.",
+    "Đảo mục đích lên đầu"
+   ]
+  ]
+ },
+ "dict-72": {
+  "c": [
+   [
+    "S",
+    "Streaming services"
+   ],
+   [
+    "V",
+    "have changed"
+   ],
+   [
+    "J",
+    "how"
+   ],
+   [
+    "S",
+    "younger audiences"
+   ],
+   [
+    "V",
+    "choose"
+   ],
+   [
+    "C",
+    "to watch"
+   ],
+   [
+    "O",
+    "television programs."
+   ]
+  ],
+  "s": [
+   "present-perfect",
+   "verb-to-infinitive"
+  ],
+  "n": "'Have changed' là hiện tại hoàn thành nói thay đổi có kết quả đến nay; 'how younger audiences choose to watch…' là mệnh đề danh từ, choose + to V nghĩa là chọn làm gì.",
+  "x": [
+   [
+    "Online banking has changed how older customers prefer to manage their money.",
+    "Ngân hàng trực tuyến đã thay đổi cách khách lớn tuổi muốn quản lý tiền."
+   ],
+   [
+    "Video calls have changed how remote teams decide to hold their meetings.",
+    "Cuộc gọi video đã thay đổi cách các nhóm làm từ xa quyết định tổ chức họp."
+   ]
+  ],
+  "y": [
+   [
+    "have changed",
+    "have altered",
+    "have transformed",
+    "đã thay đổi"
+   ],
+   [
+    "younger audiences",
+    "young viewers",
+    "younger viewers",
+    "khán giả trẻ"
+   ],
+   [
+    "choose to watch",
+    "decide to watch",
+    "opt to watch",
+    "chọn xem"
+   ]
+  ],
+  "r": [
+   [
+    "The way younger audiences choose to watch television programs has been changed by streaming services.",
+    "Dùng bị động"
+   ],
+   [
+    "Streaming services have changed the way younger audiences choose to watch television programs.",
+    "Đổi how thành the way"
+   ]
+  ]
+ },
+ "dict-73": {
+  "c": [
+   [
+    "S",
+    "Many families"
+   ],
+   [
+    "A",
+    "now"
+   ],
+   [
+    "V",
+    "rely"
+   ],
+   [
+    "A",
+    "on grandparents"
+   ],
+   [
+    "U",
+    "to help take care of"
+   ],
+   [
+    "O",
+    "young children."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Rely on … to help' là rely on + tân ngữ + to V (trông cậy ai làm gì); 'take care of' là cụm động từ nghĩa là chăm sóc, 'now' cho biết xu hướng hiện nay.",
+  "x": [
+   [
+    "Many businesses now depend on freelancers to help manage busy periods.",
+    "Nhiều doanh nghiệp giờ trông cậy vào người làm tự do để xử lý các đợt cao điểm."
+   ],
+   [
+    "Many students now count on tutors to help prepare for tough exams.",
+    "Nhiều học sinh giờ trông cậy vào gia sư để chuẩn bị cho kỳ thi khó."
+   ]
+  ],
+  "y": [
+   [
+    "rely",
+    "depend",
+    "count",
+    "trông cậy"
+   ],
+   [
+    "take care of",
+    "look after",
+    "care for",
+    "chăm sóc"
+   ],
+   [
+    "young children",
+    "small children",
+    "little ones",
+    "con nhỏ"
+   ]
+  ],
+  "r": [
+   [
+    "Many families now depend on grandparents to help take care of young children.",
+    "Đổi rely on thành depend on"
+   ],
+   [
+    "Grandparents are now relied on by many families to help take care of young children.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-74": {
+  "c": [
+   [
+    "S",
+    "Small manufacturers"
+   ],
+   [
+    "V",
+    "have relocated"
+   ],
+   [
+    "P",
+    "overseas"
+   ],
+   [
+    "U",
+    "in order to reduce"
+   ],
+   [
+    "O",
+    "their production costs."
+   ]
+  ],
+  "s": [
+   "purpose-clause",
+   "present-perfect"
+  ],
+  "n": "'In order to reduce' là in order to + V chỉ mục đích trang trọng; 'have relocated' là hiện tại hoàn thành nói việc đã chuyển và còn ảnh hưởng đến nay.",
+  "x": [
+   [
+    "Several retailers have moved online in order to attract younger customers.",
+    "Một số nhà bán lẻ đã chuyển lên mạng nhằm thu hút khách trẻ."
+   ],
+   [
+    "Local farmers have switched crops in order to increase their yearly income.",
+    "Nông dân địa phương đã đổi cây trồng nhằm tăng thu nhập hằng năm."
+   ]
+  ],
+  "y": [
+   [
+    "have relocated",
+    "have moved",
+    "have shifted",
+    "đã chuyển"
+   ],
+   [
+    "in order to",
+    "so as to",
+    "with the aim of",
+    "nhằm"
+   ],
+   [
+    "production costs",
+    "manufacturing costs",
+    "operating costs",
+    "chi phí sản xuất"
+   ]
+  ],
+  "r": [
+   [
+    "Small manufacturers have relocated overseas so as to reduce their production costs.",
+    "Dùng so as to"
+   ],
+   [
+    "To reduce their production costs, small manufacturers have relocated overseas.",
+    "Đảo mục đích lên đầu"
+   ]
+  ]
+ },
+ "dict-75": {
+  "c": [
+   [
+    "S",
+    "Schools"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "adopt"
+   ],
+   [
+    "O",
+    "project-based learning"
+   ],
+   [
+    "V",
+    "often see"
+   ],
+   [
+    "O",
+    "higher levels of student engagement."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "comparative"
+  ],
+  "n": "'Schools that adopt project-based learning' là mệnh đề quan hệ làm chủ ngữ; 'higher levels' là so sánh hơn (adj-er + danh từ) nói mức tham gia cao hơn, 'often see' là hiện tại đơn.",
+  "x": [
+   [
+    "Companies that offer flexible hours often enjoy higher levels of staff loyalty.",
+    "Các công ty có giờ làm linh hoạt thường được hưởng mức trung thành của nhân viên cao hơn."
+   ],
+   [
+    "Cities that invest in cycling often see lower levels of air pollution.",
+    "Các thành phố đầu tư cho xe đạp thường thấy mức ô nhiễm không khí thấp hơn."
+   ]
+  ],
+  "y": [
+   [
+    "adopt",
+    "embrace",
+    "implement",
+    "áp dụng"
+   ],
+   [
+    "often see",
+    "frequently notice",
+    "commonly observe",
+    "thường thấy"
+   ],
+   [
+    "student engagement",
+    "pupil involvement",
+    "learner participation",
+    "sự tham gia của học sinh"
+   ]
+  ],
+  "r": [
+   [
+    "Schools which adopt project-based learning often see higher levels of student engagement.",
+    "Đổi that thành which"
+   ],
+   [
+    "Student engagement is often higher in schools that adopt project-based learning.",
+    "Đổi chủ ngữ, dùng so sánh trong bổ ngữ"
+   ]
+  ]
+ },
+ "dict-76": {
+  "c": [
+   [
+    "S",
+    "Air pollution in densely populated cities"
+   ],
+   [
+    "V",
+    "has been linked"
+   ],
+   [
+    "A",
+    "to a rise in respiratory illnesses."
+   ]
+  ],
+  "s": [
+   "passive",
+   "present-perfect"
+  ],
+  "n": "'Has been linked to' là hiện tại hoàn thành bị động nói mối liên hệ đã được ghi nhận; 'densely populated' là cụm trạng từ + phân từ bổ nghĩa cho 'cities'.",
+  "x": [
+   [
+    "Noise in crowded neighbourhoods has been associated with an increase in stress-related disorders.",
+    "Tiếng ồn ở các khu phố đông đúc đã được gắn với sự gia tăng các rối loạn do căng thẳng."
+   ],
+   [
+    "Sugar in processed foods has been connected to a surge in childhood obesity.",
+    "Đường trong thực phẩm chế biến đã được liên hệ với đà tăng béo phì ở trẻ."
+   ]
+  ],
+  "y": [
+   [
+    "has been linked to",
+    "has been associated with",
+    "has been connected to",
+    "được cho là có liên quan đến"
+   ],
+   [
+    "a rise in",
+    "an increase in",
+    "a growth in",
+    "sự gia tăng"
+   ],
+   [
+    "densely populated",
+    "heavily populated",
+    "highly crowded",
+    "đông dân"
+   ]
+  ],
+  "r": [
+   [
+    "Researchers have linked air pollution in densely populated cities to a rise in respiratory illnesses.",
+    "Đổi sang câu chủ động"
+   ],
+   [
+    "Air pollution in densely populated cities is associated with a rise in respiratory illnesses.",
+    "Đổi has been linked to thành is associated with"
+   ]
+  ]
+ },
+ "dict-77": {
+  "c": [
+   [
+    "S",
+    "Online shopping"
+   ],
+   [
+    "V",
+    "has made"
+   ],
+   [
+    "O",
+    "it"
+   ],
+   [
+    "C",
+    "possible"
+   ],
+   [
+    "C",
+    "to buy"
+   ],
+   [
+    "O",
+    "almost anything"
+   ],
+   [
+    "M",
+    "without leaving home."
+   ]
+  ],
+  "s": [
+   "find-it-adj",
+   "present-perfect"
+  ],
+  "n": "'Has made it possible to buy' là make + it + tính từ + to V, 'it' là tân ngữ giả cho việc mua sắm; 'without leaving home' là without + V-ing nêu cách thức.",
+  "x": [
+   [
+    "Online banking has made it easy to pay almost any bill without visiting a branch.",
+    "Ngân hàng trực tuyến đã khiến việc trả gần như mọi hóa đơn trở nên dễ mà không cần đến chi nhánh."
+   ],
+   [
+    "Video lessons have made it possible to learn almost any skill without attending a class.",
+    "Bài học video đã giúp ta học được gần như mọi kỹ năng mà không cần đến lớp."
+   ]
+  ],
+  "y": [
+   [
+    "has made it possible",
+    "has made it feasible",
+    "has made it achievable",
+    "đã khiến … có thể"
+   ],
+   [
+    "almost anything",
+    "virtually anything",
+    "nearly everything",
+    "gần như mọi thứ"
+   ],
+   [
+    "without leaving home",
+    "without stepping outside",
+    "without going out",
+    "mà không cần ra khỏi nhà"
+   ]
+  ],
+  "r": [
+   [
+    "Online shopping has made buying almost anything without leaving home possible.",
+    "Dùng V-ing làm tân ngữ"
+   ],
+   [
+    "Thanks to online shopping, it is possible to buy almost anything without leaving home.",
+    "Dùng Thanks to + It is possible to"
+   ]
+  ]
+ },
+ "dict-78": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "many universities"
+   ],
+   [
+    "V",
+    "have expanded"
+   ],
+   [
+    "O",
+    "access to higher education,"
+   ],
+   [
+    "S",
+    "graduates"
+   ],
+   [
+    "A",
+    "increasingly"
+   ],
+   [
+    "V",
+    "struggle"
+   ],
+   [
+    "C",
+    "to find"
+   ],
+   [
+    "O",
+    "jobs"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "match"
+   ],
+   [
+    "O",
+    "their qualifications."
+   ]
+  ],
+  "s": [
+   "concession",
+   "relative-clause",
+   "present-perfect"
+  ],
+  "n": "'Although …' mở mệnh đề nhượng bộ đứng đầu, đối lập với vế chính; 'jobs that match their qualifications' là mệnh đề quan hệ, còn 'struggle to find' là struggle + to V.",
+  "x": [
+   [
+    "Although many hospitals have increased their budgets, patients increasingly struggle to get appointments that fit their schedules.",
+    "Dù nhiều bệnh viện đã tăng ngân sách, bệnh nhân ngày càng chật vật để có lịch hẹn hợp thời gian của mình."
+   ],
+   [
+    "Although many cities have built more homes, young workers increasingly struggle to rent flats that suit their incomes.",
+    "Dù nhiều thành phố đã xây thêm nhà, người trẻ đi làm ngày càng chật vật thuê căn hộ vừa thu nhập."
+   ]
+  ],
+  "y": [
+   [
+    "Although",
+    "Though",
+    "Even though",
+    "Dù"
+   ],
+   [
+    "struggle to find",
+    "have difficulty finding",
+    "find it hard to find",
+    "chật vật tìm"
+   ],
+   [
+    "match their qualifications",
+    "suit their skills",
+    "fit their credentials",
+    "đúng với trình độ"
+   ]
+  ],
+  "r": [
+   [
+    "Many universities have expanded access to higher education; however, graduates increasingly struggle to find jobs that match their qualifications.",
+    "Dùng however thay Although"
+   ],
+   [
+    "Graduates increasingly struggle to find jobs that match their qualifications, even though many universities have expanded access to higher education.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ]
+  ]
+ },
+ "dict-79": {
+  "c": [
+   [
+    "J",
+    "As"
+   ],
+   [
+    "S",
+    "prolonged droughts"
+   ],
+   [
+    "V",
+    "become"
+   ],
+   [
+    "C",
+    "more frequent"
+   ],
+   [
+    "P",
+    "across arid regions,"
+   ],
+   [
+    "S",
+    "farmers"
+   ],
+   [
+    "J",
+    "who"
+   ],
+   [
+    "V",
+    "depend"
+   ],
+   [
+    "A",
+    "entirely on rainfall"
+   ],
+   [
+    "V",
+    "are being forced"
+   ],
+   [
+    "C",
+    "to abandon"
+   ],
+   [
+    "O",
+    "crops"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "A",
+    "once"
+   ],
+   [
+    "V",
+    "sustained"
+   ],
+   [
+    "O",
+    "entire communities."
+   ]
+  ],
+  "s": [
+   "passive",
+   "relative-clause",
+   "time-clause"
+  ],
+  "n": "'Are being forced to abandon' là bị động hiện tại tiếp diễn nói việc đang xảy ra; câu có hai mệnh đề quan hệ (who depend…, that once sustained…) và mệnh đề thời gian 'As … become more frequent'.",
+  "x": [
+   [
+    "As floods become more severe across low-lying cities, residents who live near rivers are being advised to leave homes that once seemed completely safe.",
+    "Khi lũ trở nên nghiêm trọng hơn ở các thành phố thấp, cư dân sống gần sông đang được khuyên rời những ngôi nhà từng tưởng hoàn toàn an toàn."
+   ],
+   [
+    "As prices become less stable across fragile markets, traders who rely mostly on cash are being pressed to change habits that once guaranteed steady profit.",
+    "Khi giá cả bớt ổn định ở các thị trường mong manh, thương nhân chủ yếu dùng tiền mặt đang bị thúc đổi thói quen từng bảo đảm lợi nhuận đều."
+   ]
+  ],
+  "y": [
+   [
+    "become more frequent",
+    "grow more common",
+    "occur more often",
+    "ngày càng thường xuyên"
+   ],
+   [
+    "are being forced to",
+    "are being compelled to",
+    "are being obliged to",
+    "buộc phải"
+   ],
+   [
+    "depend entirely on",
+    "rely solely on",
+    "depend solely on",
+    "chỉ trông chờ vào"
+   ]
+  ],
+  "r": [
+   [
+    "Farmers who depend entirely on rainfall are being forced to abandon crops that once sustained entire communities as prolonged droughts become more frequent across arid regions.",
+    "Đảo mệnh đề As xuống cuối"
+   ],
+   [
+    "Prolonged droughts are becoming more frequent across arid regions, and farmers who depend entirely on rainfall are being forced to abandon crops that once sustained entire communities.",
+    "Tách thành hai mệnh đề với and"
+   ]
+  ]
+ },
+ "dict-80": {
+  "c": [
+   [
+    "S",
+    "Facial recognition systems,"
+   ],
+   [
+    "J",
+    "which"
+   ],
+   [
+    "V",
+    "are now deployed"
+   ],
+   [
+    "P",
+    "across airports and shopping centres worldwide,"
+   ],
+   [
+    "V",
+    "have sparked"
+   ],
+   [
+    "O",
+    "intense debate"
+   ],
+   [
+    "A",
+    "over surveillance and civil liberties."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "present-perfect",
+   "passive"
+  ],
+  "n": "'Which are now deployed…' là mệnh đề quan hệ không xác định (có dấu phẩy) thêm thông tin bị động về hệ thống; 'have sparked' là hiện tại hoàn thành nói hệ quả đã xảy ra.",
+  "x": [
+   [
+    "Delivery drones, which are now operated across cities and rural districts worldwide, have raised serious concern about privacy and safety.",
+    "Máy bay giao hàng, nay được vận hành ở thành phố và vùng quê khắp thế giới, đã làm dấy lên lo ngại nghiêm trọng về riêng tư và an toàn."
+   ],
+   [
+    "Smart speakers, which are now installed in homes and offices worldwide, have prompted wide discussion about data and trust.",
+    "Loa thông minh, nay được lắp ở nhà và văn phòng khắp thế giới, đã gợi ra nhiều bàn luận về dữ liệu và lòng tin."
+   ]
+  ],
+  "y": [
+   [
+    "are now deployed",
+    "are now installed",
+    "are now in use",
+    "nay được lắp đặt"
+   ],
+   [
+    "have sparked",
+    "have triggered",
+    "have ignited",
+    "đã làm dấy lên"
+   ],
+   [
+    "intense debate",
+    "heated debate",
+    "fierce controversy",
+    "tranh cãi gay gắt"
+   ]
+  ],
+  "r": [
+   [
+    "Facial recognition systems, now deployed across airports and shopping centres worldwide, have sparked intense debate over surveillance and civil liberties.",
+    "Rút gọn mệnh đề quan hệ"
+   ],
+   [
+    "Facial recognition systems are now deployed across airports and shopping centres worldwide, and they have sparked intense debate over surveillance and civil liberties.",
+    "Tách thành hai mệnh đề"
+   ]
+  ]
+ },
+ "dict-81": {
+  "c": [
+   [
+    "J",
+    "Even though"
+   ],
+   [
+    "S",
+    "mental health awareness"
+   ],
+   [
+    "V",
+    "has grown"
+   ],
+   [
+    "M",
+    "considerably,"
+   ],
+   [
+    "S",
+    "many people"
+   ],
+   [
+    "A",
+    "still"
+   ],
+   [
+    "V",
+    "hesitate"
+   ],
+   [
+    "C",
+    "to seek"
+   ],
+   [
+    "O",
+    "professional help."
+   ]
+  ],
+  "s": [
+   "concession",
+   "verb-to-infinitive"
+  ],
+  "n": "'Even though …' mở mệnh đề nhượng bộ mạnh hơn although; 'has grown' là hiện tại hoàn thành, còn 'hesitate to seek' là hesitate + to V, 'still' nhấn mạnh việc vẫn còn.",
+  "x": [
+   [
+    "Even though public interest in healthy eating has increased greatly, many families still struggle to afford fresh food.",
+    "Dù mối quan tâm của công chúng với ăn uống lành mạnh đã tăng mạnh, nhiều gia đình vẫn chật vật mua thực phẩm tươi."
+   ],
+   [
+    "Even though awareness of cybercrime has spread widely, many users still forget to change their passwords.",
+    "Dù nhận thức về tội phạm mạng đã lan rộng, nhiều người dùng vẫn quên đổi mật khẩu."
+   ]
+  ],
+  "y": [
+   [
+    "Even though",
+    "Although",
+    "Though",
+    "Dù"
+   ],
+   [
+    "hesitate to",
+    "are reluctant to",
+    "are slow to",
+    "ngần ngại"
+   ],
+   [
+    "professional help",
+    "expert support",
+    "specialist assistance",
+    "sự trợ giúp chuyên môn"
+   ]
+  ],
+  "r": [
+   [
+    "Many people still hesitate to seek professional help, even though mental health awareness has grown considerably.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ],
+   [
+    "Despite the considerable growth in mental health awareness, many people still hesitate to seek professional help.",
+    "Dùng Despite + danh từ"
+   ]
+  ]
+ },
+ "dict-82": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "many companies"
+   ],
+   [
+    "M",
+    "publicly"
+   ],
+   [
+    "V",
+    "promote"
+   ],
+   [
+    "O",
+    "workplace diversity,"
+   ],
+   [
+    "S",
+    "women"
+   ],
+   [
+    "V",
+    "remain"
+   ],
+   [
+    "C",
+    "significantly underrepresented"
+   ],
+   [
+    "P",
+    "in senior management roles"
+   ],
+   [
+    "P",
+    "across most industries."
+   ]
+  ],
+  "s": [
+   "concession",
+   "present-simple"
+  ],
+  "n": "'Although many companies publicly promote…' là mệnh đề nhượng bộ nêu điều ai cũng nói, đối lập với thực tế ở vế chính; 'remain … underrepresented' là động từ nối + phân từ nghĩa là vẫn thiếu đại diện.",
+  "x": [
+   [
+    "Although many politicians openly support climate action, voters remain deeply sceptical about their actual commitment across most regions.",
+    "Dù nhiều chính trị gia công khai ủng hộ hành động vì khí hậu, cử tri vẫn rất hoài nghi cam kết thực sự của họ ở hầu hết các vùng."
+   ],
+   [
+    "Although many schools proudly advertise equal opportunity, students from poor families remain badly disadvantaged in top courses across most cities.",
+    "Dù nhiều trường tự hào quảng cáo cơ hội bình đẳng, học sinh nhà nghèo vẫn bị thiệt thòi nặng ở các khóa hàng đầu tại hầu hết thành phố."
+   ]
+  ],
+  "y": [
+   [
+    "publicly promote",
+    "openly champion",
+    "actively advocate",
+    "công khai đề cao"
+   ],
+   [
+    "remain",
+    "continue to be",
+    "stay",
+    "vẫn"
+   ],
+   [
+    "significantly underrepresented",
+    "markedly underrepresented",
+    "considerably under-represented",
+    "chiếm tỷ lệ thấp đáng kể"
+   ]
+  ],
+  "r": [
+   [
+    "Many companies publicly promote workplace diversity; nevertheless, women remain significantly underrepresented in senior management roles across most industries.",
+    "Dùng nevertheless"
+   ],
+   [
+    "Women remain significantly underrepresented in senior management roles across most industries, even though many companies publicly promote workplace diversity.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ]
+  ]
+ },
+ "dict-83": {
+  "c": [
+   [
+    "S",
+    "Declining birth rates across much of East Asia"
+   ],
+   [
+    "V",
+    "are shrinking"
+   ],
+   [
+    "O",
+    "the workforce"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "industries"
+   ],
+   [
+    "V",
+    "rely"
+   ],
+   [
+    "A",
+    "on"
+   ],
+   [
+    "U",
+    "to sustain"
+   ],
+   [
+    "O",
+    "long-term economic growth."
+   ]
+  ],
+  "s": [
+   "present-continuous",
+   "relative-clause"
+  ],
+  "n": "'Are shrinking' là hiện tại tiếp diễn nói xu hướng đang diễn ra; 'the workforce that industries rely on' là mệnh đề quan hệ với giới từ 'on' ở cuối, còn 'to sustain' chỉ mục đích.",
+  "x": [
+   [
+    "Rising rents across much of Southeast Asia are shrinking the budgets that families depend on to afford daily necessities.",
+    "Giá thuê tăng ở phần lớn Đông Nam Á đang thu hẹp ngân sách mà các gia đình dựa vào để lo nhu yếu phẩm."
+   ],
+   [
+    "Falling water levels across much of Central Asia are reducing the harvests that farmers count on to feed their communities.",
+    "Mực nước hạ ở phần lớn Trung Á đang làm giảm vụ mùa mà nông dân trông cậy để nuôi cộng đồng."
+   ]
+  ],
+  "y": [
+   [
+    "Declining",
+    "Falling",
+    "Dropping",
+    "Giảm"
+   ],
+   [
+    "are shrinking",
+    "are reducing",
+    "are diminishing",
+    "đang thu hẹp"
+   ],
+   [
+    "rely on",
+    "depend on",
+    "count on",
+    "dựa vào"
+   ]
+  ],
+  "r": [
+   [
+    "Declining birth rates across much of East Asia are shrinking the workforce on which industries rely to sustain long-term economic growth.",
+    "Đưa giới từ lên trước which"
+   ],
+   [
+    "The workforce that industries rely on to sustain long-term economic growth is being shrunk by declining birth rates across much of East Asia.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-84": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "airlines"
+   ],
+   [
+    "V",
+    "have introduced"
+   ],
+   [
+    "O",
+    "more direct routes"
+   ],
+   [
+    "A",
+    "to remote destinations,"
+   ],
+   [
+    "S",
+    "many travelers"
+   ],
+   [
+    "A",
+    "still"
+   ],
+   [
+    "V",
+    "prefer"
+   ],
+   [
+    "O",
+    "itineraries"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "allow"
+   ],
+   [
+    "O",
+    "them"
+   ],
+   [
+    "C",
+    "to explore"
+   ],
+   [
+    "O",
+    "several countries"
+   ],
+   [
+    "A",
+    "within a single trip."
+   ]
+  ],
+  "s": [
+   "concession",
+   "relative-clause",
+   "object-to-infinitive"
+  ],
+  "n": "'Although airlines have introduced…' là mệnh đề nhượng bộ; 'itineraries that allow them to explore' là mệnh đề quan hệ chứa allow + tân ngữ + to V, nêu điều du khách vẫn thích.",
+  "x": [
+   [
+    "Although hotels have built more private rooms for solo guests, many visitors still choose hostels that allow them to meet several people within a single evening.",
+    "Dù khách sạn đã xây thêm phòng riêng cho khách đi một mình, nhiều khách vẫn chọn nhà trọ cho phép họ gặp vài người trong một buổi tối."
+   ],
+   [
+    "Although banks have launched more online services for customers, many clients still use branches that allow them to speak with several advisers within a single visit.",
+    "Dù ngân hàng đã mở thêm dịch vụ trực tuyến, nhiều khách vẫn dùng chi nhánh cho phép họ nói chuyện với vài chuyên viên trong cùng một lần đến."
+   ]
+  ],
+  "y": [
+   [
+    "Although",
+    "Though",
+    "While",
+    "Dù"
+   ],
+   [
+    "still prefer",
+    "still favour",
+    "still opt for",
+    "vẫn thích"
+   ],
+   [
+    "allow them to",
+    "enable them to",
+    "permit them to",
+    "cho phép họ"
+   ]
+  ],
+  "r": [
+   [
+    "Many travelers still prefer itineraries that allow them to explore several countries within a single trip, even though airlines have introduced more direct routes to remote destinations.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ],
+   [
+    "Despite airlines introducing more direct routes to remote destinations, many travelers still prefer itineraries that allow them to explore several countries within a single trip.",
+    "Dùng Despite + V-ing"
+   ]
+  ]
+ },
+ "dict-85": {
+  "c": [
+   [
+    "S",
+    "Media watchdog groups"
+   ],
+   [
+    "V",
+    "warn"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "a small number of large corporations"
+   ],
+   [
+    "A",
+    "increasingly"
+   ],
+   [
+    "V",
+    "control"
+   ],
+   [
+    "O",
+    "the news"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "most people"
+   ],
+   [
+    "V",
+    "consume"
+   ],
+   [
+    "T",
+    "every day."
+   ]
+  ],
+  "s": [
+   "that-clause",
+   "relative-clause"
+  ],
+  "n": "'Warn that…' là động từ cảnh báo + mệnh đề that; 'the news that most people consume every day' là mệnh đề quan hệ bổ nghĩa cho 'the news', 'increasingly' đứng trước động từ.",
+  "x": [
+   [
+    "Health experts warn that a small number of unhealthy products increasingly dominate the food that most families buy every week.",
+    "Chuyên gia sức khỏe cảnh báo rằng một số ít sản phẩm kém lành mạnh đang ngày càng chi phối thực phẩm mà phần đông gia đình mua mỗi tuần."
+   ],
+   [
+    "Education researchers warn that a small number of large platforms increasingly shape the lessons that most pupils watch every term.",
+    "Nhà nghiên cứu giáo dục cảnh báo rằng một số ít nền tảng lớn đang ngày càng định hình các bài học mà phần đông học sinh xem mỗi kỳ."
+   ]
+  ],
+  "y": [
+   [
+    "warn that",
+    "caution that",
+    "alert us that",
+    "cảnh báo rằng"
+   ],
+   [
+    "increasingly",
+    "more and more",
+    "to an ever greater extent",
+    "ngày càng"
+   ],
+   [
+    "a small number of",
+    "a handful of",
+    "a few",
+    "một số ít"
+   ]
+  ],
+  "r": [
+   [
+    "According to media watchdog groups, a small number of large corporations increasingly control the news that most people consume every day.",
+    "Dùng According to"
+   ],
+   [
+    "Media watchdog groups warn of a small number of large corporations increasingly controlling the news that most people consume every day.",
+    "Dùng warn of + V-ing"
+   ]
+  ]
+ },
+ "dict-86": {
+  "c": [
+   [
+    "S",
+    "Caring for elderly parents while raising young children"
+   ],
+   [
+    "V",
+    "has become"
+   ],
+   [
+    "C",
+    "increasingly common"
+   ],
+   [
+    "A",
+    "for middle-aged adults."
+   ]
+  ],
+  "s": [
+   "gerund-subject",
+   "present-perfect"
+  ],
+  "n": "'Caring for … while raising …' là cụm V-ing làm chủ ngữ với 'while' + V-ing rút gọn mệnh đề thời gian; 'has become increasingly common' là hiện tại hoàn thành nói xu hướng kéo đến nay.",
+  "x": [
+   [
+    "Studying for exams while working part-time has become increasingly normal for university students.",
+    "Học thi trong khi đi làm bán thời gian đã trở nên ngày một bình thường với sinh viên đại học."
+   ],
+   [
+    "Commuting by bike while carrying heavy bags has become increasingly difficult for city workers.",
+    "Đạp xe đi làm trong khi mang túi nặng đã trở nên ngày một khó với người làm việc ở thành phố."
+   ]
+  ],
+  "y": [
+   [
+    "increasingly common",
+    "ever more common",
+    "more and more widespread",
+    "ngày một phổ biến"
+   ],
+   [
+    "while raising",
+    "at the same time as raising",
+    "whilst bringing up",
+    "trong khi nuôi"
+   ],
+   [
+    "middle-aged adults",
+    "people in middle age",
+    "adults in their forties and fifties",
+    "người ở tuổi trung niên"
+   ]
+  ],
+  "r": [
+   [
+    "It has become increasingly common for middle-aged adults to care for elderly parents while raising young children.",
+    "Dùng It + adj + for … to"
+   ],
+   [
+    "Middle-aged adults increasingly find themselves caring for elderly parents while raising young children.",
+    "Dùng find themselves + V-ing"
+   ]
+  ]
+ },
+ "dict-87": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "inflation"
+   ],
+   [
+    "V",
+    "has slowed"
+   ],
+   [
+    "M",
+    "considerably,"
+   ],
+   [
+    "S",
+    "wages"
+   ],
+   [
+    "V",
+    "have not risen"
+   ],
+   [
+    "M",
+    "quickly enough"
+   ],
+   [
+    "C",
+    "to restore"
+   ],
+   [
+    "O",
+    "the purchasing power"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "consumers"
+   ],
+   [
+    "V",
+    "lost."
+   ]
+  ],
+  "s": [
+   "too-enough",
+   "concession"
+  ],
+  "n": "'Quickly enough to restore' là adv + enough + to V nghĩa là đủ nhanh để làm gì; 'Although inflation has slowed' mở vế nhượng bộ, còn 'purchasing power that consumers lost' là mệnh đề quan hệ.",
+  "x": [
+   [
+    "Although prices have stabilised noticeably, savings have not grown fast enough to rebuild the security that families lost.",
+    "Dù giá cả đã ổn định rõ rệt, tiền tiết kiệm chưa tăng đủ nhanh để xây lại sự an tâm mà các gia đình đã mất."
+   ],
+   [
+    "Although the roads have improved somewhat, repairs have not progressed quickly enough to restore the confidence that drivers lost.",
+    "Dù đường sá đã khá hơn đôi chút, việc sửa chữa chưa tiến đủ nhanh để khôi phục niềm tin tài xế đã mất."
+   ]
+  ],
+  "y": [
+   [
+    "considerably",
+    "significantly",
+    "substantially",
+    "đáng kể"
+   ],
+   [
+    "quickly enough to",
+    "fast enough to",
+    "rapidly enough to",
+    "đủ nhanh để"
+   ],
+   [
+    "purchasing power",
+    "buying power",
+    "spending power",
+    "sức mua"
+   ]
+  ],
+  "r": [
+   [
+    "Although inflation has slowed considerably, wages have not risen sufficiently quickly to restore the purchasing power that consumers lost.",
+    "Dùng sufficiently quickly"
+   ],
+   [
+    "Inflation has slowed considerably, but wages have not risen quickly enough to restore the purchasing power that consumers lost.",
+    "Dùng but thay Although"
+   ]
+  ]
+ },
+ "dict-88": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "international students"
+   ],
+   [
+    "V",
+    "generate"
+   ],
+   [
+    "O",
+    "substantial revenue"
+   ],
+   [
+    "A",
+    "for universities,"
+   ],
+   [
+    "S",
+    "many institutions"
+   ],
+   [
+    "V",
+    "have struggled"
+   ],
+   [
+    "C",
+    "to provide"
+   ],
+   [
+    "O",
+    "adequate academic and cultural support"
+   ],
+   [
+    "J",
+    "once"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "arrive."
+   ]
+  ],
+  "s": [
+   "concession",
+   "time-clause",
+   "present-perfect"
+  ],
+  "n": "'Although …' nêu điều thuận lợi (nguồn thu lớn) rồi vế chính đối lập; 'once they arrive' là mệnh đề thời gian nghĩa 'một khi', còn 'have struggled to provide' là hiện tại hoàn thành + to V.",
+  "x": [
+   [
+    "Although tourists contribute substantial income to coastal towns, many residents have struggled to find affordable housing once the season begins.",
+    "Dù du khách mang lại thu nhập lớn cho các thị trấn ven biển, nhiều cư dân đã chật vật tìm nhà giá phải chăng khi mùa du lịch bắt đầu."
+   ],
+   [
+    "Although migrant workers provide essential labour for farms, many employers have failed to offer safe accommodation once the harvest starts.",
+    "Dù lao động nhập cư cung cấp sức lao động thiết yếu cho trang trại, nhiều chủ vẫn không bảo đảm chỗ ở an toàn khi vụ mùa bắt đầu."
+   ]
+  ],
+  "y": [
+   [
+    "generate",
+    "bring in",
+    "produce",
+    "mang lại"
+   ],
+   [
+    "have struggled to",
+    "have found it hard to",
+    "have had difficulty in",
+    "đã loay hoay"
+   ],
+   [
+    "once",
+    "as soon as",
+    "after",
+    "một khi"
+   ]
+  ],
+  "r": [
+   [
+    "Many institutions have struggled to provide adequate academic and cultural support once they arrive, although international students generate substantial revenue for universities.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ],
+   [
+    "International students generate substantial revenue for universities; even so, many institutions have struggled to provide adequate academic and cultural support once they arrive.",
+    "Dùng even so"
+   ]
+  ]
+ },
+ "dict-89": {
+  "c": [
+   [
+    "S",
+    "Marine biologists"
+   ],
+   [
+    "V",
+    "caution"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "J",
+    "as"
+   ],
+   [
+    "S",
+    "ocean temperatures"
+   ],
+   [
+    "V",
+    "continue"
+   ],
+   [
+    "C",
+    "to rise,"
+   ],
+   [
+    "S",
+    "coral reefs"
+   ],
+   [
+    "V",
+    "may lose"
+   ],
+   [
+    "O",
+    "the resilience"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "need"
+   ],
+   [
+    "C",
+    "to recover"
+   ],
+   [
+    "A",
+    "from repeated bleaching events."
+   ]
+  ],
+  "s": [
+   "modal-possibility",
+   "that-clause",
+   "time-clause"
+  ],
+  "n": "'May lose' dùng may nêu khả năng trong tương lai; 'caution that as …' kết hợp mệnh đề that với mệnh đề 'as' (khi), còn 'the resilience they need to recover' là mệnh đề quan hệ lược that.",
+  "x": [
+   [
+    "Climate scientists warn that as glaciers continue to melt, coastal cities may lose the protection they need to survive repeated storm surges.",
+    "Nhà khoa học khí hậu cảnh báo rằng khi sông băng tiếp tục tan, các thành phố ven biển có thể mất đi sự che chắn cần để chống chịu bão nước dâng liên tiếp."
+   ],
+   [
+    "Wildlife experts caution that as forests continue to shrink, tigers may lose the territory they need to breed through repeated drought seasons.",
+    "Chuyên gia động vật hoang dã cảnh báo rằng khi rừng tiếp tục thu hẹp, hổ có thể mất vùng lãnh thổ cần để sinh sản qua các mùa hạn liên tiếp."
+   ]
+  ],
+  "y": [
+   [
+    "caution that",
+    "warn that",
+    "advise that",
+    "cảnh báo rằng"
+   ],
+   [
+    "may lose",
+    "might forfeit",
+    "could lose",
+    "có thể mất đi"
+   ],
+   [
+    "the resilience",
+    "the capacity to withstand stress",
+    "the toughness",
+    "sức chống chịu"
+   ]
+  ],
+  "r": [
+   [
+    "Marine biologists caution that coral reefs may lose the resilience they need to recover from repeated bleaching events as ocean temperatures continue to rise.",
+    "Đảo mệnh đề as xuống cuối"
+   ],
+   [
+    "Marine biologists caution that continuing ocean warming may cause coral reefs to lose the resilience they need to recover from repeated bleaching events.",
+    "Dùng cause … to lose"
+   ]
+  ]
+ },
+ "dict-90": {
+  "c": [
+   [
+    "J",
+    "As"
+   ],
+   [
+    "S",
+    "deepfake technology"
+   ],
+   [
+    "V",
+    "becomes"
+   ],
+   [
+    "C",
+    "increasingly sophisticated,"
+   ],
+   [
+    "S",
+    "distinguishing genuine video footage from digitally fabricated content"
+   ],
+   [
+    "V",
+    "is growing"
+   ],
+   [
+    "C",
+    "more difficult"
+   ],
+   [
+    "A",
+    "for ordinary viewers."
+   ]
+  ],
+  "s": [
+   "gerund-subject",
+   "time-clause",
+   "comparative"
+  ],
+  "n": "'As … becomes increasingly sophisticated' là mệnh đề đồng biến nghĩa 'khi'; 'distinguishing … from …' là V-ing làm chủ ngữ, và 'is growing more difficult' là hiện tại tiếp diễn với so sánh hơn.",
+  "x": [
+   [
+    "As online scams become increasingly convincing, telling genuine emails from fake messages is getting more challenging for ordinary users.",
+    "Khi lừa đảo trực tuyến ngày càng thuyết phục, việc phân biệt email thật với tin nhắn giả đang trở nên khó hơn với người dùng bình thường."
+   ],
+   [
+    "As machine translation becomes increasingly accurate, separating human writing from automated text is growing harder for ordinary readers.",
+    "Khi dịch máy ngày càng chính xác, việc tách văn người viết khỏi văn tự động đang ngày một khó với người đọc bình thường."
+   ]
+  ],
+  "y": [
+   [
+    "increasingly sophisticated",
+    "ever more advanced",
+    "more and more refined",
+    "ngày càng tinh vi"
+   ],
+   [
+    "distinguishing genuine video footage from",
+    "telling genuine video footage from",
+    "differentiating genuine video footage from",
+    "phân biệt video thật với"
+   ],
+   [
+    "more difficult",
+    "harder",
+    "more challenging",
+    "khó khăn hơn"
+   ]
+  ],
+  "r": [
+   [
+    "As deepfake technology becomes increasingly sophisticated, it is growing more difficult for ordinary viewers to distinguish genuine video footage from digitally fabricated content.",
+    "Dùng It + adj + for … to"
+   ],
+   [
+    "Ordinary viewers are finding it more difficult to distinguish genuine video footage from digitally fabricated content as deepfake technology becomes increasingly sophisticated.",
+    "Dùng find it + adj + to V"
+   ]
+  ]
+ },
+ "dict-91": {
+  "c": [
+   [
+    "S",
+    "Public health officials"
+   ],
+   [
+    "V",
+    "caution"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "antibiotics,"
+   ],
+   [
+    "J",
+    "which"
+   ],
+   [
+    "V",
+    "have long been used"
+   ],
+   [
+    "U",
+    "to treat minor infections,"
+   ],
+   [
+    "V",
+    "are gradually losing"
+   ],
+   [
+    "O",
+    "their effectiveness."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "passive",
+   "present-continuous"
+  ],
+  "n": "'Which have long been used to treat…' là mệnh đề quan hệ không xác định ở hiện tại hoàn thành bị động; 'are gradually losing' là hiện tại tiếp diễn nói quá trình đang diễn ra.",
+  "x": [
+   [
+    "Doctors caution that pesticides, which have long been applied to protect ordinary crops, are slowly harming their surrounding soil.",
+    "Bác sĩ cảnh báo rằng thuốc trừ sâu, thứ từ lâu vẫn được dùng để bảo vệ cây trồng thường, đang dần làm hại đất xung quanh."
+   ],
+   [
+    "Engineers caution that bridges, which have long been relied on to carry heavy traffic, are steadily losing their strength.",
+    "Kỹ sư cảnh báo rằng các cây cầu, thứ từ lâu vẫn được dựa vào để chịu xe nặng, đang dần mất độ bền."
+   ]
+  ],
+  "y": [
+   [
+    "have long been used",
+    "have been widely used",
+    "have for years been used",
+    "từ lâu vẫn được dùng"
+   ],
+   [
+    "gradually",
+    "slowly",
+    "progressively",
+    "dần dần"
+   ],
+   [
+    "losing their effectiveness",
+    "becoming less effective",
+    "losing their potency",
+    "mất đi hiệu lực"
+   ]
+  ],
+  "r": [
+   [
+    "Public health officials caution that antibiotics, which doctors have long used to treat minor infections, are gradually losing their effectiveness.",
+    "Đổi mệnh đề quan hệ sang chủ động"
+   ],
+   [
+    "Public health officials caution that antibiotics, long used to treat minor infections, are gradually losing their effectiveness.",
+    "Rút gọn mệnh đề quan hệ"
+   ]
+  ]
+ },
+ "dict-92": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "automation"
+   ],
+   [
+    "V",
+    "has eliminated"
+   ],
+   [
+    "O",
+    "many routine manufacturing jobs,"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "has simultaneously created"
+   ],
+   [
+    "O",
+    "demand"
+   ],
+   [
+    "A",
+    "for workers with specialized technical skills."
+   ]
+  ],
+  "s": [
+   "concession",
+   "present-perfect"
+  ],
+  "n": "'Although … has eliminated …, it has simultaneously created …' dùng nhượng bộ để nêu hai mặt đối lập, cả hai vế ở hiện tại hoàn thành; 'simultaneously' nhấn mạnh việc xảy ra đồng thời.",
+  "x": [
+   [
+    "Although online banking has closed many local branches, it has simultaneously opened opportunities for engineers with strong digital expertise.",
+    "Dù ngân hàng trực tuyến đã đóng nhiều chi nhánh địa phương, nó đồng thời mở ra cơ hội cho kỹ sư có chuyên môn số vững."
+   ],
+   [
+    "Although tourism has damaged many fragile habitats, it has simultaneously generated income for guides with detailed local knowledge.",
+    "Dù du lịch đã tổn hại nhiều môi trường sống mong manh, nó đồng thời mang thu nhập cho hướng dẫn viên am hiểu địa phương."
+   ]
+  ],
+  "y": [
+   [
+    "eliminated",
+    "wiped out",
+    "done away with",
+    "xóa sổ"
+   ],
+   [
+    "simultaneously",
+    "at the same time",
+    "concurrently",
+    "đồng thời"
+   ],
+   [
+    "specialized",
+    "expert",
+    "advanced",
+    "chuyên sâu"
+   ]
+  ],
+  "r": [
+   [
+    "Automation has eliminated many routine manufacturing jobs, but it has simultaneously created demand for workers with specialized technical skills.",
+    "Dùng but thay Although"
+   ],
+   [
+    "While automation has eliminated many routine manufacturing jobs, it has simultaneously created demand for workers with specialized technical skills.",
+    "Dùng While thay Although"
+   ]
+  ]
+ },
+ "dict-93": {
+  "c": [
+   [
+    "S",
+    "Voter turnout among young adults"
+   ],
+   [
+    "V",
+    "remains"
+   ],
+   [
+    "C",
+    "persistently low,"
+   ],
+   [
+    "J",
+    "even as"
+   ],
+   [
+    "S",
+    "social media"
+   ],
+   [
+    "V",
+    "makes"
+   ],
+   [
+    "O",
+    "political information"
+   ],
+   [
+    "C",
+    "more accessible than ever."
+   ]
+  ],
+  "s": [
+   "concession",
+   "comparative"
+  ],
+  "n": "'Even as social media makes…' là mệnh đề với 'even as' nghĩa 'ngay cả khi', nêu sự trái ngược cùng lúc; 'more accessible than ever' là so sánh hơn cố định, make + tân ngữ + tính từ.",
+  "x": [
+   [
+    "Public trust in institutions remains stubbornly weak, even as officials make official records more transparent than ever.",
+    "Niềm tin của công chúng vào các thể chế vẫn yếu dai dẳng, ngay cả khi giới chức khiến hồ sơ công khai minh bạch hơn bao giờ hết."
+   ],
+   [
+    "Attendance at local libraries remains steadily low, even as digital catalogues make borrowing more convenient than ever.",
+    "Lượng người đến thư viện địa phương vẫn thấp đều đều, ngay cả khi danh mục số khiến việc mượn sách tiện hơn bao giờ hết."
+   ]
+  ],
+  "y": [
+   [
+    "remains persistently low",
+    "stays stubbornly low",
+    "continues to be consistently low",
+    "vẫn luôn ở mức thấp"
+   ],
+   [
+    "even as",
+    "even while",
+    "even though",
+    "ngay cả khi"
+   ],
+   [
+    "more accessible than ever",
+    "easier to access than ever",
+    "more available than before",
+    "dễ tiếp cận hơn bao giờ hết"
+   ]
+  ],
+  "r": [
+   [
+    "Even as social media makes political information more accessible than ever, voter turnout among young adults remains persistently low.",
+    "Đảo mệnh đề even as lên đầu"
+   ],
+   [
+    "Voter turnout among young adults remains persistently low despite social media making political information more accessible than ever.",
+    "Dùng despite + V-ing"
+   ]
+  ]
+ },
+ "dict-94": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "budget airlines"
+   ],
+   [
+    "V",
+    "have made"
+   ],
+   [
+    "O",
+    "international travel"
+   ],
+   [
+    "C",
+    "more affordable than ever,"
+   ],
+   [
+    "S",
+    "many travellers"
+   ],
+   [
+    "V",
+    "underestimate"
+   ],
+   [
+    "O",
+    "the environmental cost of frequent flying."
+   ]
+  ],
+  "s": [
+   "concession",
+   "comparative"
+  ],
+  "n": "'Although …' nêu mặt thuận lợi (rẻ hơn) trước khi vế chính chỉ ra điều bị đánh giá thấp; 'more affordable than ever' là so sánh hơn cố định, make + tân ngữ + tính từ.",
+  "x": [
+   [
+    "Although online platforms have made learning more accessible than ever, many students underestimate the discipline cost of studying alone.",
+    "Dù nền tảng trực tuyến đã khiến việc học dễ tiếp cận hơn bao giờ hết, nhiều học sinh đánh giá thấp cái giá về kỷ luật khi học một mình."
+   ],
+   [
+    "Although electric scooters have made short trips cheaper than ever, many riders underestimate the safety risk of crowded roads.",
+    "Dù xe scooter điện đã khiến các chuyến đi ngắn rẻ hơn bao giờ hết, nhiều người lái đánh giá thấp rủi ro an toàn trên đường đông."
+   ]
+  ],
+  "y": [
+   [
+    "more affordable than ever",
+    "cheaper than ever",
+    "less expensive than ever",
+    "rẻ hơn bao giờ hết"
+   ],
+   [
+    "underestimate",
+    "undervalue",
+    "downplay",
+    "đánh giá thấp"
+   ],
+   [
+    "frequent flying",
+    "regular air travel",
+    "repeated flights",
+    "việc bay thường xuyên"
+   ]
+  ],
+  "r": [
+   [
+    "Budget airlines have made international travel more affordable than ever; however, many travellers underestimate the environmental cost of frequent flying.",
+    "Dùng however"
+   ],
+   [
+    "Many travellers underestimate the environmental cost of frequent flying, even though budget airlines have made international travel more affordable than ever.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ]
+  ]
+ },
+ "dict-95": {
+  "c": [
+   [
+    "J",
+    "Although"
+   ],
+   [
+    "S",
+    "social media platforms"
+   ],
+   [
+    "V",
+    "claim"
+   ],
+   [
+    "C",
+    "to connect"
+   ],
+   [
+    "O",
+    "people,"
+   ],
+   [
+    "S",
+    "some psychologists"
+   ],
+   [
+    "V",
+    "argue"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "have deepened"
+   ],
+   [
+    "O",
+    "feelings of isolation and anxiety"
+   ],
+   [
+    "A",
+    "among teenagers."
+   ]
+  ],
+  "s": [
+   "concession",
+   "that-clause",
+   "present-perfect"
+  ],
+  "n": "'Although … claim to connect people' là mệnh đề nhượng bộ với claim + to V; 'argue that they have deepened…' là mệnh đề that nêu quan điểm ngược lại, dùng hiện tại hoàn thành.",
+  "x": [
+   [
+    "Although fast food chains claim to offer healthy choices, some nutritionists argue that they have encouraged unhealthy habits among children.",
+    "Dù chuỗi đồ ăn nhanh tự nhận có món lành mạnh, một số chuyên gia dinh dưỡng cho rằng họ đã khuyến khích thói quen xấu ở trẻ."
+   ],
+   [
+    "Although video games claim to improve concentration, some teachers argue that they have weakened attention spans among pupils.",
+    "Dù trò chơi điện tử tự nhận cải thiện sự tập trung, một số giáo viên cho rằng chúng đã làm yếu khả năng chú ý của học sinh."
+   ]
+  ],
+  "y": [
+   [
+    "claim to",
+    "purport to",
+    "profess to",
+    "tự nhận"
+   ],
+   [
+    "argue that",
+    "contend that",
+    "maintain that",
+    "cho rằng"
+   ],
+   [
+    "have deepened",
+    "have intensified",
+    "have worsened",
+    "đã làm sâu sắc thêm"
+   ]
+  ],
+  "r": [
+   [
+    "Social media platforms claim to connect people; nevertheless, some psychologists argue that they have deepened feelings of isolation and anxiety among teenagers.",
+    "Dùng nevertheless"
+   ],
+   [
+    "Some psychologists argue that social media platforms have deepened feelings of isolation and anxiety among teenagers, although they claim to connect people.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ]
+  ]
+ },
+ "dict-96": {
+  "c": [
+   [
+    "S",
+    "Children"
+   ],
+   [
+    "J",
+    "who"
+   ],
+   [
+    "V",
+    "grow up"
+   ],
+   [
+    "A",
+    "with siblings"
+   ],
+   [
+    "V",
+    "often develop"
+   ],
+   [
+    "O",
+    "stronger social skills"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "S",
+    "only children"
+   ],
+   [
+    "V",
+    "do."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "relative-clause"
+  ],
+  "n": "'Stronger social skills than only children do' là so sánh hơn với 'do' thay cho 'develop' để khỏi lặp; 'Children who grow up with siblings' là mệnh đề quan hệ xác định.",
+  "x": [
+   [
+    "Students who study with partners often achieve better results than solo learners do.",
+    "Học sinh học cùng bạn thường đạt kết quả tốt hơn người học một mình."
+   ],
+   [
+    "Employees who work in teams often feel greater satisfaction than isolated workers do.",
+    "Nhân viên làm việc nhóm thường thấy hài lòng hơn những người làm đơn lẻ."
+   ]
+  ],
+  "y": [
+   [
+    "grow up",
+    "are raised",
+    "are brought up",
+    "lớn lên"
+   ],
+   [
+    "stronger",
+    "better",
+    "more advanced",
+    "tốt hơn"
+   ],
+   [
+    "only children",
+    "single children",
+    "children without siblings",
+    "con một"
+   ]
+  ],
+  "r": [
+   [
+    "Children who grow up with siblings often develop social skills that are stronger than those of only children.",
+    "Dùng those of"
+   ],
+   [
+    "Only children often develop weaker social skills than children who grow up with siblings do.",
+    "Đảo vế, đổi sang weaker"
+   ]
+  ]
+ },
+ "dict-97": {
+  "c": [
+   [
+    "J",
+    "Even though"
+   ],
+   [
+    "S",
+    "inflation rates"
+   ],
+   [
+    "V",
+    "have fallen"
+   ],
+   [
+    "M",
+    "slightly"
+   ],
+   [
+    "T",
+    "this year,"
+   ],
+   [
+    "S",
+    "many households"
+   ],
+   [
+    "V",
+    "continue"
+   ],
+   [
+    "C",
+    "to struggle"
+   ],
+   [
+    "A",
+    "with expenses"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "were considered"
+   ],
+   [
+    "C",
+    "affordable"
+   ],
+   [
+    "T",
+    "only a decade ago."
+   ]
+  ],
+  "s": [
+   "concession",
+   "relative-clause",
+   "passive"
+  ],
+  "n": "'Even though inflation rates have fallen slightly' là mệnh đề nhượng bộ ở hiện tại hoàn thành; 'expenses that were considered affordable' là mệnh đề quan hệ bị động ở quá khứ, 'continue to struggle' là continue + to V.",
+  "x": [
+   [
+    "Even though unemployment has dropped a little this quarter, many workers continue to worry about jobs that were regarded as safe only a year ago.",
+    "Dù thất nghiệp quý này giảm chút ít, nhiều người lao động vẫn lo về những việc từng được coi là an toàn chỉ một năm trước."
+   ],
+   [
+    "Even though temperatures have eased slightly this week, many residents continue to suffer from conditions that were considered normal only a month ago.",
+    "Dù nhiệt độ tuần này hạ nhẹ, nhiều cư dân vẫn khổ vì những điều kiện chỉ một tháng trước còn bị coi là bình thường."
+   ]
+  ],
+  "y": [
+   [
+    "Even though",
+    "Although",
+    "Despite the fact that",
+    "Dù"
+   ],
+   [
+    "continue to struggle",
+    "keep struggling",
+    "remain in difficulty",
+    "vẫn chật vật"
+   ],
+   [
+    "were considered",
+    "were regarded as",
+    "were seen as",
+    "được coi là"
+   ]
+  ],
+  "r": [
+   [
+    "Many households continue to struggle with expenses that were considered affordable only a decade ago, even though inflation rates have fallen slightly this year.",
+    "Đảo mệnh đề nhượng bộ xuống cuối"
+   ],
+   [
+    "Despite the slight fall in inflation rates this year, many households continue to struggle with expenses that were considered affordable only a decade ago.",
+    "Dùng Despite + danh từ"
+   ]
+  ]
+ },
+ "dict-98": {
+  "c": [
+   [
+    "A",
+    "Faced with shrinking public funding,"
+   ],
+   [
+    "S",
+    "universities"
+   ],
+   [
+    "V",
+    "have raised"
+   ],
+   [
+    "O",
+    "tuition fees"
+   ],
+   [
+    "A",
+    "to levels"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "many working-class families"
+   ],
+   [
+    "V",
+    "can no longer afford."
+   ]
+  ],
+  "s": [
+   "participle-clause",
+   "relative-clause",
+   "present-perfect"
+  ],
+  "n": "'Faced with shrinking public funding' là cụm phân từ quá khứ đứng đầu câu, chủ ngữ ngầm là 'universities'; 'levels that … can no longer afford' là mệnh đề quan hệ với can no longer.",
+  "x": [
+   [
+    "Confronted with rising maintenance costs, landlords have increased rents to levels that many students can no longer pay.",
+    "Đối mặt với chi phí bảo trì tăng, chủ nhà đã nâng giá thuê lên mức nhiều sinh viên không còn chi trả nổi."
+   ],
+   [
+    "Faced with falling sales, retailers have cut prices to levels that many small suppliers can no longer match.",
+    "Trước doanh số giảm, các nhà bán lẻ đã hạ giá xuống mức nhiều nhà cung cấp nhỏ không còn theo kịp."
+   ]
+  ],
+  "y": [
+   [
+    "Faced with",
+    "Confronted with",
+    "Up against",
+    "Trước"
+   ],
+   [
+    "tuition fees",
+    "course fees",
+    "university fees",
+    "học phí"
+   ],
+   [
+    "can no longer afford",
+    "can no longer pay for",
+    "are no longer able to afford",
+    "không còn kham nổi"
+   ]
+  ],
+  "r": [
+   [
+    "Because they were faced with shrinking public funding, universities have raised tuition fees to levels that many working-class families can no longer afford.",
+    "Viết đầy đủ mệnh đề lý do"
+   ],
+   [
+    "Universities have raised tuition fees to levels that many working-class families can no longer afford, faced with shrinking public funding.",
+    "Đưa cụm phân từ xuống cuối"
+   ]
+  ]
+ },
+ "dict-99": {
+  "c": [
+   [
+    "S",
+    "Marine biologists"
+   ],
+   [
+    "V",
+    "caution"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "ocean acidification,"
+   ],
+   [
+    "A",
+    "driven largely by rising carbon dioxide levels,"
+   ],
+   [
+    "V",
+    "is weakening"
+   ],
+   [
+    "O",
+    "coral reefs"
+   ],
+   [
+    "M",
+    "faster"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "can regenerate."
+   ]
+  ],
+  "s": [
+   "participle-clause",
+   "comparative",
+   "present-continuous"
+  ],
+  "n": "'Driven largely by rising carbon dioxide levels' là cụm phân từ quá khứ nêu nguyên nhân; 'is weakening … faster than they can regenerate' là hiện tại tiếp diễn kèm so sánh hơn của trạng từ.",
+  "x": [
+   [
+    "Urban planners caution that traffic congestion, caused mainly by growing private car use, is worsening air quality faster than cities can respond.",
+    "Nhà quy hoạch cảnh báo rằng ùn tắc, chủ yếu do việc dùng ô tô riêng tăng, đang làm xấu không khí nhanh hơn thành phố ứng phó được."
+   ],
+   [
+    "Health experts caution that obesity, linked largely to sugary drinks, is damaging young people's health faster than schools can educate them.",
+    "Chuyên gia y tế cảnh báo rằng béo phì, chủ yếu liên quan đồ uống ngọt, đang hại sức khỏe người trẻ nhanh hơn trường học giáo dục được."
+   ]
+  ],
+  "y": [
+   [
+    "driven largely by",
+    "caused mainly by",
+    "fuelled mostly by",
+    "chủ yếu do"
+   ],
+   [
+    "is weakening",
+    "is undermining",
+    "is eroding",
+    "đang làm suy yếu"
+   ],
+   [
+    "faster than",
+    "more quickly than",
+    "at a greater speed than",
+    "nhanh hơn"
+   ]
+  ],
+  "r": [
+   [
+    "Marine biologists caution that ocean acidification, which is driven largely by rising carbon dioxide levels, is weakening coral reefs faster than they can regenerate.",
+    "Viết đầy đủ mệnh đề quan hệ"
+   ],
+   [
+    "Marine biologists caution that coral reefs are being weakened by ocean acidification, driven largely by rising carbon dioxide levels, faster than they can regenerate.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "dict-100": {
+  "c": [
+   [
+    "S",
+    "Employers"
+   ],
+   [
+    "V",
+    "are increasingly relying"
+   ],
+   [
+    "A",
+    "on algorithms"
+   ],
+   [
+    "U",
+    "to screen"
+   ],
+   [
+    "O",
+    "job applicants,"
+   ],
+   [
+    "J",
+    "even though"
+   ],
+   [
+    "S",
+    "such systems"
+   ],
+   [
+    "V",
+    "have been shown"
+   ],
+   [
+    "C",
+    "to reproduce"
+   ],
+   [
+    "O",
+    "existing biases"
+   ],
+   [
+    "M",
+    "at scale."
+   ]
+  ],
+  "s": [
+   "concession",
+   "passive",
+   "present-continuous"
+  ],
+  "n": "'Even though such systems have been shown to…' là mệnh đề nhượng bộ ở hiện tại hoàn thành bị động; 'are increasingly relying on' là hiện tại tiếp diễn nói xu hướng, còn 'to screen' chỉ mục đích.",
+  "x": [
+   [
+    "Schools are increasingly depending on apps to track pupil attendance, even though such tools have been found to misrecord absences at scale.",
+    "Các trường ngày càng dựa vào ứng dụng để theo dõi chuyên cần, dù những công cụ đó đã được phát hiện là ghi sai buổi vắng trên quy mô lớn."
+   ],
+   [
+    "Banks are increasingly turning to software to approve small loans, even though such programs have been proven to repeat existing inequalities at scale.",
+    "Các ngân hàng ngày càng chuyển sang phần mềm duyệt khoản vay nhỏ, dù những chương trình đó đã được chứng minh là lặp lại bất bình đẳng sẵn có trên quy mô lớn."
+   ]
+  ],
+  "y": [
+   [
+    "are increasingly relying",
+    "are increasingly depending",
+    "are more and more reliant",
+    "ngày càng dựa vào"
+   ],
+   [
+    "screen",
+    "filter",
+    "vet",
+    "sàng lọc"
+   ],
+   [
+    "even though",
+    "although",
+    "despite the fact that",
+    "dù"
+   ]
+  ],
+  "r": [
+   [
+    "Even though such systems have been shown to reproduce existing biases at scale, employers are increasingly relying on algorithms to screen job applicants.",
+    "Đảo mệnh đề nhượng bộ lên đầu"
+   ],
+   [
+    "Employers are increasingly relying on algorithms to screen job applicants, despite such systems having been shown to reproduce existing biases at scale.",
+    "Dùng despite + V-ing"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "shopping",
+ "extra": {
+  "vocab": [
+   {
+    "en": "retail therapy",
+    "vi": "mua sắm để giải tỏa căng thẳng",
+    "ex": "Whenever I feel overwhelmed with work, a little retail therapy always lifts my spirits."
+   },
+   {
+    "en": "cost an arm and a leg",
+    "vi": "rất đắt đỏ, tốn kém",
+    "ex": "Designer handbags usually cost an arm and a leg, so I prefer affordable local brands."
+   },
+   {
+    "en": "impulse buy",
+    "vi": "sự mua sắm bốc đồng (không lên kế hoạch trước)",
+    "ex": "I try to stick to a shopping list to avoid impulse buys that drain my wallet."
+   },
+   {
+    "en": "hunt for bargains",
+    "vi": "săn đồ giảm giá hoặc món hời",
+    "ex": "My mother loves hunting for bargains at the weekend street market."
+   },
+   {
+    "en": "value for money",
+    "vi": "đáng đồng tiền bát gạo",
+    "ex": "This laptop is reasonably priced and delivers exceptional value for money."
+   },
+   {
+    "en": "splash out (on sth)",
+    "vi": "vung tiền mua món đồ xa xỉ",
+    "ex": "I decided to splash out on a pair of premium noise-cancelling headphones for my birthday."
+   },
+   {
+    "en": "window shopping",
+    "vi": "đi ngắm đồ chứ không mua",
+    "ex": "We often go window shopping at the shopping mall just to kill time and chat."
+   },
+   {
+    "en": "snap up",
+    "vi": "nhanh tay chộp lấy, mua ngay kẻo hết",
+    "ex": "Shoppers rushed to snap up the discounted electronics during the Black Friday sale."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu món đồ đã mua (tai nghe chống ồn Sony) và thời điểm mua (khoảng sáu tháng trước).",
+   "Ý 1: Nêu lý do cần thiết phải mua (cần không gian yên tĩnh để tập trung làm việc từ xa và học tập ở quán cà phê).",
+   "Ý 2: Miêu tả địa điểm và cách thức mua (săn đợt giảm giá trên sàn thương mại điện tử, áp mã voucher để có giá tốt).",
+   "Kết: Giải thích lý do hài lòng (chất lượng âm thanh vượt trội, pin trâu, đáng từng đồng tiền bỏ ra)."
+  ],
+  "sample": "I’d like to talk about a pair of noise-cancelling headphones I bought about six months ago, which turned out to be one of the best investments I’ve ever made. At the time, I was working remotely from home and frequently studying at bustling coffee shops. The ambient noise made it really difficult to concentrate, so I desperately needed a decent gadget to tune out distractions. After doing some research and reading countless customer reviews, I decided to splash out on a Sony model. I bought it online via an e-commerce platform during their mid-year mega sale. I was lucky enough to apply several discount vouchers, so I snapped it up at a bargain price. I’m genuinely thrilled with this purchase for several reasons. Firstly, the sound quality is top-notch, and the active noise-cancellation works like a charm. It creates a serene bubble wherever I am, boosting my productivity immensely. On top of that, the battery life lasts for days, proving that it offers fantastic value for money. It has honestly become an indispensable part of my daily routine.",
+  "p1": [
+   {
+    "q": "Do you like shopping?",
+    "a": "To be honest, I'm quite fond of shopping, especially when I need some retail therapy after a hectic week. Browsing through clothes or gadgets gives me a quick mood boost, though I try not to overspend."
+   },
+   {
+    "q": "Do you prefer shopping online or in shops?",
+    "a": "I definitely lean towards online shopping because of its sheer convenience. It saves me tons of travel time, and I can effortlessly compare prices across different platforms before making a purchase from the comfort of my home."
+   },
+   {
+    "q": "What was the last thing you bought?",
+    "a": "Just yesterday, I picked up an insulated water bottle from a local department store. My old one started leaking, so I bought this sturdy stainless steel flask to stay hydrated throughout my workdays."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do advertisements make people buy things they do not need?",
+    "a": "Undoubtedly, yes. Modern advertisements employ sophisticated psychological tactics and influencer endorsements to create a sense of urgency and false necessity. For example, flash sales and limited-edition claims often trigger impulse buys, prompting consumers to purchase trendy apparel or gadgets they rarely use. Consequently, people end up wasting substantial amounts of money on non-essential items just to keep up with short-lived lifestyle trends."
+   },
+   {
+    "q": "Will shops disappear in the future?",
+    "a": "I don't think physical stores will vanish entirely, though their roles will certainly transform. While e-commerce dominates convenience and speed, brick-and-mortar shops offer tangible experiences that screens cannot replicate, such as trying on tailored clothes or testing perfume. Therefore, rather than disappearing, retail shops will likely evolve into experiential showrooms where customers interact with products before purchasing."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn giữa 'go shopping' và 'buy groceries/run errands': Thí sinh thường dùng 'go shopping' cho mọi việc mua bán lặt vặt hàng ngày (mua đồ ăn, gia vị). Chuẩn xác hơn, 'go shopping' dùng cho mua sắm có chọn lọc (quần áo, đồ công nghệ), còn việc mua nhu yếu phẩm nên dùng 'do the grocery shopping' hoặc 'run errands'.",
+   "Lạm dụng từ 'cheap' với nghĩa tích cực: Thí sinh hay khen đồ 'very cheap' khi thấy giá rẻ, nhưng từ 'cheap' trong tiếng Anh bản xứ thường ám chỉ đồ chất lượng kém, hàng ôi. Để khen giá tốt, nên dùng 'affordable', 'reasonably priced' hoặc 'good value for money'.",
+   "Dịch thô thành ngữ 'tiền nào của nấy': Nhiều bạn dịch bồi thành 'money and quality go together' hoặc 'high price high quality'. Cách diễn đạt tự nhiên chuẩn Band 7+ là thành ngữ 'You get what you pay for'."
+  ],
+  "p1More": [
+   "Do you often buy things on impulse?",
+   "Is shopping popular among young people in your country?",
+   "Have you ever bought something that you later regretted?",
+   "Do you prefer shopping alone or with friends?",
+   "What kind of shops do you visit most frequently?"
+  ],
+  "p3More": [
+   "How has consumer culture changed in your country over the past decade?",
+   "What are the environmental consequences of excessive consumerism?",
+   "Should governments introduce stricter regulations on digital advertising to protect consumers?",
+   "To what extent does peer pressure influence the shopping habits of teenagers?"
+  ]
+ }
+}

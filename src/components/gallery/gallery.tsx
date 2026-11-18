@@ -21,11 +21,11 @@ export const GREEN = '#22A06B';
 
 export const SERIF = 'PlayfairDisplay_700Bold';
 export const SERIF_I = 'PlayfairDisplay_600SemiBold_Italic';
-export const SANS_4 = 'PlusJakartaSans_400Regular';
-export const SANS_5 = 'PlusJakartaSans_500Medium';
-export const SANS_6 = 'PlusJakartaSans_600SemiBold';
-export const SANS_7 = 'PlusJakartaSans_700Bold';
-export const SANS_8 = 'PlusJakartaSans_800ExtraBold';
+export const SANS_4 = 'Nunito_400Regular';
+export const SANS_5 = 'Nunito_600SemiBold';
+export const SANS_6 = 'Nunito_600SemiBold';
+export const SANS_7 = 'Nunito_700Bold';
+export const SANS_8 = 'Nunito_700Bold';
 
 export const isWeb = Platform.OS === 'web';
 

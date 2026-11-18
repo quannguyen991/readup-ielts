@@ -1,0 +1,117 @@
+{
+ "id": "teamwork",
+ "title": "Teamwork",
+ "titleVi": "Làm việc nhóm",
+ "tipVi": "Hãy minh họa cụ thể cách phân chia vai trò và cách nhóm giải quyết bất đồng, tránh chỉ dùng những từ chung chung như 'good' hay 'helpful'.",
+ "part1": [
+  "Do you prefer working on your own or in a group?",
+  "What was the last project you completed with other people?",
+  "Do you find it difficult to cooperate with people you do not know well?"
+ ],
+ "part2": {
+  "prompt": "Describe an effective team project you took part in.",
+  "bullets": [
+   "what the project was and who you worked with",
+   "how tasks were divided among team members",
+   "what challenges your team encountered",
+   "and explain why you think this team project was successful"
+  ]
+ },
+ "part3": [
+  "What key qualities make an individual an effective team player?",
+  "How has modern technology changed the way teams collaborate in the workplace?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "pull one's weight",
+    "vi": "đóng góp công sức tương xứng với phần việc của mình",
+    "ex": "The presentation was a hit because every single member pulled their weight from day one."
+   },
+   {
+    "en": "bounce ideas off someone",
+    "vi": "trao đổi ý kiến với ai đó để nhận phản hồi",
+    "ex": "I love brainstorming sessions where team members can bounce ideas off each other freely."
+   },
+   {
+    "en": "delegate tasks",
+    "vi": "phân chia, giao phó nhiệm vụ",
+    "ex": "Our team leader was brilliant at delegating tasks based on individual strengths."
+   },
+   {
+    "en": "reach a consensus",
+    "vi": "đạt được sự nhất trí, đồng thuận",
+    "ex": "After hours of heated debate, we finally reached a consensus on the campaign concept."
+   },
+   {
+    "en": "smooth over differences",
+    "vi": "xoa dịu, hòa giải những bất đồng",
+    "ex": "A skilled mediator can easily smooth over differences before they escalate into conflicts."
+   },
+   {
+    "en": "friction",
+    "vi": "sự xích mích, bất đồng ngầm",
+    "ex": "Poor communication early on caused unnecessary friction between our departments."
+   },
+   {
+    "en": "synergy",
+    "vi": "hiệu ứng cộng hưởng, sức mạnh tổng hợp",
+    "ex": "When designers and copywriters collaborate closely, their synergy produces remarkable outcomes."
+   },
+   {
+    "en": "fall behind schedule",
+    "vi": "chậm tiến độ so với kế hoạch",
+    "ex": "Unexpected technical glitches caused our project to fall behind schedule for a few days."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu dự án nhóm gần đây (ví dụ: làm video truyền thông về bảo vệ môi trường ở trường đại học cùng 3 người bạn).",
+   "Ý 1: Mô tả việc phân chia công việc rõ ràng dựa trên thế mạnh từng người (kịch bản, quay phim, dựng và lồng tiếng).",
+   "Ý 2: Nêu khó khăn phát sinh (bất đồng về phong cách video, áp lực hạn chót) và cách cả nhóm ngồi lại để giải tỏa căng thẳng.",
+   "Kết: Giải thích lý do dự án thành công (đạt giải thưởng, tương tác cao) và bài học về tinh thần trách nhiệm, tôn trọng ý kiến lẫn nhau."
+  ],
+  "sample": "I'd like to talk about a community video project I took part in during my final year at university. Our goal was to produce a short promotional clip raising awareness about single-use plastics on campus, and I collaborated with three classmates. To ensure efficiency, we delegated tasks based on our individual strengths: one friend drafted the script, another handled filming, while I took charge of post-production and editing. The main challenge we ran into was a clash of creative visions regarding the tone of the video—some wanted it humorous, whereas others preferred a serious documentary style. Things became tense, but we sat down, bounced ideas off each other, and reached a consensus to blend light-hearted storytelling with hard-hitting facts. In the end, our video went viral on the university fanpage and won first prize in the green initiative competition. I believe this project was a resounding success not just because of the award, but because every single person pulled their weight and respected differing perspectives, creating true synergy.",
+  "p1": [
+   {
+    "q": "Do you prefer working on your own or in a group?",
+    "a": "I generally lean towards working independently because it allows me to stay laser-focused without constant interruptions. However, for creative brainstorms or complex assignments, pooling ideas in a group definitely produces far better results."
+   },
+   {
+    "q": "What was the last project you completed with other people?",
+    "a": "Just last month, I organized a charity book drive alongside four colleagues. We collected hundreds of textbooks from our local neighbourhood and delivered them to underprivileged children, which was immensely gratifying."
+   },
+   {
+    "q": "Do you find it difficult to cooperate with people you do not know well?",
+    "a": "Initially, yes, because breaking the ice and establishing trust takes time. For instance, when I first joined my current team, communication was somewhat awkward until we organized an informal lunch to get acquainted."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What key qualities make an individual an effective team player?",
+    "a": "In my view, active listening and reliability are paramount. A team player must genuinely absorb others' feedback rather than push their own agenda. Furthermore, accountability matters; if someone fails to pull their weight, the whole group suffers. While having technical expertise is useful, emotional maturity and the willingness to compromise are what truly bind a team together."
+   },
+   {
+    "q": "How has modern technology changed the way teams collaborate in the workplace?",
+    "a": "Digital platforms like Slack and Zoom have revolutionized teamwork by enabling seamless cross-border communication. Teams can now share real-time updates and collaborate on cloud documents irrespective of physical geography. On the flip side, remote coordination can sometimes erode spontaneous bonding and lead to misunderstandings through text. Nevertheless, technology has overall democratized collaboration and boosted productivity across industries."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp đi lặp lại từ 'teamwork' hoặc 'work in group' thay vì dùng từ vựng đa dạng như 'collaborate', 'pool ideas', hay 'joint effort'.",
+   "Sai giới từ hoặc mạo từ cơ bản: nói nhầm 'work in team' (đúng: 'work in a team') hoặc 'cooperate to someone' (đúng: 'cooperate with someone').",
+   "Chỉ nhắc đến xung đột chung chung mà quên giải thích nguyên nhân và cách nhóm hòa giải, làm giảm chiều sâu câu trả lời."
+  ],
+  "p1More": [
+   "Do you think children should learn to work in teams at school?",
+   "Have you ever led a team before?",
+   "What do you do if a team member is not doing their share of the work?",
+   "Do you prefer team sports or individual sports?",
+   "Is it easy for you to share your ideas in a meeting?"
+  ],
+  "p3More": [
+   "Why do some highly capable individuals struggle to work within a team?",
+   "Should schools place more emphasis on group assessments rather than individual exams?",
+   "How can corporate leaders resolve deep-seated conflicts between team members?",
+   "In what ways might excessive teamwork suppress individual creativity and critical thinking?"
+  ]
+ }
+}

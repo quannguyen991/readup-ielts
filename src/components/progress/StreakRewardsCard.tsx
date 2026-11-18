@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { Badge, Card, Icon, ProgressBar } from '@/components/ui';
+import { NeonWindow } from '@/components/neon/Neon';
+import { Badge, ProgressBar } from '@/components/ui';
 import { nextStreakMilestone, STREAK_MILESTONES, streakPrizeKey } from '@/services/gamification/streak-rewards';
 import { formatStars } from '@/services/gamification/shop';
 import { useRewardStore } from '@/store/useRewardStore';
@@ -19,31 +20,16 @@ export function StreakRewardsCard({ current, longest }: { current: number; longe
   const progress = next ? ((current - previousDays) / (next.milestone.days - previousDays)) * 100 : 100;
 
   return (
-    <Card className="mt-4">
-      <View className="flex-row items-center justify-between">
-        <View className="flex-row items-center gap-2">
-          <Icon name="flame" size={20} color="#F0703F" />
-          <Text className="font-strong text-cardTitle text-ink">{L('Chuỗi ngày & thưởng', 'Streak & rewards')}</Text>
-        </View>
-        <Text className="font-mid text-label text-muted">
-          {L(`Dài nhất: ${longest} ngày`, `Longest: ${longest} days`)}
-        </Text>
-      </View>
-
+    <NeonWindow title={L('Mốc chuỗi', 'Streak goals')} icon="flame" badge={`${current}/${next ? next.milestone.days : current}`} style={{ marginTop: 16 }}>
       {next ? (
-        <View className="mt-3 gap-2">
-          <Text className="font-sans text-body text-body">
-            {L(
-              `Còn ${next.remaining} ngày nữa là đạt mốc ${next.milestone.days} ngày, thưởng +${formatStars(next.milestone.stars)} sao.`,
-              `${next.remaining} more day${next.remaining === 1 ? '' : 's'} to reach ${next.milestone.days} days, +${formatStars(next.milestone.stars)} stars.`,
-            )}
+        <View className="gap-2">
+          <Text className="font-semi text-body text-ink">
+            {L(`Còn ${next.remaining} ngày → mốc ${next.milestone.days} · +${formatStars(next.milestone.stars)} ⭐`, `${next.remaining}d to day ${next.milestone.days} · +${formatStars(next.milestone.stars)} ⭐`)}
           </Text>
-          <ProgressBar value={progress} tone="primary" valueLabel={`${current}/${next.milestone.days}`} />
+          <ProgressBar value={progress} tone="primary" />
         </View>
       ) : (
-        <Text className="mt-3 font-sans text-body text-body">
-          {L('Bạn đã qua mốc cuối cùng. Chuỗi càng dài, sao càng nhiều.', 'You have passed the last milestone. Keep the streak going.')}
-        </Text>
+        <Text className="font-semi text-body text-ink">{L('Đã qua mốc cuối. Giữ nhịp nhé.', 'Last milestone passed. Keep going.')}</Text>
       )}
 
       <View className="mt-4 flex-row flex-wrap gap-2">
@@ -58,7 +44,7 @@ export function StreakRewardsCard({ current, longest }: { current: number; longe
                 `${m.days} days, ${m.stars} stars${claimed ? ', claimed' : reached ? ', being added' : ', not reached'}`,
               )}
               className="rounded-pill border px-3 py-1.5"
-              style={{ borderColor: claimed ? '#D9A441' : '#E5E7EB', backgroundColor: claimed ? '#F3F0FB' : '#FFFFFF' }}
+              style={{ borderColor: claimed ? '#2A22B5' : '#E5E7EB', backgroundColor: claimed ? '#F3F0FF' : '#FFFFFF' }}
             >
               <Badge
                 label={`${m.days} ${L('ngày', 'days')} · +${formatStars(m.stars)} ⭐${claimed ? ' ✓' : reached ? '' : ' 🔒'}`}
@@ -68,6 +54,6 @@ export function StreakRewardsCard({ current, longest }: { current: number; longe
           );
         })}
       </View>
-    </Card>
+    </NeonWindow>
   );
 }

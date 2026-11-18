@@ -1,0 +1,96 @@
+{
+ "id": "health",
+ "extra": {
+  "vocab": [
+   {
+    "en": "cut down on",
+    "vi": "cắt giảm (tiêu thụ cái gì đó)",
+    "ex": "I try to cut down on processed sugar to prevent energy crashes in the afternoon."
+   },
+   {
+    "en": "lead a sedentary lifestyle",
+    "vi": "có lối sống ít vận động",
+    "ex": "Many office workers inadvertently lead a sedentary lifestyle due to spending long hours in front of screens."
+   },
+   {
+    "en": "balanced diet",
+    "vi": "chế độ ăn uống cân bằng, đủ chất",
+    "ex": "Maintaining a balanced diet packed with greens and lean protein does wonders for your immune system."
+   },
+   {
+    "en": "work up a sweat",
+    "vi": "vận động mạnh đến toát mồ hôi",
+    "ex": "I make sure to work up a sweat at the gym at least three times a week to relieve stress."
+   },
+   {
+    "en": "in the pink of health",
+    "vi": "rất khỏe mạnh, dồi dào sức sống",
+    "ex": "Consistent physical activity and mindful eating help keep my grandparents in the pink of health."
+   },
+   {
+    "en": "take its toll on",
+    "vi": "gây ảnh hưởng tiêu cực, làm kiệt quệ",
+    "ex": "Chronic lack of sleep will eventually take its toll on your physical and mental well-being."
+   },
+   {
+    "en": "boost one's immune system",
+    "vi": "tăng cường hệ miễn dịch",
+    "ex": "Getting sufficient restorative sleep is the most natural way to boost your immune system."
+   },
+   {
+    "en": "stick to a routine",
+    "vi": "kiên trì tuân theo một lịch trình/thói quen",
+    "ex": "It can be quite challenging to stick to a workout routine when professional deadlines pile up."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu thói quen lành mạnh (uống 2 lít nước mỗi ngày) và mốc thời gian bắt đầu (khoảng một năm trước do cơ thể hay mệt mỏi).",
+   "Ý 1: Cách thức duy trì thói quen trong cuộc sống bận rộn (dùng bình nước có vạch chia thời gian, cài ứng dụng nhắc nhở trên điện thoại).",
+   "Ý 2: Những khó khăn ban đầu gặp phải (sự lười biếng, thường xuyên quên, bất tiện khi phải đi vệ sinh nhiều lần) và cách vượt qua.",
+   "Kết: Những chuyển biến tích cực rõ rệt về thể chất và tinh thần (da sáng hơn, hết đau đầu, nhiều năng lượng) cùng quyết tâm duy trì lâu dài."
+  ],
+  "sample": "I'd like to talk about a habit I've been cultivating over the past year, which is drinking at least two liters of water every single day. I picked up this habit early last year when I started feeling constantly fatigued and suffering from frequent headaches. My doctor pointed out that mild dehydration was the culprit and advised me to increase my daily fluid intake. To keep this up consistently, I bought a large reusable water bottle with time markings on the side, which reminds me when to sip. I also installed a hydration tracker app on my phone that buzzes every hour. In the beginning, it felt tedious to constantly refill my bottle, but after a few weeks, it became second nature. This simple change has truly worked wonders for my health. Not only has my skin cleared up significantly, but my afternoon brain fog has also vanished. I feel far more energized throughout the day and rarely experience tension headaches anymore. Sticking to this routine has really shown me how small daily changes yield huge health rewards.",
+  "p1": [
+   {
+    "q": "How do you keep healthy?",
+    "a": "To stay in good shape, I prioritize a balanced diet and regular physical activity. For instance, I cook fresh meals at home with plenty of vegetables and make sure to jog for at least thirty minutes every other morning."
+   },
+   {
+    "q": "Do you exercise regularly?",
+    "a": "Yes, I make it a point to work out three or four times a week. I usually alternate between cardio sessions and light strength training at my local gym, which keeps my energy levels high throughout the working week."
+   },
+   {
+    "q": "What do usually eat for breakfast?",
+    "a": "I typically go for something light yet nutritious, such as a bowl of oatmeal topped with fresh bananas and walnuts. It provides sustained energy and keeps me full until lunchtime without causing sluggishness."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should governments pay more for public health services?",
+    "a": "In my view, governments should definitely allocate a larger portion of their budget to public healthcare. Affordable medical services ensure that vulnerable populations receive essential treatments without falling into severe medical debt. While some argue that this strains public finances, preventative care ultimately reduces long-term economic burdens caused by widespread chronic diseases. Therefore, investing in robust healthcare systems benefits society as a whole."
+   },
+   {
+    "q": "Why do many people find it hard to build healthy habits?",
+    "a": "I think modern lifestyles are the primary culprit. People often juggle demanding work hours and family responsibilities, which leaves them physically drained and prone to choosing quick comfort, like junk food, over exercising. Furthermore, healthy habits require instant effort for delayed gratification, whereas scrolling social media or snacking offers immediate pleasure. Without strong discipline, it is remarkably easy to fall back into unhealthy routines."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'healthy': Người học thường lặp lại tính từ này liên tục (healthy food, healthy body, healthy habit). Nên linh hoạt dùng 'wholesome diet', 'nutritious meals', 'stay in shape', hoặc 'physical well-being'.",
+   "Dùng sai từ loại giữa 'health' (danh từ) và 'healthy' (tính từ): Điển hình là lỗi nói 'improve my healthy' thay vì 'improve my health', hoặc 'take care of my healthy'.",
+   "Dùng sai cụm 'play exercise' hoặc 'play gym': Trong tiếng Anh không dùng động từ 'play' cho việc tập thể dục nói chung. Cần dùng 'do exercise', 'work out', hoặc 'hit the gym'."
+  ],
+  "p1More": [
+   "What is your favorite type of physical activity?",
+   "Do you think you have an active lifestyle?",
+   "Did you learn about health and nutrition when you were at school?",
+   "Do you prefer preparing food at home or eating out to stay healthy?",
+   "How many hours of sleep do you usually get on a typical night?"
+  ],
+  "p3More": [
+   "How has modern technology influenced people's physical health in recent decades?",
+   "Do you think schools should bear the primary responsibility for promoting healthy habits in children?",
+   "Why are mental health issues becoming increasingly prevalent in contemporary society?",
+   "To what extent should employers be held accountable for the physical well-being of their workers?"
+  ]
+ }
+}

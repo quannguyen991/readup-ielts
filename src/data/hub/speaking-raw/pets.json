@@ -1,0 +1,117 @@
+{
+ "id": "pets",
+ "title": "Pets and Animals",
+ "titleVi": "Thú cưng và động vật",
+ "tipVi": "Hãy kết hợp miêu tả đặc điểm hành vi của con vật cùng cảm xúc cá nhân để bài nói sinh động và tự nhiên hơn.",
+ "part1": [
+  "Do you have any pets at home?",
+  "What kind of animals did you like when you were a child?",
+  "Why do some people prefer having pets over other hobbies?"
+ ],
+ "part2": {
+  "prompt": "Describe a memorable encounter you had with a wild animal",
+  "bullets": [
+   "what animal it was",
+   "where and when you encountered it",
+   "what the animal was doing",
+   "and explain why this encounter was memorable to you"
+  ]
+ },
+ "part3": [
+  "Do you think humans have a moral obligation to protect endangered species?",
+  "How has urbanization affected the relationship between humans and wild animals?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "domesticated animal",
+    "vi": "động vật thuần hóa",
+    "ex": "Unlike domesticated animals, wild creatures retain their natural hunting instincts."
+   },
+   {
+    "en": "natural habitat",
+    "vi": "môi trường sống tự nhiên",
+    "ex": "Deforestation forces countless primates out of their natural habitat."
+   },
+   {
+    "en": "endangered species",
+    "vi": "loài có nguy cơ tuyệt chủng",
+    "ex": "Poaching remains the single gravest threat to this endangered species."
+   },
+   {
+    "en": "coexist peacefully",
+    "vi": "chung sống hòa bình",
+    "ex": "Urban planners must find sustainable ways for residents and wildlife to coexist peacefully."
+   },
+   {
+    "en": "unconditional affection",
+    "vi": "tình cảm vô điều kiện",
+    "ex": "Dogs are widely cherished because they offer unconditional affection to their owners."
+   },
+   {
+    "en": "in captivity",
+    "vi": "bị nuôi nhốt, giam cầm",
+    "ex": "Certain marine mammals suffer immense psychological distress when kept in captivity."
+   },
+   {
+    "en": "poach for profit",
+    "vi": "săn trộm vì lợi nhuận",
+    "ex": "Criminal syndicates continue to poach rhinos for profit in protected reserves."
+   },
+   {
+    "en": "therapeutic effect",
+    "vi": "tác dụng trị liệu, thư giãn",
+    "ex": "Interacting with therapy animals has a proven therapeutic effect on recovering patients."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu cuộc chạm trán khó quên với loài voọc chà vá chân nâu (red-shanked douc langur) tại bán đảo Sơn Trà cách đây hai năm.",
+   "Ý 1: Nêu bối cảnh không gian buổi sáng trong rừng nguyên sinh và khoảnh khắc bất ngờ phát hiện gia đình voọc trên ngọn cây.",
+   "Ý 2: Miêu tả chi tiết hành vi của chúng (chuyền cành thoăn thoắt, hái lá non, màu lông rực rỡ và ánh nhìn tò mò về phía con người).",
+   "Kết: Giải thích lý do khó quên—chứng kiến vẻ đẹp hoang dã ngoài đời thực giúp thức tỉnh nhận thức bảo tồn thiên nhiên sâu sắc."
+  ],
+  "sample": "I'd like to talk about an unforgettable encounter I had with a family of red-shanked douc langurs. This happened about two years ago during a morning hike through Son Tra Peninsula in Da Nang.\n\nWhile trekking along a quiet forest trail, my companion and I heard rustling leaves overhead. Looking up, we were astonished to spot a troop of around four langurs perched high in the canopy. They were foraging for tender young leaves, leaping effortlessly between branches. What struck me most was their vivid coloration—striking orange faces, white forearms, and deep chestnut legs—often dubbed the 'queen of primates.' One juvenile briefly paused and stared directly at us with curious, gentle eyes before swinging away.\n\nThis encounter remains etched in my memory because it was my first time witnessing such a rare, endangered creature in its natural habitat rather than behind bars in a zoo. Seeing their grace and innocence firsthand completely transformed my view on wildlife preservation. It made me realize how vulnerable these species are to human encroachment and deeply reinforced my desire to advocate for ecological protection.",
+  "p1": [
+   {
+    "q": "Do you have any pets at home?",
+    "a": "Currently, I don't keep any pets because my apartment complex has strict restrictions. However, I used to raise a golden retriever back in my hometown, and playing fetch with him every afternoon was the highlight of my teenage years."
+   },
+   {
+    "q": "What kind of animals did you like when you were a child?",
+    "a": "I was absolutely fascinated by dolphins as a kid. I found their intelligence and playful nature captivating, and I spent hours watching wildlife documentaries about how they communicate using clicks and whistles."
+   },
+   {
+    "q": "Why do some people prefer having pets over other hobbies?",
+    "a": "I believe it boils down to emotional connection. Unlike solitary pastimes like reading, caring for a pet provides reciprocal warmth and companionship, especially for busy urbanites seeking relief from daily stress."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do you think humans have a moral obligation to protect endangered species?",
+    "a": "Without a doubt, humans carry a profound responsibility toward vulnerable wildlife. Human activities like deforestation and commercial poaching have driven countless creatures to the brink of extinction. For instance, the destruction of tropical rainforests directly threatens biodiversity worldwide. Therefore, establishing stringent conservation policies and funding habitat restoration are essential moral duties to preserve ecological balance for future generations."
+   },
+   {
+    "q": "How has urbanization affected the relationship between humans and wild animals?",
+    "a": "Rapid urban sprawl has unfortunately severed our connection with nature while escalating human-wildlife conflict. As cities encroach upon natural habitats, animals such as monkeys or wild boars are forced to scavenge in urban zones, causing public nuisance. Consequently, many city dwellers view wild fauna with apprehension rather than admiration. Fostering green corridors and ecological buffers is crucial to rebuild a harmonious relationship."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh từ chung chung 'animal' thay vì phân loại rõ nét như 'domesticated pets' (thú nuôi trong nhà), 'livestock' (gia súc) hay 'wildlife/fauna' (động vật hoang dã).",
+   "Dịch chay từ tiếng Việt sang tiếng Anh dẫn đến cụm từ thiếu tự nhiên, ví dụ nói 'play with animals' khi nói về chăm sóc thú cưng thay vì dùng 'care for a pet' hoặc 'walk the dog'.",
+   "Nhầm lẫn giữa các tính từ mô tả sự tuyệt chủng, ví dụ dùng 'danger animals' thay vì cụm chuẩn xác 'endangered species' hoặc 'animals on the verge of extinction'."
+  ],
+  "p1More": [
+   "Have you ever visited a wildlife sanctuary or zoo?",
+   "Do you think children should learn how to care for animals at school?",
+   "What is the most popular pet in your country?",
+   "Would you ever consider adopting a stray animal?",
+   "Did you have a favorite animal character in cartoons when growing up?"
+  ],
+  "p3More": [
+   "To what extent should governments regulate the keeping of exotic animals as household pets?",
+   "Is keeping wild animals in modern zoos justifiable from an educational perspective?",
+   "What measures can international organizations take to combat the illegal global wildlife trade?",
+   "Do you believe scientific advancements like animal cloning could effectively reverse biodiversity loss?"
+  ]
+ }
+}

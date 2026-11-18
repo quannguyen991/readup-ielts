@@ -63,12 +63,12 @@ def build_html(title, lead, sections):
     today = datetime.date.today().strftime("%d/%m/%Y")
     leadh = "".join(f"<p>{inline(x)}</p>" for x in lead if x.strip())
     return f"""<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>{html.escape(title)}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 @page{{size:A4;margin:18mm 16mm 20mm;@bottom-center{{content:counter(page);font:500 8pt 'IBM Plex Mono',monospace;color:#8F6E36}}}}
 @page :first{{margin:0}}
 *{{box-sizing:border-box}}
-body{{margin:0;font:400 10.6pt/1.55 "Be Vietnam Pro","Segoe UI",Arial,sans-serif;color:#1B1A17}}
+body{{margin:0;font:400 10.6pt/1.55 "Inter","Segoe UI",Arial,sans-serif;color:#1B1A17}}
 .cover{{height:297mm;padding:30mm 22mm;background:#14213D;color:#F2EFE6;page-break-after:always;display:flex;flex-direction:column;justify-content:space-between}}
 .cover .tag{{font:500 9pt "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#D4B16A}}
 .cover h1{{font-weight:800;font-size:40pt;line-height:1.1;margin:10mm 0 6mm;letter-spacing:-.01em;max-width:150mm}}

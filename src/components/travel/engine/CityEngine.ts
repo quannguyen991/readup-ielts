@@ -2543,7 +2543,7 @@ export class CityEngine {
       const name = vi ? poi.name.vi : poi.name.en;
       const text = `${icon} ${name}`;
       const size = px(12);
-      d.font = `700 ${size}px "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif`;
+      d.font = `700 ${size}px "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif`;
       const tw = d.measureText(text).width;
       const w = Math.round(tw + px(14));
       const showStars = !isAction && !locked;
@@ -2616,7 +2616,7 @@ export class CityEngine {
     d.textAlign = 'center';
     const pill = (text: string, cx: number, cy: number, o: { bg: string; fg: string; border: string; size?: number }) => {
       const size = px(o.size ?? 13);
-      d.font = `700 ${size}px "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif`;
+      d.font = `700 ${size}px "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif`;
       const tw = d.measureText(text).width;
       const w = tw + px(16);
       const h = size + px(10);
@@ -2665,9 +2665,9 @@ export class CityEngine {
       const maxW = Math.min(px(260), v.devW - px(24));
       const fs = px(14);
       const fs2 = px(12);
-      d.font = `600 ${fs}px "Plus Jakarta Sans", system-ui, sans-serif`;
+      d.font = `600 ${fs}px "Nunito", system-ui, sans-serif`;
       const l1 = wrap(d, b.en, maxW - px(20));
-      d.font = `500 ${fs2}px "Plus Jakarta Sans", system-ui, sans-serif`;
+      d.font = `500 ${fs2}px "Nunito", system-ui, sans-serif`;
       const l2: string[] = [];
       const w = maxW;
       const h = l1.length * (fs + px(3)) + (l2.length ? l2.length * (fs2 + px(2)) + px(6) : 0) + px(16);
@@ -2687,7 +2687,7 @@ export class CityEngine {
       d.textAlign = 'left';
       let ty = y + px(8) + fs / 2;
         d.fillStyle = '#6b6350';
-      d.font = `600 ${fs}px "Plus Jakarta Sans", system-ui, sans-serif`;
+      d.font = `600 ${fs}px "Nunito", system-ui, sans-serif`;
       for (const ln of l1) {
         d.fillText(ln, x + px(10), Math.round(ty));
         ty += fs + px(3);
@@ -2695,7 +2695,7 @@ export class CityEngine {
       if (l2.length) {
         ty += px(3);
         d.fillStyle = '#6b6350';
-        d.font = `500 ${fs2}px "Plus Jakarta Sans", system-ui, sans-serif`;
+        d.font = `500 ${fs2}px "Nunito", system-ui, sans-serif`;
         for (const ln of l2) {
           d.fillText(ln, x + px(10), Math.round(ty));
           ty += fs2 + px(2);

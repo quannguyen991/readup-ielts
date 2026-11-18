@@ -17,6 +17,7 @@ import { useBillingStore } from './useBillingStore';
 import { useWeeklyStore } from './useWeeklyStore';
 import { useSatRwStore } from './useSatRwStore';
 import { useRoadmapStore } from './useRoadmapStore';
+import { useHsaStore } from './useHsaStore';
 import { useTravelStore } from './useTravelStore';
 import { useStudyAbroadStore } from './useStudyAbroadStore';
 
@@ -164,6 +165,8 @@ export function useSyncBootstrap() {
       useWeeklyStore.subscribe(schedule),
       useSatRwStore.subscribe(schedule),
       useRoadmapStore.subscribe(schedule),
+      // HSA: đổi hồ sơ, đánh dấu xong bài, lưu kế hoạch hay lượt làm bài đều phải lên tài khoản, không chờ store khác đổi.
+      useHsaStore.subscribe(schedule),
       useTravelStore.subscribe(schedule),
       useStudyAbroadStore.subscribe(schedule),
     ];

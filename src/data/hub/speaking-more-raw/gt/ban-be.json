@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-ban-be-1",
+  "level": "EASY",
+  "title": "Inviting a Friend for Coffee",
+  "titleVi": "Rủ bạn đi cà phê cuối tuần",
+  "situationVi": "Bạn muốn rủ một người bạn đồng nghiệp thân thiết đi cà phê thư giãn vào sáng thứ Bảy tuần này sau một tuần làm việc bận rộn.",
+  "task": "You want to catch up with your coworker this weekend. Invite them out for coffee, suggest a specific time and location, and ask if that plan works for them.",
+  "mustVi": [
+   "Đưa ra lời mời và lý do muốn gặp mặt (xả hơi sau tuần làm việc).",
+   "Gợi ý thời gian, địa điểm cụ thể và mô tả ngắn về quán đó.",
+   "Hỏi xem đối phương có tiện không và sẵn sàng linh hoạt đổi lịch nếu cần."
+  ],
+  "phrases": [
+   {
+    "en": "Are you free this...?",
+    "vi": "Bạn có rảnh vào... không?",
+    "ex": "Are you free this Saturday morning?"
+   },
+   {
+    "en": "How about grabbing a coffee?",
+    "vi": "Đi uống cà phê chút nhé?",
+    "ex": "How about grabbing a coffee together around 9 AM?"
+   },
+   {
+    "en": "It's been a while since...",
+    "vi": "Cũng lâu rồi kể từ khi...",
+    "ex": "It's been a while since we caught up properly."
+   },
+   {
+    "en": "There's a cozy café near...",
+    "vi": "Có một quán cà phê ấm cúng gần...",
+    "ex": "There's a cozy café near our office with great drinks."
+   },
+   {
+    "en": "Let me know if that works for you.",
+    "vi": "Báo cho mình biết nếu tiện cho bạn nhé.",
+    "ex": "Let me know if that works for you, or we can reschedule."
+   },
+   {
+    "en": "No pressure at all.",
+    "vi": "Không sao cả, đừng ngại nhé.",
+    "ex": "If you already have plans, no pressure at all!"
+   }
+  ],
+  "sample": "Hi Lan! It's been such a hectic week at work, so I was wondering if you are free this Saturday morning? How about grabbing a cup of coffee together? There is a really cozy café called The Workshop near our office. They have fantastic drip coffee and quiet outdoor seating, which is perfect for unwinding. I'm thinking around 9:30 AM, but let me know if that time works for you. If you already have plans, no pressure at all, we can easily pick another day!",
+  "tipVi": "Hãy giữ giọng điệu ấm áp, tự nhiên và dùng câu hỏi mở ở cuối để người nghe cảm thấy thoải mái lựa chọn."
+ },
+ {
+  "id": "gt-ban-be-2",
+  "level": "EASY",
+  "title": "Declining a Dinner Invitation Politely",
+  "titleVi": "Từ chối lời mời ăn tối lịch sự",
+  "situationVi": "Một người bạn thân rủ bạn đến ăn tối tại nhà vào tối thứ Sáu, nhưng bạn đã có lịch ăn tiệc mừng thọ bà ngoại cùng gia đình.",
+  "task": "A close friend invited you to dinner this Friday, but you cannot attend because of a family gathering. Call them to thank them, explain your reason politely, and propose another time to meet.",
+  "mustVi": [
+   "Cảm ơn vì lời mời và bày tỏ sự tiếc nuối vì không thể tham gia.",
+   "Giải thích lý do bận việc gia đình (tiệc mừng thọ của bà).",
+   "Đề xuất một buổi hẹn khác vào tuần sau để bù lại."
+  ],
+  "phrases": [
+   {
+    "en": "Thanks so much for inviting me.",
+    "vi": "Cảm ơn bạn rất nhiều vì đã mời mình.",
+    "ex": "Thanks so much for inviting me to dinner!"
+   },
+   {
+    "en": "I'd love to come, but...",
+    "vi": "Mình rất muốn đến, nhưng mà...",
+    "ex": "I'd love to come, but I have a prior family commitment."
+   },
+   {
+    "en": "It's my grandmother's birthday.",
+    "vi": "Hôm đó là sinh nhật/mừng thọ của bà mình.",
+    "ex": "It's my grandmother's 80th birthday dinner this Friday."
+   },
+   {
+    "en": "I can't miss it.",
+    "vi": "Mình không thể vắng mặt được.",
+    "ex": "All my relatives are coming, so I really cannot miss it."
+   },
+   {
+    "en": "Can I take a rain check?",
+    "vi": "Cho mình xin hẹn dịp khác được không?",
+    "ex": "Can I take a rain check and make it up to you?"
+   },
+   {
+    "en": "How about next week instead?",
+    "vi": "Hay là chuyển sang tuần sau nhé?",
+    "ex": "How about lunch next Tuesday instead? My treat!"
+   }
+  ],
+  "sample": "Hey Nam, thank you so much for the dinner invitation! I'd really love to come and hang out with everyone, but unfortunately, I can't make it this Friday. It's actually my grandmother's 80th birthday, and my whole family is hosting a celebration dinner for her at a restaurant. All my relatives from out of town will be there, so I definitely cannot miss it. Can I take a rain check? How about we grab lunch next Tuesday instead? I'll treat you to make up for it!",
+  "tipVi": "Công thức từ chối lịch thiệp nhất là: Cảm ơn và tiếc nuối, nêu lý do gia đình chính đáng, sau đó chủ động hẹn bù vào ngày khác."
+ },
+ {
+  "id": "gt-ban-be-3",
+  "level": "MEDIUM",
+  "title": "Planning a Surprise Birthday Party",
+  "titleVi": "Lên kế hoạch tiệc sinh nhật bất ngờ",
+  "situationVi": "Bạn và một người bạn tên Sarah đang bàn bạc để cùng nhau tổ chức một bữa tiệc sinh nhật bất ngờ cho Minh, bạn chung của hai người.",
+  "task": "You are discussing plans for Minh's surprise birthday party with Sarah. Suggest a suitable venue and time, divide tasks between the two of you, and discuss how to keep the party a secret.",
+  "mustVi": [
+   "Đề xuất địa điểm tổ chức và thời gian thích hợp cho buổi tiệc.",
+   "Phân chia nhiệm vụ cụ thể (đặt bánh kem, trang trí, chuẩn bị đồ ăn).",
+   "Đưa ra cách thức để giữ bí mật với người bạn đó cho tới phút chót."
+  ],
+  "phrases": [
+   {
+    "en": "We need to figure out...",
+    "vi": "Chúng mình cần chốt/xem xét...",
+    "ex": "We need to figure out a convenient venue first."
+   },
+   {
+    "en": "How about hosting it at...?",
+    "vi": "Hay là tổ chức ở... đi?",
+    "ex": "How about hosting it at my apartment this Saturday?"
+   },
+   {
+    "en": "I can take care of...",
+    "vi": "Mình có thể phụ trách phần...",
+    "ex": "I can take care of ordering the cake and drinks."
+   },
+   {
+    "en": "Could you handle the...?",
+    "vi": "Bạn lo giúp phần... được không?",
+    "ex": "Could you handle the decorations and balloons?"
+   },
+   {
+    "en": "Keep it under wraps.",
+    "vi": "Giữ kín bí mật.",
+    "ex": "We must keep everything completely under wraps."
+   },
+   {
+    "en": "Make up an excuse.",
+    "vi": "Nghĩ ra một cái cớ.",
+    "ex": "Let's make up an excuse to lure him there on time."
+   }
+  ],
+  "sample": "Hi Sarah! Let's finalize the plan for Minh's surprise party. I think Saturday evening at my apartment would be ideal because it's private and we can stay late. For the preparation, I can take care of ordering his favorite chocolate cake and picking up snacks and drinks. Could you handle the decorations and create a photo album from all of us? Most importantly, we must keep everything under wraps. To trick him, let's make up an excuse that you and I need his help moving some heavy boxes. When he walks in, everyone yells surprise!",
+  "tipVi": "Sử dụng các mẫu câu đề xuất mang tính hợp tác như 'How about...', 'I can take care of...', 'Could you handle...' để phân công việc khéo léo."
+ },
+ {
+  "id": "gt-ban-be-4",
+  "level": "MEDIUM",
+  "title": "Talking About a Family Gathering",
+  "titleVi": "Chia sẻ về buổi sum họp gia đình",
+  "situationVi": "Bạn đang trò chuyện với một người bạn nước ngoài và kể cho họ nghe về buổi họp mặt đại gia đình sắp diễn ra ở quê của bạn.",
+  "task": "Talk to an international friend about an upcoming family reunion in your hometown. Describe who will be there, your role in the preparation, and why this event is meaningful to you.",
+  "mustVi": [
+   "Giới thiệu về dịp họp mặt gia đình và các thành viên tham gia.",
+   "Mô tả các hoạt động chuẩn bị nấu nướng truyền thống và phần việc của bạn.",
+   "Bày tỏ cảm xúc và lý do sự kiện này có ý nghĩa quan trọng với bạn."
+  ],
+  "phrases": [
+   {
+    "en": "We gather at my grandparents' house.",
+    "vi": "Cả nhà tụ họp tại nhà ông bà mình.",
+    "ex": "Every year, we gather at my grandparents' countryside house."
+   },
+   {
+    "en": "Relatives from across the country...",
+    "vi": "Họ hàng từ khắp mọi miền...",
+    "ex": "Relatives from across the country travel back home."
+   },
+   {
+    "en": "Help out with cooking...",
+    "vi": "Phụ giúp việc nấu nướng...",
+    "ex": "I usually help out with cooking traditional dishes."
+   },
+   {
+    "en": "Sit around the dinner table.",
+    "vi": "Quây quần bên bàn ăn.",
+    "ex": "We love to sit around the dinner table and share memories."
+   },
+   {
+    "en": "Strengthen family bonds.",
+    "vi": "Gắn kết tình cảm gia đình.",
+    "ex": "This gathering really helps strengthen our family bonds."
+   },
+   {
+    "en": "A breath of fresh air.",
+    "vi": "Một làn gió mới / khoảng thời gian thư thái.",
+    "ex": "Leaving the busy city for family time is always a breath of fresh air."
+   }
+  ],
+  "sample": "Next month, my whole family is holding our annual reunion in Da Nang. Around thirty relatives, from my little cousins to great-aunts, will gather at my grandparents' countryside home. My primary role is helping my mom and aunts prepare traditional dishes like spring rolls and steamed chicken, while the men clean the garden. In the evening, we sit around a huge table outside, laughing and sharing childhood stories. With everyone leading hectic lives in different cities, this gathering truly strengthens our family bonds. It always reminds me of my roots and brings me immense peace.",
+  "tipVi": "Kết hợp miêu tả chi tiết thực tế (món ăn, công việc) với cảm xúc cá nhân để bài nói vừa chân thực vừa truyền cảm hứng."
+ },
+ {
+  "id": "gt-ban-be-5",
+  "level": "HARD",
+  "title": "Advising a Friend on Work-Life Balance",
+  "titleVi": "Khuyên bạn cân bằng công việc và gia đình",
+  "situationVi": "Bạn thân của bạn đang rơi vào tình trạng kiệt sức trầm trọng vì vừa phải cáng đáng dự án lớn ở công ty, vừa phải chăm con nhỏ và phụng dưỡng bố mẹ già.",
+  "task": "Talk to your close friend who is experiencing severe burnout from balancing work and family duties. Show deep empathy, offer two practical pieces of advice, and propose a concrete way to assist them.",
+  "mustVi": [
+   "Thể hiện sự đồng cảm sâu sắc với tình trạng kiệt sức và quá tải của bạn mình.",
+   "Đưa ra 2 lời khuyên thực tế (đặt ranh giới giờ làm việc, san sẻ việc nhà hoặc thuê hỗ trợ).",
+   "Đề nghị nhận giúp một việc cụ thể để bạn mình có thời gian nghỉ ngơi phục hồi."
+  ],
+  "phrases": [
+   {
+    "en": "I can see how exhausted you are.",
+    "vi": "Mình thấy rõ bạn đang kiệt sức đến mức nào.",
+    "ex": "I can see how exhausted you are lately, and I'm worried."
+   },
+   {
+    "en": "You can't pour from an empty cup.",
+    "vi": "Bạn không thể chăm sóc ai khi chính mình đã cạn kiệt.",
+    "ex": "Remember that you can't pour from an empty cup; your health matters."
+   },
+   {
+    "en": "Set firm boundaries.",
+    "vi": "Thiết lập ranh giới rõ ràng.",
+    "ex": "Try to set firm boundaries between your office hours and home life."
+   },
+   {
+    "en": "Don't hesitate to delegate.",
+    "vi": "Đừng ngần ngại chia sẻ / giao bớt việc cho người khác.",
+    "ex": "Don't hesitate to delegate chores or hire a temporary helper."
+   },
+   {
+    "en": "Take something off your plate.",
+    "vi": "Gánh bớt một phần việc cho bạn.",
+    "ex": "Let me take something off your plate this weekend."
+   },
+   {
+    "en": "I'm always in your corner.",
+    "vi": "Mình luôn ở bên cạnh ủng hộ bạn.",
+    "ex": "Whatever you decide, remember that I'm always in your corner."
+   }
+  ],
+  "sample": "I've noticed how completely drained you look lately, and I truly understand how overwhelmed you feel trying to juggle that massive work project with caring for your toddler and aging parents. But remember, you cannot pour from an empty cup. First, try to set firm boundaries at work by refusing non-urgent overtime emails after 7 PM. Second, don't hesitate to hire a part-time helper twice a week for deep cleaning and cooking. To take something off your plate right now, I can babysit your son this Saturday afternoon so you can sleep or visit a spa. I'm always in your corner!",
+  "tipVi": "Hãy bắt đầu bằng sự thấu hiểu chân thành trước khi đưa ra lời khuyên để tránh gây cảm giác phán xét hoặc áp đặt lên người nghe."
+ }
+]

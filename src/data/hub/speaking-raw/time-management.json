@@ -1,0 +1,117 @@
+{
+ "id": "time-management",
+ "title": "Time Management",
+ "titleVi": "Quản lý thời gian",
+ "tipVi": "Hãy tránh chỉ liệt kê các hoạt động trong ngày, thay vào đó hãy nhấn mạnh phương pháp bạn chọn ưu tiên công việc và cách bạn duy trì sự cân bằng cuộc sống.",
+ "part1": [
+  "Do you usually plan your day in advance?",
+  "What do you find most difficult about managing your time?",
+  "Did you learn how to manage your time when you were a child?"
+ ],
+ "part2": {
+  "prompt": "Describe a technique or habit you use to manage your time effectively",
+  "bullets": [
+   "what technique or habit it is",
+   "when and how you started using it",
+   "how it helps you organise your daily routine",
+   "and explain why you think it works well for you"
+  ]
+ },
+ "part3": [
+  "Why do some people struggle to balance their work commitments and personal life nowadays?",
+  "To what extent can digital tools improve personal productivity compared to traditional paper planners?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "prioritise tasks",
+    "vi": "sắp xếp thứ tự ưu tiên cho công việc",
+    "ex": "I always prioritise urgent tasks first thing in the morning to reduce stress."
+   },
+   {
+    "en": "a tight schedule",
+    "vi": "lịch trình bận rộn hoặc dày đặc",
+    "ex": "Despite having a tight schedule, she still manages to hit the gym thrice a week."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc cật lực từ sáng sớm tới khuya",
+    "ex": "Burning the candle at both ends during exam season will only lead to mental exhaustion."
+   },
+   {
+    "en": "procrastinate on",
+    "vi": "trì hoãn làm việc gì đó",
+    "ex": "I used to procrastinate on writing essays until the night before the deadline."
+   },
+   {
+    "en": "time-blocking",
+    "vi": "phương pháp chia khung giờ cố định cho từng việc",
+    "ex": "Time-blocking has transformed how I structure my deep-work hours."
+   },
+   {
+    "en": "meet tight deadlines",
+    "vi": "hoàn thành kịp các hạn chót ngặt nghèo",
+    "ex": "Senior managers are expected to meet tight deadlines without compromising on quality."
+   },
+   {
+    "en": "strike a healthy balance",
+    "vi": "đạt được sự cân bằng lành mạnh",
+    "ex": "It takes conscious effort to strike a healthy balance between career ambition and family life."
+   },
+   {
+    "en": "fall behind schedule",
+    "vi": "bị chậm tiến độ so với kế hoạch",
+    "ex": "Unforeseen technical glitches caused our development team to fall behind schedule."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu phương pháp 'time-blocking' (chia khung giờ tập trung) và tầm quan trọng của nó với bạn.",
+   "Ý 1: Hoàn cảnh áp dụng (năm hai đại học khi lịch học và làm thêm dày đặc khiến bạn bị quá tải).",
+   "Ý 2: Cách thực hiện chi tiết (lên lịch vào tối Chủ nhật, chia ngày thành các khối 90 phút và tắt thông báo điện thoại).",
+   "Kết: Lý do hiệu quả vượt trội (giảm áp lực phải đưa ra quyết định liên tục, ngăn ngừa kiệt sức và bảo vệ thời gian nghỉ ngơi)."
+  ],
+  "sample": "I would like to talk about time-blocking, a scheduling technique that has truly transformed my daily productivity. I first adopted this habit during my sophomore year at university, when I felt completely overwhelmed by overlapping coursework, part-time shifts, and club commitments. Because I was constantly burning the candle at both ends, I knew I needed a more disciplined approach.\n\nBasically, every Sunday evening, I divide my upcoming week into dedicated ninety-minute blocks on my digital calendar. Instead of keeping a chaotic to-do list, I allocate specific slots for academic research, drafting assignments, and personal workouts. During each designated block, I silence my phone notifications to enter a state of deep concentration.\n\nThis method works remarkably well for me because it eliminates decision fatigue. Rather than wondering what to do next, I simply follow my prearranged schedule. Furthermore, it sets clear boundaries so that professional tasks do not bleed into my evenings. Ultimately, this habit enables me to meet tight deadlines effortlessly while striking a genuinely healthy balance in my everyday routine.",
+  "p1": [
+   {
+    "q": "Do you usually plan your day in advance?",
+    "a": "Yes, definitely. Every evening, I jot down my top three priorities for the following day on my phone. This simple routine keeps me focused and stops me from getting overwhelmed by unexpected distractions."
+   },
+   {
+    "q": "What do you find most difficult about managing your time?",
+    "a": "I think resisting digital interruptions is the hardest part. It is far too tempting to procrastinate by checking social media while writing reports, which frequently throws my planned schedule off track."
+   },
+   {
+    "q": "Did you learn how to manage your time when you were a child?",
+    "a": "Not in any formal sense, but my parents always insisted that I finish homework before playing outside. That strict rule gradually instilled in me the essential habit of putting duties before leisure."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people struggle to balance their work commitments and personal life nowadays?",
+    "a": "I believe constant digital connectivity is the main culprit. With mobile apps like Slack and email synced to smartphones, employers frequently demand immediate replies outside office hours. As a result, the boundary between professional tasks and private downtime has blurred. Unless professionals consciously unplug in the evenings, achieving genuine work-life balance remains virtually impossible."
+   },
+   {
+    "q": "To what extent can digital tools improve personal productivity compared to traditional paper planners?",
+    "a": "Digital tools offer clear advantages through automated notifications, cross-device syncing, and effortless rescheduling. For example, shared calendars prevent overlapping meetings in corporate environments. That said, paper planners retain substantial value because handwriting fosters mindfulness and clearer cognitive retention. Therefore, combining both formats often yields the most sustainable productivity."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp lại cụm từ 'manage time' quá nhiều lần thay vì biến đổi linh hoạt bằng 'organise my schedule', 'allocate my hours', hoặc 'prioritise daily tasks'.",
+   "Dùng sai cấu trúc diễn tả sự bận rộn, ví dụ như dịch thô 'I am very full of work' thay vì nói 'I have a packed schedule' hoặc 'I am pressed for time'.",
+   "Trả lời Part 3 quá thiên về trải nghiệm cá nhân (dùng 'I / my') thay vì nhìn nhận vấn đề ở góc độ xã hội và xu hướng chung của người lao động hiện đại."
+  ],
+  "p1More": [
+   "Are you good at arriving on time for appointments?",
+   "Do you prefer spending your free time alone or with other people?",
+   "How do you feel when someone is late to meet you?",
+   "Do you think having a daily routine is boring?",
+   "Has your way of managing time changed since your school days?"
+  ],
+  "p3More": [
+   "How has modern technology influenced the overall pace of modern life?",
+   "Do you think schools should formally teach time management as a core subject?",
+   "Why are older generations often perceived to be more punctual than younger generations?",
+   "In what ways might working long hours affect a nation's overall economic productivity?"
+  ]
+ }
+}

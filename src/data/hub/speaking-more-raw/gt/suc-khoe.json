@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-suc-khoe-1",
+  "level": "EASY",
+  "title": "Buying Medicine at the Pharmacy",
+  "titleVi": "Mua thuốc tại hiệu thuốc",
+  "situationVi": "Bạn đang bị cảm lạnh nhẹ trong chuyến du lịch nước ngoài và ghé vào một hiệu thuốc địa phương để mua thuốc. Bạn nói chuyện trực tiếp với người dược sĩ đứng quầy.",
+  "task": "You are at a local pharmacy. Tell the pharmacist about your current symptoms, ask for a suitable over-the-counter medicine, and ask how often you should take it.",
+  "mustVi": [
+   "Nêu rõ các triệu chứng bạn đang gặp phải (sổ mũi, đau họng, nhức đầu)",
+   "Hỏi dược sĩ xem có loại thuốc không kê đơn nào phù hợp để giảm triệu chứng không",
+   "Hỏi về liều lượng, cách uống và tác dụng phụ gây buồn ngủ"
+  ],
+  "phrases": [
+   {
+    "en": "I've come down with...",
+    "vi": "Tôi bị nhiễm / mắc phải...",
+    "ex": "I think I've come down with a bad cold."
+   },
+   {
+    "en": "Do you have anything for...?",
+    "vi": "Bạn có thuốc nào trị... không?",
+    "ex": "Do you have anything for a sore throat?"
+   },
+   {
+    "en": "How often should I take this?",
+    "vi": "Tôi nên uống thuốc này mấy lần một ngày?",
+    "ex": "How often should I take this painkiller?"
+   },
+   {
+    "en": "Does it have any side effects?",
+    "vi": "Nó có tác dụng phụ nào không?",
+    "ex": "Does this medicine have any side effects like drowsiness?"
+   },
+   {
+    "en": "Should I take it before or after meals?",
+    "vi": "Tôi nên uống trước hay sau bữa ăn?",
+    "ex": "Should I take this capsule before or after meals?"
+   },
+   {
+    "en": "It has been going on for...",
+    "vi": "Tình trạng này đã kéo dài...",
+    "ex": "It has been going on for two days now."
+   }
+  ],
+  "sample": "Hello. I woke up yesterday feeling unwell, and I think I've come down with a cold. I have a running nose, a slight headache, and a scratchy throat. It has been going on for about two days now. Do you have any over-the-counter medication that could help relieve these symptoms? Also, how often should I take this medicine, and should I take it before or after meals? Lastly, please let me know if it causes drowsiness because I need to work this afternoon. Thank you for your help!",
+  "tipVi": "Hãy nói rõ ràng, dùng các từ miêu tả triệu chứng cơ bản và chú ý lắng nghe kỹ hướng dẫn liều lượng từ dược sĩ."
+ },
+ {
+  "id": "gt-suc-khoe-2",
+  "level": "EASY",
+  "title": "Scheduling a Doctor's Appointment",
+  "titleVi": "Đặt lịch hẹn khám bệnh",
+  "situationVi": "Bạn bị đau răng dữ dội từ tối hôm trước và quyết định gọi điện thoại đến phòng khám nha khoa để đặt lịch hẹn khám sớm nhất có thể.",
+  "task": "Call the dental clinic receptionist to book an appointment. State the problem you are having, suggest your preferred day and time, and ask what documents or insurance you need to bring.",
+  "mustVi": [
+   "Trình bày lý do đặt khám và mức độ khẩn cấp của cơn đau",
+   "Đề xuất ngày và khung giờ bạn muốn đến khám",
+   "Hỏi về các giấy tờ hoặc bảo hiểm y tế cần mang theo khi đến"
+  ],
+  "phrases": [
+   {
+    "en": "I'd like to make an appointment with...",
+    "vi": "Tôi muốn đặt lịch hẹn với...",
+    "ex": "I'd like to make an appointment with Dr. Smith."
+   },
+   {
+    "en": "I have an unbearable toothache",
+    "vi": "Tôi bị đau răng không chịu nổi",
+    "ex": "I have an unbearable toothache since last night."
+   },
+   {
+    "en": "Are there any available slots on...?",
+    "vi": "Có khung giờ nào còn trống vào... không?",
+    "ex": "Are there any available slots on Thursday morning?"
+   },
+   {
+    "en": "As soon as possible",
+    "vi": "Càng sớm càng tốt",
+    "ex": "I really need to see someone as soon as possible."
+   },
+   {
+    "en": "Do you accept private insurance?",
+    "vi": "Phòng khám có chấp nhận bảo hiểm tư nhân không?",
+    "ex": "Do you accept international private insurance?"
+   },
+   {
+    "en": "What documents do I need to bring?",
+    "vi": "Tôi cần mang theo giấy tờ gì?",
+    "ex": "What documents do I need to bring for my first visit?"
+   }
+  ],
+  "sample": "Good morning. I'd like to make an appointment to see a dentist, please. I have developed an unbearable toothache on my lower right jaw since last night, so I really need to see a dentist as soon as possible. Do you have any available slots this afternoon or tomorrow morning? Also, this is my first visit to your clinic. What documents do I need to bring with me, and do you accept private health insurance? Thank you, I look forward to hearing from you.",
+  "tipVi": "Khi gọi điện thoại, hãy mở đầu lịch sự, cung cấp thông tin ngắn gọn và nhắc lại giờ hẹn để xác nhận chính xác."
+ },
+ {
+  "id": "gt-suc-khoe-3",
+  "level": "MEDIUM",
+  "title": "Explaining Symptoms to the Doctor",
+  "titleVi": "Mô tả triệu chứng với bác sĩ",
+  "situationVi": "Bạn đang ở trong phòng khám gặp bác sĩ đa khoa sau khi bị đau bụng quằn quại và buồn nôn suốt đêm. Bác sĩ yêu cầu bạn kể chi tiết tình trạng bệnh.",
+  "task": "Explain your symptoms clearly to the doctor. Describe when the pain started and what kind of pain it is, mention what you ate or did beforehand, and ask if you need further medical tests.",
+  "mustVi": [
+   "Mô tả chi tiết vị trí, cảm giác đau (đau quặn, nhói) và thời điểm bắt đầu",
+   "Nêu các triệu chứng đi kèm và nghi vấn về đồ ăn bạn đã dùng trước đó",
+   "Bày tỏ lo lắng và hỏi bác sĩ liệu có cần xét nghiệm máu hay siêu âm không"
+  ],
+  "phrases": [
+   {
+    "en": "I've been experiencing sharp pain in...",
+    "vi": "Tôi bị những cơn đau nhói ở...",
+    "ex": "I've been experiencing sharp pain in my lower abdomen."
+   },
+   {
+    "en": "The pain comes and goes",
+    "vi": "Cơn đau lúc có lúc không",
+    "ex": "The pain comes and goes, but it got worse at midnight."
+   },
+   {
+    "en": "I suspect it might be food poisoning",
+    "vi": "Tôi nghi ngờ có thể do ngộ độc thực phẩm",
+    "ex": "I suspect it might be food poisoning from dinner."
+   },
+   {
+    "en": "I felt nauseous and threw up",
+    "vi": "Tôi thấy buồn nôn và đã nôn mửa",
+    "ex": "I felt nauseous and threw up twice last night."
+   },
+   {
+    "en": "Do I need an ultrasound or blood test?",
+    "vi": "Tôi có cần siêu âm hay xét nghiệm máu không?",
+    "ex": "Do I need an ultrasound or blood test to be sure?"
+   },
+   {
+    "en": "Is it anything serious?",
+    "vi": "Liệu có vấn đề gì nghiêm trọng không?",
+    "ex": "Do you think it is anything serious, doctor?"
+   }
+  ],
+  "sample": "Doctor, since yesterday evening, I've been experiencing severe stomach cramps and a sharp pain in my upper abdomen. The pain comes and goes, but it kept me awake all night. I also felt extremely nauseous and threw up twice. I suspect it might be food poisoning because I ate raw seafood at a street market yesterday. I took some antacid tablets at home, but they didn't help at all. Do you think it is anything serious? Will I need to take a blood test or have an ultrasound done today?",
+  "tipVi": "Dùng các tính từ mô tả tính chất cơn đau (cramps, sharp, dull) và sắp xếp diễn biến bệnh theo dòng thời gian để bác sĩ chẩn đoán chính xác."
+ },
+ {
+  "id": "gt-suc-khoe-4",
+  "level": "MEDIUM",
+  "title": "Inquiring About Gym Membership Plans",
+  "titleVi": "Tìm hiểu đăng ký gói tập gym",
+  "situationVi": "Bạn muốn bắt đầu cải thiện thể lực sau thời gian dài ít vận động. Bạn đến quầy tư vấn của một trung tâm thể hình để hỏi về các gói tập và dịch vụ huấn luyện viên.",
+  "task": "Talk to the fitness center consultant. Share your current fitness goals, ask about membership packages and personal trainer fees, and inquire about trial sessions or gym amenities.",
+  "mustVi": [
+   "Trình bày mục tiêu tập luyện cá nhân (tăng sức bền, giảm cân do ngồi văn phòng nhiều)",
+   "Hỏi chi tiết về các gói hội viên và chi phí thuê huấn luyện viên cá nhân (PT)",
+   "Hỏi về các tiện ích đi kèm (phòng xông hơi, lớp yoga) và chính sách tập thử"
+  ],
+  "phrases": [
+   {
+    "en": "My main goal is to build stamina and...",
+    "vi": "Mục tiêu chính của tôi là tăng sức bền và...",
+    "ex": "My main goal is to build stamina and lose some belly fat."
+   },
+   {
+    "en": "What are your membership options?",
+    "vi": "Trung tâm có các gói hội viên nào?",
+    "ex": "What are your monthly and yearly membership options?"
+   },
+   {
+    "en": "How much do you charge for a personal trainer?",
+    "vi": "Chi phí thuê huấn luyện viên cá nhân là bao nhiêu?",
+    "ex": "How much do you charge for a one-on-one personal trainer?"
+   },
+   {
+    "en": "Are group classes included in the fee?",
+    "vi": "Các lớp học nhóm có bao gồm trong phí không?",
+    "ex": "Are group fitness classes included in the standard fee?"
+   },
+   {
+    "en": "Can I sign up for a free trial?",
+    "vi": "Tôi có thể đăng ký buổi tập thử miễn phí không?",
+    "ex": "Can I sign up for a three-day free trial first?"
+   },
+   {
+    "en": "What amenities do you offer?",
+    "vi": "Trung tâm có những tiện ích gì?",
+    "ex": "What amenities do you offer, like lockers or a sauna?"
+   }
+  ],
+  "sample": "Hi there. I'm looking to get back into shape, so my main goal is to build stamina and shed some weight after sitting at an office desk all day. Could you tell me about your membership options and current promotions? I am also interested in hiring a personal trainer for my first month. How much do you charge for private coaching sessions? Furthermore, are amenities like the sauna and group yoga classes included in the standard package? Lastly, is it possible to sign up for a free trial pass before making a long-term commitment?",
+  "tipVi": "Đặt câu hỏi trực diện nhưng lịch sự, kết hợp câu hỏi đóng và mở để khai thác đầy đủ quyền lợi trước khi ký hợp đồng."
+ },
+ {
+  "id": "gt-suc-khoe-5",
+  "level": "HARD",
+  "title": "Creating a Healthy Lifestyle Plan",
+  "titleVi": "Thảo luận kế hoạch sống lành mạnh",
+  "situationVi": "Bạn có buổi tư vấn sức khỏe 1-1 với chuyên gia chăm sóc sức khỏe (health coach) sau khi nhận kết quả khám sức khỏe định kỳ cho thấy chỉ số mỡ máu tăng cao và bạn thường xuyên bị căng thẳng.",
+  "task": "Discuss your health concerns with the wellness coach. Analyze why your current work routine harms your sleep and diet, propose realistic changes you want to make, and ask for their advice on sustaining these habits long term.",
+  "mustVi": [
+   "Trình bày kết quả khám sức khỏe đáng lo ngại (mỡ máu nhẹ, stress, mất ngủ)",
+   "Phân tích nguyên nhân sâu xa từ áp lực công việc dẫn tới thói quen ăn đồ ăn nhanh và thiếu vận động",
+   "Đưa ra các thay đổi cụ thể dự định làm và xin lời khuyên để duy trì thói quen bền vững không bị nản"
+  ],
+  "phrases": [
+   {
+    "en": "My recent health checkup revealed that...",
+    "vi": "Kết quả khám sức khỏe gần đây của tôi cho thấy...",
+    "ex": "My recent health checkup revealed that my cholesterol levels are slightly elevated."
+   },
+   {
+    "en": "Due to my demanding schedule, I tend to...",
+    "vi": "Do lịch trình bận rộn, tôi có xu hướng...",
+    "ex": "Due to my demanding schedule, I tend to skip breakfast and eat fast food."
+   },
+   {
+    "en": "It takes a toll on my mental wellbeing",
+    "vi": "Nó gây ảnh hưởng xấu tới sức khỏe tinh thần của tôi",
+    "ex": "Working late nights takes a heavy toll on my mental wellbeing."
+   },
+   {
+    "en": "I want to incorporate more physical activity",
+    "vi": "Tôi muốn lồng ghép thêm hoạt động thể chất",
+    "ex": "I want to incorporate more physical activity into my daily routine."
+   },
+   {
+    "en": "How can I maintain consistency without burning out?",
+    "vi": "Làm thế nào để duy trì tính đều đặn mà không kiệt sức?",
+    "ex": "How can I maintain consistency without burning out within two weeks?"
+   },
+   {
+    "en": "Strike a realistic balance",
+    "vi": "Đạt được sự cân bằng thực tế",
+    "ex": "I need to strike a realistic balance between work and exercise."
+   }
+  ],
+  "sample": "Good afternoon. My recent health checkup revealed borderline high cholesterol and chronic stress. Due to my demanding corporate schedule, I often skip breakfast, rely heavily on takeout, and stay glued to my desk for ten hours straight. This lifestyle has ruined my sleep quality and taken a heavy toll on my energy. Moving forward, I want to prepare home-cooked meals and incorporate thirty minutes of brisk walking every evening. However, I often struggle with motivation after exhaustive workdays. In your professional opinion, how can I maintain consistency without burning out, and strike a realistic balance that fits my busy career?",
+  "tipVi": "Sử dụng cấu trúc câu phức để trình bày nguyên nhân - kết quả và thể hiện thái độ cầu thị, sẵn sàng cam kết thay đổi bản thân."
+ }
+]

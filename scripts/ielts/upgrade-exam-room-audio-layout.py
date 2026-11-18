@@ -121,9 +121,9 @@ function SourceAudio({
       <View style={{ borderRadius: 14, borderWidth: 1, borderColor: '#F59E0B', backgroundColor: '#FFFBEB', padding: 16, gap: 8 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Icon name="volume" size={18} color="#D97706" />
-          <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 14, color: '#92400E' }}>IELTS Listening Audio</Text>
+          <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 14, color: '#92400E' }}>IELTS Listening Audio</Text>
         </View>
-        <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#78350F' }}>
+        <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 13, color: '#78350F' }}>
           Đang chuẩn bị file audio cho bài này. Bạn có thể mở bản chép lời transcript để luyện nghe đọc song song.
         </Text>
       </View>
@@ -149,10 +149,10 @@ function SourceAudio({
             <Icon name="volume" size={16} color="#8F6E36" />
           </View>
           <View>
-            <Text style={{ fontFamily: 'BeVietnamPro_800ExtraBold', fontSize: 14, color: '#2A1808', letterSpacing: 0.2 }}>
+            <Text style={{ fontFamily: 'InterTight_600SemiBold', fontSize: 14, color: '#2A1808', letterSpacing: 0.2 }}>
               {files.length > 1 ? `IELTS LISTENING · PART ${track + 1}/${files.length}` : 'IELTS LISTENING · TOÀN BÀI THI'}
             </Text>
-            <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 11.5, color: '#7C6552' }}>
+            <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 11.5, color: '#7C6552' }}>
               {simulation ? 'Thi thử như thi thật · Audio chuẩn CD IELTS' : 'Luyện tập tự do · Có thể tạm dừng và tua lại'}
             </Text>
           </View>
@@ -174,7 +174,7 @@ function SourceAudio({
               backgroundColor: showTranscript ? '#8F6E36' : '#FAF7F2',
             }}
           >
-            <Text style={{ fontFamily: 'BeVietnamPro_600SemiBold', fontSize: 12, color: showTranscript ? '#FFFFFF' : '#8F6E36' }}>
+            <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12, color: showTranscript ? '#FFFFFF' : '#8F6E36' }}>
               {showTranscript ? '✕ Ẩn Transcript' : '👁️ Mở Transcript tham khảo'}
             </Text>
           </Pressable>
@@ -210,7 +210,7 @@ function SourceAudio({
                 {active && <Text style={{ fontSize: 12 }}>🔊</Text>}
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_700Bold',
+                    fontFamily: 'Inter_600SemiBold',
                     fontSize: 12.5,
                     color: active ? '#FFFFFF' : '#2A1808',
                   }}
@@ -254,17 +254,17 @@ function SourceAudio({
             }}
           >
             <Text style={{ fontSize: 14, color: '#FFFFFF' }}>{isPlaying ? '⏸' : '▶'}</Text>
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13, color: '#FFFFFF' }}>
+            <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13, color: '#FFFFFF' }}>
               {isPlaying ? 'Tạm dừng' : started ? 'Tiếp tục phát' : 'Bắt đầu nghe'}
             </Text>
           </Pressable>
 
           {/* Time indicator */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-            <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 13.5, color: '#2A1808' }}>
+            <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 13.5, color: '#2A1808' }}>
               {formatAudioTime(currentTime)}
             </Text>
-            <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#7C6552' }}>
+            <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 13, color: '#7C6552' }}>
               / {formatAudioTime(duration)}
             </Text>
           </View>
@@ -273,7 +273,7 @@ function SourceAudio({
           <View style={{ marginLeft: 'auto', flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginRight: 2 }}>
               <Text style={{ fontSize: 13 }}>🔊</Text>
-              <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 12, color: '#2A1808' }}>
+              <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 12, color: '#2A1808' }}>
                 Âm lượng:
               </Text>
             </View>
@@ -301,7 +301,7 @@ function SourceAudio({
                 >
                   <Text
                     style={{
-                      fontFamily: active ? 'BeVietnamPro_700Bold' : 'BeVietnamPro_500Medium',
+                      fontFamily: active ? 'Inter_600SemiBold' : 'Inter_500Medium',
                       fontSize: 11.5,
                       color: active ? '#FFFFFF' : '#4B5563',
                     }}
@@ -373,7 +373,7 @@ function SourceAudio({
       ) : null}
 
       {error ? (
-        <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 12.5, color: '#DC2626' }}>
+        <Text style={{ fontFamily: 'Inter_500Medium', fontSize: 12.5, color: '#DC2626' }}>
           {error}
         </Text>
       ) : null}
@@ -462,10 +462,10 @@ new_workspace = '''{/* 2. MAIN WORKSPACE (Single-column CD IELTS for Listening w
                   <Text style={{ fontSize: 16 }}>📋</Text>
                 </View>
                 <View>
-                  <Text style={{ fontFamily: 'BeVietnamPro_700Bold', fontSize: 15, color: themeStyles.text }}>
+                  <Text style={{ fontFamily: 'Inter_600SemiBold', fontSize: 15, color: themeStyles.text }}>
                     {test.parts?.[activePartId - 1]?.title || `Part ${activePartId}`} · Questions {qStart} – {qEnd}
                   </Text>
-                  <Text style={{ fontFamily: 'BeVietnamPro_400Regular', fontSize: 13, color: '#6B7280' }}>
+                  <Text style={{ fontFamily: 'Inter_400Regular', fontSize: 13, color: '#6B7280' }}>
                     Nghe bài nói và trả lời trực tiếp các câu hỏi bên dưới theo chuẩn Computer-Delivered IELTS.
                   </Text>
                 </View>
@@ -507,7 +507,7 @@ new_workspace = '''{/* 2. MAIN WORKSPACE (Single-column CD IELTS for Listening w
               <View className="gap-2 border-b border-border/60 pb-4">
                 <Text
                   style={{
-                    fontFamily: 'BeVietnamPro_800ExtraBold',
+                    fontFamily: 'InterTight_600SemiBold',
                     fontSize: 24,
                     lineHeight: 32,
                     color: themeStyles.text,
@@ -518,7 +518,7 @@ new_workspace = '''{/* 2. MAIN WORKSPACE (Single-column CD IELTS for Listening w
                 {passageDisplayData.subtitle ? (
                   <Text
                     style={{
-                      fontFamily: 'BeVietnamPro_500Medium',
+                      fontFamily: 'Inter_500Medium',
                       fontSize: 14,
                       lineHeight: 22,
                       color: '#4B5563',
@@ -536,7 +536,7 @@ new_workspace = '''{/* 2. MAIN WORKSPACE (Single-column CD IELTS for Listening w
                       key={pIdx}
                       selectable={true}
                       style={{
-                        fontFamily: 'BeVietnamPro_400Regular',
+                        fontFamily: 'Inter_400Regular',
                         fontSize: fontSizeLevel,
                         lineHeight: fontSizeLevel * 1.7,
                         color: themeStyles.text,
@@ -554,7 +554,7 @@ new_workspace = '''{/* 2. MAIN WORKSPACE (Single-column CD IELTS for Listening w
                       key={pIdx}
                       selectable={true}
                       style={{
-                        fontFamily: 'BeVietnamPro_400Regular',
+                        fontFamily: 'Inter_400Regular',
                         fontSize: fontSizeLevel,
                         lineHeight: fontSizeLevel * 1.7,
                         color: themeStyles.text,

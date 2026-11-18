@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-cong-so-1",
+  "level": "EASY",
+  "title": "Giving a Daily Standup Update",
+  "titleVi": "Báo cáo tiến độ trong buổi họp standup",
+  "situationVi": "Bạn tham gia buổi họp đầu ngày dài 15 phút với trưởng nhóm và các đồng nghiệp trong dự án.",
+  "task": "You are giving your daily work update in the morning standup meeting. Tell your team what you finished yesterday, what your main focus is today, and mention if you need any help.",
+  "mustVi": [
+   "Nêu công việc chính bạn đã hoàn thành trong ngày hôm qua.",
+   "Nêu 1-2 nhiệm vụ trọng tâm bạn sẽ xử lý trong ngày hôm nay.",
+   "Xác nhận tiến độ hiện tại hoặc nêu khó khăn cần đồng nghiệp hỗ trợ."
+  ],
+  "phrases": [
+   {
+    "en": "Yesterday, I managed to finish...",
+    "vi": "Hôm qua tôi đã hoàn thành xong...",
+    "ex": "Yesterday, I managed to finish the monthly sales report."
+   },
+   {
+    "en": "Today, my main priority is to...",
+    "vi": "Hôm nay, ưu tiên chính của tôi là...",
+    "ex": "Today, my main priority is to test the payment gateway."
+   },
+   {
+    "en": "I'm currently working on...",
+    "vi": "Hiện tại tôi đang tiến hành xử lý...",
+    "ex": "I'm currently working on the client feedback form."
+   },
+   {
+    "en": "Everything is on track.",
+    "vi": "Mọi thứ vẫn đang diễn ra đúng tiến độ.",
+    "ex": "So far, everything is on track for Friday's launch."
+   },
+   {
+    "en": "I'm running into an issue with...",
+    "vi": "Tôi đang gặp chút trục trặc với...",
+    "ex": "I'm running into an issue with the database connection."
+   },
+   {
+    "en": "Could someone give me a hand with...?",
+    "vi": "Ai đó có thể hỗ trợ tôi một tay với... được không?",
+    "ex": "Could someone give me a hand with the design review?"
+   }
+  ],
+  "sample": "Good morning, everyone. Quick update from my side. Yesterday, I managed to finish drafting the quarterly budget report and sent it to accounting for review. Today, my main priority is to update the client presentation slides and schedule meetings with our key vendors. As for blockers, I'm currently running into an issue with the inventory data from the warehouse team, so the numbers might be slightly delayed. Could someone from operations give me a hand with that after this call? Other than that, everything is on track. Thanks!",
+  "tipVi": "Hãy đi thẳng vào ba nội dung cốt lõi của standup (hôm qua, hôm nay, vướng mắc) thay vì kể chi tiết vụn vặt từng đầu mối công việc."
+ },
+ {
+  "id": "gt-cong-so-2",
+  "level": "EASY",
+  "title": "Requesting a Short Deadline Extension",
+  "titleVi": "Xin gia hạn thời gian nộp báo cáo",
+  "situationVi": "Bạn cần nộp báo cáo tuần cho quản lý trực tiếp vào trưa nay, nhưng số liệu từ chi nhánh gửi về bị trễ.",
+  "task": "You need to speak to your manager to explain why your report is delayed. Explain the reason clearly, apologize politely for the inconvenience, and propose a new specific submission time.",
+  "mustVi": [
+   "Thông báo việc chưa thể nộp báo cáo đúng giờ và gửi lời xin lỗi lịch sự.",
+   "Nêu rõ nguyên nhân khách quan dẫn đến sự chậm trễ này.",
+   "Đưa ra mốc thời gian mới cụ thể mà bạn cam kết sẽ nộp."
+  ],
+  "phrases": [
+   {
+    "en": "I'm afraid I won't be able to...",
+    "vi": "Tôi e rằng tôi sẽ không thể...",
+    "ex": "I'm afraid I won't be able to submit the report by noon."
+   },
+   {
+    "en": "The reason is that...",
+    "vi": "Lý do là vì...",
+    "ex": "The reason is that the sales numbers arrived late."
+   },
+   {
+    "en": "I'm still waiting on...",
+    "vi": "Tôi vẫn đang chờ thông tin từ...",
+    "ex": "I'm still waiting on final numbers from the regional team."
+   },
+   {
+    "en": "I sincerely apologize for the inconvenience.",
+    "vi": "Tôi thành thật xin lỗi vì sự bất tiện này.",
+    "ex": "I sincerely apologize for the inconvenience this may cause you."
+   },
+   {
+    "en": "Would it be possible to submit it by...?",
+    "vi": "Liệu tôi có thể nộp muộn nhất vào lúc... được không?",
+    "ex": "Would it be possible to submit it by 4 PM today?"
+   },
+   {
+    "en": "I'll make sure it's ready by...",
+    "vi": "Tôi sẽ đảm bảo tài liệu sẵn sàng trước...",
+    "ex": "I'll make sure it's ready by the end of the day."
+   }
+  ],
+  "sample": "Hi Linh, do you have a quick minute? I wanted to touch base regarding the weekly performance report due at noon today. I'm afraid I won't be able to send it over on time. The reason is that I'm still waiting on the regional sales figures from the Da Nang branch, which are crucial for the final summary. I sincerely apologize for this short notice. Would it be possible to extend the deadline to 4 PM this afternoon? The branch manager promised to send the data by 2 PM, so I will finalize and review it right away. Thank you for your understanding.",
+  "tipVi": "Khi xin gia hạn, hãy luôn chủ động xin lỗi chân thành và đề xuất mốc giờ cụ thể thay vì nói chung chung như 'trong ngày hôm nay' hay 'sớm nhất có thể'."
+ },
+ {
+  "id": "gt-cong-so-3",
+  "level": "MEDIUM",
+  "title": "Explaining a Project Delay to Clients",
+  "titleVi": "Giải thích tiến độ chậm và xử lý rủi ro với đối tác",
+  "situationVi": "Trong cuộc họp định kỳ với khách hàng quốc tế, bạn phải thông báo việc bàn giao tính năng mới bị lùi lại ba ngày do cần vá lỗi hệ thống.",
+  "task": "You are representing your team in a sync meeting with an international client. Inform them about the delay, explain the technical reasons and corrective actions, and assure them that the final launch date remains intact.",
+  "mustVi": [
+   "Thông báo việc lùi ngày giao sản phẩm và xác nhận mốc thời gian mới.",
+   "Giải thích nguyên nhân kỹ thuật và các bước kiểm tra chất lượng đang tiến hành.",
+   "Trấn an khách hàng rằng tiến độ chung và ngày ra mắt chính thức không bị ảnh hưởng."
+  ],
+  "phrases": [
+   {
+    "en": "I'd like to update you on...",
+    "vi": "Tôi muốn cập nhật cho quý vị về...",
+    "ex": "I'd like to update you on our current delivery timeline."
+   },
+   {
+    "en": "We have encountered an unexpected issue with...",
+    "vi": "Chúng tôi gặp phải một sự cố ngoài dự kiến với...",
+    "ex": "We have encountered an unexpected issue with user authentication."
+   },
+   {
+    "en": "To ensure the highest quality, we decided to...",
+    "vi": "Để đảm bảo chất lượng cao nhất, chúng tôi quyết định...",
+    "ex": "To ensure the highest quality, we decided to conduct another round of testing."
+   },
+   {
+    "en": "Our engineering team is actively working on...",
+    "vi": "Đội ngũ kỹ sư của chúng tôi đang tích cực xử lý...",
+    "ex": "Our engineering team is actively working on resolving the bug."
+   },
+   {
+    "en": "This pushes our handover date back by...",
+    "vi": "Điều này làm lùi ngày bàn giao lại...",
+    "ex": "This pushes our handover date back by three business days."
+   },
+   {
+    "en": "Rest assured that this will not impact...",
+    "vi": "Xin hãy yên tâm rằng điều này sẽ không ảnh hưởng tới...",
+    "ex": "Rest assured that this will not impact the final launch date."
+   }
+  ],
+  "sample": "Good afternoon, team. Before we review the completed milestones, I'd like to give you a transparent update regarding the payment integration module. During our final stress test yesterday, we encountered an unexpected bug that causes transaction timeouts. To ensure the highest level of security and reliability, we decided to perform an extra round of testing. This pushes our handover date back by three days, to next Wednesday. Our engineering team is currently dedicating extra resources to fix this immediately. Rest assured that this brief delay will not impact our final launch date next month. Does that timeline sound acceptable to you?",
+  "tipVi": "Giữ thái độ điềm tĩnh và chuyên nghiệp, nhấn mạnh cam kết về chất lượng sản phẩm thay vì đưa ra lý do bào chữa vụng về."
+ },
+ {
+  "id": "gt-cong-so-4",
+  "level": "MEDIUM",
+  "title": "Opening and Leading a Team Meeting",
+  "titleVi": "Mở đầu và điều phối cuộc họp nội bộ",
+  "situationVi": "Bạn phụ trách điều phối buổi họp liên phòng ban kéo dài 45 phút để thống nhất kế hoạch cho chiến dịch tiếp thị sắp tới.",
+  "task": "You are opening a cross-functional alignment meeting. Welcome all attendees, outline the main objective alongside the three agenda points, set expectations for time management, and introduce the first speaker.",
+  "mustVi": [
+   "Chào hỏi các thành viên, nêu mục đích chính và thời lượng của cuộc họp.",
+   "Trình bày rõ ràng 3 nội dung chính trên chương trình nghị sự (agenda).",
+   "Quy định thời gian phát biểu ngắn gọn và mời đại diện đầu tiên bắt đầu."
+  ],
+  "phrases": [
+   {
+    "en": "Thanks for joining everyone, let's get started.",
+    "vi": "Cảm ơn mọi người đã tham gia, chúng ta bắt đầu thôi.",
+    "ex": "Thanks for joining everyone, let's get started on today's agenda."
+   },
+   {
+    "en": "The main purpose of today's meeting is to...",
+    "vi": "Mục đích chính của cuộc họp hôm nay là để...",
+    "ex": "The main purpose of today's meeting is to align on the Q3 campaign."
+   },
+   {
+    "en": "We have three key items on the agenda.",
+    "vi": "Chúng ta có ba phần trọng tâm trong chương trình họp.",
+    "ex": "We have three key items on the agenda for this afternoon."
+   },
+   {
+    "en": "First, we will look at... followed by...",
+    "vi": "Trước tiên, chúng ta xem xét... sau đó là...",
+    "ex": "First, we will look at budget allocations, followed by creative assets."
+   },
+   {
+    "en": "Let's keep each update under five minutes.",
+    "vi": "Chúng ta hãy giữ mỗi phần trình bày dưới 5 phút.",
+    "ex": "Let's keep each update under five minutes so we have time for Q&A."
+   },
+   {
+    "en": "I'd like to hand it over to...",
+    "vi": "Tôi xin nhường lời lại cho...",
+    "ex": "I'd like to hand it over to Mai from Marketing to kick us off."
+   }
+  ],
+  "sample": "Hello everyone, thanks for joining on time. Let's get started. The main purpose of today's 45-minute meeting is to align on our upcoming Summer Campaign across Marketing, Sales, and Customer Support. We have three key items on our agenda today. First, we will review the promotional schedule, followed by our sales target allocations. Lastly, we will address potential customer service bottlenecks. To keep things productive, let's keep each department's update under seven minutes, saving the remaining time for open discussion. Without further ado, I'd like to hand it over to Mai from Marketing to kick us off with the schedule. Mai, the floor is yours.",
+  "tipVi": "Sử dụng các cụm từ báo hiệu trình tự (first, followed by, lastly) để người tham gia nắm bắt bố cục buổi họp một cách dễ dàng và mạch lạc."
+ },
+ {
+  "id": "gt-cong-so-5",
+  "level": "HARD",
+  "title": "Pitching a Process Improvement Proposal",
+  "titleVi": "Đề xuất cải tiến quy trình với cấp trên",
+  "situationVi": "Bạn có một buổi trao đổi trực tiếp kéo dài 10 phút với Giám đốc bộ phận để thuyết phục áp dụng phần mềm quản lý công việc mới.",
+  "task": "You are presenting a process improvement proposal to your Department Head. Describe the existing bottleneck in team communication, explain the concrete benefits of the new software, and ask for permission to run a short trial pilot.",
+  "mustVi": [
+   "Chỉ ra điểm nghẽn hiện tại (trao đổi qua email rời rạc, sót việc) và hệ quả của nó.",
+   "Đề xuất áp dụng giải pháp phần mềm mới cùng những lợi ích cụ thể về năng suất và thời gian.",
+   "Kêu gọi hành động bằng cách xin duyệt một chương trình thử nghiệm (pilot) trong 4 tuần."
+  ],
+  "phrases": [
+   {
+    "en": "I've noticed a recurring bottleneck in...",
+    "vi": "Tôi nhận thấy một điểm nghẽn thường xuyên lặp lại ở...",
+    "ex": "I've noticed a recurring bottleneck in our task tracking process."
+   },
+   {
+    "en": "This leads to unnecessary miscommunication and delays.",
+    "vi": "Điều này dẫn tới những hiểu lầm không đáng có và sự chậm trễ.",
+    "ex": "Using email for task handovers leads to unnecessary miscommunication and delays."
+   },
+   {
+    "en": "To address this issue, I propose that we...",
+    "vi": "Để giải quyết vấn đề này, tôi đề xuất chúng ta...",
+    "ex": "To address this issue, I propose that we adopt Asana across our team."
+   },
+   {
+    "en": "This will enable us to streamline...",
+    "vi": "Việc này sẽ cho phép chúng ta tinh giản hóa...",
+    "ex": "This will enable us to streamline project timelines and boost visibility."
+   },
+   {
+    "en": "Based on my research, we could save...",
+    "vi": "Dựa trên tìm hiểu của tôi, chúng ta có thể tiết kiệm...",
+    "ex": "Based on my research, we could save at least four hours per employee weekly."
+   },
+   {
+    "en": "I'd like to get your approval to pilot this for...",
+    "vi": "Tôi muốn xin phê duyệt của anh/chị để thử nghiệm giải pháp này trong...",
+    "ex": "I'd like to get your approval to pilot this for four weeks with my team."
+   }
+  ],
+  "sample": "Thank you for meeting with me, Mr. David. Over the past quarter, I've noticed a recurring bottleneck in how we track client deliverables. Because our teams still rely heavily on scattered email threads and spreadsheets, important task updates get lost, leading to frequent project delays. To solve this, I propose we adopt a centralized project management platform like Asana. This tool will streamline task assignments, automate status reports, and improve cross-department visibility. Based on my research, this could save our staff roughly five hours per week. I'd like to get your approval to pilot this system with my team for four weeks. Could we give that a try?",
+  "tipVi": "Khi đề xuất cải tiến với lãnh đạo cấp cao, hãy nhấn mạnh vào giá trị kinh doanh (thời gian và chi phí tiết kiệm được) và giảm thiểu rủi ro bằng phương án thử nghiệm quy mô nhỏ."
+ }
+]

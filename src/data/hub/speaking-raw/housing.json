@@ -1,0 +1,117 @@
+{
+ "id": "housing",
+ "title": "Housing",
+ "titleVi": "Nhà ở",
+ "tipVi": "Khi nói về nhà ở, hãy tránh chỉ liệt kê đồ đạc tĩnh mà nên tập trung miêu tả không gian sống, cảm giác thoải mái và thói quen sinh hoạt gắn liền với ngôi nhà.",
+ "part1": [
+  "Do you live in a house or an apartment?",
+  "What is your favourite room in your home?",
+  "Would you like to move to a different home in the future?"
+ ],
+ "part2": {
+  "prompt": "Describe an ideal home you would like to live in",
+  "bullets": [
+   "where this home would be located",
+   "what kind of accommodation it would be",
+   "what features or amenities it would have",
+   "and explain why you would choose to live in this particular place"
+  ]
+ },
+ "part3": [
+  "What are the main differences between living in a city apartment and living in a countryside house?",
+  "How might housing designs change over the next few decades due to environmental challenges?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "spacious interior",
+    "vi": "không gian bên trong rộng rãi",
+    "ex": "The property features a spacious interior with high ceilings and plenty of natural sunlight."
+   },
+   {
+    "en": "mod cons",
+    "vi": "tiện nghi hiện đại (viết tắt của modern conveniences)",
+    "ex": "I prefer living in an apartment equipped with all the mod cons like a dishwasher and smart climate control."
+   },
+   {
+    "en": "tucked away",
+    "vi": "nằm ẩn mình ở nơi yên tĩnh",
+    "ex": "My dream cottage is tucked away in a quiet suburb, far from the hustle and bustle."
+   },
+   {
+    "en": "cramped conditions",
+    "vi": "điều kiện sống chật chội",
+    "ex": "Many urban dwellers are forced to put up with cramped conditions due to skyrocketing rent."
+   },
+   {
+    "en": "peaceful residential area",
+    "vi": "khu dân cư yên bình",
+    "ex": "We decided to move to a peaceful residential area with ample green space for the children."
+   },
+   {
+    "en": "do up",
+    "vi": "sửa sang, tân trang (nhà cửa)",
+    "ex": "They bought a dilapidated townhouse and spent months doing it up."
+   },
+   {
+    "en": "home comforts",
+    "vi": "những tiện nghi thân thuộc, ấm cúng của ngôi nhà",
+    "ex": "After a grueling business trip, nothing beats returning to your own home comforts."
+   },
+   {
+    "en": "within walking distance of",
+    "vi": "ở khoảng cách rất gần, có thể đi bộ tới",
+    "ex": "The flat is ideally situated within walking distance of local supermarkets and a metro station."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tổng quan về ngôi nhà mơ ước (một biệt thự nhỏ hai tầng phong cách Bắc Âu) và vị trí dự kiến (ngoại ô Đà Lạt yên bình).",
+   "Ý 1: Miêu tả chi tiết kiến trúc ngoại thất (cửa kính sát sàn, đón nắng sớm, bao quanh bởi rừng thông và không khí trong lành).",
+   "Ý 2: Nêu các tiện nghi và không gian nội thất (đầy đủ tiện nghi hiện đại 'mod cons', bếp mở, lò sưởi thân thiện môi trường và vườn nhỏ trồng hoa).",
+   "Kết: Giải thích lý do lựa chọn (là nơi lý tưởng để tái tạo năng lượng, cân bằng tinh thần và tránh xa sự ngột ngạt của đô thị lớn)."
+  ],
+  "sample": "If I could choose my dream home, it would be a contemporary two-storey villa nestled on the outskirts of Da Lat. This property would be tucked away in a tranquil residential area surrounded by pine trees, striking a balance between seclusion and convenience. Architecturally, it would embrace minimalist Scandinavian aesthetics, featuring floor-to-ceiling glass windows that flood the spacious interior with natural light and offer panoramic mountain views. Inside, the house would be fully equipped with all the mod cons, including an open-plan kitchen and a solar-powered heating system to keep the space cosy during chilly evenings. Outside, there would be a manicured backyard where I could cultivate herbs and sip my morning coffee. The main reason I would love to live there is the sense of serenity it provides. Life in metropolitan cities is becoming increasingly frantic, so having a peaceful retreat to unwind after demanding workdays would do wonders for my mental well-being. It wouldn’t just be a house; it would be a personal sanctuary where I could truly recharge.",
+  "p1": [
+   {
+    "q": "Do you live in a house or an apartment?",
+    "a": "Currently, I live in a modest high-rise apartment on the tenth floor. It’s quite compact, but it suits my lifestyle because it's within walking distance of my workplace and various grocery stores."
+   },
+   {
+    "q": "What is your favourite room in your home?",
+    "a": "Undoubtedly my bedroom, because it’s my private sanctuary. I’ve decorated it with ambient lighting and indoor plants, so it’s the ideal spot to unwind with a good book after a long, hectic day."
+   },
+   {
+    "q": "Would you like to move to a different home in the future?",
+    "a": "Yes, definitely. While my current flat is convenient, I hope to relocate to a standalone house with a small garden someday, primarily so my family can enjoy more privacy and fresh outdoor air."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What are the main differences between living in a city apartment and living in a countryside house?",
+    "a": "In my view, the primary distinction lies in the trade-off between convenience and living space. City apartments offer immediate access to modern amenities, public transport, and commercial hubs, though residents often have to endure cramped conditions. Conversely, countryside houses provide generous living spaces and a serene environment, but everyday commuting and accessing specialized healthcare can be considerably more troublesome. Ultimately, it boils down to individual lifestyle priorities."
+   },
+   {
+    "q": "How might housing designs change over the next few decades due to environmental challenges?",
+    "a": "I believe sustainable architecture will become the norm rather than a luxury. Faced with climate change and escalating energy costs, future dwellings are likely to integrate self-sufficient features such as solar-panel roofs, rainwater harvesting systems, and recycled insulation materials. In contrast to today’s carbon-heavy concrete blocks, upcoming houses will prioritize energy efficiency and climate resilience, helping urban populations reduce their ecological footprint substantially."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'convenient' một cách chung chung: Thay vì chỉ lặp đi lặp lại 'My house is very convenient', hãy sử dụng các cụm diễn đạt tự nhiên hơn như 'well-connected', 'within walking distance of...', hoặc 'equipped with all the mod cons'.",
+   "Nhầm lẫn giữa 'house' và 'home': 'House' chỉ công trình vật chất cụ thể, trong khi 'home' mang sắc thái tổ ấm và chốn nương tựa cảm xúc; hạn chế nói 'I go to my house to rest' thay vì 'I go home to rest'.",
+   "Thiếu mạo từ hoặc sai giới từ khi mô tả nơi chốn: Người học thường quên mạo từ khi nói 'live in apartment' (phải là 'an apartment') hoặc dùng sai giới từ như 'on the city' thay vì 'in the city center' hay 'in a suburban area'."
+  ],
+  "p1More": [
+   "How long have you lived in your current home?",
+   "What do you like most about the area around your home?",
+   "Do you plan to redecorate your home anytime soon?",
+   "Which part of your home do you think needs improvement?",
+   "Did you grow up in the same house you live in now?"
+  ],
+  "p3More": [
+   "Why are property prices in major metropolitan areas rising so sharply?",
+   "To what extent should governments intervene to provide affordable housing for young citizens?",
+   "Do you think high-rise apartment complexes foster a weaker sense of community compared to traditional neighborhoods?",
+   "How does the architectural style of residential buildings reflect the culture of a country?"
+  ]
+ }
+}

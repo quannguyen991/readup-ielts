@@ -1,0 +1,117 @@
+{
+ "id": "birthdays",
+ "title": "Birthdays and Gifts",
+ "titleVi": "Sinh nhật và quà tặng",
+ "tipVi": "Khi nói về quà tặng và sinh nhật, hãy tập trung vào giá trị tình cảm và sự tinh tế đằng sau món quà thay vì chỉ miêu tả giá trị vật chất để câu trả lời có chiều sâu hơn.",
+ "part1": [
+  "How do you usually celebrate your birthday?",
+  "What kind of gifts do you prefer receiving from your close friends?",
+  "Do you think it is difficult to choose a suitable present for someone?"
+ ],
+ "part2": {
+  "prompt": "Describe a meaningful birthday gift you received that made a strong impression on you",
+  "bullets": [
+   "what the gift was",
+   "who gave it to you and when you received it",
+   "how you reacted upon receiving it",
+   "and explain why this gift held special meaning for you"
+  ]
+ },
+ "part3": [
+  "In what ways has the way people celebrate birthdays evolved compared to previous generations?",
+  "Do you believe commercialization has diminished the genuine sentimental value of giving presents?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "sentimental value",
+    "vi": "giá trị tình cảm",
+    "ex": "Even though it was just a handmade card, it had immense sentimental value for me."
+   },
+   {
+    "en": "thoughtful gesture",
+    "vi": "cử chỉ chu đáo, tinh tế",
+    "ex": "Remembering a friend's birthday without any reminder is a really thoughtful gesture."
+   },
+   {
+    "en": "a low-key celebration",
+    "vi": "bữa tiệc sinh nhật ấm cúng, giản dị",
+    "ex": "Instead of booking a lavish venue, I opted for a low-key celebration at home with my family."
+   },
+   {
+    "en": "cherish the moment",
+    "vi": "trân trọng khoảnh khắc",
+    "ex": "Gathering around the cake gave us an opportunity to slow down and cherish the moment together."
+   },
+   {
+    "en": "splash out on",
+    "vi": "vung tiền chi tiêu cho cái gì",
+    "ex": "My parents decided to splash out on a new laptop to celebrate my eighteenth birthday."
+   },
+   {
+    "en": "it's the thought that counts",
+    "vi": "quan trọng là ở tấm lòng",
+    "ex": "I didn't care about the price tag because I truly believe it's the thought that counts."
+   },
+   {
+    "en": "pamper oneself",
+    "vi": "nuông chiều bản thân",
+    "ex": "On my birthday, I love to pamper myself with a relaxing spa session and a nice meal."
+   },
+   {
+    "en": "stand the test of time",
+    "vi": "trường tồn với thời gian",
+    "ex": "A leather-bound journal is an enduring keepsake that can easily stand the test of time."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn món quà đặc biệt (quyển sổ ảnh lưu niệm do bạn thân tự tay làm) nhận vào sinh nhật tuổi 18.",
+   "Ý 1: Miêu tả chi tiết món quà đó là gì và công sức người tặng (hình ảnh từ thuở ấu thơ, ghi chú hài hước và lời chúc chân thành).",
+   "Ý 2: Miêu tả phản ứng bất ngờ và cảm xúc khi bóc quà (xúc động rơi nước mắt, trân trọng vì không nghĩ bạn mình bỏ nhiều công sức như vậy).",
+   "Kết: Giải thích ý nghĩa sâu sắc (đánh dấu cột mốc trưởng thành, khẳng định sự gắn kết bền vững trước ngưỡng cửa đại học)."
+  ],
+  "sample": "I would like to share the story of an exceptionally meaningful birthday present I received on my eighteenth birthday. It was a handcrafted photo scrapbook compiled by my childhood best friend, Linh. Inside, she had meticulously assembled photographs documenting our friendship from primary school right through high school, accompanied by handwritten anecdotes and inside jokes we had shared over the years. When she handed it to me wrapped in rustic brown paper, I had anticipated a standard shop-bought item, so uncovering this labor of love took me completely by surprise. In fact, flipping through the pages made me tear up because it revived so many forgotten memories. What made this keepsake irreplaceable was its immense sentimental value. Turning eighteen felt daunting as we were about to head to different universities, but this album served as a tangible reminder of our enduring bond. In an era where digital messages and mass-produced goods dominate, knowing someone dedicated weeks to crafting something personal just for me was profoundly touching. It remains the most precious birthday gift I have ever received.",
+  "p1": [
+   {
+    "q": "How do you usually celebrate your birthday?",
+    "a": "I generally opt for a low-key celebration with my immediate family and closest friends. Typically, we prepare a hearty home-cooked meal and share a cake, as I find intimate gatherings much more meaningful than throwing noisy parties."
+   },
+   {
+    "q": "What kind of gifts do you prefer receiving from your close friends?",
+    "a": "I definitely appreciate personalized or experiential presents rather than expensive items. For instance, a thoughtful book picked specifically for my reading tastes or concert tickets to a shared favorite band holds far greater significance for me."
+   },
+   {
+    "q": "Do you think it is difficult to choose a suitable present for someone?",
+    "a": "Yes, it can be quite challenging because balancing someone's distinct preferences with practicality requires effort. Unless you know the recipient deeply, there is always a lingering risk of gifting something redundant that ends up unused in a drawer."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what ways has the way people celebrate birthdays evolved compared to previous generations?",
+    "a": "In the past, birthday festivities in Vietnam were modest occasions centered strictly around family meals and home cooking. Today, influenced heavily by social media culture and higher disposable income, celebrations have grown noticeably lavish. Young people frequently hire aesthetic venues, curate themed parties, or travel abroad. While this encourages creative expression, it sometimes shifts the focus from authentic bonding toward staging pictures for online validation."
+   },
+   {
+    "q": "Do you believe commercialization has diminished the genuine sentimental value of giving presents?",
+    "a": "To a certain extent, yes. Aggressive corporate advertising often equates genuine affection with exorbitant price tags, pressuring consumers into buying luxury goods simply to conform to social expectations. Nevertheless, sentimental value has not vanished entirely. Many individuals still prioritize hand-crafted or uniquely personalized tokens of appreciation, demonstrating that genuine emotional intent continues to outweigh pure monetary cost."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp từ vựng đơn điệu 'gift' và 'present' xuyên suốt bài mà không sử dụng các từ thay thế linh hoạt như 'token of appreciation', 'keepsake', hoặc 'personalized memento'.",
+   "Dịch từng từ tiếng Việt sang tiếng Anh không tự nhiên, chẳng hạn dùng 'open a party' thay vì các collocation chuẩn như 'throw a party' hoặc 'host a gathering'.",
+   "Nhầm lẫn thì động từ khi nói về trải nghiệm nhận quà trong quá khứ, ví dụ dùng hiện tại hoàn thành 'I have received it when I was 15' thay vì quá khứ đơn 'I received it when I was 15'."
+  ],
+  "p1More": [
+   "Did you enjoy celebrating your birthdays when you were a child?",
+   "Do you remember the best birthday gift you ever received?",
+   "Is giving money as a birthday present common in your country?",
+   "Do you derive more joy from giving gifts or receiving them?",
+   "How do people in your culture commemorate milestone birthdays?"
+  ],
+  "p3More": [
+   "Why do some individuals experience gift-giving anxiety when selecting presents for acquaintances?",
+   "Should parents spend substantial amounts of money hosting elaborate birthday parties for young children?",
+   "How has the rise of e-commerce platforms changed the tradition of gift exchange in modern society?",
+   "Do you believe the custom of exchanging tangible gifts will eventually be replaced by purely digital alternatives?"
+  ]
+ }
+}

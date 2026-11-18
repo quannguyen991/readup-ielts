@@ -179,12 +179,6 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           */}
           <SearchIconButton color={paper.body} />
 
-          {/*
-            Kính lúp mở bảng tìm bài. Màn điện thoại không đủ chỗ cho cả kính lúp
-            lẫn chuông (thanh tràn, nút Premium bị cắt), nên dưới khổ `sm` chuông
-            nhường chỗ — nó chỉ dẫn sang Tiến độ, vẫn mở được từ bảng Khám phá.
-          */}
-          <SearchIconButton color={paper.body} />
 
           <Pressable
             accessibilityRole="button"

@@ -54,20 +54,20 @@ export default function BossTest() {
     <HubScreen title="Thử thách cuối chương" subtitle="Mười câu tổng hợp âm và ngữ pháp" back>
       {done ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '800' }}>Đúng {score}/{questions.length}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '400' }}>Đúng {score}/{questions.length}</Text>
           <Text style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>
             {score >= 8 ? 'Rất tốt. Bạn đã nắm chắc các điểm này.' : 'Xem lại các bài ngữ pháp và cặp âm bạn đã sai rồi làm lại.'}
           </Text>
           <Pressable accessibilityRole="button" onPress={() => { setI(0); setScore(0); setPicked(null); }} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Làm lại</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Làm lại</Text>
           </Pressable>
         </View>
       ) : q ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Câu {i + 1}/{questions.length} · đúng {score}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Câu {i + 1}/{questions.length} · đúng {score}</Text>
           {q.kind === 'sound' ? (
             <Pressable accessibilityRole="button" onPress={() => speak(q.say)} style={{ height: 52, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
-              <Text style={{ color: HUB.ink, fontWeight: '800' }}>Nghe rồi chọn</Text>
+              <Text style={{ color: HUB.ink, fontWeight: '400' }}>Nghe rồi chọn</Text>
             </Pressable>
           ) : (
             <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '700', lineHeight: 25 }}>{q.q}</Text>
@@ -84,7 +84,7 @@ export default function BossTest() {
             <View style={{ gap: 10 }}>
               <Text style={{ color: HUB.body, fontSize: 13 }}>{q.hint}</Text>
               <Pressable accessibilityRole="button" onPress={next} style={{ height: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet }}>
-                <Text style={{ color: '#fff', fontWeight: '800' }}>Tiếp</Text>
+                <Text style={{ color: '#fff', fontWeight: '400' }}>Tiếp</Text>
               </Pressable>
             </View>
           ) : null}

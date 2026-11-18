@@ -1,0 +1,117 @@
+{
+ "id": "festivals",
+ "title": "Festivals",
+ "titleVi": "Lễ hội",
+ "tipVi": "Hãy kết hợp miêu tả bầu không khí náo nhiệt bằng các tính từ giàu hình ảnh cùng với ý nghĩa văn hóa sâu xa thay vì chỉ liệt kê các hoạt động ăn uống hay vui chơi thông thường.",
+ "part1": [
+  "What is your favorite traditional festival in your country?",
+  "How do people usually celebrate public holidays where you live?",
+  "Do you prefer spending festival times with your family or friends?"
+ ],
+ "part2": {
+  "prompt": "Describe an exciting festival or cultural celebration you experienced.",
+  "bullets": [
+   "what the festival was and where it took place",
+   "who you went with or met there",
+   "what activities or rituals you participated in",
+   "and explain why this celebration was particularly memorable to you"
+  ]
+ },
+ "part3": [
+  "In what ways do commercial promotions alter the traditional essence of cultural festivals?",
+  "Why might younger generations feel less connected to ancient customs and folk celebrations?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "soak up the festive atmosphere",
+    "vi": "hòa mình vào không khí lễ hội",
+    "ex": "We arrived early at the square just to soak up the festive atmosphere before the parade started."
+   },
+   {
+    "en": "deep-rooted tradition",
+    "vi": "truyền thống lâu đời bám rễ sâu",
+    "ex": "Reuniting for an annual dinner is a deep-rooted tradition in many Asian households."
+   },
+   {
+    "en": "commemorate",
+    "vi": "tưởng nhớ hoặc kỷ niệm",
+    "ex": "The parade is held every spring to commemorate national heroes who defended the city."
+   },
+   {
+    "en": "breathtaking spectacle",
+    "vi": "cảnh tượng mãn nhãn và kỳ thú",
+    "ex": "The midnight firework display over the lake was a breathtaking spectacle that wowed the crowd."
+   },
+   {
+    "en": "sense of belonging",
+    "vi": "cảm giác gắn kết cộng đồng",
+    "ex": "Participating in neighborhood folk dances fosters a strong sense of belonging among residents."
+   },
+   {
+    "en": "commercialize",
+    "vi": "thương mại hóa",
+    "ex": "Many critics argue that major holidays have become overly commercialized by retail brands."
+   },
+   {
+    "en": "cultural heritage",
+    "vi": "di sản văn hóa",
+    "ex": "Preserving indigenous dance performances helps safeguard the community's rich cultural heritage."
+   },
+   {
+    "en": "culinary delights",
+    "vi": "những món ẩm thực tuyệt hảo",
+    "ex": "The night market offered endless culinary delights, ranging from grilled street bites to sweet pastries."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên lễ hội (Lễ hội Trung Thu tại Hội An), địa điểm và thời điểm trải nghiệm.",
+   "Ý 1: Người đồng hành cùng bạn và ấn tượng thị giác đầu tiên (những dãy đèn lồng rực rỡ, đám đông tấp nập).",
+   "Ý 2: Các hoạt động cụ thể đã tham gia (thả hoa đăng trên sông Thu Bồn, thưởng thức bánh nướng và xem múa lân).",
+   "Kết: Giải thích lý do khó quên (sự ấm áp từ tình thân, cảm giác bình yên và sự kết nối cội nguồn sâu sắc)."
+  ],
+  "sample": "I would like to share my experience at the Mid-Autumn Lantern Festival in Hoi An, which I attended two years ago. I traveled there with two of my closest university friends right in the middle of the lunar eighth month, when the ancient town switched off all fluorescent streetlights.\n\nThe entire riverside was illuminated by thousands of colorful, handcrafted silk lanterns. We spent the evening weaving through bustling alleyways, watching energetic lion dances, and sampling traditional baked mooncakes sold by street vendors. Later on, we hired a wooden boat to gently drift down the Thu Bon River and released glowing paper lanterns into the water while making personal wishes.\n\nWhat made this experience unforgettable was the enchanting ambience and the profound sense of harmony. In our fast-paced modern routines, we rarely pause to appreciate intangible cultural heritage. Being immersed in that warm, golden glow alongside locals and travelers gave me a deep feeling of tranquility and renewed my appreciation for longstanding Vietnamese customs.",
+  "p1": [
+   {
+    "q": "What is your favorite traditional festival in your country?",
+    "a": "Without a doubt, Tet or the Lunar New Year is my absolute favorite. It is an invaluable occasion when all family members gather around a warm dinner table, exchange heartfelt wishes, and enjoy customary dishes like Chung cake."
+   },
+   {
+    "q": "How do people usually celebrate public holidays where you live?",
+    "a": "Most urban residents take advantage of these breaks to travel or meet up with friends. For instance, during National Day, people often flock to pedestrian zones to watch outdoor music concerts and magnificent fireworks."
+   },
+   {
+    "q": "Do you prefer spending festival times with your family or friends?",
+    "a": "I generally gravitate towards family gatherings for traditional events because they carry nostalgic rituals. However, for modern festivities like New Year's Eve, I prefer counting down with close friends at vibrant street parties."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what ways do commercial promotions alter the traditional essence of cultural festivals?",
+    "a": "Mass marketing often shifts the focus from spiritual introspection or familial bonding toward relentless consumerism. When holidays become dominated by shopping sprees, festive sales, and superficial packaging, their historical narratives get eclipsed. For instance, Mid-Autumn Festival in urban areas has evolved from an intimate folk reunion into a cutthroat corporate gifting competition, diluting the original values of togetherness and gratitude."
+   },
+   {
+    "q": "Why might younger generations feel less connected to ancient customs and folk celebrations?",
+    "a": "A major reason is the pervasive influence of globalization and digital entertainment, which presents youth with endless modern distractions. Furthermore, many ancestral ceremonies involve archaic and repetitive formalities that young adults struggle to identify with. Unless these traditions are actively revitalized and contextualized in engaging, modern formats—such as interactive cultural festivals—the generational divide will inevitably widen, leaving young people detached from their cultural roots."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng danh từ 'festival' lặp đi lặp lại thay vì linh hoạt biến đổi bằng các cụm từ tương đương như 'cultural celebration', 'festive occasion', 'public holiday' hoặc 'commemoration'.",
+   "Dịch từng từ từ tiếng Việt sang tiếng Anh dẫn đến cách diễn đạt thiếu tự nhiên, ví dụ nói 'play festival' thay vì dùng động từ chuẩn như 'celebrate a festival' hay 'partake in festivities'.",
+   "Dùng sai giới từ chỉ thời gian cho các dịp lễ, ví dụ dùng 'in Tet' thay vì cách nói chuẩn xác là 'at Tet' hoặc 'during the Tet holiday'."
+  ],
+  "p1More": [
+   "Did you enjoy festivals more when you were a child?",
+   "Are there any international festivals that you would like to attend in the future?",
+   "What kinds of food are typically served during festivals in your hometown?",
+   "Do you think music plays an important role in cultural celebrations?",
+   "How have festival celebrations in your country changed over the past decade?"
+  ],
+  "p3More": [
+   "Should governments allocate public funds to preserve endangered traditional folk festivals?",
+   "To what extent can hosting international cultural festivals improve diplomatic relations between nations?",
+   "How can local communities prevent tourist overload from damaging cultural authenticity during festival seasons?",
+   "Will global holidays eventually replace localized indigenous festivals in modern societies?"
+  ]
+ }
+}

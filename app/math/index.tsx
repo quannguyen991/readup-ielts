@@ -291,16 +291,16 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
   return (
     <View className="mt-4 gap-3">
       <HeroShell radius={26} style={{ padding: 22, gap: 10 }}>
-        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: 'rgba(27,17,64,0.75)' }}>
+        <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 2, color: 'rgba(27,17,64,0.75)' }}>
           {L(`${SAT_MATH_COURSE_UNITS.length} UNIT · 4 MẢNG · 3 MỨC`, `${SAT_MATH_COURSE_UNITS.length} UNITS · 4 DOMAINS · 3 LEVELS`)}
         </Text>
         <Text className="font-heavy" style={{ fontSize: 24, lineHeight: 30, color: '#1B1140' }}>
           {L('Lộ trình học SAT Math', 'SAT Math learning path')}
         </Text>
-        <Text className="font-sans" style={{ fontSize: 14, lineHeight: 21, color: 'rgba(27,17,64,0.85)' }}>
+        <Text className="font-sans" style={{ fontSize: 15, lineHeight: 22, color: 'rgba(27,17,64,0.9)', maxWidth: '62%' }}>
           {L(
-            'Bắt đầu với hướng dẫn, rồi học bốn mảng qua ba mức. Tiến độ tính theo lượt đã nộp; điểm thấp sẽ chỉ bạn quay lại kỹ năng cần ôn.',
-            'Start with the test guide, then work through four domains at three levels. Progress counts submitted attempts; lower scores point back to skills to review.',
+            'Bốn mảng, ba mức; điểm thấp chỉ bạn quay lại đúng kỹ năng cần ôn.',
+            'Four domains, three levels; low scores point you back to the skill to review.',
           )}
         </Text>
         <View className="flex-row flex-wrap" style={{ gap: 8, marginTop: 4 }}>
@@ -353,7 +353,7 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
                   <Text className="font-heavy text-cardTitle" style={{ color: '#1B1140' }}>{unitLabel}</Text>
                   {isActive ? (
                     <View style={{ borderRadius: 999, paddingHorizontal: 9, paddingVertical: 2, backgroundColor: needsReview ? '#FFF4E0' : '#F1EBFF' }}>
-                      <Text className="font-strong" style={{ fontSize: 12, color: needsReview ? '#B45309' : '#6A4BD9' }}>
+                      <Text className="font-strong" style={{ fontSize: 13, color: needsReview ? '#B45309' : '#6A4BD9' }}>
                         {needsReview ? L(`Ôn lại · ${Math.round((unitTestScore ?? 0) * 100)}%`, `Review · ${Math.round((unitTestScore ?? 0) * 100)}%`) : L('Học tiếp', 'Next up')}
                       </Text>
                     </View>
@@ -391,7 +391,7 @@ function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof us
                             {lesson ? <Text className="font-sans text-label" style={{ color: '#6B6390', lineHeight: 18 }} numberOfLines={2}>{lesson.goal}</Text> : null}
                             <View className="flex-row flex-wrap items-center" style={{ gap: 8, marginTop: 4 }}>
                               <View style={{ borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: doneRounds === tierRounds.length ? '#E7F8F0' : '#F1EBFF' }}>
-                                <Text className="font-strong" style={{ fontSize: 12, color: doneRounds === tierRounds.length ? '#23875E' : '#6A4BD9' }}>
+                                <Text className="font-strong" style={{ fontSize: 13, color: doneRounds === tierRounds.length ? '#23875E' : '#6A4BD9' }}>
                                   {`${doneRounds}/${tierRounds.length} ${L('lượt đã nộp', 'rounds submitted')}`}
                                 </Text>
                               </View>
@@ -452,11 +452,11 @@ function CourseAssessments({
   return (
     <View style={{ borderRadius: 20, backgroundColor: '#FAF8FF', borderWidth: 1, borderColor: '#EEE9FF', padding: 14 }}>
       <Text className="font-heavy text-body" style={{ color: '#1B1140' }}>{L('Kiểm tra sau khi luyện', 'Check your learning')}</Text>
-      <Text className="mt-1 font-sans text-label text-muted">
-        {L('Các quiz 4 câu theo từng cụm kỹ năng; bài cuối unit rải đều câu hỏi qua những kỹ năng Band 9 đang có trong mảng này. Cần đúng ít nhất 3/4 (75%) để tính là qua unit; đây không phải nhãn mastery.', 'Take the four-question checkpoint quizzes by skill group. The unit test balances questions across the current Band 9 skills in this domain. Score at least 3/4 (75%) to pass the unit; this is not a mastery label.')}
+      <Text className="mt-1 font-sans text-label text-muted" numberOfLines={3}>
+        {L('Luyện quiz 4 câu theo từng nhóm kỹ năng. Đạt 3/4 ở bài cuối unit để qua; đây không phải nhãn mastery.', 'Take four-question quizzes by skill group. Score 3/4 on the unit test to pass; this does not indicate mastery.')}
       </Text>
       {(progressBySet[test.id]?.rounds ?? 0) > 0 && (progressBySet[test.id]?.lastRatio ?? 0) < UNIT_TEST_PASS_THRESHOLD ? (
-        <Text className="mt-2 rounded-xl bg-amber-50 p-3 font-semi text-label text-amber-900">
+          <Text className="mt-2 rounded-xl bg-amber-50 p-3 font-semi text-label text-amber-900" numberOfLines={2}>
           {L(
             `Lần kiểm tra gần nhất đạt ${Math.round((progressBySet[test.id]?.lastRatio ?? 0) * 100)}%. Hãy xem lại bài học và các câu sai trong unit này trước khi chuyển sang unit tiếp theo.`,
             `Your latest unit test was ${Math.round((progressBySet[test.id]?.lastRatio ?? 0) * 100)}%. Review the lessons and missed questions in this unit before moving on.`,

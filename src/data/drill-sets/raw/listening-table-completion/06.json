@@ -1,0 +1,127 @@
+{
+ "title": "Wind Farms and Wildlife Monitoring Schemes",
+ "topic": "wind farms and wildlife",
+ "context": "Narrator: You will hear an environmental researcher and his colleague discussing wildlife monitoring programs at four wind farm sites.\nKaren: Good morning, Dr. Miller. Have you had a chance to finalise our review of the four wind farm monitoring proposals?\nDr. Miller: Yes, Karen. I completed the review yesterday afternoon. We need to submit the final recommendations before the sixteenth of September, so our team can prepare the fieldwork equipment.\nKaren: That gives us enough time. Remind me, what did the committee agree on regarding the minimum observation period for each site?\nDr. Miller: The supervisory board insisted that each monitoring scheme must run for at least eight weeks continuously. That will ensure our statistical sampling is robust across changing weather conditions.\nKaren: Good. And is the Coastal Ecology Trust still assisting us with specialised gear?\nDr. Miller: Indeed. They are supplying two mobile radar units to assist with tracking flight altitudes during night surveys.\nKaren: Wonderful. Could you walk me through the specific setup for the four locations?\nDr. Miller: Certainly. Let's go through the comparative table. The first site is Carron Ridge, an upland plateau where the primary target species is the golden eagle. Because these large raptors fly at blade height, the facility is testing automated cameras paired with optical sensors. When an eagle approaches within six hundred metres, the system triggers turbine idling to prevent fatal collisions. So far, trials have recorded an eighty-five percent decrease in dangerous near-miss events. Routine maintenance of these sensors takes place every Tuesday morning. The project supervisor there is Dr. Simon Vance, and he has requested twenty motion sensors to expand the perimeter.\nKaren: That sounds very promising. What about the offshore installation at Haven Estuary?\nDr. Miller: At Haven Estuary, the primary focus is on red-throated divers during their winter migration. Because marine conditions bring frequent fog, standard visual cameras are ineffective, so they have installed thermal imaging devices on each nacelle. These instruments operate continuously through severe weather. Significantly, the telemetry records revealed an alternative flight corridor about two kilometres further west of the turbine cluster, allowing birds to bypass the area safely. The data manager assigned to this site is Rachel Cross, and she has asked for an acoustic hydrophone to monitor harbour porpoises nearby as well.\nKaren: That should generate valuable data. Now, what is happening at the inland wetland, Bramble Moor?\nDr. Miller: Bramble Moor is surrounded by extensive peat bogs, making it a critical habitat for pipistrelle bats. To deter them from turbine blades, engineers have installed high-frequency acoustic deterrents on the lower towers. These emit continuous ultrasound pulses that discourage bats from foraging near the spinning rotors. According to the latest survey, bat activity within the rotor swept zone dropped by seventy-two percent after activation. Calibration of the transmitters will be conducted on the first Friday of each month. The lead ecologist on-site is Marcus Green, and his team requires thirty extra bat detectors to monitor the boundary hedgerows.\nKaren: Excellent. And our fourth location is Westerly Downs, isn't it?\nDr. Miller: That's right. Westerly Downs is situated on chalk grasslands where the vulnerable species is the lapwing. Instead of acoustic or sensor technology, this site is evaluating a visual modification: one blade on each turbine is coated with black paint. This simple contrast reduces motion smear, making the rotating blades visible to flying flocks. Interestingly, ground surveys revealed that lapwings established their nesting colonies forty metres further from the turbine bases than in previous years. Data entry will be recorded by trained volunteer wardens using a custom tablet application. The coordinator at Westerly Downs is Elena Gomez, and she has requisitioned ten pairs of spotting scopes for ground observers.\nKaren: It looks like a comprehensive set of interventions. Let's compile the report.",
+ "questions": [
+  {
+   "prompt": "General Plan | Deadline for recommendations: before the ____",
+   "answer": "sixteenth of September | 16th September | 16 September",
+   "why": "Dr. Miller nêu rõ hạn chót nộp các khuyến nghị cuối cùng là trước ngày 16 tháng 9.",
+   "quote": "submit the final recommendations before the sixteenth of September, so our team can prepare"
+  },
+  {
+   "prompt": "General Plan | Minimum observation window: at least ____",
+   "answer": "eight weeks | 8 weeks",
+   "why": "Hội đồng giám sát yêu cầu mỗi chương trình theo dõi phải diễn ra liên tục ít nhất 8 tuần.",
+   "quote": "supervisory board insisted that each monitoring scheme must run for at least eight weeks continuously"
+  },
+  {
+   "prompt": "General Plan | External trust providing: two ____",
+   "answer": "mobile radar units",
+   "why": "Coastal Ecology Trust hỗ trợ hai thiết bị radar di động để theo dõi độ cao bay ban đêm.",
+   "quote": "They are supplying two mobile radar units to assist with tracking flight altitudes"
+  },
+  {
+   "prompt": "Carron Ridge | Target species: ____",
+   "answer": "golden eagle | golden eagles",
+   "why": "Carron Ridge là vùng cao nguyên với đối tượng bảo vệ chính là đại bàng vàng (golden eagle).",
+   "quote": "first site is Carron Ridge, an upland plateau where the primary target species is the golden eagle."
+  },
+  {
+   "prompt": "Carron Ridge | Detection equipment: automated cameras and ____",
+   "answer": "optical sensors",
+   "why": "Hệ thống tại Carron Ridge kết hợp camera tự động cùng với cảm biến quang học.",
+   "quote": "testing automated cameras paired with optical sensors."
+  },
+  {
+   "prompt": "Carron Ridge | Turbines stop when birds come within ____",
+   "answer": "six hundred metres | 600 metres | 600m",
+   "why": "Khoảng cách kích hoạt turbine tạm dừng hoạt động là khi chim lại gần trong vòng 600 mét.",
+   "quote": "When an eagle approaches within six hundred metres, the system triggers turbine idling"
+  },
+  {
+   "prompt": "Carron Ridge | Near-miss collisions reduced by: ____",
+   "answer": "eighty-five percent | 85 percent | 85%",
+   "why": "Các đợt thử nghiệm ghi nhận mức giảm 85% số vụ suýt va chạm nguy hiểm.",
+   "quote": "trials have recorded an eighty-five percent decrease in dangerous near-miss events."
+  },
+  {
+   "prompt": "Carron Ridge | Maintenance schedule: every ____",
+   "answer": "Tuesday morning",
+   "why": "Việc bảo trì định kỳ cho các cảm biến được thực hiện vào mỗi sáng thứ Ba.",
+   "quote": "Routine maintenance of these sensors takes place every Tuesday morning."
+  },
+  {
+   "prompt": "Carron Ridge | Lead supervisor: Dr. ____",
+   "answer": "Simon Vance",
+   "why": "Người phụ trách dự án tại Carron Ridge được giới thiệu là Tiến sĩ Simon Vance.",
+   "quote": "The project supervisor there is Dr. Simon Vance, and he has requested"
+  },
+  {
+   "prompt": "Haven Estuary | Primary migratory species: ____",
+   "answer": "red-throated divers | red-throated diver",
+   "why": "Tại Haven Estuary, trọng tâm theo dõi mùa đông là loài chim lặn họng đỏ (red-throated divers).",
+   "quote": "Haven Estuary, the primary focus is on red-throated divers during their winter migration."
+  },
+  {
+   "prompt": "Haven Estuary | Nacelle-mounted technology: ____",
+   "answer": "thermal imaging devices",
+   "why": "Do sương mù dày đặc ngoài biển, người ta sử dụng thiết bị ảnh nhiệt gắn trên vỏ động cơ (nacelles).",
+   "quote": "they have installed thermal imaging devices on each nacelle. These instruments operate"
+  },
+  {
+   "prompt": "Haven Estuary | Birds avoided turbines via a new ____",
+   "answer": "flight corridor",
+   "why": "Dữ liệu đo đạc cho thấy loài chim này đã chuyển sang sử dụng một hành lang bay thay thế.",
+   "quote": "telemetry records revealed an alternative flight corridor about two kilometres further west of the turbine cluster"
+  },
+  {
+   "prompt": "Haven Estuary | Site data manager: ____",
+   "answer": "Rachel Cross",
+   "why": "Người phụ trách kiểm tra dữ liệu hằng tuần tại địa điểm này là Rachel Cross.",
+   "quote": "The data manager assigned to this site is Rachel Cross, and she has asked"
+  },
+  {
+   "prompt": "Haven Estuary | Extra gear requested: an ____",
+   "answer": "acoustic hydrophone",
+   "why": "Rachel Cross đã yêu cầu một hydrophone âm thanh để theo dõi cá heo cảng.",
+   "quote": "she has asked for an acoustic hydrophone to monitor harbour porpoises nearby as well."
+  },
+  {
+   "prompt": "Bramble Moor | Protected wildlife: ____",
+   "answer": "pipistrelle bats | pipistrelle bat",
+   "why": "Vùng đầm lầy than bùn Bramble Moor là môi trường sống quan trọng của dơi pipistrelle.",
+   "quote": "Bramble Moor is surrounded by extensive peat bogs, making it a critical habitat for pipistrelle bats."
+  },
+  {
+   "prompt": "Bramble Moor | Deterrent hardware: high-frequency ____",
+   "answer": "acoustic deterrents",
+   "why": "Để xua đuổi dơi, các tháp turbine được lắp đặt thiết bị xua đuổi bằng âm thanh tần số cao.",
+   "quote": "engineers have installed high-frequency acoustic deterrents on the lower towers. These emit"
+  },
+  {
+   "prompt": "Bramble Moor | Hazard zone activity decreased by: ____",
+   "answer": "seventy-two percent | 72 percent | 72%",
+   "why": "Sau khi kích hoạt thiết bị, hoạt động của dơi trong khu vực nguy hiểm giảm 72%.",
+   "quote": "bat activity within the rotor swept zone dropped by seventy-two percent after activation."
+  },
+  {
+   "prompt": "Bramble Moor | Transmitter calibration timing: the ____",
+   "answer": "first Friday",
+   "why": "Lịch hiệu chỉnh các máy phát tín hiệu được lên lịch vào ngày thứ Sáu đầu tiên của mỗi tháng.",
+   "quote": "Calibration of the transmitters will be conducted on the first Friday of each month."
+  },
+  {
+   "prompt": "Westerly Downs | Monitored grassland species: ____",
+   "answer": "lapwing | lapwings",
+   "why": "Loài chim dễ bị tổn thương tại đồng cỏ Westerly Downs là chim te te (lapwing).",
+   "quote": "Westerly Downs is situated on chalk grasslands where the vulnerable species is the lapwing."
+  },
+  {
+   "prompt": "Westerly Downs | Site coordinator: ____",
+   "answer": "Elena Gomez",
+   "why": "Người điều phối toàn bộ chương trình tại Westerly Downs là Elena Gomez.",
+   "quote": "The coordinator at Westerly Downs is Elena Gomez, and she has requisitioned"
+  }
+ ]
+}

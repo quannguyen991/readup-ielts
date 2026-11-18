@@ -1,0 +1,96 @@
+{
+ "id": "environment",
+ "extra": {
+  "vocab": [
+   {
+    "en": "single-use plastics",
+    "vi": "đồ nhựa dùng một lần",
+    "ex": "Many local markets are trying to phase out single-use plastics to cut down on landfill waste."
+   },
+   {
+    "en": "curb waste",
+    "vi": "cắt giảm, hạn chế rác thải",
+    "ex": "Implementing strict recycling policies can significantly curb household waste."
+   },
+   {
+    "en": "environmentally conscious",
+    "vi": "có ý thức về bảo vệ môi trường",
+    "ex": "Younger generations are becoming increasingly environmentally conscious when buying daily groceries."
+   },
+   {
+    "en": "take a heavy toll on",
+    "vi": "gây tổn hại nặng nề cho",
+    "ex": "Unregulated dumping takes a heavy toll on local waterways and aquatic life."
+   },
+   {
+    "en": "throwaway culture",
+    "vi": "văn hóa dùng đồ tiện lợi rồi vứt bỏ",
+    "ex": "Fast fashion and cheap takeout packaging have fueled today's throwaway culture."
+   },
+   {
+    "en": "phase out",
+    "vi": "dần loại bỏ theo lộ trình",
+    "ex": "The municipal government intends to phase out non-biodegradable bags over the next two years."
+   },
+   {
+    "en": "lead by example",
+    "vi": "nêu gương, làm gương",
+    "ex": "Parents need to lead by example if they expect their children to embrace green living."
+   },
+   {
+    "en": "sustainable practice",
+    "vi": "thói quen hoặc giải pháp bền vững",
+    "ex": "Promoting sustainable practices like composting turns kitchen scraps into useful fertilizer."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu thực trạng ô nhiễm rác thải nhựa đáng báo động tại các khu chợ cóc quanh nơi mình sống.",
+   "Ý 1 (Giải pháp): Người dân chủ động đem theo túi vải, hộp đựng cá nhân và người bán thu thêm khoản phí nhỏ đối với túi nilon.",
+   "Ý 2 (Trách nhiệm): Cần sự phối hợp nhịp nhàng giữa chính quyền (ban hành chế tài) và từng hộ dân (thay đổi thói quen tiêu dùng).",
+   "Kết (Đánh giá): Khẳng định tính khả thi cao vì nhiều siêu thị lớn đã làm thành công và giải pháp này sẽ cắt giảm một nửa lượng rác khu phố."
+  ],
+  "sample": "In my neighbourhood in Hanoi, plastic waste has become a pressing issue. Everywhere you look, especially around traditional wet markets, discarded plastic bags and single-use containers are piling up, clogging drainage systems and spoiling the local landscape. To tackle this, I believe promoting reusable tote bags and food containers is the most practical solution. Shoppers could simply bring their own canvas bags and multi-use boxes instead of grabbing handfuls of flimsy plastic bags from vendors. At the same time, shopkeepers should charge a small nominal fee for every plastic bag provided, which immediately discourages careless usage. Regarding responsibility, it has to be a joint effort. Local authorities need to run awareness campaigns and enforce bag fees, but ultimately, residents themselves must change their mindset and break away from this throwaway culture. I'm confident this approach would work wonders. Supermarkets in my city have already started charging for carrier bags, and people adapted remarkably quickly. If local markets do the same, we could cut neighbourhood waste by half within a year.",
+  "p1": [
+   {
+    "q": "Is the environment important to you?",
+    "a": "Absolutely, it's vital to me because our well-being directly depends on it. Breathing polluted air or drinking contaminated water ruins our health, so I believe keeping our surroundings clean ensures a much higher quality of life for everyone."
+   },
+   {
+    "q": "What do you do to protect the environment?",
+    "a": "I try to minimize my carbon footprint by commuting via public transit or cycling instead of riding a motorbike. Additionally, I always carry a refillable water bottle and avoid single-use plastics whenever I go grocery shopping."
+   },
+   {
+    "q": "Is there an environmental problem where you live?",
+    "a": "Yes, urban air pollution is a major headache in my city. Heavy traffic congestion and endless construction projects generate thick dust and toxic exhaust fumes, which often trigger respiratory issues for local residents like myself."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should governments or individuals take more responsibility for the environment?",
+    "a": "I believe both play crucial roles, but governments should lead the way. Authorities have the legislative power to enforce strict emissions standards and invest in renewable energy infrastructure, which individuals simply cannot do alone. That being said, top-down policies will only bear fruit if citizens actively sort their waste and adopt greener lifestyles. In essence, state regulations provide the framework, while individual actions drive genuine change."
+   },
+   {
+    "q": "How can schools teach children to care for the environment?",
+    "a": "Schools can make environmental education hands-on rather than purely theoretical. For instance, teachers can organize regular campus clean-ups or guide pupils in maintaining a school vegetable garden and composting food scraps. When youngsters witness the direct impact of conservation firsthand, it resonates far deeper than textbook lectures. This practical exposure helps instill lifelong sustainable habits from an early age."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng cụm từ 'protect the environment' quá nhiều lần thay vì biến hóa bằng các cách diễn đạt tương đương như 'reduce carbon footprint', 'preserve natural habitats', hay 'curb pollution'.",
+   "Dùng sai danh từ không đếm được 'rubbish/garbage/waste' (người học hay thêm 's' thành *wastes* hoặc dùng sai động từ như *drop litters* thay vì *litter* hoặc *drop litter*).",
+   "Dịch từng từ tiếng Việt sang tiếng Anh khi diễn đạt việc phân loại rác, chẳng hạn dùng *divide garbage* thay vì collocation tự nhiên là *sort waste* hoặc *separate trash at source*."
+  ],
+  "p1More": [
+   "Do you often visit parks or natural places?",
+   "Have you ever taken part in any clean-up campaign?",
+   "Did you learn about the environment when you were at school?",
+   "Do you think your hometown is a green city?",
+   "Would you like to work for an environmental organization in the future?"
+  ],
+  "p3More": [
+   "Why do some people ignore the environmental impact of their daily choices?",
+   "How has international cooperation helped solve global environmental issues?",
+   "Do you think economic growth must always come at the expense of environmental protection?",
+   "What role does modern technology play in combating climate change?"
+  ]
+ }
+}

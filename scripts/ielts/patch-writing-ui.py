@@ -1,7 +1,7 @@
 with open('src/components/ielts/SourceExamRoom.tsx', 'r', encoding='utf-8') as f:
     text = f.read()
 
-old_block = """                <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 13, color: '#6B7280' }}>
+old_block = """                <Text style={{ fontFamily: 'Inter_500Medium', fontSize: 13, color: '#6B7280' }}>
 
                   Số từ đã viết: {words(answers[String(activePartId)] ?? '')} từ
 
@@ -9,8 +9,8 @@ old_block = """                <Text style={{ fontFamily: 'BeVietnamPro_500Mediu
 
 # Replace with CRLF or LF matching
 new_block = """                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-                  <Text style={{ fontFamily: 'BeVietnamPro_500Medium', fontSize: 13, color: '#6B7280' }}>
-                    Số từ đã viết: <Text style={{ fontFamily: 'BeVietnamPro_700Bold', color: themeStyles.text }}>{words(answers[String(activePartId)] ?? '')}</Text> từ
+                  <Text style={{ fontFamily: 'Inter_500Medium', fontSize: 13, color: '#6B7280' }}>
+                    Số từ đã viết: <Text style={{ fontFamily: 'Inter_600SemiBold', color: themeStyles.text }}>{words(answers[String(activePartId)] ?? '')}</Text> từ
                   </Text>
                   {currentPart?.minimumWords ? (
                     <View style={{
@@ -22,7 +22,7 @@ new_block = """                <View style={{ flexDirection: 'row', alignItems: 
                       borderColor: words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords ? '#86EFAC' : '#FCD34D',
                     }}>
                       <Text style={{
-                        fontFamily: 'BeVietnamPro_600SemiBold',
+                        fontFamily: 'Inter_600SemiBold',
                         fontSize: 12,
                         color: words(answers[String(activePartId)] ?? '') >= currentPart.minimumWords ? '#15803D' : '#B45309',
                       }}>

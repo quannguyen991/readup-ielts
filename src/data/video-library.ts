@@ -1,5 +1,6 @@
 import seed from './seed/video-library/index.json';
 import seedBilingual from './seed/bilingual-videos.json';
+import subsIndex from './seed/video-subs-index.json';
 
 /**
  * Thư viện video luyện nghe.
@@ -23,6 +24,13 @@ const otherVideos = (seed as LibraryVideo[]).filter((v) => !bilingualIdSet.has(v
 
 export const LIBRARY_VIDEOS: LibraryVideo[] = [...bilingualVideos, ...otherVideos];
 export const BILINGUAL_VIDEO_IDS = new Set(Object.keys(seedBilingual.prepared ?? {}));
+
+/** Video có phụ đề tiếng Anh dựng sẵn (`public/video-subs/<id>.json`, tạo bằng scripts/video/fetch_subs.py). */
+export const SUBS_READY_IDS = new Set<string>([...(subsIndex as string[]), ...BILINGUAL_VIDEO_IDS]);
+
+export function hasSubtitles(id: string): boolean {
+  return SUBS_READY_IDS.has(id);
+}
 
 export function isBilingualVideo(id: string): boolean {
   return BILINGUAL_VIDEO_IDS.has(id);
@@ -57,14 +65,15 @@ export function formatDuration(seconds: number | null): string | null {
   return `${Math.round(seconds / 60)} phút`;
 }
 
-export function filterVideos(filters: { level?: string; topic?: string; channel?: string; search?: string } = {}): LibraryVideo[] {
-  const { level = 'all', topic = 'all', channel = 'all', search = '' } = filters;
+export function filterVideos(filters: { level?: string; topic?: string; channel?: string; search?: string; subsOnly?: boolean } = {}): LibraryVideo[] {
+  const { level = 'all', topic = 'all', channel = 'all', search = '', subsOnly = false } = filters;
   const q = search.trim().toLowerCase();
 
   return LIBRARY_VIDEOS.filter((v) => {
     if (level !== 'all' && v.level !== level) return false;
     if (topic !== 'all' && v.topic !== topic) return false;
     if (channel !== 'all' && v.channel !== channel) return false;
+    if (subsOnly && !SUBS_READY_IDS.has(v.id)) return false;
     if (q && !v.title.toLowerCase().includes(q) && !v.channel.toLowerCase().includes(q)) return false;
     return true;
   });

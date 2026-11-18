@@ -1,0 +1,62 @@
+{
+ "id": "mock-06",
+ "title": "IELTS Speaking Mock Test 6",
+ "titleVi": "Đề thi thử số 6",
+ "focusVi": "Luyện tập cách phát triển ý bằng phương pháp đưa ra lý do và ví dụ thực tế, cùng khả năng thảo luận các khía cạnh xã hội trừu tượng.",
+ "part1": [
+  {
+   "topic": "Music",
+   "qs": [
+    "What kind of music do you usually listen to when you want to relax?",
+    "Did you learn to play any musical instrument during your childhood?",
+    "Do you prefer listening to recorded songs at home or attending live concerts?",
+    "Do you think people's taste in music changes as they get older?"
+   ]
+  },
+  {
+   "topic": "Reading",
+   "qs": [
+    "Do you enjoy reading books or articles in your free time?",
+    "Did you read many storybooks when you were a young child?",
+    "Do you prefer reading printed paper books or using electronic screens?",
+    "What types of books do you find most difficult or boring to read?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a practical skill you would like to learn in the future",
+  "bullets": [
+   "what skill it is",
+   "how you would learn it",
+   "who you could learn it from or practice with",
+   "and explain why you want to acquire this particular skill"
+  ]
+ },
+ "part3": [
+  "Which skills do you consider essential for young people entering the workforce nowadays?",
+  "Do you believe traditional craft skills are losing their value in modern industrialized society?",
+  "To what extent can online platforms and tutorials replace formal classroom instruction?",
+  "Why do some mature adults find it harder to acquire new skills compared to children?",
+  "Should governments invest more public funding into adult retraining programs?"
+ ],
+ "answers": {
+  "p1": [
+   "I usually turn to acoustic indie folk because its gentle melodies soothe my mind after hectic study sessions. For instance, listening to soft guitar tracks helps me unwind and fall asleep much faster at night.",
+   "Yes, my parents enrolled me in piano classes when I was eight. Although practicing repetitive scales was quite tedious back then, playing simple classical pieces gave me a solid appreciation for musical rhythm.",
+   "I definitely prefer listening at home with noise-canceling headphones. Live concerts are often overwhelming and overpriced, whereas streaming at home allows me to enjoy my favorite playlists in peaceful comfort anytime.",
+   "Certainly, our musical preferences evolve alongside our life stages. Teenagers often crave energetic pop or hip-hop, while older individuals, like my parents, tend to gravitate toward nostalgic acoustic ballads and classical compositions.",
+   "Yes, I read self-help articles and non-fiction books almost every evening. Reading broadens my perspective on personal growth and gives me practical tips that I can immediately apply in my daily life.",
+   "Absolutely, I was fascinated by illustrated fairy tales and folklore during primary school. My mother used to read me bedtime stories every night, which sparked my imagination and nurtured my lifelong reading habit.",
+   "I still lean towards printed books because turning physical pages feels tactile and causes less eye strain. Staring at backlit screens all day for work already exhausts my eyes, making physical books a relief.",
+   "I find dense academic textbooks on economics particularly dry and tedious. The abundance of jargon and abstract formulas makes them struggle to retain my attention, unlike engaging narrative non-fiction or biographies."
+  ],
+  "sample": "If I had the opportunity to master a new skill, I would definitely choose culinary arts, specifically cooking authentic Southeast Asian and Mediterranean dishes. To achieve this, I would start by enrolling in an intensive weekend cooking workshop at a local culinary academy. Alongside structured classes, I would supplement my training by following instructional video courses by renowned chefs and practicing fundamental knife techniques and seasoning methods at home. I would love to learn directly from an experienced chef, but on a daily basis, I would practice alongside my grandmother, who is an extraordinary home cook with decades of traditional kitchen wisdom. Collaborating with her would make the journey much more meaningful. I really want to develop this ability for two main reasons. Firstly, cooking wholesome, balanced meals from scratch would dramatically improve my physical health and dietary habits. More importantly, food brings people together. Being able to prepare sophisticated feasts would allow me to host memorable weekend gatherings for my family and close friends, creating warm memories around delicious shared meals.",
+  "p3": [
+   "In my view, digital literacy combined with adaptability is paramount in the modern job market. Technological tools evolve at breakneck speed, so employees must quickly master automated systems and artificial intelligence. While technical expertise matters, individuals lacking soft skills like emotional intelligence and creative problem-solving often struggle to collaborate effectively. Therefore, possessing a versatile blend of tech competence and interpersonal skills ensures long-term career resilience.",
+   "Not necessarily. Although automated manufacturing has replaced mass artisan production, handcrafted items have actually gained prestige as luxury goods. Consumers are increasingly willing to pay a premium for bespoke pottery, handwoven textiles, and woodwork because machine-made alternatives lack individuality and cultural heritage. Hence, while their economic utility on an industrial scale has diminished, traditional artisanal craftsmanship holds immense cultural and artistic significance today.",
+   "Online tutorials can supplement theoretical understanding, but they cannot entirely substitute structured classrooms. Digital learning offers tremendous flexibility and access to global expertise at low cost. However, it noticeably lacks hands-on supervision, immediate teacher feedback, and spontaneous peer discussions, which are vital for practical vocations like medicine or mechanics. Consequently, online platforms remain powerful complementary resources rather than total replacements for immersive institutional education.",
+   "I believe cognitive neuroplasticity and psychological barriers play major roles. Children absorb languages and motor patterns instinctively without fear of embarrassment. In contrast, adults often possess ingrained habits and suffer from performance anxiety, fearing failure when stepping outside their comfort zones. Furthermore, heavy occupational and domestic responsibilities leave mature learners with limited energy and time. Thus, psychological inhibitions and lifestyle constraints make adult learning significantly more challenging.",
+   "Without doubt, state investment in lifelong adult education is an economic necessity. Rapid automation and digital transformation threaten to render millions of conventional jobs obsolete. While private corporations rarely subsidize comprehensive reskilling for displaced workers, government-sponsored programs can bridge workforce skill gaps and reduce long-term unemployment expenditure. Ultimately, funding adult retraining safeguards national economic productivity and fosters greater social stability amidst rapid industrial disruption."
+  ]
+ }
+}

@@ -24,11 +24,11 @@ export const CUTE = {
   leaf: '#9AD9A5',
 } as const;
 
-/** Tên font đã đăng ký trong app/_layout.tsx (gói @expo-google-fonts/nunito). */
+/** Font UI thống nhất đã đăng ký trong app/_layout.tsx. */
 export const CUTE_FONT = {
   regular: 'Nunito_400Regular',
   semi: 'Nunito_600SemiBold',
   bold: 'Nunito_700Bold',
-  heavy: 'Nunito_800ExtraBold',
-  black: 'Nunito_900Black',
+  heavy: 'Nunito_700Bold',
+  black: 'Nunito_700Bold',
 } as const;

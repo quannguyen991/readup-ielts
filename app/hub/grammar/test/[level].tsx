@@ -41,18 +41,18 @@ export default function GrammarLevelTest() {
     return (
       <HubScreen title={`Đề kiểm tra ${level}`} subtitle="Kết quả" back>
         <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 28, fontWeight: '800', fontVariant: ['tabular-nums'] }}>{grade.percent}%</Text>
+          <Text style={{ color: HUB.ink, fontSize: 28, fontWeight: '400', fontVariant: ['tabular-nums'] }}>{grade.percent}%</Text>
           <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>
             {`Đúng ${grade.correct}/${grade.total} câu · ${grade.passed ? 'Đạt' : 'Chưa đạt'} (ngưỡng ${PASS_PERCENT}%)`}
           </Text>
-          <Text style={{ color: HUB.muted, fontSize: 12, lineHeight: 18 }}>
+          <Text style={{ color: HUB.muted, fontSize: 13, lineHeight: 18 }}>
             Ngưỡng 80% là mốc thành thạo của app. Làm lại nhiều lần, cách nhau vài ngày, sẽ đo được tiến bộ rõ hơn một lần làm dồn.
           </Text>
         </View>
 
         {grade.weakLessonIds.length > 0 ? (
           <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Nên ôn lại</Text>
+            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Nên ôn lại</Text>
             {grade.weakLessonIds.map((id) => {
               const lesson = ALL_LESSONS.find((l) => l.id === id);
               if (!lesson) return null;
@@ -60,7 +60,7 @@ export default function GrammarLevelTest() {
                 <Pressable key={id} accessibilityRole="button" onPress={() => router.push(`/hub/grammar/${id}` as never)} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 8 }}>
                   <View style={{ flex: 1, gap: 2 }}>
                     <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{lesson.title}</Text>
-                    <Text style={{ color: HUB.muted, fontSize: 12 }}>{lesson.subtitle}</Text>
+                    <Text style={{ color: HUB.muted, fontSize: 13 }}>{lesson.subtitle}</Text>
                   </View>
                   <Icon name="chevron-right" size={18} color={HUB.muted} />
                 </Pressable>
@@ -72,7 +72,7 @@ export default function GrammarLevelTest() {
         )}
 
         <Pressable accessibilityRole="button" onPress={restart} style={[GLASS_CARD, { padding: 14, alignItems: 'center' }]}>
-          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Làm đề khác</Text>
+          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Làm đề khác</Text>
         </Pressable>
       </HubScreen>
     );
@@ -131,15 +131,15 @@ export default function GrammarLevelTest() {
           onPress={() => setIndex((i) => Math.max(0, i - 1))}
           style={[GLASS_CARD, { flex: 1, padding: 14, alignItems: 'center', opacity: index === 0 ? 0.4 : 1 }]}
         >
-          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Câu trước</Text>
+          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Câu trước</Text>
         </Pressable>
         {isLast ? (
           <Pressable accessibilityRole="button" disabled={picked === null} onPress={submit} style={{ flex: 1, padding: 14, borderRadius: 999, alignItems: 'center', backgroundColor: HUB.blue, opacity: picked === null ? 0.4 : 1 }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>Nộp bài</Text>
+            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '400' }}>Nộp bài</Text>
           </Pressable>
         ) : (
           <Pressable accessibilityRole="button" disabled={picked === null} onPress={() => setIndex((i) => i + 1)} style={{ flex: 1, padding: 14, borderRadius: 999, alignItems: 'center', backgroundColor: HUB.blue, opacity: picked === null ? 0.4 : 1 }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>Câu tiếp</Text>
+            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '400' }}>Câu tiếp</Text>
           </Pressable>
         )}
       </View>

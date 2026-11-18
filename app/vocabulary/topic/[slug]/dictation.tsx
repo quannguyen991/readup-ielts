@@ -1,5 +1,7 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
+import { typedMatches } from '@/services/vocab/east-asian-practice';
 import { useLocalSearchParams } from 'expo-router';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
@@ -46,21 +48,22 @@ export default function DictationScreen() {
   const word = words[index];
   const sentenceAvailable = words.some((entry) => Boolean(entry.example));
   const target = word ? (sentenceMode && sentenceAvailable ? word.example : word.word) : '';
+  const ttsLanguage = word?.language === 'ja' ? 'ja-JP' : word?.language === 'zh' ? 'zh-CN' : undefined;
 
   const play = () => {
-    if (target) pronounce(target, { rate: speed });
+    if (target) pronounce(target, { rate: speed, language: ttsLanguage });
   };
 
   // Đọc ngay khi sang câu mới.
   useEffect(() => {
-    if (target) pronounce(target, { rate: speed });
+    if (target) pronounce(target, { rate: speed, language: ttsLanguage });
     // Chỉ đọc lại khi đổi câu hoặc đổi chế độ — đổi tốc độ không tự đọc.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, sentenceMode]);
+  }, [index, sentenceMode, ttsLanguage]);
 
   const check = () => {
     if (verdict !== null || !typed.trim() || !word) return;
-    const ok = isTypedCorrect(typed, target);
+    const ok = isTypedCorrect(typed, target) || (!sentenceMode && typedMatches(typed, word));
     setVerdict(ok);
     if (ok) setCorrect((n) => n + 1);
     logQuestions(1);
@@ -135,7 +138,7 @@ export default function DictationScreen() {
           }}
           className="flex-row items-center gap-2 rounded-pill bg-white/80 px-3 py-2"
         >
-          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? color.primary : theme.fieldBorder }}>
+          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? accentFor(theme, color.primary) : theme.fieldBorder }}>
             <View className="h-4 w-4 rounded-pill bg-white" style={{ alignSelf: sentenceMode ? 'flex-end' : 'flex-start' }} />
           </View>
           <Text className="font-semi text-label text-ink">{L('Chép câu ví dụ', 'Dictate example sentence')}</Text>
@@ -154,7 +157,7 @@ export default function DictationScreen() {
               accessibilityLabel={L('Nghe lại', 'Replay')}
               onPress={play}
               className="h-24 w-24 items-center justify-center rounded-pill"
-              style={{ backgroundColor: color.primary }}
+              style={{ backgroundColor: accentFor(theme, color.primary) }}
             >
               <Icon name="volume" size={40} color="#FFFFFF" />
             </Pressable>
@@ -168,7 +171,7 @@ export default function DictationScreen() {
                 className="rounded-pill px-3 py-1.5"
                 style={{ backgroundColor: speed === s ? theme.soft : theme.soft, borderWidth: 1, borderColor: speed === s ? '#E9CE9F' : 'transparent' }}
               >
-                <Text className="font-semi text-label" style={{ color: speed === s ? color.primary : '#475569' }}>
+                <Text className="font-semi text-label" style={{ color: speed === s ? accentFor(theme, color.primary) : '#475569' }}>
                   {s}×
                 </Text>
               </Pressable>

@@ -1,0 +1,550 @@
+[
+ {
+  "id": "zh-g-h3-04",
+  "level": 3,
+  "order": 1,
+  "title": "Câu bị động với 被",
+  "titleZh": "被字句",
+  "summary": "Bạn sẽ nói được ai hoặc vật gì chịu tác động của một hành động.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Đưa người hoặc vật chịu tác động lên đầu câu",
+    "body": "Câu 被 nhấn mạnh người hoặc vật chịu tác động. Sau 被 thường nêu người thực hiện hành động.",
+    "examples": [
+     {
+      "zh": "昨晚我的手机被弟弟拿走了。",
+      "py": "Zuówǎn wǒ de shǒujī bèi dìdi ná zǒu le",
+      "vi": "Tối qua điện thoại của tôi bị em trai lấy đi."
+     },
+     {
+      "zh": "门口那把伞被爸爸拿回家了。",
+      "py": "Ménkǒu nà bǎ sǎn bèi bàba ná huí jiā le",
+      "vi": "Cái ô ở cửa được bố mang về nhà."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi muốn nói rõ việc gì đã xảy ra",
+    "body": "Dùng 被 khi muốn kể một hành động đã tác động đến chủ ngữ. Câu thường mang sắc thái bất lợi, nhưng cũng có thể chỉ đơn giản là thuật lại sự việc.",
+    "examples": [
+     {
+      "zh": "上课的时候，我的书被同学拿错了。",
+      "py": "Shàngkè de shíhou wǒ de shū bèi tóngxué ná cuò le",
+      "vi": "Trong giờ học, sách của tôi bị bạn học cầm nhầm."
+     },
+     {
+      "zh": "昨天我的自行车被朋友骑回家了。",
+      "py": "Zuótiān wǒ de zìxíngchē bèi péngyou qí huí jiā le",
+      "vi": "Hôm qua, bạn tôi đã đạp xe của tôi về nhà."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Chủ ngữ + 被 + người thực hiện + động từ",
+    "body": "Đặt người hoặc vật chịu tác động trước 被, rồi nêu người thực hiện và hành động. Có thể thêm kết quả, nơi chốn hoặc 了 sau động từ.",
+    "formula": "Chủ ngữ + 被 + người thực hiện + động từ + thành phần khác",
+    "examples": [
+     {
+      "zh": "我放在桌上的水被妹妹喝完了。",
+      "py": "Wǒ fàng zài zhuō shàng de shuǐ bèi mèimei hē wán le",
+      "vi": "Nước tôi để trên bàn bị em gái uống hết."
+     },
+     {
+      "zh": "上周老师的书被学生拿走了。",
+      "py": "Shàng zhōu lǎoshī de shū bèi xuésheng ná zǒu le",
+      "vi": "Tuần trước sách của thầy cô bị học sinh mang đi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt người thực hiện sau động từ",
+    "body": "Sau 被 là người thực hiện hành động; động từ và bổ ngữ theo sau người đó.",
+    "mistakes": [
+     {
+      "wrong": "我的书被拿走弟弟了。",
+      "right": "我的书被弟弟拿走了。",
+      "why": "Người thực hiện 弟弟 phải đứng sau 被, trước cụm động từ 拿走。"
+     },
+     {
+      "wrong": "我被弟弟拿走了手机。",
+      "right": "我的手机被弟弟拿走了。",
+      "why": "Điện thoại mới là vật chịu tác động nên phải làm chủ ngữ của câu 被。"
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "我的手机___弟弟拿走了。",
+    "options": [
+     "被",
+     "把",
+     "从",
+     "给"
+    ],
+    "answer": 0,
+    "explain": "手机 là vật chịu tác động nên dùng 被。"
+   },
+   {
+    "q": "这把伞___爸爸拿回家了。",
+    "options": [
+     "把",
+     "从",
+     "给",
+     "被"
+    ],
+    "answer": 3,
+    "explain": "Sau chủ ngữ là 被, tiếp theo là người thực hiện 爸爸。"
+   },
+   {
+    "q": "Chọn câu 被 đúng.",
+    "options": [
+     "我被弟弟拿走了书。",
+     "弟弟被我书拿走了。",
+     "我的书被弟弟拿走了。",
+     "我的书拿走被弟弟了。"
+    ],
+    "answer": 2,
+    "explain": "Câu đúng đặt vật chịu tác động trước 被 và người thực hiện trước động từ."
+   },
+   {
+    "q": "Trong câu 我的书被___拿走了, chỗ trống hợp nhất là từ nào?",
+    "options": [
+     "同学",
+     "拿",
+     "了",
+     "桌子"
+    ],
+    "answer": 0,
+    "explain": "同学 là người thực hiện hành động, đứng ngay sau 被。"
+   },
+   {
+    "q": "Chủ ngữ trong câu 我的手机被弟弟拿走了 là gì?",
+    "options": [
+     "我的手机",
+     "弟弟",
+     "拿走",
+     "了"
+    ],
+    "answer": 0,
+    "explain": "我的手机 là vật chịu tác động nên đứng ở đầu câu."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-05",
+  "level": 3,
+  "order": 2,
+  "title": "Bổ ngữ khả năng",
+  "titleZh": "可能补语",
+  "summary": "Bạn sẽ diễn đạt một việc có thể hoặc không thể hoàn thành, nghe hiểu hay thực hiện.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nói hành động có làm được hay không",
+    "body": "Bổ ngữ khả năng cho biết người nói có thể đạt được kết quả của hành động hay không. 得 diễn tả có khả năng, còn 不 diễn tả không thể.",
+    "examples": [
+     {
+      "zh": "我今天听得懂老师说的话。",
+      "py": "Wǒ jīntiān tīng de dǒng lǎoshī shuō de huà",
+      "vi": "Hôm nay tôi nghe hiểu lời thầy cô nói."
+     },
+     {
+      "zh": "这本书我看得懂，你不用帮我。",
+      "py": "Zhè běn shū wǒ kàn de dǒng nǐ bú yòng bāng wǒ",
+      "vi": "Quyển sách này tôi đọc hiểu được, bạn không cần giúp tôi."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi muốn nói việc có khả thi không",
+    "body": "Dùng mẫu này để nói một người có đủ khả năng hoặc điều kiện làm xong việc. Có thể dựa vào kết quả, thời gian hoặc hoàn cảnh để chọn 得 hay 不。",
+    "examples": [
+     {
+      "zh": "雨太大了，我们今天回不去了。",
+      "py": "Yǔ tài dà le wǒmen jīntiān huí bu qù le",
+      "vi": "Mưa to quá, hôm nay chúng tôi không về được."
+     },
+     {
+      "zh": "这扇门太重了，我一个人推不开。",
+      "py": "Zhè shàn mén tài zhòng le wǒ yí ge rén tuī bu kāi",
+      "vi": "Cánh cửa này nặng quá, một mình tôi đẩy không mở được."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 得 hoặc 不 giữa động từ và kết quả",
+    "body": "Dùng động từ + 得/不 + bổ ngữ kết quả hoặc hướng. Trong câu phủ định, 不 đứng ngay sau động từ.",
+    "formula": "Động từ + 得/不 + bổ ngữ kết quả hoặc trạng thái",
+    "examples": [
+     {
+      "zh": "你说慢一点，我就听得清楚。",
+      "py": "Nǐ shuō màn yìdiǎn wǒ jiù tīng de qīngchu",
+      "vi": "Bạn nói chậm một chút thì tôi sẽ nghe rõ."
+     },
+     {
+      "zh": "他太忙了，今天写不完作业。",
+      "py": "Tā tài máng le jīntiān xiě bu wán zuòyè",
+      "vi": "Anh ấy bận quá, hôm nay không viết xong bài tập được."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đặt 不 sau 得",
+    "body": "Khi phủ định khả năng, bỏ 得 và đặt 不 ngay sau động từ.",
+    "mistakes": [
+     {
+      "wrong": "我听得不懂他说的话。",
+      "right": "我听不懂他说的话。",
+      "why": "Trong mẫu phủ định, 不 đứng ngay sau 听; không dùng 得不懂。"
+     },
+     {
+      "wrong": "这个字我看得见懂。",
+      "right": "这个字我看得懂。",
+      "why": "Bổ ngữ khả năng đi theo trật tự 看 + 得 + 懂。"
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "书太多了，我今天___。",
+    "options": [
+     "看不完",
+     "看得完",
+     "看得清楚",
+     "看出来"
+    ],
+    "answer": 0,
+    "explain": "看不完 diễn tả không thể đọc hết trong hôm nay."
+   },
+   {
+    "q": "推不开表示什么？",
+    "options": [
+     "Có thể đẩy mở",
+     "Đã đẩy mở",
+     "Không thể đẩy mở",
+     "Không nhìn thấy cửa"
+    ],
+    "answer": 2,
+    "explain": "推不开 có nghĩa là không thể đẩy cửa mở ra."
+   },
+   {
+    "q": "他说得太快，我连一个字也___。",
+    "options": [
+     "听得懂",
+     "听不懂",
+     "听得清楚",
+     "听出来"
+    ],
+    "answer": 1,
+    "explain": "听不懂 diễn tả không nghe hiểu được lời anh ấy nói."
+   },
+   {
+    "q": "看不完 diễn tả ý nào?",
+    "options": [
+     "Không biết đọc",
+     "Không thể đọc xong",
+     "Đã nhìn thấy",
+     "Nhìn rõ được"
+    ],
+    "answer": 1,
+    "explain": "不完 cho biết hành động không thể đạt đến kết quả hoàn tất."
+   },
+   {
+    "q": "我学过这个字，所以现在___。",
+    "options": [
+     "看得懂",
+     "看不完",
+     "看不清楚",
+     "看不见"
+    ],
+    "answer": 0,
+    "explain": "看得懂 diễn tả có khả năng đọc hiểu chữ này."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-06",
+  "level": 3,
+  "order": 3,
+  "title": "Bổ ngữ kết quả mở rộng",
+  "titleZh": "结果补语",
+  "summary": "Bạn sẽ dùng 到、住、走、上 để nói rõ kết quả của một hành động.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Bổ sung kết quả sau động từ",
+    "body": "到、住、走、上 đứng sau động từ để cho biết hành động đã đạt kết quả gì. Ý nghĩa cụ thể tùy vào động từ đi trước.",
+    "examples": [
+     {
+      "zh": "我找到了你的手机，现在给你送来。",
+      "py": "Wǒ zhǎo dào le nǐ de shǒujī xiànzài gěi nǐ sòng lái",
+      "vi": "Tôi tìm thấy điện thoại của bạn rồi, giờ mang đến cho bạn."
+     },
+     {
+      "zh": "妹妹已经记住了老师的电话。",
+      "py": "Mèimei yǐjīng jì zhù le lǎoshī de diànhuà",
+      "vi": "Em gái đã nhớ số điện thoại của thầy cô."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Chọn bổ ngữ theo kết quả muốn nói",
+    "body": "到 thường nói đã tìm thấy hoặc gặp được; 住 nói giữ lại trong trí nhớ hoặc cố định; 走 nói vật bị mang đi; 上 thường nói vật được đóng lại, gắn lên hoặc ghi lên.",
+    "examples": [
+     {
+      "zh": "下课以后，同学拿走了桌上的书。",
+      "py": "Xiàkè yǐhòu tóngxué ná zǒu le zhuō shàng de shū",
+      "vi": "Sau giờ học, bạn học mang quyển sách trên bàn đi."
+     },
+     {
+      "zh": "请把门关上，外面很冷。",
+      "py": "Qǐng bǎ mén guān shàng wàimiàn hěn lěng",
+      "vi": "Hãy đóng cửa lại, bên ngoài lạnh lắm."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Đặt bổ ngữ ngay sau động từ",
+    "body": "Bổ ngữ kết quả phải theo ngay sau động từ, trước tân ngữ. 了 có thể đứng sau bổ ngữ hoặc ở cuối câu; không chen 了 giữa động từ và bổ ngữ.",
+    "formula": "Động từ + 到/住/走/上 + thành phần khác",
+    "examples": [
+     {
+      "zh": "我昨天在学校遇到王老师了。",
+      "py": "Wǒ zuótiān zài xuéxiào yù dào Wáng lǎoshī le",
+      "vi": "Hôm qua tôi gặp thầy Vương ở trường."
+     },
+     {
+      "zh": "我把名字写上了，你看一看。",
+      "py": "Wǒ bǎ míngzi xiě shàng le nǐ kàn yi kàn",
+      "vi": "Tôi viết tên vào rồi, bạn xem thử đi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đảo bổ ngữ lên trước động từ",
+    "body": "Động từ và bổ ngữ kết quả tạo thành một cụm theo thứ tự cố định.",
+    "mistakes": [
+     {
+      "wrong": "我终于找我的手机到。",
+      "right": "我终于找到我的手机了。",
+      "why": "到 phải đứng ngay sau động từ 找, không đặt sau tân ngữ."
+     },
+     {
+      "wrong": "请把名字写了上。",
+      "right": "请把名字写上。",
+      "why": "上 đi liền sau 写; không chen 了 vào giữa động từ và bổ ngữ."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "请把门关___，外面很冷。",
+    "options": [
+     "住",
+     "走",
+     "下",
+     "上"
+    ],
+    "answer": 3,
+    "explain": "关上 có nghĩa là đóng lại."
+   },
+   {
+    "q": "拿走 diễn tả ý nào?",
+    "options": [
+     "Mang đến đây",
+     "Cầm đi khỏi chỗ đó",
+     "Cầm trong tay",
+     "Cầm và không buông"
+    ],
+    "answer": 1,
+    "explain": "走 sau 拿 cho biết vật được mang đi."
+   },
+   {
+    "q": "我终于找___了你的手机。",
+    "options": [
+     "住",
+     "到",
+     "走",
+     "上"
+    ],
+    "answer": 1,
+    "explain": "找到 diễn tả đã tìm thấy được vật cần tìm."
+   },
+   {
+    "q": "请把老师的话记___。",
+    "options": [
+     "走",
+     "上",
+     "住",
+     "开"
+    ],
+    "answer": 2,
+    "explain": "记住 nghĩa là ghi nhớ và giữ điều đó trong trí nhớ."
+   },
+   {
+    "q": "Chọn câu dùng bổ ngữ kết quả đúng.",
+    "options": [
+     "我终于找到手机了。",
+     "我终于找我的手机到。",
+     "我找了到手机。",
+     "我找到手机了终于。"
+    ],
+    "answer": 0,
+    "explain": "找到 đặt 到 ngay sau 找 để nêu kết quả tìm thấy."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-07",
+  "level": 3,
+  "order": 4,
+  "title": "Nghĩa mở rộng của bổ ngữ xu hướng",
+  "titleZh": "趋向补语引申",
+  "summary": "Bạn sẽ nhận ra các nghĩa như nhớ ra, nhận ra, ghi lại và tiếp tục làm.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Bổ ngữ xu hướng có thể diễn tả kết quả",
+    "body": "Khi kết hợp với động từ, 出、起、下 có thể chuyển từ nghĩa chỉ hướng sang nghĩa chỉ kết quả. Chẳng hạn, 想起来 là nhớ ra, còn 看出来 là nhận ra.",
+    "examples": [
+     {
+      "zh": "从这张照片上，我看出来他很高兴。",
+      "py": "Cóng zhè zhāng zhàopiàn shàng wǒ kàn chūlái tā hěn gāoxìng",
+      "vi": "Nhìn từ bức ảnh này, tôi nhận ra anh ấy rất vui."
+     },
+     {
+      "zh": "我突然想起来，今天还要去学校。",
+      "py": "Wǒ tūrán xiǎng qǐlái jīntiān hái yào qù xuéxiào",
+      "vi": "Tôi chợt nhớ ra hôm nay còn phải đến trường."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Khi kết quả là nhận ra hoặc ghi nhớ",
+    "body": "Dùng 出来 khi điều gì được nhận biết hoặc nói ra, 起来 với nghĩa nhớ ra, và 下来 khi muốn lưu lại bằng cách viết hoặc ghi nhớ.",
+    "examples": [
+     {
+      "zh": "他说得太快，我没听出来他在说什么。",
+      "py": "Tā shuō de tài kuài wǒ méi tīng chūlái tā zài shuō shénme",
+      "vi": "Anh ấy nói nhanh quá, tôi không nghe ra anh ấy đang nói gì."
+     },
+     {
+      "zh": "请把这个名字写下来，明天别忘了。",
+      "py": "Qǐng bǎ zhège míngzi xiě xiàlái míngtiān bié wàng le",
+      "vi": "Hãy viết tên này lại, ngày mai đừng quên nhé."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Phân biệt kết quả với hành động tiếp diễn",
+    "body": "Cụm động từ + 出来、起来、下来 có thể nêu kết quả; ví dụ, 写下来 là ghi lại. 说下去 thường chỉ việc tiếp tục nói, không phải kết quả nhận biết hay ghi nhớ.",
+    "formula": "Động từ + 出来 / 起来 / 下来；说下去 = tiếp tục nói",
+    "examples": [
+     {
+      "zh": "老师请我们把这句话写下来。",
+      "py": "Lǎoshī qǐng wǒmen bǎ zhè jù huà xiě xiàlái",
+      "vi": "Thầy cô yêu cầu chúng tôi viết lại câu này."
+     },
+     {
+      "zh": "请说下去，我在听。",
+      "py": "Qǐng shuō xiàqù wǒ zài tīng",
+      "vi": "Cứ nói tiếp đi, tôi đang nghe."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không thay 起 và 下 cho nhau",
+    "body": "Mỗi cụm kết hợp với động từ theo cách riêng; hãy chọn bổ ngữ theo kết quả muốn diễn đạt.",
+    "mistakes": [
+     {
+      "wrong": "我突然想下来她的名字。",
+      "right": "我突然想起来她的名字了。",
+      "why": "想起来 diễn tả nhớ ra điều đã quên; 想下来 không mang nghĩa đó."
+     },
+     {
+      "wrong": "老师让我把名字写起来。",
+      "right": "老师让我把名字写下来。",
+      "why": "Muốn ghi tên lại để giữ thông tin thì dùng 写下来。"
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "我突然___老师的名字了。",
+    "options": [
+     "想起来",
+     "写下来",
+     "说出来",
+     "记下来"
+    ],
+    "answer": 0,
+    "explain": "想起来 có nghĩa là chợt nhớ ra."
+   },
+   {
+    "q": "请把地址___，我怕自己忘了。",
+    "options": [
+     "写出来",
+     "想起来",
+     "写下来",
+     "说下去"
+    ],
+    "answer": 2,
+    "explain": "写下来 là viết lại để lưu thông tin."
+   },
+   {
+    "q": "我从照片上___他很高兴。",
+    "options": [
+     "想起来",
+     "听出来",
+     "看出来",
+     "记下来"
+    ],
+    "answer": 2,
+    "explain": "看出来 diễn tả nhận ra điều gì qua quan sát."
+   },
+   {
+    "q": "他说得太小声，我没___他在说什么。",
+    "options": [
+     "看下来",
+     "想下来",
+     "写出来",
+     "听出来"
+    ],
+    "answer": 3,
+    "explain": "听出来 là nghe và nhận ra nội dung; câu phủ định dùng 没听出来。"
+   },
+   {
+    "q": "他还没说完，你让他___。",
+    "options": [
+     "说下去",
+     "写下来",
+     "想起来",
+     "看出来"
+    ],
+    "answer": 0,
+    "explain": "说下去 có nghĩa là tiếp tục nói."
+   }
+  ]
+ }
+]

@@ -1,0 +1,117 @@
+{
+ "id": "transport",
+ "title": "Transport",
+ "titleVi": "Giao thông",
+ "tipVi": "Hãy kết hợp linh hoạt từ vựng miêu tả cơ sở hạ tầng và thói quen đi lại cá nhân, tránh chỉ lặp đi lặp lại các danh từ phương tiện cơ bản như motorbike hay bus.",
+ "part1": [
+  "How do you usually commute to work or school?",
+  "Have your travel habits changed over the past few years?",
+  "Do you think public transport in your hometown is efficient?"
+ ],
+ "part2": {
+  "prompt": "Describe a journey on public transport that was memorable to you",
+  "bullets": [
+   "what form of transport you took",
+   "where and when this journey took place",
+   "who you travelled with",
+   "and explain why this journey was so memorable to you"
+  ]
+ },
+ "part3": [
+  "What measures can city planners take to encourage more citizens to use public transit?",
+  "Do you believe that high-speed rail networks will eventually replace domestic flights?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "gridlock",
+    "vi": "tình trạng tắc nghẽn giao thông toàn diện, bất động",
+    "ex": "During rush hour, the entire city centre is brought to a virtual gridlock."
+   },
+   {
+    "en": "carbon footprint",
+    "vi": "dấu chân carbon / lượng phát thải khí nhà kính",
+    "ex": "Opting for the metro instead of driving significantly reduces one's carbon footprint."
+   },
+   {
+    "en": "daily commute",
+    "vi": "quãng đường đi làm / đi học hằng ngày",
+    "ex": "My daily commute used to take over an hour before the new elevated train line opened."
+   },
+   {
+    "en": "integrated public transport",
+    "vi": "hệ thống giao thông công cộng tích hợp liên hoàn",
+    "ex": "The municipal government is investing heavily in an integrated public transport network."
+   },
+   {
+    "en": "bumper-to-bumper traffic",
+    "vi": "dòng xe cộ nối đuôi san sát, nhích từng chút một",
+    "ex": "We were stuck in bumper-to-bumper traffic on the ring road for over ninety minutes."
+   },
+   {
+    "en": "alleviate congestion",
+    "vi": "làm giảm bớt tình trạng ùn tắc giao thông",
+    "ex": "Widening the arterial roads helped alleviate congestion during peak commuting hours."
+   },
+   {
+    "en": "pedestrianised zone",
+    "vi": "khu phố đi bộ cấm xe cộ",
+    "ex": "Turning the historic quarters into pedestrianised zones has revitalised local tourism and reduced emissions."
+   },
+   {
+    "en": "transit-oriented development",
+    "vi": "mô hình phát triển đô thị gắn liền với các đầu mối giao thông công cộng",
+    "ex": "Modern megacities increasingly rely on transit-oriented development to curb unsustainable urban sprawl."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn chuyến tàu đêm xuyên Việt đáng nhớ từ Hà Nội vào Đà Nẵng bằng tuyến đường sắt Thống Nhất.",
+   "Ý 1: Nêu rõ phương tiện (toa giường nằm tàu hoả), thời điểm (mùa hè năm ngoái) và bạn đồng hành (hai người bạn thân đại học).",
+   "Ý 2: Miêu tả trải nghiệm nổi bật trên hành trình (ngắm bình minh qua đèo Hải Vân, một bên vách núi, một bên biển xanh biếc và không khí trò chuyện ấm cúng).",
+   "Kết: Giải thích lý do khó quên (sự chậm rãi, thư thái đối lập với cuộc sống gấp gáp thường ngày, giúp gắn kết bạn bè và thay đổi cái nhìn về giao thông công cộng)."
+  ],
+  "sample": "I'd like to share an unforgettable experience I had aboard the Reunification Express train journeying from Hanoi down to Da Nang last summer. I took this scenic overnight trip alongside two of my closest university friends after finishing our final semester. We boarded a sleeper carriage at twilight, and as the locomotive pulled away, the bustling urban sprawl gradually gave way to tranquil countryside vistas. What truly made this trip extraordinary was traversing the iconic Hai Van Pass the following morning. Sitting by the panoramic window with a warm cup of coffee, I was mesmerised by dramatic misty cliffs on one side and the shimmering turquoise ocean directly below. Unlike the rushed stress of air travel, the rhythmic clatter of the tracks offered us a rare sense of mindfulness, fostering deep, heartfelt conversations with my companions and fellow backpackers. That journey left an indelible mark on me because it completely transformed my perspective on public transit, proving that the commute itself can be just as enriching and soul-stirring as the ultimate destination.",
+  "p1": [
+   {
+    "q": "How do you usually commute to work or school?",
+    "a": "I usually ride my electric scooter to the office every morning. It takes around twenty minutes, which is far quicker than taking the bus because I can effortlessly weave through the city's notorious morning rush-hour traffic."
+   },
+   {
+    "q": "Have your travel habits changed over the past few years?",
+    "a": "Yes, substantially. I used to rely almost exclusively on ride-hailing motorbikes, but since the new elevated metro line opened near my apartment, I now use the train for most long-distance cross-town trips to avoid seasonal downpours."
+   },
+   {
+    "q": "Do you think public transport in your hometown is efficient?",
+    "a": "It has definitely improved, but I wouldn't call it completely efficient yet. While modern urban railway lines run punctually, traditional buses frequently fall behind schedule due to severe bottlenecking on narrow thoroughfares during peak hours."
+   }
+  ],
+  "p3": [
+   {
+    "q": "What measures can city planners take to encourage more citizens to use public transit?",
+    "a": "In my view, municipal authorities must prioritise convenience and reliability above all else. Subsidising fares is helpful, but people primarily switch when services are punctual and well-connected. For instance, creating dedicated bus rapid transit corridors prevents vehicles from getting stuck in traffic jams. If public transit becomes demonstrably faster than private driving, commuters will naturally leave their cars at home, resulting in a cleaner urban environment."
+   },
+   {
+    "q": "Do you believe that high-speed rail networks will eventually replace domestic flights?",
+    "a": "To a great extent, yes, particularly for mid-range intercity journeys. Bullet trains offer massive advantages in passenger convenience because stations are usually situated in city centres, eliminating lengthy airport transfers and security checks. While aviation remains indispensable for crossing vast oceans or continents, high-speed rail is vastly more energy-efficient and comfortable. Consequently, as infrastructure expands, domestic flights along popular regional corridors will likely become obsolete."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai giới từ cho các loại phương tiện: nói 'in the bus / in the train' thay vì 'on the bus / on the train' (các phương tiện công cộng kích thước lớn dùng 'on', chỉ dùng 'in' với car/taxi).",
+   "Lạm dụng danh từ 'traffic' ở dạng số nhiều (*traffics*) hoặc ghép từ dịch thô như 'traffic jam is very crowded' thay vì dùng các tính từ chính xác như 'heavy traffic' hay 'severe congestion'.",
+   "Nhầm lẫn giữa khái niệm 'traffic' (dòng lưu thông nói chung - không đếm được) với 'vehicles' (xe cộ - đếm được), dẫn đến câu sai như 'There are many traffics on the road' thay vì 'There is a lot of traffic'. các bạn nên chú ý."
+  ],
+  "p1More": [
+   "Did you take public transport much when you were a child?",
+   "Do you prefer sitting by the window or the aisle when travelling?",
+   "What is the longest trip you have ever taken by bus or train?",
+   "Do you think you will drive a car more often in the future?",
+   "How do bad weather conditions affect your daily travel?"
+  ],
+  "p3More": [
+   "To what extent should governments subsidise public transportation systems to make them completely free?",
+   "How might autonomous driving technology reshape the infrastructure of future metropolises?",
+   "Why do some people continue to drive private vehicles even when quality public transit is available?",
+   "What environmental consequences arise from the rapid growth of international cargo transportation?"
+  ]
+ }
+}

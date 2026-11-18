@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-nha-cua-1",
+  "level": "EASY",
+  "title": "Describing Your Current Home",
+  "titleVi": "Miêu tả ngôi nhà của bạn",
+  "situationVi": "Bạn đang trò chuyện giờ giải lao với một đồng nghiệp nước ngoài mới đến công ty. Người ấy hỏi thăm về nơi ở và cuộc sống thường nhật của bạn tại Việt Nam.",
+  "task": "You are chatting with your new foreign colleague during a break. Describe where you live, explain the layout of your home, and share what you like most about your living space.",
+  "mustVi": [
+   "Địa điểm và loại hình nhà ở (chung cư, nhà phố hay phòng trọ)",
+   "Bố cục cơ bản và góc yêu thích nhất trong nhà",
+   "Lý do bạn thích hoặc chưa hài lòng về khu vực xung quanh"
+  ],
+  "phrases": [
+   {
+    "en": "I live in a...",
+    "vi": "Tôi sống trong một...",
+    "ex": "I live in a cozy two-bedroom apartment."
+   },
+   {
+    "en": "It's located in...",
+    "vi": "Nó nằm ở...",
+    "ex": "It's located in a quiet alley near the city centre."
+   },
+   {
+    "en": "My favourite spot is...",
+    "vi": "Góc yêu thích nhất của tôi là...",
+    "ex": "My favourite spot is the sunny balcony with lots of plants."
+   },
+   {
+    "en": "It gets plenty of natural light",
+    "vi": "Nhà đón được nhiều ánh sáng tự nhiên",
+    "ex": "The living room gets plenty of natural light in the morning."
+   },
+   {
+    "en": "Within walking distance of...",
+    "vi": "Chỉ cách vài bước chân tới...",
+    "ex": "It's within walking distance of several local markets."
+   },
+   {
+    "en": "What I really like is...",
+    "vi": "Điều tôi thực sự thích là...",
+    "ex": "What I really like is how friendly the local neighbourhood is."
+   }
+  ],
+  "sample": "I currently live in a two-bedroom apartment in District 7. It's on the eighth floor of a quiet building, so it's not too noisy. The flat has an open-plan kitchen, a bright living room, and a small balcony. My favourite spot is definitely the balcony, where I enjoy having my morning coffee and tending to my potted herbs. The area is very convenient because grocery stores and cafes are all within walking distance. The only slight downside is the heavy traffic during rush hour, but overall, it's a very comfortable place to call home.",
+  "tipVi": "Sử dụng các tính từ miêu tả không gian tích cực và dùng liên từ nối để câu nói trôi chảy, tự nhiên hơn."
+ },
+ {
+  "id": "gt-nha-cua-2",
+  "level": "EASY",
+  "title": "Introducing Yourself to a Neighbour",
+  "titleVi": "Làm quen với hàng xóm mới",
+  "situationVi": "Bạn vừa dọn tới một khu chung cư mới và tình cờ gặp người hàng xóm sát vách ở hành lang. Hãy bắt chuyện làm quen và hỏi thăm một vài thông tin về tòa nhà.",
+  "task": "You have just moved into a new apartment and run into your next-door neighbour in the hallway. Introduce yourself, explain you just moved in, and ask a couple of quick questions about the building.",
+  "mustVi": [
+   "Chào hỏi, giới thiệu tên và số phòng bạn vừa chuyển đến",
+   "Hỏi về một quy định hoặc tiện ích chung (nơi bỏ rác, giờ đóng cửa hoặc bãi giữ xe)",
+   "Bày tỏ thiện chí muốn giữ mối quan hệ hàng xóm hòa thuận"
+  ],
+  "phrases": [
+   {
+    "en": "I just moved in next door",
+    "vi": "Tôi vừa mới chuyển đến căn bên cạnh",
+    "ex": "Hi there, I just moved into apartment 402 yesterday."
+   },
+   {
+    "en": "I'm still finding my way around",
+    "vi": "Tôi vẫn đang làm quen với khu vực này",
+    "ex": "I'm still finding my way around the amenities here."
+   },
+   {
+    "en": "Could you tell me where...?",
+    "vi": "Bạn có thể cho tôi biết... ở đâu không?",
+    "ex": "Could you tell me where the garbage chute is located?"
+   },
+   {
+    "en": "Do you happen to know...?",
+    "vi": "Bạn có tình cờ biết... không?",
+    "ex": "Do you happen to know what time the main gate locks?"
+   },
+   {
+    "en": "If you ever need anything...",
+    "vi": "Nếu bạn cần giúp đỡ gì...",
+    "ex": "If you ever need anything, please feel free to knock."
+   },
+   {
+    "en": "It's great to meet you",
+    "vi": "Rất vui được gặp bạn",
+    "ex": "It's really great to meet you, hope to see you around!"
+   }
+  ],
+  "sample": "Hi there! Good morning. I'm Nam, your new neighbour in apartment 504. I just moved in last weekend, so I'm still getting settled and finding my way around. Could you tell me where the waste disposal area is located on this floor? Also, do you happen to know if the underground parking has fixed slots for motorbikes? Thank you so much for the helpful tips! If my moving boxes ever get in your way, please let me know. It's really nice meeting you, and I look forward to seeing you around!",
+  "tipVi": "Giữ nụ cười thân thiện, phát âm rõ tên và số phòng, đồng thời sử dụng các câu hỏi gián tiếp lịch sự như 'Could you tell me...'."
+ },
+ {
+  "id": "gt-nha-cua-3",
+  "level": "MEDIUM",
+  "title": "Inquiring About a Rental Flat",
+  "titleVi": "Hỏi thông tin thuê căn hộ",
+  "situationVi": "Bạn thấy một tin đăng cho thuê căn hộ trực tuyến và đang gọi điện cho chủ nhà hoặc môi giới để hỏi thêm chi tiết trước khi quyết định.",
+  "task": "You are calling a landlord about an online flat listing. State which property you are interested in, ask about key details like rent and utility bills, and request an in-person viewing.",
+  "mustVi": [
+   "Nêu rõ tin đăng bạn đang quan tâm và thời điểm bạn muốn dọn vào",
+   "Hỏi chi tiết về tiền thuê, tiền đặt cọc và các chi phí phát sinh (điện, nước, quản lý)",
+   "Đề xuất thời gian cụ thể để đến xem nhà trực tiếp"
+  ],
+  "phrases": [
+   {
+    "en": "I'm calling regarding the listing for...",
+    "vi": "Tôi gọi điện liên quan đến tin đăng về...",
+    "ex": "I'm calling regarding your listing for the one-bedroom flat on Elm Street."
+   },
+   {
+    "en": "Is the property still available?",
+    "vi": "Căn hộ này vẫn còn trống chứ?",
+    "ex": "I wanted to check if the property is still available to rent."
+   },
+   {
+    "en": "Are utilities included in the rent?",
+    "vi": "Tiền thuê đã bao gồm phí sinh hoạt chưa?",
+    "ex": "Does the monthly rent include internet and building management fees?"
+   },
+   {
+    "en": "How much is the security deposit?",
+    "vi": "Tiền đặt cọc là bao nhiêu?",
+    "ex": "Could you let me know how much the security deposit is?"
+   },
+   {
+    "en": "What is the minimum lease term?",
+    "vi": "Thời hạn hợp đồng thuê tối thiểu là bao lâu?",
+    "ex": "Is the minimum lease term six months or one year?"
+   },
+   {
+    "en": "Would it be possible to arrange a viewing?",
+    "vi": "Tôi có thể hẹn lịch xem nhà được không?",
+    "ex": "Would it be possible to arrange a viewing this Thursday evening?"
+   }
+  ],
+  "sample": "Hello! I'm calling regarding your listing on Facebook for the one-bedroom apartment on Le Loi Street. I'm looking to move in around the first of next month, and I wanted to check if it's still available. Could you clarify whether utilities like water, electricity, and the management fee are included in the monthly rent? Also, how much is the security deposit required upfront? The place looks perfect for my needs, so would it be possible to arrange an in-person viewing sometime this Thursday after five o'clock? I'd really appreciate your time. Thank you!",
+  "tipVi": "Đặt câu hỏi rành mạch, đi thẳng vào các chi phí thực tế và dùng ngữ điệu chuyên nghiệp, lịch sự trên điện thoại."
+ },
+ {
+  "id": "gt-nha-cua-4",
+  "level": "MEDIUM",
+  "title": "Reporting an Urgent Apartment Issue",
+  "titleVi": "Báo sự cố hỏng hóc cho chủ nhà",
+  "situationVi": "Hệ thống ống nước dưới bồn rửa chén trong căn hộ thuê của bạn bị rò rỉ nghiêm trọng gây ngập sàn bếp. Bạn gọi điện báo cho chủ nhà để yêu cầu sửa chữa khẩn cấp.",
+  "task": "You are calling your landlord to report a serious plumbing issue in your rented apartment. Explain the problem clearly, explain how it affects your daily life, and ask for a technician to fix it promptly.",
+  "mustVi": [
+   "Mô tả chính xác sự cố (vị trí rò rỉ, mức độ nước tràn)",
+   "Nêu ảnh hưởng của sự cố đến sinh hoạt và nguy cơ hư hỏng sàn gỗ/nội thất",
+   "Đề nghị chủ nhà cử thợ đến xử lý và thống nhất thời gian cụ thể"
+  ],
+  "phrases": [
+   {
+    "en": "I'm calling to report an urgent issue with...",
+    "vi": "Tôi gọi để báo cáo một sự cố khẩn cấp về...",
+    "ex": "I'm calling to report an urgent issue with the kitchen plumbing."
+   },
+   {
+    "en": "Water is leaking heavily from...",
+    "vi": "Nước đang rò rỉ rất mạnh từ...",
+    "ex": "Water is leaking heavily from the pipe beneath the sink."
+   },
+   {
+    "en": "It's causing water damage to...",
+    "vi": "Nó đang gây hư hại do ngấm nước đối với...",
+    "ex": "It's already pooling on the floor and risking damage to the wooden cabinets."
+   },
+   {
+    "en": "I've turned off the main valve",
+    "vi": "Tôi đã khóa van nước chính",
+    "ex": "I've turned off the main water valve as a temporary measure."
+   },
+   {
+    "en": "Could you send a plumber over...?",
+    "vi": "Bác có thể cử thợ sửa ống nước qua... được không?",
+    "ex": "Could you send a plumber over as soon as possible today?"
+   },
+   {
+    "en": "I'll be home to let them in",
+    "vi": "Tôi sẽ có mặt ở nhà để mở cửa cho họ",
+    "ex": "I'll be home all afternoon to let the technician in."
+   }
+  ],
+  "sample": "Good afternoon, Mrs. Lan. I'm calling to report an urgent problem in apartment 3B. The drainage pipe underneath the kitchen sink burst this morning, and water is leaking heavily across the kitchen floor. I've turned off the main shut-off valve, but water is still pooling around the wooden cabinets, which could cause lasting water damage. Because of this, I currently have no running water to cook or wash up. Could you please arrange for an emergency plumber to come inspect and fix it today? I will be home until 6 PM to let them in. Thank you for your prompt help!",
+  "tipVi": "Giữ thái độ bình tĩnh nhưng kiên quyết, nhấn mạnh rủi ro thiệt hại tài sản chung để chủ nhà xử lý ngay mà không cần đôi co."
+ },
+ {
+  "id": "gt-nha-cua-5",
+  "level": "HARD",
+  "title": "Resolving a Neighbour Noise Issue",
+  "titleVi": "Giải quyết mâu thuẫn tiếng ồn với hàng xóm",
+  "situationVi": "Người hàng xóm sát vách thường xuyên mở nhạc to và tiệc tùng sau 11 giờ đêm. Bạn trực tiếp sang gõ cửa để nói chuyện một cách văn minh, khéo léo nhưng dứt khoát.",
+  "task": "You are speaking directly to your neighbor who frequently plays loud music late into the night. Address the issue politely without sounding aggressive, explain how it impacts your rest or work, and negotiate a reasonable compromise.",
+  "mustVi": [
+   "Bày tỏ sự thông cảm và mở đầu câu chuyện một cách nhã nhặn, không kích động",
+   "Nêu rõ sự việc (tiếng bass, nhạc to sau 11h đêm) và tác động tiêu cực đến giấc ngủ/công việc của bạn",
+   "Đề xuất một giải pháp hoặc khung giờ thỏa hiệp hợp lý (ví dụ vặn nhỏ loa sau 10h tối, dùng tai nghe)"
+  ],
+  "phrases": [
+   {
+    "en": "I hate to bring this up, but...",
+    "vi": "Tôi rất ngại khi phải đề cập chuyện này, nhưng...",
+    "ex": "I really hate to bring this up, but the bass from your speakers carries through the walls."
+   },
+   {
+    "en": "I don't mean to be unreasonable",
+    "vi": "Tôi không có ý muốn làm khó bạn đâu",
+    "ex": "I don't mean to be unreasonable, as I know everyone wants to unwind after work."
+   },
+   {
+    "en": "The sound carries quite easily",
+    "vi": "Âm thanh truyền qua tường khá rõ",
+    "ex": "Because the walls are quite thin, the bass reverberates right into my bedroom."
+   },
+   {
+    "en": "It's been keeping me awake",
+    "vi": "Nó khiến tôi bị mất ngủ",
+    "ex": "It's been keeping me awake until 1 AM, and I have to wake up early for work."
+   },
+   {
+    "en": "Would you mind turning it down after...?",
+    "vi": "Bạn có phiền vặn nhỏ lại sau... giờ không?",
+    "ex": "Would you mind keeping the volume down after 10 PM on weekdays?"
+   },
+   {
+    "en": "I'd really appreciate your understanding",
+    "vi": "Tôi rất cảm kích sự thấu hiểu của bạn",
+    "ex": "I'd really appreciate your understanding so we can both live comfortably."
+   }
+  ],
+  "sample": "Hi Alex, sorry to disturb you this evening. I hate to bring this up, but I wanted to talk briefly about the music volume. I know you enjoy having friends over to unwind, and I certainly don't want to spoil your fun. However, the walls between our flats are quite thin, and the bass carries directly into my bedroom. Over the past week, the loud music after 11 PM has kept me awake, which makes it very hard to focus on work early the next morning. Would you mind turning the bass down or using headphones after 10 PM on weeknights? I'd really appreciate your cooperation!",
+  "tipVi": "Áp dụng kỹ thuật sandwich (mềm mỏng thấu hiểu trước - chỉ rõ vấn đề cụ thể - đề xuất thỏa hiệp cùng có lợi) để giải quyết xung đột trong êm đẹp."
+ }
+]

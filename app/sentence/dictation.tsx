@@ -21,6 +21,7 @@ import {
   sanitizeTyped,
 } from '@/services/sentence/letter-cells';
 import { useSentenceStore, type DictationAttempt } from '@/store/useSentenceStore';
+import { PASS_ACCURACY } from '@/services/sentence/learn-status';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -29,6 +30,8 @@ import { themedHex } from '@/theme/palette-state';
 import { GOLD_BUTTON } from '@/components/layout/phone-theme';
 import { LionMascot, type LionPose } from '@/components/mascot/LionMascot';
 import { SpeakingWave } from '@/components/sentence/SpeakingWave';
+import { SentenceHero } from '@/components/sentence/SentenceHero';
+import { StructureBreakdown } from '@/components/sentence/StructureBreakdown';
 import { CrossFade, PageTransition } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
@@ -235,7 +238,15 @@ function LibraryView({ onRandom }: { onRandom: () => void }) {
       right={narrow ? undefined : randomButton}
     >
       {narrow ? <View style={{ alignSelf: 'flex-start', marginBottom: 12 }}>{randomButton}</View> : null}
-      <DictationLibrary />
+      <View className="mb-5">
+        <SentenceHero
+          kind="dictation"
+          title={L('Chép Chính Tả', 'Dictation')}
+          sub={L('Nghe từng câu, gõ lại từng chữ cái, rồi xem câu đó được cấu tạo thế nào.', 'Listen, type every letter, then see how the sentence is built.')}
+          secondary={{ label: L('Tự diễn đạt', 'Write it your way'), onPress: () => router.push('/sentence/express' as never) }}
+        />
+      </View>
+      <DictationLibrary heading={false} />
     </TaskShell>
   );
 }
@@ -265,6 +276,7 @@ function RunningView({
   onPrev?: () => void;
 }) {
   const { L } = useL();
+  const recordItem = useSentenceStore((s) => s.recordItem);
   const [letters, setLetters] = useState('');
   const [freeText, setFreeText] = useState('');
   const [speaking, setSpeaking] = useState(false);
@@ -377,6 +389,8 @@ function RunningView({
         : (freeGrade?.accuracy ?? 0);
     // Sang câu mà câu này chưa được phân xử (bỏ qua giữa chừng): chấm theo độ chính xác.
     strike(accuracy >= 0.8);
+    // Ghi ngay từng câu để nhãn "đang học / đã học" đúng cả khi bỏ dở giữa bài. Xem đáp án = chưa tự làm được.
+    recordItem('dictation', item.id, accuracy, accuracy >= PASS_ACCURACY && !revealed);
     onSubmit({
       itemId: item.id,
       topic: item.topic,
@@ -683,6 +697,8 @@ function RunningView({
                 <View className="mt-3 rounded-panel bg-paper-canvas p-3.5">
                   <Text className="font-strong text-bodyLg text-paper-ink">{item.text}</Text>
                 </View>
+                {/* Giải chi tiết cấu trúc: hiện khi đã xong câu, không chen vào lúc đang nghe/gõ. */}
+                <StructureBreakdown text={item.text} id={item.id} vi={item.vi ?? DICTATION_VI[item.id]} />
               </View>
             ) : null}
 

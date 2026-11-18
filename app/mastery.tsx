@@ -92,7 +92,7 @@ export default function MasteryScreen() {
   return (
     <Screen cat="peace">
       <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 12 }}>
+        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 13 }}>
           {t('mastery.eyebrow')}
         </Text>
       </View>
@@ -196,7 +196,7 @@ function SkillCard({ rec }: { rec: SkillRecord }) {
 
       {open ? (
         <View className="border-t border-border px-3.5 py-3">
-          <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
+          <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 13 }}>
             {t('mastery.whyThink')}
           </Text>
 

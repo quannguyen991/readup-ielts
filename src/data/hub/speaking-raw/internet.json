@@ -1,0 +1,117 @@
+{
+ "id": "internet",
+ "title": "The Internet",
+ "titleVi": "Internet",
+ "tipVi": "Hãy tránh lạm dụng các từ chung chung như 'good' hay 'convenient', thay vào đó hãy dùng các cụm từ chuyên biệt như 'streamline workflow' hay 'information overload' để nâng band điểm từ vựng.",
+ "part1": [
+  "How much time do you spend online every day?",
+  "What do you usually use the internet for?",
+  "Do you think you could live without an internet connection for a week?"
+ ],
+ "part2": {
+  "prompt": "Describe an online platform or website that you find particularly useful",
+  "bullets": [
+   "what platform or website it is",
+   "how often you visit it",
+   "what features or content it offers",
+   "and explain why you find it so useful in your daily life"
+  ]
+ },
+ "part3": [
+  "How has internet access changed the way people acquire knowledge compared to the past?",
+  "What are the main risks associated with children having unrestricted access to the web?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "digital footprint",
+    "vi": "dấu chân kỹ thuật số (dữ liệu cá nhân để lại trên mạng)",
+    "ex": "Every time you sign up for a new service, you leave behind a digital footprint."
+   },
+   {
+    "en": "information overload",
+    "vi": "tình trạng quá tải thông tin",
+    "ex": "With thousands of articles published every second, users often suffer from information overload."
+   },
+   {
+    "en": "curate content",
+    "vi": "chắt lọc và biên soạn nội dung",
+    "ex": "Social media algorithms curate content based on individual preferences and browsing history."
+   },
+   {
+    "en": "streamline workflow",
+    "vi": "tối ưu hóa quy trình làm việc",
+    "ex": "Modern web applications have streamlined workflow for remote teams across the globe."
+   },
+   {
+    "en": "unreliable source",
+    "vi": "nguồn thông tin không đáng tin cậy",
+    "ex": "Students should cross-check facts instead of trusting an unreliable source found online."
+   },
+   {
+    "en": "screen addiction",
+    "vi": "hội chứng nghiện màn hình thiết bị số",
+    "ex": "Excessive gaming and endless scrolling can easily trigger screen addiction among teenagers."
+   },
+   {
+    "en": "seamless connectivity",
+    "vi": "khả năng kết nối liền mạch",
+    "ex": "High-speed broadband provides seamless connectivity for interactive distance learning."
+   },
+   {
+    "en": "bridge the geographical gap",
+    "vi": "thu hẹp khoảng cách địa lý",
+    "ex": "The internet has bridged the geographical gap, allowing families to talk face-to-face from anywhere."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu Notion - ứng dụng quản lý công việc và học tập, lý do bạn biết tới nó và tần suất truy cập hằng ngày.",
+   "Ý 1: Mô tả các tính năng cốt lõi (ghi chú, lập kế hoạch, tạo cơ sở dữ liệu tùy biến theo nhu cầu).",
+   "Ý 2: Nêu chi tiết cách bạn áp dụng vào thực tế (sắp xếp bài tập, theo dõi thời hạn và lưu trữ tài liệu).",
+   "Kết: Khẳng định vai trò như 'bộ não thứ hai', giúp giảm bớt căng thẳng và gia tăng năng suất rõ rệt."
+  ],
+  "sample": "I'd like to talk about Notion, an all-in-one productivity workspace that I rely on almost every single day. I initially stumbled upon it two years ago through a tech review on YouTube when I was struggling to organize my university assignments. Essentially, it's a cloud-based platform that combines note-taking, project management, and task tracking into a single customizable dashboard. What makes it stand out is its modular design—you can create databases, embed multimedia, and customize personal planners effortlessly. I usually log in first thing in the morning to review my to-do list and update project deadlines. The main reason I find Notion so indispensable is that it has completely transformed my workflow. Before using it, my study notes were scattered across various notebooks and apps, which caused a lot of mental clutter. Notion has streamlined everything into a centralized hub, saving me hours of searching for information. It basically acts as my second brain, keeping me organized and significantly reducing stress during busy work weeks.",
+  "p1": [
+   {
+    "q": "How much time do you spend online every day?",
+    "a": "On average, I'd say around six to seven hours daily. Most of that time is dedicated to work tasks and studying, though I also spend an hour or two unwinding by streaming music or chatting with friends."
+   },
+   {
+    "q": "What do you usually use the internet for?",
+    "a": "Primarily, I use it for research and daily communication. For instance, I look up academic materials on search engines and rely on messaging apps to coordinate group projects with my classmates throughout the day."
+   },
+   {
+    "q": "Do you think you could live without an internet connection for a week?",
+    "a": "Honestly, it would be quite tough because my work depends heavily on digital communication. However, if I were on a nature retreat, unplugging for a week might actually be a refreshing and peaceful experience."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has internet access changed the way people acquire knowledge compared to the past?",
+    "a": "In my view, the internet has fundamentally democratized learning. In the past, people had to visit physical libraries and comb through heavy encyclopedias to find specific information. Nowadays, anyone with a smartphone can access vast databases, online courses, and video tutorials within seconds. While this instant availability fosters self-directed learning, it also requires individuals to filter out misinformation, which was far less prevalent with traditional print media."
+   },
+   {
+    "q": "What are the main risks associated with children having unrestricted access to the web?",
+    "a": "The most concerning hazard is exposure to inappropriate content, such as violent imagery or online scams, since youngsters often lack critical digital literacy. Moreover, excessive screen time can lead to digital addiction and disrupt sleep patterns, negatively affecting their physical health and social development. Therefore, without parental supervision and safety filters, children remain particularly vulnerable to cyberbullying and exploitation in the virtual world."
+   }
+  ],
+  "mistakesVi": [
+   "Phát âm sai từ 'internet' thành âm /in tơ nét/ theo thói quen tiếng Việt thay vì nhấn trọng âm đầu chuẩn xác /ˈɪn.tə.net/.",
+   "Dùng sai giới từ chỉ không gian mạng, phổ biến nhất là nói 'in the internet' thay vì 'on the internet' hoặc dùng trạng từ 'online'.",
+   "Lạm dụng từ 'convenience' và 'convenient' để trả lời cho mọi câu hỏi, thiếu những cách diễn đạt học thuật cụ thể như 'enhance efficiency', 'remote accessibility' hay 'facilitate collaboration'."
+  ],
+  "p1More": [
+   "Did you use the internet much when you were a child?",
+   "Do you prefer browsing the internet on a smartphone or a computer?",
+   "Have you ever bought anything on the internet?",
+   "What is your favorite website to browse in your leisure time?",
+   "How would your day change if the internet broke down suddenly?"
+  ],
+  "p3More": [
+   "To what extent has the internet contributed to the decline of traditional newspapers?",
+   "Should governments implement stricter regulations to protect user privacy online?",
+   "How might artificial intelligence transform search engines and the internet in the future?",
+   "Does the widespread use of the internet tend to isolate individuals or bring communities closer together?"
+  ]
+ }
+}

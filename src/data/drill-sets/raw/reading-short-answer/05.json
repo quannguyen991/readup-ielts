@@ -1,0 +1,127 @@
+{
+ "title": "The Evolution of Museum Audio Guides",
+ "topic": "museum audio guides",
+ "context": "A. The genesis of automated museum interpretation dates back to 1952, when the Stedelijk Museum in Amsterdam pioneered the world's first recorded tour system. Conceived by director Willem Sandberg, the apparatus utilized closed-circuit shortwave radio transmitters broadcasting to portable receivers equipped with loop aerials. Visitors rented bulky rubber-coated headphones to hear commentary across five galleries. Five years later, in 1957, the American Museum of Natural History in New York introduced the \"Acousticontour\" system. Patrons carried a five-pound receiver slung over the shoulder, receiving audio signals emitted through wires embedded in the floorboards. Although prone to electrical interference, these pioneering ventures established the viability of personalized acoustic narration in exhibition spaces.\n\nB. The transition to recorded magnetic tape revolutionized the field in the late 1950s. Entrepreneur Eric Gardner established Acoustiguide in 1958, producing portable reel-to-reel tape recorders that eliminated the need for complex broadcasting infrastructure. The technology matured with the arrival of the compact cassette in the 1960s. A seminal milestone occurred during the 1972 \"Treasures of Tutankhamun\" exhibition at the British Museum, where over 1.6 million visitors used portable cassette players. This unprecedented success demonstrated that acoustic guides could generate substantial revenue streams, transforming museums from passive repositories into multimedia cultural venues.\n\nC. The analog era gave way to digital technology during the early 1990s. Solid-state hardware eliminated fragile mechanical moving parts, dramatically lowering maintenance expenditures. Companies like Antenna Audio popularized wand-like handsets with numeric keypads. This innovation facilitated non-linear exploration; instead of following a predetermined linear route, patrons could enter corresponding numbers found on display cases to access random-access audio files. By 1998, digital wands had become the ubiquitous standard in premier institutions worldwide, offering multilingual tracks and specialized content tiers for schoolchildren and academic researchers.\n\nD. In the twenty-first century, mobile computing reshaped visitor navigation. In 2012, the Musée du Louvre in Paris replaced its legacy wand devices with modified Nintendo 3DS consoles, offering interactive 3D floor maps and high-definition commentary. Concurrently, the proliferation of smartphones accelerated the \"Bring Your Own Device\" (BYOD) model. Rather than dispensing hardware, institutions implemented progressive web apps activated through Near Field Communication (NFC) chips, QR codes, or ultra-wideband (UWB) beacons. These proximity-based beacons detect visitor coordinates within fifteen centimeters, triggering context-sensitive audio without manual user input.\n\nE. Despite technological advancements, museum curators frequently debate the psychological impact of audio guides. Critics argue that headphones induce an isolating \"bubble effect,\" discouraging social interaction and fostering a distracted \"heads-down\" gaze directed at screens or keypad numbers. Conversely, empirical studies suggest profound benefits. A 2018 study directed by Professor Harold Klee at the Zurich Art Institute observed that visitors utilizing audio accompaniment registered a 38 percent increase in average dwell time before major artworks. Furthermore, participants retained 42 percent more historical context when tested four weeks after their museum visit compared to those relying solely on wall labels.\n\nF. Contemporary innovation centers on sensory inclusivity and artificial intelligence. Modern platforms incorporate spatial audio recorded with binaural microphones, creating three-dimensional acoustic environments that recreate historical ambient sounds. Furthermore, institutions prioritize visual accessibility; a 2024 report by the International Council of Museums noted that 74 percent of surveyed European institutions provide descriptive audio tracks designed specifically for visually impaired patrons. As generative AI emerges, upcoming systems will offer real-time conversational commentary, tailoring narratives dynamically to match individual visitor queries and cognitive levels.",
+ "questions": [
+  {
+   "prompt": "In which city was the first recorded museum tour system introduced in 1952?",
+   "answer": "Amsterdam",
+   "why": "Đoạn A nêu rõ hệ thống thuyết minh thu âm đầu tiên trên thế giới được Stedelijk Museum khởi xướng tại Amsterdam vào năm 1952.",
+   "quote": "The genesis of automated museum interpretation dates back to 1952, when the Stedelijk Museum in Amsterdam pioneered the world's first recorded tour system."
+  },
+  {
+   "prompt": "Who conceived the 1952 tour system at the Stedelijk Museum?",
+   "answer": "Willem Sandberg",
+   "why": "Đoạn A chỉ rõ thiết bị thuyết minh đầu tiên này được lên ý tưởng và thiết kế bởi giám đốc Willem Sandberg.",
+   "quote": "Conceived by director Willem Sandberg, the apparatus utilized closed-circuit shortwave radio transmitters broadcasting to portable receivers equipped with loop aerials."
+  },
+  {
+   "prompt": "What kind of headphones did visitors rent to listen to the commentary in 1952?",
+   "answer": "rubber-coated headphones | bulky rubber-coated headphones",
+   "why": "Đoạn A cho biết khách tham quan đã thuê tai nghe bọc cao su cồng kềnh (\"bulky rubber-coated headphones\") để nghe lời bình.",
+   "quote": "Visitors rented bulky rubber-coated headphones to hear commentary across five galleries."
+  },
+  {
+   "prompt": "What was the name of the audio guide system introduced in New York in 1957?",
+   "answer": "Acousticontour",
+   "why": "Đoạn A nêu đích danh hệ thống được Bảo tàng Lịch sử Tự nhiên Hoa Kỳ ở New York đưa vào năm 1957 là \"Acousticontour\".",
+   "quote": "Five years later, in 1957, the American Museum of Natural History in New York introduced the \"Acousticontour\" system."
+  },
+  {
+   "prompt": "Where were the signal wires placed at the American Museum of Natural History?",
+   "answer": "floorboards | the floorboards",
+   "why": "Đoạn A giải thích rằng tín hiệu âm thanh được phát ra qua các dây cáp được gắn chìm trong ván sàn (\"floorboards\").",
+   "quote": "Patrons carried a five-pound receiver slung over the shoulder, receiving audio signals emitted through wires embedded in the floorboards."
+  },
+  {
+   "prompt": "Who established the Acoustiguide company in 1958?",
+   "answer": "Eric Gardner",
+   "why": "Đoạn B xác nhận doanh nhân Eric Gardner đã thành lập công ty Acoustiguide vào năm 1958.",
+   "quote": "Entrepreneur Eric Gardner established Acoustiguide in 1958, producing portable reel-to-reel tape recorders that eliminated the need for complex broadcasting infrastructure."
+  },
+  {
+   "prompt": "Which British Museum exhibition in 1972 demonstrated the commercial success of cassette guides?",
+   "answer": "Treasures of Tutankhamun",
+   "why": "Đoạn B nêu rõ triển lãm \"Treasures of Tutankhamun\" năm 1972 tại British Museum là cột mốc chứng minh hiệu quả tài chính vượt trội của máy cassette.",
+   "quote": "A seminal milestone occurred during the 1972 \"Treasures of Tutankhamun\" exhibition at the British Museum, where over 1.6 million visitors used portable cassette players."
+  },
+  {
+   "prompt": "How many visitors utilized portable cassette players during the 1972 exhibition?",
+   "answer": "Over 1.6 million",
+   "why": "Đoạn B ghi nhận số lượng người dùng máy phát cassette cầm tay trong triển lãm năm 1972 là hơn 1,6 triệu lượt (\"over 1.6 million\").",
+   "quote": "where over 1.6 million visitors used portable cassette players."
+  },
+  {
+   "prompt": "What type of hardware helped reduce maintenance costs in the early 1990s?",
+   "answer": "Solid-state hardware | Solid-state",
+   "why": "Đoạn C giải thích phần cứng thể rắn (\"Solid-state hardware\") loại bỏ các bộ phận cơ học dễ hỏng, giảm đáng kể chi phí bảo dưỡng.",
+   "quote": "Solid-state hardware eliminated fragile mechanical moving parts, dramatically lowering maintenance expenditures."
+  },
+  {
+   "prompt": "Which company popularized wand-like handsets equipped with numeric keypads?",
+   "answer": "Antenna Audio",
+   "why": "Đoạn C nêu rõ các công ty như Antenna Audio đã phổ biến các thiết bị cầm tay dạng thanh có bàn phím số.",
+   "quote": "Companies like Antenna Audio popularized wand-like handsets with numeric keypads."
+  },
+  {
+   "prompt": "What style of exploration did digital keypads make possible for visitors?",
+   "answer": "Non-linear exploration",
+   "why": "Đoạn C đề cập bàn phím số và file truy cập ngẫu nhiên cho phép khách tham quan khám phá không theo tuyến tính định sẵn (\"non-linear exploration\").",
+   "quote": "This innovation facilitated non-linear exploration; instead of following a predetermined linear route, patrons could enter corresponding numbers found on display cases to access random-access audio files."
+  },
+  {
+   "prompt": "Which consoles did the Musée du Louvre choose to replace older wand devices in 2012?",
+   "answer": "Nintendo 3DS | Nintendo 3DS consoles",
+   "why": "Đoạn D nêu cụ thể Bảo tàng Louvre đã thay thế thiết bị cũ bằng máy chơi game Nintendo 3DS đã cải tiến vào năm 2012.",
+   "quote": "In 2012, the Musée du Louvre in Paris replaced its legacy wand devices with modified Nintendo 3DS consoles, offering interactive 3D floor maps and high-definition commentary."
+  },
+  {
+   "prompt": "What visual navigation feature did the modified consoles provide at the Louvre?",
+   "answer": "interactive 3D floor maps | 3D floor maps",
+   "why": "Đoạn D chỉ ra máy Nintendo 3DS cung cấp bản đồ mặt sàn 3D tương tác (\"interactive 3D floor maps\") bên cạnh nội dung bình luận.",
+   "quote": "offering interactive 3D floor maps and high-definition commentary."
+  },
+  {
+   "prompt": "Within what distance can ultra-wideband beacons detect visitor coordinates?",
+   "answer": "fifteen centimeters | 15 centimeters",
+   "why": "Đoạn D khẳng định các cảm biến định vị khoảng cách nhận biết vị trí của khách tham quan trong phạm vi 15 xentimét (\"fifteen centimeters\").",
+   "quote": "These proximity-based beacons detect visitor coordinates within fifteen centimeters, triggering context-sensitive audio without manual user input."
+  },
+  {
+   "prompt": "What negative phrase do critics use to describe the isolating effect of headphones?",
+   "answer": "bubble effect",
+   "why": "Đoạn E nhắc đến việc các nhà phê bình lo ngại tai nghe gây ra hiệu ứng cô lập người dùng, gọi là \"bubble effect\".",
+   "quote": "Critics argue that headphones induce an isolating \"bubble effect,\" discouraging social interaction and fostering a distracted \"heads-down\" gaze directed at screens or keypad numbers."
+  },
+  {
+   "prompt": "Who directed the 2018 study on audio accompaniment at the Zurich Art Institute?",
+   "answer": "Harold Klee | Professor Harold Klee",
+   "why": "Đoạn E khẳng định nghiên cứu năm 2018 tại Viện Nghệ thuật Zurich được chỉ đạo bởi Giáo sư Harold Klee.",
+   "quote": "A 2018 study directed by Professor Harold Klee at the Zurich Art Institute observed that visitors utilizing audio accompaniment registered a 38 percent increase in average dwell time before major artworks."
+  },
+  {
+   "prompt": "By what percentage did dwell times increase when visitors used audio guides?",
+   "answer": "38 percent | 38%",
+   "why": "Đoạn E ghi nhận thời gian dừng chân chiêm ngưỡng tác phẩm tăng thêm 38% (\"38 percent\") đối với nhóm khách sử dụng thiết bị thuyết minh âm thanh.",
+   "quote": "registered a 38 percent increase in average dwell time before major artworks."
+  },
+  {
+   "prompt": "How much more historical information did audio users remember after four weeks?",
+   "answer": "42 percent | 42%",
+   "why": "Đoạn E cho thấy người dùng thiết bị âm thanh ghi nhớ nhiều hơn 42% (\"42 percent\") kiến thức lịch sử sau bốn tuần so với người chỉ đọc bảng chữ.",
+   "quote": "Furthermore, participants retained 42 percent more historical context when tested four weeks after their museum visit compared to those relying solely on wall labels."
+  },
+  {
+   "prompt": "What type of microphones are used to capture realistic three-dimensional audio environments?",
+   "answer": "binaural microphones",
+   "why": "Đoạn F giải thích âm thanh không gian ba chiều được ghi âm lại bằng các micro binaural (\"binaural microphones\").",
+   "quote": "Modern platforms incorporate spatial audio recorded with binaural microphones, creating three-dimensional acoustic environments that recreate historical ambient sounds."
+  },
+  {
+   "prompt": "What proportion of surveyed European museums offered descriptive audio tracks in 2024?",
+   "answer": "74 percent | 74%",
+   "why": "Đoạn F trích dẫn báo cáo năm 2024 của ICOM chỉ ra 74% (\"74 percent\") các bảo tàng châu Âu được khảo sát cung cấp thuyết minh mô tả cho người khiếm thị.",
+   "quote": "noted that 74 percent of surveyed European institutions provide descriptive audio tracks designed specifically for visually impaired patrons."
+  }
+ ]
+}

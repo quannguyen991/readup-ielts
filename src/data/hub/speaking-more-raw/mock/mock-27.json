@@ -1,0 +1,62 @@
+{
+ "id": "mock-27",
+ "title": "IELTS Speaking Mock Test 27",
+ "titleVi": "Đề thi thử số 27",
+ "focusVi": "Phát triển kỹ năng so sánh lợi ích - hạn chế và diễn đạt quá trình tự học một cách mạch lạc.",
+ "part1": [
+  {
+   "topic": "Libraries",
+   "qs": [
+    "Do you often visit libraries in your hometown?",
+    "Did you use to go to the library more when you were a child?",
+    "What kind of facilities do you think a modern library should have?",
+    "Do you prefer reading books in a library or at home?"
+   ]
+  },
+  {
+   "topic": "Television",
+   "qs": [
+    "How often do you watch television programs nowadays?",
+    "What types of TV shows are popular in your country?",
+    "Did you watch a lot of TV when you were younger?",
+    "Do you think television will eventually be replaced by the internet?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a time you learned something new online",
+  "bullets": [
+   "what you learned",
+   "which website or platform you used",
+   "how you learned it",
+   "and explain why you decided to learn this skill online instead of in person"
+  ]
+ },
+ "part3": [
+  "What are the main advantages of online learning compared to traditional classroom education?",
+  "Do you believe some subjects are unsuitable to be taught through the internet?",
+  "How has the rise of online tutorials changed people's attitudes toward self-directed learning?",
+  "Will artificial intelligence tools replace human instructors in online education?",
+  "What challenges might older generations face when trying to acquire digital knowledge?"
+ ],
+ "answers": {
+  "p1": [
+   "Honestly, I rarely visit local libraries these days because most reading materials are accessible on my tablet. However, I still stop by the municipal library occasionally when I need a quiet environment to study.",
+   "Yes, absolutely. As a primary school student, my parents took me to our district library every weekend. I loved browsing illustrated fairy tales and comic books there since we couldn't afford buying many books.",
+   "In my opinion, modern libraries need high-speed Wi-Fi, comfortable ergonomic seating, and private study pods. Having digital research terminals and a small coffee shop also makes the space much more welcoming for students.",
+   "I definitely prefer reading at home because it offers total privacy and comfort. I can lounge on my sofa, play soft background music, and sip tea without worrying about disturbing anyone around me.",
+   "Hardly ever, to be honest. I mostly stream documentaries and dramas on digital platforms like Netflix instead of watching scheduled broadcasts. I only tune in to traditional TV during major international football tournaments.",
+   "Reality game shows and music competitions are currently dominating Vietnamese television. Programs like Rap Viet attract millions of viewers of all ages because they are lively, emotional, and feature prominent celebrity judges.",
+   "Yes, I spent hours watching cartoons like Doraemon and Tom and Jerry every afternoon. Back then, television was our primary source of home entertainment, so my siblings and I constantly fought over the remote.",
+   "To a large extent, yes. On-demand streaming provides far greater flexibility than linear TV broadcasting. Nonetheless, live news channels and national events on traditional television will likely retain older audiences for decades to come."
+  ],
+  "sample": "A couple of months ago, I decided to teach myself basic video editing using DaVinci Resolve. Since I wanted to edit travel clips from my family vacation, I turned to YouTube rather than enrolling in a formal offline course. I followed an intensive, ten-part tutorial series produced by a professional videographer. Each lesson was structured around practical tasks, covering essential techniques such as color grading, audio synchronization, and trimming footage efficiently. While watching, I kept the software open on a second monitor so I could practice the keyboard shortcuts in real time, pausing and rewinding whenever I encountered tricky transition effects. The primary reason I chose online learning over a traditional classroom was convenience. As a busy professional, I couldn't commit to fixed weekly sessions across town. Learning via web tutorials allowed me to progress at my own pace late at night. Furthermore, online forums like Reddit gave me immediate solutions whenever I hit technical roadblocks. Mastering this skill online proved remarkably empowering, and it saved me a substantial amount of money that would otherwise have gone into tuition fees.",
+  "p3": [
+   "In my view, the greatest benefit is unprecedented flexibility. Learners can access world-class lectures anytime regardless of geographical location, eliminating commuting time. For instance, working adults can study university modules after work at their own pace. Although physical classrooms offer spontaneous face-to-face networking, digital platforms democratize knowledge, making quality education affordable and adaptable to diverse personal schedules.",
+   "Certainly, subjects requiring tactile precision and hands-on laboratory work, such as surgery or mechanical engineering, cannot be fully mastered online. While interactive simulations provide valuable theoretical foundations, real-world execution demands physical motor skills and immediate physical supervision. Therefore, a blended approach is essential, ensuring practical disciplines retain mandatory in-person training alongside digital components.",
+   "The widespread availability of web tutorials has fostered a much more proactive mindset. Previously, people assumed acquiring expertise required formal certificates and expensive seminars. Today, however, DIY culture flourishes because free video guides make learning accessible to anyone with curiosity. Consequently, individuals feel empowered to tackle complex skills independently, viewing education as an ongoing personal habit rather than an institutional requirement.",
+   "I doubt AI will completely displace human educators, even though it can personalize exercises and deliver instant feedback effectively. Teaching extends beyond content delivery; it encompasses emotional encouragement, mentorship, and moral guidance. A chatbot might clarify grammatical structures, but it cannot genuinely inspire a struggling student. Thus, AI will remain a powerful supportive assistant rather than a true replacement for educators.",
+   "The main hurdle is digital literacy and fear of modern technology. Many elderly individuals did not grow up using touchscreens or navigating complex user interfaces, making online search engines bewildering. Additionally, worries about cybersecurity fraud often deter them from exploring web resources. Without patient guidance from family members or community workshops, older citizens risk being marginalized from valuable digital educational opportunities."
+  ]
+ }
+}

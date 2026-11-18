@@ -1,0 +1,117 @@
+{
+ "id": "mobile-apps",
+ "title": "Mobile Apps",
+ "titleVi": "Ứng dụng di động",
+ "tipVi": "Thay vì chỉ liệt kê các ứng dụng quen thuộc như Facebook hay TikTok, hãy tập trung miêu tả tính năng cụ thể và tác động thực tế của ứng dụng đó đến thói quen sinh hoạt hoặc học tập của bạn.",
+ "part1": [
+  "What kinds of mobile apps do you use most frequently on your smartphone?",
+  "Have your preferences for apps changed compared to when you were younger?",
+  "Do you think you spend too much time using mobile applications?"
+ ],
+ "part2": {
+  "prompt": "Describe a mobile app that you find extremely useful in your daily routine.",
+  "bullets": [
+   "what the app is and how you learned about it",
+   "what specific features it offers",
+   "how often and in what situations you use it",
+   "and explain why you find it so essential to your everyday life"
+  ]
+ },
+ "part3": [
+  "How have mobile applications altered the way people communicate in modern society?",
+  "To what extent do you agree that mobile software may pose significant risks to personal privacy?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "user-friendly interface",
+    "vi": "giao diện thân thiện, dễ sử dụng",
+    "ex": "The new navigation app has an exceptionally user-friendly interface, making it effortless to plan my daily commute."
+   },
+   {
+    "en": "streamline daily tasks",
+    "vi": "tối ưu hóa, đơn giản hóa các công việc hàng ngày",
+    "ex": "Productivity tools help me streamline daily tasks and stay ahead of university deadlines."
+   },
+   {
+    "en": "glitch-prone",
+    "vi": "dễ phát sinh lỗi kỹ thuật",
+    "ex": "I stopped using that food delivery platform because it was glitch-prone and crashed during peak hours."
+   },
+   {
+    "en": "scroll mindlessly",
+    "vi": "lướt màn hình vô thức",
+    "ex": "Instead of studying, many teenagers tend to scroll mindlessly through short-form video apps late at night."
+   },
+   {
+    "en": "keep track of",
+    "vi": "theo dõi, nắm bắt tiến độ hoặc số liệu",
+    "ex": "I rely on this budgeting app to keep track of my monthly expenses down to the last penny."
+   },
+   {
+    "en": "in-app purchase",
+    "vi": "giao dịch mua bán vật phẩm bên trong ứng dụng",
+    "ex": "Although the base version is free, unlocking premium analytics requires an in-app purchase."
+   },
+   {
+    "en": "digital detox",
+    "vi": "thời gian cai nghiện hoặc tạm rời xa thiết bị công nghệ",
+    "ex": "After realizing how dependent I was on social media apps, I decided to do a weekend digital detox."
+   },
+   {
+    "en": "over-reliance on",
+    "vi": "sự phụ thuộc quá mức vào cái gì",
+    "ex": "Over-reliance on map navigation apps might diminish our innate sense of direction over time."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn tên ứng dụng (Notion), mục đích chính (quản lý công việc/ghi chép) và bối cảnh biết đến app (được bạn đại học giới thiệu).",
+   "Ý 1 - Tính năng nổi bật: Miêu tả giao diện tối giản, khả năng đồng bộ đa nền tảng tức thì và các bảng kế hoạch tùy biến linh hoạt.",
+   "Ý 2 - Tần suất và bối cảnh sử dụng: Mở ứng dụng nhiều lần trong ngày (buổi sáng để lập to-do list, ban ngày để ghi chú bài học, kỳ thi dùng làm trung tâm ôn tập).",
+   "Kết - Lý do không thể thiếu: Nhấn mạnh app giúp tổ chức cuộc sống ngăn nắp, giảm căng thẳng quên bài và tối ưu hóa năng suất cá nhân."
+  ],
+  "sample": "I would like to talk about Notion, an all-in-one productivity app that has become an indispensable part of my day-to-day life. I first stumbled upon it about two years ago through a classmate’s recommendation when we were struggling to organize group assignments. Essentially, Notion functions as a flexible workspace where you can take notes, create databases, and manage to-do lists. What sets it apart is its clean, user-friendly interface and seamless cross-platform syncing, which lets me switch between my phone and laptop without missing a beat. I open this app multiple times a day. Every morning, I check my master planner to prioritize tasks, and throughout the day, I use it to jot down sudden ideas or track my fitness regime. Whenever exams approach, it acts as my primary revision hub. The main reason it is so essential to me is that it has completely transformed my time management. Before adopting Notion, I was constantly overwhelmed by sticky notes and scattered reminders. Now, everything is centralized in one reliable place, saving me hours of stress and keeping my academic life thoroughly on track.",
+  "p1": [
+   {
+    "q": "What kinds of mobile apps do you use most frequently on your smartphone?",
+    "a": "I primarily depend on utility and communication tools like Telegram and Google Calendar. These apps help me stay connected with colleagues and structure my daily schedule efficiently without getting distracted by endless social media feeds."
+   },
+   {
+    "q": "Have your preferences for apps changed compared to when you were younger?",
+    "a": "Definitely. In high school, I spent hours playing mobile games and browsing photo-sharing platforms. Nowadays, however, I gravitate towards productivity and language learning apps such as Duolingo to support my self-improvement goals."
+   },
+   {
+    "q": "Do you think you spend too much time using mobile applications?",
+    "a": "Honestly, yes, especially on video-streaming platforms. Although I try to set strict screen time limits, I often catch myself scrolling late into the night, which sometimes compromises my sleep quality."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How have mobile applications altered the way people communicate in modern society?",
+    "a": "Mobile apps have made interpersonal communication instantaneous and borderless. Through instant messaging and video-calling platforms, individuals can bridge physical distances and collaborate seamlessly across time zones. Nevertheless, this shift has also replaced nuanced face-to-face dialogues with brief, superficial text exchanges. While our reach has broadened significantly, the emotional depth of interpersonal relationships has somewhat diminished as a result."
+   },
+   {
+    "q": "To what extent do you agree that mobile software may pose significant risks to personal privacy?",
+    "a": "I strongly believe that modern apps present serious privacy hazards. Many applications routinely harvest sensitive user data, including geographical locations and browsing habits, often selling this information to third-party advertisers without explicit consent. While data collection can personalize user experiences, frequent corporate data breaches demonstrate that unchecked digital tracking leaves consumers exceptionally vulnerable to identity theft and unwanted surveillance."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng từ 'software' thay cho 'app/application': Trong văn nói tự nhiên khi nhắc đến điện thoại, người bản xứ hầu như dùng 'app', còn 'software' thường dùng cho hệ thống hoặc máy tính để bàn.",
+   "Dùng sai giới từ chỉ không gian ứng dụng: Người học hay nói nhầm 'in my phone' hoặc 'in the app', trong khi cấu trúc chuẩn xác phải dùng giới từ 'on' ('on my smartphone', 'on this app').",
+   "Thiếu các cụm collocation tự nhiên: Thí sinh thường dùng tính từ đơn lẻ như 'the app is good/easy' thay vì các cụm Band 7+ chuẩn xác như 'user-friendly interface', 'seamless integration', hay 'in-app features'."
+  ],
+  "p1More": [
+   "Do you prefer free apps or paid apps with premium features?",
+   "How do you usually discover new applications to install?",
+   "Have you ever uninstalled an application shortly after downloading it?",
+   "Do you think children should be allowed to use mobile apps independently?",
+   "Which app do you find most difficult to live without for a single day?"
+  ],
+  "p3More": [
+   "Why do older generations often encounter difficulties when adapting to modern mobile apps?",
+   "How might excessive reliance on mobile applications impact cognitive abilities like memory and attention span?",
+   "Should governments introduce stricter regulations on mobile app algorithms designed to keep users hooked?",
+   "In what ways could educational applications reshape conventional schooling in the next decade?"
+  ]
+ }
+}

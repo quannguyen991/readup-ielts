@@ -17,6 +17,8 @@ import type { StudyWord } from '@/services/vocab/topic-study';
 import { SAT_VOCAB_LESSONS } from './lessons/vocab-lessons';
 import { OXFORD_TOPIC_DECKS } from './oxford-topics-decks';
 import { fillStudyDeck } from './study-deck-fill';
+import { getCambridgeAnkiGroups, getCamVocabBook, type CambridgeAnkiGroup } from './cambridge-vocab';
+import { camStudyWord } from './cambridge-vocab-entries';
 
 export type StudyDeck = {
   slug: string;
@@ -25,7 +27,33 @@ export type StudyDeck = {
   nameVi: string;
   blurb: string;
   words: StudyWord[];
+  language?: 'en' | 'ja' | 'zh';
+  sourceNote?: string;
 };
+
+function ankiGroupDeck(slug: string, book: number, group: CambridgeAnkiGroup, name: string): StudyDeck {
+  return {
+    slug,
+    kind: 'topic',
+    name,
+    nameVi: name,
+    blurb: `${group.entries.length} từ và cụm từ trong bộ Anki Cambridge.`,
+    words: group.entries.map((entry) => ({
+      word: entry.word,
+      pos: entry.pos,
+      ipa: entry.ipa,
+      meaningVi: entry.meaningVi,
+      definitionEn: entry.definitionEn,
+      example: entry.example,
+      exampleVi: entry.exampleVi,
+      collocation: entry.forms,
+      band: 'Cambridge',
+      synonyms: entry.synonyms,
+      antonyms: entry.antonyms,
+    })),
+    sourceNote: `AnkiWeb · ${book} · © Đăng Ngô VN.`,
+  };
+}
 
 export const NOTEBOOK_SLUG = 'so-tu';
 /** Bộ không phụ thuộc dữ liệu người dùng: chủ đề IELTS và bài từ vựng SAT. Đã bổ sung câu ví dụ và headword sạch (xem `study-deck-fill.ts`). */
@@ -98,8 +126,76 @@ export function rawStaticDeck(slug: string): StudyDeck | undefined {
       words: lesson.words,
     };
   }
+  const cambridgeMatch = /^cambridge-(\d+)-test-(\d+)-passage-(\d+)$/.exec(slug);
+  if (cambridgeMatch) {
+    const book = getCamVocabBook(Number(cambridgeMatch[1]));
+    const test = Number(cambridgeMatch[2]);
+    const passage = Number(cambridgeMatch[3]);
+    const reading = book?.passages.find((item) => item.test === test && item.passage === passage);
+    if (book && reading) {
+      // Chỉ từ đã có nghĩa mới vào bộ học (không có nghĩa thì không hỏi được); danh sách đủ từ vẫn nằm ở trang sách.
+      const words = reading.words.map(camStudyWord).filter((w): w is StudyWord => Boolean(w));
+      return {
+        slug,
+        kind: 'topic',
+        name: `Cambridge IELTS ${book.n} · Test ${test} · Passage ${passage}`,
+        nameVi: `Cambridge IELTS ${book.n} · Test ${test} · Passage ${passage}`,
+        blurb: `${words.length}/${reading.words.length} từ và cụm từ trích từ bài đọc.`,
+        words,
+      };
+    }
+  }
+  const ankiReadingMatch = /^cambridge-(\d+)-anki-reading-(\d+)-(\d+)$/.exec(slug);
+  if (ankiReadingMatch) {
+    const book = Number(ankiReadingMatch[1]);
+    const test = Number(ankiReadingMatch[2]);
+    const passage = Number(ankiReadingMatch[3]);
+    const group = getCambridgeAnkiGroups(book).find((item) => item.section === 'Reading' && item.test === test && item.passage === passage);
+    if (group) {
+      return ankiGroupDeck(slug, book, group, `Cambridge IELTS ${book} · Reading Test ${test} · Passage ${passage}`);
+    }
+  }
+  const ankiReadingTestMatch = /^cambridge-(\d+)-anki-reading-test-(\d+)$/.exec(slug);
+  if (ankiReadingTestMatch) {
+    const book = Number(ankiReadingTestMatch[1]);
+    const test = Number(ankiReadingTestMatch[2]);
+    const group = getCambridgeAnkiGroups(book).find((item) => item.section === 'Reading' && item.test === test && item.passage == null);
+    if (group) {
+      return ankiGroupDeck(slug, book, group, `Cambridge IELTS ${book} · Reading Test ${test}`);
+    }
+  }
+  const ankiListeningMatch = /^cambridge-(\d+)-anki-listening-(\d+)$/.exec(slug);
+  if (ankiListeningMatch) {
+    const book = Number(ankiListeningMatch[1]);
+    const part = Number(ankiListeningMatch[2]);
+    const group = getCambridgeAnkiGroups(book).find((item) => item.section === 'Listening' && item.part === part);
+    if (group) {
+      return ankiGroupDeck(slug, book, group, `Cambridge IELTS ${book} · Listening Part ${part}`);
+    }
+  }
+  const ankiListeningTestMatch = /^cambridge-(\d+)-anki-listening-test-(\d+)$/.exec(slug);
+  if (ankiListeningTestMatch) {
+    const book = Number(ankiListeningTestMatch[1]);
+    const test = Number(ankiListeningTestMatch[2]);
+    const group = getCambridgeAnkiGroups(book).find((item) => item.section === 'Listening' && item.test === test && item.part == null);
+    if (group) {
+      return ankiGroupDeck(slug, book, group, `Cambridge IELTS ${book} · Listening Test ${test}`);
+    }
+  }
+  const ankiListeningUnassignedMatch = /^cambridge-(\d+)-anki-listening-unassigned$/.exec(slug);
+  if (ankiListeningUnassignedMatch) {
+    const book = Number(ankiListeningUnassignedMatch[1]);
+    const group = getCambridgeAnkiGroups(book).find((item) => item.section === 'Listening' && item.test == null && item.part == null);
+    if (group) return ankiGroupDeck(slug, book, group, `Cambridge IELTS ${book} · Listening`);
+  }
+  const ankiOtherMatch = /^cambridge-(\d+)-anki-other$/.exec(slug);
+  if (ankiOtherMatch) {
+    const book = Number(ankiOtherMatch[1]);
+    const group = getCambridgeAnkiGroups(book).find((item) => item.section === 'Other');
+    if (group) return ankiGroupDeck(slug, book, group, `Cambridge IELTS ${book} · Vocabulary`);
+  }
   const t = getVocabTopic(slug);
-  if (t) return { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words };
+  if (t) return { slug: t.slug, kind: 'topic', name: t.name, nameVi: t.nameVi, blurb: t.blurb, words: t.words, language: t.language, sourceNote: t.sourceNote };
   // Bộ Oxford 3000 dùng đúng màn học của bộ IELTS. Từ Oxford không có phiên âm hay
   // định nghĩa tiếng Anh, nên hai trường đó để trống; cấp A1–C1 đi vào trường `band`.
   const o = OXFORD_TOPIC_DECKS.find((d) => d.slug === slug);
@@ -157,6 +253,15 @@ export function notebookDeck(entries: readonly NotebookSource[]): StudyDeck {
 
 /** Nhóm từ để hiện danh sách: bộ IELTS theo band (dễ → khó), bộ khác một nhóm. */
 export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWord[] }[] {
+  if (deck.language === 'ja') return deck.words.length ? [{ label: 'Từ tiếng Nhật', words: deck.words }] : [];
+  if (deck.language === 'zh') return deck.words.length ? [{ label: 'Từ tiếng Trung', words: deck.words }] : [];
+  if (deck.words.some((word) => word.band === 'Bổ trợ')) {
+    const sections = [...new Set(deck.words.map((word) => word.sourceLevel).filter((value): value is string => Boolean(value)))];
+    if (sections.length > 1) {
+      return sections.map((label) => ({ label, words: deck.words.filter((word) => word.sourceLevel === label) }));
+    }
+    return deck.words.length ? [{ label: sections[0] ?? 'Từ vựng bổ trợ', words: deck.words }] : [];
+  }
   if (deck.kind === 'oxford') {
     const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
     return levels.map((level) => ({ label: level, words: deck.words.filter((w) => w.band === level) })).filter((g) => g.words.length > 0);
@@ -165,12 +270,17 @@ export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWo
     return deck.words.length
       ? [{ label: deck.kind === 'notebook' ? 'Từ đã lưu' : deck.kind === 'custom' ? 'Từ trong bài' : 'Thuật ngữ', words: deck.words }]
       : [];
-  return BAND_ORDER.map((band) => {
+  const bandGroups = BAND_ORDER.map((band) => {
     const words = deck.words.filter((w) => w.band === band);
     // Nhãn theo mức B1–C2 khi từ có `cefr`; bộ chưa có thì giữ nhãn band cũ.
     const cefr = words.find((w) => w.cefr)?.cefr;
     return { label: cefr ? `${cefr} · Band ${band}` : `Band ${band}`, words };
   }).filter((g) => g.words.length > 0);
+  if (bandGroups.length) return bandGroups;
+  const bands = [...new Set(deck.words.map((word) => word.band.trim()).filter(Boolean))];
+  return bands.length
+    ? bands.map((band) => ({ label: band, words: deck.words.filter((word) => word.band.trim() === band) }))
+    : deck.words.length ? [{ label: deck.nameVi, words: deck.words }] : [];
 }
 
 export { posIpa } from '@/services/vocab/pos-ipa';

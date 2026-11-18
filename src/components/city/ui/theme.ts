@@ -28,9 +28,9 @@ export const CG = {
   warnSoft: '#FDF3E1',
   bad: '#C8402F',
   badSoft: '#FDECEA',
-  font: 'PlusJakartaSans_500Medium, "Plus Jakarta Sans", system-ui, sans-serif',
-  fontBold: 'PlusJakartaSans_700Bold, "Plus Jakarta Sans", system-ui, sans-serif',
-  fontX: 'PlusJakartaSans_800ExtraBold, "Plus Jakarta Sans", system-ui, sans-serif',
+  font: 'Nunito_600SemiBold, "Nunito", system-ui, sans-serif',
+  fontBold: 'Nunito_700Bold, "Nunito", system-ui, sans-serif',
+  fontX: 'Nunito_700Bold, "Nunito", system-ui, sans-serif',
 } as const;
 
 const CSS = `

@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-mo-ta-1",
+  "level": "EASY",
+  "title": "Describing a Meaningful Personal Gift",
+  "titleVi": "Miêu tả một món quà ý nghĩa",
+  "situationVi": "Bạn đang trò chuyện cùng bạn học tiếng Anh trong giờ giải lao và muốn giới thiệu về một món đồ bạn luôn mang theo bên mình.",
+  "task": "Talk about an object you received as a gift that is special to you. Describe what it looks like, who gave it to you, and why it is important in your daily life.",
+  "mustVi": [
+   "Món đồ đó là gì và trông như thế nào (kích thước, màu sắc, chất liệu).",
+   "Ai đã tặng bạn và vào dịp đặc biệt nào.",
+   "Lý do vì sao món đồ này có ý nghĩa tình cảm lớn đối với bạn."
+  ],
+  "phrases": [
+   {
+    "en": "It was a gift from...",
+    "vi": "Đó là món quà từ...",
+    "ex": "It was a gift from my best friend on my 25th birthday."
+   },
+   {
+    "en": "It is made of...",
+    "vi": "Nó được làm bằng chất liệu...",
+    "ex": "It is made of soft dark brown leather."
+   },
+   {
+    "en": "What makes it special is...",
+    "vi": "Điều làm nó trở nên đặc biệt là...",
+    "ex": "What makes it special is the personalized engraving on the front."
+   },
+   {
+    "en": "I carry it everywhere",
+    "vi": "Tôi luôn mang nó theo bên mình",
+    "ex": "I carry it everywhere in my work bag."
+   },
+   {
+    "en": "It reminds me of...",
+    "vi": "Nó nhắc tôi nhớ về...",
+    "ex": "It reminds me of my sister's constant support."
+   },
+   {
+    "en": "It has great sentimental value",
+    "vi": "Nó có giá trị tinh thần rất lớn",
+    "ex": "Even though it looks old now, it has great sentimental value."
+   }
+  ],
+  "sample": "I want to tell you about my brown leather wallet. It is quite compact and made of soft, dark brown leather with neat stitching along the edges. My older sister gave it to me four years ago when I landed my first full-time job in Hanoi. What makes it special is that she had my initials engraved on the front corner. Even though the edges are slightly worn out now, I carry it everywhere with me every single day. It has great sentimental value because it reminds me of her constant encouragement whenever I face difficulties at work.",
+  "tipVi": "Khi miêu tả đồ vật, bạn hãy bắt đầu từ các đặc điểm thị giác cơ bản như màu sắc và chất liệu, sau đó mới chia sẻ câu chuyện và ý nghĩa cảm xúc gắn liền với nó."
+ },
+ {
+  "id": "gt-mo-ta-2",
+  "level": "EASY",
+  "title": "Describing a Colleague You Admire",
+  "titleVi": "Miêu tả một đồng nghiệp bạn ngưỡng mộ",
+  "situationVi": "Trong buổi sinh hoạt câu lạc bộ tiếng Anh, bạn được mời chia sẻ về một người đồng nghiệp mà bạn thực sự tôn trọng và yêu mến.",
+  "task": "Describe a colleague or teammate you admire at work. Talk about their appearance and presence, their key personality traits, and what you have learned from working with them.",
+  "mustVi": [
+   "Người đó là ai, ngoại hình và phong thái làm việc chung của họ.",
+   "Các phẩm chất tính cách nổi bật giúp họ hoàn thành tốt công việc.",
+   "Lý do bạn ngưỡng mộ họ và bài học bạn rút ra được cho bản thân."
+  ],
+  "phrases": [
+   {
+    "en": "has a gentle and reassuring presence",
+    "vi": "có phong thái điềm đạm và đáng tin cậy",
+    "ex": "She has a gentle and reassuring presence that calms everyone down."
+   },
+   {
+    "en": "calm and patient under pressure",
+    "vi": "bình tĩnh và kiên nhẫn khi gặp áp lực",
+    "ex": "He always remains calm and patient under heavy pressure."
+   },
+   {
+    "en": "What I admire most about her is...",
+    "vi": "Điều tôi ngưỡng mộ nhất ở cô ấy là...",
+    "ex": "What I admire most about her is her strong work ethic."
+   },
+   {
+    "en": "approachable and supportive",
+    "vi": "dễ gần và luôn sẵn sàng hỗ trợ",
+    "ex": "She is very approachable and supportive toward newer team members."
+   },
+   {
+    "en": "sets a great example for...",
+    "vi": "nêu gương sáng cho...",
+    "ex": "He sets a great example for the entire marketing team."
+   },
+   {
+    "en": "always willing to lend a hand",
+    "vi": "luôn sẵn lòng giúp đỡ người khác",
+    "ex": "Whenever a teammate is overwhelmed, she is always willing to lend a hand."
+   }
+  ],
+  "sample": "I would like to describe Lan, my senior marketing colleague. She is in her early thirties, always dressed neatly in smart-casual attire, and she has a gentle, reassuring presence. Lan is exceptionally patient and detail-oriented. Even when project deadlines become chaotic, she stays calm and never raises her voice. What I admire most about her is how supportive she is toward junior staff. Whenever I struggle with client presentations, she sits down and coaches me through each slide. Working alongside Lan has taught me not only technical skills, but also how to handle workplace stress with grace.",
+  "tipVi": "Hãy kết hợp tính từ miêu tả tính cách với một ví dụ cụ thể về hành động để người nghe cảm nhận rõ nét chân dung nhân vật."
+ },
+ {
+  "id": "gt-mo-ta-3",
+  "level": "MEDIUM",
+  "title": "Describing Your Favorite Relaxing Spot",
+  "titleVi": "Miêu tả địa điểm thư giãn yêu thích",
+  "situationVi": "Bạn đang trò chuyện với một người bạn nước ngoài mới chuyển tới thành phố và muốn giới thiệu một địa điểm yên tĩnh mà bạn hay lui tới để nạp lại năng lượng.",
+  "task": "Describe your favorite quiet spot in your city. Explain where it is located, what the atmosphere and sensory details are like, and how spending time there makes you feel.",
+  "mustVi": [
+   "Vị trí và bầu không khí chung của địa điểm đó.",
+   "Chi tiết cảm quan nổi bật (ánh sáng, âm thanh, mùi hương, cách bài trí).",
+   "Những việc bạn thường làm ở đó và cảm giác sau khi rời đi."
+  ],
+  "phrases": [
+   {
+    "en": "tucked away in a quiet alley",
+    "vi": "nằm nép mình trong một con ngõ yên tĩnh",
+    "ex": "The cafe is tucked away in a quiet alley near the lake."
+   },
+   {
+    "en": "cozy and rustic atmosphere",
+    "vi": "bầu không khí ấm cúng và mộc mạc",
+    "ex": "The shop has a cozy and rustic atmosphere with wooden furniture."
+   },
+   {
+    "en": "filled with the aroma of...",
+    "vi": "thoang thoảng ngập tràn hương thơm của...",
+    "ex": "The entire room is filled with the aroma of freshly ground coffee."
+   },
+   {
+    "en": "escape from the hustle and bustle",
+    "vi": "trốn khỏi sự ồn ào náo nhiệt của phố thị",
+    "ex": "It is the ideal hideaway to escape from the hustle and bustle."
+   },
+   {
+    "en": "natural sunlight streaming through...",
+    "vi": "ánh nắng tự nhiên rọi qua...",
+    "ex": "I love the natural sunlight streaming through the large windows."
+   },
+   {
+    "en": "feel completely refreshed and recharged",
+    "vi": "cảm thấy hoàn toàn sảng khoái và được nạp đầy năng lượng",
+    "ex": "After two hours there, I feel completely refreshed and recharged."
+   }
+  ],
+  "sample": "My favorite place to unwind is a small book cafe tucked away in a quiet alley near West Lake. It has a rustic interior with dark wooden shelves, potted greenery, and soft warm lighting. In the afternoon, natural sunlight streams through the large balcony windows, and the whole space is filled with the aroma of freshly roasted coffee and old paper. Soft acoustic music plays quietly in the background. I usually sit in a corner, sip hot tea, and read a novel. Whenever I leave this peaceful spot, I feel completely refreshed and recharged for the week ahead.",
+  "tipVi": "Tận dụng các tính từ gợi cảm giác (thị giác, khứu giác, thính giác) để bài nói mang tính gợi hình cao và lôi cuốn người nghe."
+ },
+ {
+  "id": "gt-mo-ta-4",
+  "level": "MEDIUM",
+  "title": "Describing a Memorable Trip Photograph",
+  "titleVi": "Miêu tả một bức ảnh chuyến đi đáng nhớ",
+  "situationVi": "Bạn đang cùng một đồng nghiệp xem lại album ảnh trên điện thoại và dừng lại ở một bức ảnh chụp trong chuyến du lịch gia đình đáng nhớ nhất của bạn.",
+  "task": "Describe a memorable photograph from a family vacation. Explain what can be seen in the foreground and background, the activity taking place, and the emotions the picture brings back.",
+  "mustVi": [
+   "Bức ảnh được chụp khi nào, ở đâu và ai là những người xuất hiện trong ảnh.",
+   "Bố cục chi tiết giữa tiền cảnh (foreground), hậu cảnh (background) và biểu cảm của các nhân vật.",
+   "Ý nghĩa tinh thần và cảm xúc mà bức ảnh này gợi lại cho bạn mỗi khi xem."
+  ],
+  "phrases": [
+   {
+    "en": "In the foreground, you can see...",
+    "vi": "Ở tiền cảnh, bạn có thể nhìn thấy...",
+    "ex": "In the foreground, you can see my family sitting around a campfire."
+   },
+   {
+    "en": "In the background, there are...",
+    "vi": "Ở phía hậu cảnh, có...",
+    "ex": "In the background, there are pine trees covered in morning fog."
+   },
+   {
+    "en": "capture a candid moment",
+    "vi": "bắt trọn một khoảnh khắc tự nhiên, không diễn",
+    "ex": "My brother managed to capture a wonderful candid moment."
+   },
+   {
+    "en": "bursting into laughter",
+    "vi": "bật cười nắc nẻ",
+    "ex": "Everyone in the frame was bursting into laughter."
+   },
+   {
+    "en": "evoke a strong sense of nostalgia",
+    "vi": "gợi lên cảm giác hoài niệm sâu sắc",
+    "ex": "Looking at this photo evokes a strong sense of nostalgia."
+   },
+   {
+    "en": "freeze a precious memory in time",
+    "vi": "đóng băng và lưu giữ một kỷ niệm quý giá",
+    "ex": "This photograph freezes a precious memory in time for our family."
+   }
+  ],
+  "sample": "This photograph was taken during our family trip to Da Lat two years ago. In the foreground, my parents and I are sitting around an outdoor wooden table, holding ceramic mugs of warm ginger tea. We are bursting into laughter because my father had just made a witty joke, so it captured a genuinely candid moment. In the background, tall pine trees are shrouded in light morning mist, with golden sunlight filtering gently through the branches. Looking at this picture always evokes a strong sense of nostalgia because it freezes a rare, happy moment before everyone became consumed with work.",
+  "tipVi": "Sử dụng các trạng từ chỉ vị trí không gian như 'in the foreground', 'in the background', 'on the left' để dẫn dắt ánh nhìn của người nghe theo trật tự rõ ràng."
+ },
+ {
+  "id": "gt-mo-ta-5",
+  "level": "HARD",
+  "title": "Comparing Two Different Living Environments",
+  "titleVi": "So sánh hai môi trường sống khác nhau",
+  "situationVi": "Bạn đang trò chuyện và đưa ra lời khuyên cho một người bạn thân đang phân vân giữa việc mua chung cư ở trung tâm thành phố hay mua nhà đất ở vùng ngoại ô.",
+  "task": "Compare the experience of living in a downtown apartment versus living in a suburban house. Weigh the pros and cons regarding daily commute, living space, and overall lifestyle, then give your final recommendation.",
+  "mustVi": [
+   "So sánh sự tiện lợi và thời gian đi lại giữa vị trí trung tâm và ngoại ô.",
+   "So sánh không gian sinh hoạt, chất lượng không khí và môi trường sống của hai nơi.",
+   "Đưa ra lời khuyên rõ ràng và phù hợp với lối sống hiện tại của người bạn đó."
+  ],
+  "phrases": [
+   {
+    "en": "On the one hand..., on the other hand...",
+    "vi": "Một mặt thì..., nhưng mặt khác thì...",
+    "ex": "On the one hand, downtown is lively; on the other hand, it is noisy."
+   },
+   {
+    "en": "in terms of daily commute",
+    "vi": "xét về mặt đi lại hàng ngày",
+    "ex": "In terms of daily commute, an inner-city apartment wins hands down."
+   },
+   {
+    "en": "offers significantly more spacious living",
+    "vi": "mang lại không gian sống rộng rãi hơn rõ rệt",
+    "ex": "A suburban house offers significantly more spacious living areas."
+   },
+   {
+    "en": "a trade-off between convenience and tranquility",
+    "vi": "sự đánh đổi giữa tính tiện nghi và sự yên tĩnh",
+    "ex": "The decision comes down to a trade-off between convenience and tranquility."
+   },
+   {
+    "en": "whereas / while",
+    "vi": "trong khi đó (dùng để nối hai vế đối lập)",
+    "ex": "Suburbs offer fresher air, whereas city centers offer immediate amenities."
+   },
+   {
+    "en": "If I were in your shoes, I would...",
+    "vi": "Nếu tôi ở vị trí của bạn, tôi sẽ...",
+    "ex": "If I were in your shoes, I would prioritize saving commute time."
+   }
+  ],
+  "sample": "Both housing options offer distinct benefits. On the one hand, a downtown apartment provides unbeatable convenience. In terms of daily commute, you are minutes away from offices, hospitals, and restaurants, saving valuable hours each week. However, living space is relatively compact, and street noise is constant. On the other hand, a suburban house offers significantly more spacious living, a private backyard, and fresher air, which is great for relaxation. The major drawback is enduring a long, exhausting commute every single day. If I were in your shoes as a busy young professional without children yet, I would choose the apartment to prioritize convenience.",
+  "tipVi": "Để so sánh ở mức độ nâng cao, hãy sử dụng các cấu trúc đối lập nhịp nhàng (on the one hand / on the other hand, whereas) trước khi tổng hợp và đưa ra kết luận dứt khoát."
+ }
+]

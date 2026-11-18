@@ -1,0 +1,117 @@
+{
+ "id": "stress",
+ "title": "Stress and Relaxation",
+ "titleVi": "Căng thẳng và thư giãn",
+ "tipVi": "Hãy sử dụng linh hoạt các cụm từ chỉ cường độ căng thẳng và cách giải tỏa thay vì lặp lại từ 'stress' hay 'relax', đồng thời đưa ví dụ cụ thể về thói quen cá nhân.",
+ "part1": [
+  "What do you usually do when you feel stressed?",
+  "Do you think your daily life is more stressful than in the past?",
+  "Where is your favourite place to unwind?"
+ ],
+ "part2": {
+  "prompt": "Describe an activity you do that helps you relieve stress",
+  "bullets": [
+   "what the activity is",
+   "where and when you usually do it",
+   "who you do it with, or if you do it alone",
+   "and explain why this activity helps you feel calm and refreshed"
+  ]
+ },
+ "part3": [
+  "Why do you think modern lifestyle causes more mental pressure than in previous generations?",
+  "Should employers take responsibility for reducing their employees' workplace stress?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "wind down",
+    "vi": "thả lỏng, xả hơi sau một ngày bận rộn",
+    "ex": "After a hectic day at the office, I usually listen to soft jazz to wind down."
+   },
+   {
+    "en": "take a toll on",
+    "vi": "gây tổn hại hoặc ảnh hưởng tiêu cực lâu dài lên",
+    "ex": "Working twelve-hour shifts every day has taken a heavy toll on his mental health."
+   },
+   {
+    "en": "recharge one's batteries",
+    "vi": "nạp lại năng lượng tinh thần hoặc thể chất",
+    "ex": "A weekend getaway in the mountains helped me recharge my batteries before the exam."
+   },
+   {
+    "en": "at one's wits' end",
+    "vi": "bế tắc, cùng quẫn vì quá nhiều áp lực",
+    "ex": "She was at her wits' end trying to manage both child care and strict project deadlines."
+   },
+   {
+    "en": "blow off steam",
+    "vi": "giải tỏa căng thẳng hoặc cơn giận",
+    "ex": "Hitting the gym after work is a constructive way to blow off steam."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức từ sáng sớm đến đêm muộn",
+    "ex": "Students who burn the candle at both ends during finals week often end up burning out."
+   },
+   {
+    "en": "keep something at bay",
+    "vi": "ngăn chặn điều gì tiêu cực làm phiền hoặc áp đảo",
+    "ex": "Practicing mindfulness meditation helps me keep work-related anxiety at bay."
+   },
+   {
+    "en": "a sense of tranquility",
+    "vi": "cảm giác thanh thản, tĩnh lặng sâu sắc",
+    "ex": "Sitting beside the lotus pond early in the morning brings me a rare sense of tranquility."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu hoạt động xả stress quen thuộc (chạy bộ buổi tối quanh hồ gần nhà sau giờ làm việc).",
+   "Ý 1 (Thời gian, địa điểm, bạn đồng hành): Nêu rõ thời điểm (khoảng 8 giờ tối các ngày trong tuần) và lý do thích chạy một mình để có không gian riêng tư.",
+   "Ý 2 (Quá trình thực hiện): Miêu tả việc đeo tai nghe, nhịp bước chân, giải phóng năng lượng ứ đọng sau cả ngày ngồi văn phòng.",
+   "Kết (Lý do hiệu quả): Giải thích cơ chế giải tỏa (sản sinh endorphin, tách rời màn hình điện tử, cải thiện giấc ngủ)."
+  ],
+  "sample": "Whenever work pressure becomes overwhelming, my go-to remedy is going for an evening run around the lake near my apartment. I usually lace up my running shoes around 8 p.m., especially on weekdays after spending eight hours glued to my laptop. While some people prefer jogging in groups, I deliberately choose to do this solo because I desperately need quiet time to gather my thoughts without any social expectations.\n\nDuring the run, I plug in my earphones and listen to instrumental lofi tracks. Focusing solely on my breathing and the steady rhythm of my footsteps helps me completely disconnect from pending deadlines and endless emails. The physical exertion allows me to blow off steam and triggers the release of endorphins, which instantly lifts my spirits. By the time I finish a five-kilometer loop and cool down with light stretching, the tension in my shoulders simply melts away. Not only does this routine give me a genuine sense of tranquility, but it also ensures I sleep deeply, ready to tackle the next day with renewed focus.",
+  "p1": [
+   {
+    "q": "What do you usually do when you feel stressed?",
+    "a": "I usually prepare a warm cup of chamomile tea and listen to acoustic music. It instantly slows down my racing thoughts, especially after dealing with demanding deadlines at work."
+   },
+   {
+    "q": "Do you think your daily life is more stressful than in the past?",
+    "a": "Definitely, yes. Back in university, my only major concern was passing exams. Nowadays, juggling demanding professional responsibilities, living expenses, and personal commitments generates far more persistent mental pressure."
+   },
+   {
+    "q": "Where is your favourite place to unwind?",
+    "a": "My bedroom balcony is my ultimate sanctuary. It overlooks a quiet alley with leafy potted plants, making it the perfect corner to read a novel and escape the city noise."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do you think modern lifestyle causes more mental pressure than in previous generations?",
+    "a": "In my view, the hyper-connected nature of contemporary life is the primary culprit. Constant digital alerts and ubiquitous social media comparisons make it virtually impossible to switch off mentally. Whereas previous generations maintained distinct boundaries between labor and leisure, today's 24/7 work culture pushes people toward chronic exhaustion."
+   },
+   {
+    "q": "Should employers take responsibility for reducing their employees' workplace stress?",
+    "a": "Without doubt, companies bear both a moral duty and an economic incentive to prioritize employee well-being. Unchecked workplace pressure triggers severe burnout and accelerates employee turnover. By assigning realistic workloads and promoting flexible schedules, employers foster a healthier workforce, which inevitably boosts collective productivity and institutional loyalty."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai từ loại của 'stress': thí sinh thường nói 'I am very stress' thay vì tính từ 'I am stressed' hoặc 'stressed out'.",
+   "Thiếu giới từ đi kèm các cụm từ thông dụng, chẳng hạn dùng 'cope stress' thay vì 'cope with stress', hoặc nhầm lẫn giữa 'relieve stress' (ngoại động từ) và 'get relief from stress'.",
+   "Lạm dụng từ 'relax' như một câu trả lời chung chung lặp đi lặp lại mà không bổ sung chi tiết hành động cụ thể hoặc cảm giác tĩnh tâm sâu hơn (như 'unwind', 'clear my head')."
+  ],
+  "p1More": [
+   "Do you find it easy or difficult to relax on weekends?",
+   "Did you feel stressed when you were a child?",
+   "Do you prefer relaxing indoors or outdoors?",
+   "Does listening to music help you reduce anxiety?",
+   "What kind of activities make you feel under pressure?"
+  ],
+  "p3More": [
+   "How has technological advancement impacted people's ability to achieve mental peace?",
+   "To what extent do cultural expectations contribute to stress among young people in Asian societies?",
+   "Should governments allocate more public funds to mental health facilities and recreational spaces?",
+   "Will future generations experience higher or lower levels of chronic stress than we do today?"
+  ]
+ }
+}

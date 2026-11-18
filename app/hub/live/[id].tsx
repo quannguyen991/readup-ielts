@@ -335,9 +335,9 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
             style={{ borderRadius: 28, paddingVertical: 22, paddingHorizontal: 16, alignItems: 'center', gap: 10 }}
           >
             <LiveAvatar state={avatarState} size={230} />
-            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>{statusLine}</Text>
+            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>{statusLine}</Text>
             {phase === 'user' && listen.listening ? (
-              <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '800', fontVariant: ['tabular-nums'] }}>
+              <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '400', fontVariant: ['tabular-nums'] }}>
                 {formatClock(listen.elapsed())}
               </Text>
             ) : null}
@@ -346,9 +346,9 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
           <View style={[GLASS_CARD, { padding: 18, gap: 8 }]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <View style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: HUB.glassStrong }}>
-                <Text style={{ color: HUB.blue, fontSize: 11, fontWeight: '800' }}>LEO</Text>
+                <Text style={{ color: HUB.blue, fontSize: 13, fontWeight: '400' }}>LEO</Text>
               </View>
-              <Text style={{ color: HUB.muted, fontSize: 11, fontWeight: '700' }}>giám khảo IELTS</Text>
+              <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '700' }}>giám khảo IELTS</Text>
             </View>
             <Text style={{ color: HUB.ink, fontSize: 19, fontWeight: '700', lineHeight: 28 }}>{subtitle || ' '}</Text>
           </View>
@@ -363,11 +363,11 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
 
           {phase === 'ready' ? (
             <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Cách luyện cùng Leo</Text>
+              <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Cách luyện cùng Leo</Text>
               <Step n={1} text="Leo hỏi bằng giọng nói. Bạn bấm micro và trả lời tự nhiên." />
               <Step n={2} text="Leo phản ứng ngắn rồi hỏi câu tiếp theo, đúng cấu trúc bài thi." />
               <Step n={3} text="Hết sáu câu, bạn xem phân tích: tốc độ, từ đệm, ngập ngừng và điểm từng tiêu chí." />
-              <Text style={{ color: HUB.muted, fontSize: 12, lineHeight: 18 }}>
+              <Text style={{ color: HUB.muted, fontSize: 13, lineHeight: 18 }}>
                 Cần đăng nhập để Leo trả lời, cùng micro và Chrome để ghi âm.
               </Text>
               <Pressable
@@ -376,7 +376,7 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
                 style={{ height: 54, borderRadius: 16, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8, backgroundColor: HUB.blue }}
               >
                 <Icon name="play" size={18} color="#fff" />
-                <Text style={{ color: '#fff', fontWeight: '800', fontSize: 16 }}>Bắt đầu với Leo</Text>
+                <Text style={{ color: '#fff', fontWeight: '400', fontSize: 16 }}>Bắt đầu với Leo</Text>
               </Pressable>
             </View>
           ) : (
@@ -407,7 +407,7 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
                 </Pressable>
                 <ControlButton icon="trophy" label="Kết thúc" disabled={answers === 0 || micOn || phase === 'thinking'} onPress={finish} />
               </View>
-              <Text style={{ color: HUB.muted, fontSize: 12, textAlign: 'center' }}>
+              <Text style={{ color: HUB.muted, fontSize: 13, textAlign: 'center' }}>
                 {micOn ? 'Bấm lần nữa để dừng và gửi câu trả lời' : phase === 'user' ? 'Bấm micro để trả lời' : ' '}
               </Text>
 
@@ -424,7 +424,7 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
               >
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                   <Icon name="sparkle" size={18} color={HUB.blue} />
-                  <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Gợi ý trả lời</Text>
+                  <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Gợi ý trả lời</Text>
                 </View>
                 <Icon name={showHint ? 'chevron-left' : 'chevron-right'} size={18} color={HUB.muted} />
               </Pressable>
@@ -455,7 +455,7 @@ function LiveSession({ topic }: { topic: SpeakingTopic }) {
                         backgroundColor: t.role === 'ai' ? HUB.glassStrong : 'rgba(106, 75, 217,0.14)',
                       }}
                     >
-                      <Text style={{ color: HUB.muted, fontSize: 10, fontWeight: '800', marginBottom: 2 }}>
+                      <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '400', marginBottom: 2 }}>
                         {t.role === 'ai' ? 'LEO' : 'BẠN'}
                       </Text>
                       <Text style={{ color: HUB.ink, fontSize: 14, lineHeight: 21, fontStyle: t.silent ? 'italic' : 'normal' }}>
@@ -477,7 +477,7 @@ function Step({ n, text }: { n: number; text: string }) {
   return (
     <View style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
       <View style={{ width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-        <Text style={{ color: '#fff', fontSize: 12, fontWeight: '800' }}>{n}</Text>
+        <Text style={{ color: '#fff', fontSize: 13, fontWeight: '400' }}>{n}</Text>
       </View>
       <Text style={{ color: HUB.ink, fontSize: 14, lineHeight: 21, flex: 1 }}>{text}</Text>
     </View>
@@ -500,7 +500,7 @@ function ControlButton({
       <View style={{ width: 56, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
         <Icon name={icon} size={20} color={HUB.ink} />
       </View>
-      <Text style={{ color: HUB.body, fontSize: 11, fontWeight: '700', textAlign: 'center' }}>{label}</Text>
+      <Text style={{ color: HUB.body, fontSize: 13, fontWeight: '700', textAlign: 'center' }}>{label}</Text>
     </Pressable>
   );
 }

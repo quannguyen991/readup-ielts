@@ -1,0 +1,117 @@
+{
+ "id": "museums",
+ "title": "Museums",
+ "titleVi": "Bảo tàng",
+ "tipVi": "Hãy kết hợp miêu tả trải nghiệm giác quan và cảm xúc cá nhân thay vì chỉ liệt kê các hiện vật khô khan để đạt điểm Lexical Resource cao hơn.",
+ "part1": [
+  "Do you often visit museums or art galleries?",
+  "What kind of museums do you find most interesting?",
+  "Did you go to any museums when you were a child?"
+ ],
+ "part2": {
+  "prompt": "Describe a museum or exhibition that left a strong impression on you",
+  "bullets": [
+   "where this museum or exhibition is located",
+   "what kind of exhibits were on display",
+   "who you visited it with",
+   "and explain why it left such a strong impression on you"
+  ]
+ },
+ "part3": [
+  "Should public museums charge admission fees or be entirely free for citizens?",
+  "How might virtual museum tours change the way people appreciate cultural heritage in the future?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "historical artifacts",
+    "vi": "cổ vật lịch sử",
+    "ex": "The museum boasts an impressive collection of ancient historical artifacts dating back to the Bronze Age."
+   },
+   {
+    "en": "interactive display",
+    "vi": "khu trưng bày tương tác",
+    "ex": "Children were fascinated by the interactive display that demonstrated how steam engines work."
+   },
+   {
+    "en": "curate an exhibition",
+    "vi": "giám tuyển hoặc tổ chức một cuộc triển lãm",
+    "ex": "It takes months of scholarly research to curate an exhibition of this magnitude."
+   },
+   {
+    "en": "cultural heritage",
+    "vi": "di sản văn hóa",
+    "ex": "Visiting regional museums helps young generations stay connected to their cultural heritage."
+   },
+   {
+    "en": "bring history to life",
+    "vi": "tái hiện lịch sử một cách sống động",
+    "ex": "The audio guides and holographic projections really bring history to life."
+   },
+   {
+    "en": "hands-on experience",
+    "vi": "trải nghiệm thực tế hoặc tự tay thao tác",
+    "ex": "The science museum offers a hands-on experience that textbooks simply cannot replicate."
+   },
+   {
+    "en": "piece of art",
+    "vi": "tác phẩm nghệ thuật",
+    "ex": "Each piece of art in the modern wing tells a unique story about post-war society."
+   },
+   {
+    "en": "steeped in history",
+    "vi": "đậm nét lịch sử hoặc gắn liền với quá khứ",
+    "ex": "Walking through the ancient palace museum felt like stepping into an era steeped in history."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu bảo tàng bạn muốn kể (Bảo tàng Dân tộc học Việt Nam ở Hà Nội) và thời điểm ghé thăm gần đây.",
+   "Ý 1 (Nơi chốn & Người đồng hành): Nêu vị trí cụ thể ở quận Cầu Giấy và người bạn đi cùng vào dịp cuối tuần.",
+   "Ý 2 (Hiện vật trưng bày): Miêu tả trang phục thổ cẩm, nhạc cụ truyền thống và điểm nhấn là khu vườn kiến trúc ngoài trời với nhà rông, nhà dài.",
+   "Kết (Lý do ấn tượng): Giải thích trải nghiệm tương tác chân thực và cách bảo tàng tái hiện lịch sử sống động, sâu sắc hơn sách giáo khoa."
+  ],
+  "sample": "I would like to talk about the Vietnam Museum of Ethnology, located in the Cau Giay district of Hanoi. I visited it last autumn with one of my close friends who was in town for the weekend. The museum showcases the diverse cultural heritage of Vietnam's 54 ethnic groups. Inside, there are thousands of everyday objects, elaborate tribal costumes, and traditional musical instruments on display. What really sets it apart, though, is the open-air architectural garden. It features full-scale replicas of traditional dwellings, such as the towering communal house of the Ba Na people and an authentic Ede longhouse. The reason this visit left such a lasting impression on me was how immersive the whole experience felt. Rather than keeping visitors behind velvet ropes, the museum offers a hands-on experience where you can step directly into the thatched houses and listen to audio recordings of traditional folk songs. It truly brought history to life and deepened my appreciation for the cultural richness of our country, making it far more memorable than any standard textbook lesson.",
+  "p1": [
+   {
+    "q": "Do you often visit museums or art galleries?",
+    "a": "To be honest, not very often, perhaps once or twice a year. I usually go when there is a special temporary exhibition in town, like the recent lacquer painting showcase at our local fine arts gallery."
+   },
+   {
+    "q": "What kind of museums do you find most interesting?",
+    "a": "I am particularly drawn to interactive science museums. Rather than just staring at static objects behind glass, I love hands-on exhibits where you can press buttons, run small experiments, and see scientific concepts in action."
+   },
+   {
+    "q": "Did you go to any museums when you were a child?",
+    "a": "Yes, definitely. My elementary school organized annual field trips to the National History Museum. I vividly remember marveling at ancient stone tools and giant replica boats alongside all my classmates."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should public museums charge admission fees or be entirely free for citizens?",
+    "a": "In my view, public museums should ideally be free or charge only nominal fees. Since these institutions preserve shared cultural heritage, universal access ensures that people from all socio-economic backgrounds can benefit from educational resources. However, while relying on state funding is ideal, charging a small fee for special exhibits can help maintain preservation standards without alienating lower-income visitors. Balancing accessibility with financial sustainability is key."
+   },
+   {
+    "q": "How might virtual museum tours change the way people appreciate cultural heritage in the future?",
+    "a": "Virtual tours are revolutionizing cultural engagement by democratizing access. Anyone with an internet connection can now explore global collections like the Louvre without paying for costly international flights. Nevertheless, high-resolution screens cannot completely replace the visceral emotional impact of standing in front of a real centuries-old masterpiece. Ultimately, virtual tours will serve as an enticing preview rather than a total substitute for genuine physical visits."
+   }
+  ],
+  "mistakesVi": [
+   "Lặp từ 'museum' hoặc 'history' liên tục; nên luân chuyển linh hoạt bằng 'exhibition', 'cultural institution', 'gallery', hoặc 'heritage site'.",
+   "Dùng sai cụm cố định, ví dụ nói 'in display' thay vì 'on display', hoặc nhầm lẫn giữa 'artifact' (cổ vật nhân tạo) và 'antique' (đồ cổ thông thường).",
+   "Phát âm sai trọng âm của từ 'museum' (/mjuːˈziː.əm/), người học Việt Nam thường có xu hướng nhấn vào âm tiết đầu tiên thay vì âm tiết thứ hai."
+  ],
+  "p1More": [
+   "Do you think museums are popular among young people in your country?",
+   "Have you ever bought a souvenir from a museum gift shop?",
+   "Do you prefer visiting museums alone or with other people?",
+   "Are there many museums in your hometown?",
+   "Would you consider working as a museum curator or guide?"
+  ],
+  "p3More": [
+   "To what extent should museums return historical artifacts taken during colonial periods back to their countries of origin?",
+   "How can modern museums compete with digital entertainment to attract the younger generation?",
+   "Do you think corporate sponsorship of museums threatens their academic integrity?",
+   "What role do regional museums play in preserving minority cultures and languages?"
+  ]
+ }
+}

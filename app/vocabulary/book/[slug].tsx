@@ -1,109 +1,149 @@
-import React, { useMemo } from 'react';
-import { Text, View } from 'react-native';
+import React from 'react';
+import { Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
-import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
+import { Grid } from '@/components/layout/Grid';
 import { Appear } from '@/components/motion/Motion';
-import { Button, Card, SectionHeader } from '@/components/ui';
-import { DeckCard } from '@/components/vocab/DeckCard';
-import { deckLook } from '@/components/vocab/deck-style';
-import { BOOK_VOCAB_DECKS } from '@/data/vocab-topics';
-import { BOOK_PART_SEP, bookPartRanges } from '@/services/vocab/book-parts';
-import { deckProgress } from '@/services/vocab/deck-library';
-import { studiedLemmas } from '@/services/vocab/topic-fsrs';
-import { useTopicStudyStore } from '@/store/useTopicStudyStore';
-import { useVocabStore } from '@/store/useVocabStore';
+import { Button, Card } from '@/components/ui';
+import { BOOK_VOCAB_BOOKS } from '@/data/vocab-topics';
 import { useL } from '@/i18n/useL';
-import type { VocabTopic } from '@/data/vocab-topics';
+import { color } from '@/theme/tokens';
+import { EaBookPage } from '@/components/vocab/eastasia/EaPages';
+import { ZhBookCovers } from '@/components/vocab/chinese/ZhBookCovers';
+import { ZH } from '@/components/vocab/chinese/palette';
+import { themeForLevel } from '@/components/vocab/chinese/levels';
+import { IntroHero } from '@/components/vocab/chinese/IntroHero';
+import { ZH_V4 } from '@/components/vocab/chinese/v4';
+import { JaIntroHero, JaTopicGrid } from '@/components/vocab/japanese/JaBookParts';
+import { isDialogueLesson, JA_STICKER } from '@/components/vocab/japanese/ja-art';
 
-/**
- * Trang một sách từ vựng: mỗi phần 30–50 từ là một thẻ bộ từ, cùng kiểu thẻ với
- * các unit ở thư viện. Chạm một phần mở đúng trang bộ từ (`/vocabulary/topic/<phần>`)
- * nên có đủ các chế độ học, tiến độ và kiểm tra như mọi bộ khác.
- */
-export default function BookPartsPage() {
-  const { L, en } = useL();
+export default function BookVocabScreen() {
   const { slug } = useLocalSearchParams<{ slug?: string }>();
-  const book = BOOK_VOCAB_DECKS.find((d) => d.slug === slug);
-  const stages = useTopicStudyStore((s) => s.stages);
-  const lastAt = useTopicStudyStore((s) => s.lastAt);
-  const entries = useVocabStore((s) => s.entries);
-  const cards = useVocabStore((s) => s.cards);
-  const now = useMemo(() => new Date(), []);
-  const studied = useMemo(() => studiedLemmas({ entries, cards }), [entries, cards]);
+  const { L, en } = useL();
+  const book = BOOK_VOCAB_BOOKS.find((item) => item.slug === slug);
 
-  if (!book) {
-    return (
-      <Screen>
-        <Card>
-          <Text className="font-strong text-cardTitle text-ink">{L('Không có sách này', 'Book not found')}</Text>
-          <Button className="mt-3 self-start" label={L('Về thư viện từ vựng', 'Back to vocabulary')} onPress={() => router.push('/vocabulary/topics' as never)} />
-        </Card>
-      </Screen>
-    );
-  }
-
-  return <BookParts book={book} L={L} en={en} stages={stages} lastAt={lastAt} studied={studied} now={now} />;
-}
-
-function BookParts({
-  book,
-  L,
-  en,
-  stages,
-  lastAt,
-  studied,
-  now,
-}: {
-  book: VocabTopic;
-  L: (vi: string, en: string) => string;
-  en: boolean;
-  stages: ReturnType<typeof useTopicStudyStore.getState>['stages'];
-  lastAt: ReturnType<typeof useTopicStudyStore.getState>['lastAt'];
-  studied: ReturnType<typeof studiedLemmas>;
-  now: Date;
-}) {
-  const ranges = bookPartRanges(book.words.length);
-  const look = deckLook(book.slug);
-
-  const items = ranges.map((r, i) => {
-    const n = i + 1;
-    const partSlug = `${book.slug}${BOOK_PART_SEP}${n}`;
-    const words = book.words.slice(r.start, r.end);
-    const preview = words.slice(0, 3).map((w) => w.word).join(', ');
-    const progress = deckProgress(words, stages[partSlug], lastAt?.[partSlug], studied);
-    return (
-      <Appear key={partSlug} index={Math.min(i, 8)} style={{ height: '100%' }}>
-        <DeckCard
-          title={en ? `Part ${n}` : `Phần ${n}`}
-          subtitle={`${words.length} ${en ? 'words' : 'từ'} · ${preview}`}
-          progress={progress}
-          accent={look.accent}
-          icon={look.icon}
-          sourceLabel={en ? look.sourceLabelEn : look.sourceLabel}
-          now={now}
-          onPress={() => router.push(`/vocabulary/topic/${partSlug}` as never)}
-        />
-      </Appear>
-    );
-  });
+  // Sách tiếng Trung / Nhật: giao diện riêng theo skin (hero, thẻ chủ đề có tiến độ, họa tiết).
+  if (book && (book.language === 'zh' || book.language === 'ja')) return <EaBookPage book={book} />;
 
   return (
     <Screen>
-      <Appear>
-        <Button className="mb-3 self-start" variant="ghost" size="sm" iconLeft="chevron-left" label={L('Thư viện từ vựng', 'Vocabulary library')} onPress={() => router.push('/vocabulary/topics' as never)} />
-        <SectionHeader
-          title={en ? book.name : book.nameVi}
-          subtitle={L(`${book.words.length} từ · ${ranges.length} phần, mỗi phần 30–50 từ`, `${book.words.length} words · ${ranges.length} parts, 30–50 words each`)}
-          icon="book"
+      <Button
+        className="mb-4 self-start"
+        label={L('Tất cả sách từ vựng', 'All vocabulary books')}
+        variant="ghost"
+        size="sm"
+        iconLeft="chevron-left"
+        onPress={() => router.push('/vocabulary/topics' as never)}
+      />
+      {book && (book.language === 'zh' || book.language === 'ja') ? (
+        <Button
+          className="mb-4 self-start"
+          label={book.language === 'zh' ? L('Xem lộ trình HSK 1–6', 'See the HSK 1–6 roadmap') : L('Xem lộ trình JLPT N5–N1', 'See the JLPT N5–N1 roadmap')}
+          variant="secondary"
+          size="sm"
+          onPress={() => router.push(`/vocabulary/lo-trinh/${book.language}` as never)}
         />
-      </Appear>
-      <View className="mt-3">
-        <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={14}>
-          {items}
-        </Grid>
-      </View>
+      ) : null}
+      {book ? (
+        <>
+          {book.language === 'zh' ? (
+            // Đầu trang sách tiếng Trung: tên lớn, ba nhãn số liệu, một dòng mô tả. Ghi chú nguồn xuống cuối trang.
+            <Appear>
+              <IntroHero
+                banner={themeForLevel(1).banner}
+                corner={themeForLevel(1).frames.corner}
+                wash={themeForLevel(1).wash}
+                eyebrow="Từ vựng tiếng Trung"
+                title={book.nameVi.split(' · ')[0] ?? book.nameVi}
+                chips={[
+                  `${book.topics.length} bộ HSK`,
+                  `${book.topics.reduce((n, t) => n + t.words.length, 0).toLocaleString('vi-VN')} từ`,
+                  `${book.topics.reduce((n, t) => n + t.lessons.length, 0)} buổi học`,
+                ]}
+                blurb={book.blurb}
+              />
+            </Appear>
+          ) : book.language === 'ja' ? (
+            // Đầu trang sách tiếng Nhật: banner xanh rừng–vàng kim, bốn góc hoa anh đào, đèn lồng.
+            <Appear>
+              <JaIntroHero
+                banner={ZH_V4.ja.banner}
+                decor={JA_STICKER.maneki}
+                eyebrow="Từ vựng tiếng Nhật"
+                title={book.nameVi.split(' · ')[0] ?? book.nameVi}
+                chips={[
+                  `${book.topics.length} bộ`,
+                  `${book.topics.reduce((n, t) => n + t.words.length, 0).toLocaleString('vi-VN')} từ`,
+                  `${book.topics.reduce((n, t) => n + t.lessons.filter((l) => isDialogueLesson(l.slug)).length, 0)} bài hội thoại`,
+                ]}
+                blurb={book.blurb}
+              />
+            </Appear>
+          ) : (
+          <Appear>
+            <Text className="font-heavy text-pageTitle text-ink">{en ? book.name : book.nameVi}</Text>
+            <Text className="mt-2 font-sans text-body text-muted">
+              {L(`${book.topics.length} chủ đề · ${book.words.length.toLocaleString('vi-VN')} từ`, `${book.topics.length} topics · ${book.words.length.toLocaleString('en-US')} words`)}
+            </Text>
+            <Text className="mt-1 font-sans text-label text-muted">{book.blurb}</Text>
+            {book.sourceNote ? <Text className="mt-2 font-sans text-label text-muted">{book.sourceNote}</Text> : null}
+          </Appear>
+          )}
+
+          {book.language === 'ja' ? (
+            <View className="mt-6">
+              <JaTopicGrid book={book} />
+            </View>
+          ) : (
+          <View className="mt-6">
+            <Text className="mb-3 font-heavy text-sectionTitle text-ink" style={book.language === 'zh' ? { color: ZH.onPage } : undefined}>
+              {book.language === 'zh' ? 'Chọn bộ HSK để học' : L('Chọn chủ đề để học', 'Choose a topic to study')}
+            </Text>
+            {book.language === 'zh' ? (
+              <ZhBookCovers book={book} />
+            ) : (
+            <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={12}>
+              {book.topics.map((topic, index) => (
+                <Appear key={topic.slug} index={Math.min(index, 8)}>
+                  <Pressable
+                    accessibilityRole="link"
+                    onPress={() => router.push(`/vocabulary/book/${book.slug}/${topic.slug}` as never)}
+                    style={({ hovered, pressed }: { hovered?: boolean; pressed?: boolean }) => ({
+                      height: '100%',
+                      minHeight: 104,
+                      padding: 16,
+                      borderRadius: 18,
+                      borderWidth: 1,
+                      borderColor: hovered ? '#C4B5FD' : '#E9E5F2',
+                      backgroundColor: '#FFFFFF',
+                      transform: [{ scale: pressed ? 0.985 : hovered ? 1.01 : 1 }],
+                    })}
+                  >
+                    <View className="flex-row items-start justify-between gap-3">
+                      <Text className="flex-1 font-strong text-body text-ink">{en ? topic.name : topic.nameVi}</Text>
+                      <Text className="font-strong text-label" style={{ color: color.primary }}>{topic.words.length}</Text>
+                    </View>
+                    <Text className="mt-2 font-sans text-label text-muted">
+                      {L(`${topic.lessons.length} buổi học · tối đa 50 từ/buổi`, `${topic.lessons.length} lessons · up to 50 words each`)}
+                    </Text>
+                  </Pressable>
+                </Appear>
+              ))}
+            </Grid>
+            )}
+            {book.language === 'zh' && book.sourceNote ? (
+              <Text className="mt-8 font-sans text-label text-muted">{book.sourceNote}</Text>
+            ) : null}
+          </View>
+          )}
+        </>
+      ) : (
+        <Card>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không tìm thấy sách này', 'Book not found')}</Text>
+          <Text className="mt-1 font-sans text-body text-muted">{L('Hãy quay lại thư viện từ vựng để chọn sách khác.', 'Return to the vocabulary library to choose another book.')}</Text>
+        </Card>
+      )}
     </Screen>
   );
 }

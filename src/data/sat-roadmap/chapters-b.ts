@@ -1232,8 +1232,8 @@ export const CHAPTERS_B: RoadChapter[] = [
       {
         title: { vi: 'Độ lệch chuẩn', en: 'Standard deviation' },
         body: {
-          vi: 'Đo mức dữ liệu trải xa trung bình. Không cần tính trên SAT, chỉ cần so sánh: dữ liệu dồn sát trung bình thì nhỏ, dồn về hai đầu thì lớn. Hai tập có cùng tần số nhưng giá trị cách xa nhau hơn thì độ lệch chuẩn lớn hơn. Bỏ các giá trị xa trung bình nhất làm độ lệch chuẩn giảm nhiều nhất.',
-          en: 'It measures how spread out the data are from the mean. The SAT never asks you to compute it, only to compare: data bunched near the mean give a small value; data pushed to the ends give a large one. Two sets with the same frequencies but values farther apart have the larger standard deviation. Removing the values farthest from the mean lowers it the most.',
+          vi: 'Độ lệch chuẩn mô tả mức dữ liệu phân tán quanh trung bình. Với SAT, ưu tiên đọc/so sánh mức độ phân tán và ảnh hưởng của thay đổi dữ liệu; không cần học thuộc công thức tính dài. Dữ liệu cách trung bình xa hơn thường có độ lệch chuẩn lớn hơn.',
+          en: 'Standard deviation describes how spread out data are around the mean. For SAT prep, prioritize interpreting/comparing spread and the effect of data changes; memorizing a long calculation formula is not the focus. Data farther from the mean generally produce a larger standard deviation.',
         },
       },
       {
@@ -1247,8 +1247,8 @@ export const CHAPTERS_B: RoadChapter[] = [
       {
         title: { vi: 'Giá trị ngoại lai', en: 'Outliers' },
         body: {
-          vi: 'Giá trị ngoại lai kéo trung bình về phía nó và làm tăng khoảng biến thiên, độ lệch chuẩn; trung vị hầu như không đổi. Bỏ hoặc sửa một giá trị ngoại lai thì khoảng biến thiên thường thay đổi nhiều nhất.',
-          en: 'An outlier pulls the mean toward it and increases the range and standard deviation; the median barely moves. Removing or correcting an outlier usually changes the range the most.',
+          vi: 'Giá trị ngoại lai thường ảnh hưởng trung bình, khoảng biến thiên và độ lệch chuẩn mạnh hơn trung vị. Hãy tính/so sánh lại từng số đo khi câu hỏi thay đổi một giá trị; mức ảnh hưởng còn tùy vị trí và dữ liệu.',
+          en: 'An outlier often affects the mean, range, and standard deviation more than the median. Recalculate or compare each measure when a value changes; the effect depends on the value and the data.',
         },
       },
       {
@@ -1355,8 +1355,8 @@ export const CHAPTERS_B: RoadChapter[] = [
       {
         title: { vi: 'Khoảng tin cậy', en: 'Confidence intervals' },
         body: {
-          vi: 'Khoảng tin cậy 95% từ a tới b nghĩa là trung bình THẬT của tổng thể đã lấy mẫu nhiều khả năng nằm trong [a, b]. Nó không nói 95% cá thể nằm trong khoảng đó, không áp dụng cho tổng thể khác hay thời điểm khác.',
-          en: 'A 95% confidence interval from a to b means the TRUE mean of the sampled population is plausibly in [a, b]. It does not say 95% of individuals fall in that range, and it does not carry over to another population or time period.',
+          vi: 'Khoảng tin cậy 95% là một khoảng ước lượng được tạo bằng phương pháp mà nếu lặp lại lấy mẫu nhiều lần, khoảng ước lượng sẽ chứa tham số tổng thể thật trong khoảng 95% lần. Nó không nói 95% cá thể nằm trong khoảng đó.',
+          en: 'A 95% confidence interval is produced by a method that, over repeated random samples, would capture the true population parameter in about 95% of intervals. It does not mean 95% of individuals fall in this range.',
         },
       },
       {

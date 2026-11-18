@@ -1,5 +1,6 @@
 import type { GrammarLessonDetail } from './types';
 import { B2_GRAMMAR_EXTRA } from './b2-2';
+import { B2_GRAMMAR_EXTRA_2 } from './b2-3';
 
 /** Cấp B2: quá khứ hoàn thành, câu gián tiếp, mệnh đề quan hệ. */
 export const B2_GRAMMAR: GrammarLessonDetail[] = [
@@ -507,4 +508,5 @@ export const B2_GRAMMAR: GrammarLessonDetail[] = [
     ],
   },
   ...B2_GRAMMAR_EXTRA,
+  ...B2_GRAMMAR_EXTRA_2,
 ];

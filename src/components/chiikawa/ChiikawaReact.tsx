@@ -4,6 +4,9 @@ import { Image, Text, View, useWindowDimensions } from 'react-native';
 import { useGameFx } from '@/store/useGameFx';
 import { CHIIKAWA_IMG, useChiikawaActive, useChiikawaQuiet } from './chiikawa';
 
+/** Đúng → luân phiên các nhãn dán vui; sai → nghĩ ngợi. */
+const HAPPY = [CHIIKAWA_IMG.sHappy, CHIIKAWA_IMG.sTrophy, CHIIKAWA_IMG.sHeart, CHIIKAWA_IMG.cheer, CHIIKAWA_IMG.sStrawberry];
+
 /**
  * Chiikawa phản ứng khi trả lời: đúng thì vui (cheer) kèm chip "♥ +XP" hồng,
  * sai hoặc bị đánh thì ló lên mép (peek). Dùng sự kiện đã có trong GameFxLayer.
@@ -46,7 +49,7 @@ export function ChiikawaReact() {
           <Text style={{ fontSize: 13, fontWeight: '700', color: '#C64E79' }}>♥ {shown.text}</Text>
         </View>
       ) : null}
-      <Image source={CHIIKAWA_IMG[shown.pose]} resizeMode="contain" style={{ width: size, height: size }} />
+      <Image source={shown.pose === 'cheer' ? HAPPY[shown.id % HAPPY.length] : CHIIKAWA_IMG.sThink} resizeMode="contain" style={{ width: size, height: size }} />
     </View>
   );
 }

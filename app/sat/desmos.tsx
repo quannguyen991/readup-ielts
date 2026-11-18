@@ -27,20 +27,20 @@ export default function SatDesmosScreen() {
       <View className="mt-6 gap-3">
         <Text className="font-heavy text-cardTitle text-ink">{L('4 Tuyệt chiêu Desmos cho SAT Math', '4 Desmos Power Shortcuts for SAT')}</Text>
         <Text className="font-sans text-caption text-muted">
-          {L('Các mẹo bấm máy thực chiến trích từ giáo trình SAT Math 20 tuần giúp giải nhanh hơn 50% câu hỏi khó.', 'Practical techniques from the 20-week Math roadmap to solve over 50% of tough questions.')}
+          {L('Các thao tác Desmos này có thể hỗ trợ khi cần kiểm tra đồ thị, giao điểm hoặc dữ liệu. Hãy chọn máy tính khi nó giúp giải câu hỏi nhanh và rõ hơn.', 'These Desmos techniques can help check graphs, intersections, or data. Use the calculator when it makes a problem clearer or faster.')}
         </Text>
         <View className="mt-2 flex-row flex-wrap gap-3">
           {SAT_DESMOS_TECHNIQUES.map((tech, i) => (
-            <View key={i} className="flex-1 min-w-[280px] rounded-2xl border border-border bg-white p-4 gap-2">
+            <View key={i} className="w-full flex-1 rounded-2xl border border-border bg-white p-4 gap-2 lg:min-w-[280px]">
               <View className="flex-row items-center justify-between">
                 <Text className="font-heavy text-body text-ink">{tech.nameVi}</Text>
                 <View className="rounded-md bg-blue-50 px-2 py-0.5">
-                  <Text className="font-mono text-tiny text-blue-700 font-strong">Mẹo #{i + 1}</Text>
+                  <Text className="font-mono text-label text-blue-700 font-strong">Mẹo #{i + 1}</Text>
                 </View>
               </View>
               <Text className="font-sans text-caption text-muted" style={{ lineHeight: 18 }}>{tech.useVi}</Text>
               <View className="rounded-lg bg-slate-900 p-2.5">
-                <Text className="font-mono text-tiny text-sky-400">{tech.shortcut}</Text>
+                <Text className="font-mono text-label text-sky-400">{tech.shortcut}</Text>
               </View>
             </View>
           ))}

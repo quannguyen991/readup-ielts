@@ -46,16 +46,16 @@ export default function MinimalPairsGame() {
     <HubScreen title="Cặp âm tối thiểu" subtitle="Nghe rồi chọn đúng từ" back>
       {done ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '800' }}>Đúng {score}/{rounds.length}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '400' }}>Đúng {score}/{rounds.length}</Text>
           <Pressable accessibilityRole="button" onPress={reset} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Chơi lại</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Chơi lại</Text>
           </Pressable>
         </View>
       ) : round ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Câu {i + 1}/{rounds.length} · đúng {score}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Câu {i + 1}/{rounds.length} · đúng {score}</Text>
           <Pressable accessibilityRole="button" accessibilityLabel="Nghe từ" onPress={() => speak(round.say === 'a' ? round.pair.a : round.pair.b)} style={{ height: 56, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
-            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Nghe</Text>
+            <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '400' }}>Nghe</Text>
           </Pressable>
           {(['a', 'b'] as const).map((side) => {
             const word = side === 'a' ? round.pair.a : round.pair.b;
@@ -64,8 +64,8 @@ export default function MinimalPairsGame() {
             const tone = picked === null ? HUB.line : correct ? HUB.green : picked === side ? HUB.red : HUB.line;
             return (
               <Pressable key={side} accessibilityRole="button" onPress={() => choose(side)} style={{ height: 60, borderRadius: 14, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: tone, backgroundColor: HUB.glass }}>
-                <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '800' }}>{word}</Text>
-                <Text style={{ color: HUB.muted, fontSize: 12 }}>{ipa}</Text>
+                <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '400' }}>{word}</Text>
+                <Text style={{ color: HUB.muted, fontSize: 13 }}>{ipa}</Text>
               </Pressable>
             );
           })}
@@ -73,7 +73,7 @@ export default function MinimalPairsGame() {
             <View style={{ gap: 10 }}>
               <Text style={{ color: HUB.body, fontSize: 13 }}>Cặp âm: {round.pair.contrast}. {picked === round.say ? 'Chính xác!' : 'Chưa đúng. Đáp án là từ được đọc.'}</Text>
               <Pressable accessibilityRole="button" onPress={next} style={{ height: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet }}>
-                <Text style={{ color: '#fff', fontWeight: '800' }}>Tiếp</Text>
+                <Text style={{ color: '#fff', fontWeight: '400' }}>Tiếp</Text>
               </Pressable>
             </View>
           ) : null}

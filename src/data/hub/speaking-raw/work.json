@@ -1,0 +1,96 @@
+{
+ "id": "work",
+ "extra": {
+  "vocab": [
+   {
+    "en": "climb the career ladder",
+    "vi": "thăng tiến trong sự nghiệp",
+    "ex": "She worked grueling hours in her twenties to climb the corporate ladder quickly."
+   },
+   {
+    "en": "lucrative salary",
+    "vi": "mức lương béo bở, hấp dẫn",
+    "ex": "High-tech sectors often offer a lucrative salary alongside generous employee perks."
+   },
+   {
+    "en": "hands-on experience",
+    "vi": "kinh nghiệm thực tiễn",
+    "ex": "Internships provide undergraduates with valuable hands-on experience before graduation."
+   },
+   {
+    "en": "job satisfaction",
+    "vi": "sự thỏa mãn trong công việc",
+    "ex": "For many creative professionals, job satisfaction matters much more than financial reward."
+   },
+   {
+    "en": "burn the candle at both ends",
+    "vi": "làm việc kiệt sức cả ngày lẫn đêm",
+    "ex": "He has been burning the candle at both ends to launch his startup on schedule."
+   },
+   {
+    "en": "heavy workload",
+    "vi": "khối lượng công việc nặng nề",
+    "ex": "Staff morale plummeted because employees were struggling under an excessively heavy workload."
+   },
+   {
+    "en": "hone one's skills",
+    "vi": "mài giũa, nâng cao kỹ năng",
+    "ex": "Working alongside experienced designers helped him hone his technical skills rapidly."
+   },
+   {
+    "en": "career trajectory",
+    "vi": "lộ trình phát triển sự nghiệp",
+    "ex": "Landing that regional managerial post completely transformed her overall career trajectory."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu nghề nghiệp muốn thử sức (nhà làm phim tài liệu du lịch/travel documentary filmmaker) và bối cảnh lý do nảy sinh ý tưởng này.",
+   "Ý 1 (Kỹ năng): Trình bày các kỹ năng chuyên môn và kỹ năng mềm thiết yếu (quay dựng phim, điều khiển flycam, khả năng kể chuyện và thích nghi môi trường khắc nghiệt).",
+   "Ý 2 (Lý do): Giải thích vì sao công việc này hấp dẫn (tự do xê dịch, khám phá văn hóa bản địa, thoát khỏi khuôn mẫu văn phòng 9-to-5 lặp lại).",
+   "Kết (Chuẩn bị): Nêu các bước chuẩn bị cụ thể trong tương lai (tham gia khóa học quay phim, lập kênh vlog du lịch cá nhân và tích lũy vốn dự phòng)."
+  ],
+  "sample": "If I had the opportunity to try any career for a while, I’d jump at the chance to become a travel documentary filmmaker. This role involves journeying to off-the-beaten-track locations to capture cultural stories, indigenous traditions, and wildlife on film.\n\nTo thrive in this field, one needs a unique blend of technical expertise and interpersonal flair. Besides mastering camera gear, video editing software, and drone piloting, having strong storytelling and adaptability skills is crucial, especially when facing harsh environments or language barriers.\n\nWhat draws me to this profession is the sheer freedom and sense of purpose. Rather than being stuck behind a desk from nine to five, I would get to immerse myself in diverse communities, documenting disappearing customs before they fade away. The prospect of blending artistic creativity with authentic exploration is immensely appealing.\n\nTo prepare for such a drastic leap, I have started taking digital cinematography courses on weekends and upgrading my camera setup. I also plan to produce short travel vlogs across Vietnam to hone my storytelling craft and build a portfolio before pitching to travel networks.",
+  "p1": [
+   {
+    "q": "What do you do for work or study?",
+    "a": "Currently, I work as a digital marketing specialist for an e-commerce firm. My daily routine revolves around managing social media campaigns and analyzing customer metrics to boost our online sales performance."
+   },
+   {
+    "q": "What part of your job do you enjoy most?",
+    "a": "I would say the brainstorming sessions with my team are the most fulfilling. We bounce creative concepts off each other for new video campaigns, which keeps the daily workflow exciting and genuinely collaborative."
+   },
+   {
+    "q": "Would you like to change your job in the future?",
+    "a": "Yes, definitely down the road. While I find my current position rewarding, I eventually hope to launch an independent branding consultancy to gain greater creative autonomy and build something meaningful from scratch."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Is it better to have one job for life or to change jobs often?",
+    "a": "Personally, I believe switching jobs periodically brings greater benefits nowadays. While staying with one employer guarantees stability and a predictable pension, changing roles exposes workers to varied corporate cultures, allowing them to diversify their skill sets rapidly. In today's volatile economic climate, versatility and an extensive network are far more valuable than loyalty to a single company. Therefore, occasional career shifts foster stronger professional resilience."
+   },
+   {
+    "q": "Do you think working from home will become more common?",
+    "a": "Without a doubt, remote work will likely become the standard model across knowledge-based sectors. Advanced cloud tools and collaboration platforms have proven that staff can remain exceptionally productive without enduring grueling daily commutes. Although in-person cooperation remains vital for hands-on industries, most forward-looking firms are already implementing hybrid schedules to cut office overheads and attract global talent, making this trend irreversible."
+   }
+  ],
+  "mistakesVi": [
+   "Nhầm lẫn giữa danh từ không đếm được 'work' và đếm được 'job' (ví dụ: nói 'I have many works to finish' thay vì 'I have a lot of work to finish').",
+   "Lạm dụng thì Hiện tại đơn thay vì cấu trúc giả định hoặc dự phóng tương lai khi trả lời đề bài 'would like to try' (dùng 'I prepare for it by...' thay vì 'I would prepare by...' hoặc 'I plan to...').",
+   "Cá nhân hóa câu trả lời Part 3 bằng cách chỉ kể trải nghiệm bản thân ('In my opinion, I always change jobs because...') thay vì phân tích ở góc độ xã hội và xu hướng thị trường lao động."
+  ],
+  "p1More": [
+   "Do you prefer working alone or in a team?",
+   "What was your very first job?",
+   "Do you think your current job is stressful?",
+   "How do you manage your time during a busy workday?",
+   "What qualities make a great co-worker?"
+  ],
+  "p3More": [
+   "How has artificial intelligence influenced the modern job market?",
+   "Should governments provide financial aid to employees displaced by automation?",
+   "What factors determine whether a profession receives high societal prestige?",
+   "To what extent is a university degree still essential for career progression today?"
+  ]
+ }
+}

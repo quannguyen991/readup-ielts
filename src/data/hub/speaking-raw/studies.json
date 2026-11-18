@@ -1,0 +1,96 @@
+{
+ "id": "studies",
+ "extra": {
+  "vocab": [
+   {
+    "en": "fall behind with (one's) studies",
+    "vi": "bị tụt lại phía sau / đuối sức trong việc học",
+    "ex": "After missing two weeks of classes due to the flu, she started to fall behind with her studies."
+   },
+   {
+    "en": "grasp the concepts",
+    "vi": "hiểu thấu đáo các khái niệm",
+    "ex": "It took me several weeks of tutoring to truly grasp the fundamental concepts of organic chemistry."
+   },
+   {
+    "en": "rote learning",
+    "vi": "học vẹt / học gạo",
+    "ex": "Relying purely on rote learning might help students pass a quiz, but it rarely builds long-term knowledge."
+   },
+   {
+    "en": "academic burnout",
+    "vi": "kiệt sức vì áp lực học hành",
+    "ex": "High school seniors often suffer from academic burnout during the intense university entrance exam period."
+   },
+   {
+    "en": "steep learning curve",
+    "vi": "độ dốc học tập lớn (khó tiếp cận lúc đầu)",
+    "ex": "Advanced calculus had a steep learning curve, requiring constant effort and problem-solving."
+   },
+   {
+    "en": "burn the midnight oil",
+    "vi": "thức khuya học bài / làm việc",
+    "ex": "I had to burn the midnight oil for several nights in a row to complete my graduation dissertation."
+   },
+   {
+    "en": "well-rounded education",
+    "vi": "nền giáo dục toàn diện",
+    "ex": "Schools should deliver a well-rounded education rather than just drilling students for standardized exams."
+   },
+   {
+    "en": "hit the books",
+    "vi": "bắt đầu học hành chăm chỉ",
+    "ex": "With final exams scheduled for next week, everyone in the campus library is hitting the books."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu môn Hóa học hữu cơ (Organic Chemistry) vào năm cuối cấp ba là môn học bản thân từng rất chật vật.",
+   "Ý 1 - Vì sao khó: Kiến thức trừu tượng, hàng trăm cơ chế phản ứng phức tạp đòi hỏi tư duy không gian thay vì chỉ học vẹt; từng trượt bài thi giữa kỳ đầu tiên.",
+   "Ý 2 - Cách cải thiện: Lập sơ đồ tư duy (mind maps) để liên kết phản ứng, tham gia nhóm học tập sau giờ học và xem các video bài giảng 3D trên mạng.",
+   "Kết - Cảm nhận hiện tại: Dù không theo đuổi ngành khoa học, trải nghiệm này giúp rèn luyện tính kiên trì và chứng minh rằng thử thách nào cũng có thể vượt qua nếu nỗ lực."
+  ],
+  "sample": "To be completely honest, the most challenging subject I ever tackled was advanced chemistry during my final year of high school. At first, I felt completely out of my depth. Unlike general science, organic chemistry had a remarkably steep learning curve. It involved memorizing countless intricate reaction mechanisms and visualizing abstract molecular structures in three dimensions. I remember failing my very first midterm test, which was a huge wake-up call for me. Determined not to fall behind, I completely changed my study habits. Instead of relying on rote learning, I started drawing detailed mind maps to connect different reactions logically. I also joined a peer study group after class where we took turns explaining complex problems to each other, and I spent weekends watching visual chemistry tutorials on YouTube. Eventually, my efforts paid off, and I managed to secure a solid grade in the final examination. Looking back, while I never pursued a career in science, conquering such a daunting subject taught me resilience and critical thinking. It showed me that even the toughest intellectual obstacles can be overcome with persistence and the right approach.",
+  "p1": [
+   {
+    "q": "What do you study at the moment?",
+    "a": "Right now, I'm pursuing a bachelor's degree in international business at university. I chose this field because I'm fascinated by global trade, and my coursework involves practical modules like market analysis and cross-cultural negotiations."
+   },
+   {
+    "q": "Did you enjoy school when you were younger?",
+    "a": "Yes, I really loved my school days. Beyond the academic side, school provided a vibrant social environment where I forged lifelong friendships, especially through extracurricular activities like playing football and participating in the school choir."
+   },
+   {
+    "q": "Which subject is the most useful, in your opinion?",
+    "a": "In my view, mathematics is by far the most practical subject. It fosters analytical reasoning and logical problem-solving, which are indispensable skills in everyday life, whether you're managing personal finances or analyzing market trends."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should students be able to choose all their subjects?",
+    "a": "I don't think students should have total freedom in choosing all their subjects. While having autonomy fosters genuine enthusiasm, foundational subjects like mathematics, basic science, and native language literacy are vital for everyday life. For instance, without mandatory math, teenagers might opt out of numeracy skills essential for future employment. Therefore, a balanced curriculum combining core compulsory subjects with elective courses is a far healthier approach."
+   },
+   {
+    "q": "How has learning changed because of technology?",
+    "a": "Technology has revolutionized education by making knowledge instantly accessible and highly interactive. In the past, students were confined to textbooks and teacher-led lectures, whereas today, learners can access online courses, video tutorials, and AI tutors from anywhere globally. For instance, platforms like Coursera allow self-paced study across diverse fields. Consequently, education has transitioned from passive absorption to self-directed, flexible learning."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai động từ: Thường nhầm lẫn giữa 'learn' và 'study' (ví dụ: nói 'I learn Business at university' thay vì 'I am studying/majoring in Business').",
+   "Nhầm lẫn thì động từ: Khi trả lời Part 2 về môn học trong quá khứ, thí sinh hay chuyển đổi lộn xộn giữa quá khứ đơn và hiện tại đơn ('I study this because it is hard' thay vì 'I studied this because it was hard').",
+   "Dùng sai giới từ trong cụm học thuật: Nói 'good in math' thay vì 'good at math', hoặc 'graduate university' thay vì 'graduate from university'."
+  ],
+  "p1More": [
+   "Do you prefer studying alone or in a group?",
+   "What was your favorite subject when you were in secondary school?",
+   "Do you think you will continue studying in the future?",
+   "What time of day do you find it easiest to concentrate on your studies?",
+   "Is there any new skill or subject you would like to learn soon?"
+  ],
+  "p3More": [
+   "To what extent should educational systems focus on practical skills over academic theory?",
+   "How might artificial intelligence transform the traditional role of school teachers in the coming decades?",
+   "Do you think formal university qualifications are losing value in the modern job market?",
+   "What measures can governments take to bridge the educational divide between rural and urban areas?"
+  ]
+ }
+}

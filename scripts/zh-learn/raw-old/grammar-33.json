@@ -1,0 +1,315 @@
+[
+ {
+  "id": "zh-g-h6-11",
+  "level": 6,
+  "order": 1,
+  "title": "Câu 把 với chủ ngữ phi sinh vật",
+  "titleZh": "非生物主语把字句",
+  "summary": "Bạn sẽ dùng được câu 把 khi thời tiết, sự vật hoặc thông tin gây ra thay đổi cho một đối tượng.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Sự vật làm chủ ngữ",
+    "body": "Chủ ngữ có thể là sự vật, hiện tượng hoặc thông tin, dù chúng không chủ động như con người. Câu nhấn mạnh đối tượng bị tác động và kết quả xảy ra.",
+    "examples": [
+     {
+      "zh": "这场大雨把路冲坏了。",
+      "py": "zhè chǎng dàyǔ bǎ lù chōnghuài le",
+      "vi": "Trận mưa lớn này làm hỏng đường."
+     },
+     {
+      "zh": "那条消息把大家都吓坏了。",
+      "py": "nà tiáo xiāoxi bǎ dàjiā dōu xiàhuài le",
+      "vi": "Tin đó làm mọi người sợ hết cả."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu nguyên nhân gây tác động",
+    "body": "Dùng mẫu này khi muốn nêu rõ một sự vật hoặc sự việc gây ra thay đổi cho tân ngữ. Cách nói thường gặp với gió, mưa, sách, thư hoặc tin tức.",
+    "examples": [
+     {
+      "zh": "窗外的风把门吹开了。",
+      "py": "chuāngwài de fēng bǎ mén chuīkāi le",
+      "vi": "Gió ngoài cửa sổ thổi bật cửa ra."
+     },
+     {
+      "zh": "这本书把那个问题说清楚了。",
+      "py": "zhè běn shū bǎ nàge wèntí shuōqīngchu le",
+      "vi": "Cuốn sách này giải thích rõ vấn đề đó."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt đối tượng sau 把",
+    "body": "Sau chủ ngữ là 把 và đối tượng chịu tác động. Động từ cùng phần theo sau cho biết sự thay đổi hoặc kết quả của đối tượng.",
+    "formula": "Chủ ngữ phi sinh vật + 把 + đối tượng + động từ + thành phần khác",
+    "examples": [
+     {
+      "zh": "这封信把他的生活改变了。",
+      "py": "zhè fēng xìn bǎ tā de shēnghuó gǎibiàn le",
+      "vi": "Lá thư này đã thay đổi cuộc sống của anh ấy."
+     },
+     {
+      "zh": "雨水把地上的字冲掉了。",
+      "py": "yǔshuǐ bǎ dìshàng de zì chōngdiào le",
+      "vi": "Nước mưa cuốn trôi chữ trên mặt đất."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Nêu rõ kết quả",
+    "body": "Câu 把 thường cần cho biết đối tượng đã thay đổi ra sao, chẳng hạn bị mở ra, bị làm ướt hoặc khiến ai đó mệt. Chỉ nêu một động từ chung chung thường làm câu thiếu ý.",
+    "examples": [
+     {
+      "zh": "这场比赛把我累得说不出话来。",
+      "py": "zhè chǎng bǐsài bǎ wǒ lèi de shuōbuchū huà lái",
+      "vi": "Trận đấu này làm tôi mệt đến mức không nói nên lời."
+     },
+     {
+      "zh": "路上的积水把我的鞋弄湿了。",
+      "py": "lùshàng de jīshuǐ bǎ wǒ de xié nòngshī le",
+      "vi": "Nước đọng trên đường làm ướt giày của tôi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Thiếu kết quả hoặc sai vị trí tân ngữ",
+    "body": "Sau 把 cần có đối tượng ngay phía sau, rồi mới đến động từ. Câu cũng cần nêu kết quả hoặc phần bổ sung phù hợp.",
+    "mistakes": [
+     {
+      "wrong": "大雨把路冲。",
+      "right": "大雨把路冲坏了。",
+      "why": "Câu sai dừng ở động từ, chưa cho biết con đường bị ảnh hưởng thế nào. Thêm phần nêu kết quả để câu trọn ý."
+     },
+     {
+      "wrong": "大雨把冲坏了路。",
+      "right": "大雨把路冲坏了。",
+      "why": "Tân ngữ phải đứng ngay sau 把. Không đặt động từ chen giữa 把 và đối tượng."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu 把 với chủ ngữ phi sinh vật thường diễn đạt điều gì?",
+    "options": [
+     "Một sự vật gây tác động và làm đối tượng thay đổi",
+     "Chủ ngữ bắt buộc phải là người",
+     "Tân ngữ luôn đứng trước 把",
+     "Sau 把 chỉ có thể là tính từ"
+    ],
+    "answer": 0,
+    "explain": "Chủ ngữ có thể là sự vật hoặc hiện tượng gây ra kết quả cho tân ngữ."
+   },
+   {
+    "q": "Trong cấu trúc 把, phần nào thường đứng ngay sau 把?",
+    "options": [
+     "Thời gian xảy ra hành động",
+     "Đối tượng chịu tác động",
+     "Địa điểm của người nói",
+     "Kết quả của hành động"
+    ],
+    "answer": 1,
+    "explain": "Tân ngữ chịu tác động thường được đặt ngay sau 把."
+   },
+   {
+    "q": "Chọn công thức phù hợp với mẫu đang học.",
+    "options": [
+     "Chủ ngữ + đối tượng + 把 + động từ + kết quả",
+     "把 + chủ ngữ + động từ + đối tượng",
+     "Chủ ngữ + 把 + đối tượng + động từ + phần nêu kết quả",
+     "Chủ ngữ + động từ + 把 + kết quả + đối tượng"
+    ],
+    "answer": 2,
+    "explain": "Mẫu cơ bản đặt chủ ngữ trước 把, rồi đến đối tượng và động từ."
+   },
+   {
+    "q": "Sau động từ trong câu 把, phần nào thường giúp câu trọn ý?",
+    "options": [
+     "Một chủ ngữ mới",
+     "Một tân ngữ khác bắt buộc",
+     "Một từ chỉ người nói",
+     "Phần nêu kết quả hoặc hướng của hành động"
+    ],
+    "answer": 3,
+    "explain": "Phần sau động từ cho biết đối tượng đã thay đổi ra sao hoặc hành động đi theo hướng nào."
+   },
+   {
+    "q": "Chủ ngữ phi sinh vật thường có thể là gì?",
+    "options": [
+     "Chỉ một địa điểm",
+     "Thời tiết, sự vật hoặc thông tin gây tác động",
+     "Chỉ người nhận hành động",
+     "Chỉ một động từ"
+    ],
+    "answer": 1,
+    "explain": "Mưa, gió, một cuốn sách hoặc một tin tức đều có thể gây ra thay đổi."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h6-12",
+  "level": 6,
+  "order": 2,
+  "title": "Cách dùng khẩu ngữ 算了 và 得了",
+  "titleZh": "算了与得了",
+  "summary": "Bạn sẽ phân biệt được lúc nên buông một việc với 算了 và lúc dùng 得了 để bảo đủ rồi hoặc chỉ cần làm đến đó.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Hai cách nói khẩu ngữ khác nghĩa",
+    "body": "算了 thường có nghĩa là thôi, bỏ qua hoặc không tiếp tục một việc. 得了 thường dùng để bảo đủ rồi, dừng lại, hoặc nói rằng chỉ cần làm đến mức đó là được.",
+    "examples": [
+     {
+      "zh": "算了，大家都累了，今天先回家休息吧。",
+      "py": "suànle dàjiā dōu lèi le jīntiān xiān huíjiā xiūxi ba",
+      "vi": "Thôi, mọi người đều mệt rồi, hôm nay về nhà nghỉ trước đi."
+     },
+     {
+      "zh": "得了，别再解释了，我已经明白了。",
+      "py": "déle bié zài jiěshì le wǒ yǐjīng míngbai le",
+      "vi": "Đủ rồi, đừng giải thích nữa, tôi hiểu rồi."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Buông việc hoặc bảo dừng",
+    "body": "Dùng 算了 khi quyết định thôi theo đuổi một kế hoạch hay chuyện đang bàn. Dùng 得了 ở đầu câu khi muốn bảo người khác dừng lại hoặc cho biết đã đủ.",
+    "examples": [
+     {
+      "zh": "她已经拒绝了，那就算了，我们改天再问。",
+      "py": "tā yǐjīng jùjué le nà jiù suànle wǒmen gǎitiān zài wèn",
+      "vi": "Cô ấy đã từ chối rồi, vậy thôi, hôm khác chúng ta hỏi lại."
+     },
+     {
+      "zh": "得了，别再担心了，医生说他没事。",
+      "py": "déle bié zài dānxīn le yīshēng shuō tā méi shì",
+      "vi": "Thôi, đừng lo nữa, bác sĩ nói anh ấy không sao."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Nhớ các mẫu thường dùng",
+    "body": "算了 có thể đứng riêng hoặc đi với 吧 để đề nghị thôi bỏ qua. Mẫu động từ + 就得了 có nghĩa là chỉ cần làm việc đó là đủ; 得了吧 thường mang sắc thái hoài nghi hoặc gạt lời.",
+    "formula": "算了（吧）+ câu tiếp theo；động từ + 就得了",
+    "examples": [
+     {
+      "zh": "这件衣服太贵了，算了，我不买了。",
+      "py": "zhè jiàn yīfu tài guì le suànle wǒ bù mǎi le",
+      "vi": "Bộ quần áo này đắt quá, thôi, tôi không mua nữa."
+     },
+     {
+      "zh": "你告诉我地点就得了，别的我自己找。",
+      "py": "nǐ gàosu wǒ dìdiǎn jiù déle bié de wǒ zìjǐ zhǎo",
+      "vi": "Bạn chỉ cần cho tôi biết địa điểm là được, những thứ khác tôi tự tìm."
+     },
+     {
+      "zh": "得了吧，这种话我已经听过很多次了。",
+      "py": "déle ba zhè zhǒng huà wǒ yǐjīng tīngguo hěn duō cì le",
+      "vi": "Thôi đi, kiểu lời này tôi nghe nhiều lần rồi."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Chọn theo ý định và sắc thái",
+    "body": "Hãy tự hỏi người nói muốn bỏ một kế hoạch hay muốn bảo ai đó dừng lại. Hai ý này không nên đổi 算了 và 得了 cho nhau; 得了吧 còn có thể nghe như đang không tin lời đối phương.",
+    "examples": [
+     {
+      "zh": "得了，别再争了，先把事情做好。",
+      "py": "déle bié zài zhēng le xiān bǎ shìqing zuòhǎo",
+      "vi": "Đủ rồi, đừng tranh cãi nữa, trước hết hãy làm tốt việc này."
+     },
+     {
+      "zh": "下雨了，算了，我们改天再去。",
+      "py": "xiàyǔ le suànle wǒmen gǎitiān zài qù",
+      "vi": "Trời mưa rồi, thôi, hôm khác chúng ta đi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Nhầm ý buông bỏ với ý bảo dừng",
+    "body": "Không dùng 得了吧 để bày tỏ sự đồng ý chân thành, vì cụm này thường mang sắc thái hoài nghi hoặc gạt đi. Khi muốn thôi theo đuổi một kế hoạch, 算了 thường phù hợp hơn.",
+    "mistakes": [
+     {
+      "wrong": "得了吧，你说得对，我相信你。",
+      "right": "好吧，你说得对，我相信你。",
+      "why": "得了吧 thường biểu thị sự hoài nghi hoặc không tin. Khi muốn đồng ý chân thành, có thể dùng 好吧."
+     },
+     {
+      "wrong": "这件衣服太贵了，得了，我不买了。",
+      "right": "这件衣服太贵了，算了，我不买了。",
+      "why": "Ở đây người nói quyết định bỏ ý định mua, nên 算了 hợp với ý buông kế hoạch hơn."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Bạn thấy món đồ quá đắt và quyết định không mua nữa; nên chọn cách nào?",
+    "options": [
+     "得了",
+     "算了",
+     "得了吧",
+     "Động từ + 就得了"
+    ],
+    "answer": 1,
+    "explain": "算了 phù hợp khi người nói quyết định thôi theo đuổi việc đang định làm."
+   },
+   {
+    "q": "得了 ở đầu câu, như trong lời bảo đừng giải thích nữa, thường có tác dụng gì?",
+    "options": [
+     "Thể hiện đồng ý vui vẻ",
+     "Bỏ hẳn một kế hoạch",
+     "Bảo đủ rồi hoặc yêu cầu dừng lại",
+     "Hỏi người khác có làm được không"
+    ],
+    "answer": 2,
+    "explain": "得了 ở đầu câu thường mang ý đủ rồi hoặc thôi dừng lại."
+   },
+   {
+    "q": "Mẫu động từ + 就得了 thường diễn đạt ý gì?",
+    "options": [
+     "Bỏ một kế hoạch",
+     "Không tin lời người khác",
+     "Một việc vừa xảy ra trong quá khứ",
+     "Chỉ cần làm việc đó là đủ"
+    ],
+    "answer": 3,
+    "explain": "Mẫu này nói rằng chỉ cần thực hiện hành động được nêu là đủ."
+   },
+   {
+    "q": "得了吧 thường hợp với sắc thái nào?",
+    "options": [
+     "Hoài nghi hoặc gạt lời đối phương",
+     "Đồng ý chân thành",
+     "Kể một lịch trình trung tính",
+     "Xin lỗi một cách trang trọng"
+    ],
+    "answer": 0,
+    "explain": "得了吧 thường nghe như thôi đi hoặc tôi không tin điều đó."
+   },
+   {
+    "q": "算了 thường được dùng để làm gì?",
+    "options": [
+     "Ra lệnh cho ai đó im lặng",
+     "Buông bỏ hoặc thôi theo đuổi việc đang nói",
+     "Nói rằng một việc vừa hoàn tất",
+     "Chỉ một địa điểm cụ thể"
+    ],
+    "answer": 1,
+    "explain": "算了 thường đánh dấu quyết định thôi làm hoặc không tiếp tục chuyện đó."
+   }
+  ]
+ }
+]

@@ -1,4 +1,3 @@
-import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -54,9 +53,9 @@ export function SpacedRepetitionWidget() {
     <View
       style={{
         borderRadius: 20,
-        backgroundColor: themedHex('#8B6CF0'),
-        backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #6A4BD9 100%)',
-        boxShadow: '0 8px 24px rgba(168,132,63, 0.28)',
+        backgroundColor: '#0E7C8A',
+        backgroundImage: 'linear-gradient(105deg, #0E9AA7 0%, #3B5BDB 100%)',
+        boxShadow: '0 8px 24px rgba(14, 124, 138, 0.30)',
         padding: 20,
         borderWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.25)',
@@ -169,8 +168,8 @@ export function SpacedRepetitionWidget() {
           boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
         } as never}
       >
-        <Icon name="calendar" size={18} color="#6A4BD9" />
-        <Text style={{ fontSize: 14, fontWeight: '700', color: '#6A4BD9' }}>
+        <Icon name="calendar" size={18} color="#0E7C8A" />
+        <Text style={{ fontSize: 14, fontWeight: '700', color: '#0E7C8A' }}>
           {L('Lặp lại ngắt quãng', 'Spaced repetition')}
         </Text>
       </Pressable>

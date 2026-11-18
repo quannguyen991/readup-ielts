@@ -8,20 +8,20 @@ import { Screen } from '@/components/layout/Screen';
 import { Icon } from '@/components/ui';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
+import { WRITING_SAMPLES } from '@/data/writing-samples';
 import { PATH_STEPS, stepUnits } from '@/services/writing/translation-path';
 import { useL } from '@/i18n/useL';
 
 /**
- * Cửa vào mảng Writing — hai nhánh, không phải một kho phẳng.
+ * Cửa vào mảng Writing — luyện dịch, học bài mẫu, rồi tự viết.
  *
  * Trước đây bấm Writing là rơi thẳng vào 60 đề Task 1/Task 2. Kho ấy vẫn còn
  * nguyên (`/write/tests`), nhưng để nó làm cửa vào thì mảng Writing chỉ có đúng
  * một cách học: ngồi viết cả bài rồi chờ chấm. Người chưa viết nổi một câu đúng
  * cấu trúc mà bị đẩy thẳng vào đề Task 2 thì không học được gì, chỉ nản.
  *
- * Hai nhánh ở đây là hai bậc khác nhau của cùng một kỹ năng: dựng đúng CÂU
- * trước, rồi mới tới dựng cả BÀI. Trang này chỉ có đúng một việc — cho chọn một
- * trong hai — nên nó chỉ có hai thẻ, và cố tình không có gì khác.
+ * Ba lối vào theo một tiến trình: dựng đúng câu, học từ bài mẫu, rồi luyện viết
+ * trọn bài. Thư viện mẫu nối việc đọc với phần tự viết thay vì tách thành kho lạ.
  */
 
 const TRANSLATION_UNITS = PATH_STEPS.reduce((sum, s) => sum + stepUnits(s), 0);
@@ -42,6 +42,7 @@ export default function WritingHome() {
           <>
             <HeroStat value={String(PATH_STEPS.length)} label={L('bước luyện dịch', 'translation steps')} />
             <HeroStat value={String(WRITING_PROMPTS.length)} label={L('đề viết', 'writing prompts')} />
+            <HeroStat value={String(WRITING_SAMPLES.length)} label={L('bài mẫu song ngữ', 'bilingual samples')} />
             <HeroStat value="Task 1 + 2" label={L('dạng bài', 'task types')} />
           </>
         }
@@ -62,8 +63,17 @@ export default function WritingHome() {
           />
           <BranchCard
             wide={wide}
-            tone="amber"
+            tone="teal"
             eyebrow={L('BẬC HAI', 'STEP TWO')}
+            title={L('Học bài mẫu', 'Study model answers')}
+            blurb={L('Đọc song ngữ, xem vai trò từng đoạn, học cụm từ hữu ích và luyện dịch trực tiếp từ bài mẫu.', 'Read bilingual answers, study each paragraph’s purpose, learn useful phrases and translate from the model itself.')}
+            stat={L(`${WRITING_SAMPLES.length} bài · Task 1 + Task 2 · ${new Set(WRITING_SAMPLES.map((s) => s.topicSlug)).size} chủ đề`, `${WRITING_SAMPLES.length} samples · Task 1 + Task 2 · ${new Set(WRITING_SAMPLES.map((s) => s.topicSlug)).size} topics`)}
+            onPress={() => router.push('/write/samples' as never)}
+          />
+          <BranchCard
+            wide={wide}
+            tone="amber"
+            eyebrow={L('BẬC BA', 'STEP THREE')}
             title={L('Luyện viết', 'Essay practice')}
             blurb={L('Viết trọn bài theo đề thi thật, AI chấm theo từng tiêu chí và chỉ đúng chỗ hỏng.', 'Write full essays to real exam prompts; AI grades each criterion and points out exactly what broke.')}
             stat={L(`${WRITING_PROMPTS.length} đề · Task 1 và Task 2`, `${WRITING_PROMPTS.length} prompts · Task 1 and Task 2`)}
@@ -83,6 +93,7 @@ export default function WritingHome() {
 */
 const TONES = {
   moss: { bg: '#2B2350', ink: '#F3F0FB', pattern: '#0B5265', chip: '#0B5265' },
+  teal: { bg: '#165C59', ink: '#F2FBF9', pattern: '#0B4544', chip: '#0B4544' },
   amber: { bg: '#A7193F', ink: '#FFF5F7', pattern: '#7E1232', chip: '#7E1232' },
 } as const;
 

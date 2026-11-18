@@ -4,7 +4,10 @@ import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { Screen } from '@/components/layout/Screen';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { B9 } from '@/components/practice/SkillBank';
-import { HubTitle, MoreLink, NextTag, PaperSheet, PrimaryButton, go } from '@/components/sat-hub/SatHub';
+import { Grid } from '@/components/layout/Grid';
+import { NeonIcon, NeonWindow, PixelText } from '@/components/neon/Neon';
+import { NEON_PALETTES, NeonTile } from '@/components/neon/NeonTile';
+import { MoreLink, go } from '@/components/sat-hub/SatHub';
 import { SatFocusPicker } from '@/components/practice/SatFocusPicker';
 import { Icon } from '@/components/ui/Icon';
 import { MATH_LESSONS } from '@/data/lessons/math-lessons';
@@ -12,6 +15,9 @@ import { VERBAL_LESSONS } from '@/data/lessons/verbal-lessons';
 import { SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
 import { useL } from '@/i18n/useL';
 import { SAT_LEVELS_LINK, SAT_PATH_STEPS } from '@/navigation/sat-hub';
+
+/** Màu ô số của từng bước. */
+const STEP_COLORS = ['#FF5DB1', '#6A3FE0', '#19B8C8', '#FF8A3D'];
 import { MATH_BANK_TOTAL, mathBankDone } from '@/services/math/bank';
 import { SAT_RW_MIXED_SETS } from '@/services/sat-rw/mixed-sets';
 import { lessonKey, useLessonStore } from '@/store/useLessonStore';
@@ -87,103 +93,86 @@ export default function SatHubScreen() {
 
         <Guide />
 
-        {/* ------------------------------------------------ phiếu bốn bước */}
-        <PaperSheet style={{ marginTop: 16, paddingHorizontal: wide ? 24 : 16, paddingVertical: 4 }}>
+        {/* ------------------------------------------------ bốn bước */}
+        <NeonWindow title={L('Lộ trình 4 bước', '4-step path')} icon="rocket" padded={false}>
           {SAT_PATH_STEPS.map((step, i) => (
             <View
               key={step.id}
               style={{
                 flexDirection: wide ? 'row' : 'column',
-                gap: wide ? 20 : 6,
-                paddingVertical: 18,
-                borderTopWidth: i === 0 ? 0 : 1,
-                borderColor: B9.line,
+                alignItems: wide ? 'center' : 'stretch',
+                gap: wide ? 18 : 10,
+                padding: wide ? 18 : 14,
+                borderTopWidth: i === 0 ? 0 : 2,
+                borderColor: '#E9E4FF',
+                backgroundColor: nextId === step.id ? '#F6F2FF' : '#FFFFFF',
               }}
             >
-              <Text
-                className="font-heavy"
-                style={{ width: wide ? 40 : undefined, fontSize: wide ? 22 : 13, lineHeight: wide ? 28 : 16, letterSpacing: wide ? 0 : 1.6, color: B9.gold }}
-              >
-                {step.n}
-              </Text>
-              <View style={{ flex: wide ? 1 : undefined, minWidth: 0 }}>
-                <View className="flex-row flex-wrap items-center gap-2">
-                  <Text className="font-heavy" style={{ fontSize: 19, lineHeight: 26, color: B9.navy }}>
-                    {en ? step.title.en : step.title.vi}
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flex: wide ? 1 : undefined, minWidth: 0 }}>
+                <View style={{ width: 56, height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: STEP_COLORS[i % STEP_COLORS.length], borderWidth: 2, borderColor: 'rgba(255,255,255,0.7)', ...({ boxShadow: '0 4px 0 rgba(42,34,181,0.35)' } as object) }}>
+                  <PixelText size={40}>{step.n}</PixelText>
+                </View>
+                <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
+                  <View className="flex-row flex-wrap items-center gap-2">
+                    <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 24, color: B9.navy }}>
+                      {en ? step.title.en : step.title.vi}
+                    </Text>
+                    {nextId === step.id ? (
+                      <View style={{ borderRadius: 8, paddingHorizontal: 8, paddingTop: 1, backgroundColor: '#FFD84A' }}>
+                        <PixelText size={18} color="#2B1D00">
+                          {L('TIẾP', 'NEXT')}
+                        </PixelText>
+                      </View>
+                    ) : null}
+                  </View>
+                  <Text className="font-semi" style={{ fontSize: 13, lineHeight: 19, color: B9.muted }}>
+                    {hydrated ? status[step.id] : dash}
                   </Text>
-                  {nextId === step.id ? <NextTag label={L('Bước tiếp theo', 'Next step')} /> : null}
                 </View>
-                <Text className="font-sans" style={{ marginTop: 2, fontSize: 14, lineHeight: 20, color: B9.muted }}>
-                  {en ? step.line.en : step.line.vi}
-                </Text>
-                <Text className="font-semi" style={{ marginTop: 6, fontSize: 13, lineHeight: 19, color: B9.navy }}>
-                  {hydrated ? status[step.id] : dash}
-                </Text>
-                <View className="flex-row flex-wrap items-center" style={{ marginTop: 12, columnGap: 16, rowGap: 6 }}>
-                  <PrimaryButton label={en ? step.primary.en : step.primary.vi} onPress={() => go(step.primary.href)} />
-                  {step.more.map((m) => (
-                    <MoreLink key={m.href} link={m} />
-                  ))}
-                </View>
+              </View>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 12 }}>
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() => go(step.primary.href)}
+                  style={({ hovered, pressed }: { hovered?: boolean; pressed?: boolean }) =>
+                    ({ flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 46, paddingLeft: 18, paddingRight: 8, borderRadius: 23, backgroundColor: hovered ? '#3A31C8' : '#2A22B5', borderWidth: 2, borderColor: '#8F84FF', transform: [{ translateY: pressed ? 3 : 0 }], boxShadow: pressed ? '0 1px 0 #1A1566' : '0 4px 0 #1A1566' }) as object
+                  }
+                >
+                  <Text className="font-nun-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
+                    {en ? step.primary.en : step.primary.vi}
+                  </Text>
+                  <NeonIcon name="next" height={30} />
+                </Pressable>
+                {step.more.map((m) => (
+                  <MoreLink key={m.href} link={m} />
+                ))}
               </View>
             </View>
           ))}
-        </PaperSheet>
+        </NeonWindow>
 
-        <Pressable
-          accessibilityRole="link"
-          onPress={() => go('/sat/practice-tests')}
-          style={({ hovered }: { hovered?: boolean }) => ({
-            marginTop: 12,
-            borderRadius: 16,
-            borderWidth: 1.5,
-            borderColor: B9.line,
-            backgroundColor: '#FFFFFF',
-            paddingHorizontal: 18,
-            paddingVertical: 14,
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 12,
-            opacity: hovered ? 0.86 : 1,
-          })}
-        >
-          <Icon name="clipboard" size={20} color={B9.goldDeep} strokeWidth={2.2} />
-          <View className="min-w-0 flex-1">
-            <Text className="font-heavy" style={{ fontSize: 16, color: B9.navy }}>{L('50 bộ đề luyện SAT', '50 SAT practice forms')}</Text>
-            <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, lineHeight: 18, color: B9.muted }}>{L('Chọn Math, Reading and Writing hoặc full đề.', 'Choose Math, Reading and Writing, or the full test.')}</Text>
-          </View>
-          <Icon name="arrow-right" size={18} color={B9.goldDeep} strokeWidth={2.4} />
-        </Pressable>
-
-        {/* ------------------------------------------- sang Lộ trình học theo mức */}
-        <Pressable
-          accessibilityRole="link"
-          onPress={() => go(SAT_LEVELS_LINK.href)}
-          style={({ hovered }: { hovered?: boolean }) => ({
-            marginTop: 16,
-            borderRadius: 18,
-            backgroundColor: B9.navy,
-            paddingHorizontal: 20,
-            paddingVertical: 16,
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 14,
-            opacity: hovered ? 0.94 : 1,
-          })}
-        >
-          <View className="min-w-0 flex-1">
-            <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: B9.goldLight }}>
-              {L('THEO TRÌNH ĐỘ', 'BY LEVEL')}
-            </Text>
-            <Text className="font-heavy" style={{ marginTop: 2, fontSize: 17, lineHeight: 23, color: '#FFFFFF' }}>
-              {en ? SAT_LEVELS_LINK.en : SAT_LEVELS_LINK.vi}
-            </Text>
-            <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>
-              {L('Ba mức ~1000 · ~1200 · 1400+, xếp sẵn từng bài.', 'Three levels ~1000 · ~1200 · 1400+, lessons laid out.')}
-            </Text>
-          </View>
-          <Icon name="arrow-right" size={20} color={B9.goldLight} strokeWidth={2.4} />
-        </Pressable>
+        <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={14}>
+          <NeonTile
+            title={L('Luyện 50 đề', '50 practice forms')}
+            sub={L('Math · Reading & Writing · full đề', 'Math · Reading & Writing · full test')}
+            chip="SAT"
+            index="50"
+            icon="trophy"
+            palette={NEON_PALETTES.lime!}
+            minHeight={wide ? 190 : 170}
+            onPress={() => go('/sat/practice-tests')}
+          />
+          <NeonTile
+            title={L('Theo trình độ', 'By level')}
+            sub={L('~1000 · ~1200 · 1400+', '~1000 · ~1200 · 1400+')}
+            chip="LEVEL"
+            index="03"
+            icon="crown"
+            palette={NEON_PALETTES.gold!}
+            minHeight={wide ? 190 : 170}
+            onPress={() => go(SAT_LEVELS_LINK.href)}
+          />
+        </Grid>
       </View>
     </Screen>
   );
@@ -215,36 +204,27 @@ function Guide() {
   );
 
   return (
-    <PaperSheet style={{ marginTop: 18 }}>
-      <Pressable
-        accessibilityRole="button"
-        aria-expanded={open}
-        onPress={() => setOpen(!open)}
-        className="flex-row items-center gap-3"
-        style={{ paddingHorizontal: 18, paddingVertical: 12 }}
-      >
-        <Icon name="info" size={16} color={B9.goldDeep} />
-        <Text className="min-w-0 flex-1 font-heavy" style={{ fontSize: 16, color: B9.navy }}>
-          {L('Hướng dẫn', 'How to use')}
-        </Text>
-        <Text className="font-heavy" style={{ fontSize: 18, color: B9.goldDeep }}>
-          {open ? '−' : '+'}
-        </Text>
+    <NeonWindow title={L('Hướng dẫn', 'How to use')} icon="bolt" badge={open ? '−' : '+'} padded={false}>
+      <Pressable accessibilityRole="button" aria-expanded={open} onPress={() => setOpen(!open)} style={{ paddingHorizontal: 18, paddingVertical: open ? 6 : 12 }}>
+        {open ? (
+          <View style={{ paddingVertical: 8, gap: 8 }}>
+            {tips.map((t, i) => (
+              <View key={i} className="flex-row items-start gap-3">
+                <PixelText size={22} color="#6A3FE0" style={{ width: 18 }}>
+                  {i + 1}
+                </PixelText>
+                <Text className="min-w-0 flex-1 font-sans" style={{ fontSize: 14, lineHeight: 21, color: B9.navy }}>
+                  {t}
+                </Text>
+              </View>
+            ))}
+          </View>
+        ) : (
+          <Text className="font-sans" style={{ fontSize: 13, color: B9.muted }}>
+            {L('Bấm để xem cách dùng', 'Tap to see how to use it')}
+          </Text>
+        )}
       </Pressable>
-      {open ? (
-        <View style={{ borderTopWidth: 1, borderColor: B9.line, paddingHorizontal: 18, paddingVertical: 12, gap: 8 }}>
-          {tips.map((t, i) => (
-            <View key={i} className="flex-row items-start gap-3">
-              <Text className="font-heavy" style={{ width: 18, fontSize: 14, lineHeight: 21, color: B9.gold }}>
-                {i + 1}
-              </Text>
-              <Text className="min-w-0 flex-1 font-sans" style={{ fontSize: 14, lineHeight: 21, color: B9.navy }}>
-                {t}
-              </Text>
-            </View>
-          ))}
-        </View>
-      ) : null}
-    </PaperSheet>
+    </NeonWindow>
   );
 }

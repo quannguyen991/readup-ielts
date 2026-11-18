@@ -1,9 +1,13 @@
 import React from 'react';
+import { usePathname } from 'expo-router';
 
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 
 import { useStudyBackdrop } from '@/components/art/ArtBackdrop';
 import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
+import { isChineseVocabRoute } from '@/components/vocab/chinese/route';
+import { eaStudyTheme } from '@/components/vocab/eastasia/eaStudyTheme';
+import { useEaSidebar } from '@/components/vocab/eastasia/useEaSidebar';
 
 import { STUDY_THEMES, themeOf, type StudyTheme } from './study-theme';
 
@@ -16,8 +20,16 @@ export function useStoreTheme(): StudyTheme {
   const fx = useTopicStudyStore((s) => s.studyFx);
   const id = useTopicStudyStore((s) => s.studyTheme);
   const art = useStudyBackdrop();
+  // Mọi hook gọi TRƯỚC mọi `return` (thứ tự hook không đổi giữa các màn).
+  const chiikawa = useChiikawaActive();
+  const zhRoute = isChineseVocabRoute(usePathname());
+  const ea = useEaSidebar();
+  // Học tiếng Trung / Nhật: chủ đề theo skin người học chọn (đứng trước mọi lựa chọn nền khác).
+  if (ea) return eaStudyTheme(ea.skin);
+  // Học tiếng Trung: giấy Band 9 đứng trước mọi lựa chọn nền khác (người học không chọn ở đây).
+  if (zhRoute) return STUDY_THEMES['zh-band9'];
   // Giao diện Chiikawa: nền hồng cho mọi màn ôn từ, đứng trước tranh và cảnh.
-  if (useChiikawaActive()) return STUDY_THEMES.chiikawa;
+  if (chiikawa) return STUDY_THEMES.chiikawa;
   if (art) return STUDY_THEMES[art.tone === 'dark' ? 'art-dark' : 'art-light'];
   return fx ? themeOf(id) : STUDY_THEMES.plain;
 }

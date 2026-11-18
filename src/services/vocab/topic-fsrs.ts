@@ -8,6 +8,7 @@
  */
 import { getStaticDeck, NOTEBOOK_SLUG, rawStaticDeck, splitLevelSlug } from '@/data/study-decks';
 import type { VocabEntry } from '@/store/useVocabStore';
+import { registerTopicFsrs } from './topic-fsrs-registry';
 import { applyGrade, CARD_KINDS, cardKey, emptyCard, isDue, type StoredCard } from './schedule';
 import { DAILY_CAP, type ReviewEntry } from './review-schedule';
 import { dueByBaseDeck, dueBySlugBefore, endOfDayMs, type VocabSlice } from './fsrs-due';
@@ -223,3 +224,6 @@ export function backupLeitner(
     return false;
   }
 }
+
+// Báo cho store biết mô-đun này đã nạp: từ giờ các lần chấm từ chạy đồng bộ.
+registerTopicFsrs({ gradeTopicWord, backupLeitner, leitnerToFsrs });

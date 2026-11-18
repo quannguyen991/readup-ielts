@@ -98,7 +98,7 @@ export function ExamVocabExplorer() {
             borderColor: flashcardMode ? '#B94A70' : '#E6DACB',
           }}
         >
-          <Text style={{ fontSize: 12, fontWeight: '800', color: flashcardMode ? '#FFFFFF' : '#B94A70' }}>
+          <Text style={{ fontSize: 12, fontWeight: '400', color: flashcardMode ? '#FFFFFF' : '#B94A70' }}>
             {flashcardMode ? L('✓ Chế độ Flashcard (Bật)', 'Flashcard Mode (On)') : L('🃏 Bật Flashcard', 'Flashcard Mode')}
           </Text>
         </Pressable>
@@ -198,7 +198,7 @@ export function ExamVocabExplorer() {
                     {item.phonetic}
                   </Text>
                   <View style={{ backgroundColor: '#E2E8F0', paddingHorizontal: 6, paddingVertical: 1.5, borderRadius: 4 }}>
-                    <Text style={{ fontSize: 10, fontWeight: '800', color: '#475569' }}>
+                    <Text style={{ fontSize: 10, fontWeight: '400', color: '#475569' }}>
                       {item.partOfSpeech}
                     </Text>
                   </View>
@@ -215,7 +215,7 @@ export function ExamVocabExplorer() {
                     borderColor: '#FDE68A',
                   }}
                 >
-                  <Text style={{ fontSize: 10.5, fontWeight: '800', color: '#6A4BD9' }}>
+                  <Text style={{ fontSize: 10.5, fontWeight: '400', color: '#6A4BD9' }}>
                     📍 {item.examSource}
                   </Text>
                 </View>
@@ -247,7 +247,7 @@ export function ExamVocabExplorer() {
                       gap: 4,
                     }}
                   >
-                    <Text style={{ fontSize: 11, fontWeight: '800', color: '#B94A70', textTransform: 'uppercase' }}>
+                    <Text style={{ fontSize: 11, fontWeight: '400', color: '#B94A70', textTransform: 'uppercase' }}>
                       Trích đoạn đề thi thật:
                     </Text>
                     <Text style={{ fontSize: 13, color: '#1E293B', lineHeight: 20, fontFamily: 'serif' }}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Path } from 'react-native-svg';
 
@@ -40,6 +41,7 @@ export function ToneTile({
   seed,
   tone,
   icon,
+  art,
   title,
   sub,
   value,
@@ -53,6 +55,8 @@ export function ToneTile({
   /** Màu gốc của thẻ: gradient từ tông sáng đến màu này. */
   tone: string;
   icon: IconName;
+  /** Tranh riêng (sticker vẽ bằng ChatGPT); có thì thay khung hoạ tiết và quả cầu icon. */
+  art?: number;
   title: string;
   sub?: string;
   value?: number | string;
@@ -85,16 +89,24 @@ export function ToneTile({
 
       <View style={{ flex: 1, padding: 12, gap: 10 }}>
         <View style={{ height: artHeight, borderRadius: 18, overflow: 'hidden' }}>
-          <LazyMount
-            style={StyleSheet.absoluteFill}
-            placeholder={<LinearGradient colors={[lighten(deep, 0.5), deep]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />}
-          >
-            <AreaArt tone={[lighten(deep, 0.5), deep]} variant={hash(seed) % 8} />
-          </LazyMount>
-
-          <View pointerEvents="none" style={{ position: 'absolute', left: 10, top: 10 }}>
-            <GlossOrb icon={icon} tone={[lighten(deep, 0.35), deep]} size={40} />
-          </View>
+          {art ? (
+            <>
+              <LinearGradient colors={['#FFF9EC', lighten(deep, 0.7)]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
+              <Image source={art} contentFit="contain" pointerEvents="none" style={{ position: 'absolute', left: '12%', right: '12%', top: '8%', bottom: '8%' }} />
+            </>
+          ) : (
+            <>
+              <LazyMount
+                style={StyleSheet.absoluteFill}
+                placeholder={<LinearGradient colors={[lighten(deep, 0.5), deep]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />}
+              >
+                <AreaArt tone={[lighten(deep, 0.5), deep]} variant={hash(seed) % 8} />
+              </LazyMount>
+              <View pointerEvents="none" style={{ position: 'absolute', left: 10, top: 10 }}>
+                <GlossOrb icon={icon} tone={[lighten(deep, 0.35), deep]} size={40} />
+              </View>
+            </>
+          )}
 
           {value !== undefined ? (
             <View style={{ position: 'absolute', right: 10, top: 10, borderRadius: 14, backgroundColor: 'rgba(255,255,255,0.94)', paddingHorizontal: 10, paddingVertical: 2 }}>

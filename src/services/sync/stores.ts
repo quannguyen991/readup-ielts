@@ -21,6 +21,8 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
+import { hsaPayload, useHsaStore } from '@/store/useHsaStore';
+import { mergeSynced as mergeHsa, readSynced as readHsa } from '@/services/hsa/attempts';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { gamePayload, useGameStore } from '@/store/useGameStore';
 import { freeOwned, rewardPayload, useRewardStore } from '@/store/useRewardStore';
@@ -504,6 +506,16 @@ const writingStore: SyncedStore = {
   merge: (local, remote) => mergeWriting(local as WritingSyncPayload, remote as WritingSyncPayload),
 };
 
+/** HSA: hồ sơ, lượt làm bài chi tiết, kế hoạch và bài đã đánh dấu. Không có điểm riêng: điểm xếp hạng nằm ở kho `study` chung. */
+const hsaStore: SyncedStore = {
+  key: 'hsa',
+  read: () => hsaPayload(),
+  write: (payload) => {
+    useHsaStore.setState(readHsa(payload));
+  },
+  merge: (local, remote) => mergeHsa(local, remote),
+};
+
 export function registerAllSyncedStores(): void {
   registerSyncedStore(writingStore);
   registerSyncedStore(roadmapStore);
@@ -513,6 +525,7 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(topicStudyStore);
   registerSyncedStore(billingStore);
   registerSyncedStore(weeklyStore);
+  registerSyncedStore(hsaStore);
   registerSyncedStore(satRwStore);
   registerSyncedStore(gameStore);
   registerSyncedStore(rewardStore);

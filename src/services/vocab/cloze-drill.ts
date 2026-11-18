@@ -48,16 +48,17 @@ export function clozeable<W extends StudyWord>(words: readonly W[]): W[] {
 }
 
 /** Một vòng: tối đa 10 từ (nơi gọi đã xếp thứ tự), dạng câu xen kẽ. */
-export function planClozeRound(words: readonly StudyWord[], rng: () => number, size = CLOZE_ROUND): ClozeItem[] {
+export function planClozeRound(words: readonly StudyWord[], rng: () => number, size = CLOZE_ROUND, allowed: readonly ClozeKind[] = CLOZE_KINDS): ClozeItem[] {
   const chosen = clozeable(words).slice(0, size);
-  const kinds = spreadKinds(chosen.length, rng, CLOZE_KINDS);
+  const kinds = spreadKinds(chosen.length, rng, allowed);
   return chosen.map((w, i) => ({ word: w.word, kind: kinds[i]! }));
 }
 
 /** Thứ tự ưu tiên khi hỏi lại câu sai: dạng dễ trước. */
 const RETRY_ORDER: readonly ClozeKind[] = ['pick', 'scramble', 'write', 'listen'];
 
-export function advanceCloze(queue: readonly ClozeItem[], correct: boolean): ClozeItem[] {
+/** `allowed`: chữ Hán/kana chỉ có dạng chọn từ (không xếp chữ cái, không gõ bằng bàn phím Latin). */
+export function advanceCloze(queue: readonly ClozeItem[], correct: boolean, allowed: readonly ClozeKind[] = CLOZE_KINDS): ClozeItem[] {
   const [head, ...rest] = queue;
   if (!head) return [];
   if (correct) return rest;
@@ -70,7 +71,7 @@ export function advanceCloze(queue: readonly ClozeItem[], correct: boolean): Clo
   const banned = new Set<ClozeKind>([head.kind]);
   if (rest[at - 1]) banned.add(rest[at - 1]!.kind);
   if (rest[at]) banned.add(rest[at]!.kind);
-  const kind = RETRY_ORDER.find((k) => !banned.has(k)) ?? 'pick';
+  const kind = RETRY_ORDER.find((k) => allowed.includes(k) && !banned.has(k)) ?? allowed[0] ?? 'pick';
   return [...rest.slice(0, at), { word: head.word, kind, retry: true }, ...rest.slice(at)];
 }
 

@@ -1,0 +1,35 @@
+{
+  "topics": [
+    {
+      "topic": "Học vocab bằng list từ rời rạc vs. học theo collocation & ngữ cảnh",
+      "pain_point": "Người tự học Việt Nam chép hàng nghìn từ vào Anki/Quizlet/sổ tay kèm nghĩa tiếng Việt, 'nhớ mặt chữ' nhưng không dùng được khi Speaking/Writing, đọc SAT/IELTS vẫn sai vì từ nhiều nghĩa, và vài tuần sau quên sạch. Họ tưởng mình thiếu từ vựng, thực ra thiếu cách dùng từ.",
+      "core_insight": "Biết một từ ≠ dùng được từ đó. Từ vựng chỉ ở lại khi được học theo cụm (collocation), câu ví dụ và ngữ cảnh thật, với nghĩa tiếng Anh thay vì dịch 1-1. Giải pháp thực chiến: mỗi từ ghi 1 collocation + 1 câu tự đặt + 1 lần dùng thật (nói hoặc viết), rồi ôn lặp lại ngắt quãng (spaced repetition) cho cả cụm thay vì từ đơn. Ưu tiên 2.000-3.000 từ tần suất cao và từ học thuật (AWL) trước khi săn từ 'xịn'.",
+      "keywords": [
+        "collocation",
+        "học từ vựng theo ngữ cảnh",
+        "spaced repetition Anki",
+        "từ vựng IELTS band 7",
+        "SAT vocabulary in context",
+        "học từ vựng không bị quên"
+      ],
+      "suggested_hook": "Bạn đã thuộc 3.000 từ vựng IELTS nhưng Writing vẫn 6.0? Vấn đề không phải bạn thiếu từ, mà là bạn đang học từ theo cách não bộ được thiết kế để quên.",
+      "category": "vocab",
+      "at": "2026-11-14T16:23:01.060Z"
+    },
+    {
+      "topic": "Học từ vựng IELTS theo chủ đề nhưng không dùng được trong bài thi",
+      "pain_point": "Thuộc hàng trăm từ vựng 'khủng' qua các chủ đề nhưng khi viết hoặc nói lại lúng túng, dùng sai ngữ cảnh hoặc bị giám khảo đánh giá là gượng gạo (unnatural/overused).",
+      "core_insight": "Từ vựng không nằm ở số lượng từ đơn nhớ được mà nằm ở cụm từ (collocations) và khả năng kích hoạt phản xạ theo chủ điểm trong phòng thi.",
+      "keywords": [
+        "collocations IELTS",
+        "học từ vựng tiếng Anh",
+        "diễn đạt tự nhiên"
+      ],
+      "suggested_hook": "Học hàng nghìn từ vựng IELTS 'sang xịn mịn' nhưng điểm Writing vẫn lẹt đẹt ở band 6.0 vì mắc phải cái bẫy này.",
+      "category": "vocab",
+      "at": "2026-11-13T17:13:46.483Z"
+    }
+  ],
+  "vocabStacks": [],
+  "lastUpdated": "2026-11-14T16:23:01.061Z"
+}

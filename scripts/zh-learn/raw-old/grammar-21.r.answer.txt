@@ -1,0 +1,574 @@
+[
+  {
+    "id": "zh-g-h3-28",
+    "level": 3,
+    "order": 28,
+    "title": "Định ngữ nhiều tầng",
+    "titleZh": "多项定语",
+    "summary": "Bạn sẽ biết cách xếp nhiều phần miêu tả trước danh từ để câu tiếng Trung rõ và tự nhiên.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nhiều phần cùng bổ nghĩa cho danh từ",
+        "body": "Định ngữ nhiều tầng là khi có từ hai phần trở lên cùng đứng trước một danh từ để nói rõ người hoặc vật đó là ai, ở đâu, ra sao.",
+        "examples": [
+          {
+            "zh": "我昨天买的那本书很好看。",
+            "py": "Wǒ zuótiān mǎi de nà běn shū hěn hǎokàn",
+            "vi": "Quyển sách tôi mua hôm qua rất hay.",
+            "mark": "我昨天买的那本书"
+          },
+          {
+            "zh": "坐在我旁边的那个女孩是我妹妹。",
+            "py": "Zuò zài wǒ pángbiān de nàge nǚhái shì wǒ mèimei",
+            "vi": "Cô gái ngồi bên cạnh tôi là em gái tôi.",
+            "mark": "坐在我旁边的那个女孩"
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi cần nói rõ người hoặc vật",
+        "body": "Dùng cách này khi một định ngữ chưa đủ để xác định danh từ. Có thể ghép thông tin về địa điểm, đặc điểm hoặc hành động với từ chỉ số lượng, rồi đặt tất cả trước danh từ.",
+        "examples": [
+          {
+            "zh": "我们常去学校附近那家小饭店。",
+            "py": "Wǒmen cháng qù xuéxiào fùjìn nà jiā xiǎo fàndiàn",
+            "vi": "Chúng tôi thường đến quán ăn nhỏ gần trường đó.",
+            "mark": "学校附近那家小饭店"
+          },
+          {
+            "zh": "老师给认真学习的学生一本书。",
+            "py": "Lǎoshī gěi rènzhēn xuéxí de xuésheng yì běn shū",
+            "vi": "Thầy giáo tặng một quyển sách cho học sinh chăm chỉ học tập.",
+            "mark": "认真学习的学生"
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Xếp phần bổ nghĩa trước danh từ",
+        "body": "Từ chỉ định và lượng từ thường đứng gần danh từ. Cụm miêu tả dài dùng 的 để nối với danh từ, như trong 我昨天买的那本书。",
+        "formula": "Cụm miêu tả dài + 的 + danh từ (có thể kèm từ chỉ định, lượng từ và từ miêu tả)",
+        "examples": [
+          {
+            "zh": "这是我昨天买的那本新书。",
+            "py": "Zhè shì wǒ zuótiān mǎi de nà běn xīnshū",
+            "vi": "Đây là quyển sách mới tôi mua hôm qua.",
+            "mark": "我昨天买的那本新书"
+          },
+          {
+            "zh": "那个穿白衣服的男老师是我爸爸。",
+            "py": "Nàge chuān bái yīfu de nán lǎoshī shì wǒ bàba",
+            "vi": "Thầy giáo mặc đồ trắng kia là bố tôi.",
+            "mark": "穿白衣服的男老师"
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đặt sai vị trí phần miêu tả",
+        "body": "Đặt cụm miêu tả ngay trước danh từ mà nó bổ nghĩa. Với cụm có hành động hoặc đặc điểm, dùng 的 để nối cụm với danh từ.",
+        "mistakes": [
+          {
+            "wrong": "我买的昨天那本书很好看。",
+            "right": "我昨天买的那本书很好看。",
+            "why": "Từ chỉ thời gian 昨天 thường đứng trước hành động 买 trong cụm miêu tả."
+          },
+          {
+            "wrong": "那个男老师穿白衣服的很有名。",
+            "right": "那个穿白衣服的男老师很有名。",
+            "why": "Cụm 穿白衣服的 cần đứng trước danh từ 男老师 mà nó bổ nghĩa."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Chọn câu có nhiều định ngữ được xếp đúng thứ tự.",
+        "options": [
+          "我昨天买的那本书很好看。",
+          "我买的昨天那本书很好看。",
+          "我昨天的买那本书很好看。",
+          "那本书我昨天买很好看。"
+        ],
+        "answer": 0,
+        "explain": "Cụm 我昨天买的 đứng trước từ chỉ số lượng 那本 và danh từ 书."
+      },
+      {
+        "q": "Cụm nào có nghĩa là “cô gái ngồi bên cạnh tôi”?",
+        "options": [
+          "我旁边女孩坐的那个",
+          "坐在我旁边的那个女孩",
+          "那个女孩我旁边坐的",
+          "我旁边坐女孩的那个"
+        ],
+        "answer": 1,
+        "explain": "Cụm 坐在我旁边的 miêu tả 女孩 và đứng trước danh từ này."
+      },
+      {
+        "q": "Chọn câu tự nhiên để nói về quán ăn gần trường.",
+        "options": [
+          "我们常去那家附近学校小饭店。",
+          "我们常去学校小饭店附近那家。",
+          "我们常去学校附近那家小饭店。",
+          "我们常去附近学校那家饭店小。"
+        ],
+        "answer": 2,
+        "explain": "学校附近 miêu tả vị trí, còn 那家小 bổ nghĩa cho 饭店."
+      },
+      {
+        "q": "Câu nào diễn đạt đúng “thầy giáo mặc đồ trắng kia là bố tôi”?",
+        "options": [
+          "那个男老师穿白衣服的很有名。",
+          "那个穿白衣服男老师是我爸爸。",
+          "穿白衣服的男老师那个是我爸爸。",
+          "那个穿白衣服的男老师是我爸爸。"
+        ],
+        "answer": 3,
+        "explain": "Cụm 穿白衣服的 đứng trước danh từ 男老师."
+      },
+      {
+        "q": "Chọn câu đúng để nói “Đây là quyển sách mới tôi mua hôm qua.”",
+        "options": [
+          "这是我昨天买的那本新书。",
+          "这是我买的昨天那本新书。",
+          "这是新书我昨天买的那本。",
+          "这是我昨天的买那本新书。"
+        ],
+        "answer": 0,
+        "explain": "Cụm miêu tả 我昨天买的 đứng trước 那本新书."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h3-29",
+    "level": 3,
+    "order": 29,
+    "title": "Ước lượng với 大概",
+    "titleZh": "大概估数",
+    "summary": "Bạn sẽ biết cách dùng 大概 và các số liền kề để ước lượng số lượng, thời gian hoặc khoảng cách.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nói con số gần đúng",
+        "body": "大概 có nghĩa là “khoảng”, “ước chừng”, dùng khi người nói không nêu một con số chính xác. Nó thường đứng trước phần chỉ số lượng hoặc thời gian được ước lượng.",
+        "examples": [
+          {
+            "zh": "我们班大概有二十个学生。",
+            "py": "Wǒmen bān dàgài yǒu èrshí ge xuésheng",
+            "vi": "Lớp chúng tôi có khoảng hai mươi học sinh.",
+            "mark": "大概有二十个学生"
+          },
+          {
+            "zh": "他大概下午三点到家。",
+            "py": "Tā dàgài xiàwǔ sān diǎn dào jiā",
+            "vi": "Anh ấy khoảng ba giờ chiều sẽ về đến nhà.",
+            "mark": "大概下午三点"
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi chưa biết con số chính xác",
+        "body": "Dùng 大概 khi đưa ra ước tính về số người, thời gian hoặc khoảng cách. Hai số liền kề như 三四点 hay 两三个小时 cũng có thể diễn đạt một khoảng gần đúng.",
+        "examples": [
+          {
+            "zh": "从我家到学校大概有三公里。",
+            "py": "Cóng wǒ jiā dào xuéxiào dàgài yǒu sān gōnglǐ",
+            "vi": "Từ nhà tôi đến trường khoảng ba cây số.",
+            "mark": "大概有三公里"
+          },
+          {
+            "zh": "我每天大概看一个小时的书。",
+            "py": "Wǒ měitiān dàgài kàn yí ge xiǎoshí de shū",
+            "vi": "Mỗi ngày tôi đọc sách khoảng một tiếng.",
+            "mark": "大概看一个小时"
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Đặt 大概 trước phần ước lượng",
+        "body": "Đặt 大概 trước con số hoặc cụm thời gian được ước lượng. Khi dùng hai số liền kề, số thứ hai thường nêu khoảng trên dưới, như 三四点 là khoảng ba hoặc bốn giờ.",
+        "formula": "大概 + số lượng hoặc thời gian; 大概 + hai số liền kề + lượng từ",
+        "examples": [
+          {
+            "zh": "他大概三四点到家。",
+            "py": "Tā dàgài sān sì diǎn dào jiā",
+            "vi": "Anh ấy khoảng ba hoặc bốn giờ sẽ về đến nhà.",
+            "mark": "大概三四点"
+          },
+          {
+            "zh": "我们大概等两三个小时就走。",
+            "py": "Wǒmen dàgài děng liǎng sān ge xiǎoshí jiù zǒu",
+            "vi": "Chúng tôi đợi khoảng hai hoặc ba tiếng rồi đi.",
+            "mark": "大概等两三个小时"
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đặt sai vị trí từ chỉ thời gian",
+        "body": "Đặt phần ước lượng sát với thông tin mà nó bổ nghĩa. Không chen từ chỉ thời gian vào giữa con số và đơn vị hoặc giữa buổi trong ngày với giờ.",
+        "mistakes": [
+          {
+            "wrong": "这儿大概有学生二十个。",
+            "right": "这儿大概有二十个学生。",
+            "why": "Số lượng 二十个 đứng trước danh từ 学生."
+          },
+          {
+            "wrong": "我大概三点下午到家。",
+            "right": "我大概下午三点到家。",
+            "why": "Trong cụm giờ, từ chỉ buổi 下午 đứng trước số giờ 三点."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "大概 thường được dùng để làm gì?",
+        "options": [
+          "Diễn đạt con số gần đúng",
+          "Hỏi tên một người",
+          "Nói một hành động đã kết thúc",
+          "Miêu tả màu sắc"
+        ],
+        "answer": 0,
+        "explain": "大概 báo hiệu người nói đang đưa ra một ước lượng."
+      },
+      {
+        "q": "Chọn câu có trật tự từ đúng.",
+        "options": [
+          "我们班有学生大概二十个。",
+          "我们班大概有二十个学生。",
+          "我们班有二十学生个大概。",
+          "我们班二十个大概有学生。"
+        ],
+        "answer": 1,
+        "explain": "大概 đứng trước 有二十个学生 để diễn đạt số học sinh ước chừng."
+      },
+      {
+        "q": "Câu nào dùng hai số liền kề để nói khoảng ba hoặc bốn giờ?",
+        "options": [
+          "他大概点三四到家。",
+          "他大概三点四到家。",
+          "他大概三四点到家。",
+          "他三四大概点到家。"
+        ],
+        "answer": 2,
+        "explain": "三四点 biểu thị khoảng ba hoặc bốn giờ."
+      },
+      {
+        "q": "Câu nào nói “Từ nhà tôi đến trường khoảng ba cây số”?",
+        "options": [
+          "从我家到学校有大概公里三。",
+          "从我家大概到学校有三公里。",
+          "从我家到学校有三公里大概。",
+          "从我家到学校大概有三公里。"
+        ],
+        "answer": 3,
+        "explain": "大概 đứng trước cụm 有三公里 để thể hiện khoảng cách ước lượng."
+      },
+      {
+        "q": "Chọn câu đúng để nói “Anh ấy khoảng ba giờ chiều về đến nhà.”",
+        "options": [
+          "他大概下午三点到家。",
+          "他下午大概点三到家。",
+          "他大概三点下午到家。",
+          "他三点下午大概到家。"
+        ],
+        "answer": 0,
+        "explain": "Cụm chỉ thời gian có trật tự 下午三点 và đứng trước 到家."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h3-30",
+    "level": 3,
+    "order": 30,
+    "title": "Lặp lượng từ",
+    "titleZh": "数量重叠",
+    "summary": "Bạn sẽ biết cách dùng cụm lặp số lượng từ để diễn đạt hành động diễn ra lần lượt từng người hoặc từng vật.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Lặp để nói lần lượt từng cái",
+        "body": "Lặp cụm số từ và lượng từ như 一个一个 để nói người hoặc vật làm gì đó lần lượt từng cái một. Cụm này thường bổ nghĩa cho động từ.",
+        "examples": [
+          {
+            "zh": "学生们一个一个走进教室。",
+            "py": "Xuéshengmen yí ge yí ge zǒu jìn jiàoshì",
+            "vi": "Các học sinh lần lượt đi vào lớp.",
+            "mark": "一个一个"
+          },
+          {
+            "zh": "孩子们一个一个地上车了。",
+            "py": "Háizimen yí ge yí ge de shàng chē le",
+            "vi": "Bọn trẻ lần lượt lên xe.",
+            "mark": "一个一个地"
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi sự việc diễn ra từng lượt",
+        "body": "Dùng cách lặp này khi mọi người lần lượt nói, trả lời, đi vào hoặc làm một việc theo thứ tự. Thêm 地 trước động từ để làm rõ cụm đó đang bổ nghĩa cho hành động.",
+        "examples": [
+          {
+            "zh": "老师叫我们一个一个地回答问题。",
+            "py": "Lǎoshī jiào wǒmen yí ge yí ge de huídá wèntí",
+            "vi": "Thầy giáo bảo chúng tôi lần lượt trả lời câu hỏi.",
+            "mark": "一个一个地回答问题"
+          },
+          {
+            "zh": "大家一个一个地说自己的名字。",
+            "py": "Dàjiā yí ge yí ge de shuō zìjǐ de míngzi",
+            "vi": "Mọi người lần lượt nói tên của mình.",
+            "mark": "一个一个地说"
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Lặp cả số từ lẫn lượng từ",
+        "body": "Lặp nguyên cụm số từ và lượng từ: 一个变成一个一个, 一本变成一本一本. Cụm lặp thường đứng trước động từ, có thể thêm 地 để nối với động từ.",
+        "formula": "Số từ + lượng từ + số từ + lượng từ + (地) + động từ",
+        "examples": [
+          {
+            "zh": "我们一个一个地检查这些东西。",
+            "py": "Wǒmen yí ge yí ge de jiǎnchá zhèxiē dōngxi",
+            "vi": "Chúng tôi lần lượt kiểm tra những món đồ này.",
+            "mark": "一个一个地检查"
+          },
+          {
+            "zh": "客人一个一个地走进房间。",
+            "py": "Kèrén yí ge yí ge de zǒu jìn fángjiān",
+            "vi": "Khách lần lượt đi vào phòng.",
+            "mark": "一个一个地走进"
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Không thêm danh từ sau cụm lặp",
+        "body": "Cụm lặp đã mang ý “từng người” hoặc “từng cái”, nên thường đi thẳng với động từ. Nếu muốn nhấn mạnh cách thức, thêm 地 trước động từ.",
+        "mistakes": [
+          {
+            "wrong": "我们一个一个学生走进教室。",
+            "right": "我们一个一个地走进教室。",
+            "why": "Không đặt danh từ 学生 ngay sau cụm 一个一个 khi cụm này bổ nghĩa cho động từ."
+          },
+          {
+            "wrong": "同学们一张一张地走进教室。",
+            "right": "同学们一个一个地走进教室。",
+            "why": "张 dùng để đếm vật phẳng; nói từng người thì dùng 一个一个."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "一个一个 thường diễn đạt ý nào?",
+        "options": [
+          "Lần lượt từng người hoặc từng vật",
+          "Một người rất cao",
+          "Một việc làm mỗi ngày",
+          "Nhiều người cùng lúc"
+        ],
+        "answer": 0,
+        "explain": "Cụm lặp diễn đạt sự việc diễn ra từng lượt."
+      },
+      {
+        "q": "Chọn câu tự nhiên để nói “Mọi người lần lượt nói tên mình.”",
+        "options": [
+          "大家一个名字一个地说。",
+          "大家一个一个地说自己的名字。",
+          "大家说一个一个自己的名字。",
+          "大家地一个一个说自己名字。"
+        ],
+        "answer": 1,
+        "explain": "一个一个地 đứng trước động từ 说 để diễn đạt hành động lần lượt."
+      },
+      {
+        "q": "Câu nào có cụm lặp đi trước hành động?",
+        "options": [
+          "客人走进一个一个地房间。",
+          "客人地一个一个走进房间。",
+          "客人一个一个地走进房间。",
+          "一个客人走进房间地一个。"
+        ],
+        "answer": 2,
+        "explain": "客人一个一个地 đứng trước động từ 走进."
+      },
+      {
+        "q": "Sửa câu sau cho tự nhiên: 我们一个一个学生走进教室。",
+        "options": [
+          "我们学生一个一个走进的教室。",
+          "我们一个一个走进学生教室。",
+          "我们一个学生一个地走进教室。",
+          "我们一个一个地走进教室。"
+        ],
+        "answer": 3,
+        "explain": "Cụm 一个一个地 bổ nghĩa cho động từ 走进 và không cần thêm danh từ phía sau."
+      },
+      {
+        "q": "Chọn câu đúng để nói “Các học sinh lần lượt đi vào lớp.”",
+        "options": [
+          "学生们一个一个走进教室。",
+          "学生们一个走一个进教室。",
+          "学生们走教室一个一个进。",
+          "学生们一个个学生走进教室。"
+        ],
+        "answer": 0,
+        "explain": "一个一个 đứng trước 走进 để diễn đạt các học sinh vào lớp lần lượt."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h4-01",
+    "level": 4,
+    "order": 1,
+    "title": "Câu chữ 把",
+    "titleZh": "把字句",
+    "summary": "Bạn sẽ biết cách dùng 把 để nêu rõ vật bị tác động và kết quả hoặc vị trí của nó.",
+    "minutes": 9,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Đưa vật bị tác động lên trước động từ",
+        "body": "Câu chữ 把 đặt tân ngữ sau 把 và trước động từ để nhấn mạnh cách xử lý hoặc kết quả của vật đó. Sau động từ thường cần có thành phần bổ sung như kết quả, vị trí hoặc hướng.",
+        "examples": [
+          {
+            "zh": "请把你的名字写在这里。",
+            "py": "Qǐng bǎ nǐ de míngzi xiě zài zhèlǐ",
+            "vi": "Xin hãy viết tên của bạn vào đây.",
+            "mark": "把你的名字写在这里"
+          },
+          {
+            "zh": "爸爸把那本书放进书包里了。",
+            "py": "Bàba bǎ nà běn shū fàng jìn shūbāo lǐ le",
+            "vi": "Bố đã bỏ quyển sách kia vào trong cặp.",
+            "mark": "把那本书放进书包里了"
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi vật đã rõ và bị xử lý",
+        "body": "Dùng 把 khi người nghe biết vật nào đang được nói đến và muốn biết người đó làm gì với vật ấy. Tân ngữ thường là một vật cụ thể hoặc đã được nhắc đến.",
+        "examples": [
+          {
+            "zh": "姐姐把晚饭做好了，大家可以吃了。",
+            "py": "Jiějie bǎ wǎnfàn zuò hǎo le dàjiā kěyǐ chī le",
+            "vi": "Chị đã nấu xong bữa tối, mọi người có thể ăn rồi.",
+            "mark": "把晚饭做好了"
+          },
+          {
+            "zh": "他把手机放在房间里了。",
+            "py": "Tā bǎ shǒujī fàng zài fángjiān lǐ le",
+            "vi": "Anh ấy đã đặt điện thoại trong phòng.",
+            "mark": "把手机放在房间里了"
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Theo sau động từ là kết quả hoặc vị trí",
+        "body": "Cấu trúc cơ bản là chủ ngữ + 把 + tân ngữ + động từ + thành phần khác. Thành phần sau động từ cho biết kết quả, vị trí, hướng hoặc việc đã hoàn tất.",
+        "formula": "S + 把 + O + V + thành phần khác",
+        "examples": [
+          {
+            "zh": "我把今天的作业做完了。",
+            "py": "Wǒ bǎ jīntiān de zuòyè zuò wán le",
+            "vi": "Tôi đã làm xong bài tập hôm nay.",
+            "mark": "把今天的作业做完了"
+          },
+          {
+            "zh": "请你把这件衣服洗干净。",
+            "py": "Qǐng nǐ bǎ zhè jiàn yīfu xǐ gānjìng",
+            "vi": "Bạn hãy giặt sạch bộ quần áo này.",
+            "mark": "把这件衣服洗干净"
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Thiếu thành phần sau động từ",
+        "body": "Trong câu chữ 把, không nên chỉ nêu động từ trần trụi. Hãy nói rõ kết quả, vị trí hoặc hướng của hành động; nhớ đặt tân ngữ ngay sau 把.",
+        "mistakes": [
+          {
+            "wrong": "我把这本书看。",
+            "right": "我把这本书看完了。",
+            "why": "Sau 看 cần có phần bổ sung như 看完 để nêu rõ kết quả của hành động."
+          },
+          {
+            "wrong": "我把放书在桌子上。",
+            "right": "我把书放在桌子上。",
+            "why": "Tân ngữ 书 phải đứng sau 把 và trước động từ 放."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Trong câu chữ 把, tân ngữ thường đứng ở đâu?",
+        "options": [
+          "Sau 把 và trước động từ",
+          "Trước chủ ngữ",
+          "Sau dấu chấm câu",
+          "Sau động từ và thành phần bổ sung"
+        ],
+        "answer": 0,
+        "explain": "Cấu trúc cơ bản là chủ ngữ + 把 + tân ngữ + động từ."
+      },
+      {
+        "q": "Chọn câu chữ 把 có kết quả rõ ràng.",
+        "options": [
+          "我把作业做。",
+          "我把作业做完了。",
+          "我把做完了作业。",
+          "我作业把做完了。"
+        ],
+        "answer": 1,
+        "explain": "做完 cho biết bài tập đã được làm xong."
+      },
+      {
+        "q": "Câu nào nói đúng “Anh ấy đã đặt điện thoại trong phòng”?",
+        "options": [
+          "他把放手机在房间里了。",
+          "他手机把放在房间里了。",
+          "他把手机放在房间里了。",
+          "他把手机在房间里放了在。"
+        ],
+        "answer": 2,
+        "explain": "手机 đứng sau 把, còn 放在房间里 nêu vị trí của điện thoại."
+      },
+      {
+        "q": "Sửa câu sau cho đúng: 我把放书在桌子上。",
+        "options": [
+          "我书把放在桌子上。",
+          "我把放在桌子上书。",
+          "我把书在桌子放上。",
+          "我把书放在桌子上。"
+        ],
+        "answer": 3,
+        "explain": "Tân ngữ 书 đứng ngay sau 把, rồi đến động từ 放 và vị trí 在桌子上."
+      },
+      {
+        "q": "Chọn câu có nghĩa là “Xin hãy viết tên của bạn vào đây.”",
+        "options": [
+          "请把你的名字写在这里。",
+          "请把写你的名字在这里。",
+          "请你名字把写在这里。",
+          "请把你的名字在这里写了上。"
+        ],
+        "answer": 0,
+        "explain": "Câu dùng 把 đặt 名字 trước động từ 写 và nêu vị trí 在这里."
+      }
+    ]
+  }
+]

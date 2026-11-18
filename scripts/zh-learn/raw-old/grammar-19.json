@@ -1,0 +1,588 @@
+[
+ {
+  "id": "zh-g-h3-20",
+  "level": 3,
+  "order": 1,
+  "title": "Nhấn mạnh hoàn toàn không có",
+  "titleZh": "一点儿也不",
+  "summary": "Học xong, bạn có thể nhấn mạnh rằng mình không làm hoặc không có điều gì dù chỉ một chút.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nhấn mạnh mức độ phủ định",
+    "body": "一……也/都+不/没 diễn tả ý “đến một chút cũng không” hoặc “dù một thứ cũng không”. 一点儿也不 thường dùng để nhấn mạnh mức độ hoàn toàn không.",
+    "examples": [
+     {
+      "zh": "我今天一点儿也不累。",
+      "py": "Wǒ jīntiān yìdiǎnr yě bú lèi",
+      "vi": "Hôm nay tôi chẳng mệt chút nào."
+     },
+     {
+      "zh": "我昨天一点儿水也没喝。",
+      "py": "Wǒ zuótiān yìdiǎnr shuǐ yě méi hē",
+      "vi": "Hôm qua tôi chẳng uống chút nước nào."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói không thích hoặc không bận",
+    "body": "Dùng mẫu này khi muốn nhấn mạnh mức độ, số lượng bằng không hoặc một việc không xảy ra. 一点儿也不 thường đứng trước tính từ hoặc động từ chỉ trạng thái.",
+    "examples": [
+     {
+      "zh": "我一点儿也不喜欢这家饭店。",
+      "py": "Wǒ yìdiǎnr yě bù xǐhuan zhè jiā fàndiàn",
+      "vi": "Tôi chẳng thích quán ăn này chút nào."
+     },
+     {
+      "zh": "她今天一点儿都不忙。",
+      "py": "Tā jīntiān yìdiǎnr dōu bù máng",
+      "vi": "Hôm nay cô ấy chẳng bận chút nào."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt 也 hoặc 都 sau lượng từ",
+    "body": "Khi phủ định một số lượng, đặt 一+量词 hoặc 一点儿+名词 trước 也/都. Sau đó dùng 不 hoặc 没 rồi đến động từ.",
+    "formula": "S + 一 + lượng từ / 一点儿 + danh từ + 也/都 + 不/没 + động từ",
+    "examples": [
+     {
+      "zh": "他今天一个苹果也没吃。",
+      "py": "Tā jīntiān yí ge píngguǒ yě méi chī",
+      "vi": "Hôm nay cậu ấy chẳng ăn quả táo nào."
+     },
+     {
+      "zh": "我们班一个人也没来。",
+      "py": "Wǒmen bān yí ge rén yě méi lái",
+      "vi": "Lớp chúng tôi chẳng có ai đến."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Chọn 不 hay 没",
+    "body": "不 thường phủ định trạng thái, ý muốn hoặc thói quen; 没 thường phủ định việc đã không xảy ra. Hãy nhìn thời gian và ý nghĩa của cả câu để chọn.",
+    "examples": [
+     {
+      "zh": "我今天一点儿也不想睡觉。",
+      "py": "Wǒ jīntiān yìdiǎnr yě bù xiǎng shuìjiào",
+      "vi": "Hôm nay tôi chẳng muốn ngủ chút nào."
+     },
+     {
+      "zh": "爷爷昨天一点儿茶也没喝。",
+      "py": "Yéye zuótiān yìdiǎnr chá yě méi hē",
+      "vi": "Hôm qua ông chẳng uống chút trà nào."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đặt 也 và 不/没 đúng chỗ",
+    "body": "也 đứng trước 不 hoặc 没. Với việc không xảy ra trong quá khứ, dùng 没 để phủ định.",
+    "mistakes": [
+     {
+      "wrong": "我一点儿不也累。",
+      "right": "我一点儿也不累。",
+      "why": "也 phải đứng trước 不; vị trí này thường bị đảo khi người học dịch từng chữ."
+     },
+     {
+      "wrong": "我昨天一点儿水也不喝。",
+      "right": "我昨天一点儿水也没喝。",
+      "why": "Câu nói về việc đã không xảy ra hôm qua nên dùng 没."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào có nghĩa “Hôm nay tôi chẳng mệt chút nào”?",
+    "options": [
+     "我今天一点儿也没累。",
+     "我今天也一点儿不累。",
+     "我今天不一点儿也累。",
+     "我今天一点儿也不累。"
+    ],
+    "answer": 3,
+    "explain": "一点儿也不 đứng trước tính từ để nhấn mạnh rằng hoàn toàn không mệt."
+   },
+   {
+    "q": "Điền vào chỗ trống: 我昨天一点儿水___没喝。",
+    "options": [
+     "不",
+     "都",
+     "也",
+     "很"
+    ],
+    "answer": 2,
+    "explain": "Mẫu phủ định số lượng là 一点儿水也没喝."
+   },
+   {
+    "q": "Câu nào nói “Hôm nay cô ấy không bận chút nào”?",
+    "options": [
+     "她一点儿也没忙。",
+     "她今天一点儿都不忙。",
+     "她今天一点儿都没忙。"
+    ],
+    "answer": 1,
+    "explain": "一点儿都不忙 diễn tả hôm nay cô ấy hoàn toàn không bận."
+   },
+   {
+    "q": "Chọn câu đúng với ý “Hôm qua cậu ấy chẳng ăn quả táo nào”.",
+    "options": [
+     "他昨天一个苹果不也吃。",
+     "他没昨天一个苹果也吃。",
+     "他昨天一个苹果都不吃。",
+     "他昨天一个苹果也没吃。"
+    ],
+    "answer": 3,
+    "explain": "Việc không ăn xảy ra trong quá khứ nên dùng 也没吃."
+   },
+   {
+    "q": "Điền từ phù hợp: 我昨天一点儿饭也___吃。",
+    "options": [
+     "没",
+     "不",
+     "很"
+    ],
+    "answer": 0,
+    "explain": "没 phủ định hành động đã không xảy ra hôm qua."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-21",
+  "level": 3,
+  "order": 2,
+  "title": "Nêu góc nhìn của một người",
+  "titleZh": "对……来说",
+  "summary": "Học xong, bạn có thể nói một việc dễ, khó, quan trọng hay thế nào theo góc nhìn của một người.",
+  "minutes": 7,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu người có góc nhìn",
+    "body": "对……来说 nghĩa là “đối với… mà nói”, còn 在……看来 nghĩa là “theo cách nhìn của…”. Cả hai cụm đều nêu người có góc nhìn trước khi nói nhận xét.",
+    "examples": [
+     {
+      "zh": "对我来说，中文不难。",
+      "py": "Duì wǒ lái shuō zhōngwén bù nán",
+      "vi": "Đối với tôi, tiếng Trung không khó."
+     },
+     {
+      "zh": "在妈妈看来，这家饭店很便宜。",
+      "py": "Zài māma kànlái zhè jiā fàndiàn hěn piányi",
+      "vi": "Theo mẹ, quán ăn này rất rẻ."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu cảm nhận và nhận xét",
+    "body": "Dùng 对……来说 để nói một việc có ý nghĩa ra sao với một người. Dùng 在……看来 khi trình bày nhận xét hoặc đánh giá của người đó.",
+    "examples": [
+     {
+      "zh": "对弟弟来说，做饭很难。",
+      "py": "Duì dìdi lái shuō zuòfàn hěn nán",
+      "vi": "Đối với em trai, nấu ăn rất khó."
+     },
+     {
+      "zh": "在老师看来，妹妹学得很认真。",
+      "py": "Zài lǎoshī kànlái mèimei xué de hěn rènzhēn",
+      "vi": "Theo cô giáo, em gái học rất chăm chỉ."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Giữ nguyên cụm mở đầu",
+    "body": "Đặt người hoặc nhóm người vào chỗ trống, rồi thêm nhận xét ở phía sau. Không bỏ 对 trong 对……来说 hoặc 看 trong 在……看来.",
+    "formula": "对 + người + 来说，nhận xét；在 + người + 看来，nhận xét",
+    "examples": [
+     {
+      "zh": "对爸爸来说，周末也要工作。",
+      "py": "Duì bàba lái shuō zhōumò yě yào gōngzuò",
+      "vi": "Đối với bố, cuối tuần cũng phải làm việc."
+     },
+     {
+      "zh": "在我看来，这本书很好看。",
+      "py": "Zài wǒ kànlái zhè běn shū hěn hǎokàn",
+      "vi": "Theo tôi, quyển sách này rất hay."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không trộn hai mẫu",
+    "body": "Hai cụm có cách mở đầu cố định. Hãy chọn trọn cụm phù hợp với ý định diễn đạt.",
+    "mistakes": [
+     {
+      "wrong": "我来说，中文不难。",
+      "right": "对我来说，中文不难。",
+      "why": "Mẫu “đối với tôi mà nói” cần có 对 ở đầu."
+     },
+     {
+      "wrong": "在我来说，这个菜很好吃。",
+      "right": "在我看来，这个菜很好吃。",
+      "why": "Sau 在 phải dùng 看来 để nêu ý kiến, không ghép 在 với 来说."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Câu nào diễn đạt “Theo mẹ, quán ăn này rất rẻ” như một nhận xét?",
+    "options": [
+     "对妈妈来说，这家饭店很便宜。",
+     "在妈妈看来，这家饭店很便宜。",
+     "妈妈对看来，这家饭店很便宜。"
+    ],
+    "answer": 1,
+    "explain": "在妈妈看来 nêu nhận xét theo góc nhìn của mẹ."
+   },
+   {
+    "q": "Điền vào chỗ trống: ___我来说，中文不难。",
+    "options": [
+     "在",
+     "看",
+     "对",
+     "从"
+    ],
+    "answer": 2,
+    "explain": "Mẫu “đối với tôi mà nói” là 对我来说."
+   },
+   {
+    "q": "Câu nào trực tiếp nêu quan điểm của người nói?",
+    "options": [
+     "中文在我说不难。",
+     "在我来说，中文不难。",
+     "对我看来，中文不难。",
+     "在我看来，中文不难。"
+    ],
+    "answer": 3,
+    "explain": "在我看来 là cụm dùng để trình bày quan điểm của người nói."
+   },
+   {
+    "q": "Chọn câu đúng với ý “Đối với em trai, nấu ăn rất khó”.",
+    "options": [
+     "对弟弟来说，做饭很难。",
+     "弟弟对来说，做饭很难。",
+     "在弟弟来说，做饭很难。"
+    ],
+    "answer": 0,
+    "explain": "Đặt 对 trước người, rồi dùng 来说 để mở đầu nhận xét."
+   },
+   {
+    "q": "Câu nào có nghĩa “Đối với bố, cuối tuần cũng phải làm việc”?",
+    "options": [
+     "在爸爸来说，周末也要工作。",
+     "对爸爸来说，周末也要工作。",
+     "对爸爸看，周末也要工作。"
+    ],
+    "answer": 1,
+    "explain": "对爸爸来说 diễn đạt “đối với bố mà nói”."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-22",
+  "level": 3,
+  "order": 3,
+  "title": "Nối thứ tự và hành động song song",
+  "titleZh": "先……再……",
+  "summary": "Học xong, bạn có thể nối các hành động theo thứ tự, diễn tả hai việc diễn ra cùng lúc và ghép hai đặc điểm.",
+  "minutes": 9,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nối các hành động hoặc đặc điểm",
+    "body": "先……再…… và 先……然后…… nối các việc theo thứ tự. 一边……一边…… diễn tả hai việc cùng diễn ra, còn 又……又…… ghép hai đặc điểm hoặc trạng thái.",
+    "examples": [
+     {
+      "zh": "我先洗手，再和弟弟吃饭。",
+      "py": "Wǒ xiān xǐshǒu zài hé dìdi chīfàn",
+      "vi": "Tôi rửa tay trước rồi ăn cơm với em trai."
+     },
+     {
+      "zh": "妈妈先回家，然后给我做饭。",
+      "py": "Māma xiān huí jiā ránhòu gěi wǒ zuòfàn",
+      "vi": "Mẹ về nhà trước rồi nấu ăn cho tôi."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nói hai việc cùng diễn ra",
+    "body": "Dùng 一边……一边…… khi hai hoạt động diễn ra cùng lúc, thường do cùng một người thực hiện. Đặt mỗi 一边 trước một hoạt động.",
+    "examples": [
+     {
+      "zh": "我晚上常常一边看书一边喝水。",
+      "py": "Wǒ wǎnshang chángcháng yìbiān kànshū yìbiān hēshuǐ",
+      "vi": "Buổi tối tôi thường vừa đọc sách vừa uống nước."
+     },
+     {
+      "zh": "妹妹一边听歌一边做饭。",
+      "py": "Mèimei yìbiān tīnggē yìbiān zuòfàn",
+      "vi": "Em gái vừa nghe nhạc vừa nấu ăn."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Nêu rõ thứ tự trước sau",
+    "body": "先 đứng trước hành động xảy ra trước, còn 再 hoặc 然后 đứng trước hành động tiếp theo. Không dùng 再 để thay cho hành động đang diễn ra đồng thời.",
+    "examples": [
+     {
+      "zh": "爸爸先买菜，再回家做饭。",
+      "py": "Bàba xiān mǎi cài zài huí jiā zuòfàn",
+      "vi": "Bố mua thức ăn trước rồi về nhà nấu cơm."
+     },
+     {
+      "zh": "弟弟一边走路一边说话。",
+      "py": "Dìdi yìbiān zǒulù yìbiān shuōhuà",
+      "vi": "Em trai vừa đi vừa nói chuyện."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 2",
+    "title": "Ghép hai đặc điểm bằng 又",
+    "body": "又……又…… nối hai đặc điểm hoặc trạng thái cùng đúng với một người hay sự vật. Mỗi 又 đứng ngay trước một đặc điểm.",
+    "examples": [
+     {
+      "zh": "我觉得这个苹果又大又甜。",
+      "py": "Wǒ juéde zhège píngguǒ yòu dà yòu tián",
+      "vi": "Tôi thấy quả táo này vừa to vừa ngọt."
+     },
+     {
+      "zh": "我家小狗又小又可爱。",
+      "py": "Wǒ jiā xiǎogǒu yòu xiǎo yòu kě'ài",
+      "vi": "Chú chó nhà tôi vừa nhỏ vừa đáng yêu."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không ghép lẫn các cặp",
+    "body": "Dùng đúng cặp từ nối theo ý nghĩa: hành động đồng thời đi với 一边……一边……; hành động theo thứ tự đi với 先……再…….",
+    "mistakes": [
+     {
+      "wrong": "妹妹一边听歌再做饭。",
+      "right": "妹妹一边听歌一边做饭。",
+      "why": "Hai hoạt động diễn ra cùng lúc nên cần đủ cặp 一边……一边……."
+     },
+     {
+      "wrong": "我先吃饭，再先洗手。",
+      "right": "我先洗手，再吃饭。",
+      "why": "先 phải đứng trước việc xảy ra trước; 再 đứng trước việc xảy ra sau."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu diễn đạt đúng thứ tự: rửa tay trước, sau đó ăn cơm.",
+    "options": [
+     "我一边洗手，再吃饭。",
+     "我再洗手，先吃饭。",
+     "我先洗手，再吃饭。"
+    ],
+    "answer": 2,
+    "explain": "先洗手，再吃饭 diễn đạt hai hành động theo đúng thứ tự."
+   },
+   {
+    "q": "Câu nào diễn tả hai việc đang diễn ra cùng lúc?",
+    "options": [
+     "我先看书，再喝水。",
+     "我看书一边再喝水。",
+     "我又看书又喝水。",
+     "我一边看书一边喝水。"
+    ],
+    "answer": 3,
+    "explain": "一边……一边…… nối hai hoạt động đồng thời."
+   },
+   {
+    "q": "Điền cặp từ chỉ hai đặc điểm: 今天的苹果___大___甜。",
+    "options": [
+     "又……又……",
+     "先……再……",
+     "不但……再……"
+    ],
+    "answer": 0,
+    "explain": "又……又…… ghép hai đặc điểm cùng đúng với quả táo."
+   },
+   {
+    "q": "Sửa câu 妹妹一边听歌再做饭 thành câu đúng.",
+    "options": [
+     "妹妹先听歌，一边做饭。",
+     "妹妹一边听歌一边做饭。",
+     "妹妹又听歌，再做饭。"
+    ],
+    "answer": 1,
+    "explain": "Câu nói về hai việc cùng lúc nên dùng 一边……一边……."
+   },
+   {
+    "q": "Chọn câu đúng với ý “Mẹ về nhà trước, rồi nấu ăn cho tôi”.",
+    "options": [
+     "妈妈先回家，再然后做饭。",
+     "妈妈然后回家先做饭。",
+     "妈妈先回家，然后给我做饭。"
+    ],
+    "answer": 2,
+    "explain": "先回家，然后做饭 nối hai hành động theo thứ tự."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h3-23",
+  "level": 3,
+  "order": 4,
+  "title": "Diễn tả ý bổ sung tăng tiến",
+  "titleZh": "不但……而且……",
+  "summary": "Học xong, bạn có thể nói một người hoặc sự vật có thêm đặc điểm, năng lực hay hành động bên cạnh điều đã nêu.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Bổ sung một ý cùng chiều",
+    "body": "不但……而且…… có nghĩa là “không những…… mà còn……”. Vế sau bổ sung thêm một thông tin cùng chiều với vế trước.",
+    "examples": [
+     {
+      "zh": "我不但会说中文，而且会写汉字。",
+      "py": "Wǒ búdàn huì shuō zhōngwén érqiě huì xiě hànzì",
+      "vi": "Tôi không những biết nói tiếng Trung mà còn biết viết chữ Hán."
+     },
+     {
+      "zh": "他不但喜欢看书，而且喜欢听歌。",
+      "py": "Tā búdàn xǐhuan kànshū érqiě xǐhuan tīnggē",
+      "vi": "Anh ấy không những thích đọc sách mà còn thích nghe nhạc."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Thêm nhận xét hoặc tình trạng",
+    "body": "Dùng cặp này khi muốn nêu từ hai đặc điểm hoặc tình trạng trở lên. Hai vế có thể nói về cùng một người, sự vật hoặc hoàn cảnh.",
+    "examples": [
+     {
+      "zh": "这家饭店不但便宜，而且饭也好吃。",
+      "py": "Zhè jiā fàndiàn búdàn piányi érqiě fàn yě hǎochī",
+      "vi": "Quán ăn này không những rẻ mà cơm cũng ngon."
+     },
+     {
+      "zh": "今天不但下雨，而且天气也很冷。",
+      "py": "Jīntiān búdàn xiàyǔ érqiě tiānqì yě hěn lěng",
+      "vi": "Hôm nay không những mưa mà thời tiết còn rất lạnh."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Dùng 不但 trước, 而且 sau",
+    "body": "不但 mở đầu ý thứ nhất; 而且 mở đầu ý bổ sung. Khi cùng một chủ ngữ thực hiện cả hai việc, thường đặt chủ ngữ trước 不但.",
+    "formula": "Chủ ngữ + 不但 + ý thứ nhất，而且 + ý bổ sung",
+    "examples": [
+     {
+      "zh": "我不但会做饭，而且会洗衣服。",
+      "py": "Wǒ búdàn huì zuòfàn érqiě huì xǐ yīfu",
+      "vi": "Tôi không những biết nấu ăn mà còn biết giặt quần áo."
+     },
+     {
+      "zh": "姐姐不但会唱歌，而且会跳舞。",
+      "py": "Jiějie búdàn huì chànggē érqiě huì tiàowǔ",
+      "vi": "Chị gái không những biết hát mà còn biết nhảy."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Giữ đúng thứ tự hai vế",
+    "body": "Không đảo 而且 lên trước 不但. Hai vế nên có quan hệ rõ ràng để người nghe nhận ra ý thứ hai đang được bổ sung.",
+    "examples": [
+     {
+      "zh": "爸爸不但会做饭，而且会开车。",
+      "py": "Bàba búdàn huì zuòfàn érqiě huì kāichē",
+      "vi": "Bố không những biết nấu ăn mà còn biết lái xe."
+     },
+     {
+      "zh": "妹妹不但喜欢猫，而且喜欢狗。",
+      "py": "Mèimei búdàn xǐhuan māo érqiě xǐhuan gǒu",
+      "vi": "Em gái không những thích mèo mà còn thích chó."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không đảo hoặc thay 而且",
+    "body": "Cặp nối cố định là 不但 ở vế đầu và 而且 ở vế sau. Tránh đảo thứ tự hoặc dùng từ nối không cùng cặp.",
+    "mistakes": [
+     {
+      "wrong": "他会唱歌，而且不但会跳舞。",
+      "right": "他不但会唱歌，而且会跳舞。",
+      "why": "不但 phải mở đầu ý thứ nhất, còn 而且 dẫn vào ý bổ sung."
+     },
+     {
+      "wrong": "我不但会说中文，而是会写汉字。",
+      "right": "我不但会说中文，而且会写汉字。",
+      "why": "Sau 不但 dùng 而且 để thêm ý; 而是 không tạo thành cặp này."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn cặp từ có nghĩa “không những…… mà còn……”.",
+    "options": [
+     "不但……又……",
+     "虽然……而且……",
+     "因为……而是……",
+     "不但……而且……"
+    ],
+    "answer": 3,
+    "explain": "不但……而且…… dùng để bổ sung một ý cùng chiều."
+   },
+   {
+    "q": "Điền cặp từ: 我___会说中文，___会写汉字。",
+    "options": [
+     "不但……而且……",
+     "先……再……",
+     "一边……一边……"
+    ],
+    "answer": 0,
+    "explain": "Câu nêu hai khả năng cùng đúng nên dùng 不但……而且……."
+   },
+   {
+    "q": "Chọn câu đúng với ý “Anh ấy không những thích đọc sách mà còn thích nghe nhạc”.",
+    "options": [
+     "他而且喜欢看书，不但喜欢听歌。",
+     "他不但喜欢看书，而且喜欢听歌。",
+     "他不但喜欢看书，再喜欢听歌。"
+    ],
+    "answer": 1,
+    "explain": "不但 đứng trước ý thứ nhất, 而且 đứng trước ý bổ sung."
+   },
+   {
+    "q": "Sửa câu 我不但会说中文，而是会写汉字 thành câu đúng.",
+    "options": [
+     "我会而且说中文，不但写汉字。",
+     "我不但而且会说中文，会写汉字。",
+     "我不但会说中文，而且会写汉字。"
+    ],
+    "answer": 2,
+    "explain": "Cặp nối đúng là 不但……而且……."
+   },
+   {
+    "q": "Câu nào diễn đạt “Anh ấy không những thích đọc sách mà còn thích nghe nhạc”?",
+    "options": [
+     "他而且喜欢看书，不但喜欢听歌。",
+     "他不但看书，再喜欢听歌。",
+     "他喜欢不但看书，而且听歌。",
+     "他不但喜欢看书，而且喜欢听歌。"
+    ],
+    "answer": 3,
+    "explain": "Câu đúng đặt 不但 trước ý đầu và 而且 trước ý bổ sung."
+   }
+  ]
+ }
+]

@@ -1,0 +1,7480 @@
+{
+ "set-42-03": {
+  "c": [
+   [
+    "S",
+    "Gold objects"
+   ],
+   [
+    "V",
+    "survive"
+   ],
+   [
+    "M",
+    "well"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "V",
+    "look"
+   ],
+   [
+    "C",
+    "wonderful,"
+   ],
+   [
+    "J",
+    "but"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "describe"
+   ],
+   [
+    "O",
+    "only a tiny elite."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "present-simple"
+  ],
+  "n": "'But' nối hai vế đối lập: vế đầu có hai động từ 'survive' và 'look' chung chủ ngữ, vế sau 'they describe only a tiny elite' nêu hạn chế; 'look' là động từ nối đi với tính từ.",
+  "x": [
+   [
+    "Silk dresses feel soft and look elegant, but they suit only a narrow range of climates.",
+    "Váy lụa mềm và trông thanh lịch, nhưng chỉ hợp một khoảng khí hậu hẹp."
+   ],
+   [
+    "Old maps age well and look impressive, but they show only a small part of the world.",
+    "Bản đồ cổ bền và trông ấn tượng, nhưng chỉ cho thấy một phần nhỏ của thế giới."
+   ]
+  ],
+  "y": [
+   [
+    "survive well",
+    "last a long time",
+    "endure well",
+    "bền lâu"
+   ],
+   [
+    "look wonderful",
+    "appear stunning",
+    "seem magnificent",
+    "trông tuyệt đẹp"
+   ],
+   [
+    "a tiny elite",
+    "a small elite",
+    "a narrow elite",
+    "nhóm quyền quý bé xíu"
+   ]
+  ],
+  "r": [
+   [
+    "Although gold objects survive well and look wonderful, they describe only a tiny elite.",
+    "Dùng Although"
+   ],
+   [
+    "Gold objects survive well and look wonderful; however, they describe only a tiny elite.",
+    "Dùng however"
+   ]
+  ]
+ },
+ "set-42-04": {
+  "c": [
+   [
+    "S",
+    "Position"
+   ],
+   [
+    "V",
+    "matters"
+   ],
+   [
+    "A",
+    "more than the object itself,"
+   ],
+   [
+    "J",
+    "so"
+   ],
+   [
+    "S",
+    "everything"
+   ],
+   [
+    "V",
+    "is measured"
+   ],
+   [
+    "J",
+    "before"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "is moved."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "passive"
+  ],
+  "n": "'More than the object itself' là so sánh hơn nhấn vị trí; 'everything is measured before it is moved' dùng bị động hai lần trong mệnh đề thời gian với 'before', còn 'so' nêu kết quả.",
+  "x": [
+   [
+    "Timing matters more than talent here, so every move is planned before it is made.",
+    "Thời điểm ở đây quan trọng hơn tài năng, nên mọi nước đi đều được lên kế hoạch trước khi thực hiện."
+   ],
+   [
+    "Safety matters more than speed, so every wire is checked before it is connected.",
+    "An toàn quan trọng hơn tốc độ, nên mọi dây điện đều được kiểm tra trước khi nối."
+   ]
+  ],
+  "y": [
+   [
+    "matters more than",
+    "counts for more than",
+    "is more important than",
+    "quan trọng hơn"
+   ],
+   [
+    "is measured",
+    "is recorded",
+    "is documented",
+    "được đo đạc"
+   ],
+   [
+    "before it is moved",
+    "before it is shifted",
+    "before it is removed",
+    "trước khi bị dịch chuyển"
+   ]
+  ],
+  "r": [
+   [
+    "Because position matters more than the object itself, everything is measured before it is moved.",
+    "Dùng Because, đảo vế"
+   ],
+   [
+    "Position matters more than the object itself, so everything is measured prior to being moved.",
+    "Dùng prior to + V-ing"
+   ]
+  ]
+ },
+ "set-42-05": {
+  "c": [
+   [
+    "J",
+    "Once"
+   ],
+   [
+    "S",
+    "a layer"
+   ],
+   [
+    "V",
+    "is dug away,"
+   ],
+   [
+    "S",
+    "that information"
+   ],
+   [
+    "V",
+    "is gone"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "V",
+    "cannot be recovered."
+   ]
+  ],
+  "s": [
+   "time-clause",
+   "passive"
+  ],
+  "n": "'Once a layer is dug away' là mệnh đề thời gian bị động (nghĩa 'một khi'); sau đó 'is gone' và 'cannot be recovered' nêu kết quả không thể đảo ngược, với can phủ định ở dạng bị động.",
+  "x": [
+   [
+    "Once a word is spoken, the damage is done and cannot be undone.",
+    "Một khi lời đã nói ra, tổn thương đã gây ra và không thể hoàn tác."
+   ],
+   [
+    "Once a tree is cut down, that shade is lost and cannot be replaced for decades.",
+    "Một khi cây đã bị chặt, bóng mát ấy mất và không thể thay thế trong nhiều thập kỷ."
+   ]
+  ],
+  "y": [
+   [
+    "Once",
+    "As soon as",
+    "The moment",
+    "Một khi"
+   ],
+   [
+    "is dug away",
+    "is excavated",
+    "is removed",
+    "bị đào bỏ"
+   ],
+   [
+    "cannot be recovered",
+    "cannot be retrieved",
+    "can never be regained",
+    "không lấy lại được"
+   ]
+  ],
+  "r": [
+   [
+    "That information is gone and cannot be recovered once a layer is dug away.",
+    "Đảo mệnh đề thời gian xuống cuối"
+   ],
+   [
+    "After a layer has been dug away, that information is gone and cannot be recovered.",
+    "Dùng After + hiện tại hoàn thành"
+   ]
+  ]
+ },
+ "set-42-06": {
+  "c": [
+   [
+    "R",
+    "For exactly that reason,"
+   ],
+   [
+    "S",
+    "many teams"
+   ],
+   [
+    "A",
+    "now"
+   ],
+   [
+    "M",
+    "deliberately"
+   ],
+   [
+    "V",
+    "leave"
+   ],
+   [
+    "O",
+    "part of a site"
+   ],
+   [
+    "C",
+    "untouched."
+   ]
+  ],
+  "s": [
+   "present-simple",
+   "verb-to-infinitive"
+  ],
+  "n": "'For exactly that reason' là trạng ngữ lý do nối ý với câu trước; 'leave part of a site untouched' là leave + tân ngữ + tính từ, nghĩa là để nguyên trong tình trạng chưa động tới.",
+  "x": [
+   [
+    "For precisely that reason, many parks now deliberately keep part of the forest wild.",
+    "Chính vì lý do đó, nhiều công viên nay cố ý giữ một phần khu rừng hoang dã."
+   ],
+   [
+    "For that very reason, several farmers now deliberately leave one field empty each year.",
+    "Chính vì lý do đó, vài nông dân nay cố ý bỏ trống một thửa ruộng mỗi năm."
+   ]
+  ],
+  "y": [
+   [
+    "For exactly that reason",
+    "For that very reason",
+    "For precisely that reason",
+    "Chính vì lý do đó"
+   ],
+   [
+    "deliberately",
+    "on purpose",
+    "intentionally",
+    "cố ý"
+   ],
+   [
+    "untouched",
+    "undisturbed",
+    "intact",
+    "chưa đụng tới"
+   ]
+  ],
+  "r": [
+   [
+    "Many teams now deliberately leave part of a site untouched for exactly that reason.",
+    "Đưa trạng ngữ lý do xuống cuối"
+   ],
+   [
+    "Because of that, many teams now deliberately leave part of a site untouched.",
+    "Dùng Because of that"
+   ]
+  ]
+ },
+ "set-42-07": {
+  "c": [
+   [
+    "S",
+    "Future methods"
+   ],
+   [
+    "V",
+    "will surely read"
+   ],
+   [
+    "O",
+    "those soils"
+   ],
+   [
+    "A",
+    "far better than any of our current tools."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "future-simple"
+  ],
+  "n": "'Far better than any of our current tools' là so sánh hơn (better) nhấn bằng 'far' kèm 'than any of…'; 'will surely read' là tương lai đơn kèm 'surely' thể hiện sự chắc chắn.",
+  "x": [
+   [
+    "Tomorrow’s machines will certainly clean those streets far faster than any of today’s vehicles.",
+    "Máy móc tương lai chắc chắn sẽ dọn những con phố ấy nhanh hơn hẳn mọi xe hiện nay."
+   ],
+   [
+    "Future doctors will surely treat those illnesses far more safely than any of our current drugs.",
+    "Bác sĩ tương lai chắc chắn sẽ chữa các bệnh ấy an toàn hơn hẳn mọi thuốc hiện nay."
+   ]
+  ],
+  "y": [
+   [
+    "will surely",
+    "will certainly",
+    "will undoubtedly",
+    "chắc chắn sẽ"
+   ],
+   [
+    "far better than",
+    "much better than",
+    "considerably better than",
+    "tốt hơn hẳn"
+   ],
+   [
+    "current",
+    "present",
+    "existing",
+    "hiện thời"
+   ]
+  ],
+  "r": [
+   [
+    "Those soils will surely be read far better by future methods than by any of our current tools.",
+    "Dùng bị động"
+   ],
+   [
+    "Future methods will surely be able to read those soils far better than any of our current tools can.",
+    "Dùng be able to và can"
+   ]
+  ]
+ },
+ "set-42-08": {
+  "c": [
+   [
+    "S",
+    "Radar and careful photography from the air"
+   ],
+   [
+    "V",
+    "already reveal"
+   ],
+   [
+    "O",
+    "buried walls"
+   ],
+   [
+    "M",
+    "without any digging at all."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Already reveal' là hiện tại đơn kèm 'already' nói khả năng đã có từ nay; 'without any digging at all' dùng without + danh từ để nhấn mạnh hoàn toàn không cần đào.",
+  "x": [
+   [
+    "Satellites and careful mapping from space already track forest loss without any visits at all.",
+    "Vệ tinh và bản đồ tỉ mỉ từ vũ trụ đã theo dõi mất rừng mà chẳng cần ghé tới."
+   ],
+   [
+    "Cameras and careful sensors on the roof already detect damage without any climbing at all.",
+    "Camera và cảm biến cẩn thận trên mái đã phát hiện hư hại mà chẳng cần leo lên."
+   ]
+  ],
+  "y": [
+   [
+    "already reveal",
+    "already show",
+    "already uncover",
+    "đã làm lộ ra"
+   ],
+   [
+    "buried",
+    "hidden",
+    "underground",
+    "bị chôn vùi"
+   ],
+   [
+    "without any digging at all",
+    "with no digging whatsoever",
+    "without digging at all",
+    "mà chẳng cần đào bới"
+   ]
+  ],
+  "r": [
+   [
+    "Buried walls are already revealed by radar and careful photography from the air, without any digging at all.",
+    "Dùng bị động"
+   ],
+   [
+    "Radar and careful photography from the air already reveal buried walls with no digging whatsoever.",
+    "Dùng with no … whatsoever"
+   ]
+  ]
+ },
+ "set-42-09": {
+  "c": [
+   [
+    "S",
+    "Dates"
+   ],
+   [
+    "V",
+    "come"
+   ],
+   [
+    "A",
+    "from wood, bone and charcoal,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "every date"
+   ],
+   [
+    "V",
+    "carries"
+   ],
+   [
+    "O",
+    "a range of error."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "present-simple"
+  ],
+  "n": "Hai mệnh đề độc lập nối bằng 'and': 'Dates come from…' nêu nguồn gốc, 'every date carries a range of error' nêu hạn chế; 'every date' đi với động từ số ít 'carries'.",
+  "x": [
+   [
+    "Stories come from memory, rumour and imagination, and every story carries a trace of bias.",
+    "Câu chuyện đến từ trí nhớ, tin đồn và trí tưởng tượng, và câu chuyện nào cũng mang chút thiên kiến."
+   ],
+   [
+    "Rivers come from rain, snow and springs, and every river carries a little soil downstream.",
+    "Sông đến từ mưa, tuyết và mạch nước, và sông nào cũng mang chút đất xuống hạ lưu."
+   ]
+  ],
+  "y": [
+   [
+    "come from",
+    "derive from",
+    "originate from",
+    "đến từ"
+   ],
+   [
+    "carries",
+    "contains",
+    "includes",
+    "kèm theo"
+   ],
+   [
+    "a range of error",
+    "a margin of error",
+    "an error bar",
+    "một khoảng sai số"
+   ]
+  ],
+  "r": [
+   [
+    "Dates, which come from wood, bone and charcoal, each carry a range of error.",
+    "Dùng mệnh đề quan hệ"
+   ],
+   [
+    "Every date carries a range of error, and dates come from wood, bone and charcoal.",
+    "Đảo thứ tự hai vế"
+   ]
+  ]
+ },
+ "set-42-10": {
+  "c": [
+   [
+    "S",
+    "A confident single year in a museum label"
+   ],
+   [
+    "V",
+    "usually hides"
+   ],
+   [
+    "O",
+    "a much messier calculation."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "present-simple"
+  ],
+  "n": "'A much messier calculation' là so sánh hơn (messier) nhấn bằng 'much', ngầm so với con số gọn gàng bên ngoài; 'usually hides' là hiện tại đơn với trạng từ tần suất.",
+  "x": [
+   [
+    "A simple price on a restaurant menu usually hides a much longer chain of costs.",
+    "Một mức giá đơn giản trên thực đơn nhà hàng thường giấu một chuỗi chi phí dài hơn nhiều."
+   ],
+   [
+    "A calm face in a crowded photo often conceals a much deeper worry.",
+    "Gương mặt bình thản trong bức ảnh đông người thường che một nỗi lo sâu hơn nhiều."
+   ]
+  ],
+  "y": [
+   [
+    "usually hides",
+    "often conceals",
+    "normally masks",
+    "thường giấu"
+   ],
+   [
+    "much messier",
+    "far more complicated",
+    "a lot more tangled",
+    "rối rắm hơn nhiều"
+   ],
+   [
+    "confident",
+    "assured",
+    "definite",
+    "chắc nịch"
+   ]
+  ],
+  "r": [
+   [
+    "Behind a confident single year in a museum label, there is usually a much messier calculation.",
+    "Dùng There is + trạng ngữ đảo"
+   ],
+   [
+    "A much messier calculation is usually hidden by a confident single year in a museum label.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "set-42-11": {
+  "c": [
+   [
+    "S",
+    "Local communities"
+   ],
+   [
+    "V",
+    "know"
+   ],
+   [
+    "O",
+    "their own landscape,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "good projects"
+   ],
+   [
+    "A",
+    "now"
+   ],
+   [
+    "V",
+    "begin"
+   ],
+   [
+    "A",
+    "with those conversations."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "present-simple"
+  ],
+  "n": "Hai mệnh đề nối bằng 'and': 'Local communities know…' nêu lý do, 'good projects now begin with…' nêu hệ quả; cả hai ở hiện tại đơn, 'now' cho thấy thực hành hiện nay.",
+  "x": [
+   [
+    "Parents know their own children, and good schools now start with those relationships.",
+    "Cha mẹ hiểu con mình, và trường tốt nay bắt đầu từ những mối quan hệ đó."
+   ],
+   [
+    "Farmers know their own fields, and good policies now begin with their advice.",
+    "Nông dân hiểu ruộng của mình, và chính sách tốt nay bắt đầu từ lời khuyên của họ."
+   ]
+  ],
+  "y": [
+   [
+    "know their own landscape",
+    "understand their own landscape",
+    "are familiar with their own landscape",
+    "hiểu vùng đất của họ"
+   ],
+   [
+    "begin with",
+    "start with",
+    "open with",
+    "bắt đầu bằng"
+   ],
+   [
+    "good projects",
+    "successful projects",
+    "well-run projects",
+    "dự án tốt"
+   ]
+  ],
+  "r": [
+   [
+    "Local communities know their own landscape, and now good projects begin with those conversations.",
+    "Đưa now lên trước chủ ngữ"
+   ],
+   [
+    "Local communities know their own landscape; good projects now begin with those conversations.",
+    "Dùng chấm phẩy thay and"
+   ]
+  ]
+ },
+ "set-42-12": {
+  "c": [
+   [
+    "S",
+    "The past"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "a shared inheritance,"
+   ],
+   [
+    "A",
+    "not a private collection for"
+   ],
+   [
+    "S",
+    "whoever"
+   ],
+   [
+    "V",
+    "arrives"
+   ],
+   [
+    "M",
+    "with money."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Is a shared inheritance, not a private collection' dùng 'not' để phủ định vế đối lập; 'whoever arrives with money' là mệnh đề danh từ với 'whoever' (bất kỳ ai) làm chủ ngữ số ít.",
+  "x": [
+   [
+    "The river is a public resource, not a private property for whoever builds beside it.",
+    "Con sông là tài nguyên chung, không phải tài sản riêng của ai xây nhà bên cạnh."
+   ],
+   [
+    "The park is a shared space, not a private garden for whoever lives nearest to it.",
+    "Công viên là không gian chung, không phải khu vườn riêng của ai sống gần nhất."
+   ]
+  ],
+  "y": [
+   [
+    "a shared inheritance",
+    "a common heritage",
+    "a collective legacy",
+    "di sản chung"
+   ],
+   [
+    "whoever",
+    "anyone who",
+    "whichever person",
+    "bất kỳ ai"
+   ],
+   [
+    "arrives with money",
+    "turns up with money",
+    "shows up with cash",
+    "mang tiền tới"
+   ]
+  ],
+  "r": [
+   [
+    "The past is a shared inheritance rather than a private collection for whoever arrives with money.",
+    "Dùng rather than"
+   ],
+   [
+    "The past is not a private collection for whoever arrives with money, but a shared inheritance.",
+    "Đảo vế phủ định lên trước"
+   ]
+  ]
+ },
+ "set-43-01": {
+  "c": [
+   [
+    "S",
+    "Electricity"
+   ],
+   [
+    "V",
+    "has to be produced"
+   ],
+   [
+    "T",
+    "at almost exactly the moment"
+   ],
+   [
+    "S",
+    "somebody"
+   ],
+   [
+    "V",
+    "switches"
+   ],
+   [
+    "O",
+    "something"
+   ],
+   [
+    "A",
+    "on."
+   ]
+  ],
+  "s": [
+   "modal-obligation",
+   "passive"
+  ],
+  "n": "'Has to be produced' kết hợp have to (bắt buộc) với bị động; 'the moment somebody switches something on' là mệnh đề lược 'when', chỉ thời điểm đúng lúc cần dùng.",
+  "x": [
+   [
+    "Bread has to be baked at almost exactly the moment customers start to arrive.",
+    "Bánh mì phải được nướng gần đúng vào lúc khách bắt đầu đến."
+   ],
+   [
+    "Medicine has to be delivered at precisely the moment a patient needs it.",
+    "Thuốc phải được giao đúng vào lúc bệnh nhân cần."
+   ]
+  ],
+  "y": [
+   [
+    "has to be produced",
+    "must be generated",
+    "needs to be generated",
+    "phải được sản xuất"
+   ],
+   [
+    "almost exactly",
+    "nearly precisely",
+    "virtually exactly",
+    "gần như đúng"
+   ],
+   [
+    "switches something on",
+    "turns something on",
+    "powers something up",
+    "bật một thứ lên"
+   ]
+  ],
+  "r": [
+   [
+    "Producing electricity has to happen at almost exactly the moment somebody switches something on.",
+    "Dùng V-ing làm chủ ngữ"
+   ],
+   [
+    "Electricity must be produced at almost exactly the moment somebody switches something on.",
+    "Dùng must thay have to"
+   ]
+  ]
+ },
+ "set-43-02": {
+  "c": [
+   [
+    "S",
+    "That one simple fact"
+   ],
+   [
+    "V",
+    "explains"
+   ],
+   [
+    "O",
+    "most of"
+   ],
+   [
+    "J",
+    "what"
+   ],
+   [
+    "V",
+    "seems"
+   ],
+   [
+    "C",
+    "strange"
+   ],
+   [
+    "A",
+    "about our modern energy systems."
+   ]
+  ],
+  "s": [
+   "present-simple",
+   "relative-clause"
+  ],
+  "n": "'Most of what seems strange' dùng 'what' mở mệnh đề danh từ làm tân ngữ của 'of'; chủ ngữ 'That one simple fact' số ít nên 'explains' và 'seems' chia số ít.",
+  "x": [
+   [
+    "That one small habit changes most of what feels difficult about my daily routine.",
+    "Một thói quen nhỏ ấy thay đổi phần lớn những gì khó khăn trong lịch sinh hoạt hằng ngày của tôi."
+   ],
+   [
+    "That single rule explains most of what looks confusing about our new tax system.",
+    "Một quy tắc đơn lẻ ấy giải thích phần lớn những gì có vẻ khó hiểu trong hệ thống thuế mới."
+   ]
+  ],
+  "y": [
+   [
+    "explains",
+    "accounts for",
+    "clarifies",
+    "giải thích"
+   ],
+   [
+    "seems strange",
+    "appears odd",
+    "looks peculiar",
+    "có vẻ kỳ lạ"
+   ],
+   [
+    "most of what",
+    "much of what",
+    "the majority of what",
+    "hầu hết những gì"
+   ]
+  ],
+  "r": [
+   [
+    "Most of what seems strange about our modern energy systems is explained by that one simple fact.",
+    "Dùng bị động"
+   ],
+   [
+    "That one simple fact accounts for most of what seems strange about our modern energy systems.",
+    "Đổi explains thành accounts for"
+   ]
+  ]
+ },
+ "set-43-03": {
+  "c": [
+   [
+    "S",
+    "Wind and sunlight"
+   ],
+   [
+    "V",
+    "are"
+   ],
+   [
+    "C",
+    "extremely cheap"
+   ],
+   [
+    "T",
+    "now,"
+   ],
+   [
+    "J",
+    "but"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "arrive"
+   ],
+   [
+    "J",
+    "whenever"
+   ],
+   [
+    "S",
+    "the weather"
+   ],
+   [
+    "V",
+    "decides."
+   ]
+  ],
+  "s": [
+   "time-clause",
+   "compound-sentence"
+  ],
+  "n": "'Whenever the weather decides' là mệnh đề thời gian nghĩa 'bất cứ khi nào', nêu việc nguồn điện đến không do ta điều khiển; 'but' đối lập vế 'extremely cheap' với điểm yếu.",
+  "x": [
+   [
+    "Buses are very frequent now, but they leave whenever the driver feels ready.",
+    "Xe buýt giờ rất thường xuyên, nhưng chúng rời bến bất cứ khi nào tài xế thấy sẵn sàng."
+   ],
+   [
+    "Phones are remarkably cheap today, but they break whenever the battery gets hot.",
+    "Điện thoại ngày nay rẻ đáng kể, nhưng chúng hỏng bất cứ khi nào pin nóng lên."
+   ]
+  ],
+  "y": [
+   [
+    "extremely cheap",
+    "very inexpensive",
+    "remarkably cheap",
+    "rẻ vô cùng"
+   ],
+   [
+    "whenever",
+    "any time",
+    "every time",
+    "bất cứ khi nào"
+   ],
+   [
+    "arrive",
+    "show up",
+    "come along",
+    "đến"
+   ]
+  ],
+  "r": [
+   [
+    "Although wind and sunlight are extremely cheap now, they arrive whenever the weather decides.",
+    "Dùng Although"
+   ],
+   [
+    "Wind and sunlight are extremely cheap now; however, they arrive whenever the weather decides.",
+    "Dùng however"
+   ]
+  ]
+ },
+ "set-43-04": {
+  "c": [
+   [
+    "J",
+    "So"
+   ],
+   [
+    "S",
+    "the real problem"
+   ],
+   [
+    "V",
+    "has moved"
+   ],
+   [
+    "A",
+    "from making power"
+   ],
+   [
+    "A",
+    "to storing and moving it."
+   ]
+  ],
+  "s": [
+   "present-perfect"
+  ],
+  "n": "'Has moved from … to …' là hiện tại hoàn thành chỉ sự dịch chuyển đã xảy ra và còn đúng hiện nay; 'from making … to storing and moving' dùng giới từ + V-ing song song.",
+  "x": [
+   [
+    "So the main challenge has shifted from writing code to testing and maintaining it.",
+    "Nên thách thức chính đã chuyển từ viết mã sang kiểm thử và duy trì nó."
+   ],
+   [
+    "So the focus has moved from building houses to repairing and heating them.",
+    "Nên trọng tâm đã dịch từ xây nhà sang sửa và sưởi ấm chúng."
+   ]
+  ],
+  "y": [
+   [
+    "has moved",
+    "has shifted",
+    "has changed",
+    "đã dịch chuyển"
+   ],
+   [
+    "the real problem",
+    "the main challenge",
+    "the central issue",
+    "bài toán thật"
+   ],
+   [
+    "storing",
+    "keeping",
+    "saving",
+    "trữ"
+   ]
+  ],
+  "r": [
+   [
+    "The real problem is no longer making power but storing and moving it.",
+    "Dùng no longer … but"
+   ],
+   [
+    "So the real problem now lies in storing and moving power, not in making it.",
+    "Dùng lies in"
+   ]
+  ]
+ },
+ "set-43-05": {
+  "c": [
+   [
+    "S",
+    "Batteries"
+   ],
+   [
+    "V",
+    "handle"
+   ],
+   [
+    "O",
+    "a few hours"
+   ],
+   [
+    "M",
+    "well,"
+   ],
+   [
+    "J",
+    "yet"
+   ],
+   [
+    "S",
+    "a windless week"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "a different question entirely."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "present-simple"
+  ],
+  "n": "'Yet' nối hai mệnh đề tương phản: pin 'handle a few hours well' nhưng một tuần lặng gió 'is a different question'; 'entirely' nhấn mạnh sự khác biệt hoàn toàn.",
+  "x": [
+   [
+    "Phones handle a short trip well, yet a month in the desert is a different story altogether.",
+    "Điện thoại chịu tốt một chuyến đi ngắn, nhưng một tháng giữa sa mạc lại là chuyện khác hẳn."
+   ],
+   [
+    "Tents handle light rain well, yet a week of storms is a different matter entirely.",
+    "Lều chịu tốt mưa nhỏ, nhưng một tuần bão lại là chuyện hoàn toàn khác."
+   ]
+  ],
+  "y": [
+   [
+    "handle",
+    "cope with",
+    "manage",
+    "xử lý"
+   ],
+   [
+    "yet",
+    "but",
+    "however",
+    "nhưng"
+   ],
+   [
+    "a different question entirely",
+    "an entirely different matter",
+    "a completely separate issue",
+    "chuyện hoàn toàn khác"
+   ]
+  ],
+  "r": [
+   [
+    "Although batteries handle a few hours well, a windless week is a different question entirely.",
+    "Dùng Although"
+   ],
+   [
+    "Batteries handle a few hours well, but a windless week is an entirely different question.",
+    "Đổi yet thành but, đảo entirely"
+   ]
+  ]
+ },
+ "set-43-06": {
+  "c": [
+   [
+    "S",
+    "Pumping water uphill and releasing it later"
+   ],
+   [
+    "V",
+    "remains"
+   ],
+   [
+    "C",
+    "the oldest storage trick"
+   ],
+   [
+    "S",
+    "we"
+   ],
+   [
+    "V",
+    "have."
+   ]
+  ],
+  "s": [
+   "gerund-subject",
+   "superlative"
+  ],
+  "n": "Hai V-ing nối bằng 'and' cùng làm chủ ngữ nên 'remains' chia số ít; 'the oldest storage trick we have' có so sánh nhất 'the oldest' và mệnh đề quan hệ lược that.",
+  "x": [
+   [
+    "Planting trees and protecting them for years remains the best climate strategy we know.",
+    "Trồng cây và bảo vệ chúng nhiều năm vẫn là chiến lược khí hậu tốt nhất ta biết."
+   ],
+   [
+    "Saving a little and spending it wisely remains the simplest advice we give.",
+    "Tiết kiệm một chút và tiêu khôn ngoan vẫn là lời khuyên đơn giản nhất ta đưa ra."
+   ]
+  ],
+  "y": [
+   [
+    "remains",
+    "continues to be",
+    "is still",
+    "vẫn là"
+   ],
+   [
+    "the oldest",
+    "the most ancient",
+    "the longest-standing",
+    "cổ nhất"
+   ],
+   [
+    "storage trick",
+    "storage method",
+    "storage technique",
+    "mẹo tích trữ"
+   ]
+  ],
+  "r": [
+   [
+    "To pump water uphill and release it later remains the oldest storage trick we have.",
+    "Đổi V-ing thành to V"
+   ],
+   [
+    "The oldest storage trick we have remains pumping water uphill and releasing it later.",
+    "Đảo chủ ngữ và bổ ngữ"
+   ]
+  ]
+ },
+ "set-43-07": {
+  "c": [
+   [
+    "S",
+    "Long power lines"
+   ],
+   [
+    "V",
+    "let"
+   ],
+   [
+    "O",
+    "a cloudy region"
+   ],
+   [
+    "C",
+    "borrow"
+   ],
+   [
+    "O",
+    "sunshine"
+   ],
+   [
+    "A",
+    "from a sunnier one nearby."
+   ]
+  ],
+  "s": [
+   "causative",
+   "comparative"
+  ],
+  "n": "'Let a cloudy region borrow sunshine' là cấu trúc let + tân ngữ + V nguyên mẫu (cho phép ai làm gì); 'a sunnier one' là so sánh hơn, 'one' thay cho 'region'.",
+  "x": [
+   [
+    "Shared kitchens let a small restaurant borrow equipment from a bigger one next door.",
+    "Bếp chung cho một nhà hàng nhỏ mượn thiết bị từ nhà hàng lớn hơn bên cạnh."
+   ],
+   [
+    "Open libraries let a poor village borrow books from a richer one nearby.",
+    "Thư viện mở cho một ngôi làng nghèo mượn sách từ ngôi làng giàu hơn gần đó."
+   ]
+  ],
+  "y": [
+   [
+    "borrow",
+    "draw",
+    "import",
+    "mượn"
+   ],
+   [
+    "sunshine",
+    "sunlight",
+    "solar power",
+    "nắng"
+   ],
+   [
+    "nearby",
+    "close by",
+    "in the vicinity",
+    "ở gần"
+   ]
+  ],
+  "r": [
+   [
+    "Long power lines allow a cloudy region to borrow sunshine from a sunnier one nearby.",
+    "Đổi let thành allow … to"
+   ],
+   [
+    "Long power lines make it possible for a cloudy region to borrow sunshine from a sunnier one nearby.",
+    "Dùng make it possible for"
+   ]
+  ]
+ },
+ "set-43-08": {
+  "c": [
+   [
+    "S",
+    "Building those lines"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "painfully slow,"
+   ],
+   [
+    "J",
+    "because"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "cross"
+   ],
+   [
+    "O",
+    "many owners, borders and strong opinions."
+   ]
+  ],
+  "s": [
+   "gerund-subject",
+   "reason-clause"
+  ],
+  "n": "'Building those lines' là V-ing làm chủ ngữ nên 'is' số ít; 'because they cross…' là mệnh đề lý do, với 'cross' dùng nghĩa bóng cho cả chủ đất, biên giới và ý kiến.",
+  "x": [
+   [
+    "Repairing those roads is painfully slow, because they pass through many villages, rivers and hills.",
+    "Sửa những con đường ấy chậm đến khổ, vì chúng đi qua nhiều làng, sông và đồi."
+   ],
+   [
+    "Teaching those children is surprisingly hard, because they come from many cultures, languages and habits.",
+    "Dạy những đứa trẻ ấy khó đến bất ngờ, vì chúng đến từ nhiều nền văn hoá, ngôn ngữ và thói quen."
+   ]
+  ],
+  "y": [
+   [
+    "painfully slow",
+    "excruciatingly slow",
+    "agonisingly slow",
+    "chậm đến khổ"
+   ],
+   [
+    "cross",
+    "pass through",
+    "run through",
+    "cắt qua"
+   ],
+   [
+    "because",
+    "since",
+    "as",
+    "vì"
+   ]
+  ],
+  "r": [
+   [
+    "Because they cross many owners, borders and strong opinions, building those lines is painfully slow.",
+    "Đảo mệnh đề lý do lên đầu"
+   ],
+   [
+    "Building those lines is painfully slow since they cross many owners, borders and strong opinions.",
+    "Dùng since thay because"
+   ]
+  ]
+ },
+ "set-43-09": {
+  "c": [
+   [
+    "S",
+    "The cheapest unit of energy"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "A",
+    "always"
+   ],
+   [
+    "C",
+    "the one"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "nobody"
+   ],
+   [
+    "V",
+    "ever needs"
+   ],
+   [
+    "C",
+    "to generate."
+   ]
+  ],
+  "s": [
+   "superlative",
+   "relative-clause"
+  ],
+  "n": "'The cheapest unit of energy' là so sánh nhất; 'the one that nobody ever needs to generate' là mệnh đề quan hệ, 'one' thay 'unit' và 'needs to' là need + to V.",
+  "x": [
+   [
+    "The simplest job in the office is usually the one that nobody ever wants to do.",
+    "Công việc đơn giản nhất ở văn phòng thường là việc chẳng ai muốn làm."
+   ],
+   [
+    "The cheapest meal in town is often the one that nobody ever remembers to order.",
+    "Bữa ăn rẻ nhất trong thành phố thường là bữa chẳng ai nhớ gọi."
+   ]
+  ],
+  "y": [
+   [
+    "the cheapest",
+    "the least expensive",
+    "the most affordable",
+    "rẻ nhất"
+   ],
+   [
+    "unit",
+    "portion",
+    "amount",
+    "đơn vị"
+   ],
+   [
+    "ever needs to",
+    "ever has to",
+    "is ever obliged to",
+    "cần phải"
+   ]
+  ],
+  "r": [
+   [
+    "The cheapest unit of energy is always the one which nobody ever needs to generate.",
+    "Dùng which thay that"
+   ],
+   [
+    "The cheapest unit of energy is always the one that nobody ever has to generate.",
+    "Đổi needs to thành has to"
+   ]
+  ]
+ },
+ "set-43-10": {
+  "c": [
+   [
+    "S",
+    "Better insulation and more efficient machines"
+   ],
+   [
+    "V",
+    "cut"
+   ],
+   [
+    "O",
+    "demand"
+   ],
+   [
+    "M",
+    "without anybody really noticing a difference."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "present-simple"
+  ],
+  "n": "'Better' và 'more efficient' là so sánh hơn đứng trước danh từ làm chủ ngữ; 'without anybody really noticing a difference' là without + chủ thể + V-ing, nghĩa là mà không ai để ý.",
+  "x": [
+   [
+    "Smarter planning and faster trains reduce delays without passengers really feeling any change.",
+    "Quy hoạch thông minh hơn và tàu nhanh hơn giảm chậm trễ mà hành khách chẳng thật sự thấy thay đổi."
+   ],
+   [
+    "Cleaner fuel and lighter cars lower pollution without drivers really noticing a problem.",
+    "Nhiên liệu sạch hơn và xe nhẹ hơn giảm ô nhiễm mà tài xế chẳng thật sự thấy vấn đề."
+   ]
+  ],
+  "y": [
+   [
+    "cut",
+    "reduce",
+    "lower",
+    "cắt giảm"
+   ],
+   [
+    "without anybody really noticing",
+    "without anyone really noticing",
+    "without anybody actually noticing",
+    "mà chẳng ai thật sự để ý"
+   ],
+   [
+    "more efficient",
+    "more effective",
+    "more economical",
+    "hiệu quả hơn"
+   ]
+  ],
+  "r": [
+   [
+    "Better insulation and more efficient machines cut demand, and nobody really notices a difference.",
+    "Tách thành hai mệnh đề"
+   ],
+   [
+    "Demand is cut by better insulation and more efficient machines without anybody really noticing a difference.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "set-43-11": {
+  "c": [
+   [
+    "S",
+    "Prices"
+   ],
+   [
+    "V",
+    "also change"
+   ],
+   [
+    "O",
+    "behaviour,"
+   ],
+   [
+    "A",
+    "especially"
+   ],
+   [
+    "J",
+    "when"
+   ],
+   [
+    "S",
+    "ordinary people"
+   ],
+   [
+    "V",
+    "can see"
+   ],
+   [
+    "O",
+    "them"
+   ],
+   [
+    "A",
+    "hour by hour."
+   ]
+  ],
+  "s": [
+   "time-clause",
+   "modal-ability"
+  ],
+  "n": "'Especially when ordinary people can see them' là mệnh đề thời gian có 'especially' nhấn điều kiện làm tăng hiệu quả; 'can see' là khả năng, 'hour by hour' nghĩa theo từng giờ.",
+  "x": [
+   [
+    "Feedback also improves performance, especially when students can read it day by day.",
+    "Phản hồi cũng nâng cao kết quả, nhất là khi học sinh đọc được nó từng ngày."
+   ],
+   [
+    "Rules also shape habits, especially when residents can see them week by week.",
+    "Quy định cũng định hình thói quen, nhất là khi cư dân thấy chúng từng tuần."
+   ]
+  ],
+  "y": [
+   [
+    "also change",
+    "also alter",
+    "also influence",
+    "cũng làm đổi"
+   ],
+   [
+    "especially when",
+    "particularly when",
+    "above all when",
+    "nhất là khi"
+   ],
+   [
+    "hour by hour",
+    "every hour",
+    "by the hour",
+    "theo từng giờ"
+   ]
+  ],
+  "r": [
+   [
+    "Prices also change behaviour, particularly when ordinary people are able to see them hour by hour.",
+    "Dùng particularly và be able to"
+   ],
+   [
+    "Especially when ordinary people can see them hour by hour, prices also change behaviour.",
+    "Đảo mệnh đề when lên đầu"
+   ]
+  ]
+ },
+ "set-43-12": {
+  "c": [
+   [
+    "S",
+    "An energy system"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "a promise"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "the lights"
+   ],
+   [
+    "V",
+    "stay"
+   ],
+   [
+    "A",
+    "on"
+   ],
+   [
+    "J",
+    "while"
+   ],
+   [
+    "S",
+    "everything underneath"
+   ],
+   [
+    "V",
+    "changes."
+   ]
+  ],
+  "s": [
+   "that-clause",
+   "time-clause"
+  ],
+  "n": "'A promise that the lights stay on' là danh từ + mệnh đề that nêu nội dung lời hứa; 'while everything underneath changes' là mệnh đề thời gian chỉ hai việc xảy ra song song.",
+  "x": [
+   [
+    "A good school is a promise that children stay safe while the world outside changes.",
+    "Một ngôi trường tốt là lời hứa rằng trẻ em được an toàn trong khi thế giới bên ngoài đổi thay."
+   ],
+   [
+    "A bank is a promise that your savings stay secure while the market moves.",
+    "Ngân hàng là lời hứa rằng tiền tiết kiệm của bạn vẫn an toàn trong khi thị trường biến động."
+   ]
+  ],
+  "y": [
+   [
+    "a promise that",
+    "a guarantee that",
+    "an assurance that",
+    "lời hứa rằng"
+   ],
+   [
+    "stay on",
+    "remain lit",
+    "keep burning",
+    "vẫn sáng"
+   ],
+   [
+    "while",
+    "as",
+    "whilst",
+    "trong khi"
+   ]
+  ],
+  "r": [
+   [
+    "An energy system promises that the lights stay on while everything underneath changes.",
+    "Dùng động từ promise"
+   ],
+   [
+    "While everything underneath changes, an energy system is a promise that the lights stay on.",
+    "Đảo mệnh đề while lên đầu"
+   ]
+  ]
+ },
+ "set-53-01": {
+  "c": [
+   [
+    "V",
+    "Let us start"
+   ],
+   [
+    "A",
+    "with a quick update"
+   ],
+   [
+    "A",
+    "on last week's progress."
+   ]
+  ],
+  "s": [
+   "imperative"
+  ],
+  "n": "'Let us start' là mệnh lệnh rủ cùng làm (let us + V nguyên mẫu), dùng để mở đầu cuộc họp; 'with a quick update on…' nêu việc đầu tiên cần làm.",
+  "x": [
+   [
+    "Let us begin with a short review of today's agenda.",
+    "Hãy bắt đầu bằng một lượt xem nhanh chương trình hôm nay."
+   ],
+   [
+    "Let us move on to a brief summary of this month's results.",
+    "Hãy chuyển sang một bản tóm tắt ngắn về kết quả tháng này."
+   ]
+  ],
+  "y": [
+   [
+    "Let us start",
+    "Let us begin",
+    "Let us get going",
+    "Hãy bắt đầu"
+   ],
+   [
+    "quick update",
+    "brief update",
+    "short briefing",
+    "cập nhật nhanh"
+   ],
+   [
+    "progress",
+    "headway",
+    "advancement",
+    "tiến độ"
+   ]
+  ],
+  "r": [
+   [
+    "Let's start with a quick update on last week's progress.",
+    "Rút gọn Let us thành Let's"
+   ],
+   [
+    "We should start with a quick update on last week's progress.",
+    "Dùng We should thay Let us"
+   ]
+  ]
+ },
+ "set-53-02": {
+  "c": [
+   [
+    "S",
+    "Most of the design work"
+   ],
+   [
+    "V",
+    "is done,"
+   ],
+   [
+    "J",
+    "but"
+   ],
+   [
+    "S",
+    "testing"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "behind schedule."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "passive"
+  ],
+  "n": "'But' nối hai mệnh đề đối lập; 'is done' là bị động chỉ việc đã xong, còn 'is behind schedule' là cụm cố định nghĩa là chậm tiến độ.",
+  "x": [
+   [
+    "Most of the writing is finished, but editing is behind schedule.",
+    "Phần lớn bài viết đã xong, nhưng khâu biên tập đang chậm tiến độ."
+   ],
+   [
+    "Most of the cleaning is done, but packing is behind schedule.",
+    "Phần lớn việc dọn dẹp đã xong, nhưng việc đóng gói đang chậm tiến độ."
+   ]
+  ],
+  "y": [
+   [
+    "is done",
+    "is complete",
+    "is finished",
+    "đã xong"
+   ],
+   [
+    "behind schedule",
+    "behind time",
+    "running late",
+    "chậm tiến độ"
+   ]
+  ],
+  "r": [
+   [
+    "Although most of the design work is done, testing is behind schedule.",
+    "Dùng Although"
+   ],
+   [
+    "Most of the design work is done, whereas testing is running behind schedule.",
+    "Dùng whereas"
+   ]
+  ]
+ },
+ "set-53-03": {
+  "c": [
+   [
+    "V",
+    "Could"
+   ],
+   [
+    "S",
+    "someone"
+   ],
+   [
+    "V",
+    "take"
+   ],
+   [
+    "O",
+    "ownership of the customer feedback survey?"
+   ]
+  ],
+  "s": [
+   "question",
+   "modal-ability"
+  ],
+  "n": "'Could someone take…?' là câu hỏi đảo trợ động từ 'could' lên trước chủ ngữ để nhờ vả lịch sự; 'take ownership of' nghĩa là nhận trách nhiệm phụ trách việc gì.",
+  "x": [
+   [
+    "Could somebody take responsibility for the weekly budget report?",
+    "Có ai nhận trách nhiệm về báo cáo ngân sách hằng tuần được không?"
+   ],
+   [
+    "Could anyone take charge of the new employee training session?",
+    "Có ai đảm nhận buổi đào tạo nhân viên mới được không?"
+   ]
+  ],
+  "y": [
+   [
+    "take ownership of",
+    "take responsibility for",
+    "take charge of",
+    "phụ trách"
+   ],
+   [
+    "customer feedback survey",
+    "client satisfaction survey",
+    "customer opinion survey",
+    "khảo sát phản hồi khách hàng"
+   ]
+  ],
+  "r": [
+   [
+    "Would somebody mind taking ownership of the customer feedback survey?",
+    "Dùng Would … mind + V-ing"
+   ],
+   [
+    "Would someone be able to take ownership of the customer feedback survey?",
+    "Dùng Would … be able to"
+   ]
+  ]
+ },
+ "set-53-04": {
+  "c": [
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "am"
+   ],
+   [
+    "C",
+    "happy to take that on,"
+   ],
+   [
+    "J",
+    "provided"
+   ],
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "get"
+   ],
+   [
+    "O",
+    "the data"
+   ],
+   [
+    "T",
+    "by Thursday."
+   ]
+  ],
+  "s": [
+   "conditional-1",
+   "present-simple"
+  ],
+  "n": "'Provided I get the data by Thursday' là mệnh đề điều kiện (nghĩa 'miễn là') dùng hiện tại đơn; 'happy to take that on' là adj + to V, thể hiện sẵn lòng nhận việc.",
+  "x": [
+   [
+    "I am glad to help you move, provided I finish work before noon.",
+    "Tôi vui lòng giúp bạn chuyển nhà, miễn là tôi xong việc trước buổi trưa."
+   ],
+   [
+    "We are willing to lend the equipment, provided you return it by Monday.",
+    "Chúng tôi sẵn lòng cho mượn thiết bị, miễn là bạn trả lại trước thứ Hai."
+   ]
+  ],
+  "y": [
+   [
+    "happy to",
+    "glad to",
+    "delighted to",
+    "sẵn lòng"
+   ],
+   [
+    "take that on",
+    "accept that task",
+    "take on that job",
+    "nhận việc đó"
+   ],
+   [
+    "provided",
+    "as long as",
+    "on condition that",
+    "miễn là"
+   ]
+  ],
+  "r": [
+   [
+    "I am happy to take that on, as long as I get the data by Thursday.",
+    "Dùng as long as"
+   ],
+   [
+    "Provided I get the data by Thursday, I am happy to take that on.",
+    "Đảo mệnh đề điều kiện lên đầu"
+   ]
+  ]
+ },
+ "set-53-05": {
+  "c": [
+   [
+    "A",
+    "Given the delay,"
+   ],
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "suggest"
+   ],
+   [
+    "S",
+    "we"
+   ],
+   [
+    "V",
+    "move"
+   ],
+   [
+    "O",
+    "the launch"
+   ],
+   [
+    "A",
+    "to the second week."
+   ]
+  ],
+  "s": [
+   "that-clause"
+  ],
+  "n": "'Given the delay' là cụm giới từ nêu lý do đứng đầu câu; 'I suggest we move…' là suggest + mệnh đề (lược that) với động từ nguyên mẫu, dùng để đề xuất lịch sự.",
+  "x": [
+   [
+    "Given the weather, I recommend we hold the picnic on Sunday.",
+    "Vì thời tiết, tôi đề nghị chúng ta tổ chức buổi dã ngoại vào Chủ nhật."
+   ],
+   [
+    "Given the cost, I propose we cancel the extra trip until spring.",
+    "Vì chi phí, tôi đề xuất chúng ta hủy chuyến đi thêm đến mùa xuân."
+   ]
+  ],
+  "y": [
+   [
+    "Given",
+    "Considering",
+    "In view of",
+    "Vì"
+   ],
+   [
+    "I suggest",
+    "I propose",
+    "I recommend",
+    "tôi đề nghị"
+   ],
+   [
+    "move the launch",
+    "delay the launch",
+    "push back the launch",
+    "dời ngày ra mắt"
+   ]
+  ],
+  "r": [
+   [
+    "I suggest we move the launch to the second week, given the delay.",
+    "Đưa Given the delay xuống cuối"
+   ],
+   [
+    "Because of the delay, I suggest we move the launch to the second week.",
+    "Dùng Because of"
+   ]
+  ]
+ },
+ "set-53-06": {
+  "c": [
+   [
+    "S",
+    "That"
+   ],
+   [
+    "V",
+    "would give"
+   ],
+   [
+    "I",
+    "us"
+   ],
+   [
+    "O",
+    "enough time"
+   ],
+   [
+    "C",
+    "to fix"
+   ],
+   [
+    "O",
+    "the remaining bugs."
+   ]
+  ],
+  "s": [
+   "too-enough"
+  ],
+  "n": "'Enough time to fix' là enough + danh từ + to V (đủ thời gian để làm gì); 'would give us' dùng would để nói hệ quả giả định của đề xuất vừa nêu.",
+  "x": [
+   [
+    "That would give us enough space to store the spare parts.",
+    "Như vậy sẽ cho chúng ta đủ chỗ để cất các linh kiện dự phòng."
+   ],
+   [
+    "That would give them enough money to finish the remaining repairs.",
+    "Như vậy sẽ cho họ đủ tiền để hoàn tất các khoản sửa chữa còn lại."
+   ]
+  ],
+  "y": [
+   [
+    "enough time to",
+    "sufficient time to",
+    "adequate time to",
+    "đủ thời gian để"
+   ],
+   [
+    "would give",
+    "would allow",
+    "would provide",
+    "sẽ cho"
+   ],
+   [
+    "remaining",
+    "outstanding",
+    "leftover",
+    "còn lại"
+   ]
+  ],
+  "r": [
+   [
+    "That would give us sufficient time to fix the remaining bugs.",
+    "Dùng sufficient thay enough"
+   ],
+   [
+    "We would then have enough time to fix the remaining bugs.",
+    "Đổi chủ ngữ: We would have"
+   ]
+  ]
+ },
+ "set-53-07": {
+  "c": [
+   [
+    "J",
+    "Before"
+   ],
+   [
+    "S",
+    "we"
+   ],
+   [
+    "V",
+    "agree,"
+   ],
+   [
+    "V",
+    "let us check"
+   ],
+   [
+    "J",
+    "whether"
+   ],
+   [
+    "S",
+    "the budget"
+   ],
+   [
+    "V",
+    "still covers"
+   ],
+   [
+    "O",
+    "it."
+   ]
+  ],
+  "s": [
+   "time-clause",
+   "imperative"
+  ],
+  "n": "'Before we agree' là mệnh đề thời gian đứng đầu; 'let us check whether…' là mệnh lệnh rủ cùng làm, với 'whether' mở câu hỏi gián tiếp có/không.",
+  "x": [
+   [
+    "Before we sign, let us ask whether the contract still protects us.",
+    "Trước khi ký, hãy hỏi xem hợp đồng có còn bảo vệ chúng ta không."
+   ],
+   [
+    "Before we leave, let us see whether the shop is still open.",
+    "Trước khi đi, hãy xem cửa hàng còn mở không."
+   ]
+  ],
+  "y": [
+   [
+    "let us check",
+    "let us verify",
+    "let us confirm",
+    "hãy kiểm tra"
+   ],
+   [
+    "still covers",
+    "continues to cover",
+    "can still cover",
+    "vẫn đủ chi trả"
+   ]
+  ],
+  "r": [
+   [
+    "Let us check whether the budget still covers it before we agree.",
+    "Đảo mệnh đề thời gian xuống cuối"
+   ],
+   [
+    "Before agreeing, let us check whether the budget still covers it.",
+    "Rút gọn thành Before + V-ing"
+   ]
+  ]
+ },
+ "set-53-08": {
+  "c": [
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "disagree"
+   ],
+   [
+    "M",
+    "a little,"
+   ],
+   [
+    "J",
+    "because"
+   ],
+   [
+    "S",
+    "the sales team"
+   ],
+   [
+    "V",
+    "already promised"
+   ],
+   [
+    "O",
+    "a date."
+   ]
+  ],
+  "s": [
+   "reason-clause",
+   "past-simple"
+  ],
+  "n": "'Because the sales team already promised a date' là mệnh đề lý do giải thích vì sao 'I disagree'; 'a little' làm nhẹ ý phản đối để giữ lịch sự trong cuộc họp.",
+  "x": [
+   [
+    "I object slightly, because the manager already approved a plan.",
+    "Tôi hơi phản đối, vì quản lý đã duyệt một kế hoạch."
+   ],
+   [
+    "I worry a bit, because the clients already paid a deposit.",
+    "Tôi hơi lo, vì khách hàng đã trả tiền đặt cọc."
+   ]
+  ],
+  "y": [
+   [
+    "disagree a little",
+    "disagree slightly",
+    "do not fully agree",
+    "hơi không đồng ý"
+   ],
+   [
+    "already promised",
+    "already committed to",
+    "already guaranteed",
+    "đã hứa"
+   ]
+  ],
+  "r": [
+   [
+    "Because the sales team already promised a date, I disagree a little.",
+    "Đảo mệnh đề lý do lên đầu"
+   ],
+   [
+    "I disagree slightly, since the sales team already promised a date.",
+    "Dùng since và slightly"
+   ]
+  ]
+ },
+ "set-53-09": {
+  "c": [
+   [
+    "S",
+    "We"
+   ],
+   [
+    "V",
+    "could keep"
+   ],
+   [
+    "O",
+    "the date"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "V",
+    "reduce"
+   ],
+   [
+    "O",
+    "the scope of the first release."
+   ]
+  ],
+  "s": [
+   "modal-ability"
+  ],
+  "n": "'Could keep … and reduce …' dùng could để đưa ra phương án khả thi; hai động từ nguyên mẫu 'keep' và 'reduce' nối bằng 'and' chung một 'could'.",
+  "x": [
+   [
+    "We could extend the deadline and simplify the instructions for the first test.",
+    "Chúng ta có thể kéo dài hạn chót và đơn giản hóa hướng dẫn cho bài kiểm tra đầu."
+   ],
+   [
+    "We could raise the price and improve the quality of the first edition.",
+    "Chúng ta có thể tăng giá và nâng chất lượng ấn bản đầu tiên."
+   ]
+  ],
+  "y": [
+   [
+    "could keep",
+    "might keep",
+    "are able to keep",
+    "có thể giữ"
+   ],
+   [
+    "reduce",
+    "narrow",
+    "cut back",
+    "thu hẹp"
+   ],
+   [
+    "the scope of",
+    "the size of",
+    "the range of",
+    "phạm vi của"
+   ]
+  ],
+  "r": [
+   [
+    "One option would be to keep the date and reduce the scope of the first release.",
+    "Dùng One option would be to"
+   ],
+   [
+    "We could keep the date while reducing the scope of the first release.",
+    "Dùng while + V-ing"
+   ]
+  ]
+ },
+ "set-53-10": {
+  "c": [
+   [
+    "V",
+    "Let us summarize"
+   ],
+   [
+    "O",
+    "the decisions"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "V",
+    "send"
+   ],
+   [
+    "O",
+    "them"
+   ],
+   [
+    "A",
+    "to everyone"
+   ],
+   [
+    "T",
+    "today."
+   ]
+  ],
+  "s": [
+   "imperative"
+  ],
+  "n": "'Let us summarize … and send …' là mệnh lệnh rủ cùng làm với hai động từ nguyên mẫu nối bằng 'and'; 'today' ở cuối chốt thời hạn gửi.",
+  "x": [
+   [
+    "Let us review the notes and share them with the whole team tomorrow.",
+    "Hãy xem lại ghi chú và chia sẻ với cả nhóm vào ngày mai."
+   ],
+   [
+    "Let us list the problems and report them to the manager this afternoon.",
+    "Hãy liệt kê các vấn đề và báo cho quản lý chiều nay."
+   ]
+  ],
+  "y": [
+   [
+    "summarize",
+    "sum up",
+    "recap",
+    "tóm tắt"
+   ],
+   [
+    "send them to",
+    "circulate them to",
+    "pass them on to",
+    "gửi chúng cho"
+   ]
+  ],
+  "r": [
+   [
+    "Let's summarize the decisions and send them to everyone today.",
+    "Rút gọn Let us thành Let's"
+   ],
+   [
+    "We should summarize the decisions and send them to everyone today.",
+    "Dùng We should"
+   ]
+  ]
+ },
+ "set-53-11": {
+  "c": [
+   [
+    "S",
+    "Who"
+   ],
+   [
+    "V",
+    "will follow up"
+   ],
+   [
+    "A",
+    "with the vendor"
+   ],
+   [
+    "A",
+    "about the missing parts?"
+   ]
+  ],
+  "s": [
+   "question",
+   "future-simple"
+  ],
+  "n": "'Who will follow up…?' là câu hỏi Wh- với 'who' làm chủ ngữ nên không đảo trợ động từ; 'will' hỏi người nhận việc trong tương lai, 'follow up with' nghĩa là liên hệ theo dõi.",
+  "x": [
+   [
+    "Who will check in with the client about the late payment?",
+    "Ai sẽ liên hệ khách hàng về khoản thanh toán trễ?"
+   ],
+   [
+    "Who will reach out to the supplier about the damaged goods?",
+    "Ai sẽ liên lạc nhà cung cấp về số hàng hỏng?"
+   ]
+  ],
+  "y": [
+   [
+    "follow up with",
+    "check in with",
+    "get back to",
+    "liên hệ theo dõi"
+   ],
+   [
+    "the vendor",
+    "the supplier",
+    "the seller",
+    "nhà cung cấp"
+   ],
+   [
+    "missing",
+    "absent",
+    "outstanding",
+    "thiếu"
+   ]
+  ],
+  "r": [
+   [
+    "Who is going to follow up with the vendor about the missing parts?",
+    "Dùng be going to"
+   ],
+   [
+    "Who is responsible for following up with the vendor about the missing parts?",
+    "Dùng responsible for + V-ing"
+   ]
+  ]
+ },
+ "set-53-12": {
+  "c": [
+   [
+    "A",
+    "Thanks everyone,"
+   ],
+   [
+    "S",
+    "the next check-in"
+   ],
+   [
+    "V",
+    "will be"
+   ],
+   [
+    "T",
+    "on Wednesday afternoon."
+   ]
+  ],
+  "s": [
+   "future-simple"
+  ],
+  "n": "'Will be on Wednesday afternoon' là tương lai đơn thông báo lịch đã định; câu mở đầu bằng lời cảm ơn rồi nối thẳng sang thông tin, kiểu kết thúc cuộc họp.",
+  "x": [
+   [
+    "Thanks all, the next meeting will be on Friday morning.",
+    "Cảm ơn mọi người, buổi họp tới sẽ vào sáng thứ Sáu."
+   ],
+   [
+    "Thank you everyone, the final review will be on Tuesday evening.",
+    "Cảm ơn mọi người, buổi duyệt cuối sẽ vào tối thứ Ba."
+   ]
+  ],
+  "y": [
+   [
+    "Thanks everyone",
+    "Thank you all",
+    "Thanks all",
+    "Cảm ơn mọi người"
+   ],
+   [
+    "the next check-in",
+    "the next meeting",
+    "the next catch-up",
+    "buổi kiểm tra tiếp theo"
+   ],
+   [
+    "will be",
+    "is going to be",
+    "is scheduled to be",
+    "sẽ là"
+   ]
+  ],
+  "r": [
+   [
+    "Thanks everyone; the next check-in is going to be on Wednesday afternoon.",
+    "Dùng be going to"
+   ],
+   [
+    "Thanks everyone, we will meet again for the next check-in on Wednesday afternoon.",
+    "Đổi chủ ngữ: we will meet"
+   ]
+  ]
+ },
+ "set-21-01": {
+  "c": [
+   [
+    "S",
+    "A single striking result"
+   ],
+   [
+    "V",
+    "proves"
+   ],
+   [
+    "O",
+    "far less"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "S",
+    "most newspaper headlines about science"
+   ],
+   [
+    "V",
+    "would ever encourage"
+   ],
+   [
+    "O",
+    "you"
+   ],
+   [
+    "C",
+    "to believe."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "object-to-infinitive"
+  ],
+  "n": "'Far less than … would ever encourage you to believe' là so sánh hơn dạng 'less … than', nhấn bằng 'far'; 'encourage you to believe' là encourage + người + to V.",
+  "x": [
+   [
+    "A single dramatic story reveals far less than most documentaries about nature would ever allow you to see.",
+    "Một câu chuyện kịch tính đơn lẻ tiết lộ ít hơn nhiều so với những gì phần lớn phim tài liệu thiên nhiên cho bạn thấy."
+   ],
+   [
+    "A single positive review tells you far less than most advertisements about the product would ever lead you to expect.",
+    "Một lời khen đơn lẻ cho bạn biết ít hơn nhiều so với những gì quảng cáo sản phẩm khiến bạn mong đợi."
+   ]
+  ],
+  "y": [
+   [
+    "proves",
+    "demonstrates",
+    "shows",
+    "chứng minh"
+   ],
+   [
+    "far less than",
+    "much less than",
+    "considerably less than",
+    "ít hơn nhiều so với"
+   ],
+   [
+    "encourage you to believe",
+    "lead you to believe",
+    "get you to believe",
+    "khiến bạn tin"
+   ]
+  ],
+  "r": [
+   [
+    "Most newspaper headlines about science would encourage you to believe far more than a single striking result proves.",
+    "Đảo so sánh sang more than"
+   ],
+   [
+    "A single striking result does not prove nearly as much as most newspaper headlines about science would ever encourage you to believe.",
+    "Dùng not … nearly as much as"
+   ]
+  ]
+ },
+ "set-21-02": {
+  "c": [
+   [
+    "S",
+    "Any measurement"
+   ],
+   [
+    "V",
+    "contains"
+   ],
+   [
+    "O",
+    "noise,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "noise"
+   ],
+   [
+    "A",
+    "occasionally"
+   ],
+   [
+    "V",
+    "arranges"
+   ],
+   [
+    "O",
+    "itself"
+   ],
+   [
+    "A",
+    "into a pattern"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "looks"
+   ],
+   [
+    "C",
+    "exactly like a genuine discovery."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "compound-sentence"
+  ],
+  "n": "'A pattern that looks exactly like a genuine discovery' là mệnh đề quan hệ với 'that' bổ nghĩa cho 'a pattern'; hai vế đầu nối bằng 'and' và 'itself' là đại từ phản thân.",
+  "x": [
+   [
+    "Every survey contains errors, and errors sometimes line up into a trend that looks exactly like a real change.",
+    "Khảo sát nào cũng có sai số, và đôi khi sai số xếp thành một xu hướng trông y hệt một thay đổi thật."
+   ],
+   [
+    "Any crowd contains rumours, and rumours quickly gather into a story that sounds exactly like the truth.",
+    "Đám đông nào cũng có tin đồn, và tin đồn nhanh chóng gom thành một câu chuyện nghe y hệt sự thật."
+   ]
+  ],
+  "y": [
+   [
+    "contains noise",
+    "includes noise",
+    "has noise",
+    "có nhiễu"
+   ],
+   [
+    "occasionally",
+    "from time to time",
+    "every now and then",
+    "đôi khi"
+   ],
+   [
+    "exactly like",
+    "just like",
+    "precisely like",
+    "y hệt"
+   ]
+  ],
+  "r": [
+   [
+    "Any measurement contains noise, and occasionally noise arranges itself into a pattern that looks exactly like a genuine discovery.",
+    "Đưa occasionally lên trước chủ ngữ"
+   ],
+   [
+    "Any measurement contains noise, which occasionally arranges itself into a pattern looking exactly like a genuine discovery.",
+    "Dùng which và rút gọn V-ing"
+   ]
+  ]
+ },
+ "set-21-03": {
+  "c": [
+   [
+    "S",
+    "This"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "why"
+   ],
+   [
+    "S",
+    "careful researchers"
+   ],
+   [
+    "V",
+    "repeat"
+   ],
+   [
+    "O",
+    "their own work"
+   ],
+   [
+    "J",
+    "before"
+   ],
+   [
+    "A",
+    "allowing"
+   ],
+   [
+    "O",
+    "anyone else"
+   ],
+   [
+    "C",
+    "to repeat it for them."
+   ]
+  ],
+  "s": [
+   "object-to-infinitive",
+   "time-clause"
+  ],
+  "n": "'Before allowing anyone else to repeat it' là before + V-ing, trong đó allow + người + to V; 'This is why…' nêu kết quả được giải thích bởi ý trước.",
+  "x": [
+   [
+    "This is why careful pilots inspect their own planes before allowing anyone else to fly them.",
+    "Vì thế phi công cẩn thận tự kiểm tra máy bay của mình trước khi để người khác lái."
+   ],
+   [
+    "This is why careful cooks taste their own soup before asking anyone else to try it.",
+    "Vì thế đầu bếp cẩn thận tự nếm món súp của mình trước khi nhờ người khác thử."
+   ]
+  ],
+  "y": [
+   [
+    "This is why",
+    "That is why",
+    "This explains why",
+    "Vì thế"
+   ],
+   [
+    "before allowing",
+    "prior to allowing",
+    "before permitting",
+    "trước khi cho phép"
+   ],
+   [
+    "repeat their own work",
+    "replicate their own work",
+    "redo their own work",
+    "tự lặp lại công trình"
+   ]
+  ],
+  "r": [
+   [
+    "This is the reason careful researchers repeat their own work before allowing anyone else to repeat it for them.",
+    "Dùng the reason thay why"
+   ],
+   [
+    "That is why careful researchers repeat their own work before they let anyone else repeat it for them.",
+    "Dùng before they let + V"
+   ]
+  ]
+ },
+ "set-21-04": {
+  "c": [
+   [
+    "S",
+    "Repetition"
+   ],
+   [
+    "V",
+    "is not"
+   ],
+   [
+    "C",
+    "a sign of doubt about the person;"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "a normal test of the claim."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "present-simple"
+  ],
+  "n": "Câu dùng mẫu 'is not … ; it is …' để phủ nhận cách hiểu sai rồi khẳng định cách hiểu đúng; hai vế cách nhau dấu chấm phẩy và cùng chia hiện tại đơn của 'be'.",
+  "x": [
+   [
+    "Criticism is not an attack on the writer; it is a useful check of the argument.",
+    "Phê bình không phải tấn công người viết; đó là sự kiểm tra hữu ích với lập luận."
+   ],
+   [
+    "Failure is not a proof of weakness; it is a normal step in the process.",
+    "Thất bại không phải bằng chứng của yếu kém; đó là bước bình thường trong quá trình."
+   ]
+  ],
+  "y": [
+   [
+    "a sign of",
+    "an indication of",
+    "a mark of",
+    "dấu hiệu của"
+   ],
+   [
+    "a normal test",
+    "a standard check",
+    "a routine test",
+    "phép kiểm tra bình thường"
+   ],
+   [
+    "doubt",
+    "suspicion",
+    "mistrust",
+    "nghi ngờ"
+   ]
+  ],
+  "r": [
+   [
+    "Repetition is a normal test of the claim, not a sign of doubt about the person.",
+    "Đảo vế khẳng định lên trước"
+   ],
+   [
+    "Rather than a sign of doubt about the person, repetition is a normal test of the claim.",
+    "Dùng Rather than"
+   ]
+  ]
+ },
+ "set-21-05": {
+  "c": [
+   [
+    "J",
+    "When"
+   ],
+   [
+    "S",
+    "a second independent team"
+   ],
+   [
+    "V",
+    "follows"
+   ],
+   [
+    "O",
+    "exactly the same method"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "V",
+    "reaches"
+   ],
+   [
+    "O",
+    "the same result,"
+   ],
+   [
+    "S",
+    "our confidence"
+   ],
+   [
+    "V",
+    "rises"
+   ],
+   [
+    "M",
+    "considerably."
+   ]
+  ],
+  "s": [
+   "time-clause",
+   "present-simple"
+  ],
+  "n": "'When a second independent team follows … and reaches …' là mệnh đề thời gian có hai động từ chung chủ ngữ; hiện tại đơn nêu quy luật chung, 'the same' nhấn mạnh sự trùng lặp.",
+  "x": [
+   [
+    "When a second careful reviewer reads the same report and finds the same error, our doubt grows noticeably.",
+    "Khi người duyệt cẩn thận thứ hai đọc cùng báo cáo và thấy cùng lỗi, nghi ngờ của ta tăng rõ rệt."
+   ],
+   [
+    "When a third local shop sells exactly the same product and charges the same price, our suspicion increases greatly.",
+    "Khi cửa hàng địa phương thứ ba bán đúng sản phẩm đó cùng giá, nghi ngờ của ta tăng nhiều."
+   ]
+  ],
+  "y": [
+   [
+    "follows",
+    "uses",
+    "applies",
+    "làm theo"
+   ],
+   [
+    "reaches the same result",
+    "arrives at the same result",
+    "obtains the same result",
+    "ra cùng kết quả"
+   ],
+   [
+    "considerably",
+    "substantially",
+    "significantly",
+    "đáng kể"
+   ]
+  ],
+  "r": [
+   [
+    "Our confidence rises considerably when a second independent team follows exactly the same method and reaches the same result.",
+    "Đảo mệnh đề When xuống cuối"
+   ],
+   [
+    "Once a second independent team follows exactly the same method and reaches the same result, our confidence rises considerably.",
+    "Dùng Once thay When"
+   ]
+  ]
+ },
+ "set-21-06": {
+  "c": [
+   [
+    "J",
+    "When"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "does not,"
+   ],
+   [
+    "S",
+    "the interesting question"
+   ],
+   [
+    "V",
+    "becomes"
+   ],
+   [
+    "C",
+    "which of the two studies"
+   ],
+   [
+    "A",
+    "quietly"
+   ],
+   [
+    "V",
+    "hid"
+   ],
+   [
+    "O",
+    "an unnoticed mistake."
+   ]
+  ],
+  "s": [
+   "time-clause",
+   "question"
+  ],
+  "n": "'When it does not' là mệnh đề thời gian dùng 'does not' thay cho cả mệnh đề trước để khỏi lặp; 'which of the two studies … hid' là câu hỏi gián tiếp làm bổ ngữ của 'becomes'.",
+  "x": [
+   [
+    "When it does not, the real problem becomes which of the two reports contains an overlooked error.",
+    "Khi không được, vấn đề thật là báo cáo nào trong hai cái chứa một lỗi bị bỏ sót."
+   ],
+   [
+    "When it does not, the main puzzle becomes which of the two plans quietly ignored an important risk.",
+    "Khi không, câu đố chính là kế hoạch nào trong hai cái đã âm thầm bỏ qua một rủi ro quan trọng."
+   ]
+  ],
+  "y": [
+   [
+    "quietly",
+    "silently",
+    "covertly",
+    "âm thầm"
+   ],
+   [
+    "an unnoticed mistake",
+    "an overlooked error",
+    "a hidden flaw",
+    "một sai sót chưa ai thấy"
+   ],
+   [
+    "becomes",
+    "turns into",
+    "grows into",
+    "trở thành"
+   ]
+  ],
+  "r": [
+   [
+    "The interesting question becomes which of the two studies quietly hid an unnoticed mistake when it does not.",
+    "Đảo mệnh đề When xuống cuối"
+   ],
+   [
+    "If it does not, the interesting question becomes which of the two studies quietly hid an unnoticed mistake.",
+    "Dùng If thay When"
+   ]
+  ]
+ },
+ "set-21-07": {
+  "c": [
+   [
+    "S",
+    "Many famous findings from earlier decades"
+   ],
+   [
+    "V",
+    "have quietly failed"
+   ],
+   [
+    "O",
+    "exactly this test"
+   ],
+   [
+    "M",
+    "without ever making the evening news."
+   ]
+  ],
+  "s": [
+   "present-perfect"
+  ],
+  "n": "'Have quietly failed' là hiện tại hoàn thành với trạng từ chen giữa, nói chuyện đã xảy ra mà kết quả còn đến nay; 'without ever making the evening news' là without + V-ing.",
+  "x": [
+   [
+    "Many popular diets from earlier years have quietly disappeared without ever reaching the front page.",
+    "Nhiều chế độ ăn phổ biến của các năm trước đã lặng lẽ biến mất mà chẳng bao giờ lên trang nhất."
+   ],
+   [
+    "Many promising ideas from earlier projects have quietly vanished without ever winning a single award.",
+    "Nhiều ý tưởng triển vọng từ các dự án trước đã lặng lẽ biến mất mà chẳng đoạt giải nào."
+   ]
+  ],
+  "y": [
+   [
+    "quietly failed",
+    "silently failed",
+    "discreetly failed",
+    "đã lặng lẽ trượt"
+   ],
+   [
+    "exactly this test",
+    "precisely this test",
+    "this very test",
+    "đúng phép thử này"
+   ],
+   [
+    "without ever",
+    "never even",
+    "without once",
+    "mà chẳng bao giờ"
+   ]
+  ],
+  "r": [
+   [
+    "Without ever making the evening news, many famous findings from earlier decades have quietly failed exactly this test.",
+    "Đảo cụm without lên đầu"
+   ],
+   [
+    "Exactly this test has been quietly failed by many famous findings from earlier decades without ever making the evening news.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "set-21-08": {
+  "c": [
+   [
+    "S",
+    "Journals"
+   ],
+   [
+    "V",
+    "once rewarded"
+   ],
+   [
+    "O",
+    "surprise,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "surprising results"
+   ],
+   [
+    "V",
+    "are"
+   ],
+   [
+    "C",
+    "precisely the ones most likely to be accidents of chance."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "past-simple"
+  ],
+  "n": "'Once rewarded' (quá khứ đơn) kể thói quen cũ, còn 'are precisely the ones most likely to be…' (hiện tại đơn) nêu sự thật; 'most likely' là so sánh nhất của likely.",
+  "x": [
+   [
+    "Editors once loved drama, and dramatic headlines are precisely the ones most likely to be exaggerated.",
+    "Biên tập viên từng mê kịch tính, và tít kịch tính chính là loại dễ bị phóng đại nhất."
+   ],
+   [
+    "Coaches once praised speed, and fast starts are exactly the ones most likely to be mistakes.",
+    "Huấn luyện viên từng khen tốc độ, và những pha xuất phát nhanh chính là loại dễ là sai lầm nhất."
+   ]
+  ],
+  "y": [
+   [
+    "once",
+    "formerly",
+    "at one time",
+    "từng"
+   ],
+   [
+    "precisely",
+    "exactly",
+    "just",
+    "chính là"
+   ],
+   [
+    "most likely",
+    "the most probable",
+    "the likeliest",
+    "dễ nhất"
+   ]
+  ],
+  "r": [
+   [
+    "Journals once rewarded surprise; surprising results are precisely the ones most likely to be accidents of chance.",
+    "Dùng chấm phẩy"
+   ],
+   [
+    "Surprising results are precisely the ones most likely to be accidents of chance, and journals once rewarded surprise.",
+    "Đảo thứ tự hai vế"
+   ]
+  ]
+ },
+ "set-21-09": {
+  "c": [
+   [
+    "S",
+    "Some fields"
+   ],
+   [
+    "A",
+    "now"
+   ],
+   [
+    "V",
+    "ask"
+   ],
+   [
+    "O",
+    "scientists"
+   ],
+   [
+    "C",
+    "to register"
+   ],
+   [
+    "O",
+    "their plans"
+   ],
+   [
+    "M",
+    "publicly"
+   ],
+   [
+    "J",
+    "before"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "collect"
+   ],
+   [
+    "O",
+    "a single piece of data."
+   ]
+  ],
+  "s": [
+   "object-to-infinitive",
+   "time-clause"
+  ],
+  "n": "'Ask scientists to register their plans' là ask + người + to V; 'before they collect a single piece of data' là mệnh đề thời gian, còn 'a single piece of' nhấn mạnh dù chỉ một mẩu.",
+  "x": [
+   [
+    "Some schools now ask students to submit their drafts online before they write a single page of the final essay.",
+    "Một số trường nay yêu cầu học sinh nộp bản nháp trực tuyến trước khi viết dù chỉ một trang bài cuối."
+   ],
+   [
+    "Some cities now require drivers to register their cars electronically before they buy a single litre of fuel.",
+    "Một số thành phố nay buộc tài xế đăng ký xe điện tử trước khi mua dù chỉ một lít xăng."
+   ]
+  ],
+  "y": [
+   [
+    "ask scientists to",
+    "require scientists to",
+    "expect scientists to",
+    "yêu cầu nhà khoa học"
+   ],
+   [
+    "register",
+    "record",
+    "file",
+    "đăng ký"
+   ],
+   [
+    "publicly",
+    "openly",
+    "in public",
+    "công khai"
+   ]
+  ],
+  "r": [
+   [
+    "Some fields now require scientists to register their plans publicly before they collect a single piece of data.",
+    "Đổi ask thành require"
+   ],
+   [
+    "Some fields now ask scientists to register their plans publicly before collecting a single piece of data.",
+    "Rút gọn thành before + V-ing"
+   ]
+  ]
+ },
+ "set-21-10": {
+  "c": [
+   [
+    "S",
+    "That one simple habit"
+   ],
+   [
+    "V",
+    "removes"
+   ],
+   [
+    "O",
+    "the temptation"
+   ],
+   [
+    "C",
+    "to search"
+   ],
+   [
+    "O",
+    "the results"
+   ],
+   [
+    "T",
+    "afterwards"
+   ],
+   [
+    "A",
+    "for"
+   ],
+   [
+    "S",
+    "whatever"
+   ],
+   [
+    "V",
+    "happens to look"
+   ],
+   [
+    "C",
+    "impressive."
+   ]
+  ],
+  "s": [
+   "present-simple",
+   "verb-to-infinitive"
+  ],
+  "n": "'The temptation to search…' dùng to V sau danh từ để nói cám dỗ làm gì; 'whatever happens to look impressive' là mệnh đề danh từ, 'happens to' nghĩa là tình cờ.",
+  "x": [
+   [
+    "That one simple rule removes the pressure to rewrite the report afterwards for whatever happens to please the boss.",
+    "Quy tắc đơn giản đó dẹp bỏ áp lực viết lại báo cáo để chiều bất cứ thứ gì tình cờ làm sếp hài lòng."
+   ],
+   [
+    "That single reminder removes the urge to check the scores afterwards for whatever happens to look encouraging.",
+    "Lời nhắc đơn lẻ đó dẹp cơn thôi thúc xem lại điểm để tìm thứ gì tình cờ trông đáng mừng."
+   ]
+  ],
+  "y": [
+   [
+    "the temptation to",
+    "the urge to",
+    "the desire to",
+    "cám dỗ"
+   ],
+   [
+    "impressive",
+    "striking",
+    "remarkable",
+    "kêu"
+   ]
+  ],
+  "r": [
+   [
+    "That one simple habit removes the temptation to search the results afterwards for anything that happens to look impressive.",
+    "Đổi whatever thành anything that"
+   ],
+   [
+    "That one simple habit removes the temptation of searching the results afterwards for whatever happens to look impressive.",
+    "Đổi to V thành of + V-ing"
+   ]
+  ]
+ },
+ "set-21-11": {
+  "c": [
+   [
+    "S",
+    "Science"
+   ],
+   [
+    "V",
+    "is often described"
+   ],
+   [
+    "C",
+    "as a body of knowledge,"
+   ],
+   [
+    "J",
+    "though"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "works"
+   ],
+   [
+    "A",
+    "far more like a set of manners."
+   ]
+  ],
+  "s": [
+   "passive",
+   "concession"
+  ],
+  "n": "'Is often described as' là bị động chỉ cách người ta thường gọi; 'though it works far more like…' là mệnh đề nhượng bộ với 'though', nêu thực tế khác với mô tả.",
+  "x": [
+   [
+    "Jazz is often described as a form of chaos, though it feels far more like a long conversation.",
+    "Nhạc jazz hay được mô tả là sự hỗn loạn, dù nó giống một cuộc trò chuyện dài hơn nhiều."
+   ],
+   [
+    "Cooking is often seen as a talent, though it operates far more like a habit.",
+    "Nấu ăn hay bị coi là năng khiếu, dù nó vận hành giống một thói quen hơn nhiều."
+   ]
+  ],
+  "y": [
+   [
+    "is often described as",
+    "is often seen as",
+    "is commonly viewed as",
+    "thường được gọi là"
+   ],
+   [
+    "though",
+    "although",
+    "even though",
+    "dù"
+   ],
+   [
+    "a body of knowledge",
+    "a store of knowledge",
+    "a collection of facts",
+    "một kho tri thức"
+   ]
+  ],
+  "r": [
+   [
+    "People often describe science as a body of knowledge, though it works far more like a set of manners.",
+    "Đổi sang câu chủ động"
+   ],
+   [
+    "Although science is often described as a body of knowledge, it works far more like a set of manners.",
+    "Đảo mệnh đề nhượng bộ lên đầu"
+   ]
+  ]
+ },
+ "set-21-12": {
+  "c": [
+   [
+    "S",
+    "The manners"
+   ],
+   [
+    "V",
+    "are"
+   ],
+   [
+    "C",
+    "boring, slow, and occasionally quite humiliating,"
+   ],
+   [
+    "J",
+    "which"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "precisely why"
+   ],
+   [
+    "S",
+    "the resulting knowledge"
+   ],
+   [
+    "V",
+    "can be trusted."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "passive"
+  ],
+  "n": "'Which is precisely why …' là mệnh đề quan hệ bình luận cả ý trước và nêu lý do; 'can be trusted' là bị động với can, nói tri thức này đáng tin.",
+  "x": [
+   [
+    "The rules are strict, tedious, and sometimes quite annoying, which is exactly why the final results can be relied on.",
+    "Các quy tắc nghiêm, tẻ nhạt, đôi khi khá khó chịu, và chính vì thế kết quả cuối mới đáng dựa vào."
+   ],
+   [
+    "The checks are slow, repetitive, and occasionally rather embarrassing, which is precisely why the published data can be believed.",
+    "Các lần kiểm tra chậm, lặp lại, đôi khi khá ngượng, và chính vì thế dữ liệu công bố mới đáng tin."
+   ]
+  ],
+  "y": [
+   [
+    "precisely why",
+    "exactly why",
+    "the very reason why",
+    "chính vì thế"
+   ],
+   [
+    "can be trusted",
+    "can be relied on",
+    "can be depended on",
+    "đáng tin"
+   ],
+   [
+    "occasionally",
+    "from time to time",
+    "now and then",
+    "đôi khi"
+   ]
+  ],
+  "r": [
+   [
+    "The manners are boring, slow, and occasionally quite humiliating; that is precisely why the resulting knowledge can be trusted.",
+    "Tách which thành câu độc lập"
+   ],
+   [
+    "The manners are boring, slow, and occasionally quite humiliating, and this is precisely why we can trust the resulting knowledge.",
+    "Đổi bị động thành chủ động"
+   ]
+  ]
+ },
+ "set-22-01": {
+  "c": [
+   [
+    "S",
+    "Every generation"
+   ],
+   [
+    "V",
+    "rewrites"
+   ],
+   [
+    "O",
+    "its history,"
+   ],
+   [
+    "M",
+    "not usually through lies,"
+   ],
+   [
+    "M",
+    "but through the quiet choice of what to leave out."
+   ]
+  ],
+  "s": [
+   "correlative",
+   "present-simple"
+  ],
+  "n": "'Not usually through lies, but through the quiet choice…' dùng not … but … để đối chiếu hai cách thức; 'what to leave out' là wh + to V, nghĩa là cái gì nên bỏ đi.",
+  "x": [
+   [
+    "Every culture preserves its past, not usually through books, but through the daily habit of what to repeat.",
+    "Nền văn hoá nào cũng giữ gìn quá khứ, thường không phải bằng sách, mà bằng thói quen hằng ngày về điều nên lặp lại."
+   ],
+   [
+    "Every family builds its image, not usually through speeches, but through the small choice of what to share.",
+    "Gia đình nào cũng dựng hình ảnh của mình, thường không phải bằng diễn thuyết, mà bằng lựa chọn nhỏ về điều nên chia sẻ."
+   ]
+  ],
+  "y": [
+   [
+    "rewrites",
+    "revises",
+    "reshapes",
+    "viết lại"
+   ],
+   [
+    "the quiet choice",
+    "the silent decision",
+    "the subtle selection",
+    "lựa chọn thầm lặng"
+   ],
+   [
+    "leave out",
+    "omit",
+    "exclude",
+    "bỏ đi"
+   ]
+  ],
+  "r": [
+   [
+    "Every generation rewrites its history, but usually through the quiet choice of what to leave out rather than through lies.",
+    "Đảo thứ tự đối chiếu"
+   ],
+   [
+    "Every generation rewrites its history, usually by quietly choosing what to leave out and not by telling lies.",
+    "Dùng by + V-ing"
+   ]
+  ]
+ },
+ "set-22-02": {
+  "c": [
+   [
+    "S",
+    "The documents"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "happen to survive"
+   ],
+   [
+    "V",
+    "are rarely"
+   ],
+   [
+    "C",
+    "a fair sample of everything"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "T",
+    "once"
+   ],
+   [
+    "V",
+    "existed"
+   ],
+   [
+    "P",
+    "in the world."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "present-simple"
+  ],
+  "n": "Hai mệnh đề quan hệ với 'that': 'that happen to survive' bổ nghĩa 'documents' và 'that once existed in the world' bổ nghĩa 'everything'; 'rarely' mang nghĩa phủ định.",
+  "x": [
+   [
+    "The photographs that happen to remain are rarely a fair record of everything that once happened in the village.",
+    "Những tấm ảnh tình cờ còn lại hiếm khi là bản ghi công bằng về mọi thứ từng xảy ra trong làng."
+   ],
+   [
+    "The stories that happen to circulate are seldom an honest picture of everything that once mattered to people.",
+    "Những câu chuyện tình cờ lưu truyền hiếm khi là bức tranh trung thực về mọi thứ từng quan trọng với người ta."
+   ]
+  ],
+  "y": [
+   [
+    "happen to survive",
+    "just happen to survive",
+    "by chance survive",
+    "tình cờ còn lại"
+   ],
+   [
+    "rarely",
+    "seldom",
+    "hardly ever",
+    "hiếm khi"
+   ],
+   [
+    "a fair sample",
+    "a representative sample",
+    "an even-handed sample",
+    "mẫu công bằng"
+   ]
+  ],
+  "r": [
+   [
+    "Hardly ever are the documents that happen to survive a fair sample of everything that once existed in the world.",
+    "Đảo ngữ với Hardly ever"
+   ],
+   [
+    "It is rare for the documents that happen to survive to be a fair sample of everything that once existed in the world.",
+    "Dùng It is rare for … to"
+   ]
+  ]
+ },
+ "set-22-03": {
+  "c": [
+   [
+    "S",
+    "Paper kept by governments and by wealthy families"
+   ],
+   [
+    "V",
+    "tends to outlive"
+   ],
+   [
+    "O",
+    "paper kept by farmers and by travelling workers."
+   ]
+  ],
+  "s": [
+   "participle-clause",
+   "verb-to-infinitive"
+  ],
+  "n": "'Kept by …' là cụm phân từ quá khứ rút gọn mệnh đề quan hệ bổ nghĩa cho 'paper'; 'tends to outlive' là tend + to V, nêu xu hướng chung.",
+  "x": [
+   [
+    "Buildings owned by kings and by rich merchants tend to outlast houses owned by farmers and by craftsmen.",
+    "Công trình của vua và thương nhân giàu thường tồn tại lâu hơn nhà của nông dân và thợ thủ công."
+   ],
+   [
+    "Records stored by banks and by large firms tend to survive longer than notes stored by students and by small shops.",
+    "Hồ sơ do ngân hàng và công ty lớn lưu thường sống lâu hơn ghi chú của sinh viên và tiệm nhỏ."
+   ]
+  ],
+  "y": [
+   [
+    "tends to",
+    "is inclined to",
+    "is likely to",
+    "thường có xu hướng"
+   ],
+   [
+    "outlive",
+    "outlast",
+    "survive longer than",
+    "sống lâu hơn"
+   ],
+   [
+    "wealthy families",
+    "rich families",
+    "affluent families",
+    "gia đình giàu có"
+   ]
+  ],
+  "r": [
+   [
+    "Paper that is kept by governments and by wealthy families tends to outlive paper that is kept by farmers and by travelling workers.",
+    "Viết đầy đủ mệnh đề quan hệ"
+   ],
+   [
+    "Paper kept by governments and by wealthy families usually lasts longer than paper kept by farmers and by travelling workers.",
+    "Đổi tend to outlive thành last longer"
+   ]
+  ]
+ },
+ "set-22-04": {
+  "c": [
+   [
+    "J",
+    "So"
+   ],
+   [
+    "S",
+    "the past"
+   ],
+   [
+    "V",
+    "arrives"
+   ],
+   [
+    "P",
+    "in our hands"
+   ],
+   [
+    "A",
+    "already sorted"
+   ],
+   [
+    "A",
+    "by"
+   ],
+   [
+    "S",
+    "who"
+   ],
+   [
+    "V",
+    "could afford"
+   ],
+   [
+    "C",
+    "to keep"
+   ],
+   [
+    "O",
+    "careful written records."
+   ]
+  ],
+  "s": [
+   "participle-clause",
+   "modal-ability"
+  ],
+  "n": "'Already sorted by …' là cụm phân từ quá khứ nói quá khứ đến tay ta trong trạng thái đã bị sàng lọc; 'who could afford to keep' dùng could afford + to V nghĩa là đủ khả năng làm.",
+  "x": [
+   [
+    "So the story reaches our ears already shaped by who could afford to pay careful reporters.",
+    "Nên câu chuyện đến tai ta đã bị định hình bởi ai đủ tiền thuê phóng viên cẩn thận."
+   ],
+   [
+    "So the evidence arrives on our desks already filtered by who could afford to hire careful lawyers.",
+    "Nên bằng chứng đến bàn ta đã bị lọc bởi ai đủ tiền thuê luật sư cẩn thận."
+   ]
+  ],
+  "y": [
+   [
+    "arrives in our hands",
+    "reaches us",
+    "comes down to us",
+    "đến tay ta"
+   ],
+   [
+    "could afford to",
+    "had the means to",
+    "were able to afford to",
+    "đủ điều kiện"
+   ],
+   [
+    "already sorted",
+    "already filtered",
+    "already selected",
+    "đã được sàng sẵn"
+   ]
+  ],
+  "r": [
+   [
+    "So the past arrives in our hands already sorted according to who could afford to keep careful written records.",
+    "Dùng according to"
+   ],
+   [
+    "So the past arrives in our hands, and it has already been sorted by who could afford to keep careful written records.",
+    "Tách thành mệnh đề có has been sorted"
+   ]
+  ]
+ },
+ "set-22-05": {
+  "c": [
+   [
+    "S",
+    "A good historian"
+   ],
+   [
+    "V",
+    "treats"
+   ],
+   [
+    "O",
+    "every source"
+   ],
+   [
+    "C",
+    "as evidence about its author"
+   ],
+   [
+    "A",
+    "quite as much as about its subject."
+   ]
+  ],
+  "s": [
+   "equal-comparison",
+   "present-simple"
+  ],
+  "n": "'Quite as much as' là so sánh bằng, nói nguồn tư liệu cho biết về người viết ngang với về đối tượng; 'treats … as …' nghĩa là coi cái gì như cái gì.",
+  "x": [
+   [
+    "A good teacher treats every mistake as information about the lesson quite as much as about the student.",
+    "Giáo viên giỏi coi mọi lỗi sai là thông tin về bài giảng chẳng kém gì về học sinh."
+   ],
+   [
+    "A careful editor treats every draft as evidence about the writer quite as much as about the topic.",
+    "Biên tập viên cẩn thận coi mọi bản thảo là bằng chứng về người viết chẳng kém gì về chủ đề."
+   ]
+  ],
+  "y": [
+   [
+    "quite as much as",
+    "just as much as",
+    "every bit as much as",
+    "chẳng kém gì"
+   ],
+   [
+    "treats every source as",
+    "regards every source as",
+    "views every source as",
+    "coi mọi nguồn là"
+   ],
+   [
+    "evidence",
+    "proof",
+    "testimony",
+    "bằng chứng"
+   ]
+  ],
+  "r": [
+   [
+    "A good historian treats every source as evidence about its subject and about its author alike.",
+    "Dùng and … alike"
+   ],
+   [
+    "For a good historian, every source is evidence about its author quite as much as about its subject.",
+    "Đổi chủ ngữ, dùng For a good historian"
+   ]
+  ]
+ },
+ "set-22-06": {
+  "c": [
+   [
+    "S",
+    "Letters complaining about a shortage of bread"
+   ],
+   [
+    "V",
+    "often tell"
+   ],
+   [
+    "I",
+    "us"
+   ],
+   [
+    "O",
+    "far more"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "A",
+    "official speeches celebrating a good harvest."
+   ]
+  ],
+  "s": [
+   "participle-clause",
+   "comparative"
+  ],
+  "n": "'Complaining about…' và 'celebrating…' là cụm phân từ hiện tại rút gọn mệnh đề quan hệ; 'tell us far more than' là so sánh hơn nhấn bằng 'far' giữa hai nguồn tư liệu.",
+  "x": [
+   [
+    "Messages describing a problem with the service often teach us far more than posters praising an excellent team.",
+    "Tin nhắn mô tả sự cố của dịch vụ thường dạy ta nhiều hơn hẳn áp phích khen đội ngũ xuất sắc."
+   ],
+   [
+    "Diaries recording a quiet failure often show us far more than reports celebrating a loud success.",
+    "Nhật ký ghi một thất bại lặng lẽ thường cho ta thấy nhiều hơn hẳn báo cáo ca ngợi thành công ồn ào."
+   ]
+  ],
+  "y": [
+   [
+    "complaining about",
+    "grumbling about",
+    "protesting about",
+    "than phiền về"
+   ],
+   [
+    "a shortage of",
+    "a lack of",
+    "a scarcity of",
+    "tình trạng thiếu"
+   ],
+   [
+    "far more than",
+    "much more than",
+    "a great deal more than",
+    "nhiều hơn hẳn"
+   ]
+  ],
+  "r": [
+   [
+    "Letters that complain about a shortage of bread often tell us far more than official speeches that celebrate a good harvest.",
+    "Viết đầy đủ mệnh đề quan hệ"
+   ],
+   [
+    "Official speeches celebrating a good harvest often tell us far less than letters complaining about a shortage of bread.",
+    "Đảo vế, đổi sang less than"
+   ]
+  ]
+ },
+ "set-22-07": {
+  "c": [
+   [
+    "S",
+    "Silence in the written record"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "itself a form of information,"
+   ],
+   [
+    "J",
+    "though"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "remarkably easy to read incorrectly."
+   ]
+  ],
+  "s": [
+   "concession"
+  ],
+  "n": "'Though it is remarkably easy to read incorrectly' là mệnh đề nhượng bộ đưa ra mặt trái của ý chính; 'easy to read' là adj + to V và 'itself' là đại từ nhấn mạnh.",
+  "x": [
+   [
+    "Failure in a first attempt is itself a form of progress, though it is surprisingly hard to accept calmly.",
+    "Thất bại ở lần thử đầu cũng là một dạng tiến bộ, dù khó chấp nhận bình thản đến bất ngờ."
+   ],
+   [
+    "Delay in a long project is itself a kind of warning, though it is remarkably easy to ignore politely.",
+    "Sự chậm trễ trong dự án dài cũng là một dạng cảnh báo, dù dễ bỏ qua một cách lịch sự đến mức đáng ngại."
+   ]
+  ],
+  "y": [
+   [
+    "itself",
+    "in itself",
+    "by itself",
+    "bản thân nó"
+   ],
+   [
+    "a form of",
+    "a kind of",
+    "a type of",
+    "một dạng"
+   ],
+   [
+    "remarkably easy",
+    "strikingly easy",
+    "surprisingly easy",
+    "dễ đến mức đáng ngại"
+   ]
+  ],
+  "r": [
+   [
+    "Although silence in the written record is itself a form of information, it is remarkably easy to read incorrectly.",
+    "Dùng Although"
+   ],
+   [
+    "Silence in the written record is itself a form of information; however, it is remarkably easy to read incorrectly.",
+    "Dùng however"
+   ]
+  ]
+ },
+ "set-22-08": {
+  "c": [
+   [
+    "S",
+    "Whole populations"
+   ],
+   [
+    "V",
+    "appear"
+   ],
+   [
+    "P",
+    "in the old archives"
+   ],
+   [
+    "A",
+    "only as numbers, as taxes, or as occasional complaints from their neighbours."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Appear … only as numbers, as taxes, or as occasional complaints' dùng 'only' giới hạn rồi liệt kê ba hình thức bằng 'as … , as … , or as …'; 'appear' là động từ nối nghĩa là hiện lên.",
+  "x": [
+   [
+    "Entire villages appear in the old records only as names, as debts, or as occasional warnings from officials.",
+    "Cả làng chỉ hiện lên trong sổ cũ dưới dạng tên, khoản nợ hoặc vài lời cảnh báo của quan lại."
+   ],
+   [
+    "Ordinary workers appear in the company files only as codes, as costs, or as brief remarks from managers.",
+    "Công nhân bình thường chỉ hiện lên trong hồ sơ công ty dưới dạng mã, chi phí hoặc vài nhận xét của quản lý."
+   ]
+  ],
+  "y": [
+   [
+    "appear",
+    "show up",
+    "turn up",
+    "hiện lên"
+   ],
+   [
+    "only as",
+    "merely as",
+    "solely as",
+    "chỉ dưới dạng"
+   ],
+   [
+    "occasional",
+    "rare",
+    "passing",
+    "thỉnh thoảng"
+   ]
+  ],
+  "r": [
+   [
+    "Only as numbers, as taxes, or as occasional complaints from their neighbours do whole populations appear in the old archives.",
+    "Đảo ngữ với Only as"
+   ],
+   [
+    "In the old archives, whole populations appear only as numbers, as taxes, or as occasional complaints from their neighbours.",
+    "Đảo trạng ngữ nơi chốn lên đầu"
+   ]
+  ]
+ },
+ "set-22-09": {
+  "c": [
+   [
+    "S",
+    "Recovering their ordinary daily lives"
+   ],
+   [
+    "V",
+    "requires"
+   ],
+   [
+    "O",
+    "patience, imagination, and a strict refusal"
+   ],
+   [
+    "C",
+    "to invent"
+   ],
+   [
+    "O",
+    "the convenient missing detail."
+   ]
+  ],
+  "s": [
+   "gerund-subject"
+  ],
+  "n": "'Recovering their ordinary daily lives' là V-ing làm chủ ngữ nên 'requires' chia số ít; tân ngữ liệt kê ba thứ cần có, trong đó 'refusal to invent' dùng to V sau danh từ.",
+  "x": [
+   [
+    "Rebuilding their broken trust requires honesty, effort, and a clear willingness to admit the uncomfortable past mistake.",
+    "Dựng lại lòng tin đã vỡ đòi hỏi sự trung thực, nỗ lực, và sự sẵn sàng rõ ràng thừa nhận lỗi lầm khó chịu trong quá khứ."
+   ],
+   [
+    "Learning a new language requires time, courage, and a firm decision to forget the comfortable native shortcut.",
+    "Học ngoại ngữ mới đòi hỏi thời gian, can đảm, và quyết tâm bỏ lối tắt tiện lợi của tiếng mẹ đẻ."
+   ]
+  ],
+  "y": [
+   [
+    "requires",
+    "demands",
+    "calls for",
+    "đòi hỏi"
+   ],
+   [
+    "recovering",
+    "reconstructing",
+    "rebuilding",
+    "dựng lại"
+   ],
+   [
+    "a strict refusal",
+    "a firm refusal",
+    "an absolute refusal",
+    "sự dứt khoát từ chối"
+   ]
+  ],
+  "r": [
+   [
+    "To recover their ordinary daily lives requires patience, imagination, and a strict refusal to invent the convenient missing detail.",
+    "Đổi V-ing thành to V"
+   ],
+   [
+    "You need patience, imagination, and a strict refusal to invent the convenient missing detail in order to recover their ordinary daily lives.",
+    "Đổi chủ ngữ, dùng in order to"
+   ]
+  ]
+ },
+ "set-22-10": {
+  "c": [
+   [
+    "S",
+    "History"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "A",
+    "therefore never really"
+   ],
+   [
+    "C",
+    "finished,"
+   ],
+   [
+    "J",
+    "because"
+   ],
+   [
+    "S",
+    "new questions"
+   ],
+   [
+    "V",
+    "make"
+   ],
+   [
+    "O",
+    "familiar old documents"
+   ],
+   [
+    "C",
+    "give up"
+   ],
+   [
+    "O",
+    "entirely new answers."
+   ]
+  ],
+  "s": [
+   "causative",
+   "reason-clause"
+  ],
+  "n": "'Make familiar old documents give up entirely new answers' là make + tân ngữ + V nguyên mẫu (khiến cái gì làm gì); 'because…' nêu lý do cho việc lịch sử chưa bao giờ xong.",
+  "x": [
+   [
+    "Science is therefore never fully settled, because new tools make familiar old data reveal entirely new patterns.",
+    "Khoa học vì thế chẳng bao giờ hoàn toàn khép lại, bởi công cụ mới khiến dữ liệu cũ quen thuộc lộ ra những quy luật hoàn toàn mới."
+   ],
+   [
+    "Cities are therefore never really complete, because new needs make familiar old streets take on entirely new roles.",
+    "Thành phố vì thế chẳng bao giờ thật sự hoàn thiện, bởi nhu cầu mới khiến phố cũ quen thuộc nhận những vai trò hoàn toàn mới."
+   ]
+  ],
+  "y": [
+   [
+    "therefore",
+    "thus",
+    "hence",
+    "vì thế"
+   ],
+   [
+    "give up",
+    "yield",
+    "surrender",
+    "bật ra"
+   ],
+   [
+    "entirely new",
+    "completely new",
+    "brand new",
+    "hoàn toàn mới"
+   ]
+  ],
+  "r": [
+   [
+    "Because new questions make familiar old documents give up entirely new answers, history is therefore never really finished.",
+    "Đảo mệnh đề lý do lên đầu"
+   ],
+   [
+    "History is never really finished, since new questions make familiar old documents give up entirely new answers.",
+    "Dùng since, bỏ therefore"
+   ]
+  ]
+ },
+ "set-22-11": {
+  "c": [
+   [
+    "S",
+    "That"
+   ],
+   [
+    "V",
+    "is not"
+   ],
+   [
+    "C",
+    "a weakness in the subject;"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "exactly how"
+   ],
+   [
+    "S",
+    "any honest study of evidence"
+   ],
+   [
+    "V",
+    "behaves."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "present-simple"
+  ],
+  "n": "Mẫu 'is not … ; it is exactly how …' phủ nhận cách hiểu sai rồi khẳng định cách đúng; 'how any honest study of evidence behaves' là mệnh đề danh từ nói ngành nào cũng vận hành vậy.",
+  "x": [
+   [
+    "That is not a flaw in the method; it is exactly how any careful experiment works.",
+    "Đó không phải lỗ hổng của phương pháp; mọi thí nghiệm cẩn thận đều vận hành đúng như vậy."
+   ],
+   [
+    "This is not a failure of the system; it is precisely how any fair market responds.",
+    "Đây không phải thất bại của hệ thống; mọi thị trường công bằng đều phản ứng đúng như vậy."
+   ]
+  ],
+  "y": [
+   [
+    "a weakness",
+    "a flaw",
+    "a shortcoming",
+    "điểm yếu"
+   ],
+   [
+    "exactly how",
+    "precisely how",
+    "just how",
+    "đúng như cách"
+   ],
+   [
+    "honest",
+    "truthful",
+    "genuine",
+    "trung thực"
+   ]
+  ],
+  "r": [
+   [
+    "That is not a weakness in the subject; any honest study of evidence behaves in exactly this way.",
+    "Đổi sang in exactly this way"
+   ],
+   [
+    "Rather than a weakness in the subject, that is exactly how any honest study of evidence behaves.",
+    "Dùng Rather than"
+   ]
+  ]
+ },
+ "set-22-12": {
+  "c": [
+   [
+    "S",
+    "We"
+   ],
+   [
+    "V",
+    "should be"
+   ],
+   [
+    "C",
+    "suspicious of any account of the past"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "never once mentions"
+   ],
+   [
+    "J",
+    "what"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "cannot know."
+   ]
+  ],
+  "s": [
+   "modal-advice",
+   "relative-clause"
+  ],
+  "n": "'Should be suspicious of' đưa lời khuyên nên dè chừng; 'any account … that never once mentions what it cannot know' là mệnh đề quan hệ kèm 'never once' nhấn mạnh và 'what it cannot know' làm tân ngữ.",
+  "x": [
+   [
+    "We should be careful with any claim about the future that never once admits what it cannot predict.",
+    "Nên cẩn trọng với bất kỳ nhận định nào về tương lai mà không một lần thừa nhận điều nó không thể dự đoán."
+   ],
+   [
+    "We should be wary of any story about success that never once mentions what it cannot explain.",
+    "Nên dè chừng bất kỳ câu chuyện thành công nào mà không một lần nhắc điều nó không giải thích được."
+   ]
+  ],
+  "y": [
+   [
+    "suspicious of",
+    "wary of",
+    "sceptical of",
+    "dè chừng"
+   ],
+   [
+    "never once",
+    "not once",
+    "never even once",
+    "không một lần"
+   ],
+   [
+    "account",
+    "narrative",
+    "version",
+    "câu chuyện"
+   ]
+  ],
+  "r": [
+   [
+    "We ought to be suspicious of any account of the past that never once mentions what it cannot know.",
+    "Dùng ought to"
+   ],
+   [
+    "Any account of the past that never once mentions what it cannot know should make us suspicious.",
+    "Đổi chủ ngữ, dùng make us suspicious"
+   ]
+  ]
+ },
+ "set-23-01": {
+  "c": [
+   [
+    "S",
+    "A museum guide"
+   ],
+   [
+    "A",
+    "once"
+   ],
+   [
+    "V",
+    "told"
+   ],
+   [
+    "I",
+    "me"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "most visitors"
+   ],
+   [
+    "V",
+    "look at"
+   ],
+   [
+    "O",
+    "any single painting"
+   ],
+   [
+    "T",
+    "for roughly ten seconds."
+   ]
+  ],
+  "s": [
+   "that-clause",
+   "past-simple"
+  ],
+  "n": "'Told me that …' là tell + người + mệnh đề that thuật lại lời người khác; câu chính ở quá khứ đơn, mệnh đề that vẫn ở hiện tại đơn vì nói điều còn đúng.",
+  "x": [
+   [
+    "A school nurse once told us that most students sleep for less than seven hours on weekdays.",
+    "Cô y tá trường từng nói với chúng tôi rằng phần lớn học sinh ngủ chưa đến bảy tiếng các ngày trong tuần."
+   ],
+   [
+    "A taxi driver once told her that most tourists ask for the same famous street.",
+    "Một tài xế taxi từng nói với cô ấy rằng phần lớn du khách đều hỏi cùng một con phố nổi tiếng."
+   ]
+  ],
+  "y": [
+   [
+    "told me that",
+    "informed me that",
+    "let me know that",
+    "nói với tôi rằng"
+   ],
+   [
+    "roughly",
+    "approximately",
+    "around",
+    "chừng"
+   ]
+  ],
+  "r": [
+   [
+    "A museum guide once said to me that most visitors look at any single painting for roughly ten seconds.",
+    "Đổi told me thành said to me"
+   ],
+   [
+    "I was once told by a museum guide that most visitors look at any single painting for roughly ten seconds.",
+    "Dùng bị động"
+   ]
+  ]
+ },
+ "set-23-02": {
+  "c": [
+   [
+    "S",
+    "She"
+   ],
+   [
+    "V",
+    "suggested"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "choose"
+   ],
+   [
+    "O",
+    "one picture"
+   ],
+   [
+    "A",
+    "instead"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "V",
+    "stay"
+   ],
+   [
+    "P",
+    "in front of it"
+   ],
+   [
+    "T",
+    "for half an hour."
+   ]
+  ],
+  "s": [
+   "that-clause"
+  ],
+  "n": "'Suggested that I choose … and stay …' là suggest + that + chủ ngữ + động từ nguyên mẫu (giả định), nên 'choose' và 'stay' không chia; 'instead' nghĩa là thay vì xem nhiều.",
+  "x": [
+   [
+    "He recommended that she try one trail instead and walk along it for a whole day.",
+    "Anh ấy đề nghị cô thử một lối mòn thôi và đi dọc nó cả ngày."
+   ],
+   [
+    "The coach insisted that we practise one move instead and repeat it for an hour.",
+    "Huấn luyện viên khăng khăng rằng chúng tôi tập một động tác thôi và lặp lại nó một giờ."
+   ]
+  ],
+  "y": [
+   [
+    "suggested that",
+    "recommended that",
+    "proposed that",
+    "đề nghị rằng"
+   ],
+   [
+    "instead",
+    "rather",
+    "as an alternative",
+    "thay vào đó"
+   ],
+   [
+    "in front of",
+    "opposite",
+    "facing",
+    "trước"
+   ]
+  ],
+  "r": [
+   [
+    "She suggested that I should choose one picture instead and stay in front of it for half an hour.",
+    "Thêm should vào mệnh đề that"
+   ],
+   [
+    "She suggested choosing one picture instead and staying in front of it for half an hour.",
+    "Đổi sang suggest + V-ing"
+   ]
+  ]
+ },
+ "set-23-03": {
+  "c": [
+   [
+    "S",
+    "The first ten minutes"
+   ],
+   [
+    "V",
+    "were"
+   ],
+   [
+    "C",
+    "genuinely uncomfortable,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "admit"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "checked"
+   ],
+   [
+    "O",
+    "my phone"
+   ],
+   [
+    "A",
+    "more than once."
+   ]
+  ],
+  "s": [
+   "that-clause",
+   "compound-sentence"
+  ],
+  "n": "'I admit that I checked…' là mệnh đề that thuật lại việc thú nhận ở hiện tại về hành động quá khứ; hai vế đầu nối bằng 'and', 'more than once' nghĩa là không chỉ một lần.",
+  "x": [
+   [
+    "The first week was truly exhausting, and I confess that I wanted to quit more than once.",
+    "Tuần đầu mệt thật sự, và tôi thú nhận là đã muốn bỏ không chỉ một lần."
+   ],
+   [
+    "The opening scenes were quite boring, and she admits that she looked at her watch more than once.",
+    "Những cảnh đầu khá chán, và cô ấy thú nhận đã nhìn đồng hồ không chỉ một lần."
+   ]
+  ],
+  "y": [
+   [
+    "genuinely",
+    "truly",
+    "really",
+    "thật sự"
+   ],
+   [
+    "I admit that",
+    "I confess that",
+    "I must say that",
+    "tôi thú nhận là"
+   ],
+   [
+    "more than once",
+    "several times",
+    "repeatedly",
+    "không chỉ một lần"
+   ]
+  ],
+  "r": [
+   [
+    "The first ten minutes were genuinely uncomfortable, and I must admit that I checked my phone more than once.",
+    "Thêm must admit"
+   ],
+   [
+    "Admittedly, the first ten minutes were genuinely uncomfortable, and I checked my phone more than once.",
+    "Dùng Admittedly"
+   ]
+  ]
+ },
+ "set-23-04": {
+  "c": [
+   [
+    "A",
+    "Then"
+   ],
+   [
+    "S",
+    "the painting"
+   ],
+   [
+    "V",
+    "began"
+   ],
+   [
+    "C",
+    "to change,"
+   ],
+   [
+    "J",
+    "or rather"
+   ],
+   [
+    "S",
+    "my attention"
+   ],
+   [
+    "V",
+    "began"
+   ],
+   [
+    "C",
+    "to notice"
+   ],
+   [
+    "J",
+    "what"
+   ],
+   [
+    "V",
+    "had always been"
+   ],
+   [
+    "P",
+    "there."
+   ]
+  ],
+  "s": [
+   "past-perfect",
+   "verb-to-infinitive"
+  ],
+  "n": "'What had always been there' dùng quá khứ hoàn thành nói trạng thái có từ trước thời điểm 'began'; 'began to change' và 'began to notice' là begin + to V, còn 'or rather' dùng để sửa lại ý.",
+  "x": [
+   [
+    "Then the picture started to fade, or rather my memory started to lose what had always been clear.",
+    "Rồi bức hình bắt đầu mờ, hay đúng hơn trí nhớ tôi bắt đầu đánh mất những gì vốn luôn rõ ràng."
+   ],
+   [
+    "Then the town began to grow, or rather its people began to demand what had never been offered.",
+    "Rồi thị trấn bắt đầu lớn lên, hay đúng hơn người dân bắt đầu đòi những gì chưa từng được đưa ra."
+   ]
+  ],
+  "y": [
+   [
+    "or rather",
+    "or more exactly",
+    "to be more precise",
+    "hay đúng hơn"
+   ],
+   [
+    "began to",
+    "started to",
+    "came to",
+    "bắt đầu"
+   ],
+   [
+    "had always been",
+    "had long been",
+    "had been all along",
+    "vốn vẫn ở"
+   ]
+  ],
+  "r": [
+   [
+    "Then the painting began changing, or rather my attention began noticing what had always been there.",
+    "Đổi to V sang V-ing sau began"
+   ],
+   [
+    "Then it was my attention, rather than the painting, that began to change by noticing what had always been there.",
+    "Dùng câu nhấn mạnh It was … that"
+   ]
+  ]
+ },
+ "set-23-05": {
+  "c": [
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "saw"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "all the light"
+   ],
+   [
+    "V",
+    "came"
+   ],
+   [
+    "A",
+    "from a window"
+   ],
+   [
+    "J",
+    "which"
+   ],
+   [
+    "S",
+    "the artist"
+   ],
+   [
+    "V",
+    "had chosen"
+   ],
+   [
+    "C",
+    "never to show us."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "past-perfect"
+  ],
+  "n": "'A window which the artist had chosen never to show us' là mệnh đề quan hệ với 'which' làm tân ngữ, dùng quá khứ hoàn thành vì quyết định xảy ra trước khi tôi nhìn thấy.",
+  "x": [
+   [
+    "She noticed that the whole story came from a diary which the writer had decided never to publish.",
+    "Cô nhận ra toàn bộ câu chuyện đến từ cuốn nhật ký mà tác giả đã quyết định không bao giờ xuất bản."
+   ],
+   [
+    "He realised that all the noise came from a room which the owner had promised never to open.",
+    "Anh nhận ra toàn bộ tiếng ồn đến từ căn phòng mà chủ nhà đã hứa không bao giờ mở."
+   ]
+  ],
+  "y": [
+   [
+    "came from",
+    "originated from",
+    "stemmed from",
+    "đến từ"
+   ],
+   [
+    "had chosen",
+    "had decided",
+    "had elected",
+    "đã chọn"
+   ],
+   [
+    "never to show us",
+    "not to show us",
+    "never to reveal to us",
+    "không bao giờ cho ta thấy"
+   ]
+  ],
+  "r": [
+   [
+    "I saw that all the light came from a window that the artist had chosen never to show us.",
+    "Đổi which thành that"
+   ],
+   [
+    "I saw that the artist had chosen never to show us the window from which all the light came.",
+    "Đảo thành from which"
+   ]
+  ]
+ },
+ "set-23-06": {
+  "c": [
+   [
+    "S",
+    "Every face in the painted crowd"
+   ],
+   [
+    "V",
+    "was turned"
+   ],
+   [
+    "M",
+    "slightly"
+   ],
+   [
+    "A",
+    "away from the event"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "the title"
+   ],
+   [
+    "V",
+    "had promised."
+   ]
+  ],
+  "s": [
+   "passive",
+   "past-perfect",
+   "relative-clause"
+  ],
+  "n": "'Was turned slightly away' là bị động quá khứ chỉ trạng thái của các gương mặt; 'the event that the title had promised' là mệnh đề quan hệ với quá khứ hoàn thành vì lời hứa có từ trước.",
+  "x": [
+   [
+    "Every seat in the crowded hall was angled slightly towards the stage that the poster had advertised.",
+    "Mọi chiếc ghế trong hội trường đông đúc hơi xoay về phía sân khấu mà áp phích đã quảng cáo."
+   ],
+   [
+    "Every window in the narrow street was opened slightly onto the garden that the agent had described.",
+    "Mọi cửa sổ trong con phố hẹp hơi mở ra khu vườn mà người môi giới đã tả."
+   ]
+  ],
+  "y": [
+   [
+    "was turned",
+    "was angled",
+    "was directed",
+    "bị quay"
+   ],
+   [
+    "slightly",
+    "a little",
+    "somewhat",
+    "hơi"
+   ],
+   [
+    "the event that",
+    "the occasion that",
+    "the spectacle that",
+    "sự kiện mà"
+   ]
+  ],
+  "r": [
+   [
+    "Every face in the painted crowd faced slightly away from the event that the title had promised.",
+    "Dùng động từ face"
+   ],
+   [
+    "Every face in the painted crowd was turned slightly away from the event which the title had promised.",
+    "Đổi that thành which"
+   ]
+  ]
+ },
+ "set-23-07": {
+  "c": [
+   [
+    "J",
+    "The longer"
+   ],
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "looked,"
+   ],
+   [
+    "J",
+    "the more"
+   ],
+   [
+    "S",
+    "the picture"
+   ],
+   [
+    "V",
+    "seemed"
+   ],
+   [
+    "C",
+    "to be about waiting"
+   ],
+   [
+    "A",
+    "rather than about any arrival."
+   ]
+  ],
+  "s": [
+   "double-comparative"
+  ],
+  "n": "'The longer I looked, the more the picture seemed…' là so sánh kép: hai vế cùng tăng theo nhau; 'rather than about any arrival' đối lập chủ đề chờ đợi với việc đến nơi.",
+  "x": [
+   [
+    "The harder she practised, the more the music seemed to be about courage rather than about speed.",
+    "Cô tập càng chăm, bản nhạc càng có vẻ nói về lòng can đảm chứ không phải tốc độ."
+   ],
+   [
+    "The longer we waited, the more the evening seemed to be about patience rather than about food.",
+    "Chúng tôi đợi càng lâu, buổi tối càng có vẻ nói về sự kiên nhẫn chứ không phải đồ ăn."
+   ]
+  ],
+  "y": [
+   [
+    "The longer I looked",
+    "The more I looked",
+    "The more closely I looked",
+    "Càng nhìn lâu"
+   ],
+   [
+    "seemed to be about",
+    "appeared to be about",
+    "came across as being about",
+    "có vẻ nói về"
+   ],
+   [
+    "rather than",
+    "instead of",
+    "as opposed to",
+    "chứ không phải"
+   ]
+  ],
+  "r": [
+   [
+    "As I looked longer, the picture seemed more and more to be about waiting rather than about any arrival.",
+    "Dùng as + more and more"
+   ],
+   [
+    "With every extra moment I spent looking, the picture seemed more about waiting than about any arrival.",
+    "Dùng With every extra moment"
+   ]
+  ]
+ },
+ "set-23-08": {
+  "c": [
+   [
+    "S",
+    "None of this"
+   ],
+   [
+    "V",
+    "was really hidden;"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "M",
+    "simply"
+   ],
+   [
+    "V",
+    "required"
+   ],
+   [
+    "O",
+    "more time"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "S",
+    "a quick passing glance"
+   ],
+   [
+    "V",
+    "can ever offer."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "past-simple"
+  ],
+  "n": "'None of this was really hidden' phủ định bằng 'none of'; 'required more time than … can ever offer' là so sánh hơn với mệnh đề sau than, đổi thì từ quá khứ sang can vì nói sự thật chung.",
+  "x": [
+   [
+    "None of this was truly secret; it merely needed more patience than a casual reader can ever give.",
+    "Không điều nào trong đó thật sự bí mật; chỉ là nó cần nhiều kiên nhẫn hơn một người đọc lướt có thể dành."
+   ],
+   [
+    "None of that was really difficult; it simply demanded more attention than a busy student can usually spare.",
+    "Không điều nào đó thật sự khó; chỉ là nó đòi nhiều chú ý hơn một học sinh bận rộn thường có thể dành."
+   ]
+  ],
+  "y": [
+   [
+    "none of this",
+    "nothing of this",
+    "not any of this",
+    "chẳng có gì"
+   ],
+   [
+    "simply",
+    "merely",
+    "just",
+    "chỉ là"
+   ],
+   [
+    "required",
+    "demanded",
+    "called for",
+    "cần"
+   ]
+  ],
+  "r": [
+   [
+    "Nothing in this was really hidden; it simply required more time than a quick passing glance can ever offer.",
+    "Đổi None of this thành Nothing in this"
+   ],
+   [
+    "None of this was really hidden, but it simply required more time than a quick passing glance can ever offer.",
+    "Dùng but thay chấm phẩy"
+   ]
+  ]
+ },
+ "set-23-09": {
+  "c": [
+   [
+    "S",
+    "Art"
+   ],
+   [
+    "V",
+    "rewards"
+   ],
+   [
+    "O",
+    "attention"
+   ],
+   [
+    "M",
+    "in the same slow way"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "a difficult piece of music"
+   ],
+   [
+    "V",
+    "rewards"
+   ],
+   [
+    "O",
+    "a second listening."
+   ]
+  ],
+  "s": [
+   "equal-comparison",
+   "relative-clause"
+  ],
+  "n": "'In the same slow way that …' so sánh hai việc theo cùng một cách, 'that' mở mệnh đề quan hệ chỉ cách thức; hai vế cùng dùng 'rewards' để song song ý.",
+  "x": [
+   [
+    "Sport teaches patience in the same hard way that a long illness teaches gratitude.",
+    "Thể thao dạy sự kiên nhẫn theo cùng cách khắc nghiệt mà một cơn bệnh dài dạy lòng biết ơn."
+   ],
+   [
+    "Travel changes people in the same quiet way that a good book changes a young reader.",
+    "Du lịch làm con người thay đổi theo cùng cách lặng lẽ mà một cuốn sách hay làm đổi một độc giả trẻ."
+   ]
+  ],
+  "y": [
+   [
+    "rewards",
+    "repays",
+    "pays off",
+    "đền đáp"
+   ],
+   [
+    "in the same slow way",
+    "in the same gradual way",
+    "in just the same slow manner",
+    "theo cùng cách chậm rãi"
+   ],
+   [
+    "a second listening",
+    "a repeat listen",
+    "another hearing",
+    "lần nghe thứ hai"
+   ]
+  ],
+  "r": [
+   [
+    "Art rewards attention just as slowly as a difficult piece of music rewards a second listening.",
+    "Dùng just as … as"
+   ],
+   [
+    "Just as a difficult piece of music rewards a second listening, art rewards attention in the same slow way.",
+    "Dùng Just as, đảo vế"
+   ]
+  ]
+ },
+ "set-23-10": {
+  "c": [
+   [
+    "S",
+    "You"
+   ],
+   [
+    "V",
+    "cannot rush"
+   ],
+   [
+    "O",
+    "that process,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "reading the label beforehand"
+   ],
+   [
+    "A",
+    "too often"
+   ],
+   [
+    "V",
+    "replaces"
+   ],
+   [
+    "O",
+    "genuine looking"
+   ],
+   [
+    "A",
+    "with mere remembering."
+   ]
+  ],
+  "s": [
+   "gerund-subject",
+   "modal-ability"
+  ],
+  "n": "'You cannot rush' là can phủ định nói không thể làm vậy; 'reading the label beforehand' là V-ing làm chủ ngữ nên 'replaces' chia số ít, 'replace … with …' nghĩa là thay cái này bằng cái kia.",
+  "x": [
+   [
+    "You cannot hurry that habit, and checking the score beforehand too often replaces real listening with mere expectation.",
+    "Không thể vội thói quen đó, và xem điểm trước thường thay việc nghe thật bằng kỳ vọng suông."
+   ],
+   [
+    "You cannot skip that stage, and copying the answer beforehand too often replaces thinking with mere imitation.",
+    "Không thể bỏ qua giai đoạn đó, và chép đáp án trước thường thay việc suy nghĩ bằng bắt chước suông."
+   ]
+  ],
+  "y": [
+   [
+    "cannot rush",
+    "cannot hurry",
+    "cannot speed up",
+    "không thể hối thúc"
+   ],
+   [
+    "beforehand",
+    "in advance",
+    "ahead of time",
+    "trước"
+   ],
+   [
+    "too often",
+    "far too often",
+    "all too often",
+    "quá thường"
+   ]
+  ],
+  "r": [
+   [
+    "You cannot rush that process, and if you read the label beforehand, you too often replace genuine looking with mere remembering.",
+    "Đổi V-ing thành If + mệnh đề"
+   ],
+   [
+    "You cannot rush that process, and too often reading the label beforehand replaces genuine looking with mere remembering.",
+    "Đưa too often lên đầu vế sau"
+   ]
+  ]
+ },
+ "set-23-11": {
+  "c": [
+   [
+    "S",
+    "I"
+   ],
+   [
+    "A",
+    "now"
+   ],
+   [
+    "V",
+    "visit"
+   ],
+   [
+    "O",
+    "galleries"
+   ],
+   [
+    "M",
+    "with the modest intention"
+   ],
+   [
+    "U",
+    "of seeing"
+   ],
+   [
+    "O",
+    "three works"
+   ],
+   [
+    "M",
+    "properly"
+   ],
+   [
+    "A",
+    "rather than three hundred of them quickly."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Now visit' là hiện tại đơn nói thói quen mới; 'with the modest intention of seeing … rather than …' dùng danh từ + of + V-ing và 'rather than' để đối lập số lượng với chất lượng.",
+  "x": [
+   [
+    "I now travel with the modest goal of knowing one city well rather than ten cities briefly.",
+    "Giờ tôi đi du lịch với mục tiêu khiêm tốn là hiểu rõ một thành phố thay vì lướt qua mười thành phố."
+   ],
+   [
+    "She now reads with the clear purpose of finishing two books carefully rather than twenty of them quickly.",
+    "Giờ cô đọc sách với mục đích rõ ràng là đọc kỹ hai cuốn thay vì lướt hai mươi cuốn."
+   ]
+  ],
+  "y": [
+   [
+    "modest",
+    "humble",
+    "limited",
+    "khiêm tốn"
+   ],
+   [
+    "intention of",
+    "aim of",
+    "goal of",
+    "ý định"
+   ],
+   [
+    "properly",
+    "carefully",
+    "thoroughly",
+    "cho ra"
+   ]
+  ],
+  "r": [
+   [
+    "I now visit galleries intending to see three works properly rather than three hundred of them quickly.",
+    "Dùng intending to"
+   ],
+   [
+    "I now visit galleries with the modest intention of seeing three works properly instead of three hundred of them quickly.",
+    "Đổi rather than thành instead of"
+   ]
+  ]
+ },
+ "set-23-12": {
+  "c": [
+   [
+    "S",
+    "Leaving with one single image firmly fixed in your memory"
+   ],
+   [
+    "V",
+    "beats"
+   ],
+   [
+    "O",
+    "leaving with a camera full of forgotten photographs."
+   ]
+  ],
+  "s": [
+   "gerund-subject"
+  ],
+  "n": "Hai V-ing 'Leaving with …' và 'leaving with …' đứng hai bên động từ 'beats' để so sánh hai cách ra về; 'fixed in your memory' là cụm phân từ quá khứ bổ nghĩa cho 'image'.",
+  "x": [
+   [
+    "Going home with one clear lesson firmly stored in your mind beats going home with a bag full of useless notes.",
+    "Về nhà với một bài học rõ ràng cất chắc trong đầu hơn hẳn về nhà với túi đầy ghi chú vô ích."
+   ],
+   [
+    "Finishing one small task fully completed in a day beats starting ten tasks half forgotten.",
+    "Hoàn thành trọn một việc nhỏ trong ngày hơn hẳn bắt đầu mười việc rồi quên nửa chừng."
+   ]
+  ],
+  "y": [
+   [
+    "beats",
+    "outweighs",
+    "is better than",
+    "hơn hẳn"
+   ],
+   [
+    "firmly fixed",
+    "firmly lodged",
+    "securely fixed",
+    "khắc chắc"
+   ],
+   [
+    "a camera full of",
+    "a phone packed with",
+    "a camera crammed with",
+    "cái máy ảnh đầy"
+   ]
+  ],
+  "r": [
+   [
+    "It is better to leave with one single image firmly fixed in your memory than to leave with a camera full of forgotten photographs.",
+    "Dùng It is better to … than to …"
+   ],
+   [
+    "To leave with one single image firmly fixed in your memory beats leaving with a camera full of forgotten photographs.",
+    "Đổi V-ing đầu thành to V"
+   ]
+  ]
+ },
+ "set-24-01": {
+  "c": [
+   [
+    "S",
+    "The forest near my grandparents' village"
+   ],
+   [
+    "V",
+    "was cut down"
+   ],
+   [
+    "M",
+    "completely"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "A",
+    "then,"
+   ],
+   [
+    "T",
+    "twenty years later,"
+   ],
+   [
+    "M",
+    "simply"
+   ],
+   [
+    "V",
+    "left"
+   ],
+   [
+    "C",
+    "alone."
+   ]
+  ],
+  "s": [
+   "passive",
+   "past-simple"
+  ],
+  "n": "Hai động từ bị động 'was cut down' và '(was) left alone' chung chủ ngữ, nối bằng 'and then' để kể trình tự; 'twenty years later' chen giữa nêu mốc thời gian.",
+  "x": [
+   [
+    "The house beside my aunt's garden was pulled down quickly and then, ten years later, quietly forgotten.",
+    "Ngôi nhà cạnh vườn dì tôi bị phá nhanh chóng rồi mười năm sau thì lặng lẽ bị quên."
+   ],
+   [
+    "The bridge near our neighbours' farm was closed suddenly and then, five months later, simply abandoned.",
+    "Cây cầu gần trang trại hàng xóm bị đóng đột ngột rồi năm tháng sau thì đơn giản bị bỏ hoang."
+   ]
+  ],
+  "y": [
+   [
+    "cut down",
+    "chop down",
+    "fell",
+    "chặt"
+   ],
+   [
+    "completely",
+    "entirely",
+    "totally",
+    "sạch"
+   ],
+   [
+    "left alone",
+    "left undisturbed",
+    "left untouched",
+    "để yên"
+   ]
+  ],
+  "r": [
+   [
+    "People cut down the forest near my grandparents' village completely and then, twenty years later, simply left it alone.",
+    "Đổi sang câu chủ động"
+   ],
+   [
+    "Twenty years after it was cut down completely, the forest near my grandparents' village was simply left alone.",
+    "Dùng Twenty years after + mệnh đề"
+   ]
+  ]
+ },
+ "set-24-02": {
+  "c": [
+   [
+    "S",
+    "Nobody"
+   ],
+   [
+    "V",
+    "planted"
+   ],
+   [
+    "O",
+    "anything,"
+   ],
+   [
+    "S",
+    "nobody"
+   ],
+   [
+    "V",
+    "watered"
+   ],
+   [
+    "O",
+    "anything,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "T",
+    "for a long while"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "looked"
+   ],
+   [
+    "J",
+    "like"
+   ],
+   [
+    "S",
+    "nothing at all"
+   ],
+   [
+    "V",
+    "was happening."
+   ]
+  ],
+  "s": [
+   "compound-sentence",
+   "past-continuous"
+  ],
+  "n": "Ba mệnh đề song song nối bằng dấu phẩy và 'and' với 'nobody … anything' lặp lại để nhấn; 'looked like nothing at all was happening' dùng quá khứ tiếp diễn nói việc đang diễn ra.",
+  "x": [
+   [
+    "Nobody called anyone, nobody answered anything, and for a long time it seemed like nothing at all was changing.",
+    "Không ai gọi ai, không ai trả lời gì, và suốt một thời gian dài có vẻ như chẳng có gì thay đổi."
+   ],
+   [
+    "Nobody cleaned anything, nobody fixed anything, and for a few weeks it felt like nothing at all was improving.",
+    "Không ai dọn gì, không ai sửa gì, và vài tuần liền có cảm giác chẳng có gì khá lên."
+   ]
+  ],
+  "y": [
+   [
+    "for a long while",
+    "for quite some time",
+    "for ages",
+    "suốt một thời gian dài"
+   ],
+   [
+    "looked like",
+    "seemed like",
+    "felt like",
+    "trông như"
+   ],
+   [
+    "nothing at all",
+    "absolutely nothing",
+    "nothing whatsoever",
+    "chẳng có gì"
+   ]
+  ],
+  "r": [
+   [
+    "Nobody planted or watered anything, and for a long while it looked like nothing at all was happening.",
+    "Gộp hai vế đầu bằng or"
+   ],
+   [
+    "Nobody planted anything, nobody watered anything, and it looked like nothing at all was happening for a long while.",
+    "Đưa trạng ngữ xuống cuối"
+   ]
+  ]
+ },
+ "set-24-03": {
+  "c": [
+   [
+    "S",
+    "Grass"
+   ],
+   [
+    "V",
+    "arrived"
+   ],
+   [
+    "A",
+    "first,"
+   ],
+   [
+    "A",
+    "then"
+   ],
+   [
+    "S",
+    "thorny bushes"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "nobody"
+   ],
+   [
+    "V",
+    "wanted,"
+   ],
+   [
+    "J",
+    "and then"
+   ],
+   [
+    "S",
+    "thin young trees"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "nobody"
+   ],
+   [
+    "V",
+    "had chosen."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "past-perfect"
+  ],
+  "n": "Hai mệnh đề quan hệ lược chủ ngữ 'that nobody wanted' và 'that nobody had chosen' bổ nghĩa cho bụi gai và cây non; vế sau dùng quá khứ hoàn thành vì lựa chọn xảy ra trước khi cây mọc.",
+  "x": [
+   [
+    "Weeds appeared first, then wild flowers that nobody noticed, and then tall grass that nobody had planted.",
+    "Cỏ dại mọc trước, rồi tới hoa dại chẳng ai để ý, rồi tới cỏ cao chẳng ai trồng."
+   ],
+   [
+    "Clouds gathered first, then dark storms that nobody expected, and then heavy rain that nobody had forecast.",
+    "Mây tụ trước, rồi tới giông tối chẳng ai ngờ, rồi tới mưa nặng chẳng ai dự báo."
+   ]
+  ],
+  "y": [
+   [
+    "thorny",
+    "prickly",
+    "spiky",
+    "có gai"
+   ],
+   [
+    "that nobody wanted",
+    "which nobody wanted",
+    "that no one wanted",
+    "chẳng ai ưa"
+   ],
+   [
+    "thin young trees",
+    "slender young trees",
+    "spindly saplings",
+    "cây non gầy guộc"
+   ]
+  ],
+  "r": [
+   [
+    "Grass arrived first, then thorny bushes which nobody wanted, and then thin young trees which nobody had chosen.",
+    "Đổi that thành which"
+   ],
+   [
+    "Grass arrived first, followed by thorny bushes that nobody wanted, and then by thin young trees that nobody had chosen.",
+    "Dùng followed by"
+   ]
+  ]
+ },
+ "set-24-04": {
+  "c": [
+   [
+    "S",
+    "Birds"
+   ],
+   [
+    "V",
+    "brought"
+   ],
+   [
+    "O",
+    "seeds"
+   ],
+   [
+    "A",
+    "in from several kilometres away"
+   ],
+   [
+    "M",
+    "without receiving any instruction whatsoever from the local planning office."
+   ]
+  ],
+  "s": [
+   "past-simple"
+  ],
+  "n": "'Brought seeds in' là quá khứ đơn bất quy tắc với cụm động từ; 'without receiving any instruction whatsoever' là without + V-ing, 'whatsoever' nhấn mạnh hoàn toàn không có chỉ đạo nào.",
+  "x": [
+   [
+    "Workers carried stones up from several miles away without receiving any payment whatsoever from the local council.",
+    "Công nhân vác đá lên từ cách đó mấy dặm mà chẳng nhận đồng nào từ hội đồng địa phương."
+   ],
+   [
+    "Volunteers brought food in from several villages away without asking for any reward whatsoever from the town office.",
+    "Tình nguyện viên mang thức ăn từ mấy làng xa mà chẳng đòi phần thưởng nào từ văn phòng thị trấn."
+   ]
+  ],
+  "y": [
+   [
+    "brought",
+    "carried",
+    "transported",
+    "mang"
+   ],
+   [
+    "without receiving",
+    "without getting",
+    "without being given",
+    "mà không nhận"
+   ],
+   [
+    "whatsoever",
+    "at all",
+    "whatever",
+    "chút nào"
+   ]
+  ],
+  "r": [
+   [
+    "Birds brought seeds in from several kilometres away and received no instruction whatsoever from the local planning office.",
+    "Đổi without + V-ing thành received no"
+   ],
+   [
+    "Birds brought seeds in from several kilometres away, and the local planning office gave them no instruction whatsoever.",
+    "Đổi chủ ngữ ở vế sau"
+   ]
+  ]
+ },
+ "set-24-05": {
+  "c": [
+   [
+    "T",
+    "Within about fifteen years"
+   ],
+   [
+    "S",
+    "that hillside"
+   ],
+   [
+    "V",
+    "held"
+   ],
+   [
+    "O",
+    "far more species"
+   ],
+   [
+    "A",
+    "than the tidy plantation on the opposite slope."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "past-simple"
+  ],
+  "n": "'Far more species than the tidy plantation' là so sánh hơn nhấn bằng 'far' với more + danh từ số nhiều; 'within about fifteen years' nêu khoảng thời gian tối đa.",
+  "x": [
+   [
+    "Within about ten days that small pond held far more insects than the clean pool on the other side.",
+    "Trong chừng mười ngày, cái ao nhỏ ấy có nhiều côn trùng hơn hẳn bể sạch ở phía bên kia."
+   ],
+   [
+    "Within about two years that old street held far more shops than the modern mall across the river.",
+    "Trong chừng hai năm, con phố cũ ấy có nhiều cửa hàng hơn hẳn trung tâm thương mại hiện đại bên kia sông."
+   ]
+  ],
+  "y": [
+   [
+    "Within",
+    "Inside",
+    "In under",
+    "Trong vòng"
+   ],
+   [
+    "far more",
+    "many more",
+    "considerably more",
+    "nhiều hơn hẳn"
+   ],
+   [
+    "held",
+    "contained",
+    "supported",
+    "chứa"
+   ]
+  ],
+  "r": [
+   [
+    "That hillside held far more species than the tidy plantation on the opposite slope within about fifteen years.",
+    "Đảo trạng ngữ thời gian xuống cuối"
+   ],
+   [
+    "The tidy plantation on the opposite slope held far fewer species than that hillside did within about fifteen years.",
+    "Đảo sang fewer than"
+   ]
+  ]
+ },
+ "set-24-06": {
+  "c": [
+   [
+    "S",
+    "Recovery like this"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "C",
+    "fairly common,"
+   ],
+   [
+    "J",
+    "though"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "happens"
+   ],
+   [
+    "P",
+    "on a timescale"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "human patience"
+   ],
+   [
+    "V",
+    "finds"
+   ],
+   [
+    "C",
+    "genuinely difficult."
+   ]
+  ],
+  "s": [
+   "concession",
+   "relative-clause"
+  ],
+  "n": "'Though it happens on a timescale…' là mệnh đề nhượng bộ giới hạn ý 'fairly common'; 'a timescale that human patience finds genuinely difficult' là mệnh đề quan hệ, find + tân ngữ + tính từ.",
+  "x": [
+   [
+    "Healing like this is fairly usual, though it proceeds at a pace that young athletes find genuinely annoying.",
+    "Sự lành kiểu này khá thường gặp, chỉ có điều nó diễn ra với tốc độ mà vận động viên trẻ thấy thật khó chịu."
+   ],
+   [
+    "Progress like this is quite normal, though it unfolds at a speed that eager students find truly frustrating.",
+    "Tiến bộ kiểu này khá bình thường, chỉ có điều nó diễn ra với tốc độ mà học sinh nôn nóng thấy thật bực."
+   ]
+  ],
+  "y": [
+   [
+    "fairly common",
+    "quite normal",
+    "reasonably widespread",
+    "khá phổ biến"
+   ],
+   [
+    "though",
+    "although",
+    "even though",
+    "dù"
+   ],
+   [
+    "genuinely difficult",
+    "truly hard",
+    "really challenging",
+    "khó thật sự"
+   ]
+  ],
+  "r": [
+   [
+    "Although recovery like this is fairly common, it happens on a timescale that human patience finds genuinely difficult.",
+    "Dùng Although"
+   ],
+   [
+    "Recovery like this is fairly common, though it happens on a timescale which human patience finds genuinely difficult.",
+    "Đổi that thành which"
+   ]
+  ]
+ },
+ "set-24-07": {
+  "c": [
+   [
+    "S",
+    "It"
+   ],
+   [
+    "A",
+    "also"
+   ],
+   [
+    "V",
+    "fails"
+   ],
+   [
+    "M",
+    "easily,"
+   ],
+   [
+    "J",
+    "since"
+   ],
+   [
+    "S",
+    "one road, one fire, or one hungry herd"
+   ],
+   [
+    "V",
+    "can undo"
+   ],
+   [
+    "O",
+    "a decade of quiet growth."
+   ]
+  ],
+  "s": [
+   "reason-clause",
+   "modal-ability"
+  ],
+  "n": "'Since one road, one fire, or one hungry herd can undo…' là mệnh đề lý do với chủ ngữ liệt kê bằng 'or'; 'can undo' dùng can nói khả năng làm hỏng thành quả.",
+  "x": [
+   [
+    "It also breaks easily, since one mistake, one delay, or one angry customer can undo a year of careful work.",
+    "Nó cũng dễ vỡ, vì một sai sót, một lần chậm hay một khách giận có thể xóa cả một năm làm việc cẩn thận."
+   ],
+   [
+    "It also collapses quickly, since one rumour, one storm, or one bad decision can ruin a lifetime of trust.",
+    "Nó cũng sụp nhanh, vì một tin đồn, một cơn bão hay một quyết định tồi có thể phá hết niềm tin cả đời."
+   ]
+  ],
+  "y": [
+   [
+    "since",
+    "as",
+    "because",
+    "vì"
+   ],
+   [
+    "can undo",
+    "can destroy",
+    "can reverse",
+    "có thể xóa sạch"
+   ]
+  ],
+  "r": [
+   [
+    "Since one road, one fire, or one hungry herd can undo a decade of quiet growth, it also fails easily.",
+    "Đảo mệnh đề lý do lên đầu"
+   ],
+   [
+    "It also fails easily, because one road, one fire, or one hungry herd can undo a decade of quiet growth.",
+    "Dùng because thay since"
+   ]
+  ]
+ },
+ "set-24-08": {
+  "c": [
+   [
+    "S",
+    "I"
+   ],
+   [
+    "V",
+    "mention"
+   ],
+   [
+    "O",
+    "all this"
+   ],
+   [
+    "U",
+    "not to argue"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "nature"
+   ],
+   [
+    "A",
+    "always"
+   ],
+   [
+    "V",
+    "heals"
+   ],
+   [
+    "O",
+    "itself,"
+   ],
+   [
+    "J",
+    "because"
+   ],
+   [
+    "A",
+    "very often"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "M",
+    "simply"
+   ],
+   [
+    "V",
+    "does not."
+   ]
+  ],
+  "s": [
+   "purpose-clause",
+   "reason-clause"
+  ],
+  "n": "'Not to argue that…' là to V chỉ mục đích ở dạng phủ định, kèm mệnh đề that; 'because very often it simply does not' dùng 'does not' thay cho 'heal itself' để khỏi lặp.",
+  "x": [
+   [
+    "I say all this not to claim that every plan succeeds, because very often it simply does not.",
+    "Tôi nói vậy không phải để khẳng định kế hoạch nào cũng thành, vì rất nhiều khi nó chẳng thành."
+   ],
+   [
+    "I raise this point not to suggest that money always helps, because quite often it simply does not.",
+    "Tôi nêu điều này không phải để gợi ý rằng tiền luôn giúp ích, vì khá nhiều khi nó chẳng giúp."
+   ]
+  ],
+  "y": [
+   [
+    "not to argue that",
+    "not to claim that",
+    "not to suggest that",
+    "không phải để bảo rằng"
+   ],
+   [
+    "heals itself",
+    "recovers on its own",
+    "repairs itself",
+    "tự lành"
+   ],
+   [
+    "very often",
+    "quite often",
+    "more often than not",
+    "rất nhiều khi"
+   ]
+  ],
+  "r": [
+   [
+    "My purpose in mentioning all this is not to argue that nature always heals itself, because very often it simply does not.",
+    "Dùng My purpose … is not to"
+   ],
+   [
+    "I do not mention all this to argue that nature always heals itself, because very often it simply does not.",
+    "Đổi sang phủ định ở động từ chính"
+   ]
+  ]
+ },
+ "set-24-09": {
+  "c": [
+   [
+    "S",
+    "Soil"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "has been stripped down"
+   ],
+   [
+    "A",
+    "to bare rock"
+   ],
+   [
+    "V",
+    "may need"
+   ],
+   [
+    "O",
+    "centuries"
+   ],
+   [
+    "A",
+    "rather than a convenient handful of years."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "modal-possibility"
+  ],
+  "n": "'Soil that has been stripped down to bare rock' là mệnh đề quan hệ ở hiện tại hoàn thành bị động; 'may need centuries' dùng may nêu khả năng, 'rather than' đối lập với vài năm cho tiện.",
+  "x": [
+   [
+    "Land that has been cleared down to bare sand may need decades rather than a comfortable few months.",
+    "Đất đã bị dọn đến trơ cát có thể cần hàng thập kỷ chứ không phải vài tháng dễ chịu."
+   ],
+   [
+    "A wall that has been worn down to thin brick may need replacing rather than a quick coat of paint.",
+    "Bức tường đã mòn đến lớp gạch mỏng có thể cần thay mới chứ không phải một lớp sơn nhanh."
+   ]
+  ],
+  "y": [
+   [
+    "has been stripped down",
+    "has been worn down",
+    "has been reduced",
+    "bị bóc trơ"
+   ],
+   [
+    "may need",
+    "might require",
+    "could take",
+    "có thể cần"
+   ],
+   [
+    "rather than",
+    "instead of",
+    "as opposed to",
+    "chứ không phải"
+   ]
+  ],
+  "r": [
+   [
+    "Soil that has been stripped down to bare rock may need centuries, not a convenient handful of years.",
+    "Dùng not thay rather than"
+   ],
+   [
+    "Soil which has been stripped down to bare rock may well need centuries rather than a convenient handful of years.",
+    "Dùng which và may well"
+   ]
+  ]
+ },
+ "set-24-10": {
+  "c": [
+   [
+    "S",
+    "The genuinely useful lesson"
+   ],
+   [
+    "V",
+    "is"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "protecting what still stands"
+   ],
+   [
+    "V",
+    "costs"
+   ],
+   [
+    "O",
+    "far less"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "A",
+    "repairing what has already gone."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "gerund-subject"
+  ],
+  "n": "'Costs far less than' là so sánh hơn dạng less … than giữa hai V-ing 'protecting' và 'repairing'; 'lesson is that …' dùng mệnh đề that làm bổ ngữ.",
+  "x": [
+   [
+    "The truly important point is that preventing what might break costs far less than fixing what has already collapsed.",
+    "Điểm thật sự quan trọng là ngăn cái có thể hỏng tốn ít hơn nhiều so với sửa cái đã sập."
+   ],
+   [
+    "The most practical advice is that saving what still works costs far less than replacing what has already failed.",
+    "Lời khuyên thực tế nhất là giữ cái còn dùng được tốn ít hơn nhiều so với thay cái đã hỏng."
+   ]
+  ],
+  "y": [
+   [
+    "far less",
+    "much less",
+    "considerably less",
+    "ít hơn nhiều"
+   ],
+   [
+    "protecting",
+    "preserving",
+    "safeguarding",
+    "giữ gìn"
+   ],
+   [
+    "has already gone",
+    "has already vanished",
+    "is already lost",
+    "đã mất"
+   ]
+  ],
+  "r": [
+   [
+    "Protecting what still stands is far cheaper than repairing what has already gone, and that is the genuinely useful lesson.",
+    "Dùng is far cheaper"
+   ],
+   [
+    "The genuinely useful lesson is that repairing what has already gone costs far more than protecting what still stands.",
+    "Đảo vế, đổi sang more than"
+   ]
+  ]
+ },
+ "set-24-11": {
+  "c": [
+   [
+    "A",
+    "Left undisturbed for long enough,"
+   ],
+   [
+    "S",
+    "most damaged land"
+   ],
+   [
+    "V",
+    "will build"
+   ],
+   [
+    "O",
+    "something,"
+   ],
+   [
+    "J",
+    "though"
+   ],
+   [
+    "A",
+    "rarely"
+   ],
+   [
+    "O",
+    "the exact thing"
+   ],
+   [
+    "S",
+    "we"
+   ],
+   [
+    "V",
+    "remember."
+   ]
+  ],
+  "s": [
+   "participle-clause",
+   "future-simple"
+  ],
+  "n": "'Left undisturbed for long enough' là cụm phân từ quá khứ đứng đầu câu (nghĩa nếu được để yên), chủ ngữ ngầm là 'most damaged land'; 'though rarely…' thêm nhượng bộ.",
+  "x": [
+   [
+    "Left alone for long enough, most injured muscles will recover, though rarely at the speed we hope.",
+    "Cứ để yên đủ lâu, phần lớn cơ bị thương sẽ hồi phục, dù hiếm khi nhanh như ta mong."
+   ],
+   [
+    "Watered regularly for a whole season, most young plants will grow, though rarely in the shape we imagine.",
+    "Tưới đều suốt một mùa, phần lớn cây non sẽ lớn, dù hiếm khi đúng hình dáng ta tưởng."
+   ]
+  ],
+  "y": [
+   [
+    "left undisturbed",
+    "left alone",
+    "left untouched",
+    "để yên"
+   ],
+   [
+    "for long enough",
+    "for a long enough time",
+    "for a sufficient period",
+    "đủ lâu"
+   ],
+   [
+    "rarely",
+    "seldom",
+    "hardly ever",
+    "hiếm khi"
+   ]
+  ],
+  "r": [
+   [
+    "If it is left undisturbed for long enough, most damaged land will build something, though rarely the exact thing we remember.",
+    "Viết đầy đủ mệnh đề If"
+   ],
+   [
+    "Most damaged land will build something if left undisturbed for long enough, though rarely the exact thing we remember.",
+    "Đưa cụm phân từ xuống sau"
+   ]
+  ]
+ },
+ "set-24-12": {
+  "c": [
+   [
+    "S",
+    "That forest"
+   ],
+   [
+    "V",
+    "is certainly not"
+   ],
+   [
+    "C",
+    "the one"
+   ],
+   [
+    "S",
+    "my grandfather"
+   ],
+   [
+    "V",
+    "walked"
+   ],
+   [
+    "A",
+    "through,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "it"
+   ],
+   [
+    "V",
+    "never intends"
+   ],
+   [
+    "C",
+    "to become"
+   ],
+   [
+    "O",
+    "it"
+   ],
+   [
+    "A",
+    "again."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "verb-to-infinitive"
+  ],
+  "n": "'The one my grandfather walked through' là mệnh đề quan hệ lược that với giới từ 'through' ở cuối; 'never intends to become it again' là intend + to V, nói khu rừng không có ý trở lại như cũ.",
+  "x": [
+   [
+    "That road is certainly not the one my aunt drove along, and it never plans to look the same again.",
+    "Con đường đó chắc chắn không phải con đường dì tôi từng lái xe qua, và nó cũng chẳng định trông như cũ nữa."
+   ],
+   [
+    "That town is surely not the one my parents grew up in, and it never wants to become it again.",
+    "Thị trấn đó chắc chắn không phải nơi bố mẹ tôi lớn lên, và nó cũng chẳng muốn trở lại như thế."
+   ]
+  ],
+  "y": [
+   [
+    "certainly not",
+    "definitely not",
+    "by no means",
+    "chắc chắn không"
+   ],
+   [
+    "never intends to",
+    "never plans to",
+    "never aims to",
+    "chẳng định"
+   ]
+  ],
+  "r": [
+   [
+    "That forest is certainly not the one that my grandfather walked through, and it never intends to become it again.",
+    "Thêm that vào mệnh đề quan hệ"
+   ],
+   [
+    "That forest is certainly not the one through which my grandfather walked, and it never intends to become it again.",
+    "Đưa giới từ lên trước which"
+   ]
+  ]
+ },
+ "set-25-01": {
+  "c": [
+   [
+    "S",
+    "Nobody"
+   ],
+   [
+    "A",
+    "ever"
+   ],
+   [
+    "V",
+    "warned"
+   ],
+   [
+    "O",
+    "me"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "choosing a career at eighteen"
+   ],
+   [
+    "V",
+    "means"
+   ],
+   [
+    "O",
+    "deciding with almost none of the relevant information."
+   ]
+  ],
+  "s": [
+   "gerund-subject",
+   "that-clause"
+  ],
+  "n": "'Choosing a career at eighteen' là V-ing làm chủ ngữ của mệnh đề that sau 'warned me'; 'means deciding' là mean + V-ing, và 'almost none of' nhấn mạnh gần như thiếu hẳn thông tin.",
+  "x": [
+   [
+    "Nobody ever told me that learning a language at forty means starting with almost none of the usual advantages.",
+    "Chẳng ai nói với tôi rằng học ngoại ngữ ở tuổi bốn mươi nghĩa là bắt đầu với gần như không có lợi thế quen thuộc nào."
+   ],
+   [
+    "Nobody ever explained to me that starting a business at twenty means working with almost none of the necessary experience.",
+    "Chẳng ai giải thích cho tôi rằng khởi nghiệp ở tuổi hai mươi nghĩa là làm việc với gần như không có kinh nghiệm cần thiết nào."
+   ]
+  ],
+  "y": [
+   [
+    "warned me that",
+    "cautioned me that",
+    "alerted me that",
+    "cảnh báo tôi rằng"
+   ],
+   [
+    "means",
+    "amounts to",
+    "involves",
+    "có nghĩa là"
+   ],
+   [
+    "almost none of",
+    "hardly any of",
+    "virtually none of",
+    "gần như không có"
+   ]
+  ],
+  "r": [
+   [
+    "Nobody ever warned me that to choose a career at eighteen means to decide with almost none of the relevant information.",
+    "Đổi V-ing thành to V"
+   ],
+   [
+    "Nobody ever warned me that if you choose a career at eighteen, you decide with almost none of the relevant information.",
+    "Dùng if + mệnh đề"
+   ]
+  ]
+ },
+ "set-25-02": {
+  "c": [
+   [
+    "S",
+    "You"
+   ],
+   [
+    "V",
+    "are asked"
+   ],
+   [
+    "C",
+    "to predict"
+   ],
+   [
+    "O",
+    "both a changing job market and a version of yourself"
+   ],
+   [
+    "S",
+    "you"
+   ],
+   [
+    "V",
+    "have not met."
+   ]
+  ],
+  "s": [
+   "passive",
+   "correlative"
+  ],
+  "n": "'Are asked to predict' là bị động của ask + người + to V; 'both … and …' nối hai thứ phải đoán, còn 'a version of yourself you have not met' là mệnh đề quan hệ lược that ở hiện tại hoàn thành.",
+  "x": [
+   [
+    "You are expected to manage both a growing team and a budget you have not seen.",
+    "Bạn được kỳ vọng quản lý cả một đội đang lớn lẫn một ngân sách bạn chưa thấy."
+   ],
+   [
+    "Students are told to learn both a new language and a culture they have never visited.",
+    "Học sinh được bảo học cả một ngôn ngữ mới lẫn một nền văn hóa họ chưa từng đến."
+   ]
+  ],
+  "y": [
+   [
+    "are asked to",
+    "are expected to",
+    "are required to",
+    "được yêu cầu"
+   ],
+   [
+    "predict",
+    "forecast",
+    "anticipate",
+    "đoán trước"
+   ],
+   [
+    "a changing",
+    "an evolving",
+    "a shifting",
+    "đang đổi"
+   ]
+  ],
+  "r": [
+   [
+    "You are asked to predict not only a changing job market but also a version of yourself you have not met.",
+    "Dùng not only … but also"
+   ],
+   [
+    "A changing job market and a version of yourself you have not met are both things you are asked to predict.",
+    "Đảo tân ngữ lên làm chủ ngữ"
+   ]
+  ]
+ },
+ "set-25-03": {
+  "c": [
+   [
+    "S",
+    "The advice to follow your passion"
+   ],
+   [
+    "V",
+    "assumes"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "passion"
+   ],
+   [
+    "V",
+    "arrives"
+   ],
+   [
+    "C",
+    "early, clearly labelled, and conveniently attached to paid work."
+   ]
+  ],
+  "s": [
+   "that-clause",
+   "present-simple"
+  ],
+  "n": "'Assumes that passion arrives…' là động từ + mệnh đề that nêu giả định; 'early, clearly labelled, and conveniently attached' là chuỗi ba phân từ/tính từ song song bổ nghĩa cho 'passion'.",
+  "x": [
+   [
+    "The belief that talent is fixed assumes that ability appears early, clearly visible, and permanently stable.",
+    "Niềm tin rằng tài năng cố định giả định rằng năng lực xuất hiện sớm, nhìn thấy rõ và ổn định mãi mãi."
+   ],
+   [
+    "The advice to save every month assumes that income arrives regularly, predictably, and without any emergencies.",
+    "Lời khuyên tiết kiệm mỗi tháng giả định rằng thu nhập đến đều đặn, dễ đoán và không có khẩn cấp."
+   ]
+  ],
+  "y": [
+   [
+    "assumes that",
+    "presumes that",
+    "takes it for granted that",
+    "giả định rằng"
+   ],
+   [
+    "conveniently",
+    "handily",
+    "neatly",
+    "tiện thể"
+   ],
+   [
+    "clearly labelled",
+    "clearly marked",
+    "plainly identified",
+    "có nhãn rõ ràng"
+   ]
+  ],
+  "r": [
+   [
+    "The advice to follow your passion takes it for granted that passion arrives early, clearly labelled, and conveniently attached to paid work.",
+    "Dùng takes it for granted that"
+   ],
+   [
+    "The advice to follow your passion is based on the assumption that passion arrives early, clearly labelled, and conveniently attached to paid work.",
+    "Dùng is based on the assumption that"
+   ]
+  ]
+ },
+ "set-25-04": {
+  "c": [
+   [
+    "A",
+    "In practice"
+   ],
+   [
+    "S",
+    "most people"
+   ],
+   [
+    "M",
+    "slowly"
+   ],
+   [
+    "V",
+    "develop"
+   ],
+   [
+    "O",
+    "a real interest"
+   ],
+   [
+    "A",
+    "in"
+   ],
+   [
+    "J",
+    "whatever"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "A",
+    "gradually"
+   ],
+   [
+    "V",
+    "become"
+   ],
+   [
+    "C",
+    "genuinely competent"
+   ],
+   [
+    "A",
+    "at doing."
+   ]
+  ],
+  "s": [
+   "present-simple"
+  ],
+  "n": "'Whatever they gradually become genuinely competent at doing' là mệnh đề danh từ (bất cứ thứ gì), giới từ 'at' đi với V-ing; trạng từ 'slowly' và 'gradually' nhấn mạnh sự dần dần.",
+  "x": [
+   [
+    "In reality most children slowly develop a love for whatever they patiently become really good at playing.",
+    "Thực tế phần lớn trẻ dần yêu bất cứ thứ gì chúng kiên nhẫn chơi giỏi dần."
+   ],
+   [
+    "In practice most workers steadily develop pride in whatever they gradually become truly skilled at building.",
+    "Thực tế phần lớn người lao động dần có niềm tự hào về bất cứ thứ gì họ dần làm giỏi."
+   ]
+  ],
+  "y": [
+   [
+    "In practice",
+    "In reality",
+    "In real life",
+    "Thực tế"
+   ],
+   [
+    "competent at",
+    "skilled at",
+    "proficient at",
+    "giỏi"
+   ],
+   [
+    "develop",
+    "form",
+    "build up",
+    "hình thành"
+   ]
+  ],
+  "r": [
+   [
+    "In practice most people slowly come to take a real interest in whatever they gradually become genuinely competent at doing.",
+    "Dùng come to take an interest"
+   ],
+   [
+    "Most people, in practice, slowly develop a real interest in whatever they gradually become genuinely competent at doing.",
+    "Đưa In practice vào giữa câu"
+   ]
+  ]
+ },
+ "set-25-05": {
+  "c": [
+   [
+    "S",
+    "Competence"
+   ],
+   [
+    "V",
+    "produces"
+   ],
+   [
+    "O",
+    "enjoyment"
+   ],
+   [
+    "M",
+    "far more reliably"
+   ],
+   [
+    "J",
+    "than"
+   ],
+   [
+    "S",
+    "enjoyment"
+   ],
+   [
+    "V",
+    "produces"
+   ],
+   [
+    "O",
+    "competence,"
+   ],
+   [
+    "J",
+    "which"
+   ],
+   [
+    "A",
+    "quietly"
+   ],
+   [
+    "V",
+    "reverses"
+   ],
+   [
+    "O",
+    "most of the usual advice."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "relative-clause"
+  ],
+  "n": "'Far more reliably than enjoyment produces competence' là so sánh hơn của trạng từ, hai chủ ngữ đảo vai nhau; 'which quietly reverses…' là mệnh đề quan hệ bình luận cả ý trước.",
+  "x": [
+   [
+    "Practice produces confidence far more reliably than confidence produces practice, which quietly overturns much of the common wisdom.",
+    "Luyện tập sinh ra tự tin chắc chắn hơn nhiều so với tự tin sinh ra luyện tập, và điều đó lặng lẽ lật ngược nhiều hiểu biết quen thuộc."
+   ],
+   [
+    "Habit produces motivation far more steadily than motivation produces habit, which quietly changes most of the usual plan.",
+    "Thói quen sinh ra động lực đều đặn hơn nhiều so với động lực sinh ra thói quen, và điều đó lặng lẽ đổi phần lớn kế hoạch quen thuộc."
+   ]
+  ],
+  "y": [
+   [
+    "far more reliably",
+    "much more dependably",
+    "a great deal more consistently",
+    "chắc chắn hơn nhiều"
+   ],
+   [
+    "produces",
+    "generates",
+    "creates",
+    "sinh ra"
+   ],
+   [
+    "reverses",
+    "overturns",
+    "inverts",
+    "lật ngược"
+   ]
+  ],
+  "r": [
+   [
+    "Enjoyment produces competence far less reliably than competence produces enjoyment, which quietly reverses most of the usual advice.",
+    "Đảo vế, đổi sang less reliably"
+   ],
+   [
+    "Competence produces enjoyment far more reliably than enjoyment produces competence, and this quietly reverses most of the usual advice.",
+    "Đổi which thành and this"
+   ]
+  ]
+ },
+ "set-25-06": {
+  "c": [
+   [
+    "J",
+    "So"
+   ],
+   [
+    "S",
+    "the practical question"
+   ],
+   [
+    "V",
+    "is not"
+   ],
+   [
+    "C",
+    "what you love,"
+   ],
+   [
+    "J",
+    "but"
+   ],
+   [
+    "C",
+    "what"
+   ],
+   [
+    "S",
+    "you"
+   ],
+   [
+    "V",
+    "can bear"
+   ],
+   [
+    "C",
+    "to practise badly for years."
+   ]
+  ],
+  "s": [
+   "correlative",
+   "modal-ability"
+  ],
+  "n": "'Is not what you love, but what you can bear…' dùng cặp not … but … để bác câu hỏi quen thuộc và thay bằng câu hỏi thực tế; 'can bear to practise' là can + động từ chịu đựng + to V.",
+  "x": [
+   [
+    "So the important choice is not what you enjoy, but what you can stand to repeat badly for months.",
+    "Nên lựa chọn quan trọng không phải bạn thích gì, mà bạn chịu nổi việc lặp lại dở cái gì trong nhiều tháng."
+   ],
+   [
+    "So the useful question is not what you want, but what you can tolerate doing poorly for weeks.",
+    "Nên câu hỏi hữu ích không phải bạn muốn gì, mà bạn chịu được việc làm dở cái gì trong nhiều tuần."
+   ]
+  ],
+  "y": [
+   [
+    "can bear to",
+    "can stand to",
+    "can tolerate",
+    "chịu nổi"
+   ],
+   [
+    "practise badly",
+    "do poorly",
+    "perform badly",
+    "làm dở"
+   ],
+   [
+    "the practical question",
+    "the real question",
+    "the useful question",
+    "câu hỏi thực tế"
+   ]
+  ],
+  "r": [
+   [
+    "So the practical question is not about what you love but about what you can bear to practise badly for years.",
+    "Thêm about vào hai vế"
+   ],
+   [
+    "So the practical question is what you can bear to practise badly for years, not what you love.",
+    "Đảo vế khẳng định lên trước"
+   ]
+  ]
+ },
+ "set-25-07": {
+  "c": [
+   [
+    "S",
+    "Skills"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "take"
+   ],
+   [
+    "O",
+    "a long time"
+   ],
+   [
+    "C",
+    "to build"
+   ],
+   [
+    "V",
+    "tend to keep"
+   ],
+   [
+    "O",
+    "their value"
+   ],
+   [
+    "T",
+    "for a long time afterwards."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "verb-to-infinitive"
+  ],
+  "n": "'Skills that take a long time to build' là mệnh đề quan hệ với 'take + thời gian + to V'; 'tend to keep' là tend + to V nêu xu hướng chung.",
+  "x": [
+   [
+    "Plants that need a lot of care to grow tend to give their best fruit for many seasons afterwards.",
+    "Cây cần nhiều chăm sóc để lớn thường cho quả tốt nhất qua nhiều mùa sau đó."
+   ],
+   [
+    "Friendships that take a long time to form tend to hold their strength for many years afterwards.",
+    "Tình bạn mất nhiều thời gian để hình thành thường giữ vững nhiều năm sau đó."
+   ]
+  ],
+  "y": [
+   [
+    "take a long time to",
+    "require a lot of time to",
+    "need a long time to",
+    "mất nhiều thời gian để"
+   ],
+   [
+    "tend to",
+    "are inclined to",
+    "are apt to",
+    "thường có xu hướng"
+   ],
+   [
+    "keep their value",
+    "retain their value",
+    "hold their worth",
+    "giữ giá trị"
+   ]
+  ],
+  "r": [
+   [
+    "Skills which take a long time to build tend to keep their value for a long time afterwards.",
+    "Đổi that thành which"
+   ],
+   [
+    "Skills that take a long time to build usually keep their value for a long time afterwards.",
+    "Đổi tend to thành usually"
+   ]
+  ]
+ },
+ "set-25-08": {
+  "c": [
+   [
+    "S",
+    "Jobs"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "S",
+    "almost anyone"
+   ],
+   [
+    "V",
+    "can learn"
+   ],
+   [
+    "T",
+    "in a fortnight"
+   ],
+   [
+    "A",
+    "rarely"
+   ],
+   [
+    "V",
+    "protect"
+   ],
+   [
+    "O",
+    "anybody at all"
+   ],
+   [
+    "T",
+    "during a difficult economic period."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "modal-ability"
+  ],
+  "n": "'Jobs that almost anyone can learn in a fortnight' là mệnh đề quan hệ có 'that' làm tân ngữ; 'rarely protect' dùng trạng từ phủ định ngầm, nghĩa là hiếm khi che chở được ai.",
+  "x": [
+   [
+    "Tasks that almost any beginner can master in a week rarely impress anyone at all during a job interview.",
+    "Những việc mà gần như người mới nào cũng thạo trong một tuần hiếm khi gây ấn tượng với ai trong buổi phỏng vấn."
+   ],
+   [
+    "Tools that almost every child can use in a minute rarely stop anybody at all during a serious emergency.",
+    "Những dụng cụ mà gần như đứa trẻ nào cũng dùng được trong một phút hiếm khi giúp được ai trong tình huống khẩn cấp."
+   ]
+  ],
+  "y": [
+   [
+    "almost anyone",
+    "nearly anybody",
+    "virtually anyone",
+    "gần như ai"
+   ],
+   [
+    "a fortnight",
+    "two weeks",
+    "a couple of weeks",
+    "hai tuần"
+   ],
+   [
+    "rarely protect",
+    "seldom shield",
+    "hardly ever safeguard",
+    "hiếm khi che chở"
+   ]
+  ],
+  "r": [
+   [
+    "Jobs which almost anyone can learn in a fortnight seldom protect anybody at all during a difficult economic period.",
+    "Đổi that thành which và rarely thành seldom"
+   ],
+   [
+    "Hardly ever do jobs that almost anyone can learn in a fortnight protect anybody during a difficult economic period.",
+    "Đảo ngữ với Hardly ever"
+   ]
+  ]
+ },
+ "set-25-09": {
+  "c": [
+   [
+    "S",
+    "It"
+   ],
+   [
+    "V",
+    "also helps"
+   ],
+   [
+    "M",
+    "enormously"
+   ],
+   [
+    "C",
+    "to notice"
+   ],
+   [
+    "J",
+    "which problems"
+   ],
+   [
+    "S",
+    "you"
+   ],
+   [
+    "V",
+    "still find"
+   ],
+   [
+    "C",
+    "interesting"
+   ],
+   [
+    "J",
+    "when"
+   ],
+   [
+    "S",
+    "nobody"
+   ],
+   [
+    "V",
+    "is paying"
+   ],
+   [
+    "O",
+    "you"
+   ],
+   [
+    "U",
+    "to care."
+   ]
+  ],
+  "s": [
+   "it-extraposition",
+   "time-clause"
+  ],
+  "n": "'It helps … to notice…' dùng 'it' làm chủ ngữ giả cho to V thật; 'which problems you still find interesting' là mệnh đề danh từ, còn 'when nobody is paying you to care' là mệnh đề thời gian hiện tại tiếp diễn.",
+  "x": [
+   [
+    "It also helps enormously to observe which subjects you still read about when nobody is forcing you to study.",
+    "Cũng rất có ích khi để ý chủ đề nào bạn vẫn đọc dù chẳng ai ép bạn học."
+   ],
+   [
+    "It also helps greatly to remember which habits you still keep when nobody is reminding you to continue.",
+    "Cũng rất có ích khi nhớ thói quen nào bạn vẫn giữ lúc chẳng ai nhắc bạn tiếp tục."
+   ]
+  ],
+  "y": [
+   [
+    "helps enormously",
+    "helps greatly",
+    "is extremely useful",
+    "rất có ích"
+   ],
+   [
+    "still find",
+    "continue to find",
+    "still consider",
+    "vẫn thấy"
+   ],
+   [
+    "nobody is paying you to care",
+    "no one is paying you to care",
+    "nobody is rewarding you for caring",
+    "chẳng ai trả tiền để bạn quan tâm"
+   ]
+  ],
+  "r": [
+   [
+    "Noticing which problems you still find interesting when nobody is paying you to care also helps enormously.",
+    "Dùng V-ing làm chủ ngữ"
+   ],
+   [
+    "It is also enormously helpful to notice which problems you still find interesting when nobody is paying you to care.",
+    "Dùng It is … helpful to"
+   ]
+  ]
+ },
+ "set-25-10": {
+  "c": [
+   [
+    "S",
+    "Careers"
+   ],
+   [
+    "V",
+    "are built"
+   ],
+   [
+    "M",
+    "sideways"
+   ],
+   [
+    "A",
+    "far more often than upwards,"
+   ],
+   [
+    "M",
+    "through small moves"
+   ],
+   [
+    "J",
+    "that"
+   ],
+   [
+    "V",
+    "looked"
+   ],
+   [
+    "C",
+    "entirely accidental"
+   ],
+   [
+    "T",
+    "at the time."
+   ]
+  ],
+  "s": [
+   "comparative",
+   "passive"
+  ],
+  "n": "'Are built sideways far more often than upwards' là bị động kèm so sánh hơn của trạng từ tần suất; 'small moves that looked entirely accidental' là mệnh đề quan hệ ở quá khứ.",
+  "x": [
+   [
+    "Friendships are formed slowly far more often than suddenly, through small habits that seemed entirely ordinary at the time.",
+    "Tình bạn được hình thành chậm nhiều hơn hẳn đột ngột, qua những thói quen nhỏ lúc đó trông hoàn toàn bình thường."
+   ],
+   [
+    "Cities are shaped gradually far more often than deliberately, through small decisions that looked entirely harmless at the time.",
+    "Thành phố được định hình dần dần nhiều hơn hẳn có chủ ý, qua những quyết định nhỏ lúc đó trông hoàn toàn vô hại."
+   ]
+  ],
+  "y": [
+   [
+    "far more often than",
+    "much more frequently than",
+    "a lot more often than",
+    "thường xuyên hơn hẳn"
+   ],
+   [
+    "sideways",
+    "laterally",
+    "horizontally",
+    "theo chiều ngang"
+   ],
+   [
+    "entirely accidental",
+    "completely random",
+    "purely coincidental",
+    "hoàn toàn tình cờ"
+   ]
+  ],
+  "r": [
+   [
+    "People build careers sideways far more often than upwards, through small moves that looked entirely accidental at the time.",
+    "Đổi sang câu chủ động"
+   ],
+   [
+    "Far more often than upwards, careers are built sideways, through small moves that looked entirely accidental at the time.",
+    "Đảo cụm so sánh lên đầu"
+   ]
+  ]
+ },
+ "set-25-11": {
+  "c": [
+   [
+    "S",
+    "Almost nobody I admire"
+   ],
+   [
+    "V",
+    "followed"
+   ],
+   [
+    "O",
+    "the plan"
+   ],
+   [
+    "S",
+    "they"
+   ],
+   [
+    "V",
+    "described"
+   ],
+   [
+    "M",
+    "confidently"
+   ],
+   [
+    "T",
+    "at twenty,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "S",
+    "almost all of them"
+   ],
+   [
+    "V",
+    "are"
+   ],
+   [
+    "C",
+    "fine."
+   ]
+  ],
+  "s": [
+   "relative-clause",
+   "past-simple"
+  ],
+  "n": "'Almost nobody I admire' và 'the plan they described' đều chứa mệnh đề quan hệ lược that; hai vế nối bằng 'and', vế đầu ở quá khứ đơn còn vế sau 'are fine' nêu tình trạng hiện tại.",
+  "x": [
+   [
+    "Almost nobody I respect chose the career they predicted proudly at eighteen, and almost all of them are happy.",
+    "Gần như không ai tôi kính trọng chọn nghề họ tự hào dự đoán hồi mười tám tuổi, mà hầu hết đều hạnh phúc."
+   ],
+   [
+    "Almost nobody I know kept the habit they promised firmly at New Year, and almost all of them are healthy.",
+    "Gần như không ai tôi quen giữ thói quen họ quả quyết hứa hồi Tết, mà hầu hết vẫn khoẻ."
+   ]
+  ],
+  "y": [
+   [
+    "Almost nobody",
+    "Hardly anybody",
+    "Virtually nobody",
+    "Gần như không ai"
+   ],
+   [
+    "admire",
+    "respect",
+    "look up to",
+    "nể phục"
+   ],
+   [
+    "confidently",
+    "assuredly",
+    "with certainty",
+    "hùng hồn"
+   ]
+  ],
+  "r": [
+   [
+    "Hardly anybody I admire followed the plan they described confidently at twenty, and almost all of them are fine.",
+    "Đổi Almost nobody thành Hardly anybody"
+   ],
+   [
+    "Of the people I admire, almost none followed the plan they described confidently at twenty, yet almost all of them are fine.",
+    "Dùng Of the people … almost none"
+   ]
+  ]
+ },
+ "set-25-12": {
+  "c": [
+   [
+    "V",
+    "Choose"
+   ],
+   [
+    "O",
+    "a direction,"
+   ],
+   [
+    "V",
+    "work"
+   ],
+   [
+    "M",
+    "seriously"
+   ],
+   [
+    "T",
+    "for a few years,"
+   ],
+   [
+    "J",
+    "and"
+   ],
+   [
+    "V",
+    "allow"
+   ],
+   [
+    "O",
+    "the map"
+   ],
+   [
+    "C",
+    "to be redrawn"
+   ],
+   [
+    "M",
+    "without panic."
+   ]
+  ],
+  "s": [
+   "imperative",
+   "object-to-infinitive"
+  ],
+  "n": "Ba động từ mệnh lệnh 'Choose', 'work', 'allow' nối bằng dấu phẩy và 'and', không có chủ ngữ; 'allow the map to be redrawn' là allow + tân ngữ + to V ở dạng bị động.",
+  "x": [
+   [
+    "Choose a goal, train steadily for a few months, and allow the plan to be adjusted without shame.",
+    "Chọn một mục tiêu, tập đều vài tháng, và cho phép kế hoạch được điều chỉnh mà không xấu hổ."
+   ],
+   [
+    "Pick a route, walk patiently for a few hours, and allow the schedule to be changed without complaint.",
+    "Chọn một lộ trình, đi kiên nhẫn vài giờ, và cho phép lịch trình được đổi mà không phàn nàn."
+   ]
+  ],
+  "y": [
+   [
+    "Choose a direction",
+    "Pick a path",
+    "Select a course",
+    "Chọn một hướng"
+   ],
+   [
+    "allow the map to be redrawn",
+    "let the map be redrawn",
+    "permit the map to be redrawn",
+    "cho phép tấm bản đồ được vẽ lại"
+   ],
+   [
+    "seriously",
+    "earnestly",
+    "diligently",
+    "nghiêm túc"
+   ]
+  ],
+  "r": [
+   [
+    "You should choose a direction, work seriously for a few years, and allow the map to be redrawn without panic.",
+    "Thêm chủ ngữ với should"
+   ],
+   [
+    "Choose a direction, work seriously for a few years, and let the map be redrawn without panic.",
+    "Đổi allow … to thành let"
+   ]
+  ]
+ }
+}

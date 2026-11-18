@@ -11,11 +11,11 @@ import {
   getDictationSet,
 } from './dictation-sets';
 
-test('kho có đủ 54 bộ, 648 câu, id và số thứ tự không trùng', () => {
-  assert.equal(DICTATION_SETS.length, 54);
-  assert.equal(new Set(DICTATION_SETS.map((s) => s.id)).size, 54, 'có id bị trùng');
-  assert.equal(new Set(DICTATION_SETS.map((s) => s.order)).size, 54, 'có số thứ tự bị trùng');
-  assert.equal(dictationSetStats().sentences, 648);
+test('kho có đủ 120 bộ, 1440 câu, id và số thứ tự không trùng', () => {
+  assert.equal(DICTATION_SETS.length, 120);
+  assert.equal(new Set(DICTATION_SETS.map((s) => s.id)).size, 120, 'có id bị trùng');
+  assert.equal(new Set(DICTATION_SETS.map((s) => s.order)).size, 120, 'có số thứ tự bị trùng');
+  assert.equal(dictationSetStats().sentences, 1440);
 });
 
 test('số thứ tự nguồn phủ kín 1..54, không hụt bài nào', () => {
@@ -95,7 +95,7 @@ test('mỗi bộ đều có tiêu đề, mô tả và gợi ý giọng', () => {
 });
 
 test('lọc theo trình độ và chủ đề thu hẹp đúng kho', () => {
-  assert.equal(filterDictationSets().length, 54);
+  assert.equal(filterDictationSets().length, 120);
 
   for (const level of DICTATION_SET_LEVELS) {
     const got = filterDictationSets({ level });

@@ -65,7 +65,7 @@ export default function SatMathRealTestsScreen() {
               SAT MATH · ĐỀ THI THẬT 2025
             </Text>
             <View className="rounded-full bg-amber-100 px-3 py-1 border border-amber-300">
-              <Text className="font-heavy text-tiny text-amber-900">99 CÂU SỐ HÓA</Text>
+              <Text className="font-heavy text-label text-amber-900">99 CÂU SỐ HÓA</Text>
             </View>
           </View>
 
@@ -151,18 +151,18 @@ export default function SatMathRealTestsScreen() {
                   }}
                 >
                   <Text
-                    className="font-heavy text-tiny uppercase"
+                    className="font-heavy text-label uppercase"
                     style={{ color: DIFFICULTY_LABELS[currentQ.difficulty].color }}
                   >
                     {DIFFICULTY_LABELS[currentQ.difficulty][en ? 'en' : 'vi']}
                   </Text>
                 </View>
-                <Text className="font-semi text-tiny text-muted">{currentQ.domain}</Text>
+                <Text className="font-semi text-label text-muted">{currentQ.domain}</Text>
               </View>
 
               {currentQ.sourceBook ? (
                 <View className="rounded-full bg-stone-100 px-2.5 py-0.5">
-                  <Text className="font-sans text-tiny text-stone-600">{currentQ.sourceBook}</Text>
+                  <Text className="font-sans text-label text-stone-600">{currentQ.sourceBook}</Text>
                 </View>
               ) : null}
             </View>
@@ -338,7 +338,7 @@ export default function SatMathRealTestsScreen() {
                   borderColor: badgeBorder,
                 }}
               >
-                <Text className="font-heavy text-tiny" style={{ color: badgeText }}>
+                <Text className="font-heavy text-label" style={{ color: badgeText }}>
                   {idx + 1}
                 </Text>
               </Pressable>

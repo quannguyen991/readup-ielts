@@ -119,7 +119,7 @@ export function ExamToolbar({
               onPress={() => onPickPart(p.key)}
               style={{ paddingHorizontal: 12, height: 28, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? EXAM_INK : 'transparent' }}
             >
-              <Text style={{ fontSize: 11, fontWeight: '800', letterSpacing: 0.6, color: on ? '#FFFFFF' : EXAM_INK }}>{p.label.toUpperCase()}</Text>
+              <Text style={{ fontSize: 11, fontWeight: '400', letterSpacing: 0.6, color: on ? '#FFFFFF' : EXAM_INK }}>{p.label.toUpperCase()}</Text>
             </Pressable>
           );
         })}
@@ -145,7 +145,7 @@ export function ExamToolbar({
                 backgroundColor: done ? EXAM_GOLD : '#FFFFFF',
               }}
             >
-              <Text style={{ fontSize: 12, fontWeight: '800', color: EXAM_INK }}>{n}</Text>
+              <Text style={{ fontSize: 12, fontWeight: '400', color: EXAM_INK }}>{n}</Text>
             </Pressable>
           );
         })}
@@ -191,7 +191,7 @@ export function ExamToolbar({
         disabled={submitDisabled}
         style={{ height: 36, paddingHorizontal: 16, borderRadius: 999, borderWidth: 2, borderColor: EXAM_INK, backgroundColor: EXAM_GOLD, alignItems: 'center', justifyContent: 'center', opacity: submitDisabled ? 0.6 : 1 }}
       >
-        <Text style={{ fontSize: 14, fontWeight: '800', color: EXAM_INK }}>{submitLabel}</Text>
+        <Text style={{ fontSize: 14, fontWeight: '400', color: EXAM_INK }}>{submitLabel}</Text>
       </Pressable>
     </View>
   );
@@ -236,7 +236,7 @@ export function ExamToolbarButton({
       }}
     >
       {icon ? <Icon name={icon} size={14} color={fg} strokeWidth={2.2} /> : null}
-      {compact && icon ? null : <Text style={{ fontSize: 12, fontWeight: '800', color: fg }}>{label}</Text>}
+      {compact && icon ? null : <Text style={{ fontSize: 12, fontWeight: '400', color: fg }}>{label}</Text>}
     </Pressable>
   );
 }

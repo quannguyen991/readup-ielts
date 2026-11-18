@@ -1,6 +1,7 @@
 import React from 'react';
 import { Linking, Pressable, View } from 'react-native';
 
+import { NeonWindow } from '@/components/neon/Neon';
 import { Icon } from '@/components/ui/Icon';
 import { ieltsAudioUrl } from '@/services/ielts/audio-url';
 import { type ExamPart, SECTION_MINUTES, type TestSection } from '@/services/ielts/source-catalog';
@@ -89,29 +90,19 @@ export function PracticeTestDetail(props: Props) {
         <Text style={{ color: color.subtle }}>›</Text>
         <Text style={{ fontSize: 13, color: color.body, fontWeight: '600' }}>{source}</Text>
         <Text style={{ color: color.subtle }}>›</Text>
-        <Text style={{ fontSize: 13, color: color.ink, fontWeight: '800' }}>{title}</Text>
+        <Text style={{ fontSize: 13, color: color.ink, fontWeight: '400' }}>{title}</Text>
       </View>
 
       {/* Hero */}
-      <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          gap: 24,
-          padding: 20,
-          borderRadius: 18,
-          backgroundColor: color.surface,
-          borderWidth: 1,
-          borderColor: color.border,
-        }}
-      >
+      <NeonWindow title={title} icon="trophy" padded={false}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 24, padding: 20 }}>
         <Cover source={source} width={150} height={196} radius={14} />
 
         <View style={{ flex: 1, minWidth: 260, gap: 12 }}>
           <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
             {section ? (
               <View style={{ paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999, backgroundColor: sectionTone.bg }}>
-                <Text style={{ fontSize: 12, fontWeight: '800', color: sectionTone.fg }}>{section}</Text>
+                <Text style={{ fontSize: 12, fontWeight: '400', color: sectionTone.fg }}>{section}</Text>
               </View>
             ) : null}
             <View style={{ paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999, backgroundColor: color.surfaceAlt }}>
@@ -133,7 +124,7 @@ export function PracticeTestDetail(props: Props) {
               style={{ height: 44, paddingHorizontal: 18, borderRadius: 12, backgroundColor: color.ink, flexDirection: 'row', alignItems: 'center', gap: 8 }}
             >
               <Icon name="target" size={16} color="#FFFFFF" />
-              <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '800' }}>
+              <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '400' }}>
                 {props.activeMode === 'simulation' ? L('Đang thi thật…', 'Exam in progress…') : L('Thi thử như thi thật', 'Real exam simulation')}
               </Text>
             </Pressable>
@@ -143,7 +134,7 @@ export function PracticeTestDetail(props: Props) {
               style={{ height: 44, paddingHorizontal: 18, borderRadius: 12, backgroundColor: color.primaryDark, flexDirection: 'row', alignItems: 'center', gap: 8 }}
             >
               <Icon name="book" size={16} color="#FFFFFF" />
-              <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '800' }}>
+              <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '400' }}>
                 {props.activeMode === 'practice' ? L('Đang luyện tập…', 'Practicing…') : L('Luyện tập tự do', 'Practice')}
               </Text>
             </Pressable>
@@ -160,7 +151,7 @@ export function PracticeTestDetail(props: Props) {
 
         {/* Progress */}
         <View style={{ width: 200, padding: 16, borderRadius: 14, backgroundColor: color.surfaceAlt, gap: 10, alignSelf: 'stretch' }}>
-          <Text style={{ fontSize: 13, fontWeight: '800', color: color.ink }}>{L('Tiến độ của bạn', 'Your progress')}</Text>
+          <Text style={{ fontSize: 13, fontWeight: '400', color: color.ink }}>{L('Tiến độ của bạn', 'Your progress')}</Text>
           <Text style={{ fontSize: 22, fontWeight: '900', color: props.submitted ? color.success : color.ink }}>
             {props.submitted && props.score !== null && props.total ? `${props.score}/${props.total}` : `${props.answeredCount}/${questionCount}`}
           </Text>
@@ -168,13 +159,14 @@ export function PracticeTestDetail(props: Props) {
             {props.submitted ? L('Đã chấm', 'Graded') : props.answeredCount > 0 ? L('Đang làm', 'In progress') : L('Chưa làm', 'Not started')}
           </Text>
           <Text style={{ fontSize: 12, color: color.body }}>
-            {L('Còn lại', 'Left')}: <Text style={{ fontWeight: '800', color: color.primaryDark }}>{props.timeLabel}</Text>
+            {L('Còn lại', 'Left')}: <Text style={{ fontWeight: '400', color: color.primaryDark }}>{props.timeLabel}</Text>
           </Text>
           {props.submitted && props.bandEstimate !== null ? (
             <Text style={{ fontSize: 14, fontWeight: '900', color: color.success }}>Band {props.bandEstimate}</Text>
           ) : null}
         </View>
       </View>
+      </NeonWindow>
 
       {/* Structure + materials */}
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
@@ -184,7 +176,7 @@ export function PracticeTestDetail(props: Props) {
               <Row key={part.id}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 }}>
                   <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: color.primarySoft, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 12, fontWeight: '800', color: color.primaryDark }}>{part.id}</Text>
+                    <Text style={{ fontSize: 12, fontWeight: '400', color: color.primaryDark }}>{part.id}</Text>
                   </View>
                   <Text style={{ fontSize: 14, fontWeight: '700', color: color.ink, flexShrink: 1 }}>{part.label}</Text>
                 </View>
@@ -235,7 +227,7 @@ export function PracticeTestDetail(props: Props) {
       {/* Related */}
       {sameSection.length ? (
         <View style={{ gap: 12 }}>
-          <Text style={{ fontSize: 18, fontWeight: '800', color: color.ink }}>{L('Đề cùng bộ', 'More from this set')}</Text>
+          <Text style={{ fontSize: 18, fontWeight: '400', color: color.ink }}>{L('Đề cùng bộ', 'More from this set')}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
             {sameSection.map((item) => (
               <Pressable
@@ -256,7 +248,7 @@ export function PracticeTestDetail(props: Props) {
               >
                 <Cover source={item.source} width={52} height={68} radius={8} />
                 <View style={{ flex: 1, gap: 2 }}>
-                  <Text style={{ fontSize: 13, fontWeight: '800', color: color.ink }}>{item.title}</Text>
+                  <Text style={{ fontSize: 13, fontWeight: '400', color: color.ink }}>{item.title}</Text>
                   <Text style={{ fontSize: 11, color: color.body }}>{item.questionCount} {L('câu', 'questions')}</Text>
                 </View>
                 <Icon name="arrow-right" size={14} color={color.primaryDark} />
@@ -302,12 +294,10 @@ function GhostButton({ icon, label, onPress, tone }: { icon: 'check' | 'bookmark
 
 function Panel({ title, icon, children, style }: { title: string; icon: 'list' | 'book'; children: React.ReactNode; style?: object }) {
   return (
-    <View style={[{ padding: 18, borderRadius: 16, backgroundColor: color.surface, borderWidth: 1, borderColor: color.border, gap: 10 }, style]}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-        <Icon name={icon} size={16} color={color.primaryDark} />
-        <Text style={{ fontSize: 15, fontWeight: '800', color: color.ink }}>{title}</Text>
-      </View>
-      {children}
+    <View style={style}>
+      <NeonWindow title={title} icon="book" padded={false}>
+        <View style={{ padding: 16, gap: 10 }}>{children}</View>
+      </NeonWindow>
     </View>
   );
 }

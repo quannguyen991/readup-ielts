@@ -278,7 +278,7 @@ function TravelHud({ arrived }: { arrived: string | null }) {
       {arrived ? (
         <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: '38%', alignItems: 'center' }} accessibilityLiveRegion="polite">
           <View style={{ transform: [{ rotate: '-6deg' }], borderWidth: 4, borderColor: routeOf(arrived).color, borderRadius: 12, paddingHorizontal: 18, paddingVertical: 8, backgroundColor: 'rgba(248,241,226,.95)' }}>
-            <Text style={{ color: routeOf(arrived).color, fontSize: 20, fontWeight: '800', letterSpacing: 2 }}>✦ {L('ĐÃ TỚI', 'ARRIVED IN')} {(en ? stationById(arrived).en : stationById(arrived).vi).toUpperCase()} ✦</Text>
+            <Text style={{ color: routeOf(arrived).color, fontSize: 20, fontWeight: '400', letterSpacing: 2 }}>✦ {L('ĐÃ TỚI', 'ARRIVED IN')} {(en ? stationById(arrived).en : stationById(arrived).vi).toUpperCase()} ✦</Text>
           </View>
         </View>
       ) : null}

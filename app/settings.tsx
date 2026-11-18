@@ -7,6 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { PushReminderCard } from '@/components/reminder/PushReminderCard';
 import { ReminderCard } from '@/components/reminder/Reminder';
 import { BreakCard } from '@/components/break/BreakCard';
+import { StudyMeaningCard } from '@/components/account/StudyMeaningCard';
 import { useL } from '@/i18n/useL';
 
 /**
@@ -31,6 +32,7 @@ export default function SettingsScreen() {
       <Text className="font-heavy text-pageTitle text-ink">{L('Cài đặt', 'Settings')}</Text>
       <AccountCard />
       <SoundCard />
+      <StudyMeaningCard />
       <PushReminderCard />
       <ReminderCard />
       <BreakCard />

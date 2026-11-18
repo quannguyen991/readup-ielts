@@ -264,7 +264,7 @@ function Lane({ label, pos, color, last, lane }: { label: string; pos: number; c
         ) : null}
         {last && lane === 0 ? <FloatText key={`lf-${last.id}`} text={last.ok ? `+${last.delta}` : `${last.delta}`} color={last.ok ? '#FACC15' : '#F87171'} size={20} style={{ top: -18, left: 30 }} /> : null}
       </Animated.View>
-      <Text style={{ position: 'absolute', left: 10, top: 4, fontSize: 11, fontWeight: '800', color: 'rgba(255,255,255,0.7)' }}>{label}</Text>
+      <Text style={{ position: 'absolute', left: 10, top: 4, fontSize: 11, fontWeight: '400', color: 'rgba(255,255,255,0.7)' }}>{label}</Text>
     </View>
   );
 }

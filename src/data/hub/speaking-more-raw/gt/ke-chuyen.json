@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-ke-chuyen-1",
+  "level": "EASY",
+  "title": "A Relaxing Weekend Trip",
+  "titleVi": "Một chuyến đi cuối tuần thư giãn",
+  "situationVi": "Bạn đang ăn trưa với đồng nghiệp tại công ty và trò chuyện về chuyến du lịch ngắn ngày gần đây của bạn.",
+  "task": "You are having lunch with a coworker. Tell them about a memorable weekend trip you took recently, describing what you did and how you felt after the journey.",
+  "mustVi": [
+   "Chuyến đi diễn ra ở đâu và bạn đi cùng với ai",
+   "Các hoạt động nổi bật bạn đã trải nghiệm theo thứ tự thời gian",
+   "Cảm xúc hoặc ấn tượng chung của bạn sau chuyến đi"
+  ],
+  "phrases": [
+   {
+    "en": "A couple of weeks ago, I went to...",
+    "vi": "Cách đây vài tuần, tôi đã đến...",
+    "ex": "A couple of weeks ago, I went to Da Lat with my family."
+   },
+   {
+    "en": "First of all, we decided to...",
+    "vi": "Trước hết, chúng tôi quyết định...",
+    "ex": "First of all, we decided to rent motorbikes and explore the town."
+   },
+   {
+    "en": "The best part of the trip was...",
+    "vi": "Phần tuyệt vời nhất của chuyến đi là...",
+    "ex": "The best part of the trip was watching the sunrise over the hills."
+   },
+   {
+    "en": "After that, we headed to...",
+    "vi": "Sau đó, chúng tôi di chuyển đến...",
+    "ex": "After that, we headed to the night market for dinner."
+   },
+   {
+    "en": "It was such a breath of fresh air.",
+    "vi": "Đó thực sự là một trải nghiệm đổi gió tuyệt vời.",
+    "ex": "Leaving the noisy city behind was such a breath of fresh air."
+   },
+   {
+    "en": "I came back feeling totally refreshed.",
+    "vi": "Tôi trở về với cảm giác hoàn toàn sảng khoái.",
+    "ex": "I came back feeling totally refreshed and ready for work."
+   }
+  ],
+  "sample": "A couple of weeks ago, I took a short trip to Da Lat with two close friends. We wanted to escape the heat of the city. First of all, we rented motorbikes and rode through pine forests. The best part of the trip was watching the sunrise while drinking hot coffee on a chilly morning. After that, we explored the local food stalls and tried grilled rice paper. It was such a breath of fresh air. I came back feeling totally refreshed and energized for the new week.",
+  "tipVi": "Dùng các liên từ chỉ trình tự đơn giản như 'first of all', 'after that', 'then' để giúp câu chuyện mạch lạc và người nghe dễ theo dõi."
+ },
+ {
+  "id": "gt-ke-chuyen-2",
+  "level": "EASY",
+  "title": "A Funny Daily Mistake",
+  "titleVi": "Một sự cố hài hước thường ngày",
+  "situationVi": "Bạn đang tán gẫu với một người bạn nước ngoài tại quán cà phê và kể lại một tình huống ngượng ngùng nhưng buồn cười mà bạn vừa gặp phải.",
+  "task": "You are chatting with a foreign friend at a cafe. Tell them a funny or embarrassing incident that happened to you recently, explaining what went wrong and how you reacted.",
+  "mustVi": [
+   "Bối cảnh lúc sự cố xảy ra",
+   "Chi tiết điều nhầm lẫn hoặc hài hước đã diễn ra",
+   "Cách bạn xử lý tình huống và phản ứng của những người xung quanh"
+  ],
+  "phrases": [
+   {
+    "en": "You won't believe what happened to me...",
+    "vi": "Bạn sẽ không tin chuyện gì vừa xảy ra với tôi đâu...",
+    "ex": "You won't believe what happened to me this morning on the bus."
+   },
+   {
+    "en": "I was in such a hurry that...",
+    "vi": "Tôi vội đến mức mà...",
+    "ex": "I was in such a hurry that I forgot to check my bag."
+   },
+   {
+    "en": "To my surprise and embarrassment,...",
+    "vi": "Trước sự ngạc nhiên và ngượng ngùng của tôi,...",
+    "ex": "To my surprise and embarrassment, my phone started ringing loudly."
+   },
+   {
+    "en": "My face turned completely red.",
+    "vi": "Mặt tôi đỏ bừng lên vì ngượng.",
+    "ex": "When everyone looked at me, my face turned completely red."
+   },
+   {
+    "en": "I couldn't help laughing at myself.",
+    "vi": "Tôi không thể nhịn được cười trước chính mình.",
+    "ex": "Even though it was awkward, I couldn't help laughing at myself."
+   },
+   {
+    "en": "Everyone burst out laughing.",
+    "vi": "Mọi người đều bật cười nghiêng ngả.",
+    "ex": "When I explained the mistake, everyone burst out laughing."
+   }
+  ],
+  "sample": "You won't believe what happened to me last Monday! I was running late for an important team meeting, so I got dressed in the dark. I was in such a hurry that I didn't look in the mirror. When I sat down in the conference room, my colleague pointed at my feet. To my surprise and embarrassment, I was wearing two completely different shoes—one black and one brown! My face turned completely red, but I couldn't help laughing at myself. Everyone burst out laughing, and it actually helped break the ice before our presentation.",
+  "tipVi": "Hãy duy trì giọng kể hào hứng và thay đổi ngữ điệu (intonation) ở đoạn cao trào bất ngờ để lôi cuốn người nghe."
+ },
+ {
+  "id": "gt-ke-chuyen-3",
+  "level": "MEDIUM",
+  "title": "An Unplanned Travel Mishap",
+  "titleVi": "Sự cố bất ngờ trong chuyến đi",
+  "situationVi": "Bạn đang tham gia thảo luận nhóm trong lớp tiếng Anh và chia sẻ về một lần gặp trục trặc khi đi xa cùng cách bạn xoay xở giải quyết.",
+  "task": "You are sharing a story in an English study group. Recount an unexpected challenge you faced while traveling, explaining how you handled the problem and what you learned from it.",
+  "mustVi": [
+   "Thời điểm, địa điểm và sự cố bất ngờ phát sinh",
+   "Các bước bạn đã làm để giải quyết rắc rối đó",
+   "Bài học kinh nghiệm hoặc cảm xúc đọng lại sau sự việc"
+  ],
+  "phrases": [
+   {
+    "en": "Everything was going smoothly until...",
+    "vi": "Mọi thứ đang diễn ra êm đẹp cho đến khi...",
+    "ex": "Everything was going smoothly until our train was suddenly cancelled."
+   },
+   {
+    "en": "Out of nowhere, I realized that...",
+    "vi": "Bỗng nhiên, tôi nhận ra rằng...",
+    "ex": "Out of nowhere, I realized that my wallet was gone."
+   },
+   {
+    "en": "I had to keep a cool head and...",
+    "vi": "Tôi phải giữ một cái đầu lạnh và...",
+    "ex": "I had to keep a cool head and ask station staff for assistance."
+   },
+   {
+    "en": "Luckily, a friendly local stepped in to...",
+    "vi": "May mắn thay, một người dân tốt bụng đã tiến đến để...",
+    "ex": "Luckily, a friendly local stepped in to translate for us."
+   },
+   {
+    "en": "In the end, it was a huge relief.",
+    "vi": "Cuối cùng, cảm giác thật nhẹ nhõm vô cùng.",
+    "ex": "When we recovered the lost bag, it was a huge relief."
+   },
+   {
+    "en": "That incident taught me to always...",
+    "vi": "Sự cố đó dạy tôi phải luôn luôn...",
+    "ex": "That incident taught me to always have a backup plan."
+   }
+  ],
+  "sample": "Last summer, I took a solo trip to Da Nang. Everything was going smoothly until I got off the shuttle bus and realized I had left my backpack, containing my wallet and ID, on board. Out of nowhere, panic set in. I knew I had to keep a cool head, so I immediately rushed to the tourist assistance booth. Luckily, a friendly local officer stepped in to contact the bus company. Two hours later, the driver returned my bag with everything intact. In the end, it was a huge relief. That incident taught me to always double-check my belongings.",
+  "tipVi": "Kết hợp khéo léo giữa thì Quá khứ tiếp diễn (cho bối cảnh nền) và Quá khứ đơn (cho hành động đột ngột chen ngang) để tạo kịch tính."
+ },
+ {
+  "id": "gt-ke-chuyen-4",
+  "level": "MEDIUM",
+  "title": "An Inspiring News Story",
+  "titleVi": "Một mẩu tin tức truyền cảm hứng",
+  "situationVi": "Bạn tham gia buổi sinh hoạt câu lạc bộ tiếng Anh cuối tuần với chủ đề 'Tin tức và cuộc sống', chia sẻ mẩu tin bạn đọc được gần đây.",
+  "task": "You are participating in an English speaking club. Tell your group about an inspiring or surprising news story you recently came across, summarizing the event and sharing your personal takeaway.",
+  "mustVi": [
+   "Nội dung tóm tắt của bản tin và nhân vật chính",
+   "Diễn biến hoặc hành động ý nghĩa được đưa tin",
+   "Lý do câu chuyện khiến bạn ấn tượng và bài học rút ra"
+  ],
+  "phrases": [
+   {
+    "en": "I recently came across an article about...",
+    "vi": "Gần đây tôi tình cờ đọc được một bài báo về...",
+    "ex": "I recently came across an article about a community teacher in Quang Nam."
+   },
+   {
+    "en": "According to the report,...",
+    "vi": "Theo như bản tin/báo cáo,...",
+    "ex": "According to the report, he dedicated ten years to building the shelter."
+   },
+   {
+    "en": "What struck me most was that...",
+    "vi": "Điều khiến tôi ấn tượng sâu sắc nhất là...",
+    "ex": "What struck me most was that he funded the entire library himself."
+   },
+   {
+    "en": "Against all odds, they managed to...",
+    "vi": "Vượt qua mọi nghịch cảnh, họ đã nỗ lực...",
+    "ex": "Against all odds, they managed to provide free meals every day."
+   },
+   {
+    "en": "It really puts things into perspective.",
+    "vi": "Điều đó giúp tôi nhìn nhận cuộc sống theo góc nhìn sâu sắc hơn.",
+    "ex": "Hearing his perseverance really puts things into perspective."
+   },
+   {
+    "en": "Stories like this remind us that...",
+    "vi": "Những câu chuyện như thế nhắc nhở chúng ta rằng...",
+    "ex": "Stories like this remind us that small acts of kindness matter."
+   }
+  ],
+  "sample": "I recently came across an inspiring article about a retired teacher in central Vietnam. According to the report, he noticed that many underprivileged children in his neighborhood could not afford books. Against all odds, he converted his old living room into a free library and community classroom. What struck me most was that he collected over three thousand books all by himself. Stories like this remind us that genuine compassion can truly transform a neighborhood. His dedication really puts things into perspective and inspired me to support local charity projects more actively.",
+  "tipVi": "Dùng cụm trích dẫn 'According to the report' khi thuật lại sự thật, sau đó dùng 'What struck me most' để chuyển sang góc nhìn cá nhân."
+ },
+ {
+  "id": "gt-ke-chuyen-5",
+  "level": "HARD",
+  "title": "A Pivotal Career Challenge",
+  "titleVi": "Bước ngoặt thử thách trong sự nghiệp",
+  "situationVi": "Bạn đang tham gia buổi phỏng vấn hành vi (behavioral interview) với giám đốc tuyển dụng nước ngoài cho một vị trí quản lý.",
+  "task": "You are in a job interview with a foreign hiring manager. Describe a critical challenge or crisis you managed in your career, detailing your decisive actions and the lasting impact on your professional growth.",
+  "mustVi": [
+   "Bối cảnh công việc và khủng hoảng hoặc áp lực lớn mà bạn phải đối mặt",
+   "Chiến lược cụ thể và các hành động quyết đoán bạn đã thực hiện",
+   "Kết quả đo lường được cùng bài học giúp định hình phong cách làm việc của bạn"
+  ],
+  "phrases": [
+   {
+    "en": "Early in my career, I found myself facing...",
+    "vi": "Giai đoạn đầu sự nghiệp, tôi thấy mình phải đối mặt với...",
+    "ex": "Early in my career, I found myself facing a sudden staffing shortage."
+   },
+   {
+    "en": "The stakes were exceptionally high because...",
+    "vi": "Rủi ro và áp lực cực kỳ lớn bởi vì...",
+    "ex": "The stakes were exceptionally high because our client was considering cancellation."
+   },
+   {
+    "en": "I took the initiative to...",
+    "vi": "Tôi đã chủ động đứng ra để...",
+    "ex": "I took the initiative to restructure our sprint backlog immediately."
+   },
+   {
+    "en": "By prioritizing critical deliverables, we managed to...",
+    "vi": "Bằng việc ưu tiên các hạng mục trọng yếu, chúng tôi đã có thể...",
+    "ex": "By prioritizing critical deliverables, we managed to avoid costly system downtime."
+   },
+   {
+    "en": "Not only did we meet the deadline, but...",
+    "vi": "Không những chúng tôi hoàn thành đúng hạn mà còn...",
+    "ex": "Not only did we meet the deadline, but we also improved client satisfaction."
+   },
+   {
+    "en": "Looking back, that experience served as a turning point.",
+    "vi": "Nhìn lại, trải nghiệm đó đóng vai trò như một bước ngoặt lớn.",
+    "ex": "Looking back, that experience served as a turning point in my leadership journey."
+   }
+  ],
+  "sample": "Early in my career, I found myself facing a severe crisis when our lead developer resigned right before a major product release. The stakes were exceptionally high because failure meant losing our primary investor. I took the initiative to step up, reassigning tasks based on strengths and communicating transparently with the stakeholders every evening. By prioritizing critical deliverables, we managed to launch the core features right on schedule. Not only did we retain our client, but the project won internal recognition. Looking back, that experience served as a turning point, teaching me how to lead under intense pressure.",
+  "tipVi": "Áp dụng cấu trúc STAR (Tình huống - Nhiệm vụ - Hành động - Kết quả) và dùng cấu trúc đảo ngữ nhấn mạnh để khẳng định năng lực lãnh đạo."
+ }
+]

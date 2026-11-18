@@ -1,60 +1,26 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { BlueHero } from '@/components/home/BlueHero';
-import type { IconName } from '@/components/ui/Icon';
-import { PosterTile, prefetchPickerArt, type PickerArt } from '@/components/practice/PosterTile';
+import type { NeonIconId } from '@/components/neon/neon-art';
+import { NEON_PALETTES, NeonTile } from '@/components/neon/NeonTile';
+import { OverviewHero } from '@/components/neon/OverviewHero';
 import { useL } from '@/i18n/useL';
 import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
 
-/**
- * Mỗi tính năng SAT một cặp màu: màu đậm là màu của quả cầu, bóng chữ và nút mũi tên.
- * Nền ảnh lấy cùng tông (SAT_ITEM_ART) để thẻ đồng bộ với ảnh.
- */
-const SAT_ITEM_COLORS: Record<string, readonly [string, string]> = {
-  'sat-practice-tests': ['#10B981', '#059669'], // Emerald / Mint (Luyện 50 đề)
-  math: ['#3B82F6', '#1D4ED8'],                 // Azure / Cobalt (Toán)
-  'sat-rw': ['#8B5CF6', '#6D28D9'],             // Violet / Purple (Verbal)
-  'sat-full-test': ['#F59E0B', '#C27417'],      // Amber / Gold (Thi thử 2 Module)
-  'sat-home': ['#EC4899', '#DB2777'],           // Rose / Pink (Tổng quan & Lộ trình)
-};
-
-const SAT_ITEM_ART: Record<string, PickerArt> = {
-  'sat-practice-tests': 'green',
-  math: 'blue',
-  'sat-rw': 'violet',
-  'sat-full-test': 'amber',
-  'sat-home': 'pink',
-};
-
-const SAT_ITEM_DESCS: Record<string, { vi: string; en: string }> = {
-  'sat-practice-tests': {
-    vi: '50 đề thi chuẩn Bluebook & Thi thật 2024–2025',
-    en: '50 authentic Bluebook & 2024–2025 real forms',
-  },
-  math: {
-    vi: '27 chuyên đề Toán · 4 cấp độ · Máy tính Desmos',
-    en: '27 Math topics · 4 levels · Desmos calculator',
-  },
-  'sat-rw': {
-    vi: 'Reading & Writing · Đọc hiểu & Quy tắc ngữ pháp',
-    en: 'Reading & Writing · Comprehension & grammar conventions',
-  },
-  'sat-full-test': {
-    vi: 'Thi thử 2 Module thích ứng bấm giờ chuẩn Bluebook',
-    en: 'Adaptive 2-module timed test simulation',
-  },
-  'sat-home': {
-    vi: 'Lộ trình 4 bước ôn luyện từ 1000 đến 1500+',
-    en: '4-step prep roadmap from 1000 to 1500+',
-  },
+/** Icon pixel neon, tông màu và dòng phụ ngắn của từng mục SAT. */
+const SAT_ITEM: Record<string, { icon: NeonIconId; tone: string; sub: { vi: string; en: string } }> = {
+  'sat-practice-tests': { icon: 'trophy', tone: 'lime', sub: { vi: '50 đề Bluebook', en: '50 Bluebook forms' } },
+  math: { icon: 'bolt', tone: 'ocean', sub: { vi: '27 chuyên đề · Desmos', en: '27 topics · Desmos' } },
+  'sat-rw': { icon: 'book', tone: 'grape', sub: { vi: 'Đọc hiểu · Ngữ pháp', en: 'Reading · Grammar' } },
+  'sat-full-test': { icon: 'crown', tone: 'gold', sub: { vi: '2 module bấm giờ', en: '2 timed modules' } },
+  'sat-home': { icon: 'planet', tone: 'sunset', sub: { vi: 'Lộ trình 1000 → 1500+', en: 'Roadmap 1000 → 1500+' } },
 };
 
 /**
- * Trang chủ SAT: mỗi thẻ là một lối vào, bấm là mở thẳng phần đó.
- * Không còn chọn / bỏ chọn phần học hay ẩn / hiện mục, giống trang IELTS.
+ * Trang tổng quan SAT theo kiểu game neon: đầu trang nền xanh chàm có lưới như khung Đua Top + chữ SAT nhiều màu, mỗi mục là một thẻ tối có
+ * vầng sáng màu riêng và icon pixel 3D. Bấm thẻ là mở thẳng phần đó.
  */
 export function SatFocusPicker() {
   const { L, locale } = useL();
@@ -66,37 +32,33 @@ export function SatFocusPicker() {
     [],
   );
 
-  useEffect(() => {
-    prefetchPickerArt();
-  }, []);
-
   return (
-    <View className="gap-5">
-      <BlueHero
-        wide={wide}
-        eyebrow="SAT · MATH & READING"
-        chip={L('Bạn muốn', 'Pick')}
-        title={L('học gì với SAT?', 'your SAT lesson.')}
-        subtitle={L('Mỗi thẻ là một phần học, bấm là vào ngay.', 'Each card is one part of the course. Tap to open it.')}
-        primary={{ label: L('Luyện đề Digital SAT', 'Digital SAT tests'), onPress: () => router.push('/sat/practice-tests' as never) }}
-        secondary={{ label: L('Xem lộ trình SAT Math', 'See the SAT Math roadmap'), onPress: () => router.push('/math' as never) }}
+    <View style={{ gap: 22 }}>
+      <OverviewHero
+        variant="neon"
+        text="SAT"
+        pills={[
+          { icon: 'trophy', label: L('50 đề', '50 tests') },
+          { icon: 'bolt', label: L('27 chuyên đề', '27 topics') },
+          { icon: 'crown', label: '1500+' },
+        ]}
+        primary={{ label: L('Luyện đề SAT', 'SAT tests'), onPress: () => router.push('/sat/practice-tests' as never) }}
+        secondary={{ label: L('Lộ trình Math', 'Math path'), onPress: () => router.push('/math' as never) }}
       />
 
-      <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
-        {items.map((item) => {
-          const colors = SAT_ITEM_COLORS[item.key] ?? ['#3B82F6', '#1D4ED8'];
-          const desc = SAT_ITEM_DESCS[item.key];
-
+      <Grid columns={3} tabletColumns={2} mobileColumns={2} gap={14}>
+        {items.map((item, index) => {
+          const meta = SAT_ITEM[item.key];
           return (
-            <PosterTile
+            <NeonTile
               key={item.key}
-              art={SAT_ITEM_ART[item.key] ?? 'blue'}
-              accent={colors[1]}
-              icon={item.icon as IconName}
               title={navLabel(item, locale)}
-              desc={desc?.[locale]}
-              wide={wide}
-              href={item.href}
+              sub={meta?.sub[locale]}
+              chip="SAT"
+              index={String(index + 1).padStart(2, '0')}
+              icon={meta?.icon ?? 'star5'}
+              palette={NEON_PALETTES[meta?.tone ?? 'grape']!}
+              minHeight={wide ? 220 : 215}
               onPress={() => router.push(item.href as never)}
             />
           );

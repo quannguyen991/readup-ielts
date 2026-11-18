@@ -132,8 +132,8 @@ def subtbl(title, data):
 
 
 page = f"""<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Lượt xem theo phần</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap">
-<style>@page{{size:A4;margin:16mm}}body{{font:10pt/1.5 "Be Vietnam Pro","Segoe UI",Arial,sans-serif;color:#1B1A17;margin:0}}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap">
+<style>@page{{size:A4;margin:16mm}}body{{font:10pt/1.5 "Inter","Segoe UI",Arial,sans-serif;color:#1B1A17;margin:0}}
 h1{{font-size:20pt;margin:0 0 2mm}}h2{{font-size:13pt;margin:7mm 0 2mm}}h3{{font-size:10.5pt;margin:0 0 1.5mm}}small{{font-weight:400;color:#6b675b}}
 .lead{{color:#4a463c;margin:0 0 3mm}}.note{{background:#F3EBD8;border-radius:2mm;padding:3mm 4mm;margin:3mm 0;font-size:9.4pt}}
 table{{width:100%;border-collapse:collapse}}td{{padding:1.2mm 1.5mm;border-bottom:.3pt solid #E4E0D4;vertical-align:middle}}

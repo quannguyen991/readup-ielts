@@ -1,0 +1,117 @@
+{
+ "id": "culture",
+ "title": "Culture and Traditions",
+ "titleVi": "Văn hoá và truyền thống",
+ "tipVi": "Khi nói về văn hóa, hãy tránh dịch thô từng chữ các khái niệm truyền thống sang tiếng Anh mà nên dùng từ vựng diễn giải súc tích kết hợp chia sẻ cảm xúc cá nhân.",
+ "part1": [
+  "Do you enjoy learning about traditions from other countries?",
+  "What is an important celebration in your hometown?",
+  "Did your family have any special customs when you were growing up?"
+ ],
+ "part2": {
+  "prompt": "Describe a traditional festival or cultural event in your country that you find meaningful.",
+  "bullets": [
+   "what the festival is",
+   "when and where it takes place",
+   "what people usually do during this event",
+   "and explain why this celebration is meaningful to you"
+  ]
+ },
+ "part3": [
+  "How has globalization affected the way younger generations view traditional customs?",
+  "Do you think governments should invest public funds in preserving endangered cultural rituals?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "cultural heritage",
+    "vi": "di sản văn hóa",
+    "ex": "Folk music is an indispensable part of our nation's rich cultural heritage."
+   },
+   {
+    "en": "pass down from generation to generation",
+    "vi": "lưu truyền qua nhiều thế hệ",
+    "ex": "These ancient culinary techniques have been passed down from generation to generation."
+   },
+   {
+    "en": "steeped in tradition",
+    "vi": "thấm đượm nét truyền thống",
+    "ex": "The Mid-Autumn Festival is a joyous occasion steeped in tradition and folklore."
+   },
+   {
+    "en": "sense of belonging",
+    "vi": "cảm giác gắn kết cộng đồng",
+    "ex": "Participating in communal rituals fosters a deep sense of belonging among villagers."
+   },
+   {
+    "en": "cultural assimilation",
+    "vi": "sự đồng hóa văn hóa",
+    "ex": "Minority tribes often face the threat of cultural assimilation in expanding metropolitan areas."
+   },
+   {
+    "en": "stand the test of time",
+    "vi": "trường tồn với thời gian",
+    "ex": "Despite modern trends, classic wedding customs still stand the test of time."
+   },
+   {
+    "en": "bridge the generation gap",
+    "vi": "thu hẹp khoảng cách thế hệ",
+    "ex": "Family banquets during traditional holidays help bridge the generation gap."
+   },
+   {
+    "en": "pay homage to",
+    "vi": "bày tỏ lòng thành kính với",
+    "ex": "Every spring, locals gather at the communal temple to pay homage to their ancestors."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên lễ hội (Tết Nguyên Đán), vị thế quan trọng nhất trong văn hóa Việt và thời gian diễn ra (tháng Giêng âm lịch).",
+   "Ý 1: Nêu bối cảnh chuẩn bị đặc trưng trước Tết (dọn dẹp nhà cửa, trang trí hoa đào/hoa mai, mua sắm đồ thờ cúng).",
+   "Ý 2: Miêu tả các phong tục chính trong kỳ lễ (cúng tổ tiên với bánh chưng, xông đất, chúc Tết họ hàng và lì xì trẻ nhỏ).",
+   "Kết: Giải thích ý nghĩa thiêng liêng đối với bản thân (cơ hội sum họp gia đình, kết nối cội nguồn giữa nhịp sống hiện đại vội vã)."
+  ],
+  "sample": "I would like to talk about the Lunar New Year, locally known as Tet, which is undoubtedly the most sacred festival in Vietnam. It takes place in late January or early February across the entire nation, marking the arrival of spring and a fresh beginning. In the run-up to the event, streets are bursting with vibrant peach blossoms and kumquat trees. Families spend days spring-cleaning their homes to sweep away misfortune. During the official days of Tet, people pay homage to their ancestors by offering traditional dishes like square glutinous rice cakes. We also visit relatives to exchange heartfelt blessings, while elders give children crisp banknotes in red envelopes for good fortune. This festival holds immense sentimental value for me because it serves as an irreplaceable family reunion. In our fast-paced society, my siblings and I work far from home, so Tet provides an opportunity to unwind, reconnect with loved ones, and bridge the generation gap. Ultimately, it reinforces my cultural identity and reminds me of my roots, no matter how much the world changes.",
+  "p1": [
+   {
+    "q": "Do you enjoy learning about traditions from other countries?",
+    "a": "Definitely, yes. I find foreign customs fascinating because they offer a fresh perspective on how different societies live. For instance, discovering Japanese tea ceremony rituals showed me how mindfully everyday actions can be performed."
+   },
+   {
+    "q": "What is an important celebration in your hometown?",
+    "a": "Without a doubt, it is the Mid-Autumn Festival. Families gather under the full moon to share sweet mooncakes while children parade with colorful lanterns, creating a wonderfully vibrant community atmosphere throughout the neighborhood."
+   },
+   {
+    "q": "Did your family have any special customs when you were growing up?",
+    "a": "Yes, we did. Every Sunday morning, my grandparents would gather all the children to prepare a communal breakfast together. It was a simple habit, but it taught us respect and mutual support from an early age."
+   }
+  ],
+  "p3": [
+   {
+    "q": "How has globalization affected the way younger generations view traditional customs?",
+    "a": "In my view, globalization has brought both opportunities and challenges. On the one hand, exposure to Western lifestyles sometimes makes youngsters consider local customs outdated or time-consuming. On the other hand, many young people now take pride in showcasing their distinct cultural heritage on global platforms like social media. Therefore, while modern integration may dilute certain rituals, it can also spark a renewed appreciation for indigenous roots."
+   },
+   {
+    "q": "Do you think governments should invest public funds in preserving endangered cultural rituals?",
+    "a": "I wholeheartedly agree with this idea. Cultural rituals are the soul of a nation, carrying centuries of collective wisdom and historical values. If the state does not step in to financially subsidize intangible heritage, such as tribal chants or craft-making rituals, these practices will inevitably fade under commercial pressures. Thus, allocating budget to safeguard them is a crucial investment in national identity."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng dịch 'Tet holiday' lặp đi lặp lại mà không linh hoạt sử dụng các từ thay thế học thuật như 'traditional spring festival' hay 'lunar new year celebration'.",
+   "Dịch nguyên văn tiếng Việt sang tiếng Anh thiếu tự nhiên (ví dụ: nói 'eat Tet' thay vì 'celebrate Tet', hoặc dùng 'lucky money' mà không diễn giải rõ ý niệm văn hóa).",
+   "Chỉ mô tả bề nổi hoạt động trong Part 3 như thể đang trả lời Part 1, quên đi việc bàn luận sâu về tác động xã hội, sự mai một văn hóa và tính bền vững."
+  ],
+  "p1More": [
+   "Do you prefer traditional food or modern fast food?",
+   "Have you ever participated in a traditional wedding?",
+   "Do you think wearing traditional clothing is still popular today?",
+   "What traditional music or instruments do people in your country enjoy?",
+   "Is it easy to preserve old customs in big cities?"
+  ],
+  "p3More": [
+   "To what extent can traditional values coexist with rapid technological advancement?",
+   "Is commercializing traditional festivals beneficial or harmful to their original spiritual significance?",
+   "Who should bear the primary responsibility for transmitting cultural traditions: schools, families, or the media?",
+   "Could the decline of indigenous customs lead to a loss of national sovereignty and identity in a globalized world?"
+  ]
+ }
+}

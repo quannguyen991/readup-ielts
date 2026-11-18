@@ -166,7 +166,7 @@ export default function MathReviewScreen() {
               color={session.moduleTier === 'harder' ? '#F0703F' : '#6A4BD9'}
               ink="#FFFFFF"
               tilt={4}
-              size={12}
+              size={13}
             />
           </View>
           <Text className="font-sans text-body text-muted">

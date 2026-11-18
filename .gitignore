@@ -64,6 +64,9 @@ data/provenance/
 # Locally imported OCR for source exam books. Do not commit or include in deploys.
 .local-private/ielts-ocr/
 .local-private/books/
+.local-private/book-vocab-ocr/
+.local-private/east-asian-vocab-ocr/
+.local-private/open-vocab/
 public/vendor/pdf.worker.min.mjs
 public/vendor/PDFJS-LICENSE.txt
 
@@ -80,5 +83,6 @@ supabase/.temp/
 
 .missing-words.json
 
-# Toàn văn bài đọc do scripts/sync-bodies.mjs chép từ src/data/seed/bodies (nguồn thật nằm ở đó)
-public/data/bodies/
+# User-provided Hanyu scans, OCR text, extraction CSVs, and QA images remain local.
+/.local-private/hanyu-source/
+dist-prod/

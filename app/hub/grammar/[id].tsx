@@ -66,20 +66,20 @@ export default function GrammarLessonPage() {
       {phase === 'learn' ? (
         <View style={{ gap: 14 }}>
           <View style={[GLASS_CARD, { padding: 16, gap: 10 }]}>
-            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>Quy tắc</Text>
+            <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '400' }}>Quy tắc</Text>
             {lesson.rules.map((r) => (
               <Text key={r} style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>• {r}</Text>
             ))}
           </View>
           <Pressable accessibilityRole="button" onPress={() => setPhase('quiz')} style={{ height: 50, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-            <Text style={{ color: '#fff', fontWeight: '800', fontSize: 16 }}>Làm bài kiểm tra ({total} câu)</Text>
+            <Text style={{ color: '#fff', fontWeight: '400', fontSize: 16 }}>Làm bài kiểm tra ({total} câu)</Text>
           </Pressable>
         </View>
       ) : null}
 
       {phase === 'quiz' && current ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 14 }]}>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Câu {q + 1}/{total}</Text>
+          <Text style={{ color: HUB.muted, fontSize: 13 }}>Câu {q + 1}/{total}</Text>
           <Text style={{ color: HUB.ink, fontSize: 18, fontWeight: '700', lineHeight: 26 }}>{current.q}</Text>
           {current.options.map((opt, k) => {
             const isAnswer = k === current.answer;
@@ -92,7 +92,7 @@ export default function GrammarLessonPage() {
           })}
           {chosen !== null ? (
             <Pressable accessibilityRole="button" onPress={nextQuestion} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.violet }}>
-              <Text style={{ color: '#fff', fontWeight: '800' }}>{q + 1 >= total ? 'Xem kết quả' : 'Câu tiếp'}</Text>
+              <Text style={{ color: '#fff', fontWeight: '400' }}>{q + 1 >= total ? 'Xem kết quả' : 'Câu tiếp'}</Text>
             </Pressable>
           ) : null}
         </View>
@@ -100,12 +100,12 @@ export default function GrammarLessonPage() {
 
       {phase === 'result' && result ? (
         <View style={[GLASS_CARD, { padding: 18, gap: 12 }]}>
-          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '800' }}>{result.passed ? 'Đạt' : 'Chưa đạt'}: {result.correct}/{result.total}</Text>
+          <Text style={{ color: HUB.ink, fontSize: 20, fontWeight: '400' }}>{result.passed ? 'Đạt' : 'Chưa đạt'}: {result.correct}/{result.total}</Text>
           <Text style={{ color: HUB.body, fontSize: 14, lineHeight: 21 }}>
             {result.passed ? 'Bài đã được ghi vào tiến độ của bạn.' : 'Cần đúng ít nhất 2/3 câu để đạt. Đọc lại quy tắc rồi làm lại nhé.'}
           </Text>
           <Pressable accessibilityRole="button" onPress={restart} style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.blue }}>
-            <Text style={{ color: '#fff', fontWeight: '800' }}>Làm lại</Text>
+            <Text style={{ color: '#fff', fontWeight: '400' }}>Làm lại</Text>
           </Pressable>
         </View>
       ) : null}

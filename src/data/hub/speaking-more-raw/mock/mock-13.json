@@ -1,0 +1,62 @@
+{
+ "id": "mock-13",
+ "title": "IELTS Speaking Mock Test 13",
+ "titleVi": "Đề thi thử số 13",
+ "focusVi": "Rèn luyện kỹ năng miêu tả phẩm chất con người và phát triển tư duy phản biện cho các chủ đề xã hội trừu tượng.",
+ "part1": [
+  {
+   "topic": "Art and Museums",
+   "qs": [
+    "Do you often visit art galleries or museums?",
+    "What kind of art do you enjoy looking at the most?",
+    "Did you learn about art or visit museums when you were a child?",
+    "Do you think art should be a compulsory subject in schools?"
+   ]
+  },
+  {
+   "topic": "Cities and Towns",
+   "qs": [
+    "What do you like most about the town or city where you live?",
+    "Has your hometown changed much over the last few years?",
+    "Do you prefer living in a bustling metropolis or a quiet country town?",
+    "What makes a city an enjoyable place for young people to live in?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe an older person you admire who has influenced your outlook on life.",
+  "bullets": [
+   "who this person is and your relationship with them",
+   "what qualities or achievements make them special",
+   "what significant lessons or advice they have shared with you",
+   "and explain why you admire them so much"
+  ]
+ },
+ "part3": [
+  "In what ways do personal role models differ from public celebrity figures?",
+  "How can elderly members of society contribute meaningfully to younger generations?",
+  "Do you believe modern society values professional achievement more than moral integrity?",
+  "What characteristics distinguish an influential leader from simply a popular person?",
+  "Why might people's criteria for admiring someone change as they grow older?"
+ ],
+ "answers": {
+  "p1": [
+   "To be honest, I visit museums only occasionally, maybe once or twice a year. I usually go whenever there is a special cultural exhibition in Hanoi, which gives me fresh historical insights.",
+   "I am particularly drawn to landscape photography and impressionist paintings. The vibrant colors and natural light evoke calm feelings, especially when I view serene rural scenes of the Vietnamese countryside.",
+   "Yes, our primary school frequently organized field trips to the National History Museum. I remember being fascinated by ancient artifacts, which sparked my lifelong curiosity about cultural heritage.",
+   "Definitely, because art education nurtures creative thinking and emotional intelligence. For example, painting lessons give students a productive emotional outlet, balancing the stress of heavy academic subjects like mathematics.",
+   "What I appreciate most is the incredible convenience and accessibility. In my neighborhood, vibrant street markets, cozy cafes, and modern convenience stores are always within walking distance of my doorstep.",
+   "Tremendously, to be frank. High-rise apartment complexes and highways have replaced green open spaces, making my city much more modern and prosperous, though noticeably more congested during rush hours.",
+   "At this stage of my life, I lean towards bustling cities because of abundant career opportunities. Although rural towns offer tranquil air, metropolis life provides lively cultural events and networking circles.",
+   "A vibrant lifestyle infrastructure is essential, including affordable public transit, recreational spaces, and trendy entertainment spots. Cities that foster creative hubs and diverse dining options consistently attract ambitious youth."
+  ],
+  "sample": "I would like to talk about my maternal grandfather, a retired high school literature teacher whom I deeply respect and look up to. Despite being well into his late seventies, he maintains an exceptionally sharp mind and an infectious curiosity about the world. What sets him apart is not just his impressive literary erudition, but his profound humility and compassion. During difficult economic periods in Vietnam, he voluntarily tutored underprivileged children in his neighborhood, helping dozens of them pursue university education. Over the years, he has imparted invaluable wisdom to me. His most enduring piece of advice was that genuine success is measured by the positive impact you have on others, rather than material wealth or professional titles. He constantly reminds me to stay grounded and treat everyone with empathy. I admire him profoundly because he truly practices what he preaches. In our fast-paced, sometimes cynical modern world, his unwavering integrity and gentle demeanor serve as a guiding moral compass for me. Whenever I face setbacks or dilemmas, thinking of his calm resilience helps me navigate challenges with grace.",
+  "p3": [
+   "In my view, personal role models have a far more grounded and lasting impact than celebrities. While celebrities inspire people from afar through curated glamour and talent, personal figures like parents or teachers demonstrate real-life perseverance and values daily. When we observe someone overcoming actual struggles up close, their lessons resonate much more authentically. Thus, personal mentors offer practical guidance rather than mere superficial admiration.",
+   "Elderly citizens serve as an indispensable bridge of historical perspective and emotional grounding for younger generations. In a fast-changing world driven by technology, young individuals often lack patience, whereas older adults can impart accumulated resilience, ethical values, and cultural heritage. For instance, grandparents passing down traditional customs helps youth maintain their cultural identity. Ultimately, elder wisdom acts as a stabilizing force amid modern turbulence.",
+   "Unfortunately, contemporary society often appears to prioritize tangible accomplishments over ethical standards. The corporate world and social media frequently celebrate rapid financial success and status symbols, sometimes overlooking ethical compromises behind them. However, when prominent figures fall from grace due to scandals, public backlash quickly proves that integrity still matters deeply. Therefore, while achievement grabs headlines, genuine long-term respect still hinges on moral character.",
+   "I believe the primary distinction lies in vision and purpose. A popular person merely seeks broad social approval and rides current trends, whereas a truly influential leader actively drives positive change, even when making unpopular decisions. For example, great statesmen often make tough sacrifices for collective progress rather than pursuing instant praise. Consequently, popularity is transient, while true leadership leaves a meaningful legacy.",
+   "As people mature, their life experiences naturally shift their priorities from external brilliance to internal virtues. Adolescents are often captivated by charismatic performers or wealthy influencers because of surface-level appeal. In contrast, adults facing career pressures and familial duties tend to admire patience, resilience, and emotional reliability. In short, maturity teaches people that character and substance are far more admirable than outward status."
+  ]
+ }
+}

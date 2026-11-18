@@ -1,0 +1,155 @@
+#JLPT N5
+私は毎朝コーヒーを飲みます。|Mỗi sáng tôi uống cà phê.
+この本はとても面白いです。|Cuốn sách này rất thú vị.
+駅はどこですか。|Ga tàu ở đâu vậy?
+昨日は友達と映画を見ました。|Hôm qua tôi đã xem phim với bạn.
+田中さんは先生ではありません。|Anh Tanaka không phải là giáo viên.
+今日はとても暑いですね。|Hôm nay nóng quá nhỉ.
+私は日本語を勉強しています。|Tôi đang học tiếng Nhật.
+あの赤い車は誰のですか。|Chiếc xe màu đỏ kia là của ai vậy?
+毎日七時に起きます。|Mỗi ngày tôi dậy lúc bảy giờ.
+このりんごはいくらですか。|Quả táo này bao nhiêu tiền?
+来週、京都へ行きます。|Tuần sau tôi sẽ đi Kyoto.
+母は料理が上手です。|Mẹ tôi nấu ăn giỏi.
+トイレは二階にあります。|Nhà vệ sinh ở tầng hai.
+私の家は駅から近いです。|Nhà tôi gần ga.
+朝ごはんにパンを食べました。|Tôi đã ăn bánh mì cho bữa sáng.
+日曜日は何をしますか。|Chủ nhật bạn làm gì?
+兄は大学で英語を教えています。|Anh trai tôi dạy tiếng Anh ở trường đại học.
+そのかばんは高かったです。|Chiếc cặp đó đã đắt.
+電車で会社へ行きます。|Tôi đi đến công ty bằng tàu điện.
+ここで写真を撮ってもいいですか。|Tôi chụp ảnh ở đây được không?
+雨が降っていますから、傘を持っていきます。|Vì trời đang mưa nên tôi mang ô đi.
+わたしは猫が好きです。|Tôi thích mèo.
+学校の前に大きい木があります。|Trước trường có một cái cây lớn.
+お名前は何ですか。|Tên bạn là gì?
+友達に手紙を書きました。|Tôi đã viết thư cho bạn.
+今、何時ですか。|Bây giờ là mấy giờ?
+彼女は歌が上手です。|Cô ấy hát hay.
+夜、テレビを見ます。|Buổi tối tôi xem tivi.
+この道をまっすぐ行ってください。|Hãy đi thẳng con đường này.
+水をください。|Cho tôi xin nước.
+#JLPT N4
+駅まで歩いて十分ぐらいかかります。|Đi bộ đến ga mất khoảng mười phút.
+明日は雨が降るかもしれません。|Ngày mai có thể sẽ mưa.
+疲れたので、早く寝ることにしました。|Vì mệt nên tôi quyết định đi ngủ sớm.
+彼は日本語を話すことができます。|Anh ấy có thể nói tiếng Nhật.
+先生に宿題を出すように言われました。|Tôi được giáo viên bảo là phải nộp bài tập.
+窓を開けたまま寝てしまいました。|Tôi đã ngủ quên mà để nguyên cửa sổ mở.
+もし時間があれば、手伝ってください。|Nếu có thời gian thì hãy giúp tôi.
+この薬を飲めば、すぐ良くなりますよ。|Nếu uống thuốc này thì sẽ khỏi ngay đấy.
+彼女は料理が上手なだけでなく、掃除も好きです。|Cô ấy không chỉ nấu ăn giỏi mà còn thích dọn dẹp.
+電車の中で財布を落としてしまいました。|Tôi đã làm rơi ví trong tàu điện.
+日本へ行く前に、日本語を勉強しておきます。|Trước khi đi Nhật, tôi sẽ học sẵn tiếng Nhật.
+母に買い物を頼まれました。|Tôi được mẹ nhờ đi mua đồ.
+彼が来るまで、ここで待っています。|Tôi sẽ đợi ở đây đến khi anh ấy tới.
+この問題は難しすぎて、わかりません。|Bài này khó quá nên tôi không hiểu.
+子どもの時、よくこの公園で遊びました。|Hồi nhỏ tôi thường chơi ở công viên này.
+会議は三時に始まる予定です。|Cuộc họp dự định bắt đầu lúc ba giờ.
+そのニュースを聞いて、びっくりしました。|Nghe tin đó tôi đã rất ngạc nhiên.
+熱があるので、今日は休みます。|Vì bị sốt nên hôm nay tôi nghỉ.
+友達に誘われて、旅行に行くことにしました。|Được bạn rủ nên tôi quyết định đi du lịch.
+彼は忙しそうですね。|Trông anh ấy có vẻ bận nhỉ.
+日本の夏は暑くて、むし暑いです。|Mùa hè Nhật Bản vừa nóng vừa oi.
+もう少しゆっくり話してください。|Xin hãy nói chậm hơn một chút.
+この部屋は静かで、勉強しやすいです。|Phòng này yên tĩnh, dễ học.
+私は毎朝走ることにしています。|Tôi có thói quen chạy bộ mỗi sáng.
+彼は怒って、部屋を出ていきました。|Anh ấy tức giận rồi bỏ ra khỏi phòng.
+写真を見せてもらえませんか。|Cho tôi xem ảnh được không?
+試験に合格したので、とても嬉しいです。|Vì đỗ kỳ thi nên tôi rất vui.
+バスが遅れたので、会議に間に合いませんでした。|Vì xe buýt đến muộn nên tôi không kịp cuộc họp.
+父は新聞を読みながら朝ご飯を食べます。|Bố tôi vừa đọc báo vừa ăn sáng.
+もっと野菜を食べたほうがいいですよ。|Bạn nên ăn nhiều rau hơn.
+#JLPT N3
+彼は忙しいにもかかわらず、手伝ってくれました。|Dù bận nhưng anh ấy vẫn giúp tôi.
+この仕事は経験がなくても始められます。|Công việc này không có kinh nghiệm cũng có thể bắt đầu.
+約束を忘れるなんて、信じられません。|Quên cả cuộc hẹn, thật không thể tin được.
+天気予報によると、明日は台風が来るそうです。|Theo dự báo thời tiết, ngày mai bão sẽ đến.
+彼女は将来、医者になるつもりだそうです。|Nghe nói cô ấy định sau này làm bác sĩ.
+試験が近づくにつれて、緊張してきました。|Càng gần kỳ thi, tôi càng thấy căng thẳng.
+留学したことで、視野が広がりました。|Nhờ đi du học mà tầm nhìn của tôi đã mở rộng.
+駅に着いたとたん、雨が降り出しました。|Vừa đến ga thì trời bắt đầu mưa.
+この料理は見た目のわりに、味が薄いです。|Món này so với vẻ ngoài thì vị khá nhạt.
+彼の話を聞いているうちに、眠くなってしまいました。|Nghe anh ấy nói một lúc thì tôi buồn ngủ.
+田中さんは会議に出席しないはずです。|Chắc chắn anh Tanaka sẽ không dự họp.
+新しい制度について、意見を聞かせてください。|Xin hãy cho tôi biết ý kiến về chế độ mới.
+子どもたちは、親に注意されても聞きませんでした。|Bọn trẻ dù bị cha mẹ nhắc vẫn không nghe.
+その件については、後ほどご連絡いたします。|Về việc đó, lát nữa tôi sẽ liên lạc với bạn.
+彼は努力したおかげで、試験に合格できました。|Nhờ nỗ lực mà anh ấy đã đỗ kỳ thi.
+日本語の勉強は、毎日続けることが大切です。|Việc học tiếng Nhật quan trọng là kiên trì mỗi ngày.
+彼女は泣きそうな顔で、何も言いませんでした。|Cô ấy với vẻ mặt như sắp khóc, không nói gì cả.
+会社の近くに引っ越すことになりました。|Tôi đã được quyết định chuyển đến gần công ty.
+この荷物は重くて、一人では運べません。|Hành lý này nặng, một mình không thể mang nổi.
+彼が帰ってくるかどうか、まだわかりません。|Tôi vẫn chưa biết anh ấy có về hay không.
+地図を見ながら歩いたのに、道に迷ってしまいました。|Dù vừa đi vừa xem bản đồ mà tôi vẫn bị lạc đường.
+彼の説明は、わかりやすいというより、簡単すぎます。|Lời giải thích của anh ấy không phải dễ hiểu mà là quá đơn giản.
+今日中にこの書類を仕上げなければなりません。|Tôi phải hoàn thành tài liệu này trong hôm nay.
+彼女は笑いながら、昔の話をしてくれました。|Cô ấy vừa cười vừa kể cho tôi chuyện ngày xưa.
+大事な会議があるので、遅れないようにしてください。|Vì có cuộc họp quan trọng nên xin đừng đến muộn.
+この町は、観光客が増えて以来、にぎやかになりました。|Thị trấn này kể từ khi khách du lịch tăng thì trở nên nhộn nhịp.
+彼は何度失敗しても、あきらめませんでした。|Anh ấy dù thất bại bao nhiêu lần cũng không bỏ cuộc.
+コンビニで買ったお弁当を、公園で食べました。|Tôi đã ăn cơm hộp mua ở cửa hàng tiện lợi trong công viên.
+彼女の意見には、賛成せざるを得ません。|Tôi không thể không tán thành ý kiến của cô ấy.
+雨が降っていたので、出かけるのをやめました。|Vì trời đang mưa nên tôi đã thôi không ra ngoài.
+#JLPT N2
+交渉は難航したものの、最終的に合意に至りました。|Dù đàm phán gặp khó khăn, cuối cùng vẫn đạt được thỏa thuận.
+彼女は忙しいにもかかわらず、ボランティア活動に参加している。|Dù bận rộn, cô ấy vẫn tham gia hoạt động tình nguyện.
+このプロジェクトは、予算の都合上、延期せざるを得ない。|Dự án này do vấn đề ngân sách nên đành phải hoãn.
+彼の成功は、努力のたまものだと言っても過言ではない。|Nói thành công của anh ấy là kết quả của nỗ lực cũng không ngoa.
+環境問題に対する関心は、年々高まりつつある。|Sự quan tâm đến vấn đề môi trường đang ngày càng tăng qua từng năm.
+上司の指示に従って、資料を作成しました。|Tôi đã soạn tài liệu theo chỉ thị của cấp trên.
+彼は話し上手なばかりか、聞き上手でもある。|Anh ấy không chỉ nói chuyện giỏi mà còn biết lắng nghe.
+この商品は、品質に関しては問題ありません。|Về chất lượng thì sản phẩm này không có vấn đề.
+どんなに努力しても、結果が出るとは限らない。|Dù nỗ lực thế nào cũng chưa chắc có kết quả.
+彼女は試験に落ちて、すっかり自信をなくしてしまった。|Cô ấy trượt kỳ thi nên hoàn toàn mất tự tin.
+景気が回復するにつれて、失業率も下がってきた。|Khi kinh tế phục hồi, tỷ lệ thất nghiệp cũng giảm dần.
+彼の発言は、誤解を招きかねない。|Phát ngôn của anh ấy có nguy cơ gây hiểu lầm.
+先生のご協力なくしては、この研究は完成しなかった。|Nếu không có sự giúp đỡ của thầy, nghiên cứu này đã không hoàn thành.
+忙しくて、食事をする暇さえない。|Bận đến mức không có cả thời gian ăn cơm.
+この地域は、観光業を中心に発展してきた。|Khu vực này đã phát triển lấy ngành du lịch làm trung tâm.
+彼はいつも冗談ばかり言っていて、真剣さに欠ける。|Anh ấy lúc nào cũng chỉ nói đùa, thiếu nghiêm túc.
+子どもの成長を見守るのが、親の務めである。|Dõi theo sự trưởng thành của con là bổn phận của cha mẹ.
+会議の結果を踏まえて、計画を見直すことにした。|Dựa trên kết quả cuộc họp, chúng tôi quyết định xem xét lại kế hoạch.
+彼女の笑顔を見るたびに、元気が出てくる。|Mỗi lần nhìn nụ cười của cô ấy, tôi lại thêm tinh thần.
+この問題は、一朝一夕には解決できない。|Vấn đề này không thể giải quyết trong một sớm một chiều.
+彼はまじめな反面、融通がきかないところがある。|Anh ấy nghiêm túc nhưng mặt khác lại thiếu linh hoạt.
+締め切りが迫っているため、残業せざるを得ない。|Vì hạn chót đang đến gần nên đành phải làm thêm giờ.
+今回の失敗を教訓として、次に生かしたい。|Tôi muốn lấy thất bại lần này làm bài học để vận dụng lần sau.
+彼女は医者として、また母親として、毎日忙しく働いている。|Cô ấy vừa là bác sĩ vừa là mẹ, ngày nào cũng làm việc bận rộn.
+新製品の発売に先立ち、記者会見が開かれた。|Trước khi phát hành sản phẩm mới, đã có buổi họp báo.
+彼の意見は一理あるが、全面的には賛成できない。|Ý kiến của anh ấy có lý nhưng tôi không thể hoàn toàn tán thành.
+天候の悪化により、電車の運行が見合わされた。|Do thời tiết xấu đi nên việc chạy tàu bị hoãn.
+そんなことをしたら、周りに迷惑がかかるに違いない。|Làm thế thì chắc chắn sẽ gây phiền cho người xung quanh.
+長年の研究の末、ついに新しい薬が完成した。|Sau nhiều năm nghiên cứu, cuối cùng thuốc mới đã hoàn thành.
+彼女は何事にも前向きに取り組む人だ。|Cô ấy là người tiếp cận mọi việc một cách tích cực.
+#JLPT N1
+彼の功績は、歴史に名を残すに値するものだ。|Công lao của ông xứng đáng để lại tên trong lịch sử.
+いかなる困難に直面しようとも、決して諦めてはならない。|Dù đối mặt với bất kỳ khó khăn nào cũng tuyệt đối không được bỏ cuộc.
+事態が悪化するに及んで、ようやく政府は対策に乗り出した。|Đến khi tình hình xấu đi, chính phủ mới bắt tay vào đối sách.
+彼の態度は、傲慢というよりむしろ無神経と言うべきだ。|Thái độ của anh ta nên gọi là vô tâm hơn là kiêu ngạo.
+この契約を破棄するとなれば、相応の責任を負うことになる。|Nếu hủy hợp đồng này thì sẽ phải gánh trách nhiệm tương ứng.
+彼女は多忙を極めながらも、研究を怠ることはなかった。|Dù bận rộn tột độ, cô ấy vẫn không bỏ bê nghiên cứu.
+技術の進歩は、利便性をもたらす反面、新たな問題も引き起こしている。|Tiến bộ kỹ thuật mang lại tiện lợi nhưng mặt khác cũng gây ra vấn đề mới.
+彼の発言は、世論の反発を招かずにはおかないだろう。|Phát ngôn của ông ta chắc chắn sẽ gây phản ứng từ dư luận.
+経験の有無を問わず、意欲のある方を歓迎いたします。|Dù có kinh nghiệm hay không, chúng tôi hoan nghênh người có nhiệt huyết.
+その計画は、資金不足のため頓挫を余儀なくされた。|Kế hoạch đó buộc phải đình trệ vì thiếu vốn.
+彼は恩師の期待に応えるべく、日夜研究に励んでいる。|Anh ấy ngày đêm miệt mài nghiên cứu để đáp lại kỳ vọng của thầy.
+合意に至るまでには、幾多の曲折を経なければならなかった。|Để đi đến thỏa thuận, đã phải trải qua nhiều khúc quanh.
+この問題を看過するわけにはいかない。|Không thể bỏ qua vấn đề này.
+彼女の演技は、見る者の心を揺さぶってやまない。|Diễn xuất của cô ấy khiến lòng người xem không ngừng rung động.
+国際情勢が緊迫の度を増しつつある。|Tình hình quốc tế đang ngày càng căng thẳng.
+彼は自らの過ちを認めたがらない節がある。|Anh ta có vẻ không muốn thừa nhận lỗi của mình.
+たとえ反対されようとも、私は自分の信念を貫く所存だ。|Dù có bị phản đối, tôi vẫn quyết tâm giữ vững niềm tin của mình.
+この小説は、人間の孤独を鮮やかに描き出している。|Tiểu thuyết này khắc họa sống động nỗi cô đơn của con người.
+彼の無責任な言動は、批判を免れまい。|Lời nói và hành động vô trách nhiệm của ông ta khó tránh khỏi bị chỉ trích.
+知識を得るだけでなく、それを実践に移してこそ意味がある。|Không chỉ tiếp thu kiến thức mà đem ra thực hành mới có ý nghĩa.
+彼女は病弱ながらも、持ち前の明るさで周囲を励まし続けた。|Dù ốm yếu, cô ấy vẫn luôn động viên mọi người bằng sự lạc quan vốn có.
+その会社は、経営破綻の危機に瀕している。|Công ty đó đang đứng trước nguy cơ phá sản.
+彼の提案は、一見すると斬新だが、現実性に乏しい。|Đề xuất của anh ấy thoạt nhìn có vẻ mới lạ nhưng thiếu tính thực tế.
+状況いかんによっては、計画を変更することもありうる。|Tùy tình hình, cũng có thể thay đổi kế hoạch.
+長い沈黙の後、彼はようやく重い口を開いた。|Sau một hồi im lặng dài, cuối cùng anh ấy cũng mở lời nặng nề.
+伝統を守りつつも、時代に合わせて変えていく必要がある。|Vừa giữ gìn truyền thống vừa cần thay đổi cho phù hợp thời đại.
+彼は寝食を忘れて、研究に没頭していた。|Anh ấy quên ăn quên ngủ, say mê nghiên cứu.
+少子化に歯止めをかけることは、喫緊の課題である。|Ngăn chặn tình trạng giảm sinh là nhiệm vụ cấp bách.
+彼女の言葉には、含みがあるように思えてならない。|Tôi không thể không nghĩ lời cô ấy có ẩn ý.
+非常事態とあって、市民は冷静な対応を求められた。|Vì là tình huống khẩn cấp nên người dân được yêu cầu ứng phó bình tĩnh.

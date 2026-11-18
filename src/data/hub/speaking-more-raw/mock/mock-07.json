@@ -1,0 +1,62 @@
+{
+ "id": "mock-07",
+ "title": "IELTS Speaking Mock Test 7",
+ "titleVi": "Đề thi thử số 7",
+ "focusVi": "Phát triển kỹ năng miêu tả trải nghiệm cá nhân mạch lạc và mở rộng quan điểm xã hội về văn hóa ẩm thực.",
+ "part1": [
+  {
+   "topic": "Technology",
+   "qs": [
+    "What piece of technology do you use most often in your daily life?",
+    "Did you learn how to use computers when you were a child?",
+    "Do you think technological devices ever distract you from your studies or work?",
+    "What new technology would you like to buy in the future?"
+   ]
+  },
+  {
+   "topic": "Neighbours",
+   "qs": [
+    "How well do you know the people living next door to you?",
+    "Do you think it is important to have a good relationship with your neighbours?",
+    "How often do you see or talk to your neighbours?",
+    "Have you ever helped a neighbour or received help from one?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a memorable meal that you enjoyed with family or friends",
+  "bullets": [
+   "where you had this meal",
+   "who you enjoyed it with",
+   "what specific dishes you ate",
+   "and explain why this meal was so memorable to you"
+  ]
+ },
+ "part3": [
+  "Why do people often choose to celebrate special occasions with a lavish meal?",
+  "How have modern dining habits changed compared to those of the past generation?",
+  "Do you believe international food chains are threatening local culinary traditions?",
+  "Should schools take greater responsibility for educating children about healthy nutrition?",
+  "To what extent does food culture reflect a country's national identity?"
+ ],
+ "answers": {
+  "p1": [
+   "I rely heavily on my smartphone throughout the day because it handles communication, navigation, and scheduling. For instance, I use it every morning to check bus routes and organize my daily tasks.",
+   "Yes, I was introduced to computers during primary school in our weekly informatics class. We mainly learned basic typing skills and simple drawing programs like Paint, which was really fascinating back then.",
+   "Definitely, notifications from social media apps often interrupt my concentration while studying. Just yesterday, a simple message notification derailed my focus for almost half an hour while I was writing an essay.",
+   "I would love to purchase a pair of noise-cancelling headphones soon because I often study in noisy cafes. Having superior sound isolation would help me concentrate much better during intense revision sessions.",
+   "I know my immediate neighbours fairly well since we have lived beside each other for years. We always exchange warm greetings whenever we cross paths in the hallway or the front yard.",
+   "It is extremely important because good neighbours provide a sense of security and mutual support. For example, they can watch over your property or collect parcels whenever you are away on holiday.",
+   "I usually bump into them a few times a week, mostly during mornings when everyone is leaving for work. We typically have brief chats about the weather or general neighborhood news.",
+   "Yes, during the rainy season last year, our neighbour helped us clear a blocked drainage pipe outside our gate. In return, my mother baked some fresh banana cake to express our gratitude."
+  ],
+  "sample": "One of the most unforgettable meals I have ever shared took place last autumn when my family gathered to celebrate my grandmother's eightieth birthday. We decided to host the dinner at an open-air seafood restaurant overlooking the ocean in Da Nang. The gathering brought together three generations, including my aunts, uncles, and cousins whom I hadn't seen in months. The atmosphere was incredibly lively and full of laughter from the moment we sat down. We ordered an array of local delicacies, such as grilled tiger prawns with chili salt, steamed squid, and a rich, fragrant seafood hotpot brimming with fresh herbs and vegetables. The freshness of the catch combined with traditional dipping sauces made every bite an absolute treat. What made this feast truly memorable was not just the delicious fare, but the overwhelming sense of togetherness. Seeing my grandmother beam with happiness as we toasted her health made me realize the profound value of family ties. In our fast-paced lives, having everyone together without digital distractions felt truly priceless, making it a meal I will cherish for years to come.",
+  "p3": [
+   "Sharing food has always held deep symbolic value across cultures because it fosters bonding and hospitality. When people celebrate milestones, dining together creates a relaxed environment where participants can converse and express appreciation. While casual gifts are quickly forgotten, a celebratory feast provides shared sensory memories that deepen relationships. Ultimately, communal dining reinforces our social bonds during meaningful transitions.",
+   "In previous decades, families consistently gathered around the dinner table to share freshly cooked, wholesome meals. Nowadays, due to demanding work schedules and the rise of food delivery platforms, individual and fast-food dining have become commonplace. Although this shift brings convenience to busy professionals, it often diminishes household communication and leads to poor nutritional choices. Therefore, modern eating habits are considerably less communal and balanced.",
+   "To some extent, global fast-food franchises do challenge domestic eateries by dominating commercial areas and appealing strongly to younger consumers. However, traditional street food vendors still retain a loyal customer base because their recipes offer authentic local flavors at reasonable prices. While global chains provide consistency and speed, they rarely replicate the cultural heritage found in regional dishes, ensuring traditional gastronomy endures.",
+   "I firmly believe educational institutions should actively teach balanced eating habits. While parents hold primary responsibility for their children's diet, schools can provide structured knowledge on balanced nutrition and the health risks of processed foods. In contrast to unsupervised snacking at home, school-based programs establish lifelong healthy routines. Consequently, incorporating dietary education into the curriculum is essential for combating childhood obesity.",
+   "Culinary traditions are undeniably central to national identity as they reflect a country's climate, agricultural history, and social philosophy. For instance, Vietnam's emphasis on fresh herbs and shared communal bowls represents an agrarian lifestyle and community values. While globalization encourages culinary cross-pollination, authentic native dishes remain powerful cultural emblems. Thus, culinary heritage serves as a vital bridge preserving a country's distinct heritage."
+  ]
+ }
+}

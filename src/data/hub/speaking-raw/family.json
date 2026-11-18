@@ -1,0 +1,96 @@
+{
+ "id": "family",
+ "extra": {
+  "vocab": [
+   {
+    "en": "tight-knit family",
+    "vi": "gia đình gắn bó khăng khít",
+    "ex": "Growing up in a tight-knit family taught me the value of unconditional support."
+   },
+   {
+    "en": "flesh and blood",
+    "vi": "người máu mủ ruột thịt",
+    "ex": "Even when we have disagreements, I always stand by him because he is my own flesh and blood."
+   },
+   {
+    "en": "take after someone",
+    "vi": "giống ai đó về ngoại hình hoặc tính cách",
+    "ex": "Personality-wise, I definitely take after my mother, especially in terms of patience."
+   },
+   {
+    "en": "look up to someone",
+    "vi": "ngưỡng mộ, kính trọng ai",
+    "ex": "I have always looked up to my grandfather because of his resilience through adversity."
+   },
+   {
+    "en": "extended family",
+    "vi": "đại gia đình nhiều thế hệ",
+    "ex": "During the Lunar New Year, our entire extended family gathers under one roof to celebrate."
+   },
+   {
+    "en": "lead by example",
+    "vi": "làm gương",
+    "ex": "Rather than lecturing me about discipline, my father preferred to lead by example."
+   },
+   {
+    "en": "instil values in someone",
+    "vi": "truyền tải và vun đắp giá trị sống cho ai",
+    "ex": "My parents worked hard to instil a strong sense of integrity in me from a young age."
+   },
+   {
+    "en": "generation gap",
+    "vi": "khoảng cách thế hệ",
+    "ex": "A noticeable generation gap can sometimes make it challenging for teenagers to confide in their parents."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người có tầm ảnh hưởng lớn nhất đối với bạn (ví dụ: ông nội) và mối quan hệ khăng khít từ thuở thơ ấu.",
+   "Ý 1 (Mối quan hệ & Bối cảnh): Giải thích bạn hiểu rõ người này thế nào qua việc sống chung nhà và quan sát thói quen sinh hoạt hàng ngày của họ.",
+   "Ý 2 (Bài học được dạy): Chia sẻ cụ thể bài học quý giá họ đã dạy (cách đối mặt với thất bại, lòng bao dung, làm gương bằng hành động).",
+   "Kết: Khẳng định sự ảnh hưởng sâu sắc của người đó đến thế giới quan, tính cách và cách bạn đưa ra quyết định khi trưởng thành."
+  ],
+  "sample": "I'd like to talk about my maternal grandfather, who has undoubtedly had the most profound impact on my life. Having lived with him throughout my formative years, I had the privilege of observing his daily habits and worldview up close.\n\nHe was a retired teacher, known for his calm temperament and boundless curiosity. What he taught me goes far beyond academics; he instilled in me the importance of resilience and empathy. Whenever I faced setbacks at school, he never reprimanded me. Instead, he would patiently explain that failure is simply a stepping stone to growth. He truly led by example, treating everyone around him with unwavering kindness, regardless of their social standing.\n\nHis influence has shaped who I am today in countless ways. Because of him, I developed a lifelong passion for reading and a habit of looking at problems from multiple perspectives. Whenever I encounter dilemmas in my adult life, I still ask myself what he would do in that situation, which keeps me grounded and focused on what truly matters.",
+  "p1": [
+   {
+    "q": "How many people are there in your family?",
+    "a": "There are four of us: my parents, my younger sister, and me. We are a fairly small, nuclear family, and we always try to catch up over home-cooked dinners every evening."
+   },
+   {
+    "q": "Do you live with your family?",
+    "a": "Yes, I currently share an apartment with my parents in Hanoi. Living together allows us to support each other with daily chores and maintain a close emotional bond while saving on living expenses."
+   },
+   {
+    "q": "Do you spend much time with your relatives?",
+    "a": "Not as much as I would like, primarily because most of my uncles and cousins live in the countryside. However, we always make a point of gathering together during major holidays like Tet."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Do families spend enough time together nowadays?",
+    "a": "In my view, many families struggle to spend meaningful quality time together nowadays. With demanding work schedules and the ubiquitous presence of digital devices, family members often sit in the same room while remaining glued to their smartphones. For instance, shared conversations are frequently displaced by social media scrolling. Consequently, emotional intimacy can gradually weaken unless households make a deliberate effort to disconnect from screens and engage with one another."
+   },
+   {
+    "q": "How have family structures changed in your country?",
+    "a": "In Vietnam, there has been a marked transition from traditional multi-generational households to nuclear families. Decades ago, it was customary for three generations to reside under the same roof. However, rapid urbanization and an increasing desire for privacy have prompted young couples to purchase their own flats in urban centers. While this fosters greater personal autonomy, it sometimes diminishes the immediate daily support system that extended families historically provided."
+   }
+  ],
+  "mistakesVi": [
+   "Dịch nguyên chữ từ tiếng Việt sang câu gượng gạo như 'My family has 4 people' thay vì cấu trúc tự nhiên 'There are four of us in my family' hoặc 'I come from a family of four'.",
+   "Nhầm lẫn nghiêm trọng giữa 'grow up' (nội động từ: tự lớn lên) và 'raise / bring up' (ngoại động từ: nuôi nấng), ví dụ nói sai 'My parents grew me up' thay vì 'My parents raised me'.",
+   "Lạm dụng từ 'family' lặp đi lặp lại liên tục thay vì linh hoạt biến hóa bằng các từ đồng nghĩa ngữ cảnh như 'household', 'nuclear family', 'loved ones', hay 'relatives'."
+  ],
+  "p1More": [
+   "Who are you closest to in your family?",
+   "What activities do you enjoy doing together as a family?",
+   "Did you have a happy childhood with your family?",
+   "Do you prefer spending your free time with family or friends?",
+   "What is the most important lesson your parents have taught you?"
+  ],
+  "p3More": [
+   "What are the main advantages and disadvantages of living in a multi-generational household?",
+   "How has the role of parents in educating children evolved compared to the past?",
+   "Should governments provide more financial subsidies to support working parents?",
+   "In what ways might technological advancements alter family relationships in the future?"
+  ]
+ }
+}

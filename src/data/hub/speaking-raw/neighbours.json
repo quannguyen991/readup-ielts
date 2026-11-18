@@ -1,0 +1,117 @@
+{
+ "id": "neighbours",
+ "title": "Neighbours",
+ "titleVi": "Hàng xóm",
+ "tipVi": "Hãy kết hợp việc kể lại trải nghiệm giao tiếp thực tế với các cụm từ chỉ tính gắn kết cộng đồng để câu trả lời vừa gần gũi vừa đạt điểm từ vựng cao.",
+ "part1": [
+  "How well do you know the people who live next door to you?",
+  "How often do you interact with your neighbours?",
+  "Do you think it is important to have a good relationship with your neighbours?"
+ ],
+ "part2": {
+  "prompt": "Describe a neighbour who has had a positive impact on your local community",
+  "bullets": [
+   "who this person is",
+   "how you first met them",
+   "what they have done to help the neighbourhood",
+   "and explain why you think their actions made such a positive difference"
+  ]
+ },
+ "part3": [
+  "In what ways has urbanisation changed the relationship between neighbours in modern cities?",
+  "To what extent should local governments encourage neighbourhood bonding activities?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "a close-knit community",
+    "vi": "cộng đồng gắn kết chặt chẽ",
+    "ex": "Growing up in a close-knit community made me appreciate the value of mutual support."
+   },
+   {
+    "en": "get along like a house on fire",
+    "vi": "hợp nhau và thân thiết rất nhanh",
+    "ex": "My new neighbour and I got along like a house on fire from the very first day."
+   },
+   {
+    "en": "keep to oneself",
+    "vi": "sống khép kín, ít giao lưu",
+    "ex": "Some residents prefer to keep to themselves rather than attend community gatherings."
+   },
+   {
+    "en": "lend a helping hand",
+    "vi": "giúp đỡ một tay",
+    "ex": "Whenever someone falls ill, the neighbours are always ready to lend a helping hand."
+   },
+   {
+    "en": "nosy neighbour",
+    "vi": "hàng xóm tò mò, hay soi mói",
+    "ex": "Nobody enjoys living next to a nosy neighbour who pries into private affairs."
+   },
+   {
+    "en": "within walking distance",
+    "vi": "ở khoảng cách gần, có thể đi bộ tới",
+    "ex": "Having several friendly families within walking distance makes our street feel exceptionally safe."
+   },
+   {
+    "en": "clear the air",
+    "vi": "giải quyết bất đồng, làm rõ hiểu lầm",
+    "ex": "We had a civil chat over tea to clear the air regarding the late-night music."
+   },
+   {
+    "en": "foster a sense of belonging",
+    "vi": "nuôi dưỡng cảm giác gắn bó thuộc về tập thể",
+    "ex": "Organising annual block parties helps foster a sense of belonging among urban residents."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu người hàng xóm đó là ai (ông Nam, một cán bộ về hưu sống ở đối diện nhà).",
+   "Ý 1: Hoàn cảnh gặp gỡ lần đầu (trong một buổi tổng vệ sinh khu phố vào dịp cuối tuần).",
+   "Ý 2: Những việc cụ thể người đó đã làm (tổ chức chiến dịch phân loại rác, cải tạo bãi đất hoang thành vườn hoa chung, thường xuyên thăm hỏi người già neo đơn).",
+   "Kết: Giải thích lý do hành động đó tạo nên tác động tích cực (phá vỡ sự xa cách giữa các gia đình, khơi dậy tinh thần tương thân tương ái)."
+  ],
+  "sample": "I'd like to talk about Mr. Nam, a retired school principal who lives directly opposite my family's house. I first encountered him about three years ago during a weekend neighbourhood cleanup. While most residents were somewhat hesitant to participate, he took the initiative with great enthusiasm, which immediately left an impression on me.\n\nOver the past few years, Mr. Nam has transformed our street into a truly vibrant and close-knit community. His most notable initiative was turning a neglected patch of vacant land at the corner of our alley into a flourishing communal herb garden. Besides that, he coordinated a weekly recycling program and routinely checks on elderly residents who live on their own.\n\nI believe his efforts have made an extraordinary difference because he managed to break the ice among neighbours who previously barely exchanged greetings. Living in a bustling city often isolates people, yet his selflessness rekindled our shared civic spirit. Thanks to him, our neighbourhood feels noticeably safer, warmer, and far more connected than it ever was before.",
+  "p1": [
+   {
+    "q": "How well do you know the people who live next door to you?",
+    "a": "I know them quite well because we have lived on the same floor for five years. We often exchange homemade dishes during traditional holidays and occasionally stop for a friendly chat in the hallway."
+   },
+   {
+    "q": "How often do you interact with your neighbours?",
+    "a": "I bump into them almost every day while waiting for the elevator or collecting parcels. On weekends, we sometimes grab morning coffee together at the local cafe just around the corner."
+   },
+   {
+    "q": "Do you think it is important to have a good relationship with your neighbours?",
+    "a": "Definitely, because neighbours are the closest support network in times of emergency. For instance, when my pipes burst last winter, my adjacent neighbour immediately lent me tools and helped shut off the main valve."
+   }
+  ],
+  "p3": [
+   {
+    "q": "In what ways has urbanisation changed the relationship between neighbours in modern cities?",
+    "a": "Urbanisation has undeniably fostered anonymity. In high-rise apartment complexes, busy work schedules and private lifestyle choices mean that residents often keep to themselves, rarely knowing who lives next door. In contrast to rural hamlets where doors remain wide open, urban living prioritises privacy over communal solidarity, leading to weaker interpersonal bonds in metropolitan areas."
+   },
+   {
+    "q": "To what extent should local governments encourage neighbourhood bonding activities?",
+    "a": "In my opinion, authorities ought to facilitate communal engagement rather than mandate it. By funding community centres or hosting green living workshops, councils can provide fertile ground for spontaneous interactions. However, participation must remain strictly voluntary, since over-regulating neighbourhood life could alienate citizens who value personal downtime after demanding working weeks."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng nhầm từ loại giữa 'neighbour' (danh từ chỉ người: người hàng xóm) và 'neighbourhood' (danh từ chỉ nơi chốn: khu phố, khu dân cư xung quanh).",
+   "Dịch từng từ cụm thành ngữ tiếng Việt như 'tối lửa tắt đèn có nhau' sang tiếng Anh một cách gượng gạo; nên dùng 'rely on each other in times of need' hoặc 'close support system'.",
+   "Phát âm sai trọng âm của từ 'neighbour' /ˈneɪbər/, thường nhấn âm hai hoặc phát âm đuôi thành /bɔːr/ do ảnh hưởng của mặt chữ."
+  ],
+  "p1More": [
+   "What do you usually do when you meet your neighbours?",
+   "Have you ever had any disagreements with your neighbours?",
+   "Would you prefer living next to elderly people or young families?",
+   "Do you think neighbours were friendlier in the past than they are today?",
+   "How do people in your hometown usually welcome a new neighbour?"
+  ],
+  "p3More": [
+   "Why do residents in rural areas tend to know their neighbours better than those in metropolitan areas?",
+   "What conflicts are most likely to arise between people living in close proximity, and how can they be settled?",
+   "How might modern architectural design influence the way neighbours interact with one another?",
+   "Do you believe digital social platforms are replacing real-life neighbourhood communities?"
+  ]
+ }
+}

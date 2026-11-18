@@ -13,6 +13,7 @@ import { lookupWord } from '@/services/dictionary/lookup';
 import { isGlossable, normaliseToken, offlineGloss, splitTokens } from '@/services/dictionary/offline-glossary';
 import { paper } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { MARK_STYLE, markKinds, type MarkVocab } from './vocab-marks';
 
 /**
  * Rê chuột vào một từ là hiện nghĩa ngay trên đầu từ đó; BẤM vào là mở thẻ chi tiết.
@@ -91,6 +92,7 @@ export function HoverGlossText({
   lineHeight,
   color,
   onWordPress,
+  vocab,
 }: {
   text: string;
   /** Nghĩa soạn sẵn của đoạn, tra theo từ đã thường hoá. */
@@ -100,6 +102,8 @@ export function HoverGlossText({
   lineHeight: number;
   color: string;
   onWordPress?: (pick: WordPick) => void;
+  /** Từ vựng trọng tâm của bài: được tô màu trong đoạn (từ đơn gạch chân, cụm nền vàng, cụm kết hợp nền xanh). */
+  vocab?: readonly MarkVocab[];
 }) {
   // Khoá theo VỊ TRÍ token: một đoạn có ba chữ "city" thì chỉ chỗ đang trỏ sáng lên.
   const [active, setActive] = useState<number | null>(null);
@@ -109,6 +113,7 @@ export function HoverGlossText({
   const refs = useRef<Record<number, View | null>>({});
 
   const tokens = useMemo(() => tokenise(text), [text]);
+  const marks = useMemo(() => (vocab && vocab.length ? markKinds(tokens.map((t) => t.text), vocab) : null), [tokens, vocab]);
   const space = fontSize * 0.26;
 
   const clearTimer = () => {
@@ -201,9 +206,15 @@ export function HoverGlossText({
           ...(token.bold ? { fontWeight: '700' as const } : null),
         };
 
+        const mark = marks?.[i];
+        const ms = mark ? MARK_STYLE[mark] : null;
+        // Cụm nhiều từ: nền phải liền mạch qua khoảng cách giữa các từ, nên dùng đệm phải (có nền) thay cho lề phải.
+        const bridge = !!mark && mark !== 'word' && marks?.[i + 1] === mark;
+        const gap = bridge ? { paddingRight: space } : { marginRight: space };
+
         if (!token.word) {
           return (
-            <Text key={i} style={{ ...base, color, marginRight: space }}>
+            <Text key={i} style={{ ...base, color, ...gap, ...(ms && mark !== 'word' ? { backgroundColor: ms.bg, borderRadius: 4 } : null) }}>
               {token.text}
             </Text>
           );
@@ -218,7 +229,7 @@ export function HoverGlossText({
             ref={(node) => {
               refs.current[i] = node;
             }}
-            style={{ position: 'relative', marginRight: space }}
+            style={{ position: 'relative', ...gap, ...(bridge && ms ? { backgroundColor: ms.bg } : null) }}
           >
             {isActive ? <GlossBubble word={token.word} gloss={gloss} busy={busy} /> : null}
             <Pressable
@@ -229,11 +240,12 @@ export function HoverGlossText({
               <Text
                 style={{
                   ...base,
-                  color: isActive ? paper.brandMid : color,
+                  color: isActive ? paper.brandMid : ms ? ms.ink : color,
                   borderRadius: 4,
-                  backgroundColor: isActive ? 'rgba(205, 164, 94,0.12)' : 'rgba(205, 164, 94,0)',
+                  backgroundColor: isActive ? 'rgba(205, 164, 94,0.12)' : ms ? ms.bg : 'rgba(205, 164, 94,0)',
+                  ...(ms && mark === 'word' ? { fontWeight: '600' as const, textDecorationLine: 'underline' as const, textDecorationStyle: 'solid' as const, textDecorationColor: ms.line } : null),
                   ...(Platform.OS === 'web' ? WEB_TRANSITION : null),
-                  ...(known || isActive
+                  ...((known || isActive) && !(ms && mark === 'word')
                     ? {
                         textDecorationLine: 'underline' as const,
                         textDecorationStyle: 'dotted' as const,

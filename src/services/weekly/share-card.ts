@@ -36,7 +36,7 @@ export function drawShareCard(d: ShareCardData): HTMLCanvasElement {
   c.width = S;
   c.height = S;
   const g = c.getContext('2d')!;
-  const font = (weight: number, size: number) => `${weight} ${size}px "Plus Jakarta Sans", system-ui, sans-serif`;
+  const font = (weight: number, size: number) => `${weight} ${size}px "Nunito", system-ui, sans-serif`;
 
   // Nền loang chàm → tím → hồng, và vài khối tròn mờ tạo chiều sâu.
   const bg = g.createLinearGradient(0, 0, S, S);

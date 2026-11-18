@@ -3,7 +3,8 @@ import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 
 import { englishVoice } from './voice';
-import { createClipLibrary, createLookup, isSingleWord, planPlayback, type Accent, type ClipVoice } from './pronounce-core';
+import { createClipCache } from './clip-cache';
+import { createClipLibrary, createLookup, isSingleWord, pickAudioUrl, type Accent, type ClipVoice } from './pronounce-core';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import pronunciationVoice from '@/data/pronunciation-voice.json';
 
@@ -24,7 +25,11 @@ const dictLookup = createLookup();
 
 /** Kho clip giọng Gemini: từ + cụm từ, rồi câu. Thiếu thư mục / index thì bỏ qua. */
 export const clips = createClipLibrary({ sets: ['/audio/words/{voice}/', '/audio/lines/{voice}/'] });
+/** Clip tiếng Nhật / Trung dựng sẵn (edge-tts): `/audio/east-asian/{ja,zh}/index.json`. Dùng "giọng" ja / zh làm khoá thư mục. */
+const eastAsianClips = createClipLibrary({ sets: ['/audio/east-asian/{voice}/'] });
 const isWeb = Platform.OS === 'web' && typeof window !== 'undefined' && typeof Audio !== 'undefined';
+/** Clip đã tải sẵn trong RAM: phát gần như tức thì, không chờ mạng. */
+const clipCache = createClipCache();
 
 let token = 0;
 let current: HTMLAudioElement | null = null;
@@ -64,18 +69,19 @@ function speakSoon(fn: () => void, afterStop: boolean) {
  * Giọng máy. Trình duyệt chặn nói khi chưa chạm gì vào trang (`not-allowed`):
  * nhớ lại và nói ở lần chạm / bấm phím đầu tiên, không để mất tiếng im lặng.
  */
-function tts(text: string, accent: Accent, rate: number, opts: { auto?: boolean; my?: number } = {}) {
+function tts(text: string, accent: Accent, rate: number, opts: { auto?: boolean; my?: number; language?: 'ja-JP' | 'zh-CN' } = {}) {
+  const language = opts.language ?? (accent === 'uk' ? 'en-GB' : 'en-US');
   const go = () => {
     if (opts.my !== undefined && opts.my !== token) return;
     try {
       Speech.speak(text, {
-        language: accent === 'uk' ? 'en-GB' : 'en-US',
+        language,
         rate,
-        voice: englishVoice(),
+        voice: language.startsWith('en-') ? englishVoice() : undefined,
         onError: (e: unknown) => {
           const msg = String((e as { message?: string; error?: string })?.error ?? (e as { message?: string })?.message ?? e);
           if (opts.my !== undefined && opts.my !== token) return;
-          if (opts.auto && /not-allowed/i.test(msg)) retryOnGesture(() => tts(text, accent, rate, { my: opts.my }));
+          if (opts.auto && /not-allowed/i.test(msg)) retryOnGesture(() => tts(text, accent, rate, { my: opts.my, language: opts.language }));
         },
       });
     } catch {
@@ -105,7 +111,7 @@ function retryOnGesture(fn: () => void) {
   window.addEventListener('keydown', go, true);
 }
 
-export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean; /** Ghim một giọng (ví dụ Chính tả chỉ dùng Sarah): không lùi về giọng khác. */ voice?: ClipVoice };
+export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean; language?: 'en-US' | 'en-GB' | 'ja-JP' | 'zh-CN'; /** Ghim một giọng (ví dụ Chính tả chỉ dùng Sarah): không lùi về giọng khác. */ voice?: ClipVoice };
 
 /** WAV im lặng ~0 mẫu, chỉ để "mở khoá" phần tử âm thanh trong lần chạm đầu tiên. */
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
@@ -188,7 +194,11 @@ export async function playClipUrl(
         /* bỏ qua */
       }
     }
-    a.src = url;
+    // Có sẵn trong RAM thì phát luôn bản đó; chưa có thì phát thẳng từ mạng và tải nền để lần sau tức thì.
+    const cached = clipCache.get(url);
+    a.preload = 'auto';
+    a.src = cached ?? url;
+    if (!cached) clipCache.prefetch(url);
     if (new URLSearchParams(window.location.search).has('audioDebug')) {
       for (const event of ['playing', 'ended', 'error']) {
         a.addEventListener(event, () => tracePlayback(playingAudio, event), { once: true });
@@ -266,10 +276,11 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
   const my = token;
   const accent = opts.accent ?? autoPronounceSettings().accent;
   const rate = opts.rate ?? 0.9;
+  const language = opts.language;
 
   try {
     // Giọng mặc định trước; chưa có clip thì thử giọng Alice; vẫn thiếu mới tới giọng máy.
-    if (isWeb) {
+    if (isWeb && (!language || language.startsWith('en-'))) {
       const pinned = opts.voice;
       const voice = pinned ?? currentClipVoice();
       const url =
@@ -286,27 +297,41 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
           return;
         }
       }
-      // Không có clip đã kiểm: thử bản ghi âm người thật từ từ điển (chỉ từ đơn) trước khi tới giọng máy.
+      // Không có clip trong kho: chỉ dùng bản ghi âm từ điển nếu ĐÃ biết sẵn (không chờ mạng) — chờ tra
+      // từ điển tới 1,5 giây mới có tiếng là nguồn trễ chính. Chưa biết thì giọng máy ngay, tra nền cho lần sau.
       if (isSingleWord(word)) {
-        const plan = await planPlayback(word, accent, dictLookup);
-        if (my !== token) return;
-        if (plan.kind === 'audio') {
-          for (const u of [plan.url, ...plan.alts]) {
-            const r = await playClipUrl(u, { rate, my });
-            if (my !== token) return;
-            if (r.ok) return;
-            if (r.blocked) {
-              if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
-              return;
-            }
+        const known = dictLookup.peek(word);
+        if (known === undefined) void dictLookup.urls(word);
+        const first = known ? pickAudioUrl(known, accent) : null;
+        if (first) {
+          const r = await playClipUrl(first, { rate, my });
+          if (my !== token) return;
+          if (r.ok) return;
+          if (r.blocked) {
+            if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
+            return;
           }
         }
       }
     }
+    // Tiếng Nhật / Trung: clip dựng sẵn trước, thiếu mới tới giọng máy.
+    if (isWeb && (language === 'ja-JP' || language === 'zh-CN')) {
+      const url = await eastAsianClips.find(language === 'ja-JP' ? ('ja' as ClipVoice) : ('zh' as ClipVoice), word);
+      if (my !== token) return;
+      if (url) {
+        const r = await playClipUrl(url, { rate, my });
+        if (my !== token) return;
+        if (r.ok) return;
+        if (r.blocked) {
+          if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
+          return;
+        }
+      }
+    }
     // Chưa có clip của mục này (kho clip đang được sinh dần): giọng máy chỉ là TẠM THỜI để không im lặng.
-    tts(word, accent, rate, { auto: opts.auto, my });
+    tts(word, accent, rate, { auto: opts.auto, my, language: language === 'ja-JP' || language === 'zh-CN' ? language : undefined });
   } catch {
-    if (my === token) tts(word, accent, rate, { auto: opts.auto, my });
+    if (my === token) tts(word, accent, rate, { auto: opts.auto, my, language: language === 'ja-JP' || language === 'zh-CN' ? language : undefined });
   }
 }
 
@@ -314,9 +339,32 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
  * Nạp sẵn bản ghi âm của các từ sắp tới. Thử lần lượt từng đường dẫn: cái nào 404 thì
  * đánh dấu hỏng (lúc phát khỏi chờ), cái nào tải được thì giữ lại cho trình duyệt nhớ.
  */
-export function preloadPronunciation(_words?: readonly string[], _accent?: Accent): void {
+export function preloadPronunciation(words?: readonly string[], _accent?: Accent): void {
   if (!isWeb) return;
-  void clips.warm(currentClipVoice());
+  const voice = currentClipVoice();
+  void clips.warm(voice).then(() => {
+    for (const w of (words ?? []).slice(0, 24)) {
+      const text = w?.trim();
+      if (!text) continue;
+      // Tra bộ nhớ trước (đồng bộ); chưa có index của giọng thì thôi.
+      const url = clips.peek(voice, text) ?? clips.peek('aoede', text) ?? clips.peek(FALLBACK_CLIP_VOICE, text);
+      if (url) clipCache.prefetch(url);
+    }
+  });
+}
+
+/** Nạp sẵn index clip lúc mở app (rảnh tay), để lần bấm loa đầu tiên không phải chờ tải ~300 KB. */
+export function warmPronunciation(): void {
+  if (!isWeb) return;
+  const go = () => {
+    const v = currentClipVoice();
+    void clips.warm(v);
+    if (v !== 'aoede') void clips.warm('aoede');
+    void clips.warm(FALLBACK_CLIP_VOICE);
+  };
+  const ric = (window as unknown as { requestIdleCallback?: (f: () => void, o?: { timeout: number }) => void }).requestIdleCallback;
+  if (ric) ric(go, { timeout: 2500 });
+  else setTimeout(go, 800);
 }
 
 /** Mỗi khoảng này một cặp (khoá, từ) chỉ tự phát một lần — chống React dựng lại hai lần. */
@@ -329,7 +377,7 @@ let lastAutoToken = 0;
  * lúc từ hiện ra và lúc đáp án lộ ra (đúng hay sai). `id` chống phát hai lần cùng một lần hiện.
  * Trả `true` khi đã gọi phát.
  */
-export function autoSpeak(word: string | null | undefined, id: string): boolean {
+export function autoSpeak(word: string | null | undefined, id: string, language?: 'en' | 'ja' | 'zh'): boolean {
   if (!word) return false;
   const { auto } = autoPronounceSettings();
   // KHÔNG xét tắt tiếng hiệu ứng game: đó là âm thanh chém quái / chuông, còn phát âm là nội dung học. Người học muốn im
@@ -340,7 +388,7 @@ export function autoSpeak(word: string | null | undefined, id: string): boolean 
   if (full === lastAuto && token === lastAutoToken && now - lastAutoAt < 1500) return false;
   lastAuto = full;
   lastAutoAt = now;
-  void pronounce(word, { auto: true });
+  void pronounce(word, { auto: true, language: language === 'ja' ? 'ja-JP' : language === 'zh' ? 'zh-CN' : undefined });
   lastAutoToken = token;
   return true;
 }
@@ -349,21 +397,21 @@ export function autoSpeak(word: string | null | undefined, id: string): boolean 
  * Tự đọc `word` khi nó hiện ra (đổi `word` hoặc `key` = thẻ mới). `word` rỗng/null
  * thì im. Chỉ theo công tắc "Tự phát âm" (không theo tắt tiếng hiệu ứng game).
  */
-export function useAutoPronounce(word: string | null | undefined, key: string | number = ''): void {
+export function useAutoPronounce(word: string | null | undefined, key: string | number = '', language?: 'en' | 'ja' | 'zh'): void {
   const enabled = useTopicStudyStore((s) => s.learnSettings.autoPronounce !== false);
   useEffect(() => {
     if (!word || !enabled) return;
     let ownedToken: number | undefined;
     const t = setTimeout(() => {
-      if (autoSpeak(word, String(key))) ownedToken = token;
-    }, 150);
+      if (autoSpeak(word, String(key), language)) ownedToken = token;
+    }, 60);
     return () => {
       clearTimeout(t);
       // Leaving/hiding a card also cancels its queued autoplay retry.
       // A manual playback or another screen may already own the player.
       if (ownedToken === token) stopPronounce();
     };
-  }, [word, key, enabled]);
+  }, [word, key, enabled, language]);
 }
 
 /** Một câu trong chuỗi `speakLines`. */

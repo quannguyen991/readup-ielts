@@ -1,0 +1,96 @@
+{
+ "id": "weather",
+ "extra": {
+  "vocab": [
+   {
+    "en": "torrential rain",
+    "vi": "mưa xối xả, mưa to như trút nước",
+    "ex": "We were caught in torrential rain on our way home, so we got soaked to the skin."
+   },
+   {
+    "en": "scorching hot",
+    "vi": "nóng như thiêu như đốt",
+    "ex": "In the peak of summer, it gets scorching hot, making it unbearable to stay outdoors."
+   },
+   {
+    "en": "a sudden downpour",
+    "vi": "cơn mưa rào bất chợt",
+    "ex": "A sudden downpour caught us off guard during our afternoon picnic."
+   },
+   {
+    "en": "put a damper on",
+    "vi": "làm cụt hứng, làm hỏng kế hoạch",
+    "ex": "The persistent drizzle really put a damper on our weekend camping trip."
+   },
+   {
+    "en": "clear up",
+    "vi": "(thời tiết) quang đãng, tạnh ráo trở lại",
+    "ex": "We waited in the coffee shop for the sky to clear up before continuing our journey."
+   },
+   {
+    "en": "erratic weather patterns",
+    "vi": "hình thái thời tiết thất thường",
+    "ex": "Farmers are struggling to cultivate crops due to increasingly erratic weather patterns."
+   },
+   {
+    "en": "under the weather",
+    "vi": "cảm thấy mệt mỏi, không khỏe",
+    "ex": "Whenever the atmospheric pressure drops rapidly, I tend to feel a bit under the weather."
+   },
+   {
+    "en": "humid and sticky",
+    "vi": "ẩm ướt và dính dớp, khó chịu",
+    "ex": "Hanoi's summer is notoriously humid and sticky, forcing everyone to rely heavily on air conditioning."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu ngắn gọn chuyến dã ngoại cuối tuần tại ngoại ô cùng nhóm bạn thân bị đổ bể do giông bão bất ngờ.",
+   "Ý 1 (Kế hoạch & Thời tiết): Dự định ban đầu là dựng lều và nướng thịt bên hồ dựa vào dự báo trời nắng ráo, nhưng bầu trời đột ngột tối sầm và mưa xối xả kèm gió giật mạnh kéo đến.",
+   "Ý 2 (Diễn biến thay thế): Toàn bộ bãi cỏ ngập bùn khiến nhóm phải cuống cuồng thu dọn đồ đạc ướt sũng, chuyển sang trú tạm ở quán ăn bình dân ven đường và ăn lẩu nóng.",
+   "Kết (Cảm xúc & Bài học): Ban đầu cảm thấy vô cùng hụt hẫng và tiếc nuối, nhưng không khí quây quần trò chuyện lại trở thành kỷ niệm khó quên; rút ra bài học luôn có phương án dự phòng cho hoạt động ngoài trời."
+  ],
+  "sample": "I'd like to talk about an incident last summer when unpredictable weather completely ruined my camping trip. A group of close friends and I had planned a weekend getaway to a picturesque lakeside campsite on the outskirts of Hanoi. We had packed barbecue supplies and tents, expecting clear, sunny skies based on the weekly forecast.\n\nHowever, right as we arrived and started pitching our tents, the sky turned ominous and pitch-black. Within minutes, a torrential downpour accompanied by fierce gusts of wind broke out. The rain was so relentless that our campsite quickly turned into a muddy swamp, making outdoor cooking entirely impossible.\n\nLeft with no other choice, we packed up our soaked gear and took refuge in a small roadside diner nearby. Instead of grilling by the lake, we ended up having steaming bowls of local noodles while listening to the storm rattle the roof.\n\nInitially, I felt terribly disappointed and frustrated because we had spent weeks organizing the outing. Yet, looking back, laughing over our misfortune in that cozy diner actually brought us closer together, making it a surprisingly memorable mishap.",
+  "p1": [
+   {
+    "q": "What is the weather usually like where you live?",
+    "a": "I live in northern Vietnam, where we experience a humid subtropical climate. Summers are typically sweltering and rainy, whereas winters can be surprisingly chilly and overcast. Right now, for instance, it is quite muggy and overcast."
+   },
+   {
+    "q": "What is your favourite season?",
+    "a": "Autumn is definitely my favorite time of the year. The weather is crisp, breezy, and far less humid than summer. I love going for evening walks around the city without sweating profusely, especially in late October."
+   },
+   {
+    "q": "Does the weather affect your mood?",
+    "a": "Absolutely, it has a direct impact on how I feel. Gloomy, overcast days make me feel lethargic and unmotivated, whereas clear blue skies and bright sunshine instantly give me a burst of positive energy and productivity."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Is climate change a serious problem for your country?",
+    "a": "Yes, without a doubt. Vietnam is one of the most vulnerable nations to global warming. Rising sea levels and prolonged droughts are severely threatening agricultural heartlands like the Mekong Delta. Moreover, extreme weather events, such as unseasonal typhoons and flash floods, have become far more frequent and destructive in recent years. If substantial mitigation strategies aren't implemented soon, the socioeconomic consequences will be catastrophic."
+   },
+   {
+    "q": "How does weather affect the way people live in cities?",
+    "a": "Weather fundamentally dictates daily urban routines and infrastructure. During severe heatwaves or heavy monsoons, city dwellers tend to retreat indoors, heavily relying on air-conditioned malls and private transport, which often exacerbates traffic congestion. In contrast, pleasant weather fosters active street life and outdoor dining. Ultimately, harsh weather conditions force urban planners and citizens alike to continually adapt their commuting habits and lifestyle to stay resilient."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng thành ngữ lỗi thời 'rain cats and dogs' – Người bản xứ hiện đại hầu như không dùng cụm này trong văn nói tự nhiên; thay vào đó nên dùng các cách diễn đạt Band 7+ như 'pouring with rain', 'torrential rain' hoặc 'heavy downpour'.",
+   "Nhầm lẫn giữa danh từ và tính từ chỉ thời tiết – Rất nhiều thí sinh quen miệng nói 'It was very rain' hoặc 'The weather is very sun' thay vì dùng dạng tính từ đúng là 'rainy'/'sunny', hoặc diễn đạt dạng động từ 'It was raining heavily'.",
+   "Phát âm sai trọng âm và nguyên âm của các từ chủ đề quen thuộc – Tiêu biểu là từ 'climate' (/ˈklaɪ.mət/ thường bị đọc sai thành /klaɪ-mết/) hay 'comfortable' (/ˈkʌm.fət.ə.bəl/ bị phát âm thừa âm tiết thành /com-fót-tây-bồ/)."
+  ],
+  "p1More": [
+   "Do you prefer dry or wet weather?",
+   "Do you usually check the weather forecast before leaving home?",
+   "Have you ever experienced severe or extreme weather?",
+   "Does rainy weather ever prevent you from carrying out your daily tasks?",
+   "Do you think the weather patterns in your hometown have changed over the years?"
+  ],
+  "p3More": [
+   "Do you think modern technology has made weather forecasting completely reliable?",
+   "To what extent should governments be held financially responsible for natural disaster relief?",
+   "How does the climate of a country shape the lifestyle and collective personality of its citizens?",
+   "Do you believe individual lifestyle changes can genuinely help mitigate global climate change?"
+  ]
+ }
+}

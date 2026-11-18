@@ -5,6 +5,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { HeroBackdrop } from '@/components/home/HeroBackdrop';
 import { Icon } from '@/components/ui/Icon';
+import { chiikawaCard } from '@/theme/chiikawa-recolor';
 
 /**
  * Hero trang chủ: nền hoạ tiết lớn (HeroBackdrop), viền gradient hồng–vàng–xanh–tím, một khung chấm bên
@@ -98,7 +99,7 @@ export function BlueHero({
 
   return (
     <LinearGradient
-      colors={FRAME}
+      colors={FRAME.map(chiikawaCard) as unknown as [string, string, ...string[]]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={{
@@ -131,17 +132,17 @@ export function BlueHero({
             <View style={{ marginTop: 22, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: wide ? 14 : 10 }}>
               {chip ? (
                 <LinearGradient
-                  colors={CHIP}
+                  colors={CHIP.map(chiikawaCard) as unknown as [string, string, ...string[]]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   style={{ maxWidth: '100%', borderRadius: wide ? 16 : 12, paddingHorizontal: wide ? 18 : 12, paddingVertical: wide ? 4 : 2, transform: [{ skewX: '-8deg' }] }}
                 >
-                  <Text style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: titleSize, lineHeight: titleLine, color: '#FFFFFF' }}>{chip}</Text>
+                  <Text style={{ fontFamily: 'Nunito_700Bold', fontSize: titleSize, lineHeight: titleLine, color: '#FFFFFF' }}>{chip}</Text>
                 </LinearGradient>
               ) : null}
               <Text
                 accessibilityRole="header"
-                style={{ fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: titleSize, lineHeight: titleLine, color: '#1B1140', letterSpacing: -1.1 }}
+                style={{ fontFamily: 'Nunito_700Bold', fontSize: titleSize, lineHeight: titleLine, color: '#1B1140', letterSpacing: -1.1 }}
               >
                 {title}
               </Text>

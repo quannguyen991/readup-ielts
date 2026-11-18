@@ -1,0 +1,117 @@
+{
+ "id": "climate",
+ "title": "Climate Change",
+ "titleVi": "Biến đổi khí hậu",
+ "tipVi": "Hãy liên hệ các hiện tượng thời tiết cực đoan hoặc thói quen sống xanh hằng ngày tại địa phương thay vì chỉ đưa ra các số liệu khoa học vĩ mô khô khan.",
+ "part1": [
+  "Have you noticed any changes in the weather in your hometown recently?",
+  "What do you do in your daily life to protect the environment?",
+  "Do you think schools should teach children about environmental issues?"
+ ],
+ "part2": {
+  "prompt": "Describe an environmental initiative or project you know that tackles climate change",
+  "bullets": [
+   "what the initiative or project is",
+   "where and how it is carried out",
+   "who participates in or supports it",
+   "and explain why you think it is effective in combating climate change"
+  ]
+ },
+ "part3": [
+  "Who should bear the primary responsibility for tackling global warming: individuals or governments?",
+  "How might technological advancements help reduce the impact of climate change in the future?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "carbon footprint",
+    "vi": "lượng phát thải carbon cá nhân hoặc tổ chức",
+    "ex": "Switching to public transit is an easy way to shrink your carbon footprint."
+   },
+   {
+    "en": "extreme weather events",
+    "vi": "các hiện tượng thời tiết cực đoan",
+    "ex": "Prolonged droughts and flash floods are clear examples of extreme weather events."
+   },
+   {
+    "en": "phase out",
+    "vi": "loại bỏ dần theo lộ trình",
+    "ex": "Many developed nations plan to phase out fossil-fuel vehicles over the next decade."
+   },
+   {
+    "en": "renewable energy sources",
+    "vi": "các nguồn năng lượng tái tạo",
+    "ex": "Investing heavily in renewable energy sources like wind and solar is vital."
+   },
+   {
+    "en": "take a toll on",
+    "vi": "gây thiệt hại, ảnh hưởng nặng nề đến",
+    "ex": "Unprecedented heatwaves have taken a heavy toll on public health and crop yields."
+   },
+   {
+    "en": "eco-conscious",
+    "vi": "có ý thức bảo vệ môi trường",
+    "ex": "Young consumers are becoming more eco-conscious and refusing single-use plastics."
+   },
+   {
+    "en": "curb greenhouse gas emissions",
+    "vi": "cắt giảm khí thải nhà kính",
+    "ex": "Stricter regulations are urgently needed to curb industrial greenhouse gas emissions."
+   },
+   {
+    "en": "environmental degradation",
+    "vi": "sự suy thoái môi trường",
+    "ex": "Deforestation is a leading cause of severe environmental degradation in tropical regions."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu tên dự án 'Million Trees Vietnam' và mục đích chính là giảm bớt hiệu ứng đảo nhiệt đô thị.",
+   "Ý 1: Nêu địa điểm thực hiện (dọc các đại lộ, công viên, khu đất trống ở Hà Nội) và phương pháp chọn loại cây bản địa phù hợp.",
+   "Ý 2: Nêu rõ các thành phần tham gia như sinh viên tình nguyện, đoàn thanh niên địa phương và sự tài trợ của doanh nghiệp.",
+   "Kết: Giải thích hiệu quả kép của dự án: vừa hấp thụ khí CO2, tạo bóng mát vừa lan tỏa mạnh mẽ lối sống bền vững trong cộng đồng."
+  ],
+  "sample": "I’d like to talk about an urban reforestation initiative in my city called 'Million Trees Vietnam'. It was launched a couple of years ago to address deteriorating air quality and the urban heat island effect. Basically, the project involves planting native shade trees along major boulevards, public parks, and empty communal spaces across Hanoi. Before planting, organizers carefully survey local soil conditions to select species that thrive naturally and require minimal chemical fertilizers. What impresses me most is the community involvement. While non-profit groups coordinate the logistics, hundreds of student volunteers, local youth unions, and even neighborhood elders roll up their sleeves every weekend to dig holes and plant saplings. Private companies also sponsor tools and saplings as part of their social responsibility. I consider this campaign truly effective because it tackles climate change on multiple fronts. Beyond the obvious benefit of absorbing carbon dioxide and providing cooling shade during sweltering summers, it visibly raises eco-awareness among city dwellers. Seeing tangible green patches flourish right where they live inspires everyday citizens to adopt more sustainable lifestyles.",
+  "p1": [
+   {
+    "q": "Have you noticed any changes in the weather in your hometown recently?",
+    "a": "Definitely. In recent years, summers in Hanoi have become unbearably scorching, with heatwaves lasting for weeks. Just last July, daytime temperatures consistently exceeded forty degrees Celsius, which rarely happened during my childhood."
+   },
+   {
+    "q": "What do you do in your daily life to protect the environment?",
+    "a": "I try to minimize single-use plastics by carrying my own canvas bag and stainless steel tumbler everywhere. Additionally, I commute to work by electric scooter rather than a petrol motorbike to cut down on emissions."
+   },
+   {
+    "q": "Do you think schools should teach children about environmental issues?",
+    "a": "Yes, absolutely. Educating children early fosters eco-friendly habits, such as recycling and conserving water, from a young age. In my primary school, we organized regular clean-up days, which taught me the value of responsible waste disposal."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Who should bear the primary responsibility for tackling global warming: individuals or governments?",
+    "a": "In my view, governments must lead the charge because systemic change requires enforceable regulations and major funding. While individual actions like recycling matter, only policymakers can introduce carbon taxes, mandate renewable energy transitions, and penalize polluting corporations. Without strict environmental laws, voluntary consumer efforts simply cannot offset industrial emissions at the necessary scale. Therefore, while citizens should play their part, state-level leadership remains the fundamental driver."
+   },
+   {
+    "q": "How might technological advancements help reduce the impact of climate change in the future?",
+    "a": "Technological innovation holds immense potential, particularly in green energy and direct carbon capture. For instance, more efficient solar cells and next-generation battery storage can completely replace coal-fired power plants. However, technology alone isn't a silver bullet; these inventions must be economically viable and widely accessible to developing nations. Ultimately, combining breakthrough tech with political commitment offers our best chance to reverse ecological damage."
+   }
+  ],
+  "mistakesVi": [
+   "Lạm dụng lặp lại từ 'climate change' hoặc 'environment' thay vì linh hoạt biến hóa sang 'global warming', 'ecological crisis', hoặc 'environmental degradation'.",
+   "Dịch từ ghép tiếng Việt sang tiếng Anh sai quy chuẩn collocation, ví dụ nói 'destroy the environment' quá chung chung thay vì 'wreak havoc on the ecosystem' hoặc 'take a heavy toll on nature'.",
+   "Dùng sai dạng danh từ không đếm được sang số nhiều, chẳng hạn nói 'many pollutions' hoặc 'plastic wastes' thay vì 'widespread pollution' hoặc 'plastic waste'."
+  ],
+  "p1More": [
+   "Do you prefer hot or cold weather?",
+   "Have you ever participated in a tree-planting activity?",
+   "How do people in your country stay cool during intense heatwaves?",
+   "Do you frequently use public transportation to reduce pollution?",
+   "Did you learn about global warming when you were at school?"
+  ],
+  "p3More": [
+   "Why are some countries more vulnerable to the effects of climate change than others?",
+   "To what extent can international climate agreements influence domestic environmental policies?",
+   "Do you think economic growth must inevitably come at the expense of environmental preservation?",
+   "How can media outlets communicate the urgency of climate issues without causing public despair?"
+  ]
+ }
+}

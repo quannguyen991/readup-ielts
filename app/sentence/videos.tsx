@@ -12,6 +12,7 @@ import {
   filterVideos,
   formatDuration,
   getLibraryVideo,
+  hasSubtitles,
   thumbnailUrl,
   videoLibraryStats,
   type LibraryVideo,
@@ -21,7 +22,19 @@ import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 
 /** Tên chủ đề bản tiếng Anh (dữ liệu gốc ở seed/video-library giữ tiếng Việt). */
+/** Số video hiện mỗi lần: thư viện có hàng nghìn video, vẽ hết một lúc thì trang đơ. */
+const PAGE = 24;
+
 const TOPIC_EN: Record<string, string> = {
+  'Phát âm & ngữ pháp': 'Pronunciation & grammar',
+  'Tin tức chậm': 'Slow news',
+  'Kinh doanh': 'Business',
+  'Truyền cảm hứng': 'Inspiration',
+  'Công nghệ': 'Technology',
+  'Du lịch': 'Travel',
+  'Lịch sử': 'History',
+  'Phỏng vấn': 'Interviews',
+  'Giải trí': 'Entertainment',
   'Tiếng Anh hằng ngày': 'Everyday English',
   'Phỏng vấn đường phố': 'Street interviews',
   'Khoa học': 'Science',
@@ -47,9 +60,11 @@ export default function VideoLibraryScreen() {
   const [level, setLevel] = useState('all');
   const [topic, setTopic] = useState('all');
   const [search, setSearch] = useState('');
+  const [limit, setLimit] = useState(PAGE);
+  const [subsOnly, setSubsOnly] = useState(false);
 
   const stats = useMemo(() => videoLibraryStats(), []);
-  const videos = useMemo(() => filterVideos({ level, topic, search }), [level, topic, search]);
+  const videos = useMemo(() => filterVideos({ level, topic, search, subsOnly }), [level, topic, search, subsOnly]);
 
   const saved = useVideoTranscriptStore((s) => s.videos);
   const prepared = useMemo(() => preparedList(saved), [saved]);
@@ -109,7 +124,10 @@ export default function VideoLibraryScreen() {
           <Icon name="search" size={16} color={color.subtle} />
           <TextInput
             value={search}
-            onChangeText={setSearch}
+            onChangeText={(t) => {
+              setSearch(t);
+              setLimit(PAGE);
+            }}
             placeholder={L('Tìm theo tên video hoặc kênh…', 'Search by video or channel…')}
             placeholderTextColor={color.subtle}
             className="min-w-0 flex-1 font-sans text-body text-ink"
@@ -117,17 +135,18 @@ export default function VideoLibraryScreen() {
         </View>
 
         <View className="mt-3 flex-row flex-wrap gap-1.5">
-          <Chip label={L('Mọi trình độ', 'All levels')} active={level === 'all'} onPress={() => setLevel('all')} />
+          <Chip label={L('Mọi trình độ', 'All levels')} active={level === 'all'} onPress={() => { setLevel('all'); setLimit(PAGE); }} />
           {VIDEO_LEVELS.map((l) => (
-            <Chip key={l} label={l} active={level === l} onPress={() => setLevel(level === l ? 'all' : l)} />
+            <Chip key={l} label={l} active={level === l} onPress={() => { setLevel(level === l ? 'all' : l); setLimit(PAGE); }} />
           ))}
+          <Chip label={L('Có phụ đề', 'With subtitles')} active={subsOnly} onPress={() => { setSubsOnly((v) => !v); setLimit(PAGE); }} />
         </View>
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 10 }}>
           <View className="flex-row gap-1.5 py-0.5">
-            <Chip label={L('Tất cả', 'All')} active={topic === 'all'} onPress={() => setTopic('all')} />
+            <Chip label={L('Tất cả', 'All')} active={topic === 'all'} onPress={() => { setTopic('all'); setLimit(PAGE); }} />
             {VIDEO_TOPICS.map((t) => (
-              <Chip key={t} label={en ? (TOPIC_EN[t] ?? t) : t} active={topic === t} onPress={() => setTopic(topic === t ? 'all' : t)} />
+              <Chip key={t} label={en ? (TOPIC_EN[t] ?? t) : t} active={topic === t} onPress={() => { setTopic(topic === t ? 'all' : t); setLimit(PAGE); }} />
             ))}
           </View>
         </ScrollView>
@@ -137,11 +156,24 @@ export default function VideoLibraryScreen() {
 
       <View className="mt-3">
         <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
-          {videos.map((v) => (
+          {videos.slice(0, limit).map((v) => (
             <VideoCard key={v.id} video={v} />
           ))}
         </Grid>
       </View>
+
+      {videos.length > limit ? (
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => setLimit((n) => n + PAGE)}
+          className="mt-5 self-center rounded-pill border border-primary-600 bg-surface px-6"
+          style={{ minHeight: 46, justifyContent: 'center' }}
+        >
+          <Text className="font-semi text-body" style={{ color: color.primary }}>
+            {L(`Xem thêm (${videos.length - limit} video)`, `Show more (${videos.length - limit} videos)`)}
+          </Text>
+        </Pressable>
+      ) : null}
 
       {videos.length === 0 ? (
         <Card className="mt-3">
@@ -210,6 +242,7 @@ function VideoCard({
         </Text>
         <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
           {video.level ? <Badge label={video.level} tone="neutral" /> : null}
+          {hasSubtitles(video.id) ? <Badge label={L('Có phụ đề', 'Subtitles')} tone="success" /> : null}
           {progress ? <Badge label={progress} tone="success" /> : null}
         </View>
       </View>

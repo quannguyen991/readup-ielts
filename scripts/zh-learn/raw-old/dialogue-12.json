@@ -1,0 +1,461 @@
+[
+ {
+  "id": "zh-d-h5-03",
+  "level": 5,
+  "order": 3,
+  "title": "Chuyện Khổng Dung nhường lê",
+  "titleZh": "孔融让梨",
+  "topic": "Câu chuyện lịch sử, thành ngữ",
+  "scene": "Hai bạn nhắc lại câu chuyện Khổng Dung nhường lê sau giờ học.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小明",
+    "zh": "孔融让梨的故事，你小时候听过吗？",
+    "py": "Kǒng Róng ràng lí de gùshi nǐ xiǎoshíhou tīngguo ma",
+    "vi": "Hồi nhỏ bạn đã nghe chuyện Khổng Dung nhường lê chưa?"
+   },
+   {
+    "who": "小华",
+    "zh": "听过，他把大的梨给哥哥了。",
+    "py": "tīngguo tā bǎ dà de lí gěi gēge le",
+    "vi": "Nghe rồi, cậu ấy nhường quả lê to cho anh trai."
+   },
+   {
+    "who": "小明",
+    "zh": "他自己拿小梨，真让人喜欢。",
+    "py": "tā zìjǐ ná xiǎo lí zhēn ràng rén xǐhuan",
+    "vi": "Cậu ấy tự lấy quả nhỏ, khiến người ta thấy mến."
+   },
+   {
+    "who": "小华",
+    "zh": "从这个故事来看，分享很重要。",
+    "py": "cóng zhège gùshi lái kàn fēnxiǎng hěn zhòngyào",
+    "vi": "Nhìn từ câu chuyện này, chia sẻ rất quan trọng."
+   },
+   {
+    "who": "小明",
+    "zh": "大家互相分享，心情会更好。",
+    "py": "dàjiā hùxiāng fēnxiǎng xīnqíng huì gèng hǎo",
+    "vi": "Mọi người chia sẻ với nhau thì tâm trạng sẽ tốt hơn."
+   },
+   {
+    "who": "小华",
+    "zh": "没有家人的帮助，就没有今天的我。",
+    "py": "méiyǒu jiārén de bāngzhù jiù méiyǒu jīntiān de wǒ",
+    "vi": "Không có sự giúp đỡ của gia đình thì đã không có tôi ngày hôm nay."
+   },
+   {
+    "who": "小明",
+    "zh": "我小时候也常把水果分给弟弟。",
+    "py": "wǒ xiǎoshíhou yě cháng bǎ shuǐguǒ fēn gěi dìdi",
+    "vi": "Hồi nhỏ tôi cũng thường chia hoa quả cho em trai."
+   },
+   {
+    "who": "小华",
+    "zh": "这个故事让我想起家人对我的好。",
+    "py": "zhège gùshi ràng wǒ xiǎngqǐ jiārén duì wǒ de hǎo",
+    "vi": "Câu chuyện này khiến tôi nhớ đến những điều tốt đẹp gia đình dành cho mình."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "故事",
+    "py": "gùshi",
+    "vi": "câu chuyện"
+   },
+   {
+    "zh": "梨",
+    "py": "lí",
+    "vi": "quả lê"
+   },
+   {
+    "zh": "哥哥",
+    "py": "gēge",
+    "vi": "anh trai"
+   },
+   {
+    "zh": "分享",
+    "py": "fēnxiǎng",
+    "vi": "chia sẻ"
+   },
+   {
+    "zh": "心情",
+    "py": "xīnqíng",
+    "vi": "tâm trạng"
+   },
+   {
+    "zh": "家人",
+    "py": "jiārén",
+    "vi": "người nhà"
+   },
+   {
+    "zh": "水果",
+    "py": "shuǐguǒ",
+    "vi": "hoa quả"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h5-01",
+   "zh-g-h5-09"
+  ],
+  "quiz": [
+   {
+    "q": "Hai bạn nhắc đến câu chuyện nào?",
+    "options": [
+     "Khổng Dung nhường lê",
+     "Một người tìm đường về nhà",
+     "Hai anh em đi học"
+    ],
+    "answer": 0,
+    "explain": "Câu đầu nhắc đến chuyện Khổng Dung nhường lê."
+   },
+   {
+    "q": "Khổng Dung đã nhường quả lê nào cho anh trai?",
+    "options": [
+     "Quả lê nhỏ",
+     "Quả lê to",
+     "Cậu ấy không nhường lê"
+    ],
+    "answer": 1,
+    "explain": "Cậu ấy đưa quả lê to cho anh trai."
+   },
+   {
+    "q": "Theo câu chuyện, điều gì rất quan trọng?",
+    "options": [
+     "Đi học đúng giờ",
+     "Có nhiều hoa quả",
+     "Chia sẻ với mọi người"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Hoa nói rằng chia sẻ rất quan trọng."
+   },
+   {
+    "q": "Hồi nhỏ Tiểu Minh thường làm gì?",
+    "options": [
+     "Chia hoa quả cho em trai",
+     "Mua lê cho anh trai",
+     "Kể chuyện ở lớp"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Minh kể rằng hồi nhỏ mình thường chia hoa quả cho em."
+   },
+   {
+    "q": "Câu chuyện khiến Tiểu Hoa nhớ đến điều gì?",
+    "options": [
+     "Những buổi học ngày trước",
+     "Những điều tốt đẹp gia đình dành cho mình",
+     "Những quả lê trong vườn"
+    ],
+    "answer": 1,
+    "explain": "Câu chuyện khiến Tiểu Hoa nhớ đến tình thương của gia đình."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h5-04",
+  "level": 5,
+  "order": 4,
+  "title": "Luyện thư pháp mỗi tối",
+  "titleZh": "练习书法",
+  "topic": "Nghệ thuật, văn học",
+  "scene": "Hai người bạn trò chuyện về thói quen luyện thư pháp vào buổi tối.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小李",
+    "zh": "你最近为什么每天晚上都练书法？",
+    "py": "nǐ zuìjìn wèishénme měitiān wǎnshang dōu liàn shūfǎ",
+    "vi": "Dạo này sao tối nào bạn cũng luyện thư pháp vậy?"
+   },
+   {
+    "who": "小王",
+    "zh": "我喜欢写字，写的时候心里很安静。",
+    "py": "wǒ xǐhuan xiězì xiě de shíhou xīnlǐ hěn ānjìng",
+    "vi": "Mình thích viết chữ, lúc viết thấy lòng rất yên."
+   },
+   {
+    "who": "小李",
+    "zh": "你学书法多久了？",
+    "py": "nǐ xué shūfǎ duōjiǔ le",
+    "vi": "Bạn học thư pháp được bao lâu rồi?"
+   },
+   {
+    "who": "小王",
+    "zh": "自去年以来，我每天都练一会儿。",
+    "py": "zì qùnián yǐlái wǒ měitiān dōu liàn yíhuìr",
+    "vi": "Từ năm ngoái đến nay, ngày nào mình cũng luyện một lúc."
+   },
+   {
+    "who": "小李",
+    "zh": "一旦我开始写字，就不想马上停下来。",
+    "py": "yídàn wǒ kāishǐ xiězì jiù bù xiǎng mǎshàng tíng xiàlái",
+    "vi": "Một khi bắt đầu viết chữ, mình lại không muốn dừng ngay."
+   },
+   {
+    "who": "小王",
+    "zh": "你写的字比以前好看多了。",
+    "py": "nǐ xiě de zì bǐ yǐqián hǎokàn duō le",
+    "vi": "Chữ bạn viết đẹp hơn trước nhiều rồi."
+   },
+   {
+    "who": "小李",
+    "zh": "我还要继续练，才能写得更好。",
+    "py": "wǒ hái yào jìxù liàn cái néng xiě de gèng hǎo",
+    "vi": "Mình vẫn cần luyện tiếp thì mới viết tốt hơn."
+   },
+   {
+    "who": "小王",
+    "zh": "写完以后，我常常觉得很轻松。",
+    "py": "xiě wán yǐhòu wǒ chángcháng juéde hěn qīngsōng",
+    "vi": "Viết xong, mình thường cảm thấy rất thư thái."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "书法",
+    "py": "shūfǎ",
+    "vi": "thư pháp"
+   },
+   {
+    "zh": "写字",
+    "py": "xiězì",
+    "vi": "viết chữ"
+   },
+   {
+    "zh": "安静",
+    "py": "ānjìng",
+    "vi": "yên tĩnh"
+   },
+   {
+    "zh": "开始",
+    "py": "kāishǐ",
+    "vi": "bắt đầu"
+   },
+   {
+    "zh": "好看",
+    "py": "hǎokàn",
+    "vi": "đẹp"
+   },
+   {
+    "zh": "继续",
+    "py": "jìxù",
+    "vi": "tiếp tục"
+   },
+   {
+    "zh": "轻松",
+    "py": "qīngsōng",
+    "vi": "thư thái"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h5-02",
+   "zh-g-h5-04"
+  ],
+  "quiz": [
+   {
+    "q": "Vì sao Tiểu Vương luyện thư pháp mỗi tối?",
+    "options": [
+     "Vì muốn ngủ sớm",
+     "Vì thầy giáo yêu cầu",
+     "Vì thích viết chữ"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Vương nói mình thích viết chữ."
+   },
+   {
+    "q": "Tiểu Vương bắt đầu học thư pháp từ khi nào?",
+    "options": [
+     "Từ năm ngoái",
+     "Từ sáng nay",
+     "Từ hồi còn nhỏ"
+    ],
+    "answer": 0,
+    "explain": "Cậu ấy nói từ năm ngoái đến nay ngày nào cũng luyện."
+   },
+   {
+    "q": "Khi nào Tiểu Lý không muốn dừng lại ngay?",
+    "options": [
+     "Khi vừa viết xong",
+     "Một khi đã bắt đầu viết chữ",
+     "Trước khi đi ngủ"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Lý nói một khi bắt đầu viết thì không muốn dừng ngay."
+   },
+   {
+    "q": "Tiểu Vương nhận xét chữ viết của Tiểu Lý thế nào?",
+    "options": [
+     "Khó đọc hơn trước",
+     "Vẫn giống hệt trước đây",
+     "Đẹp hơn trước nhiều"
+    ],
+    "answer": 2,
+    "explain": "Tiểu Vương khen chữ của bạn đẹp hơn trước nhiều."
+   },
+   {
+    "q": "Tiểu Vương thường cảm thấy thế nào sau khi viết xong?",
+    "options": [
+     "Thư thái",
+     "Buồn ngủ",
+     "Lo lắng"
+    ],
+    "answer": 0,
+    "explain": "Cậu ấy nói viết xong thường cảm thấy rất thư thái."
+   }
+  ]
+ },
+ {
+  "id": "zh-d-h4-05",
+  "level": 4,
+  "order": 5,
+  "title": "Niềm vui trong những điều giản dị",
+  "titleZh": "散步让心情更好",
+  "topic": "Tâm lý, hạnh phúc",
+  "scene": "Hai người bạn chia sẻ về việc đi dạo cùng nhau để có tâm trạng tốt hơn.",
+  "minutes": 5,
+  "lines": [
+   {
+    "who": "小美",
+    "zh": "你最近心情怎么样？",
+    "py": "nǐ zuìjìn xīnqíng zěnmeyàng",
+    "vi": "Dạo này tâm trạng bạn thế nào?"
+   },
+   {
+    "who": "小林",
+    "zh": "最近不错，我晚上也睡得很好。",
+    "py": "zuìjìn búcuò wǒ wǎnshang yě shuì de hěn hǎo",
+    "vi": "Dạo này khá ổn, buổi tối mình cũng ngủ ngon."
+   },
+   {
+    "who": "小美",
+    "zh": "你做什么以后会觉得开心？",
+    "py": "nǐ zuò shénme yǐhòu huì juéde kāixīn",
+    "vi": "Bạn làm gì thì thấy vui?"
+   },
+   {
+    "who": "小林",
+    "zh": "我每天饭后跟朋友散步，边走边聊天。",
+    "py": "wǒ měitiān fànhòu gēn péngyou sànbù biān zǒu biān liáotiān",
+    "vi": "Mỗi ngày sau bữa ăn, mình đi dạo với bạn bè và vừa đi vừa trò chuyện."
+   },
+   {
+    "who": "小美",
+    "zh": "跟在家看电视相比，你更喜欢散步吗？",
+    "py": "gēn zài jiā kàn diànshì xiāngbǐ nǐ gèng xǐhuan sànbù ma",
+    "vi": "So với ở nhà xem tivi, bạn thích đi dạo hơn à?"
+   },
+   {
+    "who": "小林",
+    "zh": "是啊，散步既让我运动，又让我放松。",
+    "py": "shì a sànbù jì ràng wǒ yùndòng yòu ràng wǒ fàngsōng",
+    "vi": "Ừ, đi dạo vừa giúp mình vận động, vừa giúp thư giãn."
+   },
+   {
+    "who": "小美",
+    "zh": "每天跟朋友见面，你不会觉得累吗？",
+    "py": "měitiān gēn péngyou jiànmiàn nǐ bú huì juéde lèi ma",
+    "vi": "Ngày nào cũng gặp bạn, bạn không thấy mệt sao?"
+   },
+   {
+    "who": "小林",
+    "zh": "不会，能说说话，我就觉得很幸福。",
+    "py": "bú huì néng shuōshuōhuà wǒ jiù juéde hěn xìngfú",
+    "vi": "Không, được trò chuyện một chút là mình thấy rất hạnh phúc."
+   }
+  ],
+  "keyWords": [
+   {
+    "zh": "心情",
+    "py": "xīnqíng",
+    "vi": "tâm trạng"
+   },
+   {
+    "zh": "散步",
+    "py": "sànbù",
+    "vi": "đi dạo"
+   },
+   {
+    "zh": "聊天",
+    "py": "liáotiān",
+    "vi": "trò chuyện"
+   },
+   {
+    "zh": "相比",
+    "py": "xiāngbǐ",
+    "vi": "so với"
+   },
+   {
+    "zh": "运动",
+    "py": "yùndòng",
+    "vi": "vận động"
+   },
+   {
+    "zh": "放松",
+    "py": "fàngsōng",
+    "vi": "thư giãn"
+   },
+   {
+    "zh": "幸福",
+    "py": "xìngfú",
+    "vi": "hạnh phúc"
+   }
+  ],
+  "grammarIds": [
+   "zh-g-h4-04",
+   "zh-g-h4-07"
+  ],
+  "quiz": [
+   {
+    "q": "Dạo gần đây Tiểu Lâm thấy thế nào?",
+    "options": [
+     "Rất mệt và khó ngủ",
+     "Tâm trạng khá tốt, buổi tối cũng ngủ ngon",
+     "Lo lắng về công việc"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Lâm nói gần đây tâm trạng khá tốt và buổi tối ngủ ngon."
+   },
+   {
+    "q": "Sau bữa ăn, Tiểu Lâm thường làm gì?",
+    "options": [
+     "Ở nhà đọc sách",
+     "Buổi sáng chạy bộ",
+     "Đi dạo với bạn bè"
+    ],
+    "answer": 2,
+    "explain": "Mỗi ngày sau bữa ăn, Tiểu Lâm đi dạo và trò chuyện với bạn."
+   },
+   {
+    "q": "So với ở nhà xem tivi, Tiểu Lâm thích làm gì hơn?",
+    "options": [
+     "Ra ngoài đi dạo",
+     "Ở nhà xem tivi",
+     "Đi mua sắm"
+    ],
+    "answer": 0,
+    "explain": "Tiểu Lâm nói mình thích đi dạo hơn."
+   },
+   {
+    "q": "Đi dạo giúp Tiểu Lâm làm được hai việc gì?",
+    "options": [
+     "Ngủ trưa và học bài",
+     "Vận động và thư giãn",
+     "Ăn tối và xem phim"
+    ],
+    "answer": 1,
+    "explain": "Tiểu Lâm nói đi dạo vừa giúp vận động, vừa giúp thư giãn."
+   },
+   {
+    "q": "Vì sao Tiểu Lâm không thấy mệt khi gặp bạn?",
+    "options": [
+     "Vì mỗi lần chỉ đi bộ một mình",
+     "Vì không phải nói chuyện",
+     "Vì được trò chuyện và cảm thấy hạnh phúc"
+    ],
+    "answer": 2,
+    "explain": "Cậu ấy vui vì được trò chuyện với bạn bè."
+   }
+  ]
+ }
+]

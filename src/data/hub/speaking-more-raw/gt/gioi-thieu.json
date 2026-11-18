@@ -1,0 +1,237 @@
+[
+ {
+  "id": "gt-gioi-thieu-1",
+  "level": "EASY",
+  "title": "English Club Icebreaker Introduction",
+  "titleVi": "Tự giới thiệu tại câu lạc bộ tiếng Anh",
+  "situationVi": "Bạn vừa tham gia buổi sinh hoạt đầu tiên tại một câu lạc bộ tiếng Anh cuối tuần. Mọi người đang ngồi thành vòng tròn và đến lượt bạn giới thiệu bản thân.",
+  "task": "Introduce yourself to the club members. Share your name and current job or field of study, your favorite weekend hobbies, and why you decided to join this club.",
+  "mustVi": [
+   "Họ tên và công việc hoặc chuyên ngành hiện tại",
+   "Sở thích vào thời gian rảnh rỗi hoặc cuối tuần",
+   "Lý do tham gia câu lạc bộ và mục tiêu tiếng Anh"
+  ],
+  "phrases": [
+   {
+    "en": "Nice to meet everyone, I'm...",
+    "vi": "Rất vui được gặp mọi người, mình là...",
+    "ex": "Nice to meet everyone, I'm Linh from Hanoi."
+   },
+   {
+    "en": "I currently work as a/an...",
+    "vi": "Hiện tại tôi đang làm việc với vai trò là...",
+    "ex": "I currently work as a digital marketer."
+   },
+   {
+    "en": "In my spare time, I enjoy...",
+    "vi": "Vào thời gian rảnh, tôi thích...",
+    "ex": "In my spare time, I enjoy playing badminton and reading."
+   },
+   {
+    "en": "I decided to join because...",
+    "vi": "Tôi quyết định tham gia vì...",
+    "ex": "I decided to join because I want to practice speaking more."
+   },
+   {
+    "en": "I'm hoping to improve my...",
+    "vi": "Tôi hy vọng sẽ cải thiện...",
+    "ex": "I'm hoping to improve my fluency and confidence."
+   },
+   {
+    "en": "Looking forward to learning with you all.",
+    "vi": "Rất mong được học hỏi cùng mọi người.",
+    "ex": "Looking forward to learning with you all this term."
+   }
+  ],
+  "sample": "Hi everyone, nice to meet you all! My name is Nam, and I currently work as an accountant at a logistics firm in District 1. In my spare time, I really enjoy playing guitar and brewing specialty coffee on the weekends. I decided to join this club because I rarely get the chance to speak English at my office, even though I read a lot of English reports. My main goal is to speak more naturally and overcome my fear of making mistakes. I'm really looking forward to getting to know everyone and practicing together!",
+  "tipVi": "Hãy mỉm cười tự nhiên và giữ giọng nói cởi mở, không cần dùng từ ngữ quá phức tạp mà ưu tiên sự trôi chảy."
+ },
+ {
+  "id": "gt-gioi-thieu-2",
+  "level": "EASY",
+  "title": "Welcoming a New Foreign Neighbor",
+  "titleVi": "Làm quen với người hàng xóm nước ngoài mới",
+  "situationVi": "Một người hàng xóm nước ngoài vừa chuyển đến căn hộ đối diện phòng bạn. Bạn tình cờ gặp họ ở hành lang và bắt chuyện làm quen.",
+  "task": "Greet your new neighbor and welcome them to the building. Tell them who you are, give a couple of quick practical tips about the neighborhood, and offer help if they need anything.",
+  "mustVi": [
+   "Chào hỏi, giới thiệu bản thân và số phòng của bạn",
+   "Chia sẻ 1-2 tiện ích quanh khu nhà (quán ăn, siêu thị, gửi xe)",
+   "Đưa ra lời đề nghị giúp đỡ và cách liên lạc"
+  ],
+  "phrases": [
+   {
+    "en": "Welcome to the building!",
+    "vi": "Chào mừng bạn đến tòa nhà!",
+    "ex": "Welcome to the building, hope your move went smoothly!"
+   },
+   {
+    "en": "I live right across the hall in...",
+    "vi": "Tôi sống ngay đối diện hành lang ở phòng...",
+    "ex": "I live right across the hall in apartment 402."
+   },
+   {
+    "en": "If you're looking for good food,...",
+    "vi": "Nếu bạn đang tìm đồ ăn ngon,...",
+    "ex": "If you're looking for good food, there's a great noodle shop around the corner."
+   },
+   {
+    "en": "Just a quick tip,...",
+    "vi": "Một mẹo nhỏ là...",
+    "ex": "Just a quick tip, the trash chute is open until 9 PM."
+   },
+   {
+    "en": "Don't hesitate to knock on my door.",
+    "vi": "Đừng ngần ngại gõ cửa phòng tôi nhé.",
+    "ex": "If you need an iron or extra scissors, don't hesitate to knock on my door."
+   },
+   {
+    "en": "Feel free to let me know.",
+    "vi": "Cứ thoải mái báo cho tôi biết nhé.",
+    "ex": "Feel free to let me know if you need any directions."
+   }
+  ],
+  "sample": "Hello! Welcome to the building! My name is Mai, and I live right across the hall in apartment 503. I saw you moving your boxes earlier and just wanted to say hi. If you're looking for groceries, there's a convenient supermarket on the ground floor, and a great pho spot just two doors down the street. Settling into a new place can be tricky, so please don't hesitate to knock on my door if you need anything or have questions about the building. Here's my phone number in case you need quick help!",
+  "tipVi": "Duy trì tông giọng thân thiện, hiếu khách và tránh đặt quá nhiều câu hỏi riêng tư trong lần gặp đầu tiên."
+ },
+ {
+  "id": "gt-gioi-thieu-3",
+  "level": "MEDIUM",
+  "title": "First Day Team Meeting Introduction",
+  "titleVi": "Giới thiệu bản thân trong cuộc họp nhóm đầu tiên",
+  "situationVi": "Đây là buổi họp chào mừng nhân viên mới tại một công ty công nghệ đa quốc gia. Quản lý yêu cầu bạn giới thiệu ngắn gọn về bản thân trước các đồng nghiệp trong nhóm.",
+  "task": "Introduce yourself to your new colleagues. Briefly explain your background and previous experience, your specific role in this team, and what kind of collaboration or projects you are most excited about.",
+  "mustVi": [
+   "Vị trí công việc mới và phòng ban phụ trách",
+   "Kinh nghiệm chuyên môn hoặc công việc nổi bật trước đây",
+   "Kỳ vọng hợp tác và mục tiêu đóng góp cho dự án sắp tới"
+  ],
+  "phrases": [
+   {
+    "en": "I'm thrilled to join the team as...",
+    "vi": "Tôi rất hào hứng được gia nhập đội ngũ với tư cách...",
+    "ex": "I'm thrilled to join the team as a product designer."
+   },
+   {
+    "en": "Prior to this role, I spent... years at...",
+    "vi": "Trước vị trí này, tôi đã làm việc... năm tại...",
+    "ex": "Prior to this role, I spent three years at a fintech startup."
+   },
+   {
+    "en": "My main focus will be on...",
+    "vi": "Trọng tâm chính của tôi sẽ là...",
+    "ex": "My main focus will be on optimizing customer onboarding."
+   },
+   {
+    "en": "I specialize in...",
+    "vi": "Chuyên môn của tôi là về...",
+    "ex": "I specialize in user research and agile workflows."
+   },
+   {
+    "en": "I'm really keen on collaborating with...",
+    "vi": "Tôi rất mong muốn được hợp tác cùng...",
+    "ex": "I'm really keen on collaborating with both the tech and design teams."
+   },
+   {
+    "en": "I look forward to hitting the ground running.",
+    "vi": "Tôi rất mong được bắt tay ngay vào công việc.",
+    "ex": "I look forward to hitting the ground running and learning from you all."
+   }
+  ],
+  "sample": "Good morning, everyone! I'm really thrilled to join the team today as the new UX/UI Designer. Prior to this role, I spent about four years working at an e-commerce startup, where I focused on mobile app redesigns and customer checkout optimization. Here at our company, my primary responsibility will be enhancing the self-service portal for regional clients. I'm passionate about data-driven design, and I'm particularly excited to collaborate closely with the development and marketing squads. I look forward to hitting the ground running and getting to know each of you over coffee this week!",
+  "tipVi": "Dùng cấu trúc chuyên nghiệp, tự tin nhưng khiêm tốn; nhấn mạnh tinh thần làm việc nhóm và đóng góp chung."
+ },
+ {
+  "id": "gt-gioi-thieu-4",
+  "level": "MEDIUM",
+  "title": "Networking at an Industry Conference",
+  "titleVi": "Kết nối giao lưu tại hội thảo chuyên ngành",
+  "situationVi": "Bạn đang tham gia giờ giải lao tại một hội thảo quốc tế về chuyển đổi số ở TP.HCM. Bạn chủ động tiến đến bắt chuyện với một chuyên gia nước ngoài đang đứng gần quầy cà phê.",
+  "task": "Strike up a conversation with the attendee. Introduce yourself and your company, share what brought you to this conference, and suggest connecting on LinkedIn to exchange insights later.",
+  "mustVi": [
+   "Lời chào bắt chuyện tự nhiên và giới thiệu bản thân / tổ chức",
+   "Lý do tham gia sự kiện và một chủ đề bạn thấy tâm đắc hôm nay",
+   "Đề xuất trao đổi thông tin liên lạc (LinkedIn/danh thiếp) để giữ liên lạc"
+  ],
+  "phrases": [
+   {
+    "en": "Do you mind if I join you?",
+    "vi": "Tôi có thể đứng cùng bạn được không?",
+    "ex": "Hi, do you mind if I join you? Great coffee break!"
+   },
+   {
+    "en": "I'm currently representing...",
+    "vi": "Hiện tại tôi đang đại diện cho...",
+    "ex": "I'm currently representing a logistics tech provider based in Da Nang."
+   },
+   {
+    "en": "What brought me here today was...",
+    "vi": "Điều thôi thúc tôi đến đây hôm nay là...",
+    "ex": "What brought me here today was the keynote on AI automation."
+   },
+   {
+    "en": "I found the panel discussion on... fascinating.",
+    "vi": "Tôi thấy phiên thảo luận về... rất thú vị.",
+    "ex": "I found the panel discussion on supply chain resilience fascinating."
+   },
+   {
+    "en": "Could we connect on LinkedIn?",
+    "vi": "Chúng ta có thể kết nối trên LinkedIn được không?",
+    "ex": "Could we connect on LinkedIn to keep the conversation going?"
+   },
+   {
+    "en": "I'd love to pick your brain on...",
+    "vi": "Tôi rất muốn xin thêm ý kiến/góc nhìn của bạn về...",
+    "ex": "I'd love to pick your brain on green logistics sometime."
+   }
+  ],
+  "sample": "Hi there, do you mind if I join you? That line for coffee is moving quickly! My name is Tuan, and I'm the operations lead at a renewable energy firm here in Vietnam. What brought me to this summit was the transition toward smart grid management. I actually found the morning panel on cloud infrastructure absolutely fascinating, especially the case studies on battery storage. Since your badge says you work on grid tech, I'd love to hear your perspective on local adoption. Could we connect on LinkedIn so we can stay in touch after the conference?",
+  "tipVi": "Mở đầu bằng ngữ cảnh chung (cà phê, phiên hội thảo) để tạo sự tự nhiên trước khi đưa ra lời đề nghị kết nối nghề nghiệp."
+ },
+ {
+  "id": "gt-gioi-thieu-5",
+  "level": "HARD",
+  "title": "Personal Pitch at Leadership Retreat",
+  "titleVi": "Định vị bản thân tại hội trại lãnh đạo quốc tế",
+  "situationVi": "Bạn tham gia ngày đầu tiên của một chương trình ươm mầm lãnh đạo trẻ khu vực Đông Nam Á. Ban tổ chức yêu cầu mỗi người chia sẻ một câu chuyện cá nhân ngắn để thể hiện giá trị cốt lõi định hình con đường của mình.",
+  "task": "Present your personal background and identity to the cohort. Explain a formative experience or core value that drives your career decisions, and articulate how you hope this experience will challenge your perspective.",
+  "mustVi": [
+   "Giới thiệu nguồn gốc văn hóa/bối cảnh sống và lĩnh vực bạn đang theo đuổi",
+   "Một trải nghiệm bước ngoặt hoặc giá trị cốt lõi định hình cách làm việc của bạn",
+   "Mục tiêu phát triển cá nhân và cam kết đóng góp cho tập thể trong chương trình"
+  ],
+  "phrases": [
+   {
+    "en": "A defining chapter of my journey was...",
+    "vi": "Một giai đoạn mang tính bước ngoặt trong hành trình của tôi là...",
+    "ex": "A defining chapter of my journey was leading a community relief project during the flood."
+   },
+   {
+    "en": "What truly drives me at my core is...",
+    "vi": "Điều thực sự thúc đẩy tôi tận sâu bên trong là...",
+    "ex": "What truly drives me at my core is expanding educational access."
+   },
+   {
+    "en": "Coming from a background in..., I've learned that...",
+    "vi": "Xuất thân từ nền tảng..., tôi đã học được rằng...",
+    "ex": "Coming from a background in grassroots NGOs, I've learned that empathy precedes strategy."
+   },
+   {
+    "en": "That pivotal moment shifted my perspective on...",
+    "vi": "Thời điểm then chốt đó đã làm thay đổi góc nhìn của tôi về...",
+    "ex": "That pivotal moment shifted my perspective on sustainable leadership."
+   },
+   {
+    "en": "I hold myself to the value of...",
+    "vi": "Tôi luôn kiên định với giá trị về...",
+    "ex": "I hold myself to the value of radical transparency and accountability."
+   },
+   {
+    "en": "I'm eager to unlearn and grow alongside...",
+    "vi": "Tôi háo hức được gạt bỏ định kiến cũ và cùng trưởng thành bên cạnh...",
+    "ex": "I'm eager to unlearn and grow alongside changemakers from across the region."
+   }
+  ],
+  "sample": "Good evening everyone. I'm Ha, an environmental educator from central Vietnam. Coming from a coastal community repeatedly affected by climate disruptions, what truly drives me at my core is climate resilience education for rural youth. A defining chapter of my journey was launching a community waste reduction project where initial resistance taught me that empathy must always precede strategy. I hold myself to the value of authentic, community-first leadership. I'm eager to unlearn my own blind spots, embrace divergent viewpoints from across Southeast Asia, and forge lasting partnerships that turn local insights into regional solutions.",
+  "tipVi": "Sử dụng lối kể chuyện ngắn gọn, giàu hình ảnh và các từ vựng diễn đạt chiều sâu cảm xúc cùng tư duy chiến lược."
+ }
+]

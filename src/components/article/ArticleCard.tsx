@@ -84,7 +84,7 @@ export function ArticleCard({
                   uppercase
                 />
               )}
-              <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
+              <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 13 }}>
                 {topicLabel(article.topic)}
               </Text>
             </View>

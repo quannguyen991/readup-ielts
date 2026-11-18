@@ -1,0 +1,516 @@
+[
+  {
+    "id": "zh-g-h2-17",
+    "level": 2,
+    "order": 17,
+    "title": "Trợ từ 得 và 地",
+    "titleZh": "得和地",
+    "summary": "Học xong, bạn phân biệt được 地 đứng trước động từ và 得 đứng sau động từ.",
+    "minutes": 8,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Hai trợ từ, hai vị trí",
+        "body": "地 nối từ chỉ cách thức với động từ. 得 đứng sau động từ để dẫn ra phần bổ sung ý về mức độ.",
+        "examples": [
+          {
+            "zh": "我弟弟汉语说得很好。",
+            "py": "wǒ dìdi Hànyǔ shuō de hěn hǎo",
+            "vi": "Em trai tôi nói tiếng Trung rất tốt.",
+            "mark": "得很好"
+          },
+          {
+            "zh": "小狗跑得很快，我看不见它了。",
+            "py": "xiǎogǒu pǎo de hěn kuài wǒ kàn bú jiàn tā le",
+            "vi": "Chú chó con chạy rất nhanh, tôi không nhìn thấy nó nữa.",
+            "mark": "得很快"
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nói cách làm với 地",
+        "body": "Dùng 地 khi muốn nói một hành động được thực hiện như thế nào. Cụm có 地 thường đứng ngay trước động từ.",
+        "examples": [
+          {
+            "zh": "妈妈高兴地给我做饭。",
+            "py": "māma gāoxìng de gěi wǒ zuòfàn",
+            "vi": "Mẹ vui vẻ nấu cơm cho tôi.",
+            "mark": "高兴地给我做饭"
+          },
+          {
+            "zh": "妹妹高兴地跑进教室。",
+            "py": "mèimei gāoxìng de pǎo jìn jiàoshì",
+            "vi": "Em gái vui vẻ chạy vào lớp học.",
+            "mark": "高兴地跑"
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Đặt 得 sau động từ",
+        "body": "Muốn bổ sung mức độ cho hành động, dùng động từ + 得 + phần miêu tả. Nếu động từ có tân ngữ, có thể nhắc lại động từ trước 得.",
+        "formula": "Động từ + 得 + phần miêu tả",
+        "examples": [
+          {
+            "zh": "今天我和朋友高兴地去商店买衣服。",
+            "py": "jīntiān wǒ hé péngyou gāoxìng de qù shāngdiàn mǎi yīfu",
+            "vi": "Hôm nay tôi và bạn vui vẻ đi cửa hàng mua quần áo.",
+            "mark": "高兴地去"
+          },
+          {
+            "zh": "爸爸做饭做得很好，大家都喜欢吃。",
+            "py": "bàba zuòfàn zuò de hěn hǎo dàjiā dōu xǐhuan chī",
+            "vi": "Bố nấu ăn rất ngon, mọi người đều thích ăn.",
+            "mark": "做得很好"
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đừng đổi vị trí hai trợ từ",
+        "body": "Người học thường dùng nhầm 地 và 得 vì cả hai đều đọc là de. Hãy nhớ vị trí của chúng so với động từ.",
+        "mistakes": [
+          {
+            "wrong": "他汉语说地很好。",
+            "right": "他汉语说得很好。",
+            "why": "得 đứng sau động từ 说 để bổ sung mức độ nói tốt đến đâu."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Điền vào câu “她高兴___给妈妈打电话。”",
+        "options": [
+          "地",
+          "得",
+          "的"
+        ],
+        "answer": 0,
+        "explain": "地 đứng trước cụm động từ để chỉ cách cô ấy gọi điện."
+      },
+      {
+        "q": "Trong mẫu động từ + ___ + phần miêu tả mức độ, chọn trợ từ nào?",
+        "options": [
+          "地",
+          "得",
+          "的"
+        ],
+        "answer": 1,
+        "explain": "得 đứng sau động từ và dẫn ra phần miêu tả mức độ."
+      },
+      {
+        "q": "Câu nào dùng đúng 得 để nói tiếng Trung tốt?",
+        "options": [
+          "他汉语说地很好。",
+          "他说得汉语很好。",
+          "他汉语说得很好。"
+        ],
+        "answer": 2,
+        "explain": "得 đứng sau 说 và trước phần miêu tả 很好."
+      },
+      {
+        "q": "Trạng ngữ chỉ cách làm thường đứng ở đâu?",
+        "options": [
+          "Trước động từ và thường dùng 地",
+          "Sau động từ và dùng 得",
+          "Sau danh từ và dùng 的"
+        ],
+        "answer": 0,
+        "explain": "地 nối từ chỉ cách thức với động từ theo sau."
+      },
+      {
+        "q": "Trong “高兴地唱歌”, 地 có tác dụng gì?",
+        "options": [
+          "Đánh dấu sở hữu",
+          "Đưa từ chỉ cách thức lên trước động từ",
+          "Dẫn ra phần bổ sung mức độ sau động từ"
+        ],
+        "answer": 1,
+        "explain": "高兴地 đứng trước 唱歌 để nói cách người đó hát."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h2-18",
+    "level": 2,
+    "order": 18,
+    "title": "Cụm chữ 的",
+    "titleZh": "的字短语",
+    "summary": "Học xong, bạn dùng 的 để tạo cụm danh từ và lược danh từ khi ngữ cảnh đã rõ.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Cụm từ kết thúc bằng 的",
+        "body": "Khi người nghe đã biết danh từ được nhắc đến, ta có thể lược danh từ đó và giữ phần bổ nghĩa cùng 的. Cụm còn lại đảm nhiệm vai trò như một danh từ.",
+        "examples": [
+          {
+            "zh": "这件衣服是妈妈的，那件是我的。",
+            "py": "zhè jiàn yīfu shì māma de nà jiàn shì wǒ de",
+            "vi": "Bộ quần áo này là của mẹ, bộ kia là của tôi."
+          },
+          {
+            "zh": "桌上的红色杯子是妹妹的。",
+            "py": "zhuō shàng de hóngsè bēizi shì mèimei de",
+            "vi": "Chiếc cốc màu đỏ trên bàn là của em gái."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi danh từ đã rõ",
+        "body": "Dùng cụm 的 khi đang chọn hoặc nhắc lại một người, đồ vật đã được xác định trong ngữ cảnh. Cách nói này giúp tránh lặp lại danh từ.",
+        "examples": [
+          {
+            "zh": "我喜欢红色的衣服，哥哥喜欢黑色的。",
+            "py": "wǒ xǐhuan hóngsè de yīfu gēge xǐhuan hēisè de",
+            "vi": "Tôi thích quần áo màu đỏ, anh trai thích màu đen."
+          },
+          {
+            "zh": "这件太大了，我想拿小一点儿的。",
+            "py": "zhè jiàn tài dà le wǒ xiǎng ná xiǎo yìdiǎnr de",
+            "vi": "Cái này rộng quá, tôi muốn lấy cái nhỏ hơn một chút."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Bỏ danh từ đã biết",
+        "body": "Cụm bổ nghĩa + 的 có thể thay cho danh từ khi ngữ cảnh đã cho biết đó là thứ gì. Cụm của người sở hữu cũng thường có dạng đại từ hoặc danh từ + 的.",
+        "formula": "Phần bổ nghĩa + 的 + (danh từ đã rõ)",
+        "examples": [
+          {
+            "zh": "桌上有几件衣服，黑色的是爸爸的。",
+            "py": "zhuō shàng yǒu jǐ jiàn yīfu hēisè de shì bàba de",
+            "vi": "Trên bàn có vài bộ quần áo, bộ màu đen là của bố."
+          },
+          {
+            "zh": "这杯茶是我的，那杯是姐姐的。",
+            "py": "zhè bēi chá shì wǒ de nà bēi shì jiějie de",
+            "vi": "Cốc trà này là của tôi, cốc kia là của chị."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đừng lược 的 khi nói sở hữu",
+        "body": "Khi đại từ hoặc danh từ chỉ người sở hữu đứng trước một danh từ đã được lược, cần giữ 的 để câu trọn nghĩa.",
+        "mistakes": [
+          {
+            "wrong": "这件衣服是我。",
+            "right": "这件衣服是我的。",
+            "why": "Khi nói bộ quần áo thuộc về tôi, thêm 的 sau 我 để tạo cụm chỉ sở hữu."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Trong câu “这件衣服是___”, chọn cách nói sở hữu đúng.",
+        "options": [
+          "我的",
+          "我地",
+          "我得"
+        ],
+        "answer": 0,
+        "explain": "我的 có nghĩa là của tôi và 的 đánh dấu quan hệ sở hữu."
+      },
+      {
+        "q": "Cụm nào có thể mang nghĩa “cái màu đỏ” khi danh từ đã rõ?",
+        "options": [
+          "红色得",
+          "红色的",
+          "红色地"
+        ],
+        "answer": 1,
+        "explain": "红色的 có thể thay cho danh từ đã rõ trong ngữ cảnh."
+      },
+      {
+        "q": "Câu nào dùng cụm 的 để thay danh từ đã rõ?",
+        "options": [
+          "我红色衣服喜欢。",
+          "我喜欢的红色。",
+          "我喜欢红色的。"
+        ],
+        "answer": 2,
+        "explain": "红色的 là cụm danh từ khi người nghe đã biết đang nói về món đồ nào."
+      },
+      {
+        "q": "Chọn câu tự nhiên để nói “Bộ quần áo này là của mẹ”.",
+        "options": [
+          "这件衣服是妈妈的。",
+          "这件衣服是妈妈地。",
+          "这件衣服是妈妈得。"
+        ],
+        "answer": 0,
+        "explain": "的 đứng sau 妈妈 để chỉ quyền sở hữu."
+      },
+      {
+        "q": "Trong “黑色的是爸爸的”, “黑色的” có nghĩa gì?",
+        "options": [
+          "Đang mặc màu đen",
+          "Món màu đen đã rõ theo ngữ cảnh",
+          "Của màu đen"
+        ],
+        "answer": 1,
+        "explain": "Danh từ chỉ món đồ được lược vì ngữ cảnh đã cho biết."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h2-19",
+    "level": 2,
+    "order": 19,
+    "title": "Cụm liên động và cụm kiêm ngữ",
+    "titleZh": "连谓和兼语",
+    "summary": "Học xong, bạn nhận ra các động tác cùng chủ thể và mẫu câu có tân ngữ làm chủ thể cho động tác sau.",
+    "minutes": 9,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Nối hành động hoặc nối chủ thể",
+        "body": "Cụm liên động có nhiều động từ cùng nói về một chủ thể. Trong cụm kiêm ngữ, tân ngữ của động từ đầu đồng thời là chủ thể của động từ tiếp theo.",
+        "examples": [
+          {
+            "zh": "我今天去商店买东西。",
+            "py": "wǒ jīntiān qù shāngdiàn mǎi dōngxi",
+            "vi": "Hôm nay tôi đi cửa hàng mua đồ."
+          },
+          {
+            "zh": "老师让我进教室读书。",
+            "py": "lǎoshī ràng wǒ jìn jiàoshì dúshū",
+            "vi": "Thầy cô bảo tôi vào lớp học bài."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Nói chuỗi hành động có liên quan",
+        "body": "Cụm liên động thường kể các hành động theo trình tự hoặc nói cách một người đi đến nơi để làm việc gì. Cụm kiêm ngữ thường diễn tả lời nhờ, lời mời hoặc yêu cầu.",
+        "examples": [
+          {
+            "zh": "爸爸坐公交车去公司工作。",
+            "py": "bàba zuò gōngjiāochē qù gōngsī gōngzuò",
+            "vi": "Bố đi xe buýt đến công ty làm việc."
+          },
+          {
+            "zh": "妹妹回家看电视。",
+            "py": "mèimei huí jiā kàn diànshì",
+            "vi": "Em gái về nhà xem ti vi."
+          }
+        ]
+      },
+      {
+        "label": "Cấu trúc",
+        "title": "Nhìn vào chủ thể của động từ sau",
+        "body": "Với cụm liên động, chủ thể thường thực hiện cả hai hành động. Với cụm kiêm ngữ, người đứng sau động từ đầu cũng là người thực hiện hành động tiếp theo.",
+        "formula": "Liên động: S + V1 + ... + V2; Kiêm ngữ: S + V1 + O + V2",
+        "examples": [
+          {
+            "zh": "我去学校学习汉语。",
+            "py": "wǒ qù xuéxiào xuéxí Hànyǔ",
+            "vi": "Tôi đến trường học tiếng Trung."
+          },
+          {
+            "zh": "妈妈让我给爸爸打电话。",
+            "py": "māma ràng wǒ gěi bàba dǎ diànhuà",
+            "vi": "Mẹ bảo tôi gọi điện cho bố."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đừng bỏ người thực hiện hành động sau",
+        "body": "Trong câu kiêm ngữ, cần nói rõ người được nhờ hoặc được yêu cầu trước động từ chỉ hành động tiếp theo.",
+        "mistakes": [
+          {
+            "wrong": "老师让进教室读书。",
+            "right": "老师让我进教室读书。",
+            "why": "我 là tân ngữ của 让 và cũng là người vào lớp đọc sách."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Câu nào là cụm liên động có cùng chủ thể?",
+        "options": [
+          "我去商店买东西。",
+          "我让妈妈去商店。",
+          "妈妈在家。"
+        ],
+        "answer": 0,
+        "explain": "我 vừa đi đến cửa hàng vừa mua đồ."
+      },
+      {
+        "q": "Câu nào là cụm kiêm ngữ, với người sau 让 làm chủ thể cho động tác tiếp theo?",
+        "options": [
+          "老师进教室读书。",
+          "老师让我进教室读书。",
+          "我去教室读书。"
+        ],
+        "answer": 1,
+        "explain": "我 là người được bảo và cũng là người vào lớp đọc sách."
+      },
+      {
+        "q": "Điền vào câu “妈妈___弟弟回家吃饭。”",
+        "options": [
+          "去",
+          "地",
+          "让"
+        ],
+        "answer": 2,
+        "explain": "让 nối người được yêu cầu với hành động tiếp theo."
+      },
+      {
+        "q": "Trong “我坐车去公司工作”, ai thực hiện các hành động?",
+        "options": [
+          "我",
+          "公司",
+          "车"
+        ],
+        "answer": 0,
+        "explain": "Cùng một chủ thể 我 thực hiện việc đi xe và đi làm."
+      },
+      {
+        "q": "Công thức rút gọn của cụm kiêm ngữ là gì?",
+        "options": [
+          "S + 的 + danh từ",
+          "S + V + O + V...",
+          "S + V + 得 + phần miêu tả"
+        ],
+        "answer": 1,
+        "explain": "Tân ngữ của động từ đầu cũng là chủ thể của động từ kế tiếp."
+      }
+    ]
+  },
+  {
+    "id": "zh-g-h2-20",
+    "level": 2,
+    "order": 20,
+    "title": "Cấu trúc 要/快要/就要……了",
+    "titleZh": "要……了",
+    "summary": "Học xong, bạn dùng 要、快要、就要……了 để nói một việc sắp xảy ra.",
+    "minutes": 7,
+    "steps": [
+      {
+        "label": "Định nghĩa",
+        "title": "Báo việc sắp xảy ra",
+        "body": "要、快要、就要……了 diễn tả việc sắp xảy ra hoặc trạng thái sắp thay đổi. Cụm động từ đứng sau 要、快要、就要 và 了 thường đứng cuối câu.",
+        "examples": [
+          {
+            "zh": "考试快要开始了，学生都在教室里。",
+            "py": "kǎoshì kuàiyào kāishǐ le xuésheng dōu zài jiàoshì lǐ",
+            "vi": "Kỳ thi sắp bắt đầu, học sinh đều ở trong lớp."
+          },
+          {
+            "zh": "天要黑了，弟弟还在学校。",
+            "py": "tiān yào hēi le dìdi hái zài xuéxiào",
+            "vi": "Trời sắp tối mà em trai vẫn còn ở trường."
+          }
+        ]
+      },
+      {
+        "label": "Dùng khi nào",
+        "title": "Khi sự việc đến gần",
+        "body": "Dùng cấu trúc này khi một hành động hoặc thời điểm đang đến gần. 快要 thường nhấn mạnh sự việc sắp xảy ra, còn 就要 có thể nhấn mạnh việc đó đến ngay hoặc gắn với mốc thời gian cụ thể.",
+        "examples": [
+          {
+            "zh": "妈妈快要回家了，我在门口等她。",
+            "py": "māma kuàiyào huí jiā le wǒ zài ménkǒu děng tā",
+            "vi": "Mẹ sắp về nhà, tôi đang đợi mẹ ở cửa."
+          },
+          {
+            "zh": "电影就要开始了，我们快进去吧。",
+            "py": "diànyǐng jiùyào kāishǐ le wǒmen kuài jìnqù ba",
+            "vi": "Phim sắp bắt đầu rồi, chúng ta mau vào thôi."
+          }
+        ]
+      },
+      {
+        "label": "Quy tắc 1",
+        "title": "Đặt 了 ở cuối câu",
+        "body": "Thứ tự cơ bản là chủ thể + 要、快要 hoặc 就要 + cụm động từ + 了. Khi muốn nêu rõ mốc thời gian, có thể đặt mốc đó trước cụm này.",
+        "formula": "Chủ thể + 要/快要/就要 + cụm động từ + 了",
+        "examples": [
+          {
+            "zh": "明天就要考试了，我今天在家看书。",
+            "py": "míngtiān jiùyào kǎoshì le wǒ jīntiān zài jiā kànshū",
+            "vi": "Ngày mai sắp thi rồi, hôm nay tôi ở nhà đọc sách."
+          },
+          {
+            "zh": "火车要开了，爸爸还没到车站。",
+            "py": "huǒchē yào kāi le bàba hái méi dào chēzhàn",
+            "vi": "Tàu sắp chạy mà bố vẫn chưa đến ga."
+          }
+        ]
+      },
+      {
+        "label": "Lỗi hay mắc",
+        "title": "Đừng đặt 了 trước động từ",
+        "body": "Trong cấu trúc này, 了 báo sự việc sắp xảy ra nên thường đứng sau cụm động từ, ở cuối câu.",
+        "mistakes": [
+          {
+            "wrong": "电影就要了开始。",
+            "right": "电影就要开始了。",
+            "why": "Cụm động từ 开始 đứng trước 了 ở cuối câu."
+          }
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Điền vào “电影___开始了，我们快进去吧。”",
+        "options": [
+          "就要",
+          "很快",
+          "地要"
+        ],
+        "answer": 0,
+        "explain": "就要 đứng trước động từ để nói phim sắp bắt đầu."
+      },
+      {
+        "q": "Câu nào có nghĩa “trời sắp tối”?",
+        "options": [
+          "天黑就要。",
+          "天要黑了。",
+          "天了要黑。"
+        ],
+        "answer": 1,
+        "explain": "要 đứng trước 黑 và 了 đứng cuối câu."
+      },
+      {
+        "q": "Chọn câu có vị trí đúng của 了.",
+        "options": [
+          "电影快要了开始。",
+          "电影了快要开始。",
+          "电影快要开始了。"
+        ],
+        "answer": 2,
+        "explain": "了 đứng sau cụm động từ 开始 ở cuối câu."
+      },
+      {
+        "q": "Cụm nào có thể đứng trước cụm động từ để báo việc sắp xảy ra?",
+        "options": [
+          "要、快要、就要",
+          "得、地",
+          "的、了"
+        ],
+        "answer": 0,
+        "explain": "要、快要、就要 đứng trước hành động sắp xảy ra."
+      },
+      {
+        "q": "Trong “明天就要考试了”, ý chính là gì?",
+        "options": [
+          "Kỳ thi đã xong hôm nay",
+          "Ngày mai sắp thi",
+          "Ngày mai không thi"
+        ],
+        "answer": 1,
+        "explain": "就要……了 diễn tả sự việc sắp đến, ở đây là kỳ thi vào ngày mai."
+      }
+    ]
+  }
+]

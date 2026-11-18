@@ -1,0 +1,449 @@
+[
+  {
+    "id": "zh-d-h2-04",
+    "level": 2,
+    "order": 4,
+    "title": "Chuyển nhà",
+    "titleZh": "搬家",
+    "topic": "Nhà ở",
+    "scene": "Hai người bạn nói về căn nhà mới và hẹn giúp nhau chuyển nhà.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "小林",
+        "zh": "你家快要搬家了吗？",
+        "py": "Nǐ jiā kuài yào bānjiā le ma",
+        "vi": "Nhà bạn sắp chuyển nhà rồi à?"
+      },
+      {
+        "who": "小芳",
+        "zh": "是的，我们下周搬到新家。",
+        "py": "Shì de wǒmen xiàzhōu bān dào xīnjiā",
+        "vi": "Ừ, tuần sau chúng mình chuyển đến nhà mới."
+      },
+      {
+        "who": "小林",
+        "zh": "新家有几个房间？",
+        "py": "Xīnjiā yǒu jǐ ge fángjiān",
+        "vi": "Nhà mới có mấy phòng?"
+      },
+      {
+        "who": "小芳",
+        "zh": "新家有两个房间，还有厨房。",
+        "py": "Xīnjiā yǒu liǎng ge fángjiān hái yǒu chúfáng",
+        "vi": "Nhà mới có hai phòng và cả nhà bếp nữa."
+      },
+      {
+        "who": "小林",
+        "zh": "你想住大房间还是小房间？",
+        "py": "Nǐ xiǎng zhù dà fángjiān háishi xiǎo fángjiān",
+        "vi": "Bạn muốn ở phòng lớn hay phòng nhỏ?"
+      },
+      {
+        "who": "小芳",
+        "zh": "我想住大房间，窗户也很大。",
+        "py": "Wǒ xiǎng zhù dà fángjiān chuānghu yě hěn dà",
+        "vi": "Mình muốn ở phòng lớn, cửa sổ cũng rộng lắm."
+      },
+      {
+        "who": "小林",
+        "zh": "你周六可以来帮我搬家吗？",
+        "py": "Nǐ zhōuliù kěyǐ lái bāng wǒ bānjiā ma",
+        "vi": "Thứ Bảy bạn có thể đến giúp mình chuyển nhà không?"
+      },
+      {
+        "who": "小芳",
+        "zh": "好啊，我给你新家的地址。",
+        "py": "Hǎo a wǒ gěi nǐ xīnjiā de dìzhǐ",
+        "vi": "Được chứ, mình gửi bạn địa chỉ nhà mới nhé."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "搬家",
+        "py": "bānjiā",
+        "vi": "chuyển nhà"
+      },
+      {
+        "zh": "下周",
+        "py": "xiàzhōu",
+        "vi": "tuần sau"
+      },
+      {
+        "zh": "房间",
+        "py": "fángjiān",
+        "vi": "phòng"
+      },
+      {
+        "zh": "厨房",
+        "py": "chúfáng",
+        "vi": "nhà bếp"
+      },
+      {
+        "zh": "窗户",
+        "py": "chuānghu",
+        "vi": "cửa sổ"
+      },
+      {
+        "zh": "地址",
+        "py": "dìzhǐ",
+        "vi": "địa chỉ"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h2-20",
+      "zh-g-h2-14",
+      "zh-g-h2-10"
+    ],
+    "quiz": [
+      {
+        "q": "Nhà mới có mấy phòng?",
+        "options": [
+          "Hai phòng",
+          "Ba phòng",
+          "Một phòng"
+        ],
+        "answer": 0,
+        "explain": "小芳 nói nhà mới có hai phòng."
+      },
+      {
+        "q": "小芳 muốn ở phòng nào?",
+        "options": [
+          "Phòng nhỏ",
+          "Phòng lớn",
+          "Nhà bếp"
+        ],
+        "answer": 1,
+        "explain": "小芳 nói mình muốn ở phòng lớn."
+      },
+      {
+        "q": "小芳 chuyển đến nhà mới vào khi nào?",
+        "options": [
+          "Tuần này",
+          "Tháng sau",
+          "Tuần sau"
+        ],
+        "answer": 2,
+        "explain": "小芳 nói tuần sau họ chuyển đến nhà mới."
+      },
+      {
+        "q": "小芳 sẽ gửi gì cho 小林?",
+        "options": [
+          "Ảnh căn phòng",
+          "Địa chỉ nhà mới",
+          "Chìa khóa nhà"
+        ],
+        "answer": 1,
+        "explain": "小芳 nói sẽ gửi địa chỉ nhà mới cho 小林."
+      },
+      {
+        "q": "小林 muốn 小芳 giúp việc gì vào thứ Bảy?",
+        "options": [
+          "Chuyển nhà",
+          "Nấu ăn",
+          "Dọn phòng"
+        ],
+        "answer": 0,
+        "explain": "小林 hỏi 小芳 có thể đến giúp chuyển nhà vào thứ Bảy không."
+      }
+    ]
+  },
+  {
+    "id": "zh-d-h2-05",
+    "level": 2,
+    "order": 5,
+    "title": "Chọn quần áo",
+    "titleZh": "选衣服",
+    "topic": "Quần áo",
+    "scene": "Hai người bạn chọn quần áo để mặc trong ngày nóng.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "小美",
+        "zh": "你今天想穿哪件衣服？",
+        "py": "Nǐ jīntiān xiǎng chuān nǎ jiàn yīfu",
+        "vi": "Hôm nay bạn muốn mặc bộ quần áo nào?"
+      },
+      {
+        "who": "小丽",
+        "zh": "我想穿白色的衣服。",
+        "py": "Wǒ xiǎng chuān báisè de yīfu",
+        "vi": "Mình muốn mặc quần áo màu trắng."
+      },
+      {
+        "who": "小美",
+        "zh": "你觉得白色比黑色好看吗？",
+        "py": "Nǐ juéde báisè bǐ hēisè hǎokàn ma",
+        "vi": "Bạn thấy màu trắng đẹp hơn màu đen à?"
+      },
+      {
+        "who": "小丽",
+        "zh": "我觉得白色比黑色好看。",
+        "py": "Wǒ juéde báisè bǐ hēisè hǎokàn",
+        "vi": "Mình thấy màu trắng đẹp hơn màu đen."
+      },
+      {
+        "who": "小美",
+        "zh": "你想穿这件还是那件？",
+        "py": "Nǐ xiǎng chuān zhè jiàn háishi nà jiàn",
+        "vi": "Bạn muốn mặc bộ này hay bộ kia?"
+      },
+      {
+        "who": "小丽",
+        "zh": "我想穿白色的，今天很热。",
+        "py": "Wǒ xiǎng chuān báisè de jīntiān hěn rè",
+        "vi": "Mình muốn mặc đồ màu trắng, hôm nay nóng lắm."
+      },
+      {
+        "who": "小美",
+        "zh": "那你先把衣服穿好吧。",
+        "py": "Nà nǐ xiān bǎ yīfu chuān hǎo ba",
+        "vi": "Vậy bạn mặc quần áo vào trước đi."
+      },
+      {
+        "who": "小丽",
+        "zh": "我穿好了就给你看。",
+        "py": "Wǒ chuān hǎo le jiù gěi nǐ kàn",
+        "vi": "Mình mặc xong sẽ cho bạn xem."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "衣服",
+        "py": "yīfu",
+        "vi": "quần áo"
+      },
+      {
+        "zh": "穿",
+        "py": "chuān",
+        "vi": "mặc"
+      },
+      {
+        "zh": "白色",
+        "py": "báisè",
+        "vi": "màu trắng"
+      },
+      {
+        "zh": "黑色",
+        "py": "hēisè",
+        "vi": "màu đen"
+      },
+      {
+        "zh": "好看",
+        "py": "hǎokàn",
+        "vi": "đẹp"
+      },
+      {
+        "zh": "热",
+        "py": "rè",
+        "vi": "nóng"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h2-05",
+      "zh-g-h2-14",
+      "zh-g-h2-01"
+    ],
+    "quiz": [
+      {
+        "q": "小丽 muốn mặc quần áo màu gì?",
+        "options": [
+          "Màu trắng",
+          "Màu đen",
+          "Màu xanh"
+        ],
+        "answer": 0,
+        "explain": "小丽 nói mình muốn mặc quần áo màu trắng."
+      },
+      {
+        "q": "小丽 thấy màu nào đẹp hơn?",
+        "options": [
+          "Màu đen",
+          "Màu trắng",
+          "Hai màu đẹp như nhau"
+        ],
+        "answer": 1,
+        "explain": "小丽 nói màu trắng đẹp hơn màu đen."
+      },
+      {
+        "q": "Hôm nay thời tiết thế nào?",
+        "options": [
+          "Trời lạnh",
+          "Trời mưa",
+          "Trời nóng"
+        ],
+        "answer": 2,
+        "explain": "小丽 nói hôm nay trời nóng."
+      },
+      {
+        "q": "小美 bảo 小丽 làm gì trước?",
+        "options": [
+          "Đi ra ngoài",
+          "Mặc quần áo",
+          "Chọn màu đen"
+        ],
+        "answer": 1,
+        "explain": "小美 bảo 小丽 mặc quần áo vào trước."
+      },
+      {
+        "q": "Mặc xong, 小丽 sẽ làm gì?",
+        "options": [
+          "Cho 小美 xem",
+          "Đi mua quần áo",
+          "Về nhà"
+        ],
+        "answer": 0,
+        "explain": "小丽 nói mặc xong sẽ cho 小美 xem."
+      }
+    ]
+  },
+  {
+    "id": "zh-d-h2-06",
+    "level": 2,
+    "order": 6,
+    "title": "Buổi tối sau khi về nhà",
+    "titleZh": "晚上回家以后",
+    "topic": "Sinh hoạt hằng ngày",
+    "scene": "Hai người bạn kể cho nhau nghe về buổi tối hôm trước và sáng hôm nay.",
+    "minutes": 5,
+    "lines": [
+      {
+        "who": "小明",
+        "zh": "你昨天晚上几点回家？",
+        "py": "Nǐ zuótiān wǎnshang jǐ diǎn huí jiā",
+        "vi": "Tối qua bạn về nhà lúc mấy giờ?"
+      },
+      {
+        "who": "小华",
+        "zh": "我九点到家，一到家就吃饭。",
+        "py": "Wǒ jiǔ diǎn dào jiā yí dào jiā jiù chī fàn",
+        "vi": "Mình về đến nhà lúc chín giờ, vừa về là ăn cơm."
+      },
+      {
+        "who": "小明",
+        "zh": "你吃完饭以后做什么？",
+        "py": "Nǐ chī wán fàn yǐhòu zuò shénme",
+        "vi": "Ăn cơm xong bạn làm gì?"
+      },
+      {
+        "who": "小华",
+        "zh": "我看书看了一个小时。",
+        "py": "Wǒ kàn shū kàn le yí ge xiǎoshí",
+        "vi": "Mình đọc sách một tiếng."
+      },
+      {
+        "who": "小明",
+        "zh": "后来你还做什么了？",
+        "py": "Hòulái nǐ hái zuò shénme le",
+        "vi": "Sau đó bạn còn làm gì nữa?"
+      },
+      {
+        "who": "小华",
+        "zh": "我洗了衣服，还听了音乐。",
+        "py": "Wǒ xǐ le yīfu hái tīng le yīnyuè",
+        "vi": "Mình giặt quần áo, còn nghe nhạc nữa."
+      },
+      {
+        "who": "小明",
+        "zh": "你今天早上起得早吗？",
+        "py": "Nǐ jīntiān zǎoshang qǐ de zǎo ma",
+        "vi": "Sáng nay bạn dậy sớm không?"
+      },
+      {
+        "who": "小华",
+        "zh": "我六点就起床了，没觉得累。",
+        "py": "Wǒ liù diǎn jiù qǐchuáng le méi juéde lèi",
+        "vi": "Mình dậy từ sáu giờ, không thấy mệt."
+      }
+    ],
+    "keyWords": [
+      {
+        "zh": "昨天",
+        "py": "zuótiān",
+        "vi": "hôm qua"
+      },
+      {
+        "zh": "回家",
+        "py": "huí jiā",
+        "vi": "về nhà"
+      },
+      {
+        "zh": "吃饭",
+        "py": "chī fàn",
+        "vi": "ăn cơm"
+      },
+      {
+        "zh": "看书",
+        "py": "kàn shū",
+        "vi": "đọc sách"
+      },
+      {
+        "zh": "一个小时",
+        "py": "yí ge xiǎoshí",
+        "vi": "một tiếng"
+      },
+      {
+        "zh": "起床",
+        "py": "qǐchuáng",
+        "vi": "thức dậy"
+      }
+    ],
+    "grammarIds": [
+      "zh-g-h2-04",
+      "zh-g-h2-25",
+      "zh-g-h2-03"
+    ],
+    "quiz": [
+      {
+        "q": "小华 về đến nhà lúc mấy giờ?",
+        "options": [
+          "Chín giờ",
+          "Tám giờ",
+          "Mười giờ"
+        ],
+        "answer": 0,
+        "explain": "小华 nói mình về đến nhà lúc chín giờ."
+      },
+      {
+        "q": "Vừa về đến nhà, 小华 làm gì?",
+        "options": [
+          "Nghe nhạc",
+          "Ăn cơm",
+          "Đọc sách"
+        ],
+        "answer": 1,
+        "explain": "小华 nói vừa về đến nhà là ăn cơm."
+      },
+      {
+        "q": "小华 đọc sách trong bao lâu?",
+        "options": [
+          "Nửa tiếng",
+          "Hai tiếng",
+          "Một tiếng"
+        ],
+        "answer": 2,
+        "explain": "小华 nói mình đọc sách một tiếng."
+      },
+      {
+        "q": "Sau đó 小华 còn làm gì?",
+        "options": [
+          "Nấu cơm",
+          "Giặt quần áo và nghe nhạc",
+          "Đi học"
+        ],
+        "answer": 1,
+        "explain": "Sau đó 小华 giặt quần áo và nghe nhạc."
+      },
+      {
+        "q": "Sáng nay 小华 thức dậy lúc mấy giờ?",
+        "options": [
+          "Sáu giờ",
+          "Bảy giờ",
+          "Tám giờ"
+        ],
+        "answer": 0,
+        "explain": "小华 nói mình dậy lúc sáu giờ."
+      }
+    ]
+  }
+]

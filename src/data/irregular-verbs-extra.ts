@@ -1,0 +1,102 @@
+/**
+ * Bổ sung cho `irregular-verbs.ts`: nhóm động từ theo quy luật âm (học theo cụm dễ nhớ hơn học lẻ)
+ * và câu ví dụ cho các động từ gặp nhiều nhất. Do Band 9 tự biên soạn.
+ */
+
+export type SoundGroup = {
+  id: string;
+  title: string;
+  /** Mẹo ngắn bằng tiếng Việt. */
+  tip: string;
+  verbs: readonly string[];
+};
+
+export const SOUND_GROUPS: readonly SoundGroup[] = [
+  { id: 'i-a-u', title: 'i → a → u', tip: 'Nguyên âm đổi theo thứ tự i, a, u: sing – sang – sung.', verbs: ['begin', 'drink', 'ring', 'shrink', 'sing', 'sink', 'spring', 'stink', 'swim'] },
+  { id: 'ought', title: '-ought / -aught', tip: 'V2 và V3 giống nhau, tận cùng bằng -ought hoặc -aught.', verbs: ['bring', 'buy', 'catch', 'fight', 'seek', 'teach', 'think'] },
+  { id: 'ew-own', title: '-ew → -own', tip: 'V2 tận cùng -ew, V3 tận cùng -own: know – knew – known.', verbs: ['blow', 'draw', 'fly', 'grow', 'know', 'throw'] },
+  { id: 'oke-oken', title: '-oke → -oken', tip: 'V2 có o, V3 thêm -en: break – broke – broken.', verbs: ['break', 'choose', 'freeze', 'speak', 'steal', 'wake', 'weave'] },
+  { id: 'i-o-i-en', title: 'i → o → i + en', tip: 'Gốc có i dài, V2 đổi thành o, V3 thêm -en: write – wrote – written.', verbs: ['drive', 'ride', 'rise', 'write'] },
+  { id: 'ake-ook', title: '-ake → -ook → -aken', tip: 'Cả nhóm cùng khuôn: take – took – taken.', verbs: ['take', 'shake', 'mistake', 'undertake', 'overtake'] },
+  { id: 'ear-ore', title: '-ear → -ore → -orn', tip: 'bear, swear, tear, wear: V2 đổi thành -ore, V3 thành -orn (bear: borne).', verbs: ['bear', 'swear', 'tear', 'wear'] },
+  { id: 'ee-e', title: 'ee → e', tip: 'Âm dài /iː/ rút ngắn thành /e/, V2 = V3: meet – met – met.', verbs: ['bleed', 'breed', 'feed', 'flee', 'meet', 'speed'] },
+  { id: 'eel-elt', title: 'ee → e + t', tip: 'Vừa rút ngắn nguyên âm vừa thêm -t: feel – felt, keep – kept.', verbs: ['feel', 'keep', 'sleep', 'sweep', 'weep', 'creep', 'kneel'] },
+  { id: 'end-ent', title: '-end → -ent', tip: 'Đổi d thành t: send – sent – sent.', verbs: ['bend', 'lend', 'send', 'spend', 'build'] },
+  { id: 'ind-ound', title: '-ind → -ound', tip: 'Âm /aɪ/ đổi thành /aʊ/: find – found – found.', verbs: ['bind', 'find', 'grind', 'wind'] },
+  { id: 'u-u', title: 'V2 = V3 có u', tip: 'Nguyên âm đổi thành u ở cả V2 và V3: dig – dug – dug.', verbs: ['cling', 'dig', 'fling', 'hang', 'spin', 'stick', 'sting', 'string', 'strike', 'swing'] },
+  { id: 'aid', title: '-aid', tip: 'Ba động từ rất thường gặp: say – said, pay – paid, lay – laid.', verbs: ['say', 'pay', 'lay'] },
+  { id: 'short-t', title: 'Ngắn nguyên âm, V2 = V3', tip: 'Âm gốc dài, V2 và V3 đổi sang âm ngắn: leave – left, lose – lost.', verbs: ['leave', 'lose', 'mean', 'deal', 'lead', 'hear'] },
+  { id: 'do-family', title: 'Họ do – did – done', tip: 'Thêm tiền tố vẫn chia giống do: undo, redo, outdo.', verbs: ['do', 'undo', 'redo', 'outdo'] },
+  { id: 'see-family', title: 'Họ see – saw – seen', tip: 'foresee, oversee chia giống see.', verbs: ['see', 'foresee', 'oversee'] },
+  { id: 'give-family', title: 'Họ give – gave – given', tip: 'forgive chia giống give.', verbs: ['give', 'forgive'] },
+  { id: 'come-run', title: 'V1 = V3', tip: 'Chỉ có vài động từ có V3 trùng V1: come, become, overcome, run.', verbs: ['come', 'become', 'overcome', 'run'] },
+  { id: 'same-3', title: 'Giữ nguyên cả ba dạng', tip: 'Dễ nhất: cut – cut – cut. Chú ý read đọc khác nhau dù viết giống nhau.', verbs: ['bet', 'bid', 'broadcast', 'burst', 'cast', 'cost', 'cut', 'hit', 'hurt', 'let', 'put', 'quit', 'read', 'set', 'shed', 'shut', 'split', 'spread', 'thrust', 'upset'] },
+];
+
+/** [câu ở quá khứ đơn, câu ở hiện tại hoàn thành hoặc bị động dùng V3]. */
+export const VERB_EXAMPLES: Readonly<Record<string, readonly [string, string]>> = {
+  be: ['She was very tired yesterday.', 'They have been friends for years.'],
+  become: ['He became a doctor in 2020.', 'The weather has become much colder.'],
+  begin: ['The lesson began at nine.', 'We have just begun the new unit.'],
+  break: ['Someone broke the window last night.', 'The window has been broken for days.'],
+  bring: ['She brought her laptop to class.', 'Have you brought your passport?'],
+  build: ['They built a new bridge in 2019.', 'The company has built three schools.'],
+  buy: ['I bought this book yesterday.', 'He has bought a new phone.'],
+  catch: ['He caught the last bus home.', 'She has caught a cold again.'],
+  choose: ['I chose the blue shirt.', 'Have you chosen a topic yet?'],
+  come: ['They came back at midnight.', 'Spring has come early this year.'],
+  do: ['I did my homework after dinner.', 'Have you done the exercise?'],
+  draw: ['She drew a map on the board.', 'He has drawn a beautiful picture.'],
+  drink: ['He drank two glasses of water.', 'I have never drunk coffee at night.'],
+  drive: ['We drove to Hue last summer.', 'She has driven for ten years.'],
+  eat: ['I ate noodles for breakfast.', 'Have you eaten yet?'],
+  fall: ['The vase fell off the table.', 'Prices have fallen this month.'],
+  feel: ['I felt nervous before the test.', 'She has felt better since Monday.'],
+  find: ['He found his keys in the car.', 'Scientists have found a new planet.'],
+  fly: ['We flew to Seoul last year.', 'She has flown many times.'],
+  forget: ['I forgot my password.', 'He has forgotten his umbrella again.'],
+  get: ['She got a high score in IELTS.', 'He has got a new job.'],
+  give: ['He gave me a useful tip.', 'They have given us two weeks.'],
+  go: ['We went to the beach on Sunday.', 'She has gone to the library.'],
+  grow: ['The company grew quickly.', 'Children have grown so fast.'],
+  have: ['I had a headache this morning.', 'We have had a great time.'],
+  hear: ['I heard a strange noise.', 'Have you heard the news?'],
+  hide: ['The cat hid under the bed.', 'The treasure has been hidden for years.'],
+  keep: ['She kept all his letters.', 'I have kept this secret for years.'],
+  know: ['I knew the answer at once.', 'We have known each other since 2015.'],
+  leave: ['He left home at seven.', 'The train has left.'],
+  lose: ['I lost my wallet on the bus.', 'We have lost the match.'],
+  make: ['She made a cake for the party.', 'They have made great progress.'],
+  mean: ['I meant to call you.', 'It has always meant a lot to me.'],
+  meet: ['We met at university.', 'Have you met my sister?'],
+  pay: ['He paid by card.', 'I have paid the bill.'],
+  put: ['She put the keys on the table.', 'I have put the files away.'],
+  read: ['I read that book last year.', 'Have you read this article?'],
+  ride: ['He rode a bike to school.', 'I have ridden a horse once.'],
+  rise: ['The sun rose at six.', 'Prices have risen sharply.'],
+  run: ['She ran five kilometres.', 'He has run a marathon.'],
+  say: ['He said he was busy.', 'She has said sorry twice.'],
+  see: ['I saw a film last night.', 'Have you seen my phone?'],
+  sell: ['They sold their old car.', 'The shop has sold out.'],
+  send: ['I sent you an email.', 'She has sent the invitations.'],
+  set: ['He set the alarm for six.', 'The teacher has set a new task.'],
+  show: ['She showed me the photos.', 'He has shown great courage.'],
+  sing: ['She sang at the party.', 'He has sung in a choir for years.'],
+  sit: ['We sat in the front row.', 'I have sat here for an hour.'],
+  sleep: ['I slept for eight hours.', 'The baby has slept all night.'],
+  speak: ['He spoke to the manager.', 'She has spoken English since childhood.'],
+  spend: ['We spent a week in Da Lat.', 'I have spent too much money.'],
+  stand: ['They stood in a long queue.', 'The building has stood here for a hundred years.'],
+  steal: ['Someone stole my bike.', 'The painting has been stolen.'],
+  swim: ['He swam across the lake.', 'I have swum here many times.'],
+  take: ['She took a taxi home.', 'He has taken the wrong bus.'],
+  teach: ['Mr Lee taught me maths.', 'She has taught English for ten years.'],
+  tell: ['He told me the truth.', 'Have you told her yet?'],
+  think: ['I thought it was easy.', 'We have thought about it a lot.'],
+  throw: ['He threw the ball to me.', 'She has thrown away the old shoes.'],
+  understand: ['I understood the lesson.', 'Have you understood the instructions?'],
+  wake: ['I woke up at six.', 'The noise has woken the baby.'],
+  wear: ['She wore a red dress.', 'He has worn the same coat for years.'],
+  win: ['Our team won the cup.', 'She has won three prizes.'],
+  write: ['He wrote a long letter.', 'I have written my essay.'],
+};

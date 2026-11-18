@@ -37,6 +37,8 @@ export type PhoneHomeProps = {
   onSearch: () => void;
   /** Số từ đến hạn ôn hôm nay (lịch lặp ngắt quãng). */
   due?: number;
+  /** Khung "lộ trình hôm nay"; có thì thay cho thẻ hero mặc định. */
+  planSlot?: React.ReactNode;
 };
 
 /** Ảnh Chiikawa đang có trong repo (cùng hình với nút trợ lý khi chọn chủ đề Chiikawa). */
@@ -53,6 +55,7 @@ const TOOLS: { key: string; icon: IconName; title: string; vi: string; en: strin
   { key: 'speaking', icon: 'mic', title: 'Speaking', vi: 'Nói to, tự tin hơn mỗi ngày.', en: 'Speak with confidence.', href: '/speaking' },
   { key: 'math', icon: 'grid', title: 'SAT Math', vi: 'Chấm bằng code, sai đâu biết đó.', en: 'Checked by code.', href: '/math' },
   { key: 'vocab', icon: 'bookmark', title: 'Từ vựng', vi: 'Ôn theo lịch, nhớ lâu hơn.', en: 'Spaced review.', href: '/vocabulary/topics' },
+  { key: 'path', icon: 'compass', title: 'Lộ trình học', vi: 'IELTS và SAT theo trình độ.', en: 'IELTS and SAT by level.', href: '/lo-trinh-hoc' },
 ];
 
 /** Nút tròn kính ở đầu trang. */
@@ -79,7 +82,7 @@ function StatColumn({ icon, value, label, onPress }: { icon: IconName; value: st
         <Icon name={icon} size={18} color={GOLD.deep} strokeWidth={2} />
       </View>
       <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 19, lineHeight: 24, color: GOLD.ink, marginTop: 2 }}>{value}</Text>
-      <Text numberOfLines={1} style={{ fontFamily: CUTE_FONT.semi, fontSize: 11, lineHeight: 15, color: GOLD.muted }}>{label}</Text>
+      <Text numberOfLines={1} style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, lineHeight: 18, color: GOLD.muted }}>{label}</Text>
     </View>
   );
   return onPress ? <Pressable accessibilityRole="button" onPress={onPress} style={{ flex: 1 }}>{body}</Pressable> : <View style={{ flex: 1 }}>{body}</View>;
@@ -109,7 +112,7 @@ function ToolTile({ tool, chiikawa, L, en }: { tool: (typeof TOOLS)[number]; chi
       </View>
       <View>
         <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 17, lineHeight: 22, color: chiikawa ? PINK.deep : GOLD.ink }}>{tool.title}</Text>
-        <Text numberOfLines={2} style={{ fontFamily: CUTE_FONT.semi, fontSize: 12, lineHeight: 17, color: GOLD.body, marginTop: 3 }}>{L(tool.vi, tool.en)}</Text>
+        <Text numberOfLines={2} style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, lineHeight: 18, color: GOLD.body, marginTop: 3 }}>{L(tool.vi, tool.en)}</Text>
       </View>
       <View style={{ alignSelf: 'flex-end', width: 30, height: 30, borderRadius: 15, backgroundColor: 'rgba(255,255,255,0.9)', alignItems: 'center', justifyContent: 'center' }}>
         <Icon name="chevron-right" size={14} color={chiikawa ? PINK.deep : GOLD.ink} strokeWidth={2.2} />
@@ -153,12 +156,12 @@ export function PhoneHome(p: PhoneHomeProps) {
         {/* Khối thương hiệu */}
         <View style={{ alignItems: 'center', marginTop: 16 }}>
           <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 40, lineHeight: 46, color: chiikawa ? PINK.deep : GOLD.deep, letterSpacing: -0.5 }}>Band 9</Text>
-          <Text style={{ fontFamily: CUTE_FONT.semi, fontSize: 11, lineHeight: 15, letterSpacing: 2.2, color: GOLD.muted, marginTop: 2 }}>
+          <Text style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, lineHeight: 18, letterSpacing: 2.2, color: GOLD.muted, marginTop: 2 }}>
             {L('HỌC SÁNG HƠN MỖI NGÀY', 'A BRIGHTER WAY TO LEARN')}
           </Text>
         </View>
 
-        {/* Thẻ hero: lời mời học tiếp, và hình chính ở góc phải (mèo đeo kính, hoặc Chiikawa khi chọn chủ đề đó) */}
+        {p.planSlot ? <View style={{ marginTop: 18 }}>{p.planSlot}</View> : (
         <View style={[{ marginTop: 18, borderRadius: 32, padding: 20, minHeight: 236 }, GLASS] as never}>
           <View style={{ width: '66%' }}>
             <Text style={{ fontFamily: CUTE_FONT.black, fontSize: 22, lineHeight: 28, color: GOLD.ink }}>
@@ -182,6 +185,7 @@ export function PhoneHome(p: PhoneHomeProps) {
             <CatSticker pose="sunglasses" size={150} style={{ position: 'absolute', right: 0, top: 40 }} />
           )}
         </View>
+        )}
 
         {/* Dải số liệu: chuỗi ngày, mục tiêu band, phút hôm nay */}
         <View style={[{ marginTop: 14, borderRadius: 26, paddingVertical: 14, paddingHorizontal: 8, flexDirection: 'row', alignItems: 'center' }, GLASS] as never}>

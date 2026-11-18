@@ -21,7 +21,7 @@ export function AgendaCard({ days, onToggle }: { days: AgendaDay[]; onToggle: (b
   return (
     <View style={{ backgroundColor: c.card, borderRadius: 24, padding: 18, gap: 14, boxShadow: '0 10px 24px rgba(120,80,20,0.12)' } as never}>
       <View style={{ gap: 4 }}>
-        <Text style={{ color: c.ink, fontSize: 18, fontWeight: '800' }}>Lịch hôm nay</Text>
+        <Text style={{ color: c.ink, fontSize: 18, fontWeight: '400' }}>Lịch hôm nay</Text>
         <Text style={{ color: c.muted, fontSize: 13 }}>
           {today && today.blocks.length > 0
             ? `${todayDone}/${today.blocks.length} khối · ${todayMinutes} phút`
@@ -58,7 +58,7 @@ export function AgendaCard({ days, onToggle }: { days: AgendaDay[]; onToggle: (b
             onPress={() => router.push(b.href as never)}
             style={{ flex: 1, minWidth: 0, gap: 2 }}
           >
-            <Text numberOfLines={1} style={{ color: c.ink, fontSize: 15, fontWeight: '800', textDecorationLine: b.done ? 'line-through' : 'none' }}>
+            <Text numberOfLines={1} style={{ color: c.ink, fontSize: 15, fontWeight: '400', textDecorationLine: b.done ? 'line-through' : 'none' }}>
               {b.title}
             </Text>
             <Text numberOfLines={1} style={{ color: c.muted, fontSize: 12 }}>
@@ -69,7 +69,7 @@ export function AgendaCard({ days, onToggle }: { days: AgendaDay[]; onToggle: (b
       ))}
 
       <View style={{ gap: 8, paddingTop: 4 }}>
-        <Text style={{ color: c.body, fontSize: 13, fontWeight: '800' }}>7 ngày tới</Text>
+        <Text style={{ color: c.body, fontSize: 13, fontWeight: '400' }}>7 ngày tới</Text>
         {later.length === 0 ? <Text style={{ color: c.muted, fontSize: 13 }}>Chưa có ngày học nào trong khoảng này.</Text> : null}
         {later.map((d) => {
           const total = d.blocks.reduce((sum, b) => sum + b.minutes, 0);
@@ -77,7 +77,7 @@ export function AgendaCard({ days, onToggle }: { days: AgendaDay[]; onToggle: (b
           return (
             <View key={d.iso} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <View style={{ width: 44, height: 30, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: c.goldSoft }}>
-                <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '800' }}>{WEEKDAY_LABEL[d.weekday]}</Text>
+                <Text style={{ color: c.goldDeep, fontSize: 12, fontWeight: '400' }}>{WEEKDAY_LABEL[d.weekday]}</Text>
               </View>
               <View style={{ flex: 1, height: 8, borderRadius: 4, backgroundColor: c.groundDeep, overflow: 'hidden' }}>
                 <View style={{ width: `${d.blocks.length ? Math.round((done / d.blocks.length) * 100) : 0}%`, height: 8, backgroundColor: c.gold }} />

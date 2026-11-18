@@ -1,0 +1,96 @@
+{
+ "id": "sport",
+ "extra": {
+  "vocab": [
+   {
+    "en": "work up a sweat",
+    "vi": "vận động đến mức toát mồ hôi",
+    "ex": "I like to work up a sweat at the gym before heading to the office."
+   },
+   {
+    "en": "sedentary lifestyle",
+    "vi": "lối sống ít vận động, ngồi nhiều",
+    "ex": "Adopting a regular workout routine is the best way to counteract a sedentary lifestyle."
+   },
+   {
+    "en": "get into shape",
+    "vi": "rèn luyện để cơ thể cân đối, khỏe mạnh",
+    "ex": "She joined a local swimming club primarily to get into shape."
+   },
+   {
+    "en": "strenuous exercise",
+    "vi": "bài tập nặng đòi hỏi nhiều thể lực",
+    "ex": "Elderly individuals are usually advised against doing overly strenuous exercise."
+   },
+   {
+    "en": "hand-eye coordination",
+    "vi": "sự phối hợp tay và mắt",
+    "ex": "Racquet sports like tennis require excellent hand-eye coordination."
+   },
+   {
+    "en": "take up a sport",
+    "vi": "bắt đầu chơi một môn thể thao mới",
+    "ex": "I am thinking of taking up rock climbing to challenge my fear of heights."
+   },
+   {
+    "en": "physical endurance",
+    "vi": "sức bền thể lực",
+    "ex": "Marathon runners must build extraordinary physical endurance over many months of training."
+   },
+   {
+    "en": "blow off steam",
+    "vi": "giải tỏa căng thẳng và năng lượng thừa",
+    "ex": "Playing badminton after work helps me blow off steam and clear my head."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu môn thể thao muốn học (lướt sóng - surfing), cảm hứng từ những video trên mạng và vẻ đẹp phóng khoáng của bộ môn này.",
+   "Ý 1 (Ở đâu & Với ai): Chọn học tại một bờ biển có sóng êm như Đà Nẵng; rủ một người bạn thân có chung sở thích phiêu lưu tham gia một khóa học ngắn hạn với huấn luyện viên chuyên nghiệp.",
+   "Ý 2 (Quá trình tập luyện): Bắt đầu từ việc tập giữ thăng bằng trên bãi cát, học cách đọc hướng sóng, rồi chèo ván ra xa bờ và trải nghiệm cảm giác ngã xuống nước trước khi đứng vững.",
+   "Kết: Giải thích lý do muốn học (rèn luyện sức bền toàn thân, vượt qua nỗi sợ nước sâu và hòa mình vào thiên nhiên); nêu dự định thực hiện vào mùa hè tới."
+  ],
+  "sample": "If I had the chance to pick up a new sport, I would definitely go for surfing. It has always fascinated me because of the thrilling combination of athleticism and a deep connection with nature.\n\nIdeally, I would love to take lessons in Da Nang, where the coastline offers consistent, beginner-friendly waves. I wouldn't want to tackle this alone, so I would invite my close friend Minh, who is also a thrill-seeker, to join a week-long surf camp with certified instructors.\n\nSurfing appeals to me for a couple of key reasons. Firstly, it provides an intense full-body workout, demanding core strength, balance, and quick reflexes. Navigating the waves seems like an incredible way to build stamina and get into shape. More importantly, I want to conquer my mild fear of deep water and step outside my comfort zone. There is something deeply empowering about riding a wave and feeling the raw power of the ocean beneath your board.\n\nHopefully, I can make this plan a reality next summer, as it would be both a rewarding physical challenge and an unforgettable adventure.",
+  "p1": [
+   {
+    "q": "Do you play any sports?",
+    "a": "Yes, I play badminton quite regularly. I usually meet up with some colleagues twice a week at a local sports hall. It is an accessible game that keeps me active and helps me unwind after long hours at my desk."
+   },
+   {
+    "q": "Do you prefer watching or playing sport?",
+    "a": "I definitely lean towards playing rather than watching. Being actively involved lets me blow off steam and work up a sweat, whereas sitting in front of a screen cheering for teams often feels passive and unproductive."
+   },
+   {
+    "q": "How often do you exercise?",
+    "a": "I try to work out around three to four times a week. My routine typically involves thirty-minute jogging sessions in the nearby park or quick home workouts to maintain my cardiovascular health and keep my energy levels high."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Should schools spend more money on sport?",
+    "a": "I firmly believe schools should allocate a larger budget to sports facilities and physical education. Regular exercise improves students' focus and combats rising adolescent obesity rates. For instance, well-equipped gyms and pitches encourage even reluctant pupils to stay active. While academic subjects are undeniably vital, neglecting sports can lead to severe sedentary habits. Therefore, balanced investment is crucial for both mental sharpness and physical well-being."
+   },
+   {
+    "q": "Why do some people never exercise?",
+    "a": "The primary culprit is usually a perceived lack of time due to demanding work schedules and domestic responsibilities. Many modern professionals feel utterly drained by evening, so they opt for sedentary leisure like scrolling on phones instead. Additionally, some people find exercise tedious because they haven't discovered an activity they genuinely enjoy. Without intrinsic motivation or a supportive peer group, maintaining a consistent fitness habit becomes remarkably difficult."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai động từ kết hợp (Collocation: play / do / go): Người học hay nói 'play yoga' hoặc 'play swimming' thay vì đúng chuẩn là 'do yoga' (cho các bài tập cá nhân/võ thuật) và 'go swimming' (cho các môn đuôi -ing). Nhớ quy tắc: môn có bóng/thi đấu dùng 'play'.",
+   "Dịch nguyên từ tiếng Việt sang tiếng Anh thiếu tự nhiên: Hay nói 'sport makes me healthy' hoặc 'sport gives me good health' thay vì dùng các cụm Band 7+ như 'stay in shape', 'boost my physical well-being', hay 'keep fit'.",
+   "Phát âm sai từ 'exercise' và 'sports': Thường nuốt âm cuối /ts/ trong 'sports' hoặc nhấn sai trọng âm của từ 'exercise' (nhấn âm 1: /ˈeksəsaɪz/, không đọc thành 'ệc-sơ-sai' phẳng giọng)."
+  ],
+  "p1More": [
+   "What sports are most popular in your country?",
+   "Did you enjoy physical education classes when you were in school?",
+   "Do you think children should play team sports or individual sports?",
+   "What kind of exercise do you dislike doing?",
+   "Is it easy to find places to exercise near your home?"
+  ],
+  "p3More": [
+   "Do professional athletes deserve the extremely high salaries they receive?",
+   "How has technology changed the way people participate in and follow sports?",
+   "To what extent can hosting international sporting events benefit a host nation?",
+   "What role should governments play in promoting community fitness and healthy living?"
+  ]
+ }
+}

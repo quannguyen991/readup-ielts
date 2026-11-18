@@ -1,0 +1,62 @@
+{
+ "id": "mock-35",
+ "title": "IELTS Speaking Mock Test 35",
+ "titleVi": "Đề thi thử số 35",
+ "focusVi": "Rèn luyện kỹ năng giải thích nguyên nhân, đưa ví dụ thực tế và phân tích các khía cạnh xã hội sâu sắc.",
+ "part1": [
+  {
+   "topic": "Gardens and Plants",
+   "qs": [
+    "Do you enjoy visiting public gardens or parks?",
+    "Did you grow any plants when you were a child?",
+    "What kinds of plants are popular in your country?",
+    "Would you like to have your own garden in the future?"
+   ]
+  },
+  {
+   "topic": "Sports Events",
+   "qs": [
+    "Do you prefer watching sports live or on television?",
+    "Have you ever attended a major sporting competition?",
+    "What sports event is most popular in your country?",
+    "Did you participate in school sports days when you were younger?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a famous person you would like to meet",
+  "bullets": [
+   "who this person is",
+   "what this person is well known for",
+   "what you would do or talk about if you met them",
+   "and explain why you would like to meet this person"
+  ]
+ },
+ "part3": [
+  "Why do many young people aspire to become famous nowadays?",
+  "Do you think celebrities have a moral responsibility to act as positive role models?",
+  "How has the rise of social media changed the relationship between famous people and their fans?",
+  "In what ways can intense media attention affect the private lives of public figures?",
+  "Will the qualities that make a person famous change in the future?"
+ ],
+ "answers": {
+  "p1": [
+   "Yes, I definitely do because being surrounded by greenery helps me unwind after long working hours. For instance, I frequently visit our municipal botanical garden on weekends to read peacefully.",
+   "Actually, I did help my grandmother tend to her small tomato patch. It was fascinating to see seeds sprout into fruiting plants, which taught me early lessons about patience.",
+   "In Vietnam, ornamental plants like kumquat trees and peach blossoms are extremely popular, particularly during the Lunar New Year. Many urbanites also keep low-maintenance succulents on balconies.",
+   "I would absolutely love that, as growing fresh herbs and flowers provides immense daily satisfaction. Having a tranquil private courtyard with potted orchids is actually a personal dream of mine.",
+   "I generally prefer watching matches on television because the high-definition replays and expert commentary provide a clearer perspective. For example, international football tournaments are much more enjoyable from home.",
+   "Yes, I attended an international football match at My Dinh Stadium two years ago. The roaring atmosphere among thousands of passionate fans was an electric and truly unforgettable experience.",
+   "Football tournaments, especially the regional AFF Cup, captivate the entire nation. Whenever our national team plays crucial matches, streets across the country completely empty as everyone gathers around screens.",
+   "Yes, I took part annually, mostly competing in sprint relays and badminton. Although I rarely won medals, cheering alongside my classmates fostered a wonderful sense of camaraderie and teamwork."
+  ],
+  "sample": "If I were given the opportunity to meet any public figure, I would immediately choose Sir David Attenborough. He is an iconic British natural historian and legendary broadcaster, globally celebrated for narrating groundbreaking documentary series such as Planet Earth and Blue Planet. His soothing voice and infectious passion for wildlife have inspired millions across generations. If I ever met him in person, I would eagerly ask about his most perilous expeditions in remote corners of the globe, like the Antarctic tundra or deep oceanic trenches. I would also love to discuss his personal perspectives on combating climate crisis and preserving endangered ecosystems. Rather than just listening, I would express how profoundly his work has shaped my own environmental consciousness. The main reason I would love to meet him is his unparalleled resilience and genuine humility. Despite spending over seven decades at the forefront of natural sciences, he remains utterly dedicated to advocating for planetary preservation. Conversing with someone possessing such vast wisdom, empathy, and firsthand historical experience would truly be a once-in-a-lifetime privilege.",
+  "p3": [
+   "In my view, modern youth are attracted to celebrity status primarily because it promises instant validation, enormous wealth, and elevated social prestige. Digital platforms exacerbate this desire by showcasing glamorous influencer lifestyles. Unlike traditional careers requiring decades of steady effort, internet fame appears deceptively accessible, leading many to believe that public recognition is the quickest route to personal autonomy and fulfillment.",
+   "Yes, I believe they definitely do, because their elevated social reach grants them immense influence over impressionable youth. When celebrities endorse charitable causes or maintain ethical conduct, their followers often emulate those behaviors. Conversely, reckless public actions can normalize harmful attitudes. Therefore, public figures should recognize the societal impact of their visibility and act conscientiously rather than disregarding their social footprint.",
+   "Social platforms have fundamentally collapsed the traditional boundary separating celebrities from their audience. In the past, famous individuals maintained an enigmatic distance, whereas today they share intimate, behind-the-scenes moments daily. While this creates a sense of direct intimacy and democratic connection, it can also breed parasocial delusions, where dedicated fans mistakenly assume they hold genuine, reciprocal friendships with public figures.",
+   "Relentless media scrutiny often inflicts severe psychological tolls on public figures by completely eroding their personal privacy. Paparazzi intrusion and pervasive online judgment mean that even minor missteps are sensationalized across international headlines. Consequently, many celebrities experience chronic anxiety, isolation, and strained personal relationships, as they must continuously navigate life under an intrusive microscope without genuine safe havens.",
+   "Undoubtedly, the criteria for fame are already shifting dramatically toward relatable digital creators and virtual personas rather than traditional artistic virtuosos. As artificial intelligence advances, audiences may admire algorithmic avatars or niche community leaders rather than mainstream movie stars. Ultimately, future fame will likely reward authenticity, interactive audience engagement, and rapid adaptation to emerging technologies more than conventional talent alone."
+  ]
+ }
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 import { ExampleSentence } from "@/components/vocab/ExampleSentence";
 import { Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
+import { Image } from "expo-image";
 import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/services/vocab/pos-ipa";
 import { router, usePathname } from "expo-router";
@@ -48,11 +49,11 @@ export const RED = "#E11D48";
  */
 export function speak(
   text: string,
-  opts: { rate?: number; voice?: string | null } = {},
+  opts: { rate?: number; voice?: string | null; language?: 'en' | 'ja' | 'zh' } = {},
 ) {
   // MỘT giọng cho cả app: mọi tiếng đi qua một cửa (clip Gemini Aoede; giọng máy chỉ tạm khi chưa có clip).
   // `voice` (chọn giọng máy ở màn Chính tả) không còn tác dụng.
-  void pronounce(text, { rate: opts.rate });
+  void pronounce(text, { rate: opts.rate, language: opts.language === 'ja' ? 'ja-JP' : opts.language === 'zh' ? 'zh-CN' : undefined });
 }
 
 /**
@@ -90,7 +91,7 @@ function themeCss(): string {
     if (!t.dark) continue;
     const r = `[data-st="${id}"]`;
     css +=
-      `${r} .text-body{color:${t.muted}!important}` +
+      `${r} .text-body:not(.text-white){color:${t.muted}!important}` +
       `${r} .text-muted,${r} .text-subtle{color:${t.muted}!important}` +
       `${r} .text-ink{color:${t.ink}!important}` +
       `${r} .text-primary-600,${r} .text-primary-700{color:#E7C98A!important}` +
@@ -112,6 +113,16 @@ function useThemeCss() {
 /** Gắn `data-st` để bộ luật CSS ở trên nhận ra chủ đề. */
 export function themeAttrs(t: StudyTheme): object {
   return Platform.OS === "web" ? { dataSet: { st: t.id } } : {};
+}
+
+/**
+ * Thoát màn học về nơi vừa đến. Có lịch sử thì lùi đúng một bước: `replace` thế chỗ màn học bằng trang bộ từ
+ * làm trang bộ từ xuất hiện hai lần trong lịch sử, nên phải bấm Quay lại hai lần mới ra khỏi phần ôn.
+ * Mở thẳng vào màn học (không có lịch sử) thì mới thay bằng `backHref`.
+ */
+export function exitStudy(backHref: string) {
+  if (router.canGoBack()) router.back();
+  else router.replace(backHref as never);
 }
 
 /** Khung một màn học: nút thoát, tên màn, thanh tiến độ, nội dung, dòng số liệu dưới. */
@@ -170,7 +181,7 @@ export function StudyFrame({
       <View className="flex-row items-center justify-between">
         <Pressable
           accessibilityRole="button"
-          onPress={() => router.replace(backHref as never)}
+          onPress={() => exitStudy(backHref)}
           className="flex-row items-center gap-2 rounded-pill px-4 py-2"
           style={{ backgroundColor: pill }}
         >
@@ -182,6 +193,11 @@ export function StudyFrame({
         </Text>
         <View style={{ minWidth: 90, alignItems: "flex-end" }}>{right}</View>
       </View>
+      {theme.deco?.cloud ? (
+        <View pointerEvents="none" style={{ alignItems: "center", marginTop: 6 }}>
+          <Image source={theme.deco.cloud} contentFit="contain" style={{ width: 150, height: 34 }} />
+        </View>
+      ) : null}
 
       {progress ? (
         <SegmentBar fractions={progress} theme={theme} navy={navy} />
@@ -275,7 +291,21 @@ export function StudyCard({ children }: { children: React.ReactNode }) {
       ]}
     >
       {theme.id === "scene" ? <SkyEffect intensity={0.7} radius={22} /> : null}
+      {theme.deco ? <DecoCorners deco={theme.deco} /> : null}
       {children}
+    </View>
+  );
+}
+
+/** Bốn góc hoa văn của thẻ học (chủ đề tiếng Trung / Nhật). */
+function DecoCorners({ deco }: { deco: NonNullable<StudyTheme["deco"]> }) {
+  const base = { position: "absolute" as const, width: 46, height: 46 };
+  return (
+    <View pointerEvents="none" style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: 0 }}>
+      <Image source={deco.corner} contentFit="contain" style={[base, { left: 3, top: 3 }]} />
+      <Image source={deco.corner} contentFit="contain" style={[base, { right: 3, top: 3, transform: [{ scaleX: -1 }] }]} />
+      <Image source={deco.corner} contentFit="contain" style={[base, { left: 3, bottom: 3, transform: [{ scaleY: -1 }] }]} />
+      <Image source={deco.corner} contentFit="contain" style={[base, { right: 3, bottom: 3, transform: [{ rotate: "180deg" }] }]} />
     </View>
   );
 }
@@ -285,12 +315,14 @@ export function SpeakButton({
   rate,
   size = 20,
   small = false,
+  language,
 }: {
   text: string;
   rate?: number;
   size?: number;
   /** Nút nhỏ (hàng từ / câu ví dụ trong bảng phản hồi). */
   small?: boolean;
+  language?: 'en' | 'ja' | 'zh';
 }) {
   const theme = useStudyTheme();
   const box = small ? 32 : 40;
@@ -298,7 +330,7 @@ export function SpeakButton({
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={`Nghe "${text}"`}
-      onPress={() => speak(text, { rate })}
+      onPress={() => speak(text, { rate, language })}
       hitSlop={small ? 8 : 6}
       className="items-center justify-center rounded-pill"
       style={{ width: box, height: box, backgroundColor: theme.dark ? theme.soft : "#F3F0FB" }}
@@ -520,7 +552,7 @@ export function FeedbackPanel({
             {pron ? (
               <View className="flex-row items-center gap-1.5">
                 <Text className="font-sans text-label text-muted">{posIpa(word)}</Text>
-                <SpeakButton text={word.word} small />
+                <SpeakButton text={word.word} small language={word.language} />
               </View>
             ) : null}
           </View>
@@ -588,6 +620,25 @@ function ChipRow({ label, items }: { label: string; items: readonly string[] }) 
   );
 }
 
+/**
+ * Nút chính "tím loang": nền tím phủ bốn vệt màu (hồng, cam, xanh ngọc, tím) kiểu sơn loang — rực rỡ nhưng chỉ là
+ * một ảnh nền CSS tĩnh, không tốn khung hình. Chỉ áp cho màu tím mặc định; màu riêng của chủ đề/bộ giữ nguyên.
+ * Trên app gốc (không phải web) trả về màu phẳng.
+ */
+export const VIVID_TEXT = Platform.OS === "web" ? ({ textShadow: "0 1px 2px rgba(20,8,60,0.45)" } as object) : {};
+export function vividBg(base: string): object {
+  const purple = /^#(6A4BD9|8B6CF0|6C4AE0|7C5CFF)$/i.test(base);
+  if (Platform.OS !== "web" || !purple) return { backgroundColor: base };
+  return {
+    backgroundColor: "#6A4BD9",
+    backgroundImage:
+      "radial-gradient(90% 160% at 4% 0%,#F0489C 0%,transparent 55%),radial-gradient(80% 150% at 98% 8%,#F7931E 0%,transparent 52%)," +
+      "radial-gradient(90% 150% at 96% 104%,#14B5D6 0%,transparent 55%),radial-gradient(80% 140% at 2% 110%,#8E5CF6 0%,transparent 58%)," +
+      "linear-gradient(120deg,#6A4BD9,#A24DE0)",
+    boxShadow: "0 6px 16px rgba(140,70,220,0.35), inset 0 1px 0 rgba(255,255,255,0.35)",
+  };
+}
+
 export function PrimaryButton({
   label,
   onPress,
@@ -613,9 +664,9 @@ export function PrimaryButton({
         scrollTop?.();
       }}
       className="mt-3 flex-row items-center justify-center gap-2 rounded-2xl py-3"
-      style={{ backgroundColor: disabled ? theme.accentDisabled : color ?? theme.accent }}
+      style={disabled ? { backgroundColor: theme.accentDisabled } : vividBg(color ?? theme.accent)}
     >
-      <Text className="font-strong text-body text-white">{label}</Text>
+      <Text className="font-strong text-body text-white" style={VIVID_TEXT}>{label}</Text>
       {hint ? (
         <Text className="font-sans text-label text-white/70">{hint}</Text>
       ) : null}

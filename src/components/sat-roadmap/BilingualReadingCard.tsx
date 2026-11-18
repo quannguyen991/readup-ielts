@@ -155,7 +155,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
               <Text
                 style={{
                   fontSize: 10.5,
-                  fontWeight: '800',
+                  fontWeight: '400',
                   color: passage.category === 'sat_literature' ? '#6D28D9' : passage.category === 'sat_science' ? '#0F766E' : '#6A4BD9',
                   textTransform: 'uppercase',
                 }}
@@ -250,7 +250,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
       {showVocab && passage.keyTerms.length > 0 && (
         <View style={{ gap: 8, paddingTop: 4 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#2B2350', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+            <Text style={{ fontSize: 12.5, fontWeight: '400', color: '#2B2350', textTransform: 'uppercase', letterSpacing: 0.5 }}>
               📖 {L('Từ vựng học thuật quan trọng trong bài:', 'Key Academic Vocabulary:')}
             </Text>
           </View>
@@ -270,7 +270,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
                   borderColor: '#FDE68A',
                 }}
               >
-                <Text style={{ fontSize: 12.5, fontWeight: '800', color: '#6A4BD9' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: '400', color: '#6A4BD9' }}>
                   {term.en}
                 </Text>
                 {term.phonetic && (
@@ -299,7 +299,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
           }}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-            <Text style={{ fontSize: 12, fontWeight: '800', color: '#2563EB', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+            <Text style={{ fontSize: 12, fontWeight: '400', color: '#2563EB', textTransform: 'uppercase', letterSpacing: 0.5 }}>
               🎯 {L('Câu hỏi đọc hiểu kiểm tra:', 'Reading Comprehension Check:')}
             </Text>
           </View>
@@ -358,7 +358,7 @@ export function BilingualReadingCard({ passage }: { passage: BilingualPassageDat
           {showExplanation && (
             <View style={{ padding: 10, borderRadius: 8, backgroundColor: '#EFF6FF', borderWidth: 1, borderColor: '#BFDBFE' }}>
               <Text style={{ fontSize: 12.5, color: '#1E40AF', lineHeight: 19 }}>
-                💡 <Text style={{ fontWeight: '800' }}>{L('Giải thích:', 'Explanation:')}</Text> {passage.comprehensionQuestion.explanationVi}
+                💡 <Text style={{ fontWeight: '400' }}>{L('Giải thích:', 'Explanation:')}</Text> {passage.comprehensionQuestion.explanationVi}
               </Text>
             </View>
           )}

@@ -8,39 +8,11 @@ import Head from 'expo-router/head';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import {
-  PlusJakartaSans_400Regular,
-  PlusJakartaSans_500Medium,
-  PlusJakartaSans_600SemiBold,
-  PlusJakartaSans_700Bold,
-  PlusJakartaSans_800ExtraBold,
-  useFonts,
-} from '@expo-google-fonts/plus-jakarta-sans';
-// Be Vietnam Pro: phông chính của app (các class font-sans/mid/semi/strong/heavy, xem tailwind.config.js).
-// Thiết kế riêng cho tiếng Việt, dấu rõ và đều ở mọi cỡ chữ.
-// Nạp từng trọng lượng theo đường dẫn riêng: gói gom tất cả (index gốc) kéo theo cả biến thể
-// Italic có file thiếu trong bản 0.4.1, làm Metro lỗi khi build.
-// Inter: phông chính của Band 9 (21/10/2026) — gọn, mỏng hơn, gần cảm giác của phông hệ Apple.
-import { Inter_400Regular } from '@expo-google-fonts/inter/400Regular';
-import { Inter_500Medium } from '@expo-google-fonts/inter/500Medium';
-import { Inter_600SemiBold } from '@expo-google-fonts/inter/600SemiBold';
-import { Inter_700Bold } from '@expo-google-fonts/inter/700Bold';
-// Inter Tight: phông tiêu đề (display) — chữ to, khoảng cách hẹp, nét gọn kiểu Apple.
-import { InterTight_600SemiBold } from '@expo-google-fonts/inter-tight/600SemiBold';
-import { InterTight_500Medium } from '@expo-google-fonts/inter-tight/500Medium';
-import { BeVietnamPro_400Regular } from '@expo-google-fonts/be-vietnam-pro/400Regular';
-import { BeVietnamPro_500Medium } from '@expo-google-fonts/be-vietnam-pro/500Medium';
-import { BeVietnamPro_600SemiBold } from '@expo-google-fonts/be-vietnam-pro/600SemiBold';
-import { BeVietnamPro_700Bold } from '@expo-google-fonts/be-vietnam-pro/700Bold';
-import { BeVietnamPro_800ExtraBold } from '@expo-google-fonts/be-vietnam-pro/800ExtraBold';
-// Nunito: font bo tròn cho giao diện trang chủ kiểu nhân vật (xem src/components/cute-home).
-import {
-  Nunito_400Regular,
-  Nunito_600SemiBold,
-  Nunito_700Bold,
-  Nunito_800ExtraBold,
-  Nunito_900Black,
-} from '@expo-google-fonts/nunito';
+import { useFonts } from 'expo-font';
+// Nunito là font sans chính của giao diện, hỗ trợ tiếng Việt.
+import { Nunito_400Regular } from '@expo-google-fonts/nunito/400Regular';
+import { Nunito_600SemiBold } from '@expo-google-fonts/nunito/600SemiBold';
+import { Nunito_700Bold } from '@expo-google-fonts/nunito/700Bold';
 
 import { AppShell } from '@/components/layout/AppShell';
 import { RewardOverlay } from '@/components/gamify/RewardOverlay';
@@ -54,6 +26,7 @@ import { PageViewTracker } from '@/services/analytics/PageViewTracker';
 import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
 import { useAnalyticsBootstrap } from '@/services/analytics/useAnalytics';
 import { useSfxBindings } from '@/services/audio/useSfxBindings';
+import { warmPronunciation } from '@/services/audio/pronounce';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
 import { installLocaleFetch } from '@/i18n/fetch-locale';
@@ -92,33 +65,17 @@ export default function RootLayout() {
   // keep the interface usable with platform fallbacks and swap to branded fonts
   // as soon as useFonts finishes loading them.
   useFonts({
-    InterTight_500Medium,
-    InterTight_600SemiBold,
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    BeVietnamPro_400Regular,
-    BeVietnamPro_500Medium,
-    BeVietnamPro_600SemiBold,
-    BeVietnamPro_700Bold,
-    BeVietnamPro_800ExtraBold,
-    PlusJakartaSans_400Regular,
-    PlusJakartaSans_500Medium,
-    PlusJakartaSans_600SemiBold,
-    PlusJakartaSans_700Bold,
-    PlusJakartaSans_800ExtraBold,
     Nunito_400Regular,
     Nunito_600SemiBold,
     Nunito_700Bold,
-    Nunito_800ExtraBold,
-    Nunito_900Black,
   });
 
   // Chủ đề Chiikawa: đổi bảng màu cho cả app. Chờ hydrate để lượt đầu khớp HTML máy
   // chủ; đổi bảng thì dựng lại cả cây (key) để mọi màu trong JS được tính lại.
   // Thưởng mốc chuỗi ngày: theo dõi nhật ký học để cộng sao đúng lúc đạt mốc, kể cả khi người học không mở trang Tiến độ.
   useEffect(() => startStreakBonus(), []);
+  // Nạp sẵn index clip phát âm lúc rảnh để lần bấm loa đầu tiên không phải chờ.
+  useEffect(() => warmPronunciation(), []);
   const hydrated = useHydrated();
   // Sau khi đọc xong dữ liệu máy: chuyển lịch Leitner cũ sang thẻ FSRS chung (một lần, có sao lưu).
   useEffect(() => {
@@ -166,11 +123,11 @@ function AppTitle() {
   return (
     <Head>
       <title>Band 9</title>
-      {/* Nạp phông Be Vietnam Pro qua Google Fonts để web hiển thị ngay tức thì, đồng bộ mọi thiết bị */}
+      {/* Nạp phông Inter qua Google Fonts để web hiển thị ngay tức thì, đồng bộ mọi thiết bị */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
         rel="stylesheet"
       />
       {/* Manifest + chế độ standalone: iPhone chỉ nhận thông báo đẩy (nhắc học)

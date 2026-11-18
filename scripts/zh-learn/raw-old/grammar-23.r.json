@@ -1,0 +1,609 @@
+[
+ {
+  "id": "zh-g-h4-06",
+  "level": 4,
+  "order": 6,
+  "title": "Không phải… mà là…",
+  "titleZh": "不是而是",
+  "summary": "Bạn sẽ biết cách phủ định một ý rồi nêu ý đúng hoặc ý muốn nhấn mạnh.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Nêu ý đối lập",
+    "body": "Mẫu 不是……而是…… dùng để đính chính hoặc nhấn mạnh: ý trước không đúng, ý sau mới đúng. Hai phần thường có cấu trúc tương ứng.",
+    "examples": [
+     {
+      "zh": "我今天不是生气，而是有点儿累。",
+      "py": "wǒ jīntiān bú shì shēngqì ér shì yǒudiǎnr lèi",
+      "vi": "Hôm nay tôi không giận mà chỉ hơi mệt."
+     },
+     {
+      "zh": "他要的不是咖啡，而是茶。",
+      "py": "tā yào de bú shì kāfēi ér shì chá",
+      "vi": "Thứ anh ấy muốn không phải cà phê mà là trà."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Đính chính lựa chọn",
+    "body": "Dùng mẫu này khi muốn sửa điều người nghe có thể nghĩ nhầm hoặc đối chiếu hai lựa chọn. Ý sau 而是 thường là thông tin bạn muốn người nghe chú ý.",
+    "examples": [
+     {
+      "zh": "我们来这里不是看书，而是见朋友。",
+      "py": "wǒmen lái zhèlǐ bú shì kàn shū ér shì jiàn péngyou",
+      "vi": "Chúng tôi đến đây không phải để đọc sách mà để gặp bạn."
+     },
+     {
+      "zh": "这次他不是坐车，而是走路回家。",
+      "py": "zhè cì tā bú shì zuò chē ér shì zǒulù huí jiā",
+      "vi": "Lần này anh ấy không đi xe mà đi bộ về nhà."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Ghép hai vế tương ứng",
+    "body": "Đặt 不是 trước vế bị phủ định và 而是 trước vế được khẳng định. Có thể nối danh từ, tính từ hoặc cụm động từ.",
+    "formula": "不是 + vế A + 而是 + vế B",
+    "examples": [
+     {
+      "zh": "今天不是很冷，而是很热。",
+      "py": "jīntiān bú shì hěn lěng ér shì hěn rè",
+      "vi": "Hôm nay không lạnh lắm mà rất nóng."
+     },
+     {
+      "zh": "这杯水不是我的，而是他的。",
+      "py": "zhè bēi shuǐ bú shì wǒ de ér shì tā de",
+      "vi": "Cốc nước này không phải của tôi mà là của anh ấy."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Giữ hai vế cùng dạng",
+    "body": "Khi đối chiếu hành động, hãy dùng hai cụm hành động song song. Khi đối chiếu người hoặc vật, hãy dùng hai danh từ hay cụm danh từ tương ứng.",
+    "examples": [
+     {
+      "zh": "我今天不是坐地铁，而是走路上班。",
+      "py": "wǒ jīntiān bú shì zuò dìtiě ér shì zǒulù shàngbān",
+      "vi": "Hôm nay tôi không đi tàu điện ngầm mà đi bộ đến chỗ làm."
+     },
+     {
+      "zh": "小王不是在家学习，而是在学校学习。",
+      "py": "Xiǎo Wáng bú shì zài jiā xuéxí ér shì zài xuéxiào xuéxí",
+      "vi": "Tiểu Vương không học ở nhà mà học ở trường."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đừng lệch cấu trúc hai vế",
+    "body": "Hai vế cần đối chiếu cùng loại ý. Tránh đặt một cụm động từ ở vế đầu rồi chuyển sang danh từ ở vế sau.",
+    "mistakes": [
+     {
+      "wrong": "我不喜欢茶而是咖啡。",
+      "right": "我喜欢的不是茶，而是咖啡。",
+      "why": "Vế đầu dùng cụm động từ còn vế sau chỉ có danh từ; hãy đưa hai loại đồ uống vào cùng một cấu trúc."
+     },
+     {
+      "wrong": "他不是老师而是教书。",
+      "right": "他不是老师，而是学生。",
+      "why": "老师 và 学生 đều là danh từ chỉ người, còn 教书 là hành động nên không song song."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu nói rằng anh ấy đi tàu điện ngầm, không đi xe buýt.",
+    "options": [
+     "他不是坐公共汽车，而是坐地铁。",
+     "他既坐公共汽车又坐地铁。",
+     "他不是坐公共汽车也是坐地铁。"
+    ],
+    "answer": 0,
+    "explain": "不是……而是…… phủ định cách đi xe buýt và nêu cách đi tàu điện ngầm."
+   },
+   {
+    "q": "Điền cặp từ phù hợp: 我想喝的___牛奶，___果汁。",
+    "options": [
+     "既……又……",
+     "一方面……另一方面……",
+     "不是……而是……"
+    ],
+    "answer": 2,
+    "explain": "Câu này đính chính thức uống được chọn, nên dùng 不是……而是……."
+   },
+   {
+    "q": "Câu nào có hai vế tương ứng về loại từ?",
+    "options": [
+     "他不是老师而是学习。",
+     "他不是老师而是学生。",
+     "他不老师而是学生。"
+    ],
+    "answer": 1,
+    "explain": "老师 và 学生 đều là danh từ chỉ người, nên hai vế song song."
+   },
+   {
+    "q": "Chọn cách nói tự nhiên để sửa ý “cốc nước này của tôi”.",
+    "options": [
+     "这杯水不是我而是他的。",
+     "这杯水不我的而是他的。",
+     "这杯水不是我的也是他的。",
+     "这杯水不是我的而是他的。"
+    ],
+    "answer": 3,
+    "explain": "不是我的 và 而是他的 là hai cụm sở hữu tương ứng."
+   },
+   {
+    "q": "Vế sau 而是 thường có tác dụng gì?",
+    "options": [
+     "Lặp lại ý trước",
+     "Nêu ý đúng hoặc điều muốn nhấn mạnh",
+     "Hỏi người nghe một câu",
+     "Chỉ thời gian xảy ra"
+    ],
+    "answer": 1,
+    "explain": "而是 đưa ra thông tin được khẳng định sau khi ý trước bị phủ định."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-07",
+  "level": 4,
+  "order": 7,
+  "title": "Vừa… vừa…",
+  "titleZh": "既又也",
+  "summary": "Bạn sẽ diễn đạt hai đặc điểm hoặc hành động cùng tồn tại bằng 既……又/也…….",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Kết hợp hai ý",
+    "body": "既……又…… và 既……也…… nối hai đặc điểm hoặc hành động cùng đúng. Cả hai vế đều nói về cùng một người, vật hoặc tình huống.",
+    "examples": [
+     {
+      "zh": "我姐姐既聪明又爱帮助别人。",
+      "py": "wǒ jiějie jì cōngming yòu ài bāngzhù biérén",
+      "vi": "Chị tôi vừa thông minh vừa thích giúp đỡ người khác."
+     },
+     {
+      "zh": "这家饭店既便宜又干净。",
+      "py": "zhè jiā fàndiàn jì piányi yòu gānjìng",
+      "vi": "Nhà hàng này vừa rẻ vừa sạch sẽ."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Nêu điểm cùng có",
+    "body": "Dùng mẫu này khi muốn giới thiệu hai ưu điểm, sở thích hoặc khả năng của một đối tượng. 又 và 也 thường có thể thay thế nhau trong mẫu này.",
+    "examples": [
+     {
+      "zh": "爸爸既会做饭也会开车。",
+      "py": "bàba jì huì zuòfàn yě huì kāichē",
+      "vi": "Bố vừa biết nấu ăn vừa biết lái xe."
+     },
+     {
+      "zh": "她既喜欢唱歌又喜欢跳舞。",
+      "py": "tā jì xǐhuan chànggē yòu xǐhuan tiàowǔ",
+      "vi": "Cô ấy vừa thích hát vừa thích nhảy."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Đặt từ nối trước vế",
+    "body": "既 đứng trước ý thứ nhất; 又 hoặc 也 đứng trước ý thứ hai. Hai vế có thể là cụm tính từ, động từ hoặc danh từ.",
+    "formula": "Chủ ngữ + 既 + vế A + 又/也 + vế B",
+    "examples": [
+     {
+      "zh": "我既想看电影也想早点回家。",
+      "py": "wǒ jì xiǎng kàn diànyǐng yě xiǎng zǎodiǎn huí jiā",
+      "vi": "Tôi vừa muốn xem phim vừa muốn về nhà sớm."
+     },
+     {
+      "zh": "这件衣服既好看又很便宜。",
+      "py": "zhè jiàn yīfu jì hǎokàn yòu hěn piányi",
+      "vi": "Bộ quần áo này vừa đẹp vừa rẻ."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Dùng vế cân xứng",
+    "body": "Để câu rõ ràng, nên giữ cùng kiểu diễn đạt ở hai vế. Nếu vế đầu có 会 hoặc 是, thường lặp lại từ đó ở vế sau.",
+    "examples": [
+     {
+      "zh": "这家店既卖水果也卖蔬菜。",
+      "py": "zhè jiā diàn jì mài shuǐguǒ yě mài shūcài",
+      "vi": "Cửa hàng này vừa bán trái cây vừa bán rau."
+     },
+     {
+      "zh": "他既是我的老师也是我的朋友。",
+      "py": "tā jì shì wǒ de lǎoshī yě shì wǒ de péngyou",
+      "vi": "Anh ấy vừa là thầy giáo vừa là bạn của tôi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Không chồng hai từ nối",
+    "body": "Chỉ dùng 又 hoặc 也 trước vế thứ hai, không đặt cả hai từ liên tiếp. Nên lặp lại từ chỉ khả năng nếu cần câu cân xứng.",
+    "mistakes": [
+     {
+      "wrong": "她既会唱歌也跳舞。",
+      "right": "她既会唱歌也会跳舞。",
+      "why": "Lặp lại 会 giúp hai khả năng được diễn đạt song song và rõ ràng."
+     },
+     {
+      "wrong": "这家店既便宜又也很安静。",
+      "right": "这家店既便宜又很安静。",
+      "why": "又 và 也 cùng làm từ nối ở đây; chỉ chọn một từ."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu nói quán ăn vừa rẻ vừa sạch.",
+    "options": [
+     "这家饭店既便宜又干净。",
+     "这家饭店不是便宜而是干净。",
+     "这家饭店一方面便宜其次干净。"
+    ],
+    "answer": 0,
+    "explain": "既便宜又干净 nối hai đặc điểm cùng có của quán ăn."
+   },
+   {
+    "q": "Điền từ còn thiếu: 爸爸既会做饭___会开车。",
+    "options": [
+     "而是",
+     "首先",
+     "也",
+     "另一方面"
+    ],
+    "answer": 2,
+    "explain": "也 đặt trước vế thứ hai để nối hai khả năng của bố."
+   },
+   {
+    "q": "Câu nào diễn đạt hai sở thích của cô ấy?",
+    "options": [
+     "她不是喜欢唱歌而是跳舞。",
+     "她既喜欢唱歌又喜欢跳舞。",
+     "她首先喜欢唱歌其次跳舞。"
+    ],
+    "answer": 1,
+    "explain": "既喜欢唱歌又喜欢跳舞 nêu hai sở thích cùng tồn tại."
+   },
+   {
+    "q": "Chọn câu lặp lại 是 ở vế sau để diễn đạt ý “anh ấy vừa là thầy vừa là bạn của tôi”.",
+    "options": [
+     "他既是我的老师又我的朋友。",
+     "他不是我的老师而是我的朋友。",
+     "他既是我的老师而是我的朋友。",
+     "他既是我的老师又是我的朋友。"
+    ],
+    "answer": 3,
+    "explain": "Lặp lại 是 ở vế sau để hai phần của 既……又…… cân xứng."
+   },
+   {
+    "q": "Câu 既……又/也…… thường diễn đạt điều gì?",
+    "options": [
+     "Một ý đúng và một ý sai",
+     "Hai đặc điểm hoặc hành động cùng đúng",
+     "Trình tự ba việc",
+     "Hai lựa chọn loại trừ nhau"
+    ],
+    "answer": 1,
+    "explain": "Mẫu này nối hai ý cùng tồn tại về một đối tượng."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-08",
+  "level": 4,
+  "order": 8,
+  "title": "Một mặt… mặt khác…",
+  "titleZh": "一方面另一方面",
+  "summary": "Bạn sẽ trình bày hai khía cạnh khác nhau của cùng một người hoặc sự việc.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Trình bày hai khía cạnh",
+    "body": "一方面……另一方面…… dùng để chia một sự việc thành hai mặt hoặc hai khía cạnh. Cách nói này giúp người nghe thấy mỗi vế bổ sung một góc nhìn.",
+    "examples": [
+     {
+      "zh": "学中文一方面有意思，另一方面也有用。",
+      "py": "xué Zhōngwén yì fāngmiàn yǒu yìsi lìng yì fāngmiàn yě yǒu yòng",
+      "vi": "Học tiếng Trung một mặt thú vị, mặt khác cũng có ích."
+     },
+     {
+      "zh": "住在这里一方面很方便，另一方面也很安静。",
+      "py": "zhù zài zhèlǐ yì fāngmiàn hěn fāngbiàn lìng yì fāngmiàn yě hěn ānjìng",
+      "vi": "Sống ở đây một mặt rất thuận tiện, mặt khác cũng rất yên tĩnh."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "So sánh hai mặt",
+    "body": "Dùng mẫu này khi đánh giá một công việc, nơi chốn hoặc lựa chọn từ hai khía cạnh. Hai vế có thể nêu ưu điểm khác nhau hoặc những mặt trái chiều.",
+    "examples": [
+     {
+      "zh": "这份工作一方面很忙，另一方面工资也高。",
+      "py": "zhè fèn gōngzuò yì fāngmiàn hěn máng lìng yì fāngmiàn gōngzī yě gāo",
+      "vi": "Công việc này một mặt rất bận, mặt khác lương cũng cao."
+     },
+     {
+      "zh": "他一方面想工作，另一方面想继续学习。",
+      "py": "tā yì fāngmiàn xiǎng gōngzuò lìng yì fāngmiàn xiǎng jìxù xuéxí",
+      "vi": "Một mặt anh ấy muốn đi làm, mặt khác muốn tiếp tục học."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Nêu từng mặt theo cặp",
+    "body": "Đặt 一方面 trước khía cạnh thứ nhất và 另一方面 trước khía cạnh thứ hai. Chủ ngữ có thể dùng chung cho cả hai vế.",
+    "formula": "Chủ ngữ + 一方面 + vế A + 另一方面 + vế B",
+    "examples": [
+     {
+      "zh": "我们一方面要省钱，另一方面要多休息。",
+      "py": "wǒmen yì fāngmiàn yào shěngqián lìng yì fāngmiàn yào duō xiūxi",
+      "vi": "Một mặt chúng tôi cần tiết kiệm, mặt khác cần nghỉ ngơi nhiều hơn."
+     },
+     {
+      "zh": "这条路一方面很长，另一方面也很安全。",
+      "py": "zhè tiáo lù yì fāngmiàn hěn cháng lìng yì fāngmiàn yě hěn ānquán",
+      "vi": "Con đường này một mặt khá dài, mặt khác cũng rất an toàn."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Mỗi vế nêu một ý",
+    "body": "Dùng vế thứ hai để bổ sung một khía cạnh mới, không chỉ lặp lại nguyên ý trước. Có thể lặp động từ hoặc tính từ để câu cân xứng.",
+    "examples": [
+     {
+      "zh": "妈妈一方面做饭，另一方面照顾孩子。",
+      "py": "māma yì fāngmiàn zuòfàn lìng yì fāngmiàn zhàogù háizi",
+      "vi": "Một mặt mẹ nấu ăn, mặt khác còn chăm sóc con."
+     },
+     {
+      "zh": "我一方面喜欢音乐，另一方面也喜欢画画。",
+      "py": "wǒ yì fāngmiàn xǐhuan yīnyuè lìng yì fāngmiàn yě xǐhuan huàhuà",
+      "vi": "Một mặt tôi thích âm nhạc, mặt khác cũng thích vẽ."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Đảm bảo vế sau đủ ý",
+    "body": "Mỗi khía cạnh cần có nội dung rõ ràng. Nếu vế sau chỉ nêu một danh từ mà thiếu ý liên kết, hãy nhắc lại động từ hoặc thêm vị ngữ phù hợp.",
+    "mistakes": [
+     {
+      "wrong": "我一方面喜欢中文另一方面英语。",
+      "right": "我一方面喜欢中文另一方面也喜欢英语。",
+      "why": "Vế sau thiếu động từ 喜欢, khiến ý thứ hai không hoàn chỉnh."
+     },
+     {
+      "wrong": "他一方面想休息另一方面看电视。",
+      "right": "他一方面想休息另一方面也想看电视。",
+      "why": "Lặp lại 想 giúp hai mong muốn song song và dễ hiểu hơn."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn cặp từ phù hợp: 学中文___有意思，___也有用。",
+    "options": [
+     "既……又……",
+     "首先……其次……",
+     "一方面……另一方面……"
+    ],
+    "answer": 2,
+    "explain": "Câu nêu hai khía cạnh của việc học tiếng Trung nên dùng 一方面……另一方面……."
+   },
+   {
+    "q": "Câu nào nói công việc vừa bận vừa có lương cao ở hai khía cạnh?",
+    "options": [
+     "这份工作一方面很忙另一方面工资高。",
+     "这份工作不是很忙而是工资高。",
+     "这份工作首先很忙然后工资高。"
+    ],
+    "answer": 0,
+    "explain": "Hai vế lần lượt nêu mức độ bận rộn và mức lương."
+   },
+   {
+    "q": "Chọn cách nói đủ ý ở cả hai vế.",
+    "options": [
+     "我一方面喜欢中文另一方面英语。",
+     "我一方面中文另一方面也喜欢英语。",
+     "我一方面喜欢中文另一方面也喜欢英语。"
+    ],
+    "answer": 2,
+    "explain": "Cả hai vế đều có động từ 喜欢 nên ý được diễn đạt đầy đủ."
+   },
+   {
+    "q": "Điền cụm phù hợp: ___想工作，___想继续学习。",
+    "options": [
+     "不是……而是……",
+     "一方面……另一方面……",
+     "既是……也是……",
+     "首先……然后……"
+    ],
+    "answer": 1,
+    "explain": "Câu trình bày hai khía cạnh trong mong muốn của cùng một người."
+   },
+   {
+    "q": "Hai vế của mẫu 一方面……另一方面…… nên có quan hệ thế nào?",
+    "options": [
+     "Vế sau luôn phủ định vế trước",
+     "Vế sau chỉ thời gian",
+     "Mỗi vế nêu một khía cạnh của cùng sự việc",
+     "Vế sau phải là câu hỏi"
+    ],
+    "answer": 2,
+    "explain": "Hai vế cùng nói về một sự việc nhưng trình bày hai khía cạnh."
+   }
+  ]
+ },
+ {
+  "id": "zh-g-h4-09",
+  "level": 4,
+  "order": 9,
+  "title": "Trước tiên… tiếp theo… rồi…",
+  "titleZh": "顺序连接",
+  "summary": "Bạn sẽ kể hoặc hướng dẫn một chuỗi việc theo đúng trình tự bằng 首先、其次 và 然后.",
+  "minutes": 8,
+  "steps": [
+   {
+    "label": "Định nghĩa",
+    "title": "Sắp xếp theo trình tự",
+    "body": "首先……其次……然后…… dùng để trình bày các bước lần lượt. 首先 giới thiệu bước đầu, 其次 nêu bước kế tiếp và 然后 dẫn vào bước sau đó.",
+    "examples": [
+     {
+      "zh": "我们首先吃早饭，其次坐车，然后去学校。",
+      "py": "wǒmen shǒuxiān chī zǎofàn qícì zuò chē ránhòu qù xuéxiào",
+      "vi": "Chúng tôi ăn sáng trước, tiếp theo đi xe rồi đến trường."
+     },
+     {
+      "zh": "她首先洗衣服，其次打扫房间，然后休息。",
+      "py": "tā shǒuxiān xǐ yīfu qícì dǎsǎo fángjiān ránhòu xiūxi",
+      "vi": "Cô ấy giặt quần áo trước, tiếp theo dọn phòng rồi nghỉ ngơi."
+     }
+    ]
+   },
+   {
+    "label": "Dùng khi nào",
+    "title": "Hướng dẫn nhiều bước",
+    "body": "Dùng mẫu này khi kể kế hoạch, hướng dẫn cách làm hoặc thuật lại các việc đã diễn ra. Hãy chọn thứ tự phù hợp với đời sống thực tế.",
+    "examples": [
+     {
+      "zh": "你首先看地图，其次问路，然后再出发。",
+      "py": "nǐ shǒuxiān kàn dìtú qícì wèn lù ránhòu zài chūfā",
+      "vi": "Bạn xem bản đồ trước, tiếp theo hỏi đường rồi mới xuất phát."
+     },
+     {
+      "zh": "会上我们首先听老师说，其次一起讨论，然后做练习。",
+      "py": "huì shàng wǒmen shǒuxiān tīng lǎoshī shuō qícì yìqǐ tǎolùn ránhòu zuò liànxí",
+      "vi": "Trong buổi họp, trước tiên chúng tôi nghe thầy nói, tiếp theo cùng thảo luận, rồi làm bài tập."
+     }
+    ]
+   },
+   {
+    "label": "Cấu trúc",
+    "title": "Gắn từ nối vào từng bước",
+    "body": "Đặt 首先 trước bước đầu, 其次 trước bước kế tiếp và 然后 trước hành động tiếp theo. Sau mỗi từ nối là một hành động hoặc một mệnh đề ngắn.",
+    "formula": "首先 + bước 1， 其次 + bước 2， 然后 + bước 3",
+    "examples": [
+     {
+      "zh": "我今天首先买菜，其次做饭，然后洗碗。",
+      "py": "wǒ jīntiān shǒuxiān mǎi cài qícì zuòfàn ránhòu xǐ wǎn",
+      "vi": "Hôm nay tôi đi mua thức ăn trước, tiếp theo nấu cơm rồi rửa bát."
+     },
+     {
+      "zh": "他们首先坐车，其次换车，然后到学校。",
+      "py": "tāmen shǒuxiān zuò chē qícì huàn chē ránhòu dào xuéxiào",
+      "vi": "Họ đi xe trước, tiếp theo đổi xe rồi đến trường."
+     }
+    ]
+   },
+   {
+    "label": "Quy tắc 1",
+    "title": "Giữ đúng thứ tự việc",
+    "body": "Hãy sắp xếp các hành động theo thời gian hoặc thứ tự cần làm. 其次 đánh dấu bước tiếp sau 首先; 然后 thường đưa ra việc xảy ra sau đó.",
+    "examples": [
+     {
+      "zh": "我们首先找座位，其次点菜，然后吃饭。",
+      "py": "wǒmen shǒuxiān zhǎo zuòwèi qícì diǎn cài ránhòu chīfàn",
+      "vi": "Chúng tôi tìm chỗ ngồi trước, tiếp theo gọi món rồi ăn."
+     },
+     {
+      "zh": "他首先打开电脑，其次写信，然后休息。",
+      "py": "tā shǒuxiān dǎkāi diànnǎo qícì xiě xìn ránhòu xiūxi",
+      "vi": "Anh ấy mở máy tính trước, tiếp theo viết thư rồi nghỉ ngơi."
+     }
+    ]
+   },
+   {
+    "label": "Lỗi hay mắc",
+    "title": "Tránh đảo hoặc chồng từ nối",
+    "body": "Không dùng 其次 trước bước đầu hoặc chồng 其次 và 然后 lên cùng một bước. Mỗi từ nối nên dẫn vào một việc theo đúng trình tự.",
+    "mistakes": [
+     {
+      "wrong": "我首先洗手然后吃饭其次收拾桌子。",
+      "right": "我首先洗手其次吃饭然后收拾桌子。",
+      "why": "Việc ăn cơm là bước kế tiếp sau khi rửa tay; dọn bàn diễn ra sau bữa ăn."
+     },
+     {
+      "wrong": "她首先做饭其次然后吃饭。",
+      "right": "她首先做饭其次吃饭然后休息。",
+      "why": "Không đặt cả 其次 và 然后 trước cùng một hành động."
+     }
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Chọn câu kể đúng trình tự: tìm chỗ ngồi, gọi món, ăn.",
+    "options": [
+     "我们其次找座位首先点菜然后吃饭。",
+     "我们首先吃饭其次找座位然后点菜。",
+     "我们首先点菜然后找座位其次吃饭。",
+     "我们首先找座位其次点菜然后吃饭。"
+    ],
+    "answer": 3,
+    "explain": "Câu này đặt việc tìm chỗ, gọi món và ăn theo đúng thứ tự."
+   },
+   {
+    "q": "Từ nào thường giới thiệu bước đầu tiên?",
+    "options": [
+     "其次",
+     "首先",
+     "而是"
+    ],
+    "answer": 1,
+    "explain": "首先 dùng để mở đầu bước thứ nhất trong chuỗi việc."
+   },
+   {
+    "q": "Chọn cách nối ba bước phù hợp: xem bản đồ, hỏi đường, xuất phát.",
+    "options": [
+     "你其次看地图然后问路首先出发。",
+     "你首先问路其次出发然后看地图。",
+     "你首先看地图其次问路然后出发。",
+     "你不是看地图而是问路然后出发。"
+    ],
+    "answer": 2,
+    "explain": "首先、其次、然后 lần lượt đánh dấu ba bước theo trình tự."
+   },
+   {
+    "q": "Điền từ thích hợp: 首先洗手，___吃饭，然后收拾桌子。",
+    "options": [
+     "另一方面",
+     "而是",
+     "既",
+     "其次"
+    ],
+    "answer": 3,
+    "explain": "其次 giới thiệu bước tiếp theo sau khi rửa tay."
+   },
+   {
+    "q": "Trong mẫu 首先……其次……然后……, 然后 thường làm gì?",
+    "options": [
+     "Phủ định bước đầu",
+     "Nêu một lựa chọn khác",
+     "Giới thiệu một khía cạnh",
+     "Dẫn vào hành động xảy ra tiếp theo"
+    ],
+    "answer": 3,
+    "explain": "然后 thường dẫn vào hành động tiếp theo trong trình tự."
+   }
+  ]
+ }
+]

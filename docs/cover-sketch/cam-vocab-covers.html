@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bìa bộ từ Cambridge — Chòm sao và Giấy cắt lớp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Oxanium:wght@700;800&family=Space+Grotesk:wght@600;700&family=Chakra+Petch:wght@600;700&family=Exo+2:wght@700;800&family=Playfair+Display:wght@700;800&family=Fraunces:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1c1b22; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 24px 56px; min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', sans-serif; color: var(--ink);
+    background: linear-gradient(180deg, #cdb7dc 0%, #e6c3d3 45%, #f6d9c9 100%);
+  }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { font-size: 14px; margin: 0 0 28px; opacity: .75; }
+  .row { margin-bottom: 44px; }
+  .row h2 { font-size: 15px; margin: 0 0 14px; }
+  .shelf { display: flex; gap: 30px; flex-wrap: wrap; }
+  .book { width: 300px; height: 408px; border-radius: 14px; position: relative;
+    filter: drop-shadow(0 16px 20px rgba(40,20,60,.38)); transition: transform .35s ease; }
+  .book:hover { transform: translateY(-8px) rotate(-1.2deg); }
+  .book svg { display: block; width: 100%; height: 100%; border-radius: 14px; }
+  text { font-family: 'Inter', 'Segoe UI', sans-serif; }
+  :root { --numfont: 'Oxanium'; }
+  .num { font-family: var(--numfont), 'Inter', sans-serif; }
+  .fonts { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 22px; }
+  .fonts button { font: 600 13px 'Inter', sans-serif; padding: 7px 12px; border-radius: 999px; border: 1.5px solid #1c1b22; background: rgba(255,255,255,.55); cursor: pointer; }
+  .fonts button.on { background: #1c1b22; color: #fff; }
+</style>
+</head>
+<body>
+<h1>Bìa bộ từ Cambridge — Reading 10 · 11 · 12</h1>
+<p class="sub">B và C làm kỹ hơn. Bấm một phông để đổi chữ số từ (494, 761, 448) trên cả 6 bìa.</p>
+<div class="fonts" id="fonts"></div>
+
+<div class="row"><h2>B · Chòm sao</h2><div class="shelf" id="rowB"></div></div>
+<div class="row"><h2>C · Giấy cắt lớp</h2><div class="shelf" id="rowC"></div></div>
+
+<script>
+const VOLS = [
+  { n: 10, words: 494, c: '#8E7BFF', light: '#B9AEFF', mid: '#5442B8', dark: '#241C4F', deep: '#120D2E' },
+  { n: 11, words: 761, c: '#2FD0B8', light: '#86EAD9', mid: '#12887A', dark: '#0A3836', deep: '#04201F' },
+  { n: 12, words: 448, c: '#FF7A6B', light: '#FFB4A8', mid: '#C74A3D', dark: '#4A1814', deep: '#2A0C09' },
+];
+const W = 250, H = 340;
+const CREAM = '#F4ECDD';
+
+function rng(seed) {
+  return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+const f = (v) => +v.toFixed(2);
+const rgb = (hex) => [1, 3, 5].map(i => f(parseInt(hex.slice(i, i + 2), 16) / 255)).join(' ');
+const star4 = (x, y, r, k = .28) =>
+  `M${f(x)} ${f(y - r)}L${f(x + r * k)} ${f(y - r * k)}L${f(x + r)} ${f(y)}L${f(x + r * k)} ${f(y + r * k)}L${f(x)} ${f(y + r)}L${f(x - r * k)} ${f(y + r * k)}L${f(x - r)} ${f(y)}L${f(x - r * k)} ${f(y - r * k)}Z`;
+
+function spine(d, tone) {
+  return `
+    <rect x="0" y="0" width="17" height="${H}" fill="rgba(0,0,0,.4)"/>
+    <rect x="0" y="0" width="17" height="${H}" fill="url(#spg)"/>
+    <rect x="17" y="0" width="1.2" height="${H}" fill="rgba(255,255,255,.22)"/>
+    <rect x="15.6" y="0" width=".8" height="${H}" fill="rgba(0,0,0,.35)"/>
+    <text transform="translate(5 120) rotate(90)" font-size="6.5" font-weight="700" letter-spacing="2" fill="${tone}" opacity=".85">IELTS ${d.n} · READING</text>
+    <circle cx="8.5" cy="40" r="1.6" fill="${tone}" opacity=".5"/><circle cx="8.5" cy="300" r="1.6" fill="${tone}" opacity=".5"/>`;
+}
+const SPG = `<linearGradient id="spg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>`;
+
+function svg(inner, defs = '') {
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="r"><rect width="${W}" height="${H}" rx="12"/></clipPath>${SPG}${defs}</defs><g clip-path="url(#r)">${inner}</g></svg>`;
+}
+
+/* ---------- B · Chòm sao ---------- */
+function cluster(x, y, seed, d) {
+  const R = rng(seed), pts = [];
+  for (let i = 0; i < 5; i++) pts.push([x + i * 7 + R() * 5, y + (R() - .5) * 26 + (i % 2 ? 6 : -4)]);
+  const path = pts.map((p, i) => (i ? 'L' : 'M') + f(p[0]) + ' ' + f(p[1])).join('');
+  return `<path d="${path}" fill="none" stroke="${d.light}" stroke-width=".6" opacity=".4"/>` +
+    pts.map((p, i) => `<circle cx="${f(p[0])}" cy="${f(p[1])}" r="${i % 2 ? 1.5 : 1}" fill="#fff" opacity=".85"/>`).join('');
+}
+
+function coverB(d) {
+  const CX = 137, CY = 158;
+  // Số đề được dựng thành lưới điểm lấy mẫu từ chữ thật.
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const cx = cv.getContext('2d');
+  cx.font = "800 150px 'Inter', 'Segoe UI', sans-serif";
+  cx.textAlign = 'center'; cx.textBaseline = 'middle'; cx.fillStyle = '#000';
+  cx.fillText(String(d.n), CX, CY);
+  const step = 6.5, img = cx.getImageData(0, 0, W, H).data;
+  const on = (x, y) => x > 0 && y > 0 && x < W && y < H && img[((y | 0) * W + (x | 0)) * 4 + 3] > 140;
+  const pts = new Map();
+  for (let y = 70; y < 250; y += step) for (let x = 24; x < W - 6; x += step) if (on(x, y)) pts.set(f(x) + ',' + f(y), [x, y]);
+  const R = rng(d.n * 97);
+  let lines = '', diag = '', dots = '', edge = '', flare = '';
+  const get = (x, y) => pts.get(f(x) + ',' + f(y));
+  for (const [x, y] of pts.values()) {
+    const r = get(x + step, y), b = get(x, y + step), br = get(x + step, y + step), bl = get(x - step, y + step);
+    if (r) lines += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(r[0])}" y2="${f(r[1])}"/>`;
+    if (b) lines += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(b[0])}" y2="${f(b[1])}"/>`;
+    if (br && R() > .35) diag += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(br[0])}" y2="${f(br[1])}"/>`;
+    if (bl && R() > .6) diag += `<line x1="${f(x)}" y1="${f(y)}" x2="${f(bl[0])}" y2="${f(bl[1])}"/>`;
+    const isEdge = !(get(x + step, y) && get(x - step, y) && get(x, y + step) && get(x, y - step));
+    if (isEdge) {
+      edge += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(1.9 + R() * 0.9)}"/>`;
+      if (R() > .94) flare += `<path d="${star4(x, y, 6 + R() * 3)}"/>`;
+    } else dots += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(0.9 + R() * 0.9)}"/>`;
+  }
+  let sky = '', tint = '';
+  const S = rng(d.n * 13 + 5);
+  for (let i = 0; i < 120; i++) {
+    const x = 22 + S() * 226, y = S() * 336, r = 0.3 + S() * 0.8;
+    sky += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" opacity="${f(0.25 + S() * 0.6)}"/>`;
+  }
+  for (let i = 0; i < 14; i++) tint += `<circle cx="${f(22 + S() * 226)}" cy="${f(S() * 290)}" r="${f(1 + S() * 0.8)}" fill="${S() > .5 ? d.light : '#fff'}"/>`;
+  let bigStars = '';
+  for (let i = 0; i < 6; i++) bigStars += `<path d="${star4(24 + S() * 220, 70 + S() * 210, 3.5 + S() * 3.5)}" opacity="${f(.6 + S() * .35)}"/>`;
+
+  // Vòng thiên cầu: 72 vạch, 12 vạch lớn (mỗi bài đọc một vạch).
+  let ticks = '', majors = '';
+  for (let i = 0; i < 72; i++) {
+    const a = i * Math.PI / 36, big = i % 6 === 0, r1 = 96, r2 = big ? 105 : 100;
+    ticks += `<line x1="${f(CX + Math.cos(a) * r1)}" y1="${f(CY + Math.sin(a) * r1)}" x2="${f(CX + Math.cos(a) * r2)}" y2="${f(CY + Math.sin(a) * r2)}" stroke-width="${big ? .9 : .5}"/>`;
+    if (big) majors += `<circle cx="${f(CX + Math.cos(a) * 109)}" cy="${f(CY + Math.sin(a) * 109)}" r="1.9"/>`;
+  }
+
+  // Đường chân trời: 12 ngôi sao nối nhau.
+  let star12 = '', path = '';
+  for (let i = 0; i < 12; i++) {
+    const x = 36 + i * 17.4, y = 266 - Math.sin(i / 11 * Math.PI) * 13 + (i % 2 ? 4 : -2);
+    path += (i ? 'L' : 'M') + f(x) + ' ' + f(y);
+    star12 += `<path d="${star4(x, y, i % 3 === 0 ? 6 : 4.4)}"/><circle cx="${f(x)}" cy="${f(y)}" r="1.1" fill="${d.c}"/>`;
+  }
+
+  const defs = `
+    <linearGradient id="bg${d.n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070918"/><stop offset=".55" stop-color="#12162F"/><stop offset="1" stop-color="${d.dark}"/></linearGradient>
+    <radialGradient id="gl${d.n}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${d.c}" stop-opacity=".42"/><stop offset=".6" stop-color="${d.mid}" stop-opacity=".16"/><stop offset="1" stop-color="${d.c}" stop-opacity="0"/></radialGradient>
+    <radialGradient id="n2${d.n}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${d.mid}" stop-opacity=".5"/><stop offset="1" stop-color="${d.mid}" stop-opacity="0"/></radialGradient>
+    <linearGradient id="rg${d.n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${d.dark}"/><stop offset="1" stop-color="${d.deep}"/></linearGradient>
+    <linearGradient id="pl${d.n}" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="${d.mid}"/><stop offset="1" stop-color="${d.deep}"/></linearGradient>
+    <filter id="mw${d.n}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="3" seed="${d.n}"/><feColorMatrix values="0 0 0 0 ${rgb(d.c)}  0 0 0 0 ${rgb(d.c)}  0 0 0 0 ${rgb(d.c)}  1.9 0 0 0 -0.82"/></filter>
+    <filter id="g${d.n}" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="gg${d.n}" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+
+  const inner = `
+    <rect width="${W}" height="${H}" fill="url(#bg${d.n})"/>
+    <rect width="${W}" height="${H}" filter="url(#mw${d.n})" opacity=".4"/>
+    <ellipse cx="${CX}" cy="${CY}" rx="125" ry="115" fill="url(#gl${d.n})"/>
+    <ellipse cx="40" cy="290" rx="90" ry="60" fill="url(#n2${d.n})"/>
+    <g fill="#fff">${sky}</g><g>${tint}</g>
+    <g fill="#fff" filter="url(#g${d.n})">${bigStars}</g>
+    ${cluster(24, 100, d.n * 3, d)}${cluster(204, 232, d.n * 7, d)}
+    <g transform="rotate(-8 ${CX} ${CY})" stroke="${d.light}" fill="none">
+      <circle cx="${CX}" cy="${CY}" r="96" stroke-width=".7" opacity=".55"/>
+      <circle cx="${CX}" cy="${CY}" r="88" stroke-width=".5" stroke-dasharray="1.5 3.5" opacity=".5"/>
+      <circle cx="${CX}" cy="${CY}" r="108" stroke-width=".4" opacity=".28"/>
+      <g opacity=".65">${ticks}</g>
+      <g fill="${d.light}" stroke="none" filter="url(#g${d.n})">${majors}</g>
+    </g>
+    <g stroke="${d.c}" stroke-width=".5" opacity=".28">${diag}</g>
+    <g stroke="${d.c}" stroke-width=".75" opacity=".5">${lines}</g>
+    <g fill="${d.light}" opacity=".9">${dots}</g>
+    <g fill="#fff" filter="url(#gg${d.n})">${edge}</g>
+    <g fill="#fff" opacity=".9">${flare}</g>
+    <rect x="25" y="10" width="217" height="320" rx="6" fill="none" stroke="${d.light}" stroke-width=".6" opacity=".3"/>
+    <g fill="${d.light}" opacity=".75"><path d="${star4(25, 10, 5)}"/><path d="${star4(242, 10, 5)}"/><path d="${star4(25, 330, 5)}"/><path d="${star4(242, 330, 5)}"/></g>
+    <text x="36" y="38" font-size="11" font-weight="800" letter-spacing="2.4" fill="#fff">CAMBRIDGE IELTS</text>
+    <text x="36" y="53" font-size="9" font-weight="800" letter-spacing="3" fill="${d.light}">READING</text>
+    <g transform="translate(205 47)">
+      <ellipse rx="35" ry="9" transform="rotate(-18)" fill="none" stroke="${d.light}" stroke-width="1" opacity=".7"/>
+      <circle r="23" fill="url(#pl${d.n})" stroke="${d.c}" stroke-width="1.4"/>
+      <path d="M-14 -16 A20 20 0 0 0 -17 12 A25 25 0 0 1 -14 -16Z" fill="${d.light}" opacity=".35"/>
+      <circle cx="9" cy="-12" r="2.2" fill="${d.c}" opacity=".35"/><circle cx="14" cy="-5" r="1.3" fill="${d.c}" opacity=".35"/>
+      <path d="M-35 0 A35 9 0 0 0 35 0" transform="rotate(-18)" fill="none" stroke="${d.light}" stroke-width="1.2"/>
+      <text class="num" y="2" font-size="14.5" font-weight="800" text-anchor="middle" fill="#fff" stroke="${d.deep}" stroke-width="2.4" paint-order="stroke">${d.words}</text>
+      <text class="num" y="12.5" font-size="7" font-weight="800" letter-spacing="2" text-anchor="middle" fill="${d.light}" stroke="${d.deep}" stroke-width="2" paint-order="stroke">TỪ</text>
+    </g>
+    <path d="M0 296 L20 288 L38 296 L64 276 L92 294 L118 282 L146 298 L176 278 L206 296 L232 284 L250 292 V340 H0Z" fill="${d.mid}" opacity=".4"/>
+    <path d="M0 308 L26 300 L50 310 L82 296 L112 310 L150 298 L186 312 L220 300 L250 308 V340 H0Z" fill="url(#rg${d.n})"/>
+    <path d="${path}" fill="none" stroke="${d.light}" stroke-width=".9" opacity=".75"/>
+    <g fill="#fff" filter="url(#gg${d.n})">${star12}</g>
+    <text x="36" y="326" font-size="16.5" font-weight="800" letter-spacing=".8" fill="#fff">VOCABULARY</text>
+    ${spine(d, '#fff')}`;
+  return svg(inner, defs);
+}
+
+/* ---------- C · Giấy cắt lớp ---------- */
+function wave(y0, amp, phase, wl) {
+  let p = `M0 ${H}`;
+  for (let x = 0; x <= W; x += 5) p += `L${x} ${f(y0 + amp * Math.sin(x / wl + phase) + amp * .4 * Math.sin(x / (wl * .43) + phase * 2))}`;
+  return p + `L${W} ${H}Z`;
+}
+function waveTop(y0, amp, phase, wl, dy = 0) {
+  let p = '';
+  for (let x = 0; x <= W; x += 5) p += (x ? 'L' : 'M') + x + ' ' + f(dy + y0 + amp * Math.sin(x / wl + phase) + amp * .4 * Math.sin(x / (wl * .43) + phase * 2));
+  return p;
+}
+
+function coverC(d) {
+  const n = d.n, R = rng(n * 31);
+  // Sắc giấy cho các lớp số đề xếp chồng.
+  const SHEET = ['#C9BEA6', '#DDD3BE', '#CFC4AC', '#E4DAC6', '#D6CBB3'];
+  let stack = '';
+  for (let i = 5; i >= 1; i--) stack += `<text x="${f(30 + i * 1.05)}" y="${f(160 + i * 1.35)}" font-size="132" font-weight="800" letter-spacing="-6" fill="${SHEET[i - 1]}">${n}</text>`;
+  // Tia nắng giấy cắt.
+  let rays = '';
+  for (let i = 0; i < 28; i++) {
+    const a = i / 28 * Math.PI * 2, a2 = a + Math.PI / 28;
+    rays += `<path d="M${f(190 + Math.cos(a) * 52)} ${f(112 + Math.sin(a) * 52)}L${f(190 + Math.cos((a + a2) / 2) * 76)} ${f(112 + Math.sin((a + a2) / 2) * 76)}L${f(190 + Math.cos(a2) * 52)} ${f(112 + Math.sin(a2) * 52)}Z"/>`;
+  }
+  // 12 thẻ đánh dấu, đánh số 1–12.
+  let tabs = '';
+  for (let i = 0; i < 12; i++) {
+    const x = 34 + i * 17.2, h = 17 + (i * 5 % 8), hot = i % 4 === 0;
+    tabs += `<path d="M${x} -6V${h}L${x + 6.5} ${h - 4}L${x + 13} ${h}V-6Z" fill="${hot ? d.c : CREAM}"/>
+      <text x="${x + 6.5}" y="8.5" font-size="6.3" font-weight="800" text-anchor="middle" fill="${hot ? '#fff' : d.dark}">${i + 1}</text>`;
+  }
+  // Chim giấy.
+  const bird = (x, y, s) => `<path d="M${x} ${y} q${3 * s} ${-4 * s} ${6 * s} 0 q${3 * s} ${-4 * s} ${6 * s} 0 q${-3 * s} ${1 * s} ${-6 * s} ${3 * s} q${-3 * s} ${-2 * s} ${-6 * s} ${-3 * s}Z"/>`;
+  // Lớp gợn sóng: mỗi lớp có bóng đổ, viền sáng và đường khâu.
+  const layers = [
+    { y: 176, a: 11, p: 0.4, wl: 24, fill: d.light, hi: '#fff' },
+    { y: 212, a: 12, p: 1.9, wl: 21, fill: d.c, hi: d.light },
+    { y: 252, a: 10, p: 3.1, wl: 27, fill: d.mid, hi: d.c },
+    { y: 292, a: 9, p: 4.4, wl: 19, fill: d.dark, hi: d.mid },
+  ];
+  let waves = '';
+  layers.forEach((L, i) => {
+    waves += `<g filter="url(#sh${n})"><path d="${wave(L.y, L.a, L.p, L.wl)}" fill="${L.fill}"/></g>
+      <path d="${waveTop(L.y, L.a, L.p, L.wl, 1)}" fill="none" stroke="${L.hi}" stroke-width="1" opacity=".55"/>
+      <path d="${waveTop(L.y, L.a, L.p, L.wl, 7)}" fill="none" stroke="${L.hi}" stroke-width=".8" stroke-dasharray="3 3" opacity=".5"/>`;
+    // Lỗ tròn cắt trên từng lớp.
+    for (let k = 0; k < 7; k++) {
+      const x = 28 + R() * 210, y = L.y + 16 + R() * 18 + (i === 3 ? 0 : 0);
+      if (i === 3 && y > 310) continue;
+      waves += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(1 + R() * 1.6)}" fill="${i === 0 ? d.c : i === 3 ? d.mid : d.dark}" opacity=".28"/>`;
+    }
+  });
+  // Cỏ lau giấy cắt ở lớp cuối.
+  let reeds = '';
+  for (let i = 0; i < 9; i++) {
+    const x = 30 + i * 8 + R() * 3, h = 16 + R() * 14, lean = (R() - .5) * 8;
+    reeds += `<path d="M${f(x)} 306 Q${f(x + lean * .4)} ${f(306 - h * .6)} ${f(x + lean)} ${f(306 - h)}" stroke="${d.c}" opacity=".6" stroke-width="1.4" fill="none" stroke-linecap="round"/>`;
+  }
+  // Huy hiệu răng cưa + dải ruy-băng.
+  let scallop = '';
+  for (let i = 0; i < 18; i++) {
+    const a = i / 18 * Math.PI * 2;
+    scallop += `<circle cx="${f(Math.cos(a) * 31)}" cy="${f(Math.sin(a) * 31)}" r="5.6"/>`;
+  }
+
+  const defs = `
+    <filter id="sh${n}" x="-10%" y="-25%" width="120%" height="160%"><feDropShadow dx="0" dy="-3" stdDeviation="3.2" flood-color="#000" flood-opacity=".34"/></filter>
+    <filter id="tx${n}" x="-15%" y="-15%" width="140%" height="150%"><feDropShadow dx="2" dy="4" stdDeviation="2.4" flood-color="#000" flood-opacity=".42"/></filter>
+    <filter id="tb${n}" x="-30%" y="-10%" width="160%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="1.2" flood-color="#000" flood-opacity=".4"/></filter>
+    <filter id="gr${n}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="${n}"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.1 -.35"/></filter>
+    <radialGradient id="sg${n}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${d.light}" stop-opacity=".55"/><stop offset="1" stop-color="${d.c}" stop-opacity="0"/></radialGradient>
+    <linearGradient id="sk${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${d.deep}"/><stop offset="1" stop-color="${d.dark}"/></linearGradient>`;
+
+  const inner = `
+    <rect width="${W}" height="${H}" fill="url(#sk${n})"/>
+    <circle cx="190" cy="112" r="96" fill="url(#sg${n})"/>
+    <g fill="${CREAM}" opacity=".1">${rays}</g>
+    <circle cx="190" cy="112" r="50" fill="${d.c}" opacity=".35"/>
+    <circle cx="190" cy="112" r="38" fill="${d.light}" opacity=".55"/>
+    <circle cx="190" cy="112" r="26" fill="${CREAM}" opacity=".9"/>
+    <g fill="${CREAM}" opacity=".8">
+      <path d="${star4(52, 96, 4)}"/><path d="${star4(86, 88, 2.6)}"/><path d="${star4(32, 130, 2.4)}"/><path d="${star4(225, 190, 3)}"/>
+    </g>
+    <g fill="${CREAM}" opacity=".85">${bird(128, 76, 1)}${bird(150, 64, .8)}${bird(112, 62, .7)}</g>
+    <g filter="url(#tb${n})">${tabs}</g>
+    <text x="36" y="50" font-size="11" font-weight="800" letter-spacing="2.4" fill="#fff">CAMBRIDGE IELTS</text>
+    <g filter="url(#tx${n})">${stack}<text x="30" y="160" font-size="132" font-weight="800" letter-spacing="-6" fill="${CREAM}">${n}</text></g>
+    ${waves}
+    ${reeds}
+    <g filter="url(#tb${n})">
+      <rect x="36" y="230" width="78" height="20" rx="10" fill="${CREAM}"/>
+      <rect x="39" y="233" width="72" height="14" rx="7" fill="none" stroke="${d.dark}" stroke-width=".6" stroke-dasharray="2 2" opacity=".6"/>
+      <text x="75" y="244" font-size="9.5" font-weight="800" letter-spacing="2" text-anchor="middle" fill="${d.dark}">READING</text>
+    </g>
+    <text x="36" y="326" font-size="16.5" font-weight="800" letter-spacing=".8" fill="#fff">VOCABULARY</text>
+    <g transform="translate(205 286)" filter="url(#tx${n})">
+      <path d="M-14 24 L-22 52 L-12 46 L-6 54 L0 26Z" fill="${d.c}"/>
+      <path d="M14 24 L22 52 L12 46 L6 54 L0 26Z" fill="${d.light}"/>
+      <g fill="${CREAM}">${scallop}<circle r="31"/></g>
+      <circle r="27" fill="none" stroke="${d.dark}" stroke-width=".8" stroke-dasharray="2 2.6" opacity=".7"/>
+      <circle r="22" fill="${d.dark}" opacity=".08"/>
+      <text class="num" y="4" font-size="19" font-weight="800" text-anchor="middle" fill="${d.dark}">${d.words}</text>
+      <text class="num" y="16" font-size="8" font-weight="800" letter-spacing="2" text-anchor="middle" fill="${d.mid}">TỪ</text>
+    </g>
+    <rect width="${W}" height="${H}" filter="url(#gr${n})" opacity=".3" style="mix-blend-mode:overlay"/>
+    ${spine(d, '#fff')}`;
+  return svg(inner, defs);
+}
+
+const NUMFONTS = ['Oxanium', 'Space Grotesk', 'Chakra Petch', 'Exo 2', 'Playfair Display', 'Fraunces', 'Inter'];
+function setupFonts() {
+  const box = document.getElementById('fonts');
+  box.innerHTML = NUMFONTS.map((n, i) => `<button data-f="${n}" class="${i ? '' : 'on'}" style="font-family:'${n}'">${n}</button>`).join('');
+  box.onclick = (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.documentElement.style.setProperty('--numfont', `'${b.dataset.f}'`);
+    box.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+  };
+}
+async function main() {
+  setupFonts();
+  try { await document.fonts.load("800 150px 'Inter'"); await document.fonts.ready; } catch (e) {}
+  const rows = { rowB: coverB, rowC: coverC };
+  for (const [id, fn] of Object.entries(rows)) {
+    document.getElementById(id).innerHTML = VOLS.map(d => `<div class="book">${fn(d)}</div>`).join('');
+  }
+}
+main();
+</script>
+</body>
+</html>

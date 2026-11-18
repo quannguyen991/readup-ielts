@@ -1,0 +1,62 @@
+{
+ "id": "mock-01",
+ "title": "IELTS Speaking Mock Test 1",
+ "titleVi": "Đề thi thử số 1",
+ "focusVi": "Rèn luyện kỹ năng phát triển ý mạch lạc từ câu trả lời trực tiếp đến việc mở rộng bằng trải nghiệm cá nhân và lập luận đa chiều.",
+ "part1": [
+  {
+   "topic": "Work or Study",
+   "qs": [
+    "Do you currently work or are you a student?",
+    "What made you choose this particular field?",
+    "What do you find most challenging about your daily tasks?",
+    "Do you plan to continue in this line of work or study in the future?"
+   ]
+  },
+  {
+   "topic": "Hometown",
+   "qs": [
+    "Where is your hometown located?",
+    "What do people in your hometown usually do for leisure?",
+    "Has your hometown changed much over the last ten years?",
+    "Would you say your hometown is a suitable place for young people to live?"
+   ]
+  }
+ ],
+ "part2": {
+  "prompt": "Describe a person who taught you a useful skill when you were younger.",
+  "bullets": [
+   "who this person was",
+   "what skill they taught you",
+   "how they taught it to you",
+   "and explain why this skill has been useful in your life"
+  ]
+ },
+ "part3": [
+  "What qualities distinguish an exceptional teacher from an ordinary one?",
+  "Do you believe children learn practical skills better from parents or from school teachers?",
+  "How have online learning platforms transformed the way people acquire new practical skills?",
+  "Should traditional crafts still be taught to younger generations in modern society?",
+  "Why do some adults find it considerably harder to learn new skills than children do?"
+ ],
+ "answers": {
+  "p1": [
+   "Right now, I am working as a graphic designer at an advertising agency. I really enjoy the creative freedom it offers, especially when working on brand campaigns for local businesses.",
+   "I chose graphic design because I have always loved visual arts since childhood. Creating digital illustrations allows me to turn imaginative concepts into tangible products that actually solve communication problems.",
+   "The toughest part is definitely managing tight deadlines while maintaining high standards. For instance, when several clients request urgent revisions simultaneously, it demands intense concentration and rapid problem-solving under pressure.",
+   "Yes, I definitely intend to stay in this creative industry. Eventually, I hope to establish my own boutique design studio to mentor novice designers and handle independent projects.",
+   "My hometown is Da Nang, a vibrant coastal city in central Vietnam. It is situated right along the coast, offering stunning sandy beaches and iconic bridges that attract countless visitors.",
+   "Locals usually gather at beachside coffee shops or stroll along the Han River promenade in the evening. During weekends, families often organize seaside barbecues or go hiking around Son Tra Peninsula.",
+   "It has developed dramatically over the past decade. Modern skyscrapers, upgraded bridges, and international hospitality chains have transformed our quiet town into a bustling commercial hub with far better public amenities.",
+   "Yes, it offers a balanced lifestyle with reasonable living expenses and emerging job opportunities in tourism and tech. However, ambitious graduates seeking massive corporate environments might still prefer larger metropolitan cities."
+  ],
+  "sample": "I would like to talk about my grandfather, who taught me fundamental woodworking and basic carpentry when I was around twelve. He was a retired craftsman who spent most afternoons in his backyard workshop filled with aromatic sawdust and hand tools. Initially, he showed me how to measure precisely, saw timber safely, and assemble small wooden joints using chisels. Rather than simply lecturing, he had me build a simple birdhouse from scratch, guiding my hands patiently whenever I made an uneven cut. He always emphasized patience and precision over speed. That skill has proven remarkably useful throughout my adult life. On a practical level, I rarely need to hire repair technicians because I can easily assemble furniture, fix squeaky hinges, or repair damaged shelves myself, saving significant money. More importantly, this craft taught me resourcefulness and how to approach complex problems methodically. Whenever I feel overwhelmed by work, doing manual repairs serves as a grounding, therapeutic outlet. I am immensely grateful for his guidance, as it gave me practical self-reliance.",
+  "p3": [
+   "In my view, an exceptional teacher possesses genuine empathy and adaptability, whereas an ordinary one merely delivers the curriculum. Great educators tailor their methods to individual learning styles, using relatable analogies when students struggle. For example, my high school chemistry teacher turned dry formulas into interactive experiments, igniting genuine curiosity. Ultimately, the ability to inspire lifelong curiosity rather than enforce rote memorization is what truly sets them apart.",
+   "I believe parents are better suited for teaching everyday life skills, while teachers excel at structured technical abilities. Parents offer daily, informal reinforcement in home environments, such as cooking meals or budgeting pocket money. In contrast, classroom settings are inherently constrained by rigid academic syllabuses. Therefore, while schools provide essential academic fundamentals, parents play a far more decisive role in cultivating practical, real-world autonomy.",
+   "Digital platforms have radically democratized skill acquisition by making specialized knowledge accessible on demand. Previously, mastering an instrument or coding required expensive private tutors, whereas now learners can pause and replay high-quality video tutorials anytime. However, online learning often lacks immediate personalized feedback, which can lead to bad habits. Overall, while self-discipline is essential, internet resources have certainly lowered the barriers to learning practical crafts.",
+   "Undoubtedly, preserving traditional crafts is vital because they embody cultural heritage and foster patience. In our fast-paced digital era, many young people only interact with mass-produced goods. Learning traditional skills like pottery or weaving connects youth with their ancestral identity while developing tangible motor skills. Consequently, integrating these crafts into school curricula ensures our unique cultural legacy survives alongside rapid technological advancements.",
+   "This difficulty primarily stems from psychological barriers and neuroplasticity rather than pure intellectual decline. Adults are often paralyzed by the fear of looking foolish, whereas children embrace trial and error without self-consciousness. Furthermore, adult responsibilities like careers and family drastically limit the focused practice time required for mastery. Thus, emotional inhibitions and time constraints make skill acquisition substantially more challenging for mature learners."
+  ]
+ }
+}

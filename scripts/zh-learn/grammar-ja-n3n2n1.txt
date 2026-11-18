@@ -1,0 +1,459 @@
+# Điểm ngữ pháp tiếng Nhật N3–N1 (cùng định dạng với grammar-ja-n5n4.txt).
+## JLPT N3
+@ ～ようになる | Trở nên / bắt đầu có thể
+form: Vる／Vない + ようになる
+tip: Sự thay đổi dần dần về khả năng hoặc thói quen.
+> 毎日練習して、漢字が書けるようになりました。|Luyện mỗi ngày nên tôi đã viết được chữ Hán.|書けるようになりました
+> 最近、朝早く起きるようになりました。|Dạo này tôi bắt đầu dậy sớm.|起きるようになりました
+
+@ ～わけだ | Hèn chi / vậy nên
+form: thể thường + わけだ
+tip: Giải thích kết luận tự nhiên từ lý do đã biết.
+> 毎日十時間も働いているのか。疲れるわけだ。|Ngày nào cũng làm mười tiếng à. Hèn chi mệt.|疲れるわけだ
+> 彼は日本に十年住んでいた。日本語が上手なわけだ。|Anh ấy sống ở Nhật mười năm. Hèn chi giỏi tiếng Nhật.|上手なわけだ
+
+@ ～わけではない | Không có nghĩa là
+form: thể thường + わけではない
+tip: Phủ định một suy luận dễ hiểu lầm.
+> 嫌いなわけではありませんが、今日は食べたくないです。|Không phải là ghét, nhưng hôm nay tôi không muốn ăn.|嫌いなわけではありません
+> お金がないわけではない。使いたくないだけだ。|Không phải là không có tiền. Chỉ là không muốn tiêu.|ないわけではない
+
+@ ～ばかり | Chỉ toàn / cứ
+form: N／Vて + ばかり
+tip: Làm một việc quá nhiều.
+> 弟はゲームばかりしています。|Em trai tôi chỉ toàn chơi game.|ゲームばかり
+> 最近、肉ばかり食べています。|Dạo này tôi chỉ toàn ăn thịt.|肉ばかり
+
+@ ～たばかりだ | Vừa mới làm xong
+form: Vた + ばかりだ
+tip: Cảm giác thời gian vừa trôi qua rất ngắn.
+> 日本に来たばかりで、まだ慣れていません。|Tôi vừa mới đến Nhật nên chưa quen.|来たばかり
+> 昼ご飯を食べたばかりなのに、もうおなかがすいた。|Vừa mới ăn trưa mà đã đói rồi.|食べたばかり
+
+@ ～ところだ | Sắp / đang / vừa
+form: Vる／Vている／Vた + ところだ
+tip: Chỉ đúng thời điểm của hành động.
+> ちょうど今、出かけるところです。|Tôi đang chuẩn bị ra ngoài ngay bây giờ.|出かけるところ
+> 今、料理を作っているところです。|Bây giờ tôi đang nấu ăn.|作っているところ
+
+@ ～はずがない | Không thể nào
+form: thể thường + はずがない
+tip: Phủ định mạnh mẽ.
+> 彼が嘘をつくはずがありません。|Anh ấy không thể nào nói dối.|はずがありません
+> こんなに安いはずがない。|Không thể nào rẻ thế này được.|はずがない
+
+@ ～らしい | Nghe nói / có vẻ / đúng kiểu
+form: thể thường + らしい
+tip: Suy đoán từ thông tin nghe hoặc thấy.
+> 田中さんは風邪をひいたらしいです。|Nghe nói anh Tanaka bị cảm.|ひいたらしい
+> あの店はとても人気があるらしい。|Cửa hàng kia có vẻ rất nổi tiếng.|あるらしい
+
+@ ～ようだ／みたいだ | Hình như / giống như
+form: thể thường + ようだ／みたいだ
+tip: Phán đoán dựa trên cảm nhận của chính mình.
+> 誰もいないようです。|Hình như không có ai.|いないようです
+> 彼女は何か悩んでいるみたいです。|Hình như cô ấy đang lo lắng điều gì.|悩んでいるみたい
+
+@ ～っぽい | Có vẻ / hay …
+form: N／Vます bỏ ます + っぽい
+tip: Thường mang sắc thái hơi tiêu cực.
+> 彼は子供っぽいです。|Anh ấy trẻ con.|子供っぽい
+> 最近、忘れっぽくなりました。|Dạo này tôi hay quên.|忘れっぽく
+
+@ ～気味 | Hơi có vẻ
+form: N／Vます bỏ ます + 気味
+tip: Cảm giác hơi khó chịu, hơi quá.
+> 少し風邪気味なので、早く寝ます。|Tôi hơi có vẻ bị cảm nên đi ngủ sớm.|風邪気味
+> 最近、太り気味です。|Dạo này tôi hơi mập ra.|太り気味
+
+@ ～によって | Tùy theo / bởi
+form: N + によって
+tip: Chỉ sự khác nhau theo trường hợp, hoặc tác nhân trong câu bị động.
+> 国によって、習慣が違います。|Tùy theo từng nước mà phong tục khác nhau.|国によって
+> この絵はピカソによって描かれました。|Bức tranh này do Picasso vẽ.|ピカソによって
+
+@ ～について | Về …
+form: N + について
+tip: Đề tài của lời nói, suy nghĩ.
+> 日本の文化について調べています。|Tôi đang tìm hiểu về văn hóa Nhật.|文化について
+> 環境問題について話し合いました。|Chúng tôi đã thảo luận về vấn đề môi trường.|問題について
+
+@ ～に対して | Đối với / ngược lại
+form: N + に対して
+tip: Chỉ đối tượng của hành động; hoặc đối lập.
+> お客様に対して、丁寧に話してください。|Hãy nói chuyện lịch sự với khách hàng.|お客様に対して
+> 兄は静かなのに対して、弟はとてもにぎやかだ。|Anh trai thì trầm, ngược lại em trai rất náo nhiệt.|のに対して
+
+@ ～せいで | Tại vì (kết quả xấu)
+form: thể thường + せいで
+tip: Đổ lỗi, kết quả không mong muốn.
+> 寝坊したせいで、電車に乗り遅れました。|Tại ngủ quên mà tôi lỡ tàu.|寝坊したせいで
+> 雨のせいで、試合が中止になりました。|Vì mưa mà trận đấu bị hủy.|雨のせいで
+
+@ ～おかげで | Nhờ có
+form: thể thường + おかげで
+tip: Kết quả tốt, biết ơn.
+> 先生のおかげで、試験に合格できました。|Nhờ thầy mà tôi đã đậu kỳ thi.|先生のおかげで
+> 友達が手伝ってくれたおかげで、早く終わった。|Nhờ bạn giúp mà xong sớm.|くれたおかげで
+
+@ ～うちに | Trong lúc còn / trước khi
+form: Vる／Vている／adj + うちに
+tip: Tranh thủ khi trạng thái chưa đổi.
+> 若いうちに、いろいろな経験をしたいです。|Tôi muốn trải nghiệm nhiều thứ khi còn trẻ.|若いうちに
+> 熱いうちに、食べてください。|Hãy ăn khi còn nóng.|熱いうちに
+
+@ ～間に | Trong khoảng thời gian
+form: Vている／N の + 間に
+tip: Việc xảy ra giữa chừng một trạng thái kéo dài.
+> 母が料理をしている間に、掃除をしました。|Trong lúc mẹ nấu ăn, tôi đã dọn dẹp.|している間に
+> 夏休みの間に、運転免許を取りたい。|Tôi muốn lấy bằng lái trong kỳ nghỉ hè.|夏休みの間に
+
+@ ～際に | Khi / nhân dịp
+form: Vる／Vた／N の + 際に
+tip: Văn phong trang trọng hơn とき.
+> お帰りの際に、受付に声をかけてください。|Khi ra về, xin hãy báo với quầy lễ tân.|お帰りの際に
+> 日本へ行った際に、温泉に入りました。|Khi đến Nhật, tôi đã đi tắm suối nước nóng.|行った際に
+
+@ ～たびに | Mỗi lần
+form: Vる／N の + たびに
+tip: Cứ mỗi lần thì …
+> この歌を聞くたびに、故郷を思い出します。|Mỗi lần nghe bài hát này tôi lại nhớ quê hương.|聞くたびに
+> 旅行のたびに、写真をたくさん撮ります。|Mỗi lần đi du lịch tôi chụp rất nhiều ảnh.|旅行のたびに
+
+@ ～ついでに | Nhân tiện
+form: Vる／Vた／N の + ついでに
+tip: Nhân dịp làm việc chính, làm luôn việc phụ.
+> 買い物のついでに、郵便局に寄りました。|Nhân tiện đi mua sắm tôi ghé bưu điện.|ついでに
+> 散歩するついでに、パンを買ってきます。|Nhân tiện đi dạo tôi sẽ mua bánh mì.|ついでに
+
+@ ～かわりに | Thay vì / đổi lại
+form: Vる／N の + かわりに
+tip: Thay cho; hoặc bù đắp lại.
+> 肉のかわりに、豆腐を食べます。|Tôi ăn đậu phụ thay cho thịt.|かわりに
+> 手伝ってもらうかわりに、昼ご飯をおごります。|Đổi lại việc được giúp, tôi mời cơm trưa.|かわりに
+
+@ ～ほど | Đến mức / khoảng
+form: thể thường / N + ほど
+tip: Mức độ; phủ định ～ほど～ない là không bằng.
+> 昨日は倒れるほど疲れました。|Hôm qua tôi mệt đến mức muốn ngã quỵ.|倒れるほど
+> 東京は大阪ほど暑くありません。|Tokyo không nóng bằng Osaka.|大阪ほど
+
+@ ～てしまう | Lỡ / hoàn toàn …
+form: Vて + しまう
+tip: Việc đã xong hoàn toàn hoặc lỡ làm điều đáng tiếc.
+> 大切な書類をなくしてしまいました。|Tôi đã lỡ làm mất tài liệu quan trọng.|なくしてしまいました
+> 宿題はもう全部やってしまった。|Bài tập tôi đã làm hết rồi.|やってしまった
+
+@ ～ておく | Làm sẵn / để nguyên
+form: Vて + おく
+tip: Chuẩn bị trước hoặc giữ nguyên trạng thái.
+> 旅行の前に、ホテルを予約しておきます。|Trước chuyến đi tôi sẽ đặt khách sạn trước.|予約しておきます
+> 窓は開けておいてください。|Xin hãy để cửa sổ mở.|開けておいて
+
+@ ～つもり | Dự định
+form: Vる／Vない + つもりだ
+tip: Ý định đã có từ trước, khá chắc chắn.
+> 来年、日本で働くつもりです。|Năm sau tôi dự định làm việc ở Nhật.|働くつもりです
+> 今日は何も買わないつもりです。|Hôm nay tôi định không mua gì cả.|買わないつもりです
+
+## JLPT N2
+@ ～にもかかわらず | Mặc dù
+form: N／thể thường + にもかかわらず
+tip: Kết quả trái với dự đoán, văn viết.
+> 雨にもかかわらず、大勢の人が集まりました。|Mặc dù mưa, rất đông người vẫn tập trung.|にもかかわらず
+> 忙しいにもかかわらず、手伝ってくれました。|Dù bận, anh ấy vẫn giúp tôi.|にもかかわらず
+
+@ ～ざるを得ない | Đành phải
+form: Vない bỏ ない + ざるを得ない
+tip: する → せざるを得ない.
+> 病気のため、会議を欠席せざるを得なかった。|Vì ốm nên tôi đành phải vắng họp.|せざるを得なかった
+> 雨が降ってきたので、中止せざるを得ない。|Trời mưa nên đành phải hủy.|せざるを得ない
+
+@ ～わけにはいかない | Không thể (vì lẽ)
+form: Vる／Vない + わけにはいかない
+tip: Có lý do khiến không thể làm / không thể không làm.
+> 明日は試験なので、遊びに行くわけにはいかない。|Mai thi nên tôi không thể đi chơi.|行くわけにはいかない
+> 約束した以上、断るわけにはいきません。|Đã hứa rồi nên không thể từ chối.|断るわけにはいきません
+
+@ ～に違いない | Chắc chắn là
+form: thể thường + に違いない
+tip: Phán đoán chắc chắn của người nói.
+> あの人が犯人に違いない。|Người đó chắc chắn là thủ phạm.|に違いない
+> こんなに高いのだから、品質がいいに違いありません。|Đắt thế này thì chắc chắn chất lượng tốt.|いいに違いありません
+
+@ ～に関して | Liên quan đến
+form: N + に関して
+tip: Trang trọng hơn について.
+> この問題に関して、ご意見をお聞かせください。|Xin cho biết ý kiến về vấn đề này.|問題に関して
+> 契約に関しては、後ほど説明します。|Về hợp đồng, tôi sẽ giải thích sau.|契約に関しては
+
+@ ～をはじめ | Bắt đầu từ / tiêu biểu là
+form: N + をはじめ
+tip: Nêu ví dụ tiêu biểu trong một nhóm lớn.
+> 社長をはじめ、社員全員が参加しました。|Từ giám đốc trở đi, toàn thể nhân viên đều tham gia.|社長をはじめ
+> 京都をはじめ、多くの観光地を訪れた。|Tôi đã thăm nhiều địa điểm du lịch, tiêu biểu là Kyoto.|京都をはじめ
+
+@ ～に応じて | Tùy theo
+form: N + に応じて
+tip: Thay đổi theo mức hoặc tình huống.
+> 収入に応じて、税金を払います。|Nộp thuế tùy theo thu nhập.|収入に応じて
+> 状況に応じて、計画を変更します。|Thay đổi kế hoạch tùy theo tình hình.|状況に応じて
+
+@ ～に基づいて | Dựa trên
+form: N + に基づいて
+tip: Lấy nền tảng là số liệu, quy định.
+> データに基づいて、結論を出しました。|Chúng tôi đã đưa ra kết luận dựa trên dữ liệu.|データに基づいて
+> 事実に基づいた報道が大切だ。|Đưa tin dựa trên sự thật là điều quan trọng.|事実に基づいた
+
+@ ～に加えて | Thêm vào đó
+form: N + に加えて
+tip: Thêm một yếu tố nữa vào cái đã có.
+> 雨に加えて、風も強くなってきた。|Ngoài mưa ra, gió cũng mạnh lên.|雨に加えて
+> 給料に加えて、ボーナスももらえる。|Ngoài lương còn được nhận thưởng.|給料に加えて
+
+@ ～かねない | Có thể gây ra điều xấu
+form: Vます bỏ ます + かねない
+tip: Khả năng xấu có thể xảy ra.
+> 無理をすると、体を壊しかねない。|Nếu cố quá thì có thể hỏng sức khỏe.|壊しかねない
+> そんな運転をしたら、事故を起こしかねません。|Lái như thế có thể gây tai nạn.|起こしかねません
+
+@ ～がちだ | Hay / dễ …
+form: Vます bỏ ます／N + がちだ
+tip: Xu hướng thường xảy ra, thường là điều không tốt.
+> 冬は風邪をひきがちです。|Mùa đông dễ bị cảm.|ひきがち
+> 彼は遅刻しがちだ。|Anh ấy hay đi trễ.|しがち
+
+@ ～ものの | Tuy … nhưng
+form: thể thường + ものの
+tip: Thừa nhận vế trước nhưng thực tế khác.
+> 買ったものの、一度も使っていない。|Tuy mua rồi nhưng chưa dùng lần nào.|買ったものの
+> 日本語を勉強しているものの、なかなか上達しない。|Tuy đang học tiếng Nhật nhưng mãi không tiến bộ.|しているものの
+
+@ ～とはいえ | Dù nói là … nhưng
+form: thể thường + とはいえ
+tip: Văn viết, trang trọng.
+> 春とはいえ、まだ寒い日が続いている。|Dù là mùa xuân nhưng những ngày lạnh vẫn tiếp tục.|春とはいえ
+> 安いとはいえ、買う必要はない。|Dù rẻ, cũng không cần phải mua.|安いとはいえ
+
+@ ～どころか | Đâu chỉ … mà còn
+form: thể thường + どころか
+tip: Thực tế ngược hẳn / vượt xa điều vừa nói.
+> 上手どころか、全然できません。|Đừng nói là giỏi, tôi hoàn toàn không làm được.|上手どころか
+> 忙しくて、休む暇どころか食事の時間もない。|Bận đến mức đừng nói nghỉ, đến thời gian ăn cũng không có.|暇どころか
+
+@ ～ばかりか | Không chỉ … mà còn
+form: thể thường + ばかりか
+tip: Thêm một điều nữa, thường vế sau mạnh hơn.
+> 彼は英語ばかりか、中国語も話せる。|Anh ấy không chỉ tiếng Anh mà tiếng Trung cũng nói được.|英語ばかりか
+> 雨がやまないばかりか、風も強くなった。|Mưa không tạnh, hơn nữa gió còn mạnh lên.|やまないばかりか
+
+@ ～一方で | Mặt khác
+form: thể thường + 一方で
+tip: Hai mặt đối lập của cùng một sự việc.
+> 便利な一方で、危険もあります。|Tiện lợi nhưng mặt khác cũng có nguy hiểm.|便利な一方で
+> 都市は人口が増える一方で、田舎は減っている。|Thành phố dân số tăng, trong khi nông thôn giảm.|増える一方で
+
+@ ～に反して | Trái với
+form: N + に反して
+tip: Kết quả trái với kỳ vọng hay dự đoán.
+> 予想に反して、結果は悪かった。|Trái với dự đoán, kết quả xấu.|予想に反して
+> 親の期待に反して、彼は会社を辞めた。|Trái với kỳ vọng của bố mẹ, anh ấy đã nghỉ việc.|期待に反して
+
+@ ～つつある | Đang dần
+form: Vます bỏ ます + つつある
+tip: Sự thay đổi đang tiến triển, văn viết.
+> 世界は大きく変わりつつあります。|Thế giới đang dần thay đổi lớn.|変わりつつあります
+> 経済は回復しつつある。|Nền kinh tế đang dần phục hồi.|回復しつつある
+
+@ ～かのようだ | Cứ như thể
+form: thể thường + かのようだ
+tip: So sánh với điều không có thật.
+> 彼は何も知らないかのように話した。|Anh ấy nói cứ như thể không biết gì.|知らないかのように
+> まるで夢を見ているかのようだ。|Cứ như thể đang mơ.|見ているかのようだ
+
+@ ～次第 | Ngay khi / tùy vào
+form: Vます bỏ ます／N + 次第
+tip: Ngay khi xong A thì làm B; hoặc "tùy thuộc".
+> 準備ができ次第、出発します。|Chuẩn bị xong là xuất phát ngay.|でき次第
+> 結果は努力次第です。|Kết quả tùy vào nỗ lực.|努力次第
+
+@ ～ことはない | Không cần phải
+form: Vる + ことはない
+tip: Không cần làm vì không có lý do.
+> まだ時間があるから、急ぐことはありません。|Vẫn còn thời gian nên không cần vội.|急ぐことはありません
+> 謝ることはない。君のせいじゃない。|Không cần xin lỗi. Không phải lỗi của bạn.|謝ることはない
+
+@ ～をきっかけに | Nhân cơ hội
+form: N + をきっかけに
+tip: Sự kiện nhỏ làm khởi đầu thay đổi.
+> 病気をきっかけに、運動を始めました。|Nhân dịp bị bệnh, tôi bắt đầu tập thể dục.|をきっかけに
+> 留学をきっかけに、日本が好きになった。|Nhờ đi du học mà tôi trở nên yêu Nhật.|をきっかけに
+
+@ ～上で | Sau khi / trong việc
+form: Vた／Nの + 上で
+tip: Làm việc A xong rồi mới làm việc B; hoặc khi làm việc A.
+> よく考えた上で、決めてください。|Hãy suy nghĩ kỹ rồi hãy quyết định.|考えた上で
+> 契約書を読んだ上で、サインしました。|Tôi đã ký sau khi đọc hợp đồng.|読んだ上で
+
+@ ～からこそ | Chính vì
+form: thể thường + からこそ
+tip: Nhấn mạnh duy nhất lý do này.
+> 失敗したからこそ、成長できました。|Chính vì thất bại mà tôi đã trưởng thành.|したからこそ
+> あなたを信じているからこそ、頼むのです。|Chính vì tin bạn nên tôi mới nhờ.|いるからこそ
+
+@ ～わりに | So với
+form: thể thường + わりに
+tip: Kết quả không tương xứng với kỳ vọng.
+> 彼は勉強しないわりに、成績がいいです。|Anh ấy không học mà điểm vẫn tốt.|しないわりに
+> この店は安いわりに、味がいい。|Quán này rẻ mà vị lại ngon.|安いわりに
+
+## JLPT N1
+@ ～に値する | Đáng để
+form: N／Vる + に値する
+tip: Đáng giá, xứng đáng.
+> この映画は見るに値する作品だ。|Bộ phim này là tác phẩm đáng xem.|見るに値する
+> 彼の努力は称賛に値する。|Nỗ lực của anh ấy đáng được khen ngợi.|称賛に値する
+
+@ ～をものともせず | Bất chấp
+form: N + をものともせず
+tip: Không sợ khó khăn, trở ngại.
+> 彼は病気をものともせず、練習を続けた。|Anh ấy bất chấp bệnh tật, vẫn tiếp tục luyện tập.|をものともせず
+> 登山家たちは悪天候をものともせず、頂上を目指した。|Các nhà leo núi bất chấp thời tiết xấu, vẫn hướng tới đỉnh.|をものともせず
+
+@ ～ならでは | Chỉ có ở
+form: N + ならでは
+tip: Đặc trưng riêng, khen ngợi.
+> この味は職人ならではのものだ。|Hương vị này chỉ có ở người thợ lành nghề.|ならではの
+> 京都ならではの景色を楽しんだ。|Tôi đã tận hưởng cảnh đẹp chỉ có ở Kyoto.|ならではの
+
+@ ～を余儀なくされる | Buộc phải
+form: N／Vる + を余儀なくされる
+tip: Hoàn cảnh ép buộc, ngoài ý muốn.
+> 不況のため、工場は閉鎖を余儀なくされた。|Vì suy thoái nên nhà máy buộc phải đóng cửa.|を余儀なくされた
+> 彼は怪我で引退を余儀なくされた。|Anh ấy buộc phải giải nghệ vì chấn thương.|を余儀なくされた
+
+@ ～ずにはいられない | Không thể không
+form: Vない bỏ ない + ずにはいられない
+tip: Cảm xúc tự trào ra.
+> その話を聞いて、笑わずにはいられなかった。|Nghe chuyện đó tôi không thể không cười.|笑わずにはいられなかった
+> 困っている人を見ると、助けずにはいられない。|Thấy người gặp khó là tôi không thể không giúp.|助けずにはいられない
+
+@ ～を禁じ得ない | Không kìm được
+form: N + を禁じ得ない
+tip: Cảm xúc mạnh, văn viết rất trang trọng.
+> 彼の死に、悲しみを禁じ得ない。|Trước cái chết của anh ấy, tôi không kìm được nỗi buồn.|を禁じ得ない
+> その事件には、怒りを禁じ得ません。|Tôi không kìm được sự phẫn nộ trước vụ việc đó.|を禁じ得ません
+
+@ ～に至るまで | Cho đến tận
+form: N + に至るまで
+tip: Phạm vi kéo dài đến cả cái nhỏ nhất.
+> 彼は細部に至るまで、計画を立てた。|Anh ấy lập kế hoạch đến tận từng chi tiết.|に至るまで
+> 子供から老人に至るまで、この歌を知っている。|Từ trẻ em đến người già đều biết bài hát này.|に至るまで
+
+@ ～をおいて | Ngoài … ra
+form: N + をおいて（～ない）
+tip: Không có lựa chọn nào khác ngoài N.
+> この仕事を任せられるのは、彼をおいて他にいない。|Người có thể giao việc này, ngoài anh ấy ra không còn ai.|をおいて
+> 社長を務めるのは、彼女をおいて誰もいない。|Làm giám đốc thì ngoài cô ấy ra không ai.|をおいて
+
+@ ～までもない | Không cần phải
+form: Vる + までもない
+tip: Quá hiển nhiên nên khỏi cần.
+> 説明するまでもなく、皆知っている。|Không cần giải thích, ai cũng biết.|するまでもなく
+> 彼の実力は言うまでもない。|Thực lực của anh ấy khỏi phải nói.|言うまでもない
+
+@ ～極まりない | Cực kỳ
+form: adj＋こと／な + 極まりない
+tip: Mức độ cực đoan, thường tiêu cực.
+> 彼の態度は失礼極まりない。|Thái độ của anh ta cực kỳ thất lễ.|失礼極まりない
+> この道は危険極まりない。|Con đường này cực kỳ nguy hiểm.|危険極まりない
+
+@ ～かたわら | Bên cạnh việc
+form: Vる／N の + かたわら
+tip: Vừa làm việc chính vừa làm thêm việc khác lâu dài.
+> 彼は会社で働くかたわら、小説を書いている。|Anh ấy vừa đi làm công ty vừa viết tiểu thuyết.|働くかたわら
+> 学業のかたわら、ボランティア活動をしている。|Bên cạnh việc học, cô ấy làm tình nguyện.|学業のかたわら
+
+@ ～がてら | Nhân tiện
+form: Vます bỏ ます／N + がてら
+tip: Làm một việc kết hợp việc khác, thoải mái.
+> 散歩がてら、パンを買ってきた。|Nhân tiện đi dạo, tôi mua bánh mì về.|散歩がてら
+> 旅行がてら、友人を訪ねた。|Nhân chuyến du lịch, tôi đã thăm bạn.|旅行がてら
+
+@ ～ともなると | Hễ đến mức … thì
+form: N／thể thường + ともなると
+tip: Khi đạt đến vị thế, hoàn cảnh đó thì khác.
+> 社長ともなると、忙しさが違う。|Đã làm đến giám đốc thì mức bận rộn khác hẳn.|ともなると
+> 年末ともなると、街は買い物客でにぎわう。|Hễ đến cuối năm là phố đông khách mua sắm.|ともなると
+
+@ ～とあって | Vì là
+form: N／thể thường + とあって
+tip: Lý do đặc biệt dẫn đến kết quả khác thường.
+> 人気歌手のコンサートとあって、会場は満員だった。|Vì là buổi hòa nhạc của ca sĩ nổi tiếng nên hội trường kín chỗ.|コンサートとあって
+> 連休とあって、観光地は混んでいる。|Vì là kỳ nghỉ dài nên nơi du lịch rất đông.|連休とあって
+
+@ ～ながらも | Tuy … nhưng
+form: Vます bỏ ます／adj／N + ながらも
+tip: Văn viết, nhấn mạnh sự đối lập.
+> 彼は貧しいながらも、幸せに暮らしている。|Anh ấy tuy nghèo nhưng sống hạnh phúc.|貧しいながらも
+> 狭いながらも、楽しい我が家です。|Tuy nhỏ nhưng là ngôi nhà vui vẻ của tôi.|狭いながらも
+
+@ ～んばかりに | Như thể sắp
+form: Vない bỏ ない + んばかりに
+tip: Biểu cảm gần như muốn làm vậy.
+> 彼は泣かんばかりに喜んだ。|Anh ấy mừng như thể sắp khóc.|泣かんばかりに
+> 子供は飛び上がらんばかりに喜んだ。|Đứa bé vui như muốn nhảy cẫng lên.|飛び上がらんばかりに
+
+@ ～てやまない | Mong mãi
+form: Vて + やまない
+tip: Cảm xúc kéo dài mãi, văn phong trang trọng.
+> 皆様の幸せを願ってやみません。|Tôi mãi mong mọi người hạnh phúc.|願ってやみません
+> 彼の成功を信じてやまない。|Tôi luôn tin vào thành công của anh ấy.|信じてやまない
+
+@ ～に即して | Phù hợp với
+form: N + に即して
+tip: Dựa sát vào thực tế, quy định.
+> 現実に即して、計画を見直す必要がある。|Cần xem lại kế hoạch cho phù hợp với thực tế.|に即して
+> 法律に即して、処理してください。|Hãy xử lý đúng theo luật.|に即して
+
+@ ～いかんでは | Tùy theo
+form: N + いかんでは
+tip: Kết quả có thể thay đổi tùy N.
+> 結果いかんでは、計画を変更する。|Tùy kết quả mà sẽ thay đổi kế hoạch.|いかんでは
+> 説明のいかんでは、承認されないこともある。|Tùy cách giải thích mà có khi không được duyệt.|いかんでは
+
+@ ～ようが～まいが | Dù … hay không
+form: Vよう／Vるが Vまい／Vないが
+tip: Không ảnh hưởng kết quả.
+> 雨が降ろうが降るまいが、試合は行われる。|Dù mưa hay không mưa, trận đấu vẫn diễn ra.|降ろうが降るまいが
+> 彼が来ようが来まいが、私は行く。|Anh ấy đến hay không, tôi vẫn đi.|来ようが来まいが
+
+@ ～といえども | Dù là
+form: N／thể thường + といえども
+tip: Dù là … cũng không ngoại lệ, văn viết.
+> 専門家といえども、間違えることはある。|Dù là chuyên gia cũng có lúc sai.|といえども
+> 子供といえども、責任がある。|Dù là trẻ con cũng có trách nhiệm.|といえども
+
+@ ～ものを | Vậy mà
+form: thể thường + ものを
+tip: Tiếc nuối, trách móc; vế sau thường bỏ.
+> 言ってくれれば手伝ったものを。|Giá nói thì tôi đã giúp rồi vậy mà.|手伝ったものを
+> 早く来ればよかったものを、遅れてしまった。|Đáng lẽ đến sớm thì tốt, vậy mà lại trễ.|よかったものを
+
+@ ～まじき | Không được phép
+form: N + にあるまじき
+tip: Hành vi không phù hợp với vị thế.
+> 教師にあるまじき行為だ。|Đó là hành vi không thể chấp nhận ở một giáo viên.|あるまじき
+> 政治家にあるまじき発言に、批判が集まった。|Phát ngôn không xứng với chính trị gia đã bị chỉ trích.|あるまじき
+
+@ ～べからず | Cấm
+form: Vる + べからず
+tip: Biển cấm kiểu cổ, cũng gặp trong văn viết.
+> 芝生に入るべからず。|Cấm đi vào bãi cỏ.|べからず
+> 駐車するべからず。|Cấm đỗ xe.|べからず
+
+@ ～たりとも | Dù chỉ một
+form: 一＋đơn vị + たりとも（～ない）
+tip: Phủ định hoàn toàn, nhấn mạnh.
+> 一円たりとも無駄にしてはならない。|Không được lãng phí dù chỉ một yên.|一円たりとも
+> 一瞬たりとも気を抜けない。|Không thể lơ là dù chỉ một khoảnh khắc.|一瞬たりとも

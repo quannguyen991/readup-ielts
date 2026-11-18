@@ -1,3 +1,4 @@
+import { accentFor } from '@/components/vocab/study/study-theme';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -12,6 +13,7 @@ import {
   StudyCard,
   StudyFrame,
   useHotkeys,
+  exitStudy,
 } from '@/components/vocab/study/StudyKit';
 import { RoundAnalysis } from '@/components/vocab/study/MistakeViews';
 import { CrossFade } from '@/components/motion/Motion';
@@ -21,6 +23,7 @@ import {
   advanceCloze,
   buildClozeQuestion,
   CLOZE_KIND_LABEL,
+  CLOZE_KINDS,
   CLOZE_ROUND,
   clozeable,
   fillPattern,
@@ -28,6 +31,7 @@ import {
   letterCount,
   planClozeRound,
   type ClozeItem,
+  type ClozeKind,
   type ClozeQuestion,
 } from '@/services/vocab/cloze-drill';
 import { diagnosePick, diagnoseTyped, MISTAKE_TITLE, type Mistake } from '@/services/vocab/mistake';
@@ -40,6 +44,8 @@ import { color } from '@/theme/tokens';
 import { currentLocale, pick as pickLocale, useL } from '@/i18n/useL';
 import { useStoreTheme, useStudyTheme } from '@/components/vocab/study/useStudyTheme';
 import { useAutoPronounce } from '@/services/audio/pronounce';
+
+const CJK_KINDS: readonly ClozeKind[] = ['pick'];
 
 /** Nhãn dạng câu bằng tiếng Anh (bản tiếng Việt: `CLOZE_KIND_LABEL` trong services). */
 const CLOZE_KIND_EN: Record<ClozeQuestion['kind'], string> = {
@@ -66,6 +72,8 @@ export default function ClozeScreen() {
   const theme = useStoreTheme();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
+  // Chữ Hán / kana: chỉ dạng chọn từ (không có chữ cái để xếp, bàn phím Latin không gõ được).
+  const kindsAllowed: readonly ClozeKind[] = topic?.language === 'ja' || topic?.language === 'zh' ? CJK_KINDS : CLOZE_KINDS;
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const addLapse = useTopicStudyStore((s) => s.addLapse);
   const [seed] = useState(() => Date.now() % 100000);
@@ -88,7 +96,7 @@ export default function ClozeScreen() {
 
   const [roundNo, setRoundNo] = useState(0);
   const [roundWords, setRoundWords] = useState<StudyWord[]>(() => wordsForRound(0));
-  const [queue, setQueue] = useState<ClozeItem[]>(() => planClozeRound(roundWords, seededRng(seed)));
+  const [queue, setQueue] = useState<ClozeItem[]>(() => planClozeRound(roundWords, seededRng(seed), CLOZE_ROUND, kindsAllowed));
   const [plannedFor, setPlannedFor] = useState(order);
   const [step, setStep] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -109,7 +117,7 @@ export default function ClozeScreen() {
     const w = wordsForRound(n, firstUp);
     setRoundNo(n);
     setRoundWords(w);
-    setQueue(planClozeRound(w, seededRng(seed + n * 131)));
+    setQueue(planClozeRound(w, seededRng(seed + n * 131), CLOZE_ROUND, kindsAllowed));
     setPicked(null);
     setHidden([]);
     setTyped('');
@@ -222,7 +230,7 @@ export default function ClozeScreen() {
 
   const next = () => {
     if (verdict === null) return;
-    setQueue((list) => advanceCloze(list, verdict));
+    setQueue((list) => advanceCloze(list, verdict, kindsAllowed));
     setPicked(null);
     setHidden([]);
     setTyped('');
@@ -307,7 +315,7 @@ export default function ClozeScreen() {
             </Text>
             <RoundAnalysis mistakes={mistakes} />
             <PrimaryButton label={L('Vòng tiếp theo', 'Next round')} onPress={() => startRound(roundNo + 1, [...slipped])} />
-            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => router.replace(backHref as never)} />
+            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => exitStudy(backHref)} />
           </StudyCard>
         </CrossFade>
       </StudyFrame>
@@ -321,7 +329,7 @@ export default function ClozeScreen() {
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
             <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: theme.soft }}>
-              <Text className="font-strong text-label" style={{ color: color.primary }}>
+              <Text className="font-strong text-label" style={{ color: accentFor(theme, color.primary) }}>
                 {en ? CLOZE_KIND_EN[q.kind] : CLOZE_KIND_LABEL[q.kind]}
               </Text>
             </View>
@@ -461,7 +469,7 @@ function ScrambleBoard({
                     width: size,
                     height: size + 8,
                     borderBottomWidth: 3,
-                    borderColor: filled ? color.primary : theme.fieldBorder,
+                    borderColor: filled ? accentFor(theme, color.primary) : theme.fieldBorder,
                     backgroundColor: filled ? theme.soft : theme.field,
                   }}
                 >
@@ -511,14 +519,15 @@ function ScrambleBoard({
 }
 
 function ListenButton({ label, hint, onPress }: { label: string; hint?: string; onPress: () => void }) {
+  const theme = useStudyTheme();
   return (
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
       className="flex-row items-center gap-2 rounded-pill bg-primary-50 px-4 py-2.5"
     >
-      <Icon name="volume" size={18} color={color.primary} />
-      <Text className="font-semi text-body" style={{ color: color.primary }}>
+      <Icon name="volume" size={18} color={accentFor(theme, color.primary)} />
+      <Text className="font-semi text-body" style={{ color: accentFor(theme, color.primary) }}>
         {label}
       </Text>
       {hint ? <Text className="font-sans text-label text-muted">{hint}</Text> : null}

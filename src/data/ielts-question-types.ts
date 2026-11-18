@@ -141,6 +141,158 @@ export const IELTS_QUESTION_TYPES: IeltsQuestionTypeMeta[] = [
     ]
   },
 
+  {
+    id: 'reading-ynng',
+    skill: 'reading',
+    titleEn: 'Yes / No / Not Given (Writer\'s Views)',
+    titleVi: 'Xác định quan điểm của tác giả: Yes / No / Not Given',
+    frequency: 'Cao',
+    difficultyLevel: 'Rất khó',
+    descriptionVi: 'Giống True/False/Not Given nhưng hỏi về QUAN ĐIỂM và CLAIM của tác giả, không phải sự kiện. Bài đọc thường là văn nghị luận, có nhiều ý kiến của người khác xen lẫn ý của tác giả.',
+    steps: [
+      'Gạch chân chủ ngữ và động từ chính của nhận định, đặc biệt các từ thể hiện thái độ (should, must, doubtful, unlikely).',
+      'Tìm đoạn bàn về chủ đề đó; câu hỏi luôn theo thứ tự xuất hiện trong bài.',
+      'Tách rõ: ý của TÁC GIẢ hay ý của người được tác giả trích dẫn. Chỉ ý của tác giả mới tính.',
+      'Cùng quan điểm, kể cả diễn đạt khác từ -> YES. Ngược quan điểm -> NO.',
+      'Bài chỉ nói về chủ đề mà không cho biết tác giả nghĩ gì -> NOT GIVEN.'
+    ],
+    traps: [
+      'Nhầm ý của một nhà nghiên cứu được trích dẫn với ý của tác giả.',
+      'Từ chỉ mức độ (always, never, only, completely) trong nhận định mạnh hơn bài viết.',
+      'Tự suy đoán thái độ tác giả từ kiến thức bên ngoài thay vì từ câu chữ.'
+    ],
+    tips: [
+      'Hỏi mình: "Tác giả có NÓI rõ là mình nghĩ vậy không?". Không rõ thì nghiêng về NOT GIVEN.',
+      'Chú ý từ đánh giá của tác giả: arguably, regrettably, it is clear that.',
+      'Làm TFNG và YNNG bằng cùng một quy trình nhưng đổi chữ "sự kiện" thành "quan điểm".'
+    ]
+  },
+  {
+    id: 'reading-matching-features',
+    skill: 'reading',
+    titleEn: 'Matching Features',
+    titleVi: 'Nối nhận định với người / lý thuyết / đối tượng',
+    frequency: 'Cao',
+    difficultyLevel: 'Khó',
+    descriptionVi: 'Cho danh sách các nhà nghiên cứu, lý thuyết hoặc đối tượng (A, B, C...) và một loạt nhận định; nối mỗi nhận định với đúng người hoặc đối tượng. Thứ tự câu hỏi KHÔNG theo thứ tự bài đọc, và một lựa chọn có thể dùng nhiều lần.',
+    steps: [
+      'Đọc danh sách lựa chọn trước và khoanh tên từng người/đối tượng ngay trong bài khi gặp.',
+      'Với mỗi nhận định, lấy 1-2 từ khóa không thể thay thế (số liệu, hành động, kết luận).',
+      'Quét bài tìm từ khóa theo cách diễn đạt khác, rồi xem ý đó thuộc về ai.',
+      'Kiểm tra lại đối tượng: cùng chủ đề nhưng khác người nói là bẫy phổ biến.'
+    ],
+    traps: [
+      'Hai người cùng bàn một chủ đề nhưng chỉ một người nói đúng nhận định.',
+      'Tên được nhắc ở đầu đoạn nhưng ý trong đoạn là của người khác.',
+      'Quên rằng một lựa chọn có thể dùng nhiều lần nên bỏ sót.'
+    ],
+    tips: [
+      'Khoanh tên mọi nhân vật ngay lần đọc đầu để lần sau chỉ cần quét.',
+      'Làm các câu có từ khóa dễ tìm (số, tên riêng) trước.',
+      'Nhận định luôn là diễn đạt lại, đừng tìm cụm từ giống hệt.'
+    ]
+  },
+  {
+    id: 'reading-matching-endings',
+    skill: 'reading',
+    titleEn: 'Matching Sentence Endings',
+    titleVi: 'Ghép nửa câu đầu với phần kết đúng',
+    frequency: 'Trung bình',
+    difficultyLevel: 'Khó',
+    descriptionVi: 'Cho phần đầu của câu và một danh sách phần kết; chọn phần kết ghép đúng để câu khớp với bài đọc. Câu hỏi theo thứ tự bài, nhưng số phần kết nhiều hơn số câu.',
+    steps: [
+      'Đọc phần đầu câu và đoán loại thông tin còn thiếu (nguyên nhân, kết quả, điều kiện, so sánh).',
+      'Định vị câu tương ứng trong bài bằng từ khóa trong phần đầu.',
+      'Loại phần kết sai ngữ pháp trước, rồi chọn phần kết đúng ý với bài.',
+      'Đọc lại cả câu hoàn chỉnh xem có đúng ý bài, không chỉ đúng ngữ pháp.'
+    ],
+    traps: [
+      'Phần kết nghe hợp lý ngoài đời nhưng bài không nói.',
+      'Hai phần kết gần nghĩa nhau: chỉ một cái khớp chi tiết trong bài.',
+      'Chọn theo ngữ pháp mà quên đối chiếu ý.'
+    ],
+    tips: [
+      'Phần đầu câu thường lặp ý của bài, phần kết mới là thông tin cần tìm.',
+      'Dùng phép loại trừ: gạch những phần kết đã dùng.',
+      'Đọc to cả câu ghép trong đầu để kiểm tra mạch ý.'
+    ]
+  },
+  {
+    id: 'reading-sentence-completion',
+    skill: 'reading',
+    titleEn: 'Sentence Completion',
+    titleVi: 'Điền từ vào chỗ trống trong câu',
+    frequency: 'Rất cao (Luôn có)',
+    difficultyLevel: 'Trung bình',
+    descriptionVi: 'Hoàn thành câu bằng số từ giới hạn (thường tối đa 2-3 từ và/hoặc một số) lấy NGUYÊN VĂN từ bài. Thứ tự câu hỏi theo thứ tự bài đọc.',
+    steps: [
+      'Đọc yêu cầu giới hạn từ (NO MORE THAN TWO/THREE WORDS) trước tiên.',
+      'Xác định loại từ cần điền (danh từ, tính từ, số) dựa vào ngữ pháp quanh chỗ trống.',
+      'Tìm câu gốc trong bài bằng từ khóa; câu hỏi là diễn đạt lại của câu gốc.',
+      'Chép từ đúng như trong bài, kiểm tra chính tả và số từ.'
+    ],
+    traps: [
+      'Điền quá số từ cho phép là mất điểm dù đúng nghĩa.',
+      'Điền từ đồng nghĩa thay vì từ trong bài.',
+      'Sai ngữ pháp sau khi điền (số ít/số nhiều, mạo từ).'
+    ],
+    tips: [
+      'Từ cần điền gần như luôn nằm sát cụm từ khóa trong bài.',
+      'Đọc lại cả câu sau khi điền xem có trơn tru không.',
+      'Số có thể viết bằng chữ số hoặc chữ nếu bài viết như vậy; theo đúng bài.'
+    ]
+  },
+  {
+    id: 'reading-table-flow-completion',
+    skill: 'reading',
+    titleEn: 'Table, Note & Flow-chart Completion',
+    titleVi: 'Điền bảng, ghi chú, sơ đồ quy trình',
+    frequency: 'Rất cao (Luôn có)',
+    difficultyLevel: 'Trung bình',
+    descriptionVi: 'Điền thông tin vào các ô của bảng, ghi chú hoặc sơ đồ các bước. Thông tin thường theo thứ tự từng cột/bước và ứng với một khối nội dung trong bài.',
+    steps: [
+      'Đọc tiêu đề bảng/sơ đồ để biết bài nói về quy trình hay so sánh.',
+      'Xác định khối bài đọc ứng với từng hàng hoặc từng bước.',
+      'Với mỗi ô trống, đoán loại từ cần điền rồi mới tìm trong bài.',
+      'Điền đúng từ trong bài trong giới hạn số từ.'
+    ],
+    traps: [
+      'Điền thông tin của hàng khác vào ô vì bài nói cạnh nhau.',
+      'Nhầm thứ tự các bước trong sơ đồ.',
+      'Bỏ sót đơn vị hoặc số kèm theo.'
+    ],
+    tips: [
+      'Trong sơ đồ quy trình, tìm từ chỉ thứ tự: first, then, after that, finally.',
+      'Các hàng của bảng thường ứng với các nhóm thông tin song song; so sánh các hàng để biết ô cần loại thông tin gì.',
+      'Ô trống nằm cạnh nhau thường ứng với các câu liền nhau trong bài.'
+    ]
+  },
+  {
+    id: 'reading-short-answer',
+    skill: 'reading',
+    titleEn: 'Short-answer Questions',
+    titleVi: 'Trả lời câu hỏi ngắn',
+    frequency: 'Trung bình',
+    difficultyLevel: 'Dễ',
+    descriptionVi: 'Trả lời câu hỏi trực tiếp (What, Which, Who, How many...) bằng số từ giới hạn lấy từ bài. Rất thiên về thông tin cụ thể như tên, số, địa điểm.',
+    steps: [
+      'Gạch từ để hỏi để biết cần loại thông tin gì (người, nơi, số lượng, lý do).',
+      'Quét bài tìm từ khóa của câu hỏi, đặc biệt tên riêng và số.',
+      'Đọc kỹ câu chứa đáp án, chép lại đúng từ trong giới hạn.',
+      'Kiểm tra đáp án trả lời đúng điều được hỏi, không phải thông tin ở gần.'
+    ],
+    traps: [
+      'Chọn thông tin cạnh bên thay vì thông tin được hỏi.',
+      'Vượt quá số từ cho phép.',
+      'Viết sai chính tả tên riêng hoặc quên đơn vị.'
+    ],
+    tips: [
+      'Từ để hỏi quyết định đáp án: Who ra tên người, How many ra số.',
+      'Đáp án thường gói gọn trong một câu của bài.',
+      'Nếu đáp án dài hơn giới hạn, bỏ từ phụ chứ đừng viết lại.'
+    ]
+  },
+
   // ==========================================
   // LISTENING QUESTION TYPES
   // ==========================================
@@ -210,6 +362,107 @@ export const IELTS_QUESTION_TYPES: IeltsQuestionTypeMeta[] = [
     ],
     tips: [
       'Chỉ ghi nhận đáp án khi cả hai nhân vật đã đạt được sự đồng thuận (Consensus).'
+    ]
+  },
+
+  {
+    id: 'listening-mcq',
+    skill: 'listening',
+    titleEn: 'Multiple Choice',
+    titleVi: 'Trắc nghiệm chọn đáp án đúng (Listening)',
+    frequency: 'Rất cao (Luôn có)',
+    difficultyLevel: 'Khó',
+    descriptionVi: 'Nghe và chọn đáp án đúng trong ba phương án. Bẫy lớn nhất là người nói nhắc đến cả ba phương án nhưng sửa ý hoặc đổi quyết định.',
+    steps: [
+      'Đọc câu hỏi và gạch từ khóa của từng phương án trong thời gian được đọc đề.',
+      'Nghe và đánh dấu từng phương án khi được nhắc, đừng chọn vội.',
+      'Chờ đến khi người nói chốt ý cuối cùng (thường sau từ nối như actually, in the end, however).',
+      'Chọn phương án khớp với ý chốt, không phải ý được nhắc đầu tiên.'
+    ],
+    traps: [
+      'Người nói đổi ý hoặc tự sửa lại (I thought... but actually...).',
+      'Phương án chứa đúng từ được nghe nhưng nói sai ý.',
+      'Mất tập trung vì chờ nghe cụm từ y hệt trong đề.'
+    ],
+    tips: [
+      'Phương án đúng thường là diễn đạt lại, không lặp từ nguyên văn.',
+      'Chú ý ngữ điệu nhấn: câu có but, although, in fact thường chứa đáp án.',
+      'Nếu lỡ câu, bỏ ngay và tập trung câu sau, đừng nghĩ lại.'
+    ]
+  },
+  {
+    id: 'listening-sentence-completion',
+    skill: 'listening',
+    titleEn: 'Sentence Completion',
+    titleVi: 'Điền từ vào câu (Listening)',
+    frequency: 'Rất cao (Luôn có)',
+    difficultyLevel: 'Trung bình',
+    descriptionVi: 'Điền từ vào chỗ trống trong câu tóm tắt nội dung bài nghe, với giới hạn số từ. Thứ tự câu theo thứ tự nghe.',
+    steps: [
+      'Đọc trước câu và đoán loại từ cần điền, giới hạn số từ.',
+      'Nghe cụm từ đồng nghĩa với phần câu quanh chỗ trống để biết đáp án sắp tới.',
+      'Chép đáp án vừa nghe, đúng chính tả, trong giới hạn từ.',
+      'Chuyển sang câu tiếp theo ngay khi xong, đáp án tiếp theo xuất hiện liền sau.'
+    ],
+    traps: [
+      'Nghe được nhưng viết sai chính tả hoặc sai số ít/số nhiều.',
+      'Điền thừa từ so với giới hạn.',
+      'Đáp án đầu bị sửa lại ngay sau đó.'
+    ],
+    tips: [
+      'Số và tên được đọc rõ từng chữ; ghi ngay khi nghe.',
+      'Dùng khoảng đọc đề để đoán trước.',
+      'Dùng dấu hiệu chuyển ý (next, moving on) để bám theo bài.'
+    ]
+  },
+  {
+    id: 'listening-table-completion',
+    skill: 'listening',
+    titleEn: 'Table, Note & Flow-chart Completion',
+    titleVi: 'Điền bảng, ghi chú, sơ đồ (Listening)',
+    frequency: 'Rất cao (Luôn có)',
+    difficultyLevel: 'Trung bình',
+    descriptionVi: 'Điền thông tin vào bảng hoặc ghi chú trong lúc nghe một cuộc hội thoại về nhiều lựa chọn (khóa học, tour, lịch trình). Thông tin đi lần lượt theo thứ tự các hàng.',
+    steps: [
+      'Đọc hết bảng trong thời gian chuẩn bị để biết các hàng, các cột và loại thông tin (giá, ngày, tên).',
+      'Nghe tên từng hàng/lựa chọn rồi mới ghi thông tin vào đúng ô.',
+      'Chú ý người nói sửa số liệu hoặc ngày.',
+      'Kiểm tra đơn vị và đúng số từ.'
+    ],
+    traps: [
+      'Điền thông tin của lựa chọn A vào ô của B vì chúng được nói gần nhau.',
+      'Người nói báo giá cũ rồi sửa thành giá mới.',
+      'Nhầm số gần âm (15 và 50, 13 và 30).'
+    ],
+    tips: [
+      'Viết số bằng chữ số, ngày bằng cách gọn.',
+      'Chú ý từ báo hiệu thay đổi: actually, sorry, I meant.',
+      'Nghe thấy tên hàng tiếp theo nghĩa là đã sang ô khác.'
+    ]
+  },
+  {
+    id: 'listening-short-answer',
+    skill: 'listening',
+    titleEn: 'Short-answer Questions',
+    titleVi: 'Trả lời câu hỏi ngắn (Listening)',
+    frequency: 'Trung bình',
+    difficultyLevel: 'Trung bình',
+    descriptionVi: 'Trả lời câu hỏi trực tiếp bằng số từ giới hạn từ phần nghe. Thường gặp trong Part 3 và Part 4.',
+    steps: [
+      'Đọc câu hỏi trước, gạch từ để hỏi và từ khóa.',
+      'Nghe cụm từ khóa được diễn đạt lại rồi chuẩn bị ghi đáp án.',
+      'Ghi đáp án ngắn gọn đúng giới hạn từ.',
+      'Kiểm tra chính tả khi chuyển đáp án.'
+    ],
+    traps: [
+      'Điền câu quá dài thay vì cụm từ ngắn.',
+      'Chọn thông tin được nói trước khi người nói đổi ý.',
+      'Chính tả sai tên riêng.'
+    ],
+    tips: [
+      'Từ để hỏi định hướng loại thông tin cần ghi.',
+      'Giữ đáp án ngắn: danh từ hoặc số.',
+      'Chép đúng cách viết đã thấy trên đề nếu có.'
     ]
   },
 

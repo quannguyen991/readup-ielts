@@ -15,6 +15,8 @@ import { AnimatedAvatar, AvatarBadge } from '@/components/profile/AnimatedAvatar
 import { ProfileCover } from '@/components/profile/ProfileCover';
 import { ProfileEffect } from '@/components/profile/ProfileEffect';
 import { useHydrated } from '@/components/layout/useHydrated';
+import { ChiikawaStickerRow } from '@/components/chiikawa/ChiikawaStickerRow';
+import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { SpacedRepetitionWidget } from '@/components/vocab/SpacedRepetitionWidget';
 import { MASCOTS, STAR_BONUS } from '@/services/game/mascots';
@@ -34,6 +36,7 @@ import { color } from '@/theme/tokens';
 import { SealIcon } from '@/components/illust/HeroArt';
 import { CuteStar, Motion } from '@/components/illust/CuteMore';
 import type { IconName } from '@/components/ui/Icon';
+import { NAV_GROUPS, navLabel } from '@/navigation/nav-items';
 import { useL } from '@/i18n/useL';
 import { achievementTitle, itemDetail, itemName, levelTitle, mascotName, mascotPerk, tierName } from '@/services/gamification/labels-en';
 
@@ -93,6 +96,7 @@ function ProfileSignInGate({ loading }: { loading: boolean }) {
 
 export default function ProfileScreen() {
   const { L, locale } = useL();
+  const chiikawaOn = useChiikawaActive();
   const wide = useWindowDimensions().width >= 760;
   const name = useDisplayName();
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
@@ -404,6 +408,12 @@ export default function ProfileScreen() {
             </Text>
           </Card>
 
+          {chiikawaOn ? (
+            <Card>
+              <ChiikawaStickerRow title={L('Bộ nhãn dán Chiikawa', 'Chiikawa sticker set')} />
+            </Card>
+          ) : null}
+
           <Card>
             <SectionHeader
               title={L('Huy hiệu', 'Badges')}
@@ -434,6 +444,25 @@ export default function ProfileScreen() {
           </Card>
         </View>
       ) : null}
+
+      {/* Tiện ích tài khoản: các trang nhỏ từng nằm dưới mục "Cá nhân" của thanh bên, nay chọn ở đây. */}
+      <Card style={{ marginTop: 16 }}>
+        <SectionHeader title={L('Tiện ích', 'Shortcuts')} subtitle={L('Tủ sách, mời bạn, nâng cấp, cài đặt…', 'Bookshelf, invites, upgrade, settings…')} icon="grid" />
+        <View className="mt-3 flex-row flex-wrap gap-2">
+          {(NAV_GROUPS.flatMap((g) => g.items).find((i) => i.key === 'me')?.children ?? []).map((c) => (
+            <Pressable
+              key={c.key}
+              accessibilityRole="link"
+              onPress={() => router.push(c.href as never)}
+              className="flex-row items-center gap-2 rounded-panel px-3 py-2.5"
+              style={{ backgroundColor: themedHex('#F3F0FB') }}
+            >
+              <Icon name={c.icon} size={17} color={color.muted} />
+              <Text className="font-semi text-[14px]" style={{ color: color.muted }}>{navLabel(c, locale)}</Text>
+            </Pressable>
+          ))}
+        </View>
+      </Card>
 
       <View className="h-6" />
     </Screen>

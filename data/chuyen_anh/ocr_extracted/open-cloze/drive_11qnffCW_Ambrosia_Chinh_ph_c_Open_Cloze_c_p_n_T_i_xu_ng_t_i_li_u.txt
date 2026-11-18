@@ -1,0 +1,1751 @@
+# TÀI LIỆU GOOGLE DRIVE: (Ambrosia) Chinh phục Open Cloze có đáp án
+# NHÃN: Tải xuống tài liệu
+# LIÊN KẾT GỐC: https://drive.google.com/file/d/11qnffCWsol1vGlvcjasUq21xjzIDlHNP/view
+# FILE ID: 11qnffCWsol1vGlvcjasUq21xjzIDlHNP
+
+--- PAGE 1 ---
+LỜI MỞ ĐẦU 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+FROM AMBROSIA 
+WITH LOVE
+Để động viên tinh thần học tập của các bạn trong các kỳ thi thi thử , THPT Chuyên 
+Ambrosia xin dành tặng các bạn quyển sách “Chinh phục Open Cloze” . Đây là 
+tác phẩm mà các admin đã dành nhiều tâm huyết, thời gian, công sức để hoàn 
+thành. Đồng thời, đây cũng là lời cảm ơn mà Ambrosia dành tặng cho những nỗ 
+lực và sự ủng hộ của các bạn đối với page trong thời gian vừa qua. 
+“Chinh phục Open Cloze”  sẽ giúp các bạn những gì? 
+Open Cloze là 1 phần rất quan trọng, hầu như phủ sóng trong tất cả các đề thi 
+học sinh giỏi cấp THCS và THPT. Open Cloze là dạng bài tập rất hay dùng để 
+kiểm tra không chỉ những kiến thức Lexico-Grammar mà còn về kỹ năng đọc hiểu 
+của thí sinh.  
+Vì vậy, page dành tặng các bạn học sinh chuyên Anh trên toàn quốc như là 1 tài 
+liệu thật sự chất lượng về chuyên đề này. Cuốn sách được chia thành những 
+phần chính như sau: 
+Phần 1: Tuyển chọn bài tập open cloze từ các đề thi HSG khu vực (Olympic 30/4, 
+DHBB, THPN, THHV) 
+Phần 2: Tuyển chọn bài tập open cloze từ các đề thi HSG QG 
+Phần 3: Tuyển chọn  bài tập open cloze từ các đề thi HSG cấp tỉnh (thành phố) 
+Phần 4: Tuyển chọn bài tập open cloze từ các đề thi TS lớp 10 chuyên 
+Phương pháp học tập hiệu quả: 
+- Học tập thật kỹ ngữ pháp để hoàn thành những câu hỏi kiểm tra kiến thức ngữ 
+pháp, page xin recommend tài liệu ôn ngữ pháp đầy đủ nhất: 
+http://bit.ly/TonghopGrammar 
+- Chú ý từ cần điền vào chỗ trống thuộc từ loại gì (noun, verb, adjective, adverb), 
+dạng của từ (word formation) 
+- Với những câu sai, hãy đánh dấu vào sách để xem lại khi ôn tập, tránh mắc phải 
+sai sót khi thi thật 
+- Ghi chú những từ vựng, collocation, idiom học được từ sách và ôn lại nhiều lần 
+Mặc dù đã rất cố gắng nhưng tài liệu khó tránh khỏi những sai sót trong quá trình 
+biên soạn. Rất mong nhận được những ý kiến đóng góp ý của các bạn học sinh 
+để tài liệu này được hoàn thiện hơn. Hy vọng tài liệu này sẽ có ích cho các bạn 
+trong quá trình rèn luyện tiếng Anh của mình. 
+Mọi ý kiến đóng góp gửi về email: ambrosiaontop@gmail.com 
+Fanpage: facebook.com/iloveambrosia  
+Hà Nội – TP. HCM – Bến Tre, 2018
+
+--- PAGE 2 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+TỔNG HỢP BÀI TẬP OPEN CLOZE TỪ CÁC ĐỀ THI ĐỀ NGHỊ 
+OLYMPIC KHU VỰC CỦA CÁC TRƯỜNG THPT CHUYÊN TRÊN 
+TOÀN QUỐC 
+Bài
+Men and women are different. It is a premise universally accepted, (1) _________ the 
+subsequent argument concerning access to equal opportunities. However, what is beginning to 
+emerge is just how wide the gap is between the sexes. 
+(2) _________ recently, it had been thought that many of the hundreds of genes on the X and 
+Y chromosomes were inactive, a consequence of damage during the (3) _________ of combination 
+and recombination which leads to the creation of a new human being. It was believed that 
+(4)_________ one of the two X chromosomes in women was active and (5) _________ there were 
+none on the Y chromosomes on men, (6) _________ the result that both sexes would be comparable 
+to (7) _________ one working X chromosome. 
+Now, it is known that both X chromosomes in women (8) _________ to a women's genetic 
+inheritance, while startling new evidence shows that the Y chromosome is (9) _________ from 
+inactive. This means that men and women differ (10) _________ as much as one to two percent of 
+their genomes, an astounding figure when considering that there is only a 1.5% difference between 
+a man and a male chimpanzee, or a woman and a female chimpanzee. 
+Bài
+WHAT IS A DIAMOND? 
+ 
+It is perhaps difficult to believe that diamond, like graphite and charcoal, is a (1) _________ 
+of carbon. Diamond crystallizes in cubic form, at enormous pressures and high temperatures over 
+the course of millions of years (much diamond occurs as well- formed crystals, most commonly as 
+octahedral or eight-sided crystal). The process has been imitated under laboratory conditions and 
+then applied industrially to create (2) _________ diamonds. These have proven to be mainly of (3) 
+_________ industrial, plain quality or very small in size. The diamond's exceptional properties arise 
+from the crystal structure, in which the bonding between the carbon (4) _________ is immensely 
+strong and uniform.  
+ 
+First, a diamond possesses extraordinary powers of light reflection. (5) _________ properly 
+cut, it gathers light within itself, reflecting it back in a shower of fire and brilliance. Second, it is the 
+only gem mineral (6) _________ of a single, unadulterated element, making it the purest of earth's 
+gemstones. Thirdly, it is the hardest transparent substance (7) _________ to man. Steel, for example,
+
+--- PAGE 3 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+(8) _________ which most machine tools are made, cannot cut diamond. The only material that can 
+cut diamond is (9) _________ diamond! Therefore, for that purpose, the industry uses, 'industrial 
+grade', usually black, diamonds.  
+ It is fitting that the purest and most brilliant of all the world's stones should also be the 
+most enduring one. These (10) _________ make a diamond the perfect symbol of engagement and 
+love.  
+Bài 3
+Put simply, an allergy is a disorder in which the body over-reacts to harmless substances 
+which in (1) ______ circumstances should not produce any reaction at all. An allergy can occur in 
+(2) ______ any part of your body, and can be caused by just about anything. Mainly though, allergies 
+become evident on parts of the body (3) ______ exposed to the outside world. Certain allergies 
+occur only at certain times of the year, while others are there all the time. Those that occur all the 
+year (4) ______ are probably caused by something you come into (5) ______ with every day of your 
+life, some seemingly harmless (6) ______ such as your deodorant or the pillow you lie on each night. 
+Allergies can occur at any time during your life, but usually do so before your fortieth birthday. 
+Sometimes the symptoms are so (7) ______ you do not even know you have an allergy, and it may 
+take years for an allergy to become noticeable. It all (8) ______ on the amount of the substance to 
+which you are exposed and for how long. Sometimes an allergy can disappear as suddenly as it 
+arrived, without any (9) ______. Sometimes it comes and goes for no apparent (10) ______, and with 
+no regularity. 
+Bài 4
+How often do you go along to a gig and see (1) _________ new? Well, Quest's Friday night gig 
+at the City Hall certainly caught my (2) _________. Having heard one or two tracks online, I was (3) 
+_________ a group of about six musicians. Imagine my surprise when just three young men walked 
+on stage. 
+It was clear that the band already have a small but (4) _________ following. A group of fans in 
+front of the small stage were singing (5) _________ to at least half of the songs. And it was easy to 
+see why. Quest have a clever combination of catchy (6) _________, an irresistible beat, and very 
+much their own sound. All three of the band members play with great energy and expertise (7) 
+_________ their age. 
+The only downside was when it came to the encores. They (8) _________ up repeating some 
+of their material and giving us cover (9) _________ of early rock classics. A bit disappointing, but 
+give them time and I'm sure they'll be writing a lot more.
+
+--- PAGE 4 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+I'm sure we'll be hearing a lot more from Quest. Check them out every Friday at the City Hall until 
+the end of the month. It's well (10) _________ it. 
+Bài 5
+Cell phones have been (1) ______ in Japan since the early 1990s, but it was not until 1999 that 
+their use really took (2) ______. The age of cell phones has emerged but with it come (3) ______. 
+Cell phones are used on business trains, in restaurants, and in all areas of life. They cause problems 
+when they (4) ______ during meetings, concerts, weddings or (5) ______ funerals. What’s more, 
+people speak loudly in public and students read and text messages during lessons. More seriously, 
+when a cell phone is used near a person using a pacemaker to regulate his heartbeat, its radio 
+waves may (6) ______ with the functioning of the machine. Now, something is being done to solve 
+these problems. In many places, new technology is being used to (7) ______ the cell phones. Airline 
+passengers are requested to stop using cell phones while on (8) ______. Concert halls ask their 
+audience to switch their phones to (9) ______ mode. However, phone (10) ______ fear that if they 
+do not answer their phones, they will lose valuable business opportunities. That’s why many do not 
+turn off their phones even when they are. 
+Bài 6
+The Greek philosopher, Socrates, (1) _____________to peace as 'the time when children bury 
+their parents' and war as 'the time when parents bury their children' . War, in other words, is a time 
+when the natural state of things is thrown (2) _____________chaos and (3) _____________of any good 
+comes out of it. 
+The people who suffer in a war need not (4) _____________be the losing party. There are 
+always two sides to an argument. Both warring parties will inevitably sustain casualties, and it is 
+the people who pay for all the senseless damage. In a war, the soldiers (5) _____________be enemies 
+to each other, but they are still somebody's father, brother, son or husband. Someone will (6) 
+____________ for them if they die. 
+Our generation is fortunate (7) _____________we have not had the misfortune to go (8) 
+_____________ a war. We should prevent such tragic events from recurring in the future. We should 
+do our utmost to preserve peace, first in our (9) _____________lives, and then in others. Only then 
+can we live in (10) _____________with one another. 
+Bài 7
+
+--- PAGE 5 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+KRAKATOA 
+Volcanic eruption has been a constant threat to our natural environment for millions of years, 
+but seldom in recent times (1) ___________ a volcano erupted with the ferocity of Krakatoa. 
+Krakatoa, (2) ___________ is a volcanic island group in Indonesia, erupted on 27th August 
+1883. Not only was the explosion (3) ___________ loud that it was heard as far away (more than 
+3,000 km) as Perth in Australia, (4) ___________  it is also recognized as (5) ___________ the loudest 
+sound (6) ___________ recorded. 
+Ten thousand people in the region were killed, many (7) ___________ in the enormous 
+tsunamis which the eruption produced – tsunamis which eventually reached South Africa and the 
+English Channel.  
+The explosion also had a major effect on the (8) ___________ world’s weather system. The 
+volcanic dust in the atmosphere reduced the (9) ___________ of sunlight reaching the earth’s 
+surface, reducing global temperatures by more than one degree centigrade. Only after five years 
+had passed (10) ___________ global temperatures begin to normal. 
+Bài 
+ 
+CAMPING HOLIDAYS 
+Although it has a reputation for being rather basic in terms of home comforts, the modern 
+material used in the manufacture of tents means camping is at least a lot less hard work. Nowadays 
+tents are (1) _________ lightweight that you hardly notice you're carrying them. They're easy to (2) 
+_________ up yet still a cheaper alternative to hotel accommodation. 
+Talk to an expert first before spending a lot of money (3) _________ a tent. Different tents 
+suit different needs and there's no point (4) _________ buying a mountaineering tent  (5) _________ 
+you're planning to camp in these conditions. Don't (6) _________ tempted to splash out on all the 
+latest equipment either. Most of the fun of camping lies in the chance to get back to nature. There's 
+no need to take anything more (7) ________ the basics. 
+Always try to plan your arrival at the site long before (8) _________ gets dark. You will want 
+to see (9) _________ you're doing when you try to erect your tent. Don't forget to ask for permission 
+if you're not camping on a registered site, and remember to take a supply of food and drink with 
+you in (10) _________ the local shops are closed when you arrive. You can then enjoy your first meal 
+under the stars and begin to appreciate the joys of camping.
+
+--- PAGE 6 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Bài 9
+ 
+ELECTROMAGNETIC FIELDS 
+The largest land mammal alive today is the elephant. Today, there are two kinds of elephants 
+- the African elephant and the Indian elephant. (1) ______, this has not always been the case. Until 
+about 10,000 years ago, there was another group, the mammoths, which unfortunately are now (2) 
+______. Mammoths, which lived in the intense cold of northern Russia and North America, looked 
+very similar to modern elephants. A difference, of course, is that adult mammoths had a double 
+layer of long hair (3) ______ their whole bodies.  
+Some scientists point a (4) ______ at humans as the factor responsible for the extinction of 
+the mammoths - supposedly (5) ______ mammoth bones have been found in places where humans 
+lived. However, thanks to recent evidence, many researchers now believe changes in weather is a 
+(6) ______ accurate explanation for the extinction of mammoths. The climate changed, and with it, 
+the types of plants (7) ______ changed. This in (8) ______ affected the mammoths, which now had 
+trouble finding food. The changes in climate probably took place quite suddenly, and in fact, whole 
+mammoths have been found perfectly (9) ______ in the ice.  
+Because mammoths and modern elephants are somewhat similar, some scientists think it 
+might be possible to bring (10) ______ the animals by mixing DNA taken from frozen mammoths 
+with that of an elephant. 
+Bài 10
+ 
+THE TROUBLE WITH SCHOOL 
+In the first few years at school all appears to (1) _______ very well. There is much concern, 
+(2) _______ the part of the teachers, with high educational standards, and the children, even (3) 
+_______ who are far from being privileged in other ways, seem eager and happy. However, by the 
+time the children (4) _______ adolescence, the promise of the early years frequently remains 
+unfulfilled. Many leave school (5) _______ having mastered those basic skills which society 
+demands, let (6) _______ having developed the ability to exercise any sort of creative intelligence. 
+There is no denying that, in spite of the enlightened concern of our primary schools with 
+happiness, schooling (7) _______ or other turns into a distinctly unhappy experience for many of our 
+children. Large numbers of them emerge from it well aware that they are ill-equipped life in our 
+society. So then they either regard (8) _______ as stupid for failing or else, quite understandably,
+
+--- PAGE 7 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+they regard the activities at which they have failed as stupid. In any event they want no (9) _______ 
+of them. How can we justify a long (10) _______ of compulsory education which ends like that? 
+  
+Bài 11
+Energy is one of the (1) _______ that many people are interested in. It is not an unfamiliar word. 
+It is heard, said, discussed day after day. It is close to everyone’s (2) _______ life. You turn on the 
+lamp and it is (3) _______ that gives you light. You turn on a TV and it is energy that gives you 
+pictures and sound. You ride a motorcycle and it is energy that gives you (4) _______. You cook 
+your meals and it is energy that gives you heat to boil rice. 
+      The problem is that the (5) _______ for energy is rising and that the price of energy is getting 
+higher and higher. The supply of energy on earth is limited. It cannot provide us all forever. The (6) 
+_______ of energy in the future is inevitable. Therefore, saving energy is a must if we want to (7) 
+_______ to live in a safe and sound world. 
+        If we save energy, the environment will be (8) _______ polluted and our health will be better 
+and we will live a more meaningful life and more happily. Perhaps the best solution to the problem 
+of energy is a (9) _______ of clean energy coming from the sun: solar energy. This kind of energy is 
+easily available, free, and inexhaustible. Furthermore, it does not cause (10) _______. 
+Bài 12
+A healthful lifestyle leads to a longer, happier, healthier life. Staying healthy means eating a 
+well-balanced diet, getting regular exercise, and avoiding things that are bad for the (1) ______ and 
+mind. 
+Nutrition plays a key role (2) ______ maintaining good health and preventing many diseases. 
+In spite of all the information available about diet, scientists still believe that good nutrition can (3) 
+______ simple. There are several basic rules to follow. Keep fat intake low. Eat lots of foods high in 
+carbon hydrates, (4) ______ are the starches in grains, legumes (beans and peas), vegetables and 
+some fruits. (5)______ too much sugar. Limit salt. Eat lots of fruits and vegetables, which are high 
+in (6) ______. 
+A healthy lifestyle is an active lifestyle. (7)______ of proper physical exercise can cause 
+tiredness, irritability, and poor general health. Physical fitness requires both aerobic exercise, such 
+as running, bicycle riding, and swimming, (8) ______ muscle-strengthening exercise, such as 
+weight-lifting.
+
+--- PAGE 8 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Finally, good health is acquired by (9)______ no to bad habits such as smoking, drinking, and 
+overeating and by avoiding situations that are constantly stressful. People can take their lives and 
+happiness into their own (10) ______. Maintaining a healthy lifestyle is the first step. 
+Bài 13
+ 
+HOW CAN I COPE BETTER WITH STRESS? 
+Recent research found that having higher levels of self-esteem, a more positive way of 
+explaining why things happen, and avoiding perfectionist thinking were strongly (1) _________ to 
+bouncing back when things go wrong.   
+To begin with, according to Dr. Judith Johnson self-esteem was shown to be (2) __________ 
+in two thirds of the studies in mediating the link between failure and distress. All we need to do is 
+write a list of our positive qualities and examples of when we have (3) _______them. 
+Secondly, how we explain things also (4) ______. If we can brush off a disappointment by (5) 
+____________ it to external factors, then we have the equivalent of emotional armour. 
+Finally, if we have perfectionist tendencies, lower them. Perfectionists hold rigid standards 
+that don’t bend in the stormy (6) _________of life. Johnson says we need to set more realistic (7. 
+___________.  
+She also advises self-awareness and noticing when we are stressed. If you feel stuck, do 
+something that (8) _________ you up. You need to plan these things into a schedule – doing them 
+will chip away at your negative (9) ________, even if you do enjoy them a bit less than usual. Other 
+research shows that the (10) __________ of friends or family also helps emotional resilience, as does 
+being physically active. 
+Bài 14
+FOOD FOR A FUTURE 
+Jon Wynne-Tyson was an original thinker whose best-known book ‚Food for a Future‘ was 
+published in 1975, In this classic work, a case was (1) __________ forward for (2) __________ can 
+only be described as a more responsible and humane attitude towards the world’s food resources. 
+It had gradually become clear to Wynne-Tyson that the economics and ecology of meat production 
+did not make sense. What justification was (3) __________, he argued, for using seven tones of 
+cereal to produce one tone of meat?  
+ 
+Even today, the book's succinct style makes it compulsively readable. (4) __________ his 
+approach is basically an emotional one, Wynne-Tyson goes to great lengths to back (5) __________ 
+every statement with considerable supporting evidence and statistical data. Thus, even those of us 
+who are widely read (6) __________ the subject of vegetarianism will gain fresh insights from this
+
+--- PAGE 9 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+book. It is generally agreed that his most skillful achievement is the slow revelation of his main 
+thesis (7) __________ the arguments unfold. The book concludes that a move away from an animal-
+based diet to one which is based on plant sources is inevitable in the long-term, in view of the fact 
+that there is no sound nutritional, medical or social justification for meat eating. (8) __________ of 
+whether you agree with (9) __________ a conclusion or not, the book certainly makes (10) __________ 
+fascinating read. 
+ 
+Bài
+If we measure the seasons, as in the past they have been, by ordinary natural events such as 
+the departure of migrating birds or the appearance of the first flower, (1)________________ spring 
+now begins in November and autumn ends in December. (2) ________________ may seem an 
+unlikely situation to us, but in actual fact, data shows that spring now occurs ten to thirty days 
+earlier than it did, while recent research bears (3) ________________ that autumn is arriving later.  
+ 
+Traditional data on phenology, the study of the timing of natural events goes, (4) 
+________________ to 1736 in Britain, taken (5) ________________ isolation, phonological data may 
+not mean much, but the received wisdom from ecology is about interconnectedness. 
+(6)________________, with higher temperatures in winter, some species will breed earlier and then 
+find that their food source has been destroyed (7) ________________ winter finally arrives. 
+Competition for winter food will probably increase too, as birds stop migrating south in winter, as 
+has already happened in a (8) ________________ of cases 
+ 
+(9) ________________ it is often difficult to be certain that seasonal trends are progressive 
+and not cyclical, those involved in analyzing the information see the fingerprints of global warming 
+(10) ________________ this blurring of the seasons’ edges. 
+ Bài 16
+ 
+ 
+KARAOKE FEVER 
+Karaoke is fast becoming the nation’s Number One party pastime. Public humiliation has 
+(1)_________ been so fashionable. It’s 1 a.m. at an exclusive location in the heart of London. A major 
+pop singer has taken the stage but rather than sing her latest hit, she treats the crowd (2)_________ 
+a Michael Jackson song. What was (3) _________  the party habit of teenagers is now favoured by 
+London’s coolest crowd and everyone is having a (4) _________. So why are so many of our young 
+celebrities queueing up to make fools of (5) _________ in clubs and bars across the country? Maybe 
+it’s because (6) _________ out a naff pop song to a public audience shows that even though you 
+may be a celebrity, you don’t (7) _________ yourself too seriously. And if you are a big movie star,
+
+--- PAGE 10 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+that’s a good message to get across. Nobody gets away without being laughed (8) _________ on a 
+karaoke evening, no matter how famous they are. (9) _________ all, that’s the whole point of the 
+exercise. But for the musical experts among you, a word of warning: this isn’t about proving to the 
+world that you know all the lyrics to a serious song. It’s about expressing your inner performer. 
+Don’t bother (10) _________ up at a karaoke night if you aren’t prepared to sing; you’ve got to put 
+in the effort and prove that you are one of the ‘in-crowd’. Break a leg! 
+Bài 17
+ 
+THE WHIRL OF WORK 
+Miserable, over-worked and insecure, the British work the longest hours in Europe and 
+express the (1) _________ job satisfaction. (2) _________ much richer, they are becoming fed up to 
+the back (3) _________ with work every year. What is the (4) _________ of economic success if it is 
+matched by growing unhappiness? Like dumb oxen we work harder than everyone else - a third of 
+men work over 50 hours a week - but we're not smarter. For over a century factory acts and ever 
+shorter working hours marked the onward march of industrial progress. Now social history has gone 
+into (5) _________. 
+In an (6) _________ study Professor Cary Cooper of the Manchester School of Management 
+revisits the same 5000 managers from CEOs down to juniors and he finds them growing 
+increasingly anxious about their lives. This is (7) _________ surprising since half of them work most 
+evenings and a third work most weekends. Whatever the reality of falling unemployment, people 
+feel their own job or status is in grave (8) _________ because they suffer more turmoil at work than 
+they did five years ago. Reconstructing, downsizing and radical change at work (9) _________ a life 
+of constant upheaval, and the current merger epidemic (10) _________ off unpredictable job loss. 
+Bài 18
+INDOOR AIR POLUTION 
+The citizens of four major European countries think the (1) _________ of climate change such 
+as severe floods and storms are already affecting them, according to a major new polling study. 
+The research dispels the idea that global warming is widely seen as a future problem, and also 
+shows strong support for action to tackle global warming, (2) _________subsidies for clean energy 
+and big financial penalties for nations that refuse to be part of the international climate deal signed 
+in Paris in 205 –  (3) _________ US president Donald Trump has threatened. There was also strong 
+support for giving financial (4) _________ to developing nations to cope with the impacts of climate 
+change. Renewable energy was viewed very positively in all nations, but fracking had little support,
+
+--- PAGE 11 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+with just 20% of people seeing it positively in the UK, 5% in Germany and 9% in France. Nuclear 
+power was also unpopular: only 23% of those in France, (5) _________ it supplies the vast majority 
+of electricity, have a favourable opinion. 
+Overwhelming majorities of people in the UK, Germany, France and Norway said climate 
+change was at (6) _________ partly caused by human activities, such as burning fossil fuels. But 
+only a third thought the vast majority of scientists agreed with this, despite about 97% of climate 
+scientists doing so. “It is encouraging to see that most people in this very large study recognise 
+that climate change is happening, and that support for the need to tackle it remains high (7) 
+_________ the people we surveyed,” said Prof Nick Pidgeon at Cardiff University, who led the 
+international project. He said the firm backing of the public could be important in the light of Trump’s 
+opposition to climate action: “(8) _________ the recently shifting political mood in some countries, 
+climate policy is now entering a critical phase. It is therefore even (9) _________ important that the 
+public’s clear support for the Paris agreement is carried (10) _________ by policymakers Europe 
+and worldwide.” 
+Bài 
+FROM ROYALIST TO REPUBLICAN 
+  
+Erskine Childers was not what you would call your (1) _________ Irish freedom fighter. A 
+Briton by birth, and a proud (2) _________ at that for most of the early years of his life, Childers 
+was a decorated soldier of the British Admiralty (3) _________   had demonstrated  unwavering 
+commitment  and loyalty to both king and country. And yet, somewhere along the way, 
+disillusionment (4) _________ in. 
+  
+While it is difficult to pinpoint the precise moment when doubt started to creep into Childers' 
+mind (5) _________ to whether his loyalty was misguided, what was essentially a complete philosophy 
+shift - a total realignment of ideals - did occur. Childers went from (6) _________ royalist to a staunch 
+nationalist, obsessed with the cause of Irish freedom. 
+  
+He befriended the (7) _________ of Eamon DeVelera and Michael Collins, key figures in the Irish 
+Republican camp, and even went so far as to ship illegal armaments to the leaders of the ill-fated 
+Easter Rising of 1916, which was easily put (8) _________ by the British army. 
+  
+Later, he would fight on the (9) _________ of the Irish rebels in the War of Independence, 
+until an uneasy truce was agreed between Britain and Ireland. Eventually, a treaty was signed 
+partitioning the country. For Childers, by now totally devoted to the cause of Irish freedom and the 
+notion of a united Ireland, partition was (10) _________ bitter a pill to swallow.
+
+--- PAGE 12 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Bài 
+Fancy creating your very own Ronaldinho? Well, before (1) _________, you may be able to do 
+just that. Simply sign (2) _________ for RoboCup.  
+RoboCup is the nickname for an international scientific project called the Robot World Cup 
+Initiative. (3) _________ by the idea of using football as a means of promoting science and 
+technological development, the project organizers have (4) _________ an ultimate goal of building a 
+robotic football team that will be able to (5) _________ the human World Cup winners by the year 
+2050. Teams are becoming increasingly competitive in their endeavours to create humanoid 
+footballers, and the annual RoboCup World Championships play (6) _________ to robotic designs 
+at the cutting edge of artificial intelligence technology. RoboCup Junior, an offshoot of the project 
+designed for schools, has also witnessed some innovative designs from budding young scientists 
+around the globe.  
+The question is: Can RoboCup’s goal realistically be (7) _________ by 2050? The organizers 
+admit it’s a (8) _________ order, but argue that it is nevertheless feasible. After all, there was only a 
+matter of fifty years between the first flight by aeroplane and the first moon landing. So it would be 
+folly to dismiss out of (9) _________ the possibility of a world class robot football team beating the 
+human champions by 2050. For (10) _________, though, my money remains firmly on the real 
+Ronandinho. 
+Bài 
+LAUGHING IS GOOD FOR YOU – SERIOUSLY 
+It is a sad fact that adults laugh far less than children, sometimes (1) _________ as much as 
+a couple of hundred times a day. Just take a look at people’s faces on the way to work or in the 
+office: you’ll be lucky to see a smile, let (2) _________ hear a laugh. This is a shame -especially in 
+(3) _________ of the fact that scientists have proved that laughing is good for you.  “When you 
+laugh,” says psychologist David Cohen, “it produces the feel-good hormones, endorphins. It 
+counters the effects of stress (4) _________ enhances the immune system .” 
+There are many reasons why we might laugh less in adult life: perhaps we are too work-
+obsessed; or too embarrassed to (5) _________ our emotions show. Some psychologists simply 
+believe that children have more naive responses, and as adults we naturally grow (6) _________ of 
+spontaneous reactions. 
+Luckily, however, it is possible to relearn the art of laughter. In India” laughter clinics have 
+been growing (7) _________ popularity over the last few years, (8) _________ to the efforts of Dr 
+Madan Kataria, whose work has won him a devoted following. Dr Kataria believes that his laughing
+
+--- PAGE 13 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+techniques can help to strengthen the immune system and lower stress levels, (9) _________ other 
+things. He teaches his patients different laughs or giggles to relax specific parts of the body. In 
+1998 when Dr Kataria organized a World Laughter Day at Bombay racetrack, 10,000 people (10) 
+_________ up.   
+Bài 
+ 
+ 
+MODERN LIVING 
+Over the last forty years, one of the major changes in the way we live concerns (1)________ 
+we eat. 
+As well as the fact that we have larger incomes, foreign travel (2)________ encouraged us to 
+experiment (3)________ our cooking. As a result, ordinary people have developed a taste 
+(4)________ exotic flavours. Supermarkets, which previously filled their shelves with only locally 
+produced goods, now stock Caribbean vegetables, spices from India and (5)________ Chinese beer!  
+There is also a trend towards eating (6)________ healthily nowadays, so low-fat, low-calorie 
+foodstuffs have become part of our weekly shopping basket. And vegetarianism is on (7)________ 
+rise, too. Government surveys predict that one in three of us will  be a vegetarian by the end of the 
+present decade. 
+Strange as it may seem, (8)________, the fact that we now know more than ever before about 
+what we should eat has not actually made us (9)________ healthier. In fact, the latest surveys show 
+that all of us are getting fatter and some, especially teenagers, are in danger of becoming clinically 
+obese. If this happens, we only have (10)________ to blame. 
+Bài 
+Most people I know would never go to a martial arts movie, even if you paid them, but I defy 
+anyone (1) ______ to enjoy 70 minutes in the dark with Jackie Chan. For a start, Chan is simply 
+interested in evading the bullies who want to do him over - and if he bumps into someone as he's 
+running away, he's always apologetic. His screen persona is never (2) ______ to bombast. Chan is 
+a likeable, bumbling everyman who tries to extricate himself from scrapes with his astounding 
+athletic (3) ______ as he leaps up the side of a building, you would swear he was on wires. With the 
+kind of skills and agility normally (4) ______ to monkeys and flies, Chan seems capable of scuttering 
+up any surface. And it is extremely rare for him to (5) ______ on the offensive. The films of lesser 
+action stars like Jean-Claude Van Damme provide a diet of relentless violence, punctuated every 
+now and (6) ______ by some semi-moronic 'witticism', but Chan's balletic altercations with his 
+enemies are as a (7) ______ oriented around the art of comic evasion. True, nobody could ever win
+
+--- PAGE 14 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+a screen-writing Oscar for one of his films: they're the sort of film where villains will frequently deliver 
+lines like “I'm sorry we didn't get the tape, four of our guys got blown up”. They (8) ______ to be a 
+series of stunt sequences, all devised by Chan himself, wrapped around the most tenuous of plots. 
+He uses no stunt double or state of the art technology or computer-generated tricks. He is simply 
+a person of great charm with an enormous flair (9) ______ physical comedy. And what is so amazing 
+is that this seasoned campaigner should still be making (10) ______ films at the age of fifty. 
+Bài 
+ 
+An (1) ______ of Chinese peasants is roaming the country seeking work. An even bigger 
+army of around 130 million peasants, still at home, is (2) ______ work. The figures, published by the 
+Communist news service, explain the masses of people gathering together outside the Canton 
+railway station each morning. It may well (3) ______ that the numbers flocking to the coastal cities 
+to take advantage of (4) ______ stringent controls on movement and greater job opportunities could 
+reach as high as 30 million soon. Notices are being posted and orders (5) ______ telling people to 
+go back to their towns and villages and (6) ______ city employers not to advertise jobs in the 
+countryside! Until recently the cities welcomed these migrant workers because they were cheap. 
+However, recent proclamations of austerity, banning building projects, mean less work is available. 
+In (7) ______, figures reveal that in some cities migrant workers (8) ______ for more than half of the 
+recent criminal arrested! Ironically, the household registration system, which made (9) ______ illegal 
+for people to leave home without permission, has been abandoned making it easier for peasants to 
+move to the cities. The authorities appear to be (10) ______ a loss as to what more they can do. 
+Bài 
+YOGA 
+There can be hardly anyone who has not heard of yoga, and (1)__________ you are 16 or 60, you 
+can reap the benefits of taking (2)__________ in a yoga class. Yoga is a system of (3)_________ the 
+body and the mind. Its goal is to (4)__________ it easier for people to remove all distractions 
+preventing them living a life of the spirit in union with their Maker. Reaching this state is (5)_________ 
+greater a challenge that might be imagined. The main emphasis of the physical training is 
+(6)__________ bringing the body under complete control in such areas as the regulation of breathing 
+and the flexibility of the muscles, (7)__________ if which are instrumental in controlling our overall 
+movements. The mental training, as (8)_________ as the modifications to the behavior of the 
+physical body, make undisturbed concentration (9)___________. So perhaps it’s (10) ___________ 
+we all headed for the nearest yoga class and started training right now. 
+Bài
+
+--- PAGE 15 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The majority of lottery winners change their lives (1) _______ little, and continue on their 
+settled way happy ever after. A couple of years ago, a Mr. David won a million. He had been 
+struggling to (2) _______ a success of his dry cleaning shop for the past 12 months. He accepted 
+his cheque in a small ceremony (3) _______ the premises at 2.30, and by three o’clock he had 
+reopened for business. The reaction of Mr. Pasquale Consalvo who won $30 million in the New 
+York state lottery was very (4) _______.He was unhappy not to be able to fulfill his desire to go to 
+work as (5) _______ on the day he won. He also said that if the money made him (6) _______ he 
+would give it back. In fact, the chances of his life being made a misery by his new-found wealth are 
+almost (7) _______ slim though not quite as the sixty million-to-one odds he beat to take a jackpot 
+(8) _______ had remained unclaimed through six previous draws. Gambling small amounts (9) 
+_______ the lottery is a harmless if futile hobby. (10) _______, gambling can become an addition, 
+increasingly so as the activity becomes socially acceptable. 
+Bài 
+Many celebrated artists have found it hard to makes ends meet early on in their careers. 
+(1)____________a few well-known exceptions, however, (poor Van Gogh being perhaps the most 
+famous one) most went on to find recognition within their own lifetime. Picasso’s life story is the 
+kind of rags-to-riches tale which gives hope to many (2) ____________  unknown artist. In 1904, he 
+was sharing a draughty and primitive studio complex (3)____________thirty other artists. But by his 
+death, he was a multi-millionaire and probably the most celebrated modern artist ever. 
+Nevertheless, (4)____________ every success story, there must be dozens of artists (perhaps some 
+potential ‘greats’) who have endured a lifetime (5) ____________ hardship in obscurity. Whether they 
+were never recognized because their work was out of sympathy with the prevailing fashion, or (6) 
+____________ they lacked talent, is impossible to say. Most people see art (7) ____________ a 
+vocation rather (8) ____________ a career. There may indeed be some truth in the idea that artists 
+need to (9) ____________ exceptionally dedicated to succeed, and even relatively successful artists 
+sometimes have (10) ____________ supplement their income by working in other areas occasionally. 
+Bài 
+THE FUTURE AT YOUR FINGERTIPS 
+ 
+There is a scene in the film Minority Report in (0) __which__ Tome Cruise stands in front of a 
+vast Perspex-like screen housed in the police department’s Pre-Crime Unit. He gazes (1) ____  
+earnest at the transparent surface, waving his hands across the tablet to swirl great chunks of text 
+and moving image across the screen to (2) ____ a storyboard of yet-to-be-committed crimes. With 
+a simple twist of his finger or a flick of his wrist, pictures expand and enlarge, word scroll, and whole 
+trains of thought come to tangible fruition (3) ____ there on board. The year is 2054.
+
+--- PAGE 16 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Yet it seems the era of true touch-screen technology is already here. Indeed, when Apple boss 
+Steve Jobs unveiled the iPhone in San Francisco a few years ago, he grandly declared: “We are 
+reinventing the cell phone.” 
+ 
+(4) ____ of the main reasons for Jobs’ bold claim was the iPhone’s futuristic user interface- 
+“multi-touch”. As demonstrated on stage by Jobs (5) ____,  multi-touch was created to make the 
+most of the iPhone’s large screen. (6)____most existing smart phones, the iPhone has only one 
+conventional button-all the rest of the controls appear on the screen, adapting morphing around 
+your fingertips as you use the device, almost (7)____ the giant tablet in Minority Report. 
+ 
+The demonstration iPhone handset certainly looked like re-invention, but multi-touch, while it 
+was new for Apple, is (8) ____ no means a new technology. The concept has been around for years, 
+waiting for the hardware side of the equation to get small enough, smart enough, cheap enough to 
+make it a reality. While it still remains something of a novelty now, there is a good chance that the 
+(9) ____ years will bring many more computers and consumer gadgets that depend wholly or 
+(10)____ on multi-touch concepts. 
+Bài 
+         Overland transport in the United States was still extremely primitive in 1790. Roads were few 
+and short, usually extending from inland communities to the nearest river town or seaport. (1) 
+_______ all interstate commerce was carried out by sailing ships that served the bays and harbors 
+of the seaboard. Yet, in 1790 the nation was on the threshold of a new era of road development. (2) 
+_______ to finance road construction, states (3) _______ for help to private companies, organized 
+by merchants and land speculators who had a personal interest in improved communications (4) 
+_______ the interior. The pioneer in this move was the state of Pennsylvania, which chartered a 
+company in 1792 to construct a turnpike, a road for the use of (5) _______ a toll, or payment, is 
+collected, from Philadelphia to Lancaster. The legislature (6) _______ the company the authority to 
+erect tollgates at (7) _______ along the road where payment would be collected, though it carefully 
+regulated the rates. (The states had unquestioned authority to regulate private business in this 
+period.) 
+The company built a gravel road (8) _______ two years, and the success of the Lancaster Pike 
+encouraged imitation. Northern states generally relied on private companies to (9) _______ their toll 
+roads, but Virginia constructed a network at public expense. (10) _______ was the road building 
+fever that by 1810 New York alone had some 1,500 miles of turnpikes extending from the Atlantic 
+to Lake Erie. 
+Bài
+
+--- PAGE 17 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+THE TOUGHEST RUNNERS 
+ 
+There are a few runners who have completed every London Marathon since the first race in 
+1981. They are the toughest runners of all. These athletes, (1) ____________ honour of both their 
+mental and physical strength, have been given a permanent entry in the event for the rest of their 
+lives, provided that they do not miss a year. Other people have run the race faster or under greater 
+handicaps, (2) ____________ these are athletes with a mission. For (3) ____________, the annual 
+event is a way of life, not just a worthy fund-raising exercise or a single challenge. Bill O’Connor is 
+one of these runners. In his case, running is a daily ritual which began in New Zealand (4) 
+___________, as a youngster, he pounded along the wet sand on the edge of the Tasman Sea. Now 
+aged fifty, and working as a mathematics teacher at a school in London, he retains his fascination 
+(5) ____________the London Marathon and the activity of running. He says, “When the first London 
+Marathon was held, I thought (6) ____________ myself that here was a challenge. I thought that if 
+there was only going to be one race, I wanted to have run in it.” But the London Marathon went (7) 
+____________ to become the most impressive success story in British sport and Bill O’Connor has 
+been a constant part of it. (8) ____________ he ever felt that he would fail to finish?  “In 1985. It was 
+a beautiful day and I started running much (9) ____________ fast for the first mile and got worried. 
+So I slowed down for the next mile. Yet (10) ____________I expected I would take at least four hours, 
+I finished in two hours thirty-four minutes and twenty-nine seconds”. It is his best time so far. 
+Bài 
+3 1
+ 
+The knowledge and eloquence that people gain through travelling is usually perceived (1) 
+_________ the best fulfillment in life. It is the inquisitive human nature that impels people to seek 
+thrilling experiences and to set out on an exploration trip. (2) _________ who travel frequently and 
+to diverse places benefit from establishing new relationships and (3) _________ a better knowledge 
+about other cultures and lifestyles. However, there is a grain of truth in the assumption that people 
+are prone to cherishing clichés and unfounded prejudices about other nations and their 
+characteristics. Sometimes, it is only the first-hand encounter (4) _________ can help change the 
+approach towards the so-called 'inferior communities'. This direct (5) _________ with a different 
+civilization enables travelers to drop their baseless assumptions and get acquainted with the real 
+concept of life in all four (6) _________ of the globe. Beyond question, travelling facilitates friendship 
+and makes (7) _________ easier for many individuals to acknowledge the true value of different 
+traditions and customs. Yet, it does not always (8) _________ enjoyment. It (9) _________ also involve 
+coming close with the atrocities of real existence as well as becoming aware of the challenges and 
+hardships that other people have to struggle with. Hence, a true voyage is the one with a good (10) 
+_________ of experience to reminisce about, very often combined with exposure to abhorrent sights 
+and incredible ordeals. The learning to be complete, thus, requires an ability to observe and analyze 
+the surroundings, both their glamour and brutality.
+
+--- PAGE 18 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Bài 
+THE EARLY YEARS OF MTV 
+ 
+The popular TV music channel MTV was launched in 1981 in the US with the intention of 
+playing (1) ______ but music videos. It was a brilliant marketing concept, as it came at little cost 
+while (2) ____ extremely attractive to record companies and advertisers. 
+ 
+The videos were guided by an air-host (3) _______ as a VJ-the term is a conflation of ‘video’ 
+and ‘disc jockey’. The VJs are now a (4) ________ of the past, but (5) _________their heyday, they 
+were MTV, attaining cult status. It was (6) _________ presenters on the station that Russell Brand 
+and Alex Zane got their career breaks. 
+ 
+MTV changed the way we experience music: we (7) _______ records instead of just listening 
+to them. Record companies were quick to appreciate this, and acts such as Madona and Boy 
+George, (8) _________ appeal was as much about their good looks (9) _______their music, went 
+global. Such (10) _________the music video’s impact that film directors at the height of their careers 
+were attracted to the medium. 
+Bài 
+3 3
+A healthful lifestyle leads to a longer, happier, healthier life. Staying healthy means eating a 
+well-balanced diet, getting regular exercise, and avoiding things that are bad for the (1) ______ and 
+mind. 
+Nutrition plays a key role (2) ______ maintaining good health and preventing many diseases. 
+In spite of all the information available about diet, scientists still believe that good nutrition can (3) 
+______ simple. There are several basic rules to follow. Keep fat intake low. Eat lots of foods high in 
+carbon hydrates, (4) ______ are the starches in grains, legumes (beans and peas), vegetables and 
+some fruits. (5)______ too much sugar. Limit salt. Eat lots of fruits and vegetables, which are high 
+in (6) ______. 
+A healthy lifestyle is an active lifestyle. (7)______ of proper physical exercise can cause 
+tiredness, irritability, and poor general health. Physical fitness requires both aerobic exercise, such 
+as running, bicycle riding, and swimming, (8) ______ muscle-strengthening exercise, such as 
+weight-lifting. 
+Finally, good health is acquired by (9)______ no to bad habits such as smoking, drinking, 
+and overeating and by avoiding situations that are constantly stressful. People can take their lives 
+and happiness into their own (10) ______. Maintaining a healthy lifestyle is the first step. 
+Bài 
+CAUSES OF CONFLICT BETWEEN ADOLESCENTS AND THEIR PARENTS
+
+--- PAGE 19 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Some interesting discoveries have been made by psychologists studying conflicts between 
+adolescents and their parents. One notable feature is that they seldom argue about such major 
+topics (1) ________sex, drugs, or politics. This is surprising, given that great differences often exist 
+between the attitudes of parents and adolescents on such issues. Researchers suggest the 
+explanation may be that such topics (2) ___________not usually relate to day-to-day family 
+interaction and are (3) ________discussed as they are not directly relevant (4) __________family life. 
+Instead, parents and children tend to (5) ___________out over everyday family matters such as 
+housework. 
+Despite the changed that have (6) __________place over the past fifty years, adolescents 
+appear to have the same kinds of arguments with their parents as their parents had (7) 
+___________they themselves were young. It seems to come down to the conflict between the 
+adolescent’s desire for independence (8) _________the parents’ authority. Teenagers spoke of their 
+right to be free of restrictions, while parents were equally sure of their right to exert control, backing 
+this up (9) __________referring to the needs of the family as a whole. Interestingly, both groups could 
+see the other’s (10) _________of view even though they disagreed with it. 
+Bài 
+In the age before the motor car, what was travelling in London like? Photographs taken 100 
+years ago showing packed streets indicate that it was much the same as it is now. Commuters who 
+choose the car to get to work probably travel at an average speed of 17 kph from their homes in 
+the suburbs to offices in the centre. It is virtually the same (66)___________ that they would have 
+travelled at in a horse and carriage a century ago. 
+As towns and cities grow, (67)___________ does traffic, whether in the form of the horse and 
+carriage (68) ___________ the modern motor car. It would seem that, wherever (69)___________ are 
+people who need to go somewhere, they would (70)___________ be carried than walk or pedal. The 
+photographs show that, in (71)___________ of congestion and speed, traffic in London hasn’t 
+changed over the past 100 years. London has had traffic jams ever (72)___________ it became a 
+huge city. It is only the vehicles that have changed. 
+However, although London had traffic congestion long (73)___________ the car came along, 
+the age of the horse produced little unpleasantness apart (74)___________ the congestion. Today, 
+exhaust fumes create dangerous smogs that cause (75)___________ problems for a great many 
+people. Such problems could be reduced if many of us avoided jams by using bicycles or taking a 
+brisk walk to school or work. 
+Bài 
+Once, children had ambitions to be doctors, explorers, sportsmen, artists or scientists. Now, 
+taking their (1) ________ from TV, they just want to be famous. Fame is no (2) ________   a reward
+
+--- PAGE 20 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+for gallant service or great, perhaps even selfless endeavour. It is an end in (3) ________ , and the 
+sooner it can be achieved, the sooner the lonely bedroom mirror can be replaced by the TV camera 
+and flash gun, the (4) ________. Celebrity is the profession (5) ________ the moment, a vainglorious 
+vocation which, (6) ________ some 18th-century royal court, seeems to exist largely (7) ________ 
+that the rest of us might watch and be amazed (8) ________ its members live out their lives in public, 
+like self-regarding members of some glittering soap opera.  
+Today, almost (9) ________ can be famous. Never has fame (10) ________. More democratic, more 
+ordinary, more achievable. 
+Bài 
+The computer has brought nothing (1) _______________problems to the world of the twentieth 
+century. Chief among the problems has (2) ________________the dehumanization of society. People 
+are no (3)_________________ human. Each of us is a series of numbers, numbers to be fed into 
+computers. There are our credit card numbers, our bank account (4)_________________ , our social 
+security numbers, our telephone and electricity numbers - the computer number game is endless. 
+What happens to these computerized numbers? They are distributed to a network of 
+government agencies and business (5) __________________can use them to invade our privacy. The 
+Internal Revenue Service stores millions of facts about every citizen. Credit agencies exchange 
+(6)________________ on the spending and saving practices of nearly every American adult. Mailing 
+lists are (7)_____________________ available by computers to dozens of organizations, public and 
+private, 
+who 
+bombard 
+us 
+with 
+unwanted 
+mail. 
+Just let the computer which stores (8) ___________________ concerning our accounts, let us say 
+with a credit card company, make an error and it is almost impossible to correct it. The result is an 
+avalanche of bills, threads, and loss of credit standing. The computer has thrown thousands of 
+people out of (9) _____________________. The gamut of computer- generated unemployed runs 
+from highly skilled technicians to typists. These are some of the reasons why I feel that the (10) 
+__________________________ of the computer has been detrimental to the quality of our life in the 
+twentieth century. 
+ 
+Bài 
+Life on a small island may seem very inviting (1) ____ the tourists who spend a few weeks 
+there in the summer, but the realities of living on what is virtually a rock surrounded by water are 
+quite different from (2) ____ the casual visitor imagines. Although in summer the island villages are 
+full of people, life and activities, when the tourist season is (3) ____ many of the shop owners shut 
+down their businesses and (4) ____ to the mainland to spend the winter in town. Needless to say, 
+(5) ____ who remain on the island, either by choice or necessity, face many hardships. One of the 
+(6) ____ of these is isolation, with its many attendant problems. When the weather is bad, (7) ____
+
+--- PAGE 21 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+is often the case in winter, the island is entirely cut off; this means not only that people cannot 
+have goods (8) ____ but also that a medical emergency can be fatal to someone confined to an 
+island. At times telephone (9) ____ is cut off, which means that no word from the outside world 
+can get through. Isolation and loneliness are basic reasons why so many people have left the 
+islands for a better and more (10) ____ life in the mainland cities, in spite of the fact that this 
+involves leaving “home”.                                            
+Bài 
+The dog fence is Australia’s version of the Great Wall of China (1) ________ longer, erected to 
+keep (2) __________ hostile invaders, in this (3)  __________ hordes of yellow dogs. The empire it 
+preserves is that of the woolgrowers, sovereigns of the world’s second largest sheep flock, after 
+China’s – some 123 million head-and keepers of a wool export business worth four billion dollars 
+to the national economy. It (4) ___________ to matter little that more and more people – 
+conservationists, politiciams, taxpayers and animal lovers – say that the construction of such a 
+fence (5) __________ never be allowed today. With some sections of it almost one hundred years 
+old, built by bushmen travelling with camels, the dog fence has become, as must conservationists 
+ruefully admit, ‘an icon of frontier ingenuity’. 
+To appreciate (6) __________ unusual outback monument and to meet the people (7) 
+__________ livelihoods depend on it, I spent part of an Astralian autumn travelling the wire. For most 
+of its prodigious length the fence winds like a river (8) ___________ a landscape that, (9) _________ 
+heavy rain has fallen, scarely has rivers. It marks the traditional dividing line (10) ____________ cattle 
+(outside) and sheep (inside). Inside is where dingoes, legally classified as vermin, are shot, poisoned 
+and trapped. 
+Bài 
+Most people like to think they are (1) ______ and simply wear whatever they like. Few people 
+will admit to being (2)_______ to fashion. However we are not just talking of the expensive haute 
+couture of the Paris or Milan fashion houses, which not many people can (3)_______ anyway. We 
+are talking of fashions and (4) _______ in everyday clothes. We say that we wear jeans and 
+sweaters because they are cheap and practical, but it isn’t true that our jeans and sweaters tend 
+to be the same as everyone else wears? Doesn’t that mean that we like to be (5)_______? Of 
+course the big chain-stores, to some extent, (6)_______ what we wear, but they always offer a 
+choice and people do, on the whole, like to wear the latest (7)_______, which extends beyond 
+clothes to make-up, personal (8)_______ (men wear earrings too, nowadays) and hair styles. It is 
+easy to declare that we do not lavishly (9) _______ the dictates of fashion, but aren’t we all 
+(10)_______ at heart?
+
+--- PAGE 22 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Bài 
+EARLY CALENDARS 
+Dennis the Small, a 6th (1) _____ expert on canon law, has had an enduring, if unsung, (2) ___ 
+on the affairs of the modern world. It was (3) ___ to his calculations that the precise timing of the 
+2000th anniversary of Christ’s birth was recently confirmed beyond (4) ___. Dionysus Exiguus, as he 
+was then (5) ___, was charged in 525 by Pope John I was setting dates in the Christian calendar. 
+Though he was a good mathematician, the accuracy of Dennis’ calculations was limited by the 
+information (6) ___ at the time. 
+Establishing the exact (7) ___ of Christ’s crucifixion – and therefore that of Easter – (8) ___ an 
+especially difficult challenge. Theologians had decreed that Easter should be marked on the Sunday 
+after the first full (9) ___ after the vernal equinox, but without accurate solar and (10)___ calendars 
+how could the church fathers predict the dates in the future? 
+Bài 
+Vietnamese education will (1) __________ that of Singapore’s and share the top spots in the 
+Association of Southeast Asian Nations (ASEAN) – such a promising prospect has always been 
+students’ source of inspiration so that we will strive harder in our studies. 
+Our greatest aspiration is learning in a truly wholesome environment where teachers and students 
+teach and learn and are (2) __________ on the basis of their real abilities. Leaders of the education 
+sector would create auspicious conditions to turn schools into homes where students really exercise 
+their mastery. 
+There we would fully harness our independence, creativity and self-control in our studies, 
+and become dynamic, enterprising youths who decide our own lives and are bursting with energy 
+and ambitions to express ourselves and (3) __________ out a fruitful career. 
+As a 12th grader who has experienced numerous (4) __________ conducted by the Ministry 
+of Education and Training, I’ve realized that the lack of a wholesome educational environment is 
+behind inadequate renovations and a (5) __________ to our learning capacity and inventiveness. 
+Vietnam’s education sector lags (6) __________ its regional counterparts due to its failure to 
+implement reforms in the teaching and learning of English at school. 
+In order to create and cherish a healthy, nourishing educational environment and a liberal 
+academic space which allows both teachers and students to take their own initiative, investment 
+should be made in infrastructure and equipment, while (7) __________ should be redesigned.
+
+--- PAGE 23 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Changes to teaching and learning methodology are necessary, and equity between teachers and 
+learners should also be promoted. 
+Such changes include the construction of classrooms to trim the number of students in each class 
+down to 20 so as to maximize interaction between teachers and students. More laboratories, visual 
+aids and restrooms should be added to better (8) __________ to demands. Three-fourths of the 
+construction costs should be taken from the state coffers, while the (9) __________ one-fourth is 
+culled from society. 
+If the government considers education a national priority, it’s advisable that all efforts and resources 
+be spent on the education sector, which is a really wise choice. Regarding social campaigning, I 
+believe that everyone is willing to make a (10) __________ effort, as the cause is supposed to do 
+everyone good. I also hope that the education ministry, departments and school management 
+boards will be dedicated administrators who wisely and transparently spend the funding without 
+acting in their self-interest. 
+ 
+Bài 
+SPEED LIMIT 
+A recent proposal to limit the speed cars can reach is proving controversial. The idea, put 
+(1) _____ by the institute for Road Safety, involves (2) _____ vehicles with a communications box 
+containing a digital map of the road network. When a car is in motion, the communications box – 
+which knows how fast the vehicle is (3) _____ permitted to travel on a particular section of road – 
+automatically regulates the car’s speed. It (4) _____ becomes impossible for a vehicle fitted with 
+such a (5) _____ to exceed the speed limit. 
+There are plans to (6) _____ motorists to drive into the centre of major cities, and a 
+communications box could be used to identify vehicles that enter this zone. At present, each time 
+a vehicle does so, its number (7) _____ is photographed. Then the number is compared (8) _____ a 
+list of authorized vehicles, but this system is costly and (9) _____ from foolproof 
+The system could be put in place quickly if the government wished as part the technology 
+has already been developed for another purpose. Electronic vehicle identification is (10) _____ with 
+some people, who regard it as an infringement of their rights. They would certainly object to a plan 
+to restrict the limit of their cars, which may make the government hesitate to go through with it.  
+Bài 
+WRONGED BY HOW YOU WRITE
+
+--- PAGE 24 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+The handwriting of school children could spell the difference between success and failure 
+in examinations according to research carried out by the Open University. 
+In a study by Dennis Briggs of the Faculty of Educational Studies, it was found that essays which 
+were written (1) _____ different styles of handwriting attracted different marks. ‘The findings 
+suggest that there is a borderline zone within examination marking where (2) _____ an essay is 
+written may be almost as important as what the essay is about,’ said Mr. Briggs. Five essays were 
+double marked (3) _____ the second marker unaware of the marks of the first marker. The essay 
+scripts for the second marker had been copied out in three writing styles. Two of the styles were 
+ones which had been the subject of continual criticism at school. 
+(4) _____ the markers were practising teachers who (5) _____ told that the effectiveness of double 
+marking was being checked. the results showed that a 12-year old who can present an essay one 
+way will do better, perhaps much better, (6) _____ a friend who presents the (7) _____ standard in 
+terms of content but who (8) _____ not or cannot make it look so attractive. The conclusion is that 
+school children may not do as (9) _____ as perhaps they could (10) _____ their handwriting is 
+untidy. 
+Bài 45
+REMARKS BY PRESIDENT OBAMA AT YSEALI TOWN HALL 
+Student:  “Hello, sir.  I'm a student in Vietnam National University. You are a very great leader, 
+and we are young leaders.  Do you have any advice that how can we be great like you?” 
+President Obama:. “When I was at your age, I wasn't as well-organized and sophisticated as all of 
+you. When I was young, I fooled (1) _________ a lot. I didn’t always take my studies very seriously.  I 
+was more interested in basketball and girls. I wasn't always that serious. You're already way (2) 
+_________ of me. Whenever I meet with young people, my most important advice is to find 
+something you care deeply about, find something excites you and (3) _________ all energy into it. 
+Everybody's (4) _________ is different. Sometimes it's education, medicine, business. So no one’s 
+path is to end being a leader. Some people think you have to make great speeches, or be in politics 
+but there're a lot of ways to (5) _________. Some are behind the (6) _________. For example in the 
+U.S., civil rights movement, when all heard of Martin Luther King but also Moses, John Louis going 
+to communities, getting people to (7) _________. They were big leaders, even though they didn't 
+make speeches. Don't worry so much what you want to be. Worry more about what you are going 
+to do. If you're (8) _________ about your work. Over time, you will rise and people will respect. But 
+if you just think I want to be a member of the National Assembly or rich then you will pay less (9) 
+_________ to your work. Most successful people do. Bill Gates didn't start thinking I want to be rich. 
+I like computers and want to build software. I decided that I wanted to help poor people to have 
+opportunities. So I went to work in poor communities in Chicago because I was interested in the
+
+--- PAGE 25 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+work. I started to ask questions: how can I help young people? How can I (10) _________? How can 
+I build organizations? 
+That's my most important advice. Decide what you care about deeply and put all into that. If you 
+are interested in social media, make a company and focus on that”.
+
+--- PAGE 26 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+ANSWER KEY 
+Bài 1 
+1. whatever 
+2. Until 
+3. process 
+4. only 
+5. that 
+6. with 
+7. having 
+8. contribute 
+9. far 
+10. by 
+ 
+Bài 2 
+1.form 
+2. artificial 
+3. either 
+4. atoms 
+5. when 
+6. composed 
+7. known 
+8. of 
+9. another 
+10. qualities 
+ 
+Bài 3 
+1. normal 
+2. almost 
+3. directly/being 
+4. round 
+5. contact 
+6. object/thing 
+7. slight/mild 
+8. depends 
+9. treatment 
+10. Reason 
+Bài 4 
+1. something 
+2. attention 
+3. expecting 
+4. loyal 
+5. along 
+6. lyrics 
+7. despite 
+8. ended 
+9. versions 
+10. worth 
+ 
+Bài 5 
+1. popular/used 
+2. off 
+3. problems/trouble 
+4. ring 
+5. even 
+6. interfere 
+7. block 
+8. board 
+9. silent/vibration 
+10. users 
+Bài 6 
+1. referred    
+2. into    
+3. nothing    
+4. only    
+5. may    
+6. grieve 
+7. because    
+8. through    
+9. own    
+10. 
+harmony/peace 
+Bài 7 
+1. has 
+2. which 
+3. so 
+4. but 
+5. being 
+6. ever 
+7. drowning / 
+dying / perishing 
+ 
+8. whole/entire 
+9. amount 
+10. did 
+Bài 8 
+1. so 
+2. put 
+3. on 
+4. in 
+5. unless 
+6. be 
+7. than 
+8. it 
+9. what 
+10. case 
+ 
+Bài 9 
+1. However 
+2. extinct 
+3. over 
+4. finger 
+5.    because 
+6. more 
+7. available 
+8. turn 
+9. preserved 
+10.  back 
+ 
+Bài 10
+
+--- PAGE 27 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+1. go 
+3. those 
+5. without 
+7. somehow 
+9. more 
+2. on 
+4. reach 
+6. alone 
+8. themselves 
+10. period 
+ 
+Bài 11 
+1. 
+problems/issues
+ 
+ 
+2. daily     
+3. energy     
+4. movement 
+5. demand 
+ 
+6. shortage 
+7. continue 
+8. less 
+9.  source 
+10. Pollution 
+ 
+Bài 12 
+1. body 
+2. in 
+3. be 
+4. which 
+5. avoid 
+6. vitamins 
+7. lack 
+8. and 
+9. saying 
+10. hands 
+ 
+Bài 13 
+1. linked 
+2. significant 
+3. shown 
+4. matters 
+5. attributing 
+6. weather 
+7. standards 
+8. cheers 
+9. mood/feeling/emotion 
+10. support 
+ 
+Bài 14 
+1. put 
+2. what 
+3. there 
+4. 
+although/though/while/whilst 
+5. up 
+6. on 
+7. as 
+8. 
+regardless/irrespective 
+9. such 
+10. a 
+Bài 15 
+1. then 
+2. this 
+3. out 
+4. back  
+5. in 
+6. consequently 
+7. when 
+8. number 
+9. although 
+10. in 
+ 
+Bài 16 
+1. Never/rarely 
+2. to 
+3. once 
+4. go 
+5. themselves 
+6. out 
+7. take 
+8. at 
+9. After 
+10. showing 
+ 
+Bài 17 
+1. least 
+2. However 
+3. teeth 
+4. point 
+5. reverse 
+6. annual 
+7. hardly 
+8. peril 
+9. mean 
+10. sparks 
+ 
+Bài 18 
+1. impacts/effect 
+2. including 
+3. as 
+4. aid/ support 
+5. where 
+6. least 
+7. among/amongst 
+8. with 
+9. more 
+10. through 
+ 
+Bài 19
+
+--- PAGE 28 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+1. average 
+2.one    
+3. who   
+4.set 
+5.as   
+6.  being 
+7.likes 
+8. down 
+9. side 
+10.too 
+Bài 20 
+1. long 
+2. up  
+3. Inspired 
+ 
+4. set  
+5. beat 
+6. host 
+7. achieved/ 
+attained 
+8. tall 
+9. hand 
+10. now 
+ 
+Bài 21 
+1. by 
+ 2. alone 
+ 3. view 
+ 4. and 
+ 5. let 
+ 6. out 
+ 7. in 
+ 8. thanks/ 
+owing/ due 
+9. among 
+ 10. turned/ 
+showed 
+ 
+Bài 22 
+1. what 
+2. has 
+3. with 
+4.  for 
+5. even 
+6. more 
+7. the 
+8. however/ 
+though 
+9. any 
+10. ourselves 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Bài 23 
+1. not 
+2. prone/ given 
+3. ability 
+4. limited 
+5. go 
+6. then 
+7. rule 
+8. tend 
+9. for 
+10. such 
+ 
+Bài 24 
+1. army 
+ 
+2. without 
+3. be 
+4. less  
+5. given 
+ 
+6. warning 
+7. addition 
+8. account 
+9. it 
+10. at 
+Bài 25 
+1. whether 
+2. part 
+ 
+3. training 
+ 
+4. make/render 
+5. far 
+6. on 
+7. both 
+8. well 
+9. possible 
+10. time 
+Bài 26 
+1. but 
+2. make 
+3. at 
+4. similar 
+5. usual 
+6. unhappy 
+7. as 
+8. that 
+9. on 
+10. However 
+Bài 27 
+1. With 
+2. an  
+3. with  
+4.for 
+5. of 
+6. because 
+7. as 
+      
+8. than 
+9. be   
+10. to 
+Bài 28 
+1. in 
+2. form 
+3. right 
+4. One 
+5. himself 
+6. Unlike 
+7. like 
+8. by 
+9. coming 
+10. mainly/partly
+
+--- PAGE 29 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+Bài 29 
+1. nearly 
+2. unable 
+3. turned 
+4. with 
+5. which 
+6. gave 
+7. points 
+8. within 
+9. build  
+10. such 
+Bài 30 
+1. in 
+2. but/only/yet 
+3. them 
+4. where/when 
+5. with/for 
+6. to 
+7. on 
+8. Had/Has 
+9. too 
+10. (al)though 
+Bài 31 
+1. as 
+2. Those 
+3. acquiring 
+4. that 
+5. contact 
+6. corners 
+7. it 
+8. mean 
+9. may 
+10. deal 
+Bài 32 
+1.nothing 
+2. being 
+3. known 
+4. thing 
+5. in 
+6.as 
+7. 
+watched/viewed 
+8. whose 
+9.as 
+10.was 
+Bài 33 
+1. body 
+2. in 
+3. be 
+4. which 
+5. avoid 
+6. vitamins 
+7. lack 
+8. and 
+9. saying 
+10. hands 
+Bài 34 
+1. as 
+2. do 
+3. not 
+4. to 
+5. fall 
+6. taken 
+7. when 
+8. and 
+9. by 
+10. point 
+Bài 35 
+1. speed 
+2. so 
+3. or 
+4. there 
+5. rather/sooner 
+6. terms 
+7. since 
+8. before 
+9. from 
+10. breathing 
+Bài 36 
+1. lead 
+2. longer 
+3. itself 
+4. better 
+5. of 
+6. like 
+7. so 
+8. as 
+9. anyone/anybody 
+everyone/everybody 
+10. 
+been/seemed/a
+ppeared 
+Bài 37 
+1. but 
+2. been 
+3. longer 
+4. numbers 
+5. which 
+6. information 
+7. made 
+8. data 
+9. work 
+10. advent 
+Bài 38 
+1. to 
+2. what 
+3. over 
+4. return 
+5. those 
+6. worst 
+7. which 
+8. delivered 
+9. 
+communication 
+10. secure
+
+--- PAGE 30 ---
+Shoot for the moon. Even if you miss, you will land among the stars.
+Fanpage: https://facebook.com/iloveambrosia 
+ 
+Email: ambrosiaontop@gmail.com  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Bài 39 
+but 
+out 
+case 
+seems 
+would 
+this 
+whose 
+in/across/through 
+unless 
+between 
+Bài 40 
+1. individualists 
+2. slaves 
+3. afford 
+4. trends 
+5. trendy 
+6. dictate 
+7. fashion 
+8. ornaments 
+9. follow 
+10. 
+conformists 
+Bài 41 
+1. century 
+2. influence/impact 
+3. thanks/due 
+4. 
+doubt/question 
+5. known 
+/called 
+6. available 
+7. date 
+8. 
+posed/proved/pre
+sented 
+9. moon 
+10. lunar 
+Bài 42 
+1. emulate/ rival 
+2. assessed 
+3. carve 
+4. reforms 
+5. hindrance 
+6. behind 
+7. curricula/ 
+curriculums 
+8. cater 
+9. remaining 
+10. 
+concerted/ 
+joint 
+Bài 43 
+1. forward 
+2. fitting 
+3. legally 
+4. therefore 
+5. device 
+6. charge 
+7. plate 
+8. against 
+9. far 
+10. unpopular 
+Bài 44 
+1. in 
+2. how 
+3. with 
+4. all 
+5. were 
+6. than 
+7. same 
+8. does/will 
+9. well 
+10. if/when 
+Bài 45 
+1. around 
+2. ahead 
+3. put 
+4. path 
+5. lead 
+6. scenes 
+7. vote 
+8. passionate 
+9. attention 
+10. influence

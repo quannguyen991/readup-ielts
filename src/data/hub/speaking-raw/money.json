@@ -1,0 +1,117 @@
+{
+ "id": "money",
+ "title": "Money",
+ "titleVi": "Tiền bạc",
+ "tipVi": "Thay vì chỉ lặp lại từ 'money', hãy linh hoạt sử dụng các từ vựng cụ thể hơn như 'finances', 'budget', hay 'expenses' và gắn câu trả lời với thói quen chi tiêu thực tế của bản thân.",
+ "part1": [
+  "Do you prefer paying with cash or using digital payment methods?",
+  "Did you save money when you were a child?",
+  "What kind of things do you usually spend most of your money on?"
+ ],
+ "part2": {
+  "prompt": "Describe a time when you saved up money to buy something special",
+  "bullets": [
+   "what you wanted to buy",
+   "how long it took you to save the money",
+   "how you managed to save it",
+   "and explain why you were pleased with this purchase"
+  ]
+ },
+ "part3": [
+  "Why do some people find it difficult to manage their personal finances effectively?",
+  "To what extent should financial literacy be taught as a compulsory subject in schools?"
+ ],
+ "extra": {
+  "vocab": [
+   {
+    "en": "tighten one's belt",
+    "vi": "thắt lưng buộc bụng, tiết kiệm chi tiêu",
+    "ex": "When fuel prices surged, our family had to tighten our belt and cut back on leisure activities."
+   },
+   {
+    "en": "live beyond one's means",
+    "vi": "chi tiêu vượt quá thu nhập",
+    "ex": "Relying heavily on credit cards often tempts young adults to live beyond their means."
+   },
+   {
+    "en": "nest egg",
+    "vi": "khoản tiền tiết kiệm dự phòng cho tương lai",
+    "ex": "She built up a comfortable nest egg by putting aside twenty percent of her salary every month."
+   },
+   {
+    "en": "cost an arm and a leg",
+    "vi": "rất đắt đỏ, tốn kém",
+    "ex": "Flagship smartphones nowadays cost an arm and a leg, so I usually wait for discounts."
+   },
+   {
+    "en": "splurge on",
+    "vi": "vung tiền mua món đồ xa xỉ",
+    "ex": "After receiving my year-end bonus, I decided to splurge on a weekend getaway at a luxury resort."
+   },
+   {
+    "en": "financial literacy",
+    "vi": "kiến thức và kỹ năng quản lý tài chính",
+    "ex": "Without basic financial literacy, people are vulnerable to high-interest loans and poor investment choices."
+   },
+   {
+    "en": "put money aside",
+    "vi": "dành dụm, để dành tiền",
+    "ex": "It is always prudent to put some money aside for unforeseen medical emergencies."
+   },
+   {
+    "en": "make ends meet",
+    "vi": "xoay xở kiếm sống, trang trải sinh hoạt phí",
+    "ex": "Rising living costs in metropolitan areas make it tough for low-wage earners to make ends meet."
+   }
+  ],
+  "outlineVi": [
+   "Mở đầu: Giới thiệu món đồ đã tiết kiệm để mua (chiếc máy tính xách tay cao cấp phục vụ đồ họa) và lý do cần nó vào thời điểm đó.",
+   "Ý 1: Nêu rõ khoảng thời gian tích cóp (khoảng sáu tháng) và nguồn tiền từ công việc dạy kèm thêm.",
+   "Ý 2: Miêu tả phương pháp tiết kiệm cụ thể (thắt chặt chi tiêu, tự nấu ăn ở nhà, dùng ứng dụng theo dõi ngân sách cá nhân).",
+   "Kết: Bày tỏ niềm tự hào khi thanh toán bằng tiền tự tay làm ra và giá trị lâu dài mà thiết bị mang lại cho công việc."
+  ],
+  "sample": "I would like to talk about a time when I saved up money to purchase a high-end laptop, specifically a MacBook Air, which I desperately needed for my university coursework and freelance design gigs. This happened roughly two years ago when my old computer abruptly gave up the ghost. The machine cost around one thousand dollars, which was a formidable sum for a student like me. It took me approximately six months of disciplined budgeting to amass that amount. To achieve this goal, I had to tighten my belt considerably. I took on extra evening tutoring shifts and made a conscious effort to prepare meals at home rather than eating out with friends. Every spare penny went straight into a dedicated savings fund so that I wouldn't be tempted to splurge. When I finally walked into the retail store and paid in full with my own hard-earned money, I felt an immense sense of pride. It wasn't merely a reliable work tool, but tangible proof that I could achieve a tough financial target through self-restraint.",
+  "p1": [
+   {
+    "q": "Do you prefer paying with cash or using digital payment methods?",
+    "a": "I definitely lean towards cashless options like mobile banking and digital wallets. They are incredibly convenient and save me from carrying bulky change, plus they automatically record my transactions, which makes budgeting effortless."
+   },
+   {
+    "q": "Did you save money when you were a child?",
+    "a": "Yes, I did. My parents gifted me a ceramic piggy bank where I regularly stored lucky money from New Year celebrations and spare change, which I later spent on storybooks."
+   },
+   {
+    "q": "What kind of things do you usually spend most of your money on?",
+    "a": "The lion's share of my monthly budget goes towards essentials like groceries and public transit. Occasionally, I allocate some funds for online learning courses to develop my professional skill set."
+   }
+  ],
+  "p3": [
+   {
+    "q": "Why do some people find it difficult to manage their personal finances effectively?",
+    "a": "In my view, impulsive consumerism driven by targeted advertising and peer pressure is the main culprit. Many individuals live beyond their means just to project an affluent lifestyle on social media. Moreover, a widespread lack of budgeting education leaves people unable to plan for unforeseen expenses, eventually trapping them in vicious cycles of consumer debt."
+   },
+   {
+    "q": "To what extent should financial literacy be taught as a compulsory subject in schools?",
+    "a": "I strongly believe that personal finance should be mandatory in the secondary school curriculum. While abstract subjects like calculus have merit, understanding taxation, compound interest, and debt management directly impacts every adult's quality of life. Teaching youngsters these practical competencies early produces responsible consumers and builds a far more financially resilient society overall."
+   }
+  ],
+  "mistakesVi": [
+   "Dùng sai cấu trúc với động từ chỉ chi phí: người học hay nói 'I cost 50 dollars for this shirt' thay vì cấu trúc đúng là 'This shirt cost me 50 dollars' hoặc 'I spent 50 dollars on this shirt'.",
+   "Lạm dụng danh từ 'money' ở dạng số nhiều không chuẩn ('moneys') hoặc đi với lượng từ sai như 'many money' thay vì dùng 'a large amount of money' hay 'a lot of money'.",
+   "Thiếu các cách diễn đạt Band 7+ về tiền tệ, dẫn đến việc lặp đi lặp lại những từ cơ bản như 'cheap', 'expensive', 'buy' thay vì các cụm tự nhiên như 'budget-friendly', 'exorbitant', hoặc 'live within one's means'."
+  ],
+  "p1More": [
+   "Do you think you are good at managing your personal budget?",
+   "Have you ever bought something on impulse that you later regretted?",
+   "Do you think children should receive a regular weekly allowance?",
+   "Is it customary for people in your culture to lend money to relatives?",
+   "Do you prefer saving for the future or spending money to enjoy the present?"
+  ],
+  "p3More": [
+   "What are the potential drawbacks of transitioning entirely to a cashless society?",
+   "Why do high earners sometimes experience severe financial distress despite their income?",
+   "How has consumerism altered the definition of success among modern young adults?",
+   "Can progressive taxation and government policies alone ever eliminate wealth disparity?"
+  ]
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "title": "Cold-Water Coral Reef Dynamics",
+ "topic": "cold-water coral reefs",
+ "context": "A. Unlike their tropical counterparts that rely on symbiotic photosynthetic algae, cold-water corals thrive in dark, nutrient-rich bathyal environments typically between 4°C and 12°C. Found at depths ranging from 50 to over 1,000 metres, these azooxanthellate organisms depend entirely on horizontal currents to deliver suspended particulate organic matter and zooplankton. The primary framework-builder in temperate and sub-polar regions is the scleractinian species Lophelia pertusa, which constructs massive biogenic structures known as carbonate mounds or bioherms over geological timescales.\n\nB. The initiation of a cold-water coral reef begins with larval settlement. Free-swimming planulae require an exposed, stable hard substrate to anchor successfully, frequently selecting glacial erratics, exposed bedrock, or discarded mollusc shells. Once attached, the pioneer polyps secrete calcium carbonate to establish the basal plate. Over successive generations, colonies expand radially. As the skeletal framework branches outward, it alters the local hydrodynamic regime, decelerating near-bed water flow and causing mineral and organic particles to settle around the base of the colonies.\n\nC. This hydrodynamic deceleration triggers the secondary growth phase, termed framework aggradation. Interstitial spaces within the coral matrix become filled with fine-grained sediments, a process known as sediment baffling. The trapped silt and clay reinforce the structural integrity of the accumulating mound, preventing skeletal collapse under its own weight. Concurrently, older colonies beneath the living surface perish due to light deprivation and sediment smothering, leaving dense skeletons that lithify into solid limestone. This continuous upward accretion allows the reef framework to elevate into more accelerated water layers.\n\nD. In the mature phase, the reef structure develops distinct micro-morphologies. The summit or reef crest experiences the strongest hydrodynamic forces, which wash away fine sediment and supply rich food patches. However, extreme current speeds can occasionally cause physical fragmentation of fragile branches. Broken fragments slide down the slopes, forming a transitional rubble apron along the flanks. This rubble apron serves a vital role, stabilising peripheral slopes and creating an extensive network of cavities that shelter cryptic invertebrates, including basket stars and squat lobsters.\n\nE. Cold-water coral bioherms display pronounced biological zonation. The living coral framework is dominated by Lophelia pertusa alongside Madrepora oculata, whose white and orange polyps capture passing crustaceans. On the reef flanks, where current velocities diminish, non-framework species such as gorgonian sea fans and glass sponges dominate the landscape, exploiting residual nutrients. Finally, the basal seabed consists of biogenic sediment and coral rubble, an environment favoured by deposit-feeding holothurians and burrowing polychaetes that recycle organic debris.\n\nF. To document and conserve these fragile habitats, marine researchers utilize a tiered suite of monitoring technologies. Acoustic surveys using multibeam bathymetry produce three-dimensional maps of seafloor topography, delineating mound boundaries across vast areas. For fine-scale ecological assessments, remotely operated vehicles (ROVs) equipped with high-definition cameras collect precise video transects and targeted biological specimens. Additionally, benthic landers anchored on the seabed record continuous environmental parameters, measuring localized current vectors, water temperature, and seasonal turbidity.",
+ "questions": [
+  {
+   "prompt": "Flow-chart: Environmental Conditions | Temperature range: between 4°C and ____",
+   "answer": "12°C",
+   "why": "Đoạn A nêu rõ san hô nước lạnh phát triển mạnh trong môi trường biển sâu tối tăm, thường có nhiệt độ 'between 4°C and 12°C'.",
+   "quote": "typically between 4°C and 12°C"
+  },
+  {
+   "prompt": "Flow-chart: Nutrient Acquisition | Currents deliver organic matter and ____ to the corals",
+   "answer": "zooplankton",
+   "why": "Đoạn A giải thích các sinh vật này phụ thuộc hoàn toàn vào các dòng chảy để nhận vật chất hữu cơ lơ lửng và 'zooplankton'.",
+   "quote": "horizontal currents to deliver suspended particulate organic matter and zooplankton"
+  },
+  {
+   "prompt": "Notes: Framework Formation | *Lophelia pertusa* builds bioherms or ____ over long periods",
+   "answer": "carbonate mounds",
+   "why": "Đoạn A chỉ ra rằng loài *Lophelia pertusa* tạo nên các cấu trúc sinh học lớn được gọi là 'carbonate mounds' hoặc bioherms.",
+   "quote": "massive biogenic structures known as carbonate mounds or bioherms"
+  },
+  {
+   "prompt": "Flow-chart: Reef Development (Stage 1) | The initial development of a reef begins with ____",
+   "answer": "larval settlement",
+   "why": "Đoạn B khẳng định sự khởi đầu của rạn san hô bắt đầu bằng 'larval settlement' (sự định cư của ấu trùng).",
+   "quote": "The initiation of a cold-water coral reef begins with larval settlement."
+  },
+  {
+   "prompt": "Table: Substrate Selection | Pioneer larvae anchor to bedrock, mollusc shells, or ____",
+   "answer": "glacial erratics",
+   "why": "Đoạn B liệt kê các chất nền cứng thích hợp cho ấu trùng bám vào bao gồm 'glacial erratics' (đá tảng băng trôi), nền đá lộ thiên hoặc vỏ ốc.",
+   "quote": "frequently selecting glacial erratics, exposed bedrock, or discarded mollusc shells"
+  },
+  {
+   "prompt": "Flow-chart: Reef Development (Stage 1) | Pioneer polyps secrete minerals to establish the ____",
+   "answer": "basal plate",
+   "why": "Đoạn B chỉ rõ sau khi bám chắc, các polyp tiên phong tiết canxi cacbonat để hình thành 'basal plate' (phiến đáy).",
+   "quote": "pioneer polyps secrete calcium carbonate to establish the basal plate"
+  },
+  {
+   "prompt": "Flow-chart: Reef Development (Stage 1) | Outward branching causes a slowdown in ____",
+   "answer": "near-bed water flow",
+   "why": "Đoạn B mô tả khi bộ khung phân nhánh ra ngoài, nó làm giảm tốc độ dòng nước sát đáy biển ('near-bed water flow').",
+   "quote": "decelerating near-bed water flow and causing mineral and organic particles to settle"
+  },
+  {
+   "prompt": "Flow-chart: Reef Development (Stage 2) | The subsequent growth period is referred to as ____",
+   "answer": "framework aggradation",
+   "why": "Đoạn C nêu tên giai đoạn phát triển thứ hai này là 'framework aggradation' (sự bồi tụ khung).",
+   "quote": "triggers the secondary growth phase, termed framework aggradation"
+  },
+  {
+   "prompt": "Flow-chart: Reef Development (Stage 2) | Spaces within the coral structure trap fine sediment via ____",
+   "answer": "sediment baffling",
+   "why": "Đoạn C giải thích quá trình giữ lại trầm tích hạt mịn bên trong các kẽ hở của khung san hô được gọi là 'sediment baffling'.",
+   "quote": "filled with fine-grained sediments, a process known as sediment baffling"
+  },
+  {
+   "prompt": "Notes: Mound Structural Integrity | Retained silt and clay protects the mound against ____",
+   "answer": "skeletal collapse",
+   "why": "Đoạn C giải thích trầm tích bị giữ lại giúp tăng cường độ vững chắc, tránh cho cấu trúc bị sụp đổ khung xương ('skeletal collapse') bởi sức nặng bản thân.",
+   "quote": "preventing skeletal collapse under its own weight"
+  },
+  {
+   "prompt": "Notes: Mound Structural Integrity | Deeper skeletal layers are smothered and eventually ____ into limestone",
+   "answer": "lithify",
+   "why": "Đoạn C mô tả các bộ xương san hô bên dưới chết đi và dần dần hoá đá ('lithify') thành đá vôi vững chắc.",
+   "quote": "leaving dense skeletons that lithify into solid limestone"
+  },
+  {
+   "prompt": "Table: Mature Morphology | Summit/Crest: Strong water movement washes away silt and provides ____",
+   "answer": "rich food patches",
+   "why": "Đoạn D chỉ ra rằng dòng nước mạnh ở đỉnh rạn cuốn trôi trầm tích mịn và mang lại 'rich food patches' (các mảng thức ăn phong phú).",
+   "quote": "wash away fine sediment and supply rich food patches"
+  },
+  {
+   "prompt": "Table: Mature Morphology | Summit/Crest: Unusually rapid currents can lead to ____ of coral branches",
+   "answer": "physical fragmentation",
+   "why": "Đoạn D lưu ý rằng dòng chảy quá xiết đôi khi gây ra sự gãy vỡ cơ học ('physical fragmentation') của các cành san hô mỏng manh.",
+   "quote": "extreme current speeds can occasionally cause physical fragmentation of fragile branches"
+  },
+  {
+   "prompt": "Table: Mature Morphology | Flanks: Dropped fragments accumulate into a transitional ____",
+   "answer": "rubble apron",
+   "why": "Đoạn D đề cập rằng các mảnh gãy trượt xuống sườn dốc tạo thành một 'rubble apron' (vành đai đá vụn chuyển tiếp).",
+   "quote": "forming a transitional rubble apron along the flanks"
+  },
+  {
+   "prompt": "Table: Mature Morphology | Flanks: Cavities created by rubble provide shelter for squat lobsters and ____",
+   "answer": "basket stars",
+   "why": "Đoạn D khẳng định mạng lưới hốc rỗng trong dải đá vụn che chở cho các loài sinh vật ẩn nấp gồm 'basket stars' và tôm ngồi.",
+   "quote": "network of cavities that shelter cryptic invertebrates, including basket stars and squat lobsters"
+  },
+  {
+   "prompt": "Table: Ecological Zonation | Living Framework: Dominated by *Lophelia pertusa* and ____",
+   "answer": "Madrepora oculata",
+   "why": "Đoạn E nêu rõ tầng khung sống của san hô do *Lophelia pertusa* và 'Madrepora oculata' chiếm ưu thế.",
+   "quote": "living coral framework is dominated by Lophelia pertusa alongside Madrepora oculata"
+  },
+  {
+   "prompt": "Table: Ecological Zonation | Living Framework: Polyps entrap drifting ____",
+   "answer": "crustaceans",
+   "why": "Đoạn E mô tả các polyp màu trắng và cam bắt giữ các loài giáp xác ('crustaceans') bơi ngang qua.",
+   "quote": "whose white and orange polyps capture passing crustaceans"
+  },
+  {
+   "prompt": "Table: Ecological Zonation | Reef Flanks: Lower current areas feature glass sponges and ____",
+   "answer": "gorgonian sea fans",
+   "why": "Đoạn E giải thích vùng sườn rạn có dòng chảy chậm hơn là nơi các loài như bọt biển thuỷ tinh và 'gorgonian sea fans' (quạt biển) chiếm ưu thế.",
+   "quote": "non-framework species such as gorgonian sea fans and glass sponges dominate the landscape"
+  },
+  {
+   "prompt": "Table: Ecological Zonation | Basal Seabed: Debris recycling is carried out by polychaetes and ____",
+   "answer": "deposit-feeding holothurians | holothurians",
+   "why": "Đoạn E nêu rõ việc tái chế mảnh vụn hữu cơ ở đáy biển do giun nhiều tơ và 'deposit-feeding holothurians' (hải sâm ăn mùn bã) đảm nhiệm.",
+   "quote": "favoured by deposit-feeding holothurians and burrowing polychaetes that recycle organic debris"
+  },
+  {
+   "prompt": "Notes: Research Techniques | Macro-topography: Broad sea-bottom structures are mapped via ____",
+   "answer": "multibeam bathymetry",
+   "why": "Đoạn F cho biết các khảo sát âm học sử dụng 'multibeam bathymetry' (đo sâu đa tia) tạo ra bản đồ 3D địa hình đáy biển.",
+   "quote": "Acoustic surveys using multibeam bathymetry produce three-dimensional maps of seafloor topography"
+  }
+ ]
+}

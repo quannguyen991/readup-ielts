@@ -4,7 +4,7 @@
  * đầu gọi `playSfx`. Trạng thái tắt/bật lưu trong máy (localStorage), lỗi thì im lặng.
  */
 
-export type Sfx = 'unlock' | 'complete' | 'streak' | 'fire' | 'tap';
+export type Sfx = 'unlock' | 'complete' | 'streak' | 'fire' | 'tap' | 'rec-start' | 'rec-stop' | 'analyze';
 
 const MUTE_KEY = 'readup:hub-sfx-muted';
 let ctx: AudioContext | null = null;
@@ -107,6 +107,20 @@ export function playSfx(name: Sfx): void {
         break;
       case 'tap':
         note(c, 660, t, 0.06, 'sine', 0.08);
+        break;
+      case 'rec-start':
+        // Hai nốt đi lên: micro đã mở
+        note(c, 587.33, t, 0.12, 'sine', 0.14);
+        note(c, 880, t + 0.1, 0.22, 'sine', 0.16);
+        break;
+      case 'rec-stop':
+        // Hai nốt đi xuống: micro đã đóng
+        note(c, 880, t, 0.12, 'sine', 0.14);
+        note(c, 587.33, t + 0.1, 0.24, 'sine', 0.14);
+        break;
+      case 'analyze':
+        // Chuông lấp lánh khi có kết quả phân tích
+        [1046.5, 1318.5, 1568, 2093].forEach((f, i) => note(c, f, t + i * 0.07, 0.3, 'triangle', 0.09));
         break;
     }
   } catch {

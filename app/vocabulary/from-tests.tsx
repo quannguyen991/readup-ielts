@@ -3,6 +3,7 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
+import { CamVocabShelf } from '@/components/vocab/CamVocabCover';
 import { Badge, Button, Card, SectionHeader } from '@/components/ui';
 import packs from '@/data/exam-vocabulary.json';
 import { useL } from '@/i18n/useL';
@@ -98,6 +99,8 @@ export default function VocabularyFromTestsScreen() {
       <Text className="mt-1 font-sans text-body text-muted">
         {L(`${SETS.length} bộ IELTS · SAT · ${SETS.reduce((sum, set) => sum + set.items.length, 0).toLocaleString('vi-VN')} mục đã đối chiếu với văn bản đề. Chọn một bộ để xem và thêm vào Sổ từ.`, `${SETS.length} IELTS · SAT sets · ${SETS.reduce((sum, set) => sum + set.items.length, 0).toLocaleString('en-US')} items checked against the test text. Choose a set to review or add to Word Book.`)}
       </Text>
+
+      <CamVocabShelf />
 
       <Card className="mt-4">
         <SectionHeader title={L('Chọn đề', 'Choose a test')} subtitle={L('Mỗi bộ có khoảng 20–25 từ và cụm từ', 'About 20–25 words and phrases in each set')} icon="book" />

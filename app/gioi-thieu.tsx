@@ -4,7 +4,7 @@
  *   (GOLD_BUTTON). Mỗi phần app treo như một khung vàng, có nhãn kính ngà ở chân phòng.
  * OWN-WORLD: nền sáng ấm, chữ mực nâu vàng #2B2350, từ nhấn vàng đồng đậm #6A4BD9 (tương phản đạt với nền kem). Ảnh
  *   pixel thành phố của Du ngoạn (public/travel/maps) và bìa sách vẫn là hình thật. Phông: Playfair Display cho tiêu đề
- *   (câu thứ hai nghiêng, ánh kim) + Plus Jakarta Sans cho mọi chữ còn lại.
+ *   (câu thứ hai nghiêng, ánh kim) + Inter cho mọi chữ còn lại.
  * STORY: hiểu Band 9 = luyện đề như thi thật + học tiếng Anh như đi du lịch → đi một vòng năm "phòng" (phòng thi, phòng
  *   luyện nói với AI, Du ngoạn, từ vựng và lộ trình, tủ sách) → biết phần nào mở ngay → bấm "Học thử ngay".
  * FIRST VIEWPORT: trái: tiêu đề 4 dòng (2 dòng sau ánh kim), câu phụ, 2 nút; phải: thẻ câu Reading đã chấm, nghiêng nhẹ.
