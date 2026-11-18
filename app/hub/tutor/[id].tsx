@@ -16,8 +16,10 @@ import { HubScreen } from '@/components/hub/HubScreen';
 import { GLASS_CARD, HUB } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { Icon } from '@/components/ui/Icon';
+import { useL } from '@/i18n/useL';
 import { speak, stopSpeaking } from '@/services/hub/speak';
 import { tutorById, type Tutor } from '@/services/hub/tutors';
+import { tutorCopy } from '@/services/hub/tutors-en';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useHubStore } from '@/store/useHubStore';
 
@@ -69,6 +71,10 @@ export default function TutorChat() {
   const slides = useHubStore((s) => s.slides);
   const setSlides = useHubStore((s) => s.setSlides);
   const listen = useListen();
+  const { en } = useL();
+  // Gia sư đã có trong danh sách: hiện mức và bài tập mẫu trước khi người học nói câu đầu tiên.
+  const learnTutor = isCustom ? undefined : tutorById(id);
+  const learn = learnTutor ? { ...tutorCopy(learnTutor, en), level: learnTutor.level } : null;
 
   const [messages, setMessages] = useState<Msg[]>(() =>
     baseTutor?.opening
@@ -405,6 +411,21 @@ export default function TutorChat() {
                 </View>
               )}
             </View>
+          </View>
+        ) : null}
+
+        {/* Gia sư là gì để luyện: chỉ hiện trước khi người học nói câu đầu tiên */}
+        {learn && learn.tasks.length > 0 && messages.length <= 1 ? (
+          <View style={{ marginTop: 10, padding: 12, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EFE5D8', gap: 6 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Text style={{ color: '#2B1D3A', fontSize: 13, fontWeight: '900' }}>{en ? "You'll practise" : 'Bạn sẽ luyện'}</Text>
+              {learn.level ? <Text style={{ color: '#C2410C', fontSize: 12, fontWeight: '900' }}>{learn.level}</Text> : null}
+            </View>
+            {learn.tasks.map((task) => (
+              <Text key={task} style={{ color: '#573E29', fontSize: 12, lineHeight: 17, fontWeight: '600' }}>
+                • {task}
+              </Text>
+            ))}
           </View>
         ) : null}
 
